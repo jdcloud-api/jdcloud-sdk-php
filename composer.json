@@ -1,0 +1,65 @@
+{
+	"name" : "jdcloud-api/jdcloud-sdk-php",
+	"homepage" : "https://www.jdcloud.com/help/faq?act=3",
+	"description" : "JDCloud SDK for PHP",
+	"keywords" : [
+		"sdk",
+		"cloud",
+		"jdcloud"
+	],
+	"type" : "library",
+	"license" : "Apache-2.0",
+	"authors" : [{
+			"name" : "Bibo",
+			"email" : "wangbibo@jd.com"
+		}
+	],
+	"support" : {
+		"issues" : "https://github.com/jdcloud-api/jdcloud-sdk-php/issues"
+	},
+	"require" : {
+		"php" : ">=5.5",
+		"guzzlehttp/guzzle" : "^5.3.1|^6.2.1",
+		"guzzlehttp/psr7" : "^1.4.1",
+		"guzzlehttp/promises" : "~1.0",
+		"mtdowling/jmespath.php" : "~2.2",
+		"ext-pcre" : "*",
+		"ext-json" : "*",
+		"ext-simplexml" : "*",
+		"ext-spl" : "*"
+	},
+	"require-dev" : {
+		"ext-dom" : "*",
+		"phpunit/phpunit" : "^4.8.35|^5.4.3",
+		"behat/behat" : "~3.0",
+		"doctrine/cache" : "~1.4",
+		"nette/neon" : "^2.3",
+		"andrewsville/php-token-reflection" : "^1.4",
+		"psr/cache" : "^1.0"
+	},
+	"suggest" : {
+		"ext-openssl" : "Allows using ssl",
+		"ext-curl" : "To send requests using cURL"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Jdcloud\\" : "src"
+		},
+		"files" : [
+			"src/functions.php"
+		]
+	},
+	"autoload-dev" : {
+		"psr-4" : {
+			"Jdcloud\\Test\\" : "tests/"
+		},
+		"classmap" : [
+			"build/"
+		]
+	},
+	"extra" : {
+		"branch-alias" : {
+			"dev-master" : "3.0-dev"
+		}
+	}
+}

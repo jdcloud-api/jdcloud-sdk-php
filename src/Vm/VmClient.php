@@ -1,0 +1,88 @@
+<?php
+namespace Jdcloud\Vm;
+
+use Jdcloud\JdcloudClient;
+use Jdcloud\Api\Service;
+use Jdcloud\Api\DocModel;
+use Jdcloud\Api\ApiProvider;
+use Jdcloud\PresignUrlMiddleware;
+
+/**
+ * Client used to interact with vm.
+ *
+ * @method \Jdcloud\Result describeImage(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeImageAsync(array $args = [])
+ * @method \Jdcloud\Result deleteImage(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteImageAsync(array $args = [])
+ * @method \Jdcloud\Result describeImages(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeImagesAsync(array $args = [])
+ * @method \Jdcloud\Result describeImageConstraints(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeImageConstraintsAsync(array $args = [])
+ * @method \Jdcloud\Result shareImage(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise shareImageAsync(array $args = [])
+ * @method \Jdcloud\Result unShareImage(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise unShareImageAsync(array $args = [])
+ * @method \Jdcloud\Result describeImageMembers(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeImageMembersAsync(array $args = [])
+ * @method \Jdcloud\Result describeInstances(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeInstancesAsync(array $args = [])
+ * @method \Jdcloud\Result createInstances(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createInstancesAsync(array $args = [])
+ * @method \Jdcloud\Result describeInstance(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeInstanceAsync(array $args = [])
+ * @method \Jdcloud\Result deleteInstance(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteInstanceAsync(array $args = [])
+ * @method \Jdcloud\Result stopInstance(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise stopInstanceAsync(array $args = [])
+ * @method \Jdcloud\Result startInstance(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise startInstanceAsync(array $args = [])
+ * @method \Jdcloud\Result rebootInstance(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise rebootInstanceAsync(array $args = [])
+ * @method \Jdcloud\Result associateElasticIp(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise associateElasticIpAsync(array $args = [])
+ * @method \Jdcloud\Result disassociateElasticIp(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise disassociateElasticIpAsync(array $args = [])
+ * @method \Jdcloud\Result createImage(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createImageAsync(array $args = [])
+ * @method \Jdcloud\Result attachDisk(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise attachDiskAsync(array $args = [])
+ * @method \Jdcloud\Result detachDisk(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise detachDiskAsync(array $args = [])
+ * @method \Jdcloud\Result modifyInstanceAttribute(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise modifyInstanceAttributeAsync(array $args = [])
+ * @method \Jdcloud\Result modifyInstancePassword(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise modifyInstancePasswordAsync(array $args = [])
+ * @method \Jdcloud\Result describeInstanceVncUrl(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeInstanceVncUrlAsync(array $args = [])
+ * @method \Jdcloud\Result resizeInstance(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise resizeInstanceAsync(array $args = [])
+ * @method \Jdcloud\Result rebuildInstance(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise rebuildInstanceAsync(array $args = [])
+ * @method \Jdcloud\Result describeInstanceTypes(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeInstanceTypesAsync(array $args = [])
+ * @method \Jdcloud\Result describeQuotas(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeQuotasAsync(array $args = [])
+ */
+class VmClient extends JdcloudClient
+{
+    public function __construct(array $args)
+    {
+        $args['with_resolved'] = function (array $args) {
+            $this->getHandlerList()->appendInit(
+                PresignUrlMiddleware::wrap(
+                    $this,
+                    $args['endpoint_provider'],
+                    [
+                        'operations' => [
+                        ],
+                        'service' => 'vm',
+                        'presign_param' => 'PresignedUrl',
+                    ]
+                ),
+                'vm'
+            );
+        };
+
+        parent::__construct($args);
+    }
+}
