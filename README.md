@@ -27,7 +27,9 @@
 
     php composer.phar install
 
- 
+或
+
+    composer install 
 
 您还可以下载sdk源代码自行使用。
 
@@ -44,7 +46,10 @@ SDK使用中的任何问题，欢迎您在Github SDK使用问题反馈页面交�
 ## 调用示例 ##
 以下是创建单个云主机实例详情的调用示例
 
-	public function testCreateInstances()
+	use Jdcloud\Credentials\Credentials;
+    use Jdcloud\Result;
+    use Jdcloud\Vm\VmClient;
+    public function testCreateInstances()
     {
         $vm = new VmClient([
             'credentials'  => new Credentials('35DDDCFFB86CF2D494F0F3B6B0B3EF68', '93C107EF1F3A0C46C6329C04F561A29E'),
