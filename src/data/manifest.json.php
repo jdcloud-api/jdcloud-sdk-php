@@ -5,12 +5,12 @@ return [
         'namespace' => 'Vm',
         'versions' => [ 'latest' => 'v1', ],
     ],
-    'rds' => [
-        'namespace' => 'Rds',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
     'redis' => [
         'namespace' => 'Redis',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'rds' => [
+        'namespace' => 'Rds',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'monitor' => [
@@ -45,12 +45,20 @@ return [
         'namespace' => 'Mps',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'jmr' => [
+        'namespace' => 'Jmr',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'streambus' => [
         'namespace' => 'Streambus',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'oss' => [
         'namespace' => 'Oss',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'baseanti' => [
+        'namespace' => 'Baseanti',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'ipanti' => [

@@ -60,7 +60,7 @@ return [
             'name' => 'ExecuteRasQuery',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/dwQuery/executeRasQuery',
+                'requestUri' => '/v1/regions/{regionId}/dwQuery:executeRasQuery',
             ],
             'input' => [ 'shape' => 'ExecuteRasQueryRequestShape', ],
             'output' => [ 'shape' => 'ExecuteRasQueryResponseShape', ],
@@ -69,7 +69,7 @@ return [
             'name' => 'ExecutePySparkQuery',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/dwQuery/executePySparkQuery',
+                'requestUri' => '/v1/regions/{regionId}/dwQuery:executePySparkQuery',
             ],
             'input' => [ 'shape' => 'ExecutePySparkQueryRequestShape', ],
             'output' => [ 'shape' => 'ExecutePySparkQueryResponseShape', ],
@@ -78,7 +78,7 @@ return [
             'name' => 'GetRasQueryState',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/dwQuery/getRasQueryState',
+                'requestUri' => '/v1/regions/{regionId}/dwQuery:getRasQueryState',
             ],
             'input' => [ 'shape' => 'GetRasQueryStateRequestShape', ],
             'output' => [ 'shape' => 'GetRasQueryStateResponseShape', ],
@@ -87,7 +87,7 @@ return [
             'name' => 'GetPySparkExecuteState',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/dwQuery/getPySparkExecuteState',
+                'requestUri' => '/v1/regions/{regionId}/dwQuery:getPySparkExecuteState',
             ],
             'input' => [ 'shape' => 'GetPySparkExecuteStateRequestShape', ],
             'output' => [ 'shape' => 'GetPySparkExecuteStateResponseShape', ],
@@ -96,7 +96,7 @@ return [
             'name' => 'GetRasQueryLog',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/dwQuery/getRasQueryLog',
+                'requestUri' => '/v1/regions/{regionId}/dwQuery:getRasQueryLog',
             ],
             'input' => [ 'shape' => 'GetRasQueryLogRequestShape', ],
             'output' => [ 'shape' => 'GetRasQueryLogResponseShape', ],
@@ -105,7 +105,7 @@ return [
             'name' => 'GetRasQueryResult',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/dwQuery/getRasQueryResult',
+                'requestUri' => '/v1/regions/{regionId}/dwQuery:getRasQueryResult',
             ],
             'input' => [ 'shape' => 'GetRasQueryResultRequestShape', ],
             'output' => [ 'shape' => 'GetRasQueryResultResponseShape', ],
@@ -114,7 +114,7 @@ return [
             'name' => 'GetPySparkExecuteResult',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/dwQuery/getPySparkExecuteResult',
+                'requestUri' => '/v1/regions/{regionId}/dwQuery:getPySparkExecuteResult',
             ],
             'input' => [ 'shape' => 'GetPySparkExecuteResultRequestShape', ],
             'output' => [ 'shape' => 'GetPySparkExecuteResultResponseShape', ],
@@ -123,7 +123,7 @@ return [
             'name' => 'CancelRasQuery',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/dwQuery/cancelRasQuery',
+                'requestUri' => '/v1/regions/{regionId}/dwQuery:cancelRasQuery',
             ],
             'input' => [ 'shape' => 'CancelRasQueryRequestShape', ],
             'output' => [ 'shape' => 'CancelRasQueryResponseShape', ],
@@ -132,7 +132,7 @@ return [
             'name' => 'CancelPySparkJob',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/dwQuery/cancelPySparkQuery',
+                'requestUri' => '/v1/regions/{regionId}/dwQuery:cancelPySparkQuery',
             ],
             'input' => [ 'shape' => 'CancelPySparkJobRequestShape', ],
             'output' => [ 'shape' => 'CancelPySparkJobResponseShape', ],
@@ -402,7 +402,7 @@ return [
         'GetRasQueryResultResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+                'result' =>  [ 'shape' => 'GetRasQueryResultResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -428,6 +428,8 @@ return [
         'GetRasQueryResultResultShape' => [
             'type' => 'structure',
             'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'GetPySparkExecuteResultRequestShape' => [
@@ -464,12 +466,14 @@ return [
         'GetRasQueryLogResultShape' => [
             'type' => 'structure',
             'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'GetPySparkExecuteResultResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+                'result' =>  [ 'shape' => 'GetPySparkExecuteResultResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -515,6 +519,7 @@ return [
             'members' => [
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'data' => [ 'type' => 'integer', 'locationName' => 'data', ],
             ],
         ],
         'GetPySparkExecuteStateRequestShape' => [
@@ -552,6 +557,7 @@ return [
             'members' => [
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'data' => [ 'type' => 'integer', 'locationName' => 'data', ],
             ],
         ],
         'CancelRasQueryRequestShape' => [
@@ -565,13 +571,15 @@ return [
         'GetRasQueryLogResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+                'result' =>  [ 'shape' => 'GetRasQueryLogResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetPySparkExecuteResultResultShape' => [
             'type' => 'structure',
             'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'GetRasQueryStateResponseShape' => [

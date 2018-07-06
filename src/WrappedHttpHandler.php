@@ -140,6 +140,10 @@ class WrappedHttpHandler
         foreach ($response->getHeaders() as $name => $values) {
             $metadata['headers'][strtolower($name)] = $values[0];
         }
+        
+        if ($result->get('requestId') == null && $metadata['headers']['x-jdcloud-request-id'] != null) {
+            $result->offsetSet('requestId', $metadata['headers']['x-jdcloud-request-id']);
+        }
 
         //TODO: remove temp
 //         $result['@metadata'] = $metadata;

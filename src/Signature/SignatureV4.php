@@ -140,7 +140,6 @@ class SignatureV4 implements SignatureInterface
                 . 'received a ' . $request->getMethod() . ' request.');
         }
 
-//         var_dump($request);
         $sr = $request->withMethod('GET')
             ->withBody(Psr7\stream_for(''))
             ->withoutHeader('Content-Type')
@@ -366,15 +365,6 @@ class SignatureV4 implements SignatureInterface
 
     private function buildRequest(array $req)
     {
-//         print('uri --');
-//         var_dump($req['uri']);
-//         print('query --');
-//         var_dump($req['query']);
-//         print('header --');
-//         var_dump($req['headers']);
-//         print('body --');
-//         var_dump($req['body']->getContents());
-//         print('body end \n');
         if ($req['query']) {
             $req['uri'] = $req['uri']->withQuery(Psr7\build_query($req['query']));
         }

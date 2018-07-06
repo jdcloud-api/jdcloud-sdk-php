@@ -40,7 +40,6 @@ class GuzzleHandler
                 . ' ' . \GuzzleHttp\default_user_agent()
         );
 
-        var_dump($request->getBody()->getContents());
         return $this->client->sendAsync($request, $this->parseOptions($options))
             ->otherwise(
                 static function (\Exception $e) {

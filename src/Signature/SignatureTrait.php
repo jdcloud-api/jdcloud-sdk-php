@@ -20,7 +20,6 @@ trait SignatureTrait
     private function getSigningKey($shortDate, $region, $service, $secretKey)
     {
         $k = $shortDate . '_' . $region . '_' . $service . '_' . $secretKey;
-//         var_dump($k);
 
         if (!isset($this->cache[$k])) {
             // Clear the cache when it reaches 50 entries

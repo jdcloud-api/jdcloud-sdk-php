@@ -36,7 +36,6 @@ class JdcloudException extends \RuntimeException
         array $context = [],
         \Exception $previous = null
     ) {
-        var_dump($context['message']);
         $this->command = $command;
         $this->response = isset($context['response']) ? $context['response'] : null;
         $this->request = isset($context['request']) ? $context['request'] : null;

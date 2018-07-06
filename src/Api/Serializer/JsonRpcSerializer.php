@@ -58,11 +58,8 @@ class JsonRpcSerializer
     {
         $name = $command->getName();
         $operation = $this->api->getOperation($name);
-//         var_dump($operation->offsetGet("http"));
         $method = $operation['http']['method'];
         
-//         print('getCommand');
-//         var_dump($command -> toArray());
         $headers = ['Content-Type' => $this->contentType ];
         $extraHeaders = $command -> offsetGet('extraHeaders');
         if($extraHeaders != null) {
@@ -70,7 +67,6 @@ class JsonRpcSerializer
         }        
         
         $paramArray = $this->paramFormatter->build($command);
-//         var_dump($paramArray);
         $requestUri = $this->endpoint.$operation['http']['requestUri'];
         if(strpos($requestUri, '{')) {
             foreach ($paramArray as $k => $v) {

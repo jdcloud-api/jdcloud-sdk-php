@@ -13,12 +13,13 @@ trait JsonParserTrait
 
     private function genericHandler(ResponseInterface $response)
     {
-        $requestId = (string) $response->getHeaderLine('x-jdcloud-requestId');
+        $requestId = (string) $response->getHeaderLine('x-jdcloud-request-id');
         $code = (string) $response->getStatusCode();
         $bizCode = null;
         $bizStatus = null;
         $bizMessage = null;
         $body = $this->parseJson($response->getBody());
+
         if ($body != null) {
             if ($body['requestId'] != null) {
                 $requestId = $body['requestId'];
