@@ -1,8 +1,8 @@
 # CHANGELOG
 
-## 3.56.0 - 2018-05-14
+## 0.2.0 - 2018-07-10
 
-* Initial release of the AWS SDK for PHP Version 2
+* Initial release of the Jdcloud SDK
 * Jdcloud signature algorithm
 
 
