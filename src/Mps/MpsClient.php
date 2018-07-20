@@ -1,4 +1,14 @@
 <?php
+/**
+ * Mps
+ *
+ * @category Jdcloud
+ * @package  Jdcloud\Mps
+ * @author   Jdcloud <jdcloud-api@jd.com>
+ * @license  Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0
+ * @link     https://www.jdcloud.com/help/faq
+ */
+
 namespace Jdcloud\Mps;
 
 use Jdcloud\JdcloudClient;

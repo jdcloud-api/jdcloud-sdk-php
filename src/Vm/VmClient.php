@@ -1,4 +1,14 @@
 <?php
+/**
+ * Vm
+ *
+ * @category Jdcloud
+ * @package  Jdcloud\Vm
+ * @author   Jdcloud <jdcloud-api@jd.com>
+ * @license  Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0
+ * @link     https://www.jdcloud.com/help/faq
+ */
+
 namespace Jdcloud\Vm;
 
 use Jdcloud\JdcloudClient;
@@ -18,12 +28,16 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeImagesAsync(array $args = [])
  * @method \Jdcloud\Result describeImageConstraints(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeImageConstraintsAsync(array $args = [])
+ * @method \Jdcloud\Result describeImageConstraintsBatch(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeImageConstraintsBatchAsync(array $args = [])
  * @method \Jdcloud\Result shareImage(array $args = [])
  * @method \GuzzleHttp\Promise\Promise shareImageAsync(array $args = [])
  * @method \Jdcloud\Result unShareImage(array $args = [])
  * @method \GuzzleHttp\Promise\Promise unShareImageAsync(array $args = [])
  * @method \Jdcloud\Result describeImageMembers(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeImageMembersAsync(array $args = [])
+ * @method \Jdcloud\Result modifyImageAttribute(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise modifyImageAttributeAsync(array $args = [])
  * @method \Jdcloud\Result describeInstances(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeInstancesAsync(array $args = [])
  * @method \Jdcloud\Result createInstances(array $args = [])
@@ -32,6 +46,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeInstanceAsync(array $args = [])
  * @method \Jdcloud\Result deleteInstance(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteInstanceAsync(array $args = [])
+ * @method \Jdcloud\Result describeInstanceStatus(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeInstanceStatusAsync(array $args = [])
  * @method \Jdcloud\Result stopInstance(array $args = [])
  * @method \GuzzleHttp\Promise\Promise stopInstanceAsync(array $args = [])
  * @method \Jdcloud\Result startInstance(array $args = [])

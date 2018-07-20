@@ -1,4 +1,14 @@
 <?php
+/**
+ * Oss
+ *
+ * @category Jdcloud
+ * @package  Jdcloud\Oss
+ * @author   Jdcloud <jdcloud-api@jd.com>
+ * @license  Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0
+ * @link     https://www.jdcloud.com/help/faq
+ */
+
 namespace Jdcloud\Oss;
 
 use Jdcloud\JdcloudClient;

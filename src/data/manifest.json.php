@@ -33,12 +33,20 @@ return [
         'namespace' => 'Vpc',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'sop' => [
+        'namespace' => 'Sop',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'xdata' => [
         'namespace' => 'Xdata',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'nc' => [
         'namespace' => 'Nc',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'clouddnsservice' => [
+        'namespace' => 'Clouddnsservice',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'mps' => [

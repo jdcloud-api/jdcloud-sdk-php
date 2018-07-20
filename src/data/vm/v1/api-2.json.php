@@ -47,6 +47,15 @@ return [
             'input' => [ 'shape' => 'DescribeImageConstraintsRequestShape', ],
             'output' => [ 'shape' => 'DescribeImageConstraintsResponseShape', ],
         ],
+        'DescribeImageConstraintsBatch' => [
+            'name' => 'DescribeImageConstraintsBatch',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/imageConstraints',
+            ],
+            'input' => [ 'shape' => 'DescribeImageConstraintsBatchRequestShape', ],
+            'output' => [ 'shape' => 'DescribeImageConstraintsBatchResponseShape', ],
+        ],
         'ShareImage' => [
             'name' => 'ShareImage',
             'http' => [
@@ -73,6 +82,15 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeImageMembersRequestShape', ],
             'output' => [ 'shape' => 'DescribeImageMembersResponseShape', ],
+        ],
+        'ModifyImageAttribute' => [
+            'name' => 'ModifyImageAttribute',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/images/{imageId}:modifyImageAttribute',
+            ],
+            'input' => [ 'shape' => 'ModifyImageAttributeRequestShape', ],
+            'output' => [ 'shape' => 'ModifyImageAttributeResponseShape', ],
         ],
         'DescribeInstances' => [
             'name' => 'DescribeInstances',
@@ -109,6 +127,15 @@ return [
             ],
             'input' => [ 'shape' => 'DeleteInstanceRequestShape', ],
             'output' => [ 'shape' => 'DeleteInstanceResponseShape', ],
+        ],
+        'DescribeInstanceStatus' => [
+            'name' => 'DescribeInstanceStatus',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instanceStatus',
+            ],
+            'input' => [ 'shape' => 'DescribeInstanceStatusRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInstanceStatusResponseShape', ],
         ],
         'StopInstance' => [
             'name' => 'StopInstance',
@@ -240,7 +267,7 @@ return [
             'name' => 'DescribeQuotas',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/regions/{regionId}/quotas',
+                'requestUri' => '/v1/regions/{regionId}/quotas',
             ],
             'input' => [ 'shape' => 'DescribeQuotasRequestShape', ],
             'output' => [ 'shape' => 'DescribeQuotasResponseShape', ],
@@ -337,6 +364,7 @@ return [
         'ImageConstraint' => [
             'type' => 'structure',
             'members' => [
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
                 'imageInstanceTypeConstraint' =>  [ 'shape' => 'ImageInstanceTypeConstraint', ],
             ],
         ],
@@ -483,6 +511,13 @@ return [
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
             ],
         ],
+        'InstanceStatus' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
         'InstanceTemplateElasticIp' => [
             'type' => 'structure',
             'members' => [
@@ -622,6 +657,11 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'ModifyImageAttributeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DeleteImageRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -629,11 +669,22 @@ return [
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
             ],
         ],
+        'DescribeImageConstraintsBatchResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imageConstraints' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageConstraint', ], ],
+            ],
+        ],
         'DescribeImageMembersRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+            ],
+        ],
+        'ModifyImageAttributeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DescribeImageResultShape' => [
@@ -654,6 +705,13 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeImageConstraintsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeImageConstraintsBatchRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'UnShareImageRequestShape' => [
@@ -681,6 +739,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ShareImageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DescribeImageResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -695,23 +758,18 @@ return [
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
             ],
         ],
-        'ShareImageResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DescribeImageConstraintsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'imageConstraints' =>  [ 'shape' => 'ImageConstraint', ],
-            ],
-        ],
         'ShareImageRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'pins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+            ],
+        ],
+        'DescribeImageConstraintsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imageConstraints' =>  [ 'shape' => 'ImageConstraint', ],
             ],
         ],
         'DescribeImagesResponseShape' => [
@@ -731,6 +789,13 @@ return [
         'UnShareImageResponseShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeImageConstraintsBatchResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeImageConstraintsBatchResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeImagesRequestShape' => [
@@ -756,6 +821,15 @@ return [
             'type' => 'structure',
             'members' => [
                 'pins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ModifyImageAttributeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
             ],
         ],
         'StartInstanceRequestShape' => [
@@ -799,6 +873,13 @@ return [
             'members' => [
             ],
         ],
+        'DescribeInstanceStatusResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceStatusResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'AssociateElasticIpRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -817,16 +898,16 @@ return [
             'members' => [
             ],
         ],
+        'DisassociateElasticIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'CreateInstancesResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'CreateInstancesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DisassociateElasticIpResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'DescribeInstancesResultShape' => [
@@ -885,6 +966,13 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeInstanceVncUrlResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeInstanceStatusResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceStatuses' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceStatus', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
             ],
         ],
         'AssociateElasticIpResponseShape' => [
@@ -1020,6 +1108,15 @@ return [
         'DetachDiskResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeInstanceStatusRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'StopInstanceResultShape' => [

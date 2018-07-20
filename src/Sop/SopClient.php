@@ -1,15 +1,15 @@
 <?php
 /**
- * Jmr
+ * Sop
  *
  * @category Jdcloud
- * @package  Jdcloud\Jmr
+ * @package  Jdcloud\Sop
  * @author   Jdcloud <jdcloud-api@jd.com>
  * @license  Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0
  * @link     https://www.jdcloud.com/help/faq
  */
 
-namespace Jdcloud\Jmr;
+namespace Jdcloud\Sop;
 
 use Jdcloud\JdcloudClient;
 use Jdcloud\Api\Service;
@@ -18,16 +18,14 @@ use Jdcloud\Api\ApiProvider;
 use Jdcloud\PresignUrlMiddleware;
 
 /**
- * Client used to interact with jmr.
+ * Client used to interact with sop.
  *
- * @method \Jdcloud\Result createClusterInNewNetwork(array $args = [])
- * @method \GuzzleHttp\Promise\Promise createClusterInNewNetworkAsync(array $args = [])
- * @method \Jdcloud\Result showClusterDetails(array $args = [])
- * @method \GuzzleHttp\Promise\Promise showClusterDetailsAsync(array $args = [])
- * @method \Jdcloud\Result releaseCluster(array $args = [])
- * @method \GuzzleHttp\Promise\Promise releaseClusterAsync(array $args = [])
+ * @method \Jdcloud\Result getSecurityToken(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getSecurityTokenAsync(array $args = [])
+ * @method \Jdcloud\Result getSensitiveOpSetting(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getSensitiveOpSettingAsync(array $args = [])
  */
-class JmrClient extends JdcloudClient
+class SopClient extends JdcloudClient
 {
     public function __construct(array $args)
     {
@@ -39,11 +37,11 @@ class JmrClient extends JdcloudClient
                     [
                         'operations' => [
                         ],
-                        'service' => 'jmr',
+                        'service' => 'sop',
                         'presign_param' => 'PresignedUrl',
                     ]
                 ),
-                'jmr'
+                'sop'
             );
         };
 
