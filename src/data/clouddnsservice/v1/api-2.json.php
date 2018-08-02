@@ -47,14 +47,23 @@ return [
             'input' => [ 'shape' => 'UpdateDomainRequestShape', ],
             'output' => [ 'shape' => 'UpdateDomainResponseShape', ],
         ],
-        'GetDomainStatistics' => [
-            'name' => 'GetDomainStatistics',
+        'GetDomainQueryCount' => [
+            'name' => 'GetDomainQueryCount',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/domain/{domainId}/stat',
+                'requestUri' => '/v1/regions/{regionId}/domain/{domainId}/queryCount',
             ],
-            'input' => [ 'shape' => 'GetDomainStatisticsRequestShape', ],
-            'output' => [ 'shape' => 'GetDomainStatisticsResponseShape', ],
+            'input' => [ 'shape' => 'GetDomainQueryCountRequestShape', ],
+            'output' => [ 'shape' => 'GetDomainQueryCountResponseShape', ],
+        ],
+        'GetDomainQueryTraffic' => [
+            'name' => 'GetDomainQueryTraffic',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/domain/{domainId}/queryTraffic',
+            ],
+            'input' => [ 'shape' => 'GetDomainQueryTrafficRequestShape', ],
+            'output' => [ 'shape' => 'GetDomainQueryTrafficResponseShape', ],
         ],
         'SearchRR' => [
             'name' => 'SearchRR',
@@ -299,13 +308,6 @@ return [
                 'viewValue' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
             ],
         ],
-        'AddDomainResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'AddDomainResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'AddDomainRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -326,18 +328,24 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'GetDomainStatisticsResultShape' => [
+        'GetDomainQueryCountRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
-                'traffic' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'start' => [ 'type' => 'string', 'locationName' => 'start', ],
+                'end' => [ 'type' => 'string', 'locationName' => 'end', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
         ],
-        'UpdateDomainResponseShape' => [
+        'GetDomainQueryTrafficRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'UpdateDomainResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'start' => [ 'type' => 'string', 'locationName' => 'start', ],
+                'end' => [ 'type' => 'string', 'locationName' => 'end', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
         ],
         'AddDomainResultShape' => [
@@ -347,15 +355,11 @@ return [
                 'order' => [ 'type' => 'string', 'locationName' => 'order', ],
             ],
         ],
-        'GetDomainStatisticsRequestShape' => [
+        'GetDomainQueryCountResultShape' => [
             'type' => 'structure',
             'members' => [
-                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
-                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
-                'start' => [ 'type' => 'string', 'locationName' => 'start', ],
-                'end' => [ 'type' => 'string', 'locationName' => 'end', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
+                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'traffic' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
             ],
         ],
         'GetDomainsResultShape' => [
@@ -366,22 +370,9 @@ return [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
-        'GetDomainStatisticsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetDomainStatisticsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DelDomainResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'DelDomainResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'UpdateDomainRequestShape' => [
@@ -390,6 +381,14 @@ return [
                 'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetDomainQueryTrafficResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
+                'traffic' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
             ],
         ],
         'GetDomainsRequestShape' => [
@@ -401,65 +400,10 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'GetDomainsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetDomainsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'UpdateDomainResultShape' => [
             'type' => 'structure',
             'members' => [
                 'updateDomain' =>  [ 'shape' => 'Domain', ],
-            ],
-        ],
-        'OperateRRResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'AddRRResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'AddRRResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetViewTreeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetViewTreeResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UpdateRRRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'req' =>  [ 'shape' => 'UpdateRR', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
-            ],
-        ],
-        'UpdateRRResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AddRRResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' =>  [ 'shape' => 'RR', ],
-            ],
-        ],
-        'OperateRRRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
-                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
         ],
         'UpdateRRResultShape' => [
@@ -470,6 +414,19 @@ return [
         'SearchRRRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
+            ],
+        ],
+        'OperateRRResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateRRRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'UpdateRR', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
@@ -498,17 +455,19 @@ return [
                 'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
         ],
-        'SearchRRResponseShape' => [
+        'AddRRResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'SearchRRResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'dataList' =>  [ 'shape' => 'RR', ],
             ],
         ],
-        'OperateRRResponseShape' => [
+        'OperateRRRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
         ],
         'SearchRRResultShape' => [
@@ -539,12 +498,6 @@ return [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'MonitorAlarmInfo', ], ],
             ],
         ],
-        'AddMonitorTargetResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'GetMonitorResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -559,16 +512,10 @@ return [
             'members' => [
             ],
         ],
-        'GetTargetsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'GetTargetsResultShape' => [
             'type' => 'structure',
             'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'UpdateMonitorResultShape' => [
@@ -589,25 +536,6 @@ return [
             'members' => [
             ],
         ],
-        'GetMonitorResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetMonitorResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'OperateMonitorResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AddMonitorResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'AddMonitorTargetResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -619,12 +547,6 @@ return [
                 'updateMonitor' =>  [ 'shape' => 'UpdateMonitor', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
-            ],
-        ],
-        'UpdateMonitorResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'OperateMonitorRequestShape' => [
@@ -654,13 +576,6 @@ return [
                 'targets' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
-            ],
-        ],
-        'GetMonitorAlarmInfoResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetMonitorAlarmInfoResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'AddMonitorRequestShape' => [

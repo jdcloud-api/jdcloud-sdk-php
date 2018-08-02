@@ -287,20 +287,6 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
-        'CreateDatabaseResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateDatabaseResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetDatabaseInfoResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetDatabaseInfoResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'GetDatabaseInfoResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -315,13 +301,6 @@ return [
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'databaseName' => [ 'type' => 'string', 'locationName' => 'databaseName', ],
-            ],
-        ],
-        'DeleteDatabaseResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DeleteDatabaseResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateDatabaseRequestShape' => [
@@ -341,26 +320,19 @@ return [
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'DwDatabaseInfo', ], ],
             ],
         ],
+        'ListDatabaseInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'DeleteDatabaseRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'databaseName' => [ 'type' => 'string', 'locationName' => 'databaseName', ],
-            ],
-        ],
-        'ListDatabaseInfoResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ListDatabaseInfoResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ListDatabaseInfoRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'ListInstanceInfoResultShape' => [
@@ -377,11 +349,11 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'ListInstanceInfoResponseShape' => [
+        'CancelRasQueryResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'ListInstanceInfoResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'GetRasQueryLogRequestShape' => [
@@ -392,26 +364,12 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'CancelRasQueryResultShape' => [
+        'ExecuteRasQueryResultShape' => [
             'type' => 'structure',
             'members' => [
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
-        'GetRasQueryResultResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetRasQueryResultResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetPySparkExecuteStateResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
+                'data' => [ 'type' => 'integer', 'locationName' => 'data', ],
             ],
         ],
         'ExecutePySparkQueryRequestShape' => [
@@ -425,11 +383,12 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'GetRasQueryResultResultShape' => [
+        'GetPySparkExecuteStateResultShape' => [
             'type' => 'structure',
             'members' => [
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
             ],
         ],
         'GetPySparkExecuteResultRequestShape' => [
@@ -440,89 +399,22 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'ExecutePySparkQueryResponseShape' => [
+        'GetPySparkExecuteStateRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'ExecutePySparkQueryResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'queryId' => [ 'type' => 'string', 'locationName' => 'queryId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetRasQueryResultResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'GetRasQueryStateRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
-                'queryId' => [ 'type' => 'string', 'locationName' => 'queryId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetRasQueryStateResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
-            ],
-        ],
-        'GetRasQueryLogResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
-        'GetPySparkExecuteResultResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetPySparkExecuteResultResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetPySparkExecuteStateResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetPySparkExecuteStateResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CancelRasQueryResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CancelRasQueryResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetRasQueryResultRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
-                'queryId' => [ 'type' => 'string', 'locationName' => 'queryId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'CancelPySparkJobRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
-                'queryId' => [ 'type' => 'string', 'locationName' => 'queryId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'CancelPySparkJobResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CancelPySparkJobResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ExecuteRasQueryResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' => [ 'type' => 'integer', 'locationName' => 'data', ],
-            ],
-        ],
-        'GetPySparkExecuteStateRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
@@ -552,6 +444,21 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'GetRasQueryStateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
+            ],
+        ],
+        'GetRasQueryLogResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
         'ExecutePySparkQueryResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -568,11 +475,12 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'GetRasQueryLogResponseShape' => [
+        'GetRasQueryResultRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GetRasQueryLogResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'queryId' => [ 'type' => 'string', 'locationName' => 'queryId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'GetPySparkExecuteResultResultShape' => [
@@ -582,18 +490,12 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
-        'GetRasQueryStateResponseShape' => [
+        'CancelPySparkJobRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GetRasQueryStateResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ExecuteRasQueryResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ExecuteRasQueryResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'queryId' => [ 'type' => 'string', 'locationName' => 'queryId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'GetTableInfoResultShape' => [
@@ -612,18 +514,13 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'GetTableInfoResponseShape' => [
+        'GetTableInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GetTableInfoResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateTableResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateTableResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'databaseName' => [ 'type' => 'string', 'locationName' => 'databaseName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
             ],
         ],
         'CreateTableResultShape' => [
@@ -664,29 +561,6 @@ return [
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'databaseName' => [ 'type' => 'string', 'locationName' => 'databaseName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetTableInfoRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
-                'databaseName' => [ 'type' => 'string', 'locationName' => 'databaseName', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
-            ],
-        ],
-        'ListTableInfoResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ListTableInfoResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeleteTableResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DeleteTableResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
     ],

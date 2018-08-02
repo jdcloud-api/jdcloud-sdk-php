@@ -69,6 +69,14 @@ return [
         'namespace' => 'Baseanti',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'streamcomputer' => [
+        'namespace' => 'Streamcomputer',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'jke' => [
+        'namespace' => 'Jke',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'ipanti' => [
         'namespace' => 'Ipanti',
         'versions' => [ 'latest' => 'v1', ],

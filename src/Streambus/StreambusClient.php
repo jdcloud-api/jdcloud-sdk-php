@@ -22,10 +22,20 @@ use Jdcloud\PresignUrlMiddleware;
  *
  * @method \Jdcloud\Result getTopicList(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getTopicListAsync(array $args = [])
+ * @method \Jdcloud\Result describeTopic(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeTopicAsync(array $args = [])
  * @method \Jdcloud\Result addTopic(array $args = [])
  * @method \GuzzleHttp\Promise\Promise addTopicAsync(array $args = [])
  * @method \Jdcloud\Result updateTopic(array $args = [])
  * @method \GuzzleHttp\Promise\Promise updateTopicAsync(array $args = [])
+ * @method \Jdcloud\Result deleteTopic(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteTopicAsync(array $args = [])
+ * @method \Jdcloud\Result getConsumerGroupList(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getConsumerGroupListAsync(array $args = [])
+ * @method \Jdcloud\Result createConsumerGroup(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createConsumerGroupAsync(array $args = [])
+ * @method \Jdcloud\Result deleteConsumerGroup(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteConsumerGroupAsync(array $args = [])
  */
 class StreambusClient extends JdcloudClient
 {

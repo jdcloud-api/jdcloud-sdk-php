@@ -110,6 +110,15 @@ return [
             'input' => [ 'shape' => 'DescribeMetricDataRequestShape', ],
             'output' => [ 'shape' => 'DescribeMetricDataResponseShape', ],
         ],
+        'PutMetricData' => [
+            'name' => 'PutMetricData',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/customMetrics',
+            ],
+            'input' => [ 'shape' => 'PutMetricDataRequestShape', ],
+            'output' => [ 'shape' => 'PutMetricDataResponseShape', ],
+        ],
     ],
     'shapes' => [
         'CreateAlarmSpec' => [
@@ -208,6 +217,13 @@ return [
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
+        'MetricDataList' => [
+            'type' => 'structure',
+            'members' => [
+                'errMetricData' => [ 'type' => 'string', 'locationName' => 'errMetricData', ],
+                'errDetail' => [ 'type' => 'string', 'locationName' => 'errDetail', ],
+            ],
+        ],
         'ErrorBody' => [
             'type' => 'structure',
             'members' => [
@@ -239,6 +255,17 @@ return [
                 'metric' =>  [ 'shape' => 'Metric', ],
             ],
         ],
+        'MetricDataCm' => [
+            'type' => 'structure',
+            'members' => [
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'dimensions' => [ 'type' => 'object', 'locationName' => 'dimensions', ],
+                'timestamp' => [ 'type' => 'int64', 'locationName' => 'timestamp', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+                'values' => [ 'type' => 'object', 'locationName' => 'values', ],
+            ],
+        ],
         'ServiceCodeMetrics' => [
             'type' => 'structure',
             'members' => [
@@ -256,11 +283,16 @@ return [
                 'downSample' => [ 'type' => 'string', 'locationName' => 'downSample', ],
             ],
         ],
-        'Tags' => [
+        'TagFilter' => [
             'type' => 'structure',
             'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DisableAlarmResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DescribeAlarmsRequestShape' => [
@@ -283,19 +315,6 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DescribeAlarmHistoryResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeAlarmHistoryResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'EnableAlarmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'UpdateAlarmRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -314,11 +333,14 @@ return [
                 'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
             ],
         ],
-        'DescribeAlarmsResponseShape' => [
+        'DescribeAlarmHistoryResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeAlarmsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'alarmHistoryList' => [ 'type' => 'list', 'member' => [ 'shape' => 'AlarmHistory', ], ],
+                'pageNumber' => [ 'type' => 'double', 'locationName' => 'pageNumber', ],
+                'numberPages' => [ 'type' => 'double', 'locationName' => 'numberPages', ],
+                'numberRecords' => [ 'type' => 'double', 'locationName' => 'numberRecords', ],
+                'pageSize' => [ 'type' => 'double', 'locationName' => 'pageSize', ],
             ],
         ],
         'DescribeAlarmsByIDRequestShape' => [
@@ -332,70 +354,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
-            ],
-        ],
-        'DescribeAlarmHistoryRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'EnableAlarmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeleteAlarmsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'CreateAlarmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarmIdList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'DisableAlarmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DisableAlarmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeAlarmHistoryResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarmHistoryList' => [ 'type' => 'list', 'member' => [ 'shape' => 'AlarmHistory', ], ],
-                'pageNumber' => [ 'type' => 'double', 'locationName' => 'pageNumber', ],
-                'numberPages' => [ 'type' => 'double', 'locationName' => 'numberPages', ],
-                'numberRecords' => [ 'type' => 'double', 'locationName' => 'numberRecords', ],
-                'pageSize' => [ 'type' => 'double', 'locationName' => 'pageSize', ],
-            ],
-        ],
-        'DescribeAlarmsByIDResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeAlarmsByIDResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateAlarmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateAlarmResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeAlarmsResultShape' => [
@@ -428,17 +386,27 @@ return [
                 'alarm' =>  [ 'shape' => 'Alarm', ],
             ],
         ],
-        'UpdateAlarmResponseShape' => [
+        'DescribeAlarmHistoryRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'UpdateAlarmResultShape', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DeleteAlarmsResponseShape' => [
+        'EnableAlarmResultShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteAlarmsResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'CreateAlarmRequestShape' => [
@@ -449,17 +417,28 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'CreateAlarmResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'alarmIdList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'DescribeMetricDataResultShape' => [
             'type' => 'structure',
             'members' => [
                 'metricDatas' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricData', ], ],
             ],
         ],
-        'DescribeMetricsForCreateAlarmResponseShape' => [
+        'DescribeMetricsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeMetricsForCreateAlarmResultShape', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+            ],
+        ],
+        'DescribeMetricsForCreateAlarmResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCodeList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ServiceCodeMetrics', ], ],
             ],
         ],
         'DescribeMetricDataRequestShape' => [
@@ -470,7 +449,7 @@ return [
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
-                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tags', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
             ],
@@ -481,36 +460,23 @@ return [
                 'metrics' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricDetail', ], ],
             ],
         ],
-        'DescribeMetricsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-            ],
-        ],
-        'DescribeMetricDataResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeMetricDataResultShape', ],
-            ],
-        ],
-        'DescribeMetricsForCreateAlarmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'serviceCodeList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ServiceCodeMetrics', ], ],
-            ],
-        ],
         'DescribeMetricsForCreateAlarmRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
             ],
         ],
-        'DescribeMetricsResponseShape' => [
+        'PutMetricDataResultShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeMetricsResultShape', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'errMetricDataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricDataList', ], ],
+            ],
+        ],
+        'PutMetricDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'metricDataList' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
             ],
         ],
     ],
