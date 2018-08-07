@@ -66,6 +66,20 @@ return [
                 'notifyMessage' => [ 'type' => 'string', 'locationName' => 'notifyMessage', ],
             ],
         ],
+        'ListThumbnailTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'begin' => [ 'type' => 'string', 'locationName' => 'begin', ],
+                'end' => [ 'type' => 'string', 'locationName' => 'end', ],
+                'marker' => [ 'type' => 'string', 'locationName' => 'marker', ],
+                'limit' => [ 'type' => 'integer', 'locationName' => 'limit', ],
+                'nextMarker' => [ 'type' => 'string', 'locationName' => 'nextMarker', ],
+                'truncated' => [ 'type' => 'boolean', 'locationName' => 'truncated', ],
+                'taskList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ThumbnailTask', ], ],
+            ],
+        ],
         'CreateThumbnailTaskRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -90,6 +104,13 @@ return [
                 'notifyContentFormat' => [ 'type' => 'string', 'locationName' => 'notifyContentFormat', ],
             ],
         ],
+        'CreateThumbnailTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'taskID' => [ 'type' => 'string', 'locationName' => 'taskID', ],
+            ],
+        ],
         'GetThumbnailTaskRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -100,6 +121,20 @@ return [
         'SetNotificationResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'GetThumbnailTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'taskID' => [ 'type' => 'string', 'locationName' => 'taskID', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'errorCode' => [ 'type' => 'integer', 'locationName' => 'errorCode', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'lastUpdatedTime' => [ 'type' => 'string', 'locationName' => 'lastUpdatedTime', ],
+                'source' =>  [ 'shape' => 'ThumbnailTaskSource', ],
+                'target' =>  [ 'shape' => 'ThumbnailTaskTarget', ],
+                'rule' =>  [ 'shape' => 'ThumbnailTaskRule', ],
             ],
         ],
         'ThumbnailTaskID' => [
@@ -119,6 +154,12 @@ return [
                 'source' =>  [ 'shape' => 'ThumbnailTaskSource', ],
                 'target' =>  [ 'shape' => 'ThumbnailTaskTarget', ],
                 'rule' =>  [ 'shape' => 'ThumbnailTaskRule', ],
+            ],
+        ],
+        'SetNotificationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetThumbnailTaskResultShape' => [
@@ -164,6 +205,17 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'errorCode' => [ 'type' => 'integer', 'locationName' => 'errorCode', ],
                 'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+            ],
+        ],
+        'GetNotificationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
+                'events' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'notifyStrategy' => [ 'type' => 'string', 'locationName' => 'notifyStrategy', ],
+                'notifyContentFormat' => [ 'type' => 'string', 'locationName' => 'notifyContentFormat', ],
             ],
         ],
         'ThumbnailTaskTarget' => [

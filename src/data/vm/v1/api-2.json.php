@@ -784,6 +784,13 @@ return [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
+        'DescribeImageConstraintsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeImageConstraintsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeImageConstraintsBatchRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -809,11 +816,11 @@ return [
             'members' => [
             ],
         ],
-        'DescribeImageRequestShape' => [
+        'DescribeImageMembersResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+                'result' =>  [ 'shape' => 'DescribeImageMembersResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ShareImageResultShape' => [
@@ -821,10 +828,18 @@ return [
             'members' => [
             ],
         ],
-        'DescribeImageConstraintsResultShape' => [
+        'DescribeImageRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'imageConstraints' =>  [ 'shape' => 'ImageConstraint', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+            ],
+        ],
+        'DescribeImageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeImageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ShareImageRequestShape' => [
@@ -833,6 +848,19 @@ return [
                 'pins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+            ],
+        ],
+        'DescribeImageConstraintsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imageConstraints' =>  [ 'shape' => 'ImageConstraint', ],
+            ],
+        ],
+        'DescribeImagesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeImagesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeImageConstraintsRequestShape' => [
@@ -845,6 +873,13 @@ return [
         'UnShareImageResponseShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeImageConstraintsBatchResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeImageConstraintsBatchResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CopyImagesResultShape' => [
@@ -874,6 +909,13 @@ return [
         'DeleteImageResponseShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'CopyImagesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CopyImagesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeImageMembersResultShape' => [
@@ -929,6 +971,13 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'DescribeInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstancesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'ModifyInstancePasswordResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -945,6 +994,13 @@ return [
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeInstanceStatusResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceStatusResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ModifyInstanceAttributeResultShape' => [
@@ -965,6 +1021,13 @@ return [
         'DisassociateElasticIpResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'CreateInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateInstancesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ModifyInstanceNetworkAttributeResponseShape' => [
@@ -1044,6 +1107,13 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'DescribeInstanceVncUrlResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceVncUrlResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'AssociateElasticIpResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1098,6 +1168,13 @@ return [
                 'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'CreateImageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateImageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeInstanceVncUrlResultShape' => [
@@ -1247,6 +1324,13 @@ return [
             'members' => [
             ],
         ],
+        'DescribeInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'Instance', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'ModifyInstanceDiskAttributeResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1286,6 +1370,13 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'DescribeInstanceTypesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceTypesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeInstanceTypesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1299,6 +1390,13 @@ return [
             'members' => [
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeQuotasResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeQuotasResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeQuotasResultShape' => [

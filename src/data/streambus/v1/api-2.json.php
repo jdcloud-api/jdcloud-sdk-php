@@ -148,11 +148,32 @@ return [
                 'dataSize' => [ 'type' => 'string', 'locationName' => 'dataSize', ],
             ],
         ],
+        'DescribeTopicResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeTopicResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteTopicResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteTopicResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'AddTopicResultShape' => [
             'type' => 'structure',
             'members' => [
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'GetTopicListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetTopicListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetTopicListRequestShape' => [
@@ -167,6 +188,13 @@ return [
             'members' => [
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'UpdateTopicResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateTopicResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'UpdateTopicRequestShape' => [
@@ -216,11 +244,32 @@ return [
                 'topic' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopicListInfo', ], ],
             ],
         ],
+        'AddTopicResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AddTopicResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetConsumerGroupListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetConsumerGroupListResultShape', ],
+            ],
+        ],
         'GetConsumerGroupListRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'topicId' => [ 'type' => 'integer', 'locationName' => 'topicId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateConsumerGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateConsumerGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateConsumerGroupResultShape' => [
@@ -242,6 +291,13 @@ return [
             'members' => [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+            ],
+        ],
+        'DeleteConsumerGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteConsumerGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DeleteConsumerGroupRequestShape' => [

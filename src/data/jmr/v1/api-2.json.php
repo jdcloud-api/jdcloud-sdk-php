@@ -128,11 +128,32 @@ return [
                 'data' =>  [ 'shape' => 'ClusterDetailModel', ],
             ],
         ],
+        'ReleaseClusterResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ReleaseClusterResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ShowClusterDetailsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ShowClusterDetailsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CreateClusterInNewNetworkRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'clusterModel' =>  [ 'shape' => 'ClusterModel', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateClusterInNewNetworkResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateClusterInNewNetworkResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateClusterInNewNetworkResultShape' => [

@@ -397,6 +397,13 @@ return [
             'members' => [
             ],
         ],
+        'DescribeContainerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'Container', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'AssociateElasticIpRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -416,6 +423,19 @@ return [
         'StopContainerResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeContainersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeContainersResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StartContainerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DisassociateElasticIpResultShape' => [
@@ -451,12 +471,43 @@ return [
                 'container' =>  [ 'shape' => 'Container', ],
             ],
         ],
+        'AssociateElasticIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteContainerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StopContainerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DisassociateElasticIpRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'containerId' => [ 'type' => 'string', 'locationName' => 'containerId', ],
+            ],
+        ],
+        'ModifyContainerAttributeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateContainersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateContainersResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ModifyContainerAttributeRequestShape' => [
@@ -492,11 +543,24 @@ return [
                 'containerId' => [ 'type' => 'string', 'locationName' => 'containerId', ],
             ],
         ],
+        'GetLogsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetLogsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'StartContainerRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'containerId' => [ 'type' => 'string', 'locationName' => 'containerId', ],
+            ],
+        ],
+        'DisassociateElasticIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateContainersRequestShape' => [
@@ -541,6 +605,13 @@ return [
                 'quota' =>  [ 'shape' => 'Quota', ],
             ],
         ],
+        'DescribeQuotaResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeQuotaResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeQuotaRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -548,13 +619,17 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'CreateSecretRequestShape' => [
+        'DescribeSecretsResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'secretType' => [ 'type' => 'string', 'locationName' => 'secretType', ],
-                'data' =>  [ 'shape' => 'DockerRegistryData', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'result' =>  [ 'shape' => 'DescribeSecretsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateSecretResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'secretName' => [ 'type' => 'string', 'locationName' => 'secretName', ],
             ],
         ],
         'DescribeSecretRequestShape' => [
@@ -564,22 +639,17 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
-        'CreateSecretResultShape' => [
+        'DeleteSecretResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'secretName' => [ 'type' => 'string', 'locationName' => 'secretName', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteSecretRequestShape' => [
+        'CreateSecretResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-            ],
-        ],
-        'DeleteSecretResultShape' => [
-            'type' => 'structure',
-            'members' => [
+                'result' =>  [ 'shape' => 'CreateSecretResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeSecretsRequestShape' => [
@@ -602,6 +672,34 @@ return [
             'members' => [
                 'secrets' => [ 'type' => 'list', 'member' => [ 'shape' => 'Secret', ], ],
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'CreateSecretRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'secretType' => [ 'type' => 'string', 'locationName' => 'secretType', ],
+                'data' =>  [ 'shape' => 'DockerRegistryData', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeSecretResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSecretResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteSecretRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'DeleteSecretResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
     ],

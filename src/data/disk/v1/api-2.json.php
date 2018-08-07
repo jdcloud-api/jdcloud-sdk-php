@@ -213,22 +213,11 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
-        'ModifyDiskAttributeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DescribeDisksResultShape' => [
             'type' => 'structure',
             'members' => [
                 'disks' => [ 'type' => 'list', 'member' => [ 'shape' => 'Disk', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'DescribeDiskResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'disk' =>  [ 'shape' => 'Disk', ],
             ],
         ],
         'DescribeDisksRequestShape' => [
@@ -241,14 +230,6 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'ExtendDiskRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
-            ],
-        ],
         'ModifyDiskAttributeResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -257,6 +238,50 @@ return [
         'DeleteDiskResponseShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'RestoreDiskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
+            ],
+        ],
+        'RestoreDiskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeDisksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeDisksResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ExtendDiskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyDiskAttributeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeDiskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'disk' =>  [ 'shape' => 'Disk', ],
+            ],
+        ],
+        'ExtendDiskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
             ],
         ],
         'DescribeDiskRequestShape' => [
@@ -273,20 +298,7 @@ return [
                 'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
             ],
         ],
-        'RestoreDiskRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
-            ],
-        ],
         'ExtendDiskResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'RestoreDiskResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -300,14 +312,6 @@ return [
                 'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
             ],
         ],
-        'Filter' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
         'CreateDisksRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -317,12 +321,29 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DeleteDiskResultShape' => [
+        'Filter' => [
             'type' => 'structure',
             'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
-        'ExtendDiskResultShape' => [
+        'CreateDisksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateDisksResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeDiskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeDiskResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteDiskResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -336,6 +357,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'diskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeSnapshotResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSnapshotResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DeleteSnapshotRequestShape' => [
@@ -370,12 +398,6 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'CreateSnapshotResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
-            ],
-        ],
         'ModifySnpAttributeRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -385,10 +407,30 @@ return [
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
             ],
         ],
+        'CreateSnapshotResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+            ],
+        ],
+        'CreateSnapshotResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateSnapshotResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeSnapshotResultShape' => [
             'type' => 'structure',
             'members' => [
                 'snapshot' =>  [ 'shape' => 'Snapshot', ],
+            ],
+        ],
+        'DescribeSnapshotsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSnapshotsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeSnapshotRequestShape' => [

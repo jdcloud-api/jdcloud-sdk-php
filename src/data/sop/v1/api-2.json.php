@@ -59,6 +59,13 @@ return [
                 'securityToken' => [ 'type' => 'string', 'locationName' => 'securityToken', ],
             ],
         ],
+        'GetSecurityTokenResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetSecurityTokenResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'GetSecurityTokenRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -71,6 +78,13 @@ return [
             'members' => [
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetSensitiveOpSettingResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetSensitiveOpSettingResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetSensitiveOpSettingResultShape' => [
