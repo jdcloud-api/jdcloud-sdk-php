@@ -477,7 +477,7 @@ return [
                 'dataDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceDiskAttachment', ], ],
                 'primaryNetworkInterface' =>  [ 'shape' => 'InstanceNetworkInterfaceAttachment', ],
                 'secondaryNetworkInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceNetworkInterfaceAttachment', ], ],
-                'launchTime' => [ 'type' => 'date-time', 'locationName' => 'launchTime', ],
+                'launchTime' => [ 'type' => 'string', 'locationName' => 'launchTime', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'charge' =>  [ 'shape' => 'Charge', ],
