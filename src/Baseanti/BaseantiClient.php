@@ -11,7 +11,7 @@
 
 namespace Jdcloud\Baseanti;
 
-use Jdcloud\JdcloudClient;
+use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
 use Jdcloud\Api\DocModel;
 use Jdcloud\Api\ApiProvider;
@@ -31,7 +31,7 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \Jdcloud\Result describeIpResourceFlow(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeIpResourceFlowAsync(array $args = [])
  */
-class BaseantiClient extends JdcloudClient
+class BaseantiClient extends JdCloudClient
 {
     public function __construct(array $args)
     {

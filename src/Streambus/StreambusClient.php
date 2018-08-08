@@ -11,7 +11,7 @@
 
 namespace Jdcloud\Streambus;
 
-use Jdcloud\JdcloudClient;
+use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
 use Jdcloud\Api\DocModel;
 use Jdcloud\Api\ApiProvider;
@@ -37,7 +37,7 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \Jdcloud\Result deleteConsumerGroup(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteConsumerGroupAsync(array $args = [])
  */
-class StreambusClient extends JdcloudClient
+class StreambusClient extends JdCloudClient
 {
     public function __construct(array $args)
     {

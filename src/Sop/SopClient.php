@@ -11,7 +11,7 @@
 
 namespace Jdcloud\Sop;
 
-use Jdcloud\JdcloudClient;
+use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
 use Jdcloud\Api\DocModel;
 use Jdcloud\Api\ApiProvider;
@@ -25,7 +25,7 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \Jdcloud\Result getSensitiveOpSetting(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getSensitiveOpSettingAsync(array $args = [])
  */
-class SopClient extends JdcloudClient
+class SopClient extends JdCloudClient
 {
     public function __construct(array $args)
     {

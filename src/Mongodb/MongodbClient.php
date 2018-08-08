@@ -11,7 +11,7 @@
 
 namespace Jdcloud\Mongodb;
 
-use Jdcloud\JdcloudClient;
+use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
 use Jdcloud\Api\DocModel;
 use Jdcloud\Api\ApiProvider;
@@ -47,7 +47,7 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \Jdcloud\Result backupDownloadURL(array $args = [])
  * @method \GuzzleHttp\Promise\Promise backupDownloadURLAsync(array $args = [])
  */
-class MongodbClient extends JdcloudClient
+class MongodbClient extends JdCloudClient
 {
     public function __construct(array $args)
     {

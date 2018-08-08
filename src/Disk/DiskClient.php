@@ -11,7 +11,7 @@
 
 namespace Jdcloud\Disk;
 
-use Jdcloud\JdcloudClient;
+use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
 use Jdcloud\Api\DocModel;
 use Jdcloud\Api\ApiProvider;
@@ -45,7 +45,7 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \Jdcloud\Result deleteSnapshot(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteSnapshotAsync(array $args = [])
  */
-class DiskClient extends JdcloudClient
+class DiskClient extends JdCloudClient
 {
     public function __construct(array $args)
     {

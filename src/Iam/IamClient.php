@@ -11,7 +11,7 @@
 
 namespace Jdcloud\Iam;
 
-use Jdcloud\JdcloudClient;
+use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
 use Jdcloud\Api\DocModel;
 use Jdcloud\Api\ApiProvider;
@@ -51,7 +51,7 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \Jdcloud\Result deleteUserAccessKey(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteUserAccessKeyAsync(array $args = [])
  */
-class IamClient extends JdcloudClient
+class IamClient extends JdCloudClient
 {
     public function __construct(array $args)
     {

@@ -11,7 +11,7 @@
 
 namespace Jdcloud\Clouddnsservice;
 
-use Jdcloud\JdcloudClient;
+use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
 use Jdcloud\Api\DocModel;
 use Jdcloud\Api\ApiProvider;
@@ -57,7 +57,7 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \Jdcloud\Result getMonitorAlarmInfo(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getMonitorAlarmInfoAsync(array $args = [])
  */
-class ClouddnsserviceClient extends JdcloudClient
+class ClouddnsserviceClient extends JdCloudClient
 {
     public function __construct(array $args)
     {

@@ -1,7 +1,7 @@
 <?php
 namespace Jdcloud\Vpc;
 
-use Jdcloud\JdcloudClient;
+use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
 use Jdcloud\Api\DocModel;
 use Jdcloud\Api\ApiProvider;
@@ -49,7 +49,7 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \Jdcloud\Result deleteVpcPeering(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteVpcPeeringAsync(array $args = [])
  */
-class VpcClient extends JdcloudClient
+class VpcClient extends JdCloudClient
 {
     public function __construct(array $args)
     {

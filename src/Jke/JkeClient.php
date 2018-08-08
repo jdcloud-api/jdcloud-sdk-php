@@ -11,7 +11,7 @@
 
 namespace Jdcloud\Jke;
 
-use Jdcloud\JdcloudClient;
+use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
 use Jdcloud\Api\DocModel;
 use Jdcloud\Api\ApiProvider;
@@ -23,7 +23,7 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \Jdcloud\Result describeQuotas(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeQuotasAsync(array $args = [])
  */
-class JkeClient extends JdcloudClient
+class JkeClient extends JdCloudClient
 {
     public function __construct(array $args)
     {

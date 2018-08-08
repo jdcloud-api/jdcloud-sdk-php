@@ -11,7 +11,7 @@
 
 namespace Jdcloud\Nc;
 
-use Jdcloud\JdcloudClient;
+use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
 use Jdcloud\Api\DocModel;
 use Jdcloud\Api\ApiProvider;
@@ -51,7 +51,7 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \Jdcloud\Result deleteSecret(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteSecretAsync(array $args = [])
  */
-class NcClient extends JdcloudClient
+class NcClient extends JdCloudClient
 {
     public function __construct(array $args)
     {

@@ -11,7 +11,7 @@
 
 namespace Jdcloud\Xdata;
 
-use Jdcloud\JdcloudClient;
+use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
 use Jdcloud\Api\DocModel;
 use Jdcloud\Api\ApiProvider;
@@ -57,7 +57,7 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \Jdcloud\Result deleteTable(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteTableAsync(array $args = [])
  */
-class XdataClient extends JdcloudClient
+class XdataClient extends JdCloudClient
 {
     public function __construct(array $args)
     {

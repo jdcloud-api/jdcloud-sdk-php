@@ -11,7 +11,7 @@
 
 namespace Jdcloud\Streamcomputer;
 
-use Jdcloud\JdcloudClient;
+use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
 use Jdcloud\Api\DocModel;
 use Jdcloud\Api\ApiProvider;
@@ -51,7 +51,7 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \Jdcloud\Result getStorageList(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getStorageListAsync(array $args = [])
  */
-class StreamcomputerClient extends JdcloudClient
+class StreamcomputerClient extends JdCloudClient
 {
     public function __construct(array $args)
     {

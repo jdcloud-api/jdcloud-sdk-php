@@ -11,7 +11,7 @@
 
 namespace Jdcloud\Jmr;
 
-use Jdcloud\JdcloudClient;
+use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
 use Jdcloud\Api\DocModel;
 use Jdcloud\Api\ApiProvider;
@@ -27,7 +27,7 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \Jdcloud\Result releaseCluster(array $args = [])
  * @method \GuzzleHttp\Promise\Promise releaseClusterAsync(array $args = [])
  */
-class JmrClient extends JdcloudClient
+class JmrClient extends JdCloudClient
 {
     public function __construct(array $args)
     {

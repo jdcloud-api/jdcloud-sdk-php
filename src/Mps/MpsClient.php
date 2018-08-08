@@ -11,7 +11,7 @@
 
 namespace Jdcloud\Mps;
 
-use Jdcloud\JdcloudClient;
+use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
 use Jdcloud\Api\DocModel;
 use Jdcloud\Api\ApiProvider;
@@ -31,7 +31,7 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \Jdcloud\Result setNotification(array $args = [])
  * @method \GuzzleHttp\Promise\Promise setNotificationAsync(array $args = [])
  */
-class MpsClient extends JdcloudClient
+class MpsClient extends JdCloudClient
 {
     public function __construct(array $args)
     {

@@ -11,7 +11,7 @@
 
 namespace Jdcloud\Redis;
 
-use Jdcloud\JdcloudClient;
+use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
 use Jdcloud\Api\DocModel;
 use Jdcloud\Api\ApiProvider;
@@ -39,7 +39,7 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \Jdcloud\Result describeUserQuota(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeUserQuotaAsync(array $args = [])
  */
-class RedisClient extends JdcloudClient
+class RedisClient extends JdCloudClient
 {
     public function __construct(array $args)
     {
