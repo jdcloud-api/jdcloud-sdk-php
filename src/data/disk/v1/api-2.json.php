@@ -146,7 +146,7 @@ return [
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'attachTime' => [ 'type' => 'date-time', 'locationName' => 'attachTime', ],
+                'attachTime' => [ 'type' => 'string', 'locationName' => 'attachTime', ],
             ],
         ],
         'Disk' => [
@@ -161,7 +161,7 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'attachments' => [ 'type' => 'list', 'member' => [ 'shape' => 'DiskAttachment', ], ],
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
-                'createTime' => [ 'type' => 'date-time', 'locationName' => 'createTime', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
@@ -195,7 +195,7 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'createTime' => [ 'type' => 'date-time', 'locationName' => 'createTime', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
         'SnapshotSpec' => [

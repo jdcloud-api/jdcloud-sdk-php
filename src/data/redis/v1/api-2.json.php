@@ -127,7 +127,7 @@ return [
                 'cacheInstanceMemoryMB' => [ 'type' => 'integer', 'locationName' => 'cacheInstanceMemoryMB', ],
                 'cacheInstancStatus' => [ 'type' => 'string', 'locationName' => 'cacheInstancStatus', ],
                 'cacheInstanceDescription' => [ 'type' => 'string', 'locationName' => 'cacheInstanceDescription', ],
-                'createTime' => [ 'type' => 'date-time', 'locationName' => 'createTime', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'azId' =>  [ 'shape' => 'AzId', ],
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],

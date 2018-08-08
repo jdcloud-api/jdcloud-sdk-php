@@ -70,7 +70,7 @@ return [
                 'nodeCount' => [ 'type' => 'integer', 'locationName' => 'nodeCount', ],
                 'payType' => [ 'type' => 'string', 'locationName' => 'payType', ],
                 'payPrice' => [ 'type' => 'string', 'locationName' => 'payPrice', ],
-                'createTime' => [ 'type' => 'date-time', 'locationName' => 'createTime', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'duration' => [ 'type' => 'string', 'locationName' => 'duration', ],
                 'hardware' => [ 'type' => 'list', 'member' => [ 'shape' => 'HardwareInfo', ], ],
                 'softwareStack' => [ 'type' => 'object', 'locationName' => 'softwareStack', ],
