@@ -184,6 +184,8 @@ return [
                 'createTime' => [ 'type' => 'date', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'date', 'locationName' => 'updateTime', ],
                 'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'sqlStatement' => [ 'type' => 'string', 'locationName' => 'sqlStatement', ],
+                'jobType' => [ 'type' => 'string', 'locationName' => 'jobType', ],
             ],
         ],
         'Namespace' => [

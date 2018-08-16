@@ -281,6 +281,15 @@ return [
             'input' => [ 'shape' => 'DeleteInstanceRequestShape', ],
             'output' => [ 'shape' => 'DeleteInstanceResponseShape', ],
         ],
+        'GetBackupPolicy' => [
+            'name' => 'GetBackupPolicy',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:getBackupPolicy',
+            ],
+            'input' => [ 'shape' => 'GetBackupPolicyRequestShape', ],
+            'output' => [ 'shape' => 'GetBackupPolicyResponseShape', ],
+        ],
         'SetInstanceName' => [
             'name' => 'SetInstanceName',
             'http' => [
@@ -308,6 +317,33 @@ return [
             'input' => [ 'shape' => 'RebootInstanceRequestShape', ],
             'output' => [ 'shape' => 'RebootInstanceResponseShape', ],
         ],
+        'EnableInternetAccess' => [
+            'name' => 'EnableInternetAccess',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:enableInternetAccess',
+            ],
+            'input' => [ 'shape' => 'EnableInternetAccessRequestShape', ],
+            'output' => [ 'shape' => 'EnableInternetAccessResponseShape', ],
+        ],
+        'DisableInternetAccess' => [
+            'name' => 'DisableInternetAccess',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:disableInternetAccess',
+            ],
+            'input' => [ 'shape' => 'DisableInternetAccessRequestShape', ],
+            'output' => [ 'shape' => 'DisableInternetAccessResponseShape', ],
+        ],
+        'RestoreInstance' => [
+            'name' => 'RestoreInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:restoreInstance',
+            ],
+            'input' => [ 'shape' => 'RestoreInstanceRequestShape', ],
+            'output' => [ 'shape' => 'RestoreInstanceResponseShape', ],
+        ],
         'DescribeIndexPerformance' => [
             'name' => 'DescribeIndexPerformance',
             'http' => [
@@ -325,6 +361,15 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeQueryPerformanceRequestShape', ],
             'output' => [ 'shape' => 'DescribeQueryPerformanceResponseShape', ],
+        ],
+        'DescribeWhiteList' => [
+            'name' => 'DescribeWhiteList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/whiteList',
+            ],
+            'input' => [ 'shape' => 'DescribeWhiteListRequestShape', ],
+            'output' => [ 'shape' => 'DescribeWhiteListResponseShape', ],
         ],
     ],
     'shapes' => [
@@ -373,6 +418,16 @@ return [
             'members' => [
                 'backupName' => [ 'type' => 'string', 'locationName' => 'backupName', ],
                 'dbNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'Binlog' => [
+            'type' => 'structure',
+            'members' => [
+                'binlogBackupId' => [ 'type' => 'string', 'locationName' => 'binlogBackupId', ],
+                'binlogName' => [ 'type' => 'string', 'locationName' => 'binlogName', ],
+                'binlogSizeKB' => [ 'type' => 'integer', 'locationName' => 'binlogSizeKB', ],
+                'binlogStartTime' => [ 'type' => 'string', 'locationName' => 'binlogStartTime', ],
+                'binlogEndTime' => [ 'type' => 'string', 'locationName' => 'binlogEndTime', ],
             ],
         ],
         'DBAccessPrivilege' => [
@@ -497,6 +552,13 @@ return [
                 'sizeByte' => [ 'type' => 'integer', 'locationName' => 'sizeByte', ],
                 'uploadTime' => [ 'type' => 'string', 'locationName' => 'uploadTime', ],
                 'isLocal' => [ 'type' => 'string', 'locationName' => 'isLocal', ],
+            ],
+        ],
+        'WhiteList' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'ips' => [ 'type' => 'string', 'locationName' => 'ips', ],
             ],
         ],
         'DeleteAccountResultShape' => [
@@ -1005,9 +1067,28 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'DisableInternetAccessResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'RestoreInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'backupId' => [ 'type' => '', 'locationName' => 'backupId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'RebootInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'GetBackupPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetBackupPolicyResultShape', ],
             ],
         ],
         'FailoverInstanceRequestShape' => [
@@ -1015,11 +1096,6 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'FailoverInstanceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'RebootInstanceRequestShape' => [
@@ -1031,10 +1107,29 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'FailoverInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableInternetAccessRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'DescribeInstanceAttributesResultShape' => [
             'type' => 'structure',
             'members' => [
                 'dbInstanceAttributes' =>  [ 'shape' => 'DBInstanceAttribute', ],
+            ],
+        ],
+        'DisableInternetAccessRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'CreateInstanceRequestShape' => [
@@ -1050,6 +1145,13 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetBackupPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'DeleteInstanceResultShape' => [
@@ -1073,6 +1175,11 @@ return [
                 'result' =>  [ 'shape' => 'CreateInstanceResultShape', ],
             ],
         ],
+        'EnableInternetAccessResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DeleteInstanceResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1085,12 +1192,35 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'DisableInternetAccessResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetBackupPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startWindow' => [ 'type' => 'string', 'locationName' => 'startWindow', ],
+                'retentionPeriod' => [ 'type' => 'integer', 'locationName' => 'retentionPeriod', ],
+                'cycleMode' => [ 'type' => 'integer', 'locationName' => 'cycleMode', ],
+            ],
+        ],
         'SetInstanceNameRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'instanceName' => [ 'type' => '', 'locationName' => 'instanceName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'RestoreInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'RestoreInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'CreateInstanceResultShape' => [
@@ -1126,6 +1256,11 @@ return [
             ],
         ],
         'SetInstanceNameResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableInternetAccessResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -1228,6 +1363,25 @@ return [
                 'avgUserImpact' => [ 'type' => 'float', 'locationName' => 'avgUserImpact', ],
                 'userScans' => [ 'type' => 'integer', 'locationName' => 'userScans', ],
                 'userSeeks' => [ 'type' => 'integer', 'locationName' => 'userSeeks', ],
+            ],
+        ],
+        'DescribeWhiteListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeWhiteListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeWhiteListResultShape', ],
+            ],
+        ],
+        'DescribeWhiteListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'whiteLists' => [ 'type' => 'list', 'member' => [ 'shape' => 'WhiteList', ], ],
             ],
         ],
     ],

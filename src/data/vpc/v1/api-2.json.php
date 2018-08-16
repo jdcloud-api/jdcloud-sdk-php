@@ -47,6 +47,51 @@ return [
             'input' => [ 'shape' => 'DeleteElasticIpRequestShape', ],
             'output' => [ 'shape' => 'DeleteElasticIpResponseShape', ],
         ],
+        'DescribeNetworkInterfaces' => [
+            'name' => 'DescribeNetworkInterfaces',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/networkInterfaces/',
+            ],
+            'input' => [ 'shape' => 'DescribeNetworkInterfacesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeNetworkInterfacesResponseShape', ],
+        ],
+        'CreateNetworkInterface' => [
+            'name' => 'CreateNetworkInterface',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/networkInterfaces/',
+            ],
+            'input' => [ 'shape' => 'CreateNetworkInterfaceRequestShape', ],
+            'output' => [ 'shape' => 'CreateNetworkInterfaceResponseShape', ],
+        ],
+        'DescribeNetworkInterface' => [
+            'name' => 'DescribeNetworkInterface',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/networkInterfaces/{networkInterfaceId}',
+            ],
+            'input' => [ 'shape' => 'DescribeNetworkInterfaceRequestShape', ],
+            'output' => [ 'shape' => 'DescribeNetworkInterfaceResponseShape', ],
+        ],
+        'ModifyNetworkInterface' => [
+            'name' => 'ModifyNetworkInterface',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/networkInterfaces/{networkInterfaceId}',
+            ],
+            'input' => [ 'shape' => 'ModifyNetworkInterfaceRequestShape', ],
+            'output' => [ 'shape' => 'ModifyNetworkInterfaceResponseShape', ],
+        ],
+        'DeleteNetworkInterface' => [
+            'name' => 'DeleteNetworkInterface',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/networkInterfaces/{networkInterfaceId}',
+            ],
+            'input' => [ 'shape' => 'DeleteNetworkInterfaceRequestShape', ],
+            'output' => [ 'shape' => 'DeleteNetworkInterfaceResponseShape', ],
+        ],
         'AssociateElasticIp' => [
             'name' => 'AssociateElasticIp',
             'http' => [
@@ -92,6 +137,15 @@ return [
             'input' => [ 'shape' => 'DescribeNetworkSecurityGroupsRequestShape', ],
             'output' => [ 'shape' => 'DescribeNetworkSecurityGroupsResponseShape', ],
         ],
+        'CreateNetworkSecurityGroup' => [
+            'name' => 'CreateNetworkSecurityGroup',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/networkSecurityGroups/',
+            ],
+            'input' => [ 'shape' => 'CreateNetworkSecurityGroupRequestShape', ],
+            'output' => [ 'shape' => 'CreateNetworkSecurityGroupResponseShape', ],
+        ],
         'DescribeNetworkSecurityGroup' => [
             'name' => 'DescribeNetworkSecurityGroup',
             'http' => [
@@ -100,6 +154,60 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeNetworkSecurityGroupRequestShape', ],
             'output' => [ 'shape' => 'DescribeNetworkSecurityGroupResponseShape', ],
+        ],
+        'ModifyNetworkSecurityGroup' => [
+            'name' => 'ModifyNetworkSecurityGroup',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/networkSecurityGroups/{networkSecurityGroupId}',
+            ],
+            'input' => [ 'shape' => 'ModifyNetworkSecurityGroupRequestShape', ],
+            'output' => [ 'shape' => 'ModifyNetworkSecurityGroupResponseShape', ],
+        ],
+        'DeleteNetworkSecurityGroup' => [
+            'name' => 'DeleteNetworkSecurityGroup',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/networkSecurityGroups/{networkSecurityGroupId}',
+            ],
+            'input' => [ 'shape' => 'DeleteNetworkSecurityGroupRequestShape', ],
+            'output' => [ 'shape' => 'DeleteNetworkSecurityGroupResponseShape', ],
+        ],
+        'AddNetworkSecurityGroupRules' => [
+            'name' => 'AddNetworkSecurityGroupRules',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/networkSecurityGroups/{networkSecurityGroupId}:addNetworkSecurityGroupRules',
+            ],
+            'input' => [ 'shape' => 'AddNetworkSecurityGroupRulesRequestShape', ],
+            'output' => [ 'shape' => 'AddNetworkSecurityGroupRulesResponseShape', ],
+        ],
+        'RemoveNetworkSecurityGroupRules' => [
+            'name' => 'RemoveNetworkSecurityGroupRules',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/networkSecurityGroups/{networkSecurityGroupId}:removeNetworkSecurityGroupRules',
+            ],
+            'input' => [ 'shape' => 'RemoveNetworkSecurityGroupRulesRequestShape', ],
+            'output' => [ 'shape' => 'RemoveNetworkSecurityGroupRulesResponseShape', ],
+        ],
+        'ModifyNetworkSecurityGroupRules' => [
+            'name' => 'ModifyNetworkSecurityGroupRules',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/networkSecurityGroups/{networkSecurityGroupId}:modifyNetworkSecurityGroupRules',
+            ],
+            'input' => [ 'shape' => 'ModifyNetworkSecurityGroupRulesRequestShape', ],
+            'output' => [ 'shape' => 'ModifyNetworkSecurityGroupRulesResponseShape', ],
+        ],
+        'DisassociateRouteTable' => [
+            'name' => 'DisassociateRouteTable',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/routeTables/{routeTableId}:disassociateRouteTable',
+            ],
+            'input' => [ 'shape' => 'DisassociateRouteTableRequestShape', ],
+            'output' => [ 'shape' => 'DisassociateRouteTableResponseShape', ],
         ],
         'DescribeSubnets' => [
             'name' => 'DescribeSubnets',
@@ -128,6 +236,15 @@ return [
             'input' => [ 'shape' => 'DescribeVpcsRequestShape', ],
             'output' => [ 'shape' => 'DescribeVpcsResponseShape', ],
         ],
+        'CreateVpc' => [
+            'name' => 'CreateVpc',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/vpcs/',
+            ],
+            'input' => [ 'shape' => 'CreateVpcRequestShape', ],
+            'output' => [ 'shape' => 'CreateVpcResponseShape', ],
+        ],
         'DescribeVpc' => [
             'name' => 'DescribeVpc',
             'http' => [
@@ -136,6 +253,15 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeVpcRequestShape', ],
             'output' => [ 'shape' => 'DescribeVpcResponseShape', ],
+        ],
+        'DeleteVpc' => [
+            'name' => 'DeleteVpc',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/vpcs/{vpcId}',
+            ],
+            'input' => [ 'shape' => 'DeleteVpcRequestShape', ],
+            'output' => [ 'shape' => 'DeleteVpcResponseShape', ],
         ],
         'DescribeVpcPeerings' => [
             'name' => 'DescribeVpcPeerings',
@@ -184,6 +310,57 @@ return [
         ],
     ],
     'shapes' => [
+        'AddNetworkAclRuleSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'fromPort' => [ 'type' => 'integer', 'locationName' => 'fromPort', ],
+                'toPort' => [ 'type' => 'integer', 'locationName' => 'toPort', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
+                'ruleAction' => [ 'type' => 'string', 'locationName' => 'ruleAction', ],
+                'priority' => [ 'type' => 'integer', 'locationName' => 'priority', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'AddNetworkAclRulesSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'networkAclRuleSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddNetworkAclRuleSpec', ], ],
+            ],
+        ],
+        'AddNetworkSecurityGroupRulesSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'networkSecurityGroupRuleSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddSecurityGroupRules', ], ],
+            ],
+        ],
+        'AddSecurityGroupRules' => [
+            'type' => 'structure',
+            'members' => [
+                'protocol' => [ 'type' => 'double', 'locationName' => 'protocol', ],
+                'direction' => [ 'type' => 'double', 'locationName' => 'direction', ],
+                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
+                'fromPort' => [ 'type' => 'double', 'locationName' => 'fromPort', ],
+                'toPort' => [ 'type' => 'double', 'locationName' => 'toPort', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'AddRouteTableRules' => [
+            'type' => 'structure',
+            'members' => [
+                'nextHopType' => [ 'type' => 'string', 'locationName' => 'nextHopType', ],
+                'nextHopId' => [ 'type' => 'string', 'locationName' => 'nextHopId', ],
+                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
+                'priority' => [ 'type' => 'double', 'locationName' => 'priority', ],
+            ],
+        ],
+        'AddRouteTableRulesSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'routeTableRuleSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddRouteTableRules', ], ],
+            ],
+        ],
         'AssignSecondaryIpsSpec' => [
             'type' => 'structure',
             'members' => [
@@ -198,6 +375,12 @@ return [
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
                 'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
                 'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
+            ],
+        ],
+        'AssociateRouteTableSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'ChargeSpec' => [
@@ -240,6 +423,12 @@ return [
                 'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
             ],
         ],
+        'DisassociateRouteTableSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+            ],
+        ],
         'Charge' => [
             'type' => 'structure',
             'members' => [
@@ -271,6 +460,32 @@ return [
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
             ],
         ],
+        'ModifyNetworkAclRuleSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'ruleId' => [ 'type' => 'string', 'locationName' => 'ruleId', ],
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'fromPort' => [ 'type' => 'integer', 'locationName' => 'fromPort', ],
+                'toPort' => [ 'type' => 'integer', 'locationName' => 'toPort', ],
+                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
+                'ruleAction' => [ 'type' => 'string', 'locationName' => 'ruleAction', ],
+                'priority' => [ 'type' => 'integer', 'locationName' => 'priority', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'ModifyNetworkAclRuleSpecs' => [
+            'type' => 'structure',
+            'members' => [
+                'modifyNetworkAclRuleSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'ModifyNetworkAclRuleSpec', ], ],
+            ],
+        ],
+        'ModifyNetworkAclSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'networkAclName' => [ 'type' => 'string', 'locationName' => 'networkAclName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
         'ModifyNetworkInterfaceSpec' => [
             'type' => 'structure',
             'members' => [
@@ -279,10 +494,114 @@ return [
                 'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'ModifySecurityGroupRules' => [
+            'type' => 'structure',
+            'members' => [
+                'ruleId' => [ 'type' => 'string', 'locationName' => 'ruleId', ],
+                'protocol' => [ 'type' => 'double', 'locationName' => 'protocol', ],
+                'fromPort' => [ 'type' => 'integer', 'locationName' => 'fromPort', ],
+                'toPort' => [ 'type' => 'integer', 'locationName' => 'toPort', ],
+                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'ModifySecurityGroupRuleSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'modifySecurityGroupRuleSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'ModifySecurityGroupRules', ], ],
+            ],
+        ],
+        'ModifyNetworkSecurityGroupSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'networkSecurityGroupName' => [ 'type' => 'string', 'locationName' => 'networkSecurityGroupName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'ModifyQuotaSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'parentResourceId' => [ 'type' => 'string', 'locationName' => 'parentResourceId', ],
+                'maxLimit' => [ 'type' => 'integer', 'locationName' => 'maxLimit', ],
+            ],
+        ],
+        'ModifyRouteTableRules' => [
+            'type' => 'structure',
+            'members' => [
+                'ruleId' => [ 'type' => 'string', 'locationName' => 'ruleId', ],
+                'priority' => [ 'type' => 'double', 'locationName' => 'priority', ],
+                'nextHopType' => [ 'type' => 'string', 'locationName' => 'nextHopType', ],
+                'nextHopId' => [ 'type' => 'string', 'locationName' => 'nextHopId', ],
+                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
+            ],
+        ],
+        'ModifyRouteTableRulesSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'modifyRouteTableRuleSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'ModifyRouteTableRules', ], ],
+            ],
+        ],
+        'ModifyRouteTableSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'routeTableName' => [ 'type' => 'string', 'locationName' => 'routeTableName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'ModifySubnetSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetName' => [ 'type' => 'string', 'locationName' => 'subnetName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
         'ModifyVpcPeeringSpec' => [
             'type' => 'structure',
             'members' => [
                 'vpcPeeringName' => [ 'type' => 'string', 'locationName' => 'vpcPeeringName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'ModifyVpcSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcName' => [ 'type' => 'string', 'locationName' => 'vpcName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'NetworkAclRule' => [
+            'type' => 'structure',
+            'members' => [
+                'ruleId' => [ 'type' => 'string', 'locationName' => 'ruleId', ],
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'fromPort' => [ 'type' => 'integer', 'locationName' => 'fromPort', ],
+                'toPort' => [ 'type' => 'integer', 'locationName' => 'toPort', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
+                'ruleAction' => [ 'type' => 'string', 'locationName' => 'ruleAction', ],
+                'priority' => [ 'type' => 'integer', 'locationName' => 'priority', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'NetworkAcl' => [
+            'type' => 'structure',
+            'members' => [
+                'networkAclId' => [ 'type' => 'string', 'locationName' => 'networkAclId', ],
+                'networkAclName' => [ 'type' => 'string', 'locationName' => 'networkAclName', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'networkAclRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkAclRule', ], ],
+                'subnetIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'NetworkAclSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'networkAclName' => [ 'type' => 'string', 'locationName' => 'networkAclName', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
         ],
@@ -341,6 +660,7 @@ return [
                 'fromPort' => [ 'type' => 'double', 'locationName' => 'fromPort', ],
                 'toPort' => [ 'type' => 'double', 'locationName' => 'toPort', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
         ],
         'NetworkSecurityGroup' => [
@@ -352,6 +672,67 @@ return [
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'securityGroupRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecurityGroupRule', ], ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'NetworkSecurityGroupSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'networkSecurityGroupName' => [ 'type' => 'string', 'locationName' => 'networkSecurityGroupName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'Quota' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'parentResourceId' => [ 'type' => 'string', 'locationName' => 'parentResourceId', ],
+                'maxLimit' => [ 'type' => 'double', 'locationName' => 'maxLimit', ],
+                'count' => [ 'type' => 'double', 'locationName' => 'count', ],
+            ],
+        ],
+        'RouteTableRule' => [
+            'type' => 'structure',
+            'members' => [
+                'ruleId' => [ 'type' => 'string', 'locationName' => 'ruleId', ],
+                'priority' => [ 'type' => 'double', 'locationName' => 'priority', ],
+                'nextHopType' => [ 'type' => 'string', 'locationName' => 'nextHopType', ],
+                'nextHopId' => [ 'type' => 'string', 'locationName' => 'nextHopId', ],
+                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
+            ],
+        ],
+        'RouteTable' => [
+            'type' => 'structure',
+            'members' => [
+                'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
+                'routeTableName' => [ 'type' => 'string', 'locationName' => 'routeTableName', ],
+                'routeTableType' => [ 'type' => 'string', 'locationName' => 'routeTableType', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'routeTableRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'RouteTableRule', ], ],
+                'subnetIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'RouteTableSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'routeTableName' => [ 'type' => 'string', 'locationName' => 'routeTableName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'Segment' => [
+            'type' => 'structure',
+            'members' => [
+                'segmentId' => [ 'type' => 'string', 'locationName' => 'segmentId', ],
+                'segmentName' => [ 'type' => 'string', 'locationName' => 'segmentName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
+                'availableIpCount' => [ 'type' => 'integer', 'locationName' => 'availableIpCount', ],
+                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+                'startIp' => [ 'type' => 'string', 'locationName' => 'startIp', ],
+                'endIp' => [ 'type' => 'string', 'locationName' => 'endIp', ],
             ],
         ],
         'Subnet' => [
@@ -368,6 +749,16 @@ return [
                 'startIp' => [ 'type' => 'string', 'locationName' => 'startIp', ],
                 'endIp' => [ 'type' => 'string', 'locationName' => 'endIp', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'SubnetSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetName' => [ 'type' => 'string', 'locationName' => 'subnetName', ],
+                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
+                'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
         ],
         'UnassignSecondaryIpsSpec' => [
@@ -407,6 +798,14 @@ return [
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'vpcName' => [ 'type' => 'string', 'locationName' => 'vpcName', ],
                 'addressPrefix' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'VpcSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcName' => [ 'type' => 'string', 'locationName' => 'vpcName', ],
+                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
         ],
         'DeleteElasticIpRequestShape' => [
@@ -500,12 +899,9 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'AssignSecondaryIpsRequestShape' => [
+        'DescribeNetworkInterfaceRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
-                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'secondaryIpCount' => [ 'type' => 'double', 'locationName' => 'secondaryIpCount', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
             ],
@@ -520,9 +916,98 @@ return [
                 'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
             ],
         ],
+        'DeleteNetworkInterfaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'AssignSecondaryIpsResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AssociateElasticIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisassociateElasticIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyNetworkInterfaceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AssociateElasticIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateNetworkInterfaceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'networkInterfaceName' => [ 'type' => 'string', 'locationName' => 'networkInterfaceName', ],
+                'primaryIpAddress' => [ 'type' => 'string', 'locationName' => 'primaryIpAddress', ],
+                'secondaryIpAddresses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'secondaryIpCount' => [ 'type' => 'integer', 'locationName' => 'secondaryIpCount', ],
+                'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteNetworkInterfaceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+            ],
+        ],
+        'AssignSecondaryIpsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
+                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'secondaryIpCount' => [ 'type' => 'double', 'locationName' => 'secondaryIpCount', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+            ],
+        ],
+        'DescribeNetworkInterfacesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeNetworkInterfaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterface' =>  [ 'shape' => 'NetworkInterface', ],
+            ],
+        ],
+        'DescribeNetworkInterfacesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterface', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'CreateNetworkInterfaceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateNetworkInterfaceResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -534,10 +1019,14 @@ return [
                 'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
             ],
         ],
-        'AssociateElasticIpResponseShape' => [
+        'ModifyNetworkInterfaceRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'networkInterfaceName' => [ 'type' => 'string', 'locationName' => 'networkInterfaceName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
             ],
         ],
         'DisassociateElasticIpResultShape' => [
@@ -545,13 +1034,19 @@ return [
             'members' => [
             ],
         ],
-        'DisassociateElasticIpResponseShape' => [
+        'UnassignSecondaryIpsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'UnassignSecondaryIpsResponseShape' => [
+        'CreateNetworkInterfaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+            ],
+        ],
+        'DeleteNetworkInterfaceResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
@@ -562,14 +1057,28 @@ return [
             'members' => [
             ],
         ],
-        'AssociateElasticIpResultShape' => [
+        'DescribeNetworkInterfacesResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'result' =>  [ 'shape' => 'DescribeNetworkInterfacesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'AssignSecondaryIpsResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ModifyNetworkInterfaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeNetworkInterfaceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeNetworkInterfaceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DisassociateElasticIpRequestShape' => [
@@ -581,13 +1090,6 @@ return [
                 'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
             ],
         ],
-        'DescribeNetworkSecurityGroupRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'networkSecurityGroupId' => [ 'type' => 'string', 'locationName' => 'networkSecurityGroupId', ],
-            ],
-        ],
         'DescribeNetworkSecurityGroupsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -595,16 +1097,101 @@ return [
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
             ],
         ],
-        'DescribeNetworkSecurityGroupResultShape' => [
+        'DescribeNetworkSecurityGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'networkSecurityGroup' =>  [ 'shape' => 'NetworkSecurityGroup', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'networkSecurityGroupId' => [ 'type' => 'string', 'locationName' => 'networkSecurityGroupId', ],
+            ],
+        ],
+        'AddNetworkSecurityGroupRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteNetworkSecurityGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyNetworkSecurityGroupRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'RemoveNetworkSecurityGroupRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ruleIds' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'networkSecurityGroupId' => [ 'type' => 'string', 'locationName' => 'networkSecurityGroupId', ],
+            ],
+        ],
+        'AddNetworkSecurityGroupRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'networkSecurityGroupRuleSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddSecurityGroupRules', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'networkSecurityGroupId' => [ 'type' => 'string', 'locationName' => 'networkSecurityGroupId', ],
+            ],
+        ],
+        'DescribeNetworkSecurityGroupsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateNetworkSecurityGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'networkSecurityGroupId' => [ 'type' => 'string', 'locationName' => 'networkSecurityGroupId', ],
+            ],
+        ],
+        'ModifyNetworkSecurityGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'networkSecurityGroupName' => [ 'type' => 'string', 'locationName' => 'networkSecurityGroupName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'networkSecurityGroupId' => [ 'type' => 'string', 'locationName' => 'networkSecurityGroupId', ],
+            ],
+        ],
+        'DeleteNetworkSecurityGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'RemoveNetworkSecurityGroupRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyNetworkSecurityGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RemoveNetworkSecurityGroupRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DescribeNetworkSecurityGroupResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeNetworkSecurityGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddNetworkSecurityGroupRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -615,13 +1202,71 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeNetworkSecurityGroupsRequestShape' => [
+        'CreateNetworkSecurityGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'networkSecurityGroupName' => [ 'type' => 'string', 'locationName' => 'networkSecurityGroupName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateNetworkSecurityGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateNetworkSecurityGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyNetworkSecurityGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteNetworkSecurityGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'networkSecurityGroupId' => [ 'type' => 'string', 'locationName' => 'networkSecurityGroupId', ],
+            ],
+        ],
+        'ModifyNetworkSecurityGroupRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyNetworkSecurityGroupRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'modifySecurityGroupRuleSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'ModifySecurityGroupRules', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'networkSecurityGroupId' => [ 'type' => 'string', 'locationName' => 'networkSecurityGroupId', ],
+            ],
+        ],
+        'DescribeNetworkSecurityGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'networkSecurityGroup' =>  [ 'shape' => 'NetworkSecurityGroup', ],
+            ],
+        ],
+        'DisassociateRouteTableRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
+            ],
+        ],
+        'DisassociateRouteTableResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisassociateRouteTableResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DescribeSubnetResultShape' => [
@@ -667,31 +1312,16 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeVpcsResultShape' => [
+        'CreateVpcResultShape' => [
             'type' => 'structure',
             'members' => [
-                'vpcs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Vpc', ], ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'DescribeVpcsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeVpcsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
             ],
         ],
         'DescribeVpcResultShape' => [
             'type' => 'structure',
             'members' => [
                 'vpc' =>  [ 'shape' => 'Vpc', ],
-            ],
-        ],
-        'DescribeVpcRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
             ],
         ],
         'DescribeVpcsRequestShape' => [
@@ -703,11 +1333,66 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'DescribeVpcRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+            ],
+        ],
         'DescribeVpcResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeVpcResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteVpcRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+            ],
+        ],
+        'DescribeVpcsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Vpc', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'CreateVpcResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateVpcResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeVpcsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeVpcsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteVpcResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteVpcResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateVpcRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcName' => [ 'type' => 'string', 'locationName' => 'vpcName', ],
+                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'CreateVpcPeeringResponseShape' => [

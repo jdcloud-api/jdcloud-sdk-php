@@ -93,7 +93,7 @@ return [
                 'cycle' => [ 'type' => 'integer', 'locationName' => 'cycle', ],
             ],
         ],
-        'AddTopic' => [
+        'TopicModel' => [
             'type' => 'structure',
             'members' => [
                 'topic' =>  [ 'shape' => 'Topic', ],
@@ -111,8 +111,10 @@ return [
         'Topic' => [
             'type' => 'structure',
             'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'archived' => [ 'type' => 'integer', 'locationName' => 'archived', ],
                 'lifecycle' => [ 'type' => 'integer', 'locationName' => 'lifecycle', ],
+                'partitionNum' => [ 'type' => 'integer', 'locationName' => 'partitionNum', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'shardNum' => [ 'type' => 'integer', 'locationName' => 'shardNum', ],
                 'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
@@ -200,14 +202,14 @@ return [
         'UpdateTopicRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'topicModel' =>  [ 'shape' => 'AddTopic', ],
+                'topicModel' =>  [ 'shape' => 'TopicModel', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'AddTopicRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'topicModel' =>  [ 'shape' => 'AddTopic', ],
+                'topicModel' =>  [ 'shape' => 'TopicModel', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -221,7 +223,7 @@ return [
         'DescribeTopicResultShape' => [
             'type' => 'structure',
             'members' => [
-                'topic' =>  [ 'shape' => 'AddTopic', ],
+                'topic' =>  [ 'shape' => 'TopicModel', ],
             ],
         ],
         'DeleteTopicResultShape' => [
