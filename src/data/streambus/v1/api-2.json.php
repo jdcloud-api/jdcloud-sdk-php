@@ -127,7 +127,7 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'createdTime' => [ 'type' => 'date', 'locationName' => 'createdTime', ],
                 'delete' => [ 'type' => 'byte', 'locationName' => 'delete', ],
-                'topicId' => [ 'type' => 'int64', 'locationName' => 'topicId', ],
+                'topicId' => [ 'type' => 'long', 'locationName' => 'topicId', ],
             ],
         ],
         'TopicListInfo' => [
@@ -305,8 +305,8 @@ return [
         'DeleteConsumerGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'topicId' => [ 'type' => 'int64', 'locationName' => 'topicId', ],
-                'consumerGroupId' => [ 'type' => 'int64', 'locationName' => 'consumerGroupId', ],
+                'topicId' => [ 'type' => 'long', 'locationName' => 'topicId', ],
+                'consumerGroupId' => [ 'type' => 'long', 'locationName' => 'consumerGroupId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],

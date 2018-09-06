@@ -213,7 +213,7 @@ return [
         'DataPoint' => [
             'type' => 'structure',
             'members' => [
-                'timestamp' => [ 'type' => 'int64', 'locationName' => 'timestamp', ],
+                'timestamp' => [ 'type' => 'long', 'locationName' => 'timestamp', ],
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
@@ -261,7 +261,7 @@ return [
                 'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
                 'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
                 'dimensions' => [ 'type' => 'object', 'locationName' => 'dimensions', ],
-                'timestamp' => [ 'type' => 'int64', 'locationName' => 'timestamp', ],
+                'timestamp' => [ 'type' => 'long', 'locationName' => 'timestamp', ],
                 'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
                 'values' => [ 'type' => 'object', 'locationName' => 'values', ],
             ],

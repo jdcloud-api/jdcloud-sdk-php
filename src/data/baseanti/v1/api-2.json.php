@@ -61,8 +61,8 @@ return [
         'CleanThresholdSpec' => [
             'type' => 'structure',
             'members' => [
-                'cleanThresholdBps' => [ 'type' => 'int64', 'locationName' => 'cleanThresholdBps', ],
-                'cleanThresholdPps' => [ 'type' => 'int64', 'locationName' => 'cleanThresholdPps', ],
+                'cleanThresholdBps' => [ 'type' => 'long', 'locationName' => 'cleanThresholdBps', ],
+                'cleanThresholdPps' => [ 'type' => 'long', 'locationName' => 'cleanThresholdPps', ],
             ],
         ],
         'IpResource' => [
@@ -93,9 +93,9 @@ return [
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
                 'safeStatus' => [ 'type' => 'integer', 'locationName' => 'safeStatus', ],
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
-                'blackHoleThreshold' => [ 'type' => 'int64', 'locationName' => 'blackHoleThreshold', ],
-                'cleanThresholdBps' => [ 'type' => 'int64', 'locationName' => 'cleanThresholdBps', ],
-                'cleanThresholdPps' => [ 'type' => 'int64', 'locationName' => 'cleanThresholdPps', ],
+                'blackHoleThreshold' => [ 'type' => 'long', 'locationName' => 'blackHoleThreshold', ],
+                'cleanThresholdBps' => [ 'type' => 'long', 'locationName' => 'cleanThresholdBps', ],
+                'cleanThresholdPps' => [ 'type' => 'long', 'locationName' => 'cleanThresholdPps', ],
             ],
         ],
         'IpResourceProtectInfo' => [
@@ -170,6 +170,7 @@ return [
         'DescribeIpResourcesRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],

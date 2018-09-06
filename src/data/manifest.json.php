@@ -29,6 +29,10 @@ return [
         'namespace' => 'Disk',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'datastar' => [
+        'namespace' => 'Datastar',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'mongodb' => [
         'namespace' => 'Mongodb',
         'versions' => [ 'latest' => 'v1', ],
@@ -43,6 +47,10 @@ return [
     ],
     'xdata' => [
         'namespace' => 'Xdata',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'cr' => [
+        'namespace' => 'Cr',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'nc' => [

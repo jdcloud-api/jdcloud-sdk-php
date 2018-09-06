@@ -389,6 +389,7 @@ return [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Domain', ], ],
                 'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
         'GetDomainQueryTrafficResponseShape' => [

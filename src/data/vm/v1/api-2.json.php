@@ -146,6 +146,15 @@ return [
             'input' => [ 'shape' => 'DescribeInstanceStatusRequestShape', ],
             'output' => [ 'shape' => 'DescribeInstanceStatusResponseShape', ],
         ],
+        'DescribeInstancePrivateIpAddress' => [
+            'name' => 'DescribeInstancePrivateIpAddress',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instancePrivateIpAddress',
+            ],
+            'input' => [ 'shape' => 'DescribeInstancePrivateIpAddressRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInstancePrivateIpAddressResponseShape', ],
+        ],
         'StopInstance' => [
             'name' => 'StopInstance',
             'http' => [
@@ -559,6 +568,13 @@ return [
                 'networkInterface' =>  [ 'shape' => 'NetworkInterfaceSpec', ],
             ],
         ],
+        'InstancePrivateIpAddress' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
+            ],
+        ],
         'InstanceSpec' => [
             'type' => 'structure',
             'members' => [
@@ -716,6 +732,13 @@ return [
                 'nicLimit' => [ 'type' => 'integer', 'locationName' => 'nicLimit', ],
                 'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
                 'state' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceTypeState', ], ],
+            ],
+        ],
+        'Keypair' => [
+            'type' => 'structure',
+            'members' => [
+                'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
+                'keyFingerprint' => [ 'type' => 'string', 'locationName' => 'keyFingerprint', ],
             ],
         ],
         'Quota' => [
@@ -1254,6 +1277,13 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'DescribeInstancePrivateIpAddressResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instancePrivateIpAddress' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstancePrivateIpAddress', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
         'AttachDiskResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1308,6 +1338,13 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'DescribeInstancePrivateIpAddressResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstancePrivateIpAddressResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CreateImageResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1334,6 +1371,15 @@ return [
         'ModifyInstanceDiskAttributeResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeInstancePrivateIpAddressRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'ModifyInstanceAttributeRequestShape' => [

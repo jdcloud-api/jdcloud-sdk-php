@@ -38,6 +38,10 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise modifyBackupPolicyAsync(array $args = [])
  * @method \Jdcloud\Result restoreInstance(array $args = [])
  * @method \GuzzleHttp\Promise\Promise restoreInstanceAsync(array $args = [])
+ * @method \Jdcloud\Result describeFlavors(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeFlavorsAsync(array $args = [])
+ * @method \Jdcloud\Result describeAvailableZones(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeAvailableZonesAsync(array $args = [])
  * @method \Jdcloud\Result describeBackups(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeBackupsAsync(array $args = [])
  * @method \Jdcloud\Result createBackup(array $args = [])
@@ -46,6 +50,10 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise deleteBackupAsync(array $args = [])
  * @method \Jdcloud\Result backupDownloadURL(array $args = [])
  * @method \GuzzleHttp\Promise\Promise backupDownloadURLAsync(array $args = [])
+ * @method \Jdcloud\Result describeSecurityIps(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeSecurityIpsAsync(array $args = [])
+ * @method \Jdcloud\Result modifySecurityIps(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise modifySecurityIpsAsync(array $args = [])
  */
 class MongodbClient extends JdCloudClient
 {

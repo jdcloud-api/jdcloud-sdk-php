@@ -140,7 +140,7 @@ return [
         'QueryVpcs' => [
             'name' => 'QueryVpcs',
             'http' => [
-                'method' => 'GET',
+                'method' => 'POST',
                 'requestUri' => '/v1/regions/{regionId}/vpcs:query',
             ],
             'input' => [ 'shape' => 'QueryVpcsRequestShape', ],
@@ -149,7 +149,7 @@ return [
         'QueryVpcSubnets' => [
             'name' => 'QueryVpcSubnets',
             'http' => [
-                'method' => 'GET',
+                'method' => 'POST',
                 'requestUri' => '/v1/regions/{regionId}/vpcSubnets/{vpcId}:query',
             ],
             'input' => [ 'shape' => 'QueryVpcSubnetsRequestShape', ],
@@ -411,7 +411,7 @@ return [
             'name' => 'GetCronJobDetail',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/cronJob:detail',
+                'requestUri' => '/v1/regions/{regionId}/cronJob/{planId}:detail',
             ],
             'input' => [ 'shape' => 'GetCronJobDetailRequestShape', ],
             'output' => [ 'shape' => 'GetCronJobDetailResponseShape', ],
@@ -648,7 +648,7 @@ return [
             'members' => [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'clusterPrimaryId' => [ 'type' => 'int64', 'locationName' => 'clusterPrimaryId', ],
+                'clusterPrimaryId' => [ 'type' => 'long', 'locationName' => 'clusterPrimaryId', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'nodeCount' => [ 'type' => 'integer', 'locationName' => 'nodeCount', ],
                 'payType' => [ 'type' => 'string', 'locationName' => 'payType', ],
@@ -732,6 +732,7 @@ return [
                 'createTime' => [ 'type' => 'date', 'locationName' => 'createTime', ],
                 'modifyTime' => [ 'type' => 'date', 'locationName' => 'modifyTime', ],
                 'dataCenter' => [ 'type' => 'string', 'locationName' => 'dataCenter', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'jobGroup' => [ 'type' => 'string', 'locationName' => 'jobGroup', ],
                 'jobTrigger' => [ 'type' => 'string', 'locationName' => 'jobTrigger', ],
                 'cronExpression' => [ 'type' => 'string', 'locationName' => 'cronExpression', ],
@@ -923,6 +924,20 @@ return [
                 'metrics' => [ 'type' => 'list', 'member' => [ 'shape' => 'Metrics', ], ],
             ],
         ],
+        'QueryVpcSubnets' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcSubnetId' => [ 'type' => 'string', 'locationName' => 'vpcSubnetId', ],
+                'vpcSubnetName' => [ 'type' => 'string', 'locationName' => 'vpcSubnetName', ],
+            ],
+        ],
+        'QueryVpcs' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'vpcName' => [ 'type' => 'string', 'locationName' => 'vpcName', ],
+            ],
+        ],
         'SchedulerWorkflowTracker' => [
             'type' => 'structure',
             'members' => [
@@ -1010,14 +1025,14 @@ return [
         'GetSoftwareAndVersionInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'ver' => [ 'type' => '', 'locationName' => 'ver', ],
+                'ver' => [ 'type' => 'string', 'locationName' => 'ver', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'QueryFloatingIpRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'recordId' =>  [ 'shape' => 'Cluster', ],
+                'recordId' => [ 'type' => 'string', 'locationName' => 'recordId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1026,7 +1041,7 @@ return [
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
             ],
         ],
         'CalculateClusterPriceResponseShape' => [
@@ -1043,17 +1058,17 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ValidateUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'MonitorServiceListResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'MonitorServiceListResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ValidateUserRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'GetClusterDetailInfoRequestShape' => [
@@ -1082,7 +1097,7 @@ return [
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' =>  [ 'shape' => 'Idata', ],
+                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
             ],
         ],
         'IdataClusterRequestShape' => [
@@ -1181,7 +1196,7 @@ return [
         'MonitorServiceListRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'clusterId' => [ 'type' => '', 'locationName' => 'clusterId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1253,7 +1268,8 @@ return [
         'CalculateExpansionPriceRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'clusterExpansion' =>  [ 'shape' => 'ClusterExpansion', ],
+                'clusterId' => [ 'type' => '', 'locationName' => 'clusterId', ],
+                'expansionNum' => [ 'type' => '', 'locationName' => 'expansionNum', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1301,15 +1317,7 @@ return [
         'GetFirstServerVncUrlRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'clusterId' => [ 'type' => '', 'locationName' => 'clusterId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'MonitorDetailsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clusterId' => [ 'type' => '', 'locationName' => 'clusterId', ],
-                'service' => [ 'type' => '', 'locationName' => 'service', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1318,6 +1326,14 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'GetSoftwareInfoResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'MonitorDetailsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => '', 'locationName' => 'clusterId', ],
+                'service' => [ 'type' => '', 'locationName' => 'service', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DeleteClusterResultShape' => [
@@ -1388,7 +1404,7 @@ return [
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' =>  [ 'shape' => 'AvailableNumData', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'QueryVpcs', ], ],
             ],
         ],
         'GetPropertyValueResponseShape' => [
@@ -1518,7 +1534,7 @@ return [
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
             ],
         ],
         'ReleaseClusterRequestShape' => [
@@ -1539,7 +1555,7 @@ return [
         'GetSoftwareInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'ver' => [ 'type' => '', 'locationName' => 'ver', ],
+                'ver' => [ 'type' => 'string', 'locationName' => 'ver', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1548,7 +1564,7 @@ return [
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' => [ 'type' => 'double', 'locationName' => 'data', ],
+                'data' => [ 'type' => 'float', 'locationName' => 'data', ],
             ],
         ],
         'GetJmrVersionListRequestShape' => [
@@ -1614,7 +1630,7 @@ return [
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' =>  [ 'shape' => 'AvailableNumData', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'QueryVpcSubnets', ], ],
             ],
         ],
         'ModifyJobResultShape' => [
@@ -1629,7 +1645,7 @@ return [
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' =>  [ 'shape' => 'TaskViewListData', ],
+                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
             ],
         ],
         'GetCronJobTaskListByJobIdRequestShape' => [
@@ -1646,7 +1662,6 @@ return [
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' =>  [ 'shape' => 'TaskPlanViewListData', ],
             ],
         ],
         'IsValidJobNameResponseShape' => [
@@ -1714,20 +1729,20 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
+        'GetCronJobListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
+            ],
+        ],
         'IsValidPlanNameRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'planId' => [ 'type' => '', 'locationName' => 'planId', ],
                 'planName' => [ 'type' => '', 'locationName' => 'planName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetCronJobListResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' =>  [ 'shape' => 'TaskPlanViewListData', ],
             ],
         ],
         'IsValidJobNameResultShape' => [
@@ -1770,7 +1785,7 @@ return [
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' =>  [ 'shape' => 'JobViewListData', ],
+                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
             ],
         ],
         'GetCronJobTaskListRequestShape' => [
@@ -1778,7 +1793,7 @@ return [
             'members' => [
                 'selectParams' => [ 'type' => '', 'locationName' => 'selectParams', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'planId' => [ 'type' => 'long', 'locationName' => 'planId', ],
+                'planId' => [ 'type' => 'int64', 'locationName' => 'planId', ],
             ],
         ],
         'GetCronJobTaskListResultShape' => [
@@ -1786,6 +1801,7 @@ return [
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
             ],
         ],
         'CreateCronJobResponseShape' => [
@@ -1814,7 +1830,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'planId' => [ 'type' => 'double', 'locationName' => 'planId', ],
+                'planId' => [ 'type' => 'int64', 'locationName' => 'planId', ],
             ],
         ],
         'GetClusterCronJobCountResponseShape' => [
@@ -1862,7 +1878,8 @@ return [
         'IsValidJobNameRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'jmrJobViewModel' =>  [ 'shape' => 'JmrJobViewModel', ],
+                'jobId' => [ 'type' => '', 'locationName' => 'jobId', ],
+                'jobName' => [ 'type' => '', 'locationName' => 'jobName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1906,6 +1923,7 @@ return [
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
             ],
         ],
         'GetCronJobTaskListByJobIdResponseShape' => [
@@ -1969,7 +1987,7 @@ return [
         'GetLastCronJobTaskRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'planId' => [ 'type' => '', 'locationName' => 'planId', ],
+                'planId' => [ 'type' => 'string', 'locationName' => 'planId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
             ],
@@ -2149,7 +2167,7 @@ return [
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' =>  [ 'shape' => 'CronJobData', ],
+                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
             ],
         ],
         'ResumeCronJobResultShape' => [
@@ -2191,7 +2209,7 @@ return [
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' =>  [ 'shape' => 'GetJobListData', ],
+                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
             ],
         ],
         'RunWorkFlowResultShape' => [

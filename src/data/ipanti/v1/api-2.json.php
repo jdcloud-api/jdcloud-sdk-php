@@ -433,7 +433,7 @@ return [
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'instanceId' => [ 'type' => 'int64', 'locationName' => 'instanceId', ],
+                'instanceId' => [ 'type' => 'long', 'locationName' => 'instanceId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
@@ -448,8 +448,8 @@ return [
         'ForwardRule' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'int64', 'locationName' => 'id', ],
-                'instanceId' => [ 'type' => 'int64', 'locationName' => 'instanceId', ],
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'instanceId' => [ 'type' => 'long', 'locationName' => 'instanceId', ],
                 'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
                 'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
                 'originType' => [ 'type' => 'string', 'locationName' => 'originType', ],
@@ -478,7 +478,7 @@ return [
         'Instance' => [
             'type' => 'structure',
             'members' => [
-                'instanceId' => [ 'type' => 'int64', 'locationName' => 'instanceId', ],
+                'instanceId' => [ 'type' => 'long', 'locationName' => 'instanceId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'carrier' => [ 'type' => 'string', 'locationName' => 'carrier', ],
                 'elasticTriggerCount' => [ 'type' => 'integer', 'locationName' => 'elasticTriggerCount', ],
@@ -491,8 +491,8 @@ return [
                 'webRuleCount' => [ 'type' => 'integer', 'locationName' => 'webRuleCount', ],
                 'chargeStatus' => [ 'type' => 'string', 'locationName' => 'chargeStatus', ],
                 'securityStatus' => [ 'type' => 'string', 'locationName' => 'securityStatus', ],
-                'createTime' => [ 'type' => 'int64', 'locationName' => 'createTime', ],
-                'expireTime' => [ 'type' => 'int64', 'locationName' => 'expireTime', ],
+                'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
+                'expireTime' => [ 'type' => 'long', 'locationName' => 'expireTime', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'ccProtectMode' => [ 'type' => 'integer', 'locationName' => 'ccProtectMode', ],
                 'ccProtectStatus' => [ 'type' => 'integer', 'locationName' => 'ccProtectStatus', ],
@@ -528,8 +528,8 @@ return [
         'WebRule' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'int64', 'locationName' => 'id', ],
-                'instanceId' => [ 'type' => 'int64', 'locationName' => 'instanceId', ],
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'instanceId' => [ 'type' => 'long', 'locationName' => 'instanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
                 'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],

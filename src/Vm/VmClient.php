@@ -50,6 +50,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise deleteInstanceAsync(array $args = [])
  * @method \Jdcloud\Result describeInstanceStatus(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeInstanceStatusAsync(array $args = [])
+ * @method \Jdcloud\Result describeInstancePrivateIpAddress(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeInstancePrivateIpAddressAsync(array $args = [])
  * @method \Jdcloud\Result stopInstance(array $args = [])
  * @method \GuzzleHttp\Promise\Promise stopInstanceAsync(array $args = [])
  * @method \Jdcloud\Result startInstance(array $args = [])
