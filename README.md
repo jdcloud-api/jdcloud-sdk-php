@@ -19,7 +19,7 @@
 
 	"require" : {
 		"php" : ">=5.5",
-		"jdcloud-api" : ">=1.0",
+		"jdcloud-api/jdcloud-sdk-php" : ">=0.2",
 	}
     
 
