@@ -317,6 +317,42 @@ return [
             'input' => [ 'shape' => 'DescribeInstanceTypesRequestShape', ],
             'output' => [ 'shape' => 'DescribeInstanceTypesResponseShape', ],
         ],
+        'DescribeKeypairs' => [
+            'name' => 'DescribeKeypairs',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/keypairs',
+            ],
+            'input' => [ 'shape' => 'DescribeKeypairsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeKeypairsResponseShape', ],
+        ],
+        'CreateKeypair' => [
+            'name' => 'CreateKeypair',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/keypairs',
+            ],
+            'input' => [ 'shape' => 'CreateKeypairRequestShape', ],
+            'output' => [ 'shape' => 'CreateKeypairResponseShape', ],
+        ],
+        'ImportKeypair' => [
+            'name' => 'ImportKeypair',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/keypairs:import',
+            ],
+            'input' => [ 'shape' => 'ImportKeypairRequestShape', ],
+            'output' => [ 'shape' => 'ImportKeypairResponseShape', ],
+        ],
+        'DeleteKeypair' => [
+            'name' => 'DeleteKeypair',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/keypairs/{keyName}',
+            ],
+            'input' => [ 'shape' => 'DeleteKeypairRequestShape', ],
+            'output' => [ 'shape' => 'DeleteKeypairResponseShape', ],
+        ],
         'DescribeQuotas' => [
             'name' => 'DescribeQuotas',
             'http' => [
@@ -342,6 +378,13 @@ return [
                 'sourceImageId' => [ 'type' => 'string', 'locationName' => 'sourceImageId', ],
             ],
         ],
+        'Gpu' => [
+            'type' => 'structure',
+            'members' => [
+                'model' => [ 'type' => 'string', 'locationName' => 'model', ],
+                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+            ],
+        ],
         'InstanceDiskAttachment' => [
             'type' => 'structure',
             'members' => [
@@ -350,6 +393,7 @@ return [
                 'localDisk' =>  [ 'shape' => 'LocalDisk', ],
                 'cloudDisk' =>  [ 'shape' => 'Disk', ],
                 'deviceName' => [ 'type' => 'string', 'locationName' => 'deviceName', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
         'Disk' => [
@@ -732,6 +776,8 @@ return [
                 'nicLimit' => [ 'type' => 'integer', 'locationName' => 'nicLimit', ],
                 'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
                 'state' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceTypeState', ], ],
+                'gpu' =>  [ 'shape' => 'Gpu', ],
+                'localDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'LocalDisk', ], ],
             ],
         ],
         'Keypair' => [
@@ -739,6 +785,7 @@ return [
             'members' => [
                 'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
                 'keyFingerprint' => [ 'type' => 'string', 'locationName' => 'keyFingerprint', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
         'Quota' => [
@@ -1431,10 +1478,95 @@ return [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
+        'ImportKeypairRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
+                'publicKey' => [ 'type' => 'string', 'locationName' => 'publicKey', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ImportKeypairResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
+                'keyFingerprint' => [ 'type' => 'string', 'locationName' => 'keyFingerprint', ],
+            ],
+        ],
+        'DeleteKeypairResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteKeypairRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
+            ],
+        ],
+        'DescribeKeypairsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keypairs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Keypair', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'CreateKeypairResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateKeypairResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeKeypairsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateKeypairResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
+                'privateKey' => [ 'type' => 'string', 'locationName' => 'privateKey', ],
+                'keyFingerprint' => [ 'type' => 'string', 'locationName' => 'keyFingerprint', ],
+            ],
+        ],
+        'ImportKeypairResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ImportKeypairResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateKeypairRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteKeypairResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeKeypairsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeKeypairsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeQuotasRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],

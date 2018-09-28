@@ -28,6 +28,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeQuotasAsync(array $args = [])
  * @method \Jdcloud\Result createRegistry(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createRegistryAsync(array $args = [])
+ * @method \Jdcloud\Result checkRegistryName(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise checkRegistryNameAsync(array $args = [])
  * @method \Jdcloud\Result createRepository(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createRepositoryAsync(array $args = [])
  */

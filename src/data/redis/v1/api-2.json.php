@@ -108,6 +108,20 @@ return [
                 'slave' => [ 'type' => 'string', 'locationName' => 'slave', ],
             ],
         ],
+        'Backup' => [
+            'type' => 'structure',
+            'members' => [
+                'baseId' => [ 'type' => 'string', 'locationName' => 'baseId', ],
+                'backupFileName' => [ 'type' => 'string', 'locationName' => 'backupFileName', ],
+                'spaceId' => [ 'type' => 'string', 'locationName' => 'spaceId', ],
+                'backupStartTime' => [ 'type' => 'string', 'locationName' => 'backupStartTime', ],
+                'backupEndTime' => [ 'type' => 'string', 'locationName' => 'backupEndTime', ],
+                'backupType' => [ 'type' => 'integer', 'locationName' => 'backupType', ],
+                'backupSize' => [ 'type' => 'integer', 'locationName' => 'backupSize', ],
+                'backupStatus' => [ 'type' => 'integer', 'locationName' => 'backupStatus', ],
+                'backupDownloadURL' => [ 'type' => 'string', 'locationName' => 'backupDownloadURL', ],
+            ],
+        ],
         'Charge' => [
             'type' => 'structure',
             'members' => [
@@ -125,7 +139,7 @@ return [
                 'cacheInstanceName' => [ 'type' => 'string', 'locationName' => 'cacheInstanceName', ],
                 'cacheInstanceClass' => [ 'type' => 'string', 'locationName' => 'cacheInstanceClass', ],
                 'cacheInstanceMemoryMB' => [ 'type' => 'integer', 'locationName' => 'cacheInstanceMemoryMB', ],
-                'cacheInstancStatus' => [ 'type' => 'string', 'locationName' => 'cacheInstancStatus', ],
+                'cacheInstanceStatus' => [ 'type' => 'string', 'locationName' => 'cacheInstanceStatus', ],
                 'cacheInstanceDescription' => [ 'type' => 'string', 'locationName' => 'cacheInstanceDescription', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'azId' =>  [ 'shape' => 'AzId', ],
@@ -134,6 +148,8 @@ return [
                 'connectionDomain' => [ 'type' => 'string', 'locationName' => 'connectionDomain', ],
                 'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
+                'instanceVersion' => [ 'type' => 'string', 'locationName' => 'instanceVersion', ],
+                'auth' => [ 'type' => 'boolean', 'locationName' => 'auth', ],
             ],
         ],
         'CacheInstanceSpec' => [
@@ -146,6 +162,13 @@ return [
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
                 'azId' =>  [ 'shape' => 'AzIdSpec', ],
                 'cacheInstanceDescription' => [ 'type' => 'string', 'locationName' => 'cacheInstanceDescription', ],
+            ],
+        ],
+        'ConfigItem' => [
+            'type' => 'structure',
+            'members' => [
+                'configName' => [ 'type' => 'string', 'locationName' => 'configName', ],
+                'configValue' => [ 'type' => 'string', 'locationName' => 'configValue', ],
             ],
         ],
         'InstanceClass' => [
@@ -176,20 +199,20 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'Filter' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
         'ModifyCacheInstanceClassRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'cacheInstanceClass' => [ 'type' => 'string', 'locationName' => 'cacheInstanceClass', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeCacheInstanceRequestShape' => [

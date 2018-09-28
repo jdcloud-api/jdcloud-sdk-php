@@ -53,6 +53,10 @@ return [
         'namespace' => 'Cr',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'billing' => [
+        'namespace' => 'Billing',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'nc' => [
         'namespace' => 'Nc',
         'versions' => [ 'latest' => 'v1', ],
@@ -63,10 +67,6 @@ return [
     ],
     'mps' => [
         'namespace' => 'Mps',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
-    'jmr' => [
-        'namespace' => 'Jmr',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'streambus' => [

@@ -47,6 +47,15 @@ return [
             'input' => [ 'shape' => 'CreateRegistryRequestShape', ],
             'output' => [ 'shape' => 'CreateRegistryResponseShape', ],
         ],
+        'CheckRegistryName' => [
+            'name' => 'CheckRegistryName',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/registries:checkRegistryName',
+            ],
+            'input' => [ 'shape' => 'CheckRegistryNameRequestShape', ],
+            'output' => [ 'shape' => 'CheckRegistryNameResponseShape', ],
+        ],
         'CreateRepository' => [
             'name' => 'CreateRepository',
             'http' => [
@@ -190,6 +199,13 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'CheckRegistryNameResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CheckRegistryNameResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CreateRegistryResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -209,6 +225,20 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'CreateRegistryResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CheckRegistryNameResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+            ],
+        ],
+        'CheckRegistryNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'CreateRepositoryResponseShape' => [
