@@ -1,15 +1,15 @@
 <?php
 /**
- * Datastar
+ * Ias
  *
  * @category Jdcloud
- * @package  Jdcloud\Datastar
+ * @package  Jdcloud\Ias
  * @author   Jdcloud <jdcloud-api@jd.com>
  * @license  Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0
  * @link     https://www.jdcloud.com/help/faq
  */
 
-namespace Jdcloud\Datastar;
+namespace Jdcloud\Ias;
 
 use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
@@ -18,14 +18,20 @@ use Jdcloud\Api\ApiProvider;
 use Jdcloud\PresignUrlMiddleware;
 
 /**
- * Client used to interact with datastar.
+ * Client used to interact with ias.
  *
- * @method \Jdcloud\Result getPackageId(array $args = [])
- * @method \GuzzleHttp\Promise\Promise getPackageIdAsync(array $args = [])
- * @method \Jdcloud\Result getLargeScreenData(array $args = [])
- * @method \GuzzleHttp\Promise\Promise getLargeScreenDataAsync(array $args = [])
+ * @method \Jdcloud\Result createApp(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createAppAsync(array $args = [])
+ * @method \Jdcloud\Result getApp(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getAppAsync(array $args = [])
+ * @method \Jdcloud\Result updateApp(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise updateAppAsync(array $args = [])
+ * @method \Jdcloud\Result deleteApp(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteAppAsync(array $args = [])
+ * @method \Jdcloud\Result getApps(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getAppsAsync(array $args = [])
  */
-class DatastarClient extends JdCloudClient
+class IasClient extends JdCloudClient
 {
     public function __construct(array $args)
     {
@@ -37,11 +43,11 @@ class DatastarClient extends JdCloudClient
                     [
                         'operations' => [
                         ],
-                        'service' => 'datastar',
+                        'service' => 'ias',
                         'presign_param' => 'PresignedUrl',
                     ]
                 ),
-                'datastar'
+                'ias'
             );
         };
 

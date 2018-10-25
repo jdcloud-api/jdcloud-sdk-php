@@ -37,6 +37,10 @@ return [
         'namespace' => 'Mongodb',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'ias' => [
+        'namespace' => 'Ias',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'vpc' => [
         'namespace' => 'Vpc',
         'versions' => [ 'latest' => 'v1', ],

@@ -92,14 +92,14 @@ return [
             'input' => [ 'shape' => 'DeleteAuditRequestShape', ],
             'output' => [ 'shape' => 'DeleteAuditResponseShape', ],
         ],
-        'GetAuditOptions' => [
-            'name' => 'GetAuditOptions',
+        'DescribeAuditOptions' => [
+            'name' => 'DescribeAuditOptions',
             'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/audit:getOptions',
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/audit:describeAuditOptions',
             ],
-            'input' => [ 'shape' => 'GetAuditOptionsRequestShape', ],
-            'output' => [ 'shape' => 'GetAuditOptionsResponseShape', ],
+            'input' => [ 'shape' => 'DescribeAuditOptionsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAuditOptionsResponseShape', ],
         ],
         'ModifyAudit' => [
             'name' => 'ModifyAudit',
@@ -110,23 +110,23 @@ return [
             'input' => [ 'shape' => 'ModifyAuditRequestShape', ],
             'output' => [ 'shape' => 'ModifyAuditResponseShape', ],
         ],
-        'GetAuditFiles' => [
-            'name' => 'GetAuditFiles',
+        'DescribeAuditFiles' => [
+            'name' => 'DescribeAuditFiles',
             'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/audit:getAuditFiles',
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/audit:describeAuditFiles',
             ],
-            'input' => [ 'shape' => 'GetAuditFilesRequestShape', ],
-            'output' => [ 'shape' => 'GetAuditFilesResponseShape', ],
+            'input' => [ 'shape' => 'DescribeAuditFilesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAuditFilesResponseShape', ],
         ],
-        'GetAuditDownloadURL' => [
-            'name' => 'GetAuditDownloadURL',
+        'DescribeAuditDownloadURL' => [
+            'name' => 'DescribeAuditDownloadURL',
             'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/audit:getAuditDownloadURL',
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/audit:describeAuditDownloadURL',
             ],
-            'input' => [ 'shape' => 'GetAuditDownloadURLRequestShape', ],
-            'output' => [ 'shape' => 'GetAuditDownloadURLResponseShape', ],
+            'input' => [ 'shape' => 'DescribeAuditDownloadURLRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAuditDownloadURLResponseShape', ],
         ],
         'DescribeBackups' => [
             'name' => 'DescribeBackups',
@@ -159,10 +159,28 @@ return [
             'name' => 'DescribeBackupDownloadURL',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/backups/{backupId}/downloadURLs',
+                'requestUri' => '/v1/regions/{regionId}/backups/{backupId}:describeBackupDownloadURL',
             ],
             'input' => [ 'shape' => 'DescribeBackupDownloadURLRequestShape', ],
             'output' => [ 'shape' => 'DescribeBackupDownloadURLResponseShape', ],
+        ],
+        'DescribeBinlogs' => [
+            'name' => 'DescribeBinlogs',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/binlogs',
+            ],
+            'input' => [ 'shape' => 'DescribeBinlogsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBinlogsResponseShape', ],
+        ],
+        'DescribeBinlogDownloadURL' => [
+            'name' => 'DescribeBinlogDownloadURL',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/binlogs/{binlogBackupId}:describeBinlogDownloadURL',
+            ],
+            'input' => [ 'shape' => 'DescribeBinlogDownloadURLRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBinlogDownloadURLResponseShape', ],
         ],
         'DescribeDatabases' => [
             'name' => 'DescribeDatabases',
@@ -290,32 +308,32 @@ return [
             'input' => [ 'shape' => 'DeleteInstanceRequestShape', ],
             'output' => [ 'shape' => 'DeleteInstanceResponseShape', ],
         ],
-        'GetBackupPolicy' => [
-            'name' => 'GetBackupPolicy',
+        'DescribeBackupPolicy' => [
+            'name' => 'DescribeBackupPolicy',
             'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:getBackupPolicy',
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:describeBackupPolicy',
             ],
-            'input' => [ 'shape' => 'GetBackupPolicyRequestShape', ],
-            'output' => [ 'shape' => 'GetBackupPolicyResponseShape', ],
+            'input' => [ 'shape' => 'DescribeBackupPolicyRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBackupPolicyResponseShape', ],
         ],
-        'SetBackupPolicy' => [
-            'name' => 'SetBackupPolicy',
+        'ModifyBackupPolicy' => [
+            'name' => 'ModifyBackupPolicy',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:setBackupPolicy',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:modifyBackupPolicy',
             ],
-            'input' => [ 'shape' => 'SetBackupPolicyRequestShape', ],
-            'output' => [ 'shape' => 'SetBackupPolicyResponseShape', ],
+            'input' => [ 'shape' => 'ModifyBackupPolicyRequestShape', ],
+            'output' => [ 'shape' => 'ModifyBackupPolicyResponseShape', ],
         ],
-        'SetInstanceName' => [
-            'name' => 'SetInstanceName',
+        'ModifyInstanceName' => [
+            'name' => 'ModifyInstanceName',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:setInstanceName',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:modifyInstanceName',
             ],
-            'input' => [ 'shape' => 'SetInstanceNameRequestShape', ],
-            'output' => [ 'shape' => 'SetInstanceNameResponseShape', ],
+            'input' => [ 'shape' => 'ModifyInstanceNameRequestShape', ],
+            'output' => [ 'shape' => 'ModifyInstanceNameResponseShape', ],
         ],
         'FailoverInstance' => [
             'name' => 'FailoverInstance',
@@ -389,10 +407,19 @@ return [
             'input' => [ 'shape' => 'CreateInstanceByTimeRequestShape', ],
             'output' => [ 'shape' => 'CreateInstanceByTimeResponseShape', ],
         ],
+        'ModifyConnectionMode' => [
+            'name' => 'ModifyConnectionMode',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:modifyConnectionMode',
+            ],
+            'input' => [ 'shape' => 'ModifyConnectionModeRequestShape', ],
+            'output' => [ 'shape' => 'ModifyConnectionModeResponseShape', ],
+        ],
         'DescribeIndexPerformance' => [
             'name' => 'DescribeIndexPerformance',
             'http' => [
-                'method' => 'POST',
+                'method' => 'GET',
                 'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/performance:describeIndexPerformance',
             ],
             'input' => [ 'shape' => 'DescribeIndexPerformanceRequestShape', ],
@@ -401,11 +428,29 @@ return [
         'DescribeQueryPerformance' => [
             'name' => 'DescribeQueryPerformance',
             'http' => [
-                'method' => 'POST',
+                'method' => 'GET',
                 'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/performance:describeQueryPerformance',
             ],
             'input' => [ 'shape' => 'DescribeQueryPerformanceRequestShape', ],
             'output' => [ 'shape' => 'DescribeQueryPerformanceResponseShape', ],
+        ],
+        'DescribeSlowLogAttributes' => [
+            'name' => 'DescribeSlowLogAttributes',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/performance:describeSlowLogAttributes',
+            ],
+            'input' => [ 'shape' => 'DescribeSlowLogAttributesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSlowLogAttributesResponseShape', ],
+        ],
+        'DescribeSlowLogs' => [
+            'name' => 'DescribeSlowLogs',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/performance:describeSlowLogs',
+            ],
+            'input' => [ 'shape' => 'DescribeSlowLogsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSlowLogsResponseShape', ],
         ],
         'DescribeWhiteList' => [
             'name' => 'DescribeWhiteList',
@@ -479,7 +524,7 @@ return [
             'members' => [
                 'binlogBackupId' => [ 'type' => 'string', 'locationName' => 'binlogBackupId', ],
                 'binlogName' => [ 'type' => 'string', 'locationName' => 'binlogName', ],
-                'binlogSizeKB' => [ 'type' => 'integer', 'locationName' => 'binlogSizeKB', ],
+                'binlogSizeKB' => [ 'type' => 'long', 'locationName' => 'binlogSizeKB', ],
                 'binlogStartTime' => [ 'type' => 'string', 'locationName' => 'binlogStartTime', ],
                 'binlogEndTime' => [ 'type' => 'string', 'locationName' => 'binlogEndTime', ],
             ],
@@ -573,6 +618,16 @@ return [
                 'accessPrivilege' => [ 'type' => 'list', 'member' => [ 'shape' => 'DBAccessPrivilege', ], ],
             ],
         ],
+        'DigestData' => [
+            'type' => 'structure',
+            'members' => [
+                'pct95' => [ 'type' => 'float', 'locationName' => 'pct95', ],
+                'max' => [ 'type' => 'float', 'locationName' => 'max', ],
+                'avg' => [ 'type' => 'float', 'locationName' => 'avg', ],
+                'min' => [ 'type' => 'float', 'locationName' => 'min', ],
+                'total' => [ 'type' => 'double', 'locationName' => 'total', ],
+            ],
+        ],
         'ErrorLog' => [
             'type' => 'structure',
             'members' => [
@@ -618,6 +673,32 @@ return [
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
+            ],
+        ],
+        'SlowLogAttributes' => [
+            'type' => 'structure',
+            'members' => [
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'sql' => [ 'type' => 'string', 'locationName' => 'sql', ],
+                'executionTime' => [ 'type' => 'string', 'locationName' => 'executionTime', ],
+                'elapsedTime' => [ 'type' => 'float', 'locationName' => 'elapsedTime', ],
+                'lockTime' => [ 'type' => 'float', 'locationName' => 'lockTime', ],
+                'rowsExamined' => [ 'type' => 'integer', 'locationName' => 'rowsExamined', ],
+                'rowsReturned' => [ 'type' => 'integer', 'locationName' => 'rowsReturned', ],
+            ],
+        ],
+        'SlowLogDigest' => [
+            'type' => 'structure',
+            'members' => [
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'sql' => [ 'type' => 'string', 'locationName' => 'sql', ],
+                'executionTime' => [ 'type' => 'string', 'locationName' => 'executionTime', ],
+                'executionCount' => [ 'type' => 'integer', 'locationName' => 'executionCount', ],
+                'elapsedTime' =>  [ 'shape' => 'DigestData', ],
+                'lockTime' =>  [ 'shape' => 'DigestData', ],
+                'sqlLength' =>  [ 'shape' => 'DigestData', ],
+                'rowsExamined' =>  [ 'shape' => 'DigestData', ],
+                'rowsReturned' =>  [ 'shape' => 'DigestData', ],
             ],
         ],
         'WhiteList' => [
@@ -740,11 +821,18 @@ return [
                 'accounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Account', ], ],
             ],
         ],
-        'GetAuditDownloadURLResultShape' => [
+        'DescribeAuditOptionsResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'publicURL' => [ 'type' => 'string', 'locationName' => 'publicURL', ],
-                'internalURL' => [ 'type' => 'string', 'locationName' => 'internalURL', ],
+                'result' =>  [ 'shape' => 'DescribeAuditOptionsResultShape', ],
+            ],
+        ],
+        'DescribeAuditOptionsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'ModifyAuditResultShape' => [
@@ -770,34 +858,48 @@ return [
                 'enabled' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'DescribeAuditFilesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'ModifyAuditResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],
         ],
-        'GetAuditOptionsResponseShape' => [
+        'DescribeAuditDownloadURLResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GetAuditOptionsResultShape', ],
+                'publicURL' => [ 'type' => 'string', 'locationName' => 'publicURL', ],
+                'internalURL' => [ 'type' => 'string', 'locationName' => 'internalURL', ],
             ],
         ],
-        'GetAuditFilesResultShape' => [
+        'DescribeAuditDownloadURLResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAuditDownloadURLResultShape', ],
+            ],
+        ],
+        'DescribeAuditOptionsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'enabled' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'disabled' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeAuditFilesResultShape' => [
             'type' => 'structure',
             'members' => [
                 'auditFiles' => [ 'type' => 'list', 'member' => [ 'shape' => 'AuditFile', ], ],
             ],
         ],
-        'GetAuditDownloadURLResponseShape' => [
+        'DescribeAuditFilesResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GetAuditDownloadURLResultShape', ],
-            ],
-        ],
-        'GetAuditFilesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'result' =>  [ 'shape' => 'DescribeAuditFilesResultShape', ],
             ],
         ],
         'DeleteAuditResultShape' => [
@@ -824,14 +926,6 @@ return [
             'members' => [
             ],
         ],
-        'GetAuditDownloadURLRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'fileName' => [ 'type' => '', 'locationName' => 'fileName', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
         'ModifyAuditRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -841,10 +935,10 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'GetAuditOptionsRequestShape' => [
+        'DescribeAuditDownloadURLRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'name' => [ 'type' => '', 'locationName' => 'name', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -859,19 +953,6 @@ return [
         'DeleteAuditResponseShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'GetAuditOptionsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'enabled' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'disabled' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'GetAuditFilesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetAuditFilesResultShape', ],
             ],
         ],
         'DescribeBackupDownloadURLResponseShape' => [
@@ -958,6 +1039,51 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeBackupsResultShape', ],
+            ],
+        ],
+        'DescribeBinlogsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'binlogs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Binlog', ], ],
+            ],
+        ],
+        'DescribeBinlogsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeBinlogDownloadURLResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBinlogDownloadURLResultShape', ],
+            ],
+        ],
+        'DescribeBinlogDownloadURLRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'binlogBackupId' => [ 'type' => 'string', 'locationName' => 'binlogBackupId', ],
+            ],
+        ],
+        'DescribeBinlogsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBinlogsResultShape', ],
+            ],
+        ],
+        'DescribeBinlogDownloadURLResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publicURL' => [ 'type' => 'string', 'locationName' => 'publicURL', ],
+                'internalURL' => [ 'type' => 'string', 'locationName' => 'internalURL', ],
             ],
         ],
         'DeleteDatabaseRequestShape' => [
@@ -1157,6 +1283,19 @@ return [
             'members' => [
             ],
         ],
+        'DescribeBackupPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBackupPolicyResultShape', ],
+            ],
+        ],
+        'DescribeBackupPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'RestoreInstanceRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1220,7 +1359,7 @@ return [
             'members' => [
             ],
         ],
-        'SetInstanceNameResponseShape' => [
+        'ModifyBackupPolicyResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -1232,11 +1371,6 @@ return [
                 'instanceSpec' =>  [ 'shape' => 'RestoredNewDBInstanceSpec', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'SetBackupPolicyResponseShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'CreateInstanceResponseShape' => [
@@ -1255,19 +1389,28 @@ return [
             'members' => [
             ],
         ],
+        'ModifyBackupPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'CreateInstanceFromBackupResultShape' => [
             'type' => 'structure',
             'members' => [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'GetBackupPolicyResultShape' => [
+        'ModifyInstanceNameResultShape' => [
             'type' => 'structure',
             'members' => [
-                'startWindow' => [ 'type' => 'string', 'locationName' => 'startWindow', ],
-                'retentionPeriod' => [ 'type' => 'integer', 'locationName' => 'retentionPeriod', ],
-                'cycleMode' => [ 'type' => 'integer', 'locationName' => 'cycleMode', ],
-                'backupBinlog' => [ 'type' => 'string', 'locationName' => 'backupBinlog', ],
+            ],
+        ],
+        'ModifyInstanceNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceName' => [ 'type' => '', 'locationName' => 'instanceName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'RestoreInstanceResponseShape' => [
@@ -1304,10 +1447,13 @@ return [
             'members' => [
             ],
         ],
-        'GetBackupPolicyResponseShape' => [
+        'DescribeBackupPolicyResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GetBackupPolicyResultShape', ],
+                'startWindow' => [ 'type' => 'string', 'locationName' => 'startWindow', ],
+                'retentionPeriod' => [ 'type' => 'integer', 'locationName' => 'retentionPeriod', ],
+                'cycleMode' => [ 'type' => 'integer', 'locationName' => 'cycleMode', ],
+                'backupBinlog' => [ 'type' => 'string', 'locationName' => 'backupBinlog', ],
             ],
         ],
         'FailoverInstanceResponseShape' => [
@@ -1320,6 +1466,14 @@ return [
             'members' => [
                 'rebootMaster' => [ 'type' => '', 'locationName' => 'rebootMaster', ],
                 'rebootSlave' => [ 'type' => '', 'locationName' => 'rebootSlave', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ModifyConnectionModeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'connectionMode' => [ 'type' => 'string', 'locationName' => 'connectionMode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -1346,19 +1500,9 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'GetBackupPolicyRequestShape' => [
+        'ModifyConnectionModeResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'SetBackupPolicyRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'startWindow' => [ 'type' => '', 'locationName' => 'startWindow', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'CreateInstanceFromBackupResponseShape' => [
@@ -1371,6 +1515,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
+            ],
+        ],
+        'ModifyBackupPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startWindow' => [ 'type' => '', 'locationName' => 'startWindow', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'DeleteInstanceResponseShape' => [
@@ -1390,12 +1542,9 @@ return [
             'members' => [
             ],
         ],
-        'SetInstanceNameRequestShape' => [
+        'ModifyInstanceNameResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'instanceName' => [ 'type' => '', 'locationName' => 'instanceName', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'RestoreInstanceResultShape' => [
@@ -1415,6 +1564,11 @@ return [
                 'result' =>  [ 'shape' => 'DescribeInstanceAttributesResultShape', ],
             ],
         ],
+        'ModifyConnectionModeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DescribeInstancesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1422,19 +1576,15 @@ return [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
-        'SetInstanceNameResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'EnableInternetAccessResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],
         ],
-        'SetBackupPolicyResultShape' => [
+        'DescribeSlowLogAttributesResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'result' =>  [ 'shape' => 'DescribeSlowLogAttributesResultShape', ],
             ],
         ],
         'DescribeIndexPerformanceResponseShape' => [
@@ -1443,13 +1593,10 @@ return [
                 'result' =>  [ 'shape' => 'DescribeIndexPerformanceResultShape', ],
             ],
         ],
-        'DescribeQueryPerformanceResultShape' => [
+        'DescribeSlowLogsResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'queryPerformanceResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'QueryPerformanceResult', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'result' =>  [ 'shape' => 'DescribeSlowLogsResultShape', ],
             ],
         ],
         'DescribeIndexPerformanceResultShape' => [
@@ -1457,6 +1604,34 @@ return [
             'members' => [
                 'missingIndexResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'MissingIndexResult', ], ],
                 'indexPerformanceResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'IndexPerformanceResult', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'DescribeQueryPerformanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeQueryPerformanceResultShape', ],
+            ],
+        ],
+        'MissingIndexResult' => [
+            'type' => 'structure',
+            'members' => [
+                'db' => [ 'type' => 'string', 'locationName' => 'db', ],
+                'table' => [ 'type' => 'string', 'locationName' => 'table', ],
+                'equalityColumns' => [ 'type' => 'string', 'locationName' => 'equalityColumns', ],
+                'inequalityColumns' => [ 'type' => 'string', 'locationName' => 'inequalityColumns', ],
+                'includedColumns' => [ 'type' => 'string', 'locationName' => 'includedColumns', ],
+                'avgUserImpact' => [ 'type' => 'float', 'locationName' => 'avgUserImpact', ],
+                'userScans' => [ 'type' => 'integer', 'locationName' => 'userScans', ],
+                'userSeeks' => [ 'type' => 'integer', 'locationName' => 'userSeeks', ],
+            ],
+        ],
+        'DescribeQueryPerformanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryPerformanceResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'QueryPerformanceResult', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
@@ -1488,10 +1663,16 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'DescribeQueryPerformanceResponseShape' => [
+        'DescribeSlowLogsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeQueryPerformanceResultShape', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'QueryPerformanceResult' => [
@@ -1508,6 +1689,32 @@ return [
                 'lastRows' => [ 'type' => 'integer', 'locationName' => 'lastRows', ],
             ],
         ],
+        'DescribeSlowLogAttributesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'slowLogsAttributes' => [ 'type' => 'list', 'member' => [ 'shape' => 'SlowLogAttributes', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeSlowLogsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'slowLogs' => [ 'type' => 'list', 'member' => [ 'shape' => 'SlowLogDigest', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeSlowLogAttributesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'DescribeIndexPerformanceRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1517,19 +1724,6 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'MissingIndexResult' => [
-            'type' => 'structure',
-            'members' => [
-                'db' => [ 'type' => 'string', 'locationName' => 'db', ],
-                'table' => [ 'type' => 'string', 'locationName' => 'table', ],
-                'equalityColumns' => [ 'type' => 'string', 'locationName' => 'equalityColumns', ],
-                'inequalityColumns' => [ 'type' => 'string', 'locationName' => 'inequalityColumns', ],
-                'includedColumns' => [ 'type' => 'string', 'locationName' => 'includedColumns', ],
-                'avgUserImpact' => [ 'type' => 'float', 'locationName' => 'avgUserImpact', ],
-                'userScans' => [ 'type' => 'integer', 'locationName' => 'userScans', ],
-                'userSeeks' => [ 'type' => 'integer', 'locationName' => 'userSeeks', ],
             ],
         ],
         'ModifyWhiteListRequestShape' => [

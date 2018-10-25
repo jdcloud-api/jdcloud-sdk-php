@@ -11,15 +11,6 @@ return [
 //        'serviceId' => 'datastar',
     ],
     'operations' => [
-        'GetProfile' => [
-            'name' => 'GetProfile',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/profile/getProfile',
-            ],
-            'input' => [ 'shape' => 'GetProfileRequestShape', ],
-            'output' => [ 'shape' => 'GetProfileResponseShape', ],
-        ],
         'GetPackageId' => [
             'name' => 'GetPackageId',
             'http' => [
@@ -29,36 +20,43 @@ return [
             'input' => [ 'shape' => 'GetPackageIdRequestShape', ],
             'output' => [ 'shape' => 'GetPackageIdResponseShape', ],
         ],
+        'GetLargeScreenData' => [
+            'name' => 'GetLargeScreenData',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/largeScreen/getData',
+            ],
+            'input' => [ 'shape' => 'GetLargeScreenDataRequestShape', ],
+            'output' => [ 'shape' => 'GetLargeScreenDataResponseShape', ],
+        ],
     ],
     'shapes' => [
+        'RegionIndustryData' => [
+            'type' => 'structure',
+            'members' => [
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'industry' => [ 'type' => 'string', 'locationName' => 'industry', ],
+                'firstIndex' => [ 'type' => 'string', 'locationName' => 'firstIndex', ],
+                'secondIndex' => [ 'type' => 'string', 'locationName' => 'secondIndex', ],
+                'dateTime' => [ 'type' => 'string', 'locationName' => 'dateTime', ],
+                'dateType' => [ 'type' => 'string', 'locationName' => 'dateType', ],
+                'indexValue' => [ 'type' => 'string', 'locationName' => 'indexValue', ],
+                'valueUnit' => [ 'type' => 'string', 'locationName' => 'valueUnit', ],
+                'attrType' => [ 'type' => 'string', 'locationName' => 'attrType', ],
+                'attrValue' => [ 'type' => 'string', 'locationName' => 'attrValue', ],
+                'attrValueExt' => [ 'type' => 'string', 'locationName' => 'attrValueExt', ],
+            ],
+        ],
+        'RegionIndustryDataList' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'RegionIndustryData', ], ],
+            ],
+        ],
         'TestOpenApiReq' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-            ],
-        ],
-        'GetProfileResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetProfileResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetProfileResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
-            ],
-        ],
-        'GetProfileRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
-                'labelCode' => [ 'type' => 'string', 'locationName' => 'labelCode', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'GetPackageIdRequestShape' => [
@@ -81,6 +79,33 @@ return [
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'data' => [ 'type' => 'string', 'locationName' => 'data', ],
+            ],
+        ],
+        'GetLargeScreenDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'industry' => [ 'type' => 'string', 'locationName' => 'industry', ],
+                'startDate' => [ 'type' => 'string', 'locationName' => 'startDate', ],
+                'endDate' => [ 'type' => 'string', 'locationName' => 'endDate', ],
+                'firstIndex' => [ 'type' => 'string', 'locationName' => 'firstIndex', ],
+                'secondIndex' => [ 'type' => 'string', 'locationName' => 'secondIndex', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetLargeScreenDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetLargeScreenDataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetLargeScreenDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'data' =>  [ 'shape' => 'RegionIndustryDataList', ],
             ],
         ],
     ],
