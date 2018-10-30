@@ -20,6 +20,8 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with clouddnsservice.
  *
+ * @method \Jdcloud\Result getActionLog(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getActionLogAsync(array $args = [])
  * @method \Jdcloud\Result getDomains(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getDomainsAsync(array $args = [])
  * @method \Jdcloud\Result addDomain(array $args = [])
@@ -42,6 +44,18 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise updateRRAsync(array $args = [])
  * @method \Jdcloud\Result operateRR(array $args = [])
  * @method \GuzzleHttp\Promise\Promise operateRRAsync(array $args = [])
+ * @method \Jdcloud\Result addUserView(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise addUserViewAsync(array $args = [])
+ * @method \Jdcloud\Result delUserView(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise delUserViewAsync(array $args = [])
+ * @method \Jdcloud\Result getUserView(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getUserViewAsync(array $args = [])
+ * @method \Jdcloud\Result addUserViewIP(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise addUserViewIPAsync(array $args = [])
+ * @method \Jdcloud\Result delUserViewIP(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise delUserViewIPAsync(array $args = [])
+ * @method \Jdcloud\Result getUserViewIP(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getUserViewIPAsync(array $args = [])
  * @method \Jdcloud\Result getMonitor(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getMonitorAsync(array $args = [])
  * @method \Jdcloud\Result addMonitor(array $args = [])

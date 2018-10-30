@@ -379,6 +379,7 @@ return [
         'Quota' => [
             'type' => 'structure',
             'members' => [
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
                 'limit' => [ 'type' => 'integer', 'locationName' => 'limit', ],
                 'used' => [ 'type' => 'integer', 'locationName' => 'used', ],
             ],
