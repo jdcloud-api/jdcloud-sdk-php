@@ -1,15 +1,15 @@
 <?php
 /**
- * Datastar
+ * Jdw
  *
  * @category Jdcloud
- * @package  Jdcloud\Datastar
+ * @package  Jdcloud\Jdw
  * @author   Jdcloud <jdcloud-api@jd.com>
  * @license  Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0
  * @link     https://www.jdcloud.com/help/faq
  */
 
-namespace Jdcloud\Datastar;
+namespace Jdcloud\Jdw;
 
 use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
@@ -18,18 +18,10 @@ use Jdcloud\Api\ApiProvider;
 use Jdcloud\PresignUrlMiddleware;
 
 /**
- * Client used to interact with datastar.
+ * Client used to interact with jdw.
  *
- * @method \Jdcloud\Result getPackageId(array $args = [])
- * @method \GuzzleHttp\Promise\Promise getPackageIdAsync(array $args = [])
- * @method \Jdcloud\Result getLargeScreenData(array $args = [])
- * @method \GuzzleHttp\Promise\Promise getLargeScreenDataAsync(array $args = [])
- * @method \Jdcloud\Result create(array $args = [])
- * @method \GuzzleHttp\Promise\Promise createAsync(array $args = [])
- * @method \Jdcloud\Result getResult(array $args = [])
- * @method \GuzzleHttp\Promise\Promise getResultAsync(array $args = [])
  */
-class DatastarClient extends JdCloudClient
+class JdwClient extends JdCloudClient
 {
     public function __construct(array $args)
     {
@@ -41,11 +33,11 @@ class DatastarClient extends JdCloudClient
                     [
                         'operations' => [
                         ],
-                        'service' => 'datastar',
+                        'service' => 'jdw',
                         'presign_param' => 'PresignedUrl',
                     ]
                 ),
-                'datastar'
+                'jdw'
             );
         };
 

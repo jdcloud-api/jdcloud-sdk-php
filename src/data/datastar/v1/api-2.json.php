@@ -29,6 +29,24 @@ return [
             'input' => [ 'shape' => 'GetLargeScreenDataRequestShape', ],
             'output' => [ 'shape' => 'GetLargeScreenDataResponseShape', ],
         ],
+        'Create' => [
+            'name' => 'Create',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/v1/regions/{regionId}/profileMultiLevel/create',
+            ],
+            'input' => [ 'shape' => 'CreateRequestShape', ],
+            'output' => [ 'shape' => 'CreateResponseShape', ],
+        ],
+        'GetResult' => [
+            'name' => 'GetResult',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/v1/regions/{regionId}/profileMultiLevel/getResult',
+            ],
+            'input' => [ 'shape' => 'GetResultRequestShape', ],
+            'output' => [ 'shape' => 'GetResultResponseShape', ],
+        ],
     ],
     'shapes' => [
         'RegionIndustryData' => [
@@ -106,6 +124,52 @@ return [
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'data' =>  [ 'shape' => 'RegionIndustryDataList', ],
+            ],
+        ],
+        'GetResultResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
+            ],
+        ],
+        'CreateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'mallId' => [ 'type' => 'string', 'locationName' => 'mallId', ],
+                'profileId' => [ 'type' => 'string', 'locationName' => 'profileId', ],
+                'dimensions' => [ 'type' => 'string', 'locationName' => 'dimensions', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetResultRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'profileSelectRecordId' => [ 'type' => 'string', 'locationName' => 'profileSelectRecordId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
+            ],
+        ],
+        'GetResultResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetResultResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
     ],

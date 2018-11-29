@@ -20,6 +20,12 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with ias.
  *
+ * @method \Jdcloud\Result apps(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise appsAsync(array $args = [])
+ * @method \Jdcloud\Result appDetail(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise appDetailAsync(array $args = [])
+ * @method \Jdcloud\Result state(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise stateAsync(array $args = [])
  * @method \Jdcloud\Result createApp(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createAppAsync(array $args = [])
  * @method \Jdcloud\Result getApp(array $args = [])
