@@ -26,6 +26,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise createElasticIpsAsync(array $args = [])
  * @method \Jdcloud\Result describeElasticIp(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeElasticIpAsync(array $args = [])
+ * @method \Jdcloud\Result modifyElasticIp(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise modifyElasticIpAsync(array $args = [])
  * @method \Jdcloud\Result deleteElasticIp(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteElasticIpAsync(array $args = [])
  * @method \Jdcloud\Result describeNetworkAcls(array $args = [])

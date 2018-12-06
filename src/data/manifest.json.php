@@ -89,6 +89,10 @@ return [
         'namespace' => 'Nc',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'cdn' => [
+        'namespace' => 'Cdn',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'jdw' => [
         'namespace' => 'Jdw',
         'versions' => [ 'latest' => 'v1', ],

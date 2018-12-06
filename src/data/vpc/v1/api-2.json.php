@@ -38,6 +38,15 @@ return [
             'input' => [ 'shape' => 'DescribeElasticIpRequestShape', ],
             'output' => [ 'shape' => 'DescribeElasticIpResponseShape', ],
         ],
+        'ModifyElasticIp' => [
+            'name' => 'ModifyElasticIp',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/elasticIps/{elasticIpId}',
+            ],
+            'input' => [ 'shape' => 'ModifyElasticIpRequestShape', ],
+            'output' => [ 'shape' => 'ModifyElasticIpResponseShape', ],
+        ],
         'DeleteElasticIp' => [
             'name' => 'DeleteElasticIp',
             'http' => [
@@ -668,6 +677,7 @@ return [
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
             ],
         ],
         'ModifyElasticIpSpec' => [
@@ -1038,6 +1048,20 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ModifyElasticIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyElasticIpRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
+            ],
+        ],
         'CreateElasticIpsRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1052,6 +1076,11 @@ return [
             'members' => [
                 'elasticIpIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyElasticIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DescribeElasticIpRequestShape' => [
