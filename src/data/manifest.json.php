@@ -25,6 +25,10 @@ return [
         'namespace' => 'Ias',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'function' => [
+        'namespace' => 'Function',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'mps' => [
         'namespace' => 'Mps',
         'versions' => [ 'latest' => 'v1', ],
@@ -43,6 +47,10 @@ return [
     ],
     'ipanti' => [
         'namespace' => 'Ipanti',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'httpdns' => [
+        'namespace' => 'Httpdns',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'rds' => [
@@ -107,6 +115,10 @@ return [
     ],
     'streamcomputer' => [
         'namespace' => 'Streamcomputer',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'ams' => [
+        'namespace' => 'Ams',
         'versions' => [ 'latest' => 'v1', ],
     ],
 

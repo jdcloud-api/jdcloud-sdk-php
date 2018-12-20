@@ -38,15 +38,6 @@ return [
             'input' => [ 'shape' => 'CreateAlarmRequestShape', ],
             'output' => [ 'shape' => 'CreateAlarmResponseShape', ],
         ],
-        'BatchDeleteAlarms' => [
-            'name' => 'BatchDeleteAlarms',
-            'http' => [
-                'method' => 'DELETE',
-                'requestUri' => '/v1/regions/{regionId}/alarms',
-            ],
-            'input' => [ 'shape' => 'BatchDeleteAlarmsRequestShape', ],
-            'output' => [ 'shape' => 'BatchDeleteAlarmsResponseShape', ],
-        ],
         'DescribeAlarmsByID' => [
             'name' => 'DescribeAlarmsByID',
             'http' => [
@@ -92,33 +83,6 @@ return [
             'input' => [ 'shape' => 'EnableAlarmRequestShape', ],
             'output' => [ 'shape' => 'EnableAlarmResponseShape', ],
         ],
-        'BatchCreateAlarms' => [
-            'name' => 'BatchCreateAlarms',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/alarms/batch',
-            ],
-            'input' => [ 'shape' => 'BatchCreateAlarmsRequestShape', ],
-            'output' => [ 'shape' => 'BatchCreateAlarmsResponseShape', ],
-        ],
-        'BatchDisableAlarms' => [
-            'name' => 'BatchDisableAlarms',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/alarms/disable',
-            ],
-            'input' => [ 'shape' => 'BatchDisableAlarmsRequestShape', ],
-            'output' => [ 'shape' => 'BatchDisableAlarmsResponseShape', ],
-        ],
-        'BatchEnableAlarms' => [
-            'name' => 'BatchEnableAlarms',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/alarms/enable',
-            ],
-            'input' => [ 'shape' => 'BatchEnableAlarmsRequestShape', ],
-            'output' => [ 'shape' => 'BatchEnableAlarmsResponseShape', ],
-        ],
         'DescribeAlarmHistoryAllRegion' => [
             'name' => 'DescribeAlarmHistoryAllRegion',
             'http' => [
@@ -127,204 +91,6 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeAlarmHistoryAllRegionRequestShape', ],
             'output' => [ 'shape' => 'DescribeAlarmHistoryAllRegionResponseShape', ],
-        ],
-        'DescribeMetricsForCreateTemplate' => [
-            'name' => 'DescribeMetricsForCreateTemplate',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/metricsForCreateTemplate',
-            ],
-            'input' => [ 'shape' => 'DescribeMetricsForCreateTemplateRequestShape', ],
-            'output' => [ 'shape' => 'DescribeMetricsForCreateTemplateResponseShape', ],
-        ],
-        'DescribeTemplates' => [
-            'name' => 'DescribeTemplates',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/template',
-            ],
-            'input' => [ 'shape' => 'DescribeTemplatesRequestShape', ],
-            'output' => [ 'shape' => 'DescribeTemplatesResponseShape', ],
-        ],
-        'CreateTemplate' => [
-            'name' => 'CreateTemplate',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/template',
-            ],
-            'input' => [ 'shape' => 'CreateTemplateRequestShape', ],
-            'output' => [ 'shape' => 'CreateTemplateResponseShape', ],
-        ],
-        'UpdateTemplate' => [
-            'name' => 'UpdateTemplate',
-            'http' => [
-                'method' => 'PATCH',
-                'requestUri' => '/v1/template',
-            ],
-            'input' => [ 'shape' => 'UpdateTemplateRequestShape', ],
-            'output' => [ 'shape' => 'UpdateTemplateResponseShape', ],
-        ],
-        'DeleteTemplates' => [
-            'name' => 'DeleteTemplates',
-            'http' => [
-                'method' => 'DELETE',
-                'requestUri' => '/v1/template',
-            ],
-            'input' => [ 'shape' => 'DeleteTemplatesRequestShape', ],
-            'output' => [ 'shape' => 'DeleteTemplatesResponseShape', ],
-        ],
-        'DescribeTemplatesByTemplateID' => [
-            'name' => 'DescribeTemplatesByTemplateID',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/template/{templateId}',
-            ],
-            'input' => [ 'shape' => 'DescribeTemplatesByTemplateIDRequestShape', ],
-            'output' => [ 'shape' => 'DescribeTemplatesByTemplateIDResponseShape', ],
-        ],
-        'ApplyTemplate' => [
-            'name' => 'ApplyTemplate',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/template/{templateId}/resources',
-            ],
-            'input' => [ 'shape' => 'ApplyTemplateRequestShape', ],
-            'output' => [ 'shape' => 'ApplyTemplateResponseShape', ],
-        ],
-        'DescribeMetricDataAm' => [
-            'name' => 'DescribeMetricDataAm',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/am/metricData',
-            ],
-            'input' => [ 'shape' => 'DescribeMetricDataAmRequestShape', ],
-            'output' => [ 'shape' => 'DescribeMetricDataAmResponseShape', ],
-        ],
-        'DescribeProbeTasks' => [
-            'name' => 'DescribeProbeTasks',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/am/probeTask',
-            ],
-            'input' => [ 'shape' => 'DescribeProbeTasksRequestShape', ],
-            'output' => [ 'shape' => 'DescribeProbeTasksResponseShape', ],
-        ],
-        'CreateProbeTask' => [
-            'name' => 'CreateProbeTask',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/am/probeTask',
-            ],
-            'input' => [ 'shape' => 'CreateProbeTaskRequestShape', ],
-            'output' => [ 'shape' => 'CreateProbeTaskResponseShape', ],
-        ],
-        'DeleteProbeTask' => [
-            'name' => 'DeleteProbeTask',
-            'http' => [
-                'method' => 'DELETE',
-                'requestUri' => '/v1/am/probeTask',
-            ],
-            'input' => [ 'shape' => 'DeleteProbeTaskRequestShape', ],
-            'output' => [ 'shape' => 'DeleteProbeTaskResponseShape', ],
-        ],
-        'DescribeProbeTask' => [
-            'name' => 'DescribeProbeTask',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/am/probeTask/{probeTaskID}',
-            ],
-            'input' => [ 'shape' => 'DescribeProbeTaskRequestShape', ],
-            'output' => [ 'shape' => 'DescribeProbeTaskResponseShape', ],
-        ],
-        'UpdateProbeTask' => [
-            'name' => 'UpdateProbeTask',
-            'http' => [
-                'method' => 'PATCH',
-                'requestUri' => '/v1/am/probeTask/{probeTaskID}',
-            ],
-            'input' => [ 'shape' => 'UpdateProbeTaskRequestShape', ],
-            'output' => [ 'shape' => 'UpdateProbeTaskResponseShape', ],
-        ],
-        'DescribeProbeHistory' => [
-            'name' => 'DescribeProbeHistory',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/am/probeTask/{probeTaskID}/probe/{probeID}',
-            ],
-            'input' => [ 'shape' => 'DescribeProbeHistoryRequestShape', ],
-            'output' => [ 'shape' => 'DescribeProbeHistoryResponseShape', ],
-        ],
-        'DiscribeProbes' => [
-            'name' => 'DiscribeProbes',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/am/probeTask/{probeTaskID}/probeList',
-            ],
-            'input' => [ 'shape' => 'DiscribeProbesRequestShape', ],
-            'output' => [ 'shape' => 'DiscribeProbesResponseShape', ],
-        ],
-        'ProbeTaskEnable' => [
-            'name' => 'ProbeTaskEnable',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/am/probeTask/enable',
-            ],
-            'input' => [ 'shape' => 'ProbeTaskEnableRequestShape', ],
-            'output' => [ 'shape' => 'ProbeTaskEnableResponseShape', ],
-        ],
-        'DescribeAlarmHistoryAllRegionCm' => [
-            'name' => 'DescribeAlarmHistoryAllRegionCm',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/cm/alarmHistory',
-            ],
-            'input' => [ 'shape' => 'DescribeAlarmHistoryAllRegionCmRequestShape', ],
-            'output' => [ 'shape' => 'DescribeAlarmHistoryAllRegionCmResponseShape', ],
-        ],
-        'DescribeAllRegionAlarmsCm' => [
-            'name' => 'DescribeAllRegionAlarmsCm',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/cm/alarms',
-            ],
-            'input' => [ 'shape' => 'DescribeAllRegionAlarmsCmRequestShape', ],
-            'output' => [ 'shape' => 'DescribeAllRegionAlarmsCmResponseShape', ],
-        ],
-        'DescribeIsUserNew' => [
-            'name' => 'DescribeIsUserNew',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/cm/users/isNew',
-            ],
-            'input' => [ 'shape' => 'DescribeIsUserNewRequestShape', ],
-            'output' => [ 'shape' => 'DescribeIsUserNewResponseShape', ],
-        ],
-        'DescribeAlarmHistoryCm' => [
-            'name' => 'DescribeAlarmHistoryCm',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/cm/alarmHistory',
-            ],
-            'input' => [ 'shape' => 'DescribeAlarmHistoryCmRequestShape', ],
-            'output' => [ 'shape' => 'DescribeAlarmHistoryCmResponseShape', ],
-        ],
-        'DescribeAlarmsCm' => [
-            'name' => 'DescribeAlarmsCm',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/cm/alarms',
-            ],
-            'input' => [ 'shape' => 'DescribeAlarmsCmRequestShape', ],
-            'output' => [ 'shape' => 'DescribeAlarmsCmResponseShape', ],
-        ],
-        'CreateAlarmCm' => [
-            'name' => 'CreateAlarmCm',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/cm/alarms',
-            ],
-            'input' => [ 'shape' => 'CreateAlarmCmRequestShape', ],
-            'output' => [ 'shape' => 'CreateAlarmCmResponseShape', ],
         ],
         'DeleteAlarmsCm' => [
             'name' => 'DeleteAlarmsCm',
@@ -335,78 +101,6 @@ return [
             'input' => [ 'shape' => 'DeleteAlarmsCmRequestShape', ],
             'output' => [ 'shape' => 'DeleteAlarmsCmResponseShape', ],
         ],
-        'DescribeAlarmsByID' => [
-            'name' => 'DescribeAlarmsByID',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/cm/alarms/{alarmId}',
-            ],
-            'input' => [ 'shape' => 'DescribeAlarmsByIDRequestShape', ],
-            'output' => [ 'shape' => 'DescribeAlarmsByIDResponseShape', ],
-        ],
-        'UpdateAlarmCm' => [
-            'name' => 'UpdateAlarmCm',
-            'http' => [
-                'method' => 'PATCH',
-                'requestUri' => '/v1/regions/{regionId}/cm/alarms/{alarmId}',
-            ],
-            'input' => [ 'shape' => 'UpdateAlarmCmRequestShape', ],
-            'output' => [ 'shape' => 'UpdateAlarmCmResponseShape', ],
-        ],
-        'DescribeNamespaces' => [
-            'name' => 'DescribeNamespaces',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/cm/namespaces',
-            ],
-            'input' => [ 'shape' => 'DescribeNamespacesRequestShape', ],
-            'output' => [ 'shape' => 'DescribeNamespacesResponseShape', ],
-        ],
-        'DeleteNamespace' => [
-            'name' => 'DeleteNamespace',
-            'http' => [
-                'method' => 'DELETE',
-                'requestUri' => '/v1/regions/{regionId}/cm/namespaces/{namespaceUID}',
-            ],
-            'input' => [ 'shape' => 'DeleteNamespaceRequestShape', ],
-            'output' => [ 'shape' => 'DeleteNamespaceResponseShape', ],
-        ],
-        'DescribeObjsByNsUID' => [
-            'name' => 'DescribeObjsByNsUID',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/cm/namespaces/{namespaceUID}/objs',
-            ],
-            'input' => [ 'shape' => 'DescribeObjsByNsUIDRequestShape', ],
-            'output' => [ 'shape' => 'DescribeObjsByNsUIDResponseShape', ],
-        ],
-        'DeleteObj' => [
-            'name' => 'DeleteObj',
-            'http' => [
-                'method' => 'DELETE',
-                'requestUri' => '/v1/regions/{regionId}/cm/namespaces/{namespaceUID}/objs',
-            ],
-            'input' => [ 'shape' => 'DeleteObjRequestShape', ],
-            'output' => [ 'shape' => 'DeleteObjResponseShape', ],
-        ],
-        'DescribeObj' => [
-            'name' => 'DescribeObj',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/cm/namespaces/{namespaceUID}/objs/{objUID}',
-            ],
-            'input' => [ 'shape' => 'DescribeObjRequestShape', ],
-            'output' => [ 'shape' => 'DescribeObjResponseShape', ],
-        ],
-        'DescribeMetricDataCm' => [
-            'name' => 'DescribeMetricDataCm',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/cm/namespaces/{namespaceUID}/objs/{objUID}/metricData',
-            ],
-            'input' => [ 'shape' => 'DescribeMetricDataCmRequestShape', ],
-            'output' => [ 'shape' => 'DescribeMetricDataCmResponseShape', ],
-        ],
         'DescribeCmMetricDataByTagSpec' => [
             'name' => 'DescribeCmMetricDataByTagSpec',
             'http' => [
@@ -415,15 +109,6 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeCmMetricDataByTagSpecRequestShape', ],
             'output' => [ 'shape' => 'DescribeCmMetricDataByTagSpecResponseShape', ],
-        ],
-        'DescribeMetricsCm' => [
-            'name' => 'DescribeMetricsCm',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/cm/namespaces/{namespaceUID}/objs/{objUID}/metrics',
-            ],
-            'input' => [ 'shape' => 'DescribeMetricsCmRequestShape', ],
-            'output' => [ 'shape' => 'DescribeMetricsCmResponseShape', ],
         ],
         'DescribeMetrics' => [
             'name' => 'DescribeMetrics',
@@ -443,15 +128,6 @@ return [
             'input' => [ 'shape' => 'DescribeMetricsForCreateAlarmRequestShape', ],
             'output' => [ 'shape' => 'DescribeMetricsForCreateAlarmResponseShape', ],
         ],
-        'DescribeSqlserverBlockProcess' => [
-            'name' => 'DescribeSqlserverBlockProcess',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/metrics/{metric}/blockProcess',
-            ],
-            'input' => [ 'shape' => 'DescribeSqlserverBlockProcessRequestShape', ],
-            'output' => [ 'shape' => 'DescribeSqlserverBlockProcessResponseShape', ],
-        ],
         'LastDownsample' => [
             'name' => 'LastDownsample',
             'http' => [
@@ -470,15 +146,6 @@ return [
             'input' => [ 'shape' => 'DescribeMetricDataRequestShape', ],
             'output' => [ 'shape' => 'DescribeMetricDataResponseShape', ],
         ],
-        'BatchDescribeMetricData' => [
-            'name' => 'BatchDescribeMetricData',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/metricsData',
-            ],
-            'input' => [ 'shape' => 'BatchDescribeMetricDataRequestShape', ],
-            'output' => [ 'shape' => 'BatchDescribeMetricDataResponseShape', ],
-        ],
         'PutMetricData' => [
             'name' => 'PutMetricData',
             'http' => [
@@ -487,33 +154,6 @@ return [
             ],
             'input' => [ 'shape' => 'PutMetricDataRequestShape', ],
             'output' => [ 'shape' => 'PutMetricDataResponseShape', ],
-        ],
-        'DescribeAlarmingRules' => [
-            'name' => 'DescribeAlarmingRules',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/overview/queryAlarmingRules',
-            ],
-            'input' => [ 'shape' => 'DescribeAlarmingRulesRequestShape', ],
-            'output' => [ 'shape' => 'DescribeAlarmingRulesResponseShape', ],
-        ],
-        'DescribeRuleCounting' => [
-            'name' => 'DescribeRuleCounting',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/overview/queryRuleCountings',
-            ],
-            'input' => [ 'shape' => 'DescribeRuleCountingRequestShape', ],
-            'output' => [ 'shape' => 'DescribeRuleCountingResponseShape', ],
-        ],
-        'DescribeTopNSlowSql' => [
-            'name' => 'DescribeTopNSlowSql',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/topNSql',
-            ],
-            'input' => [ 'shape' => 'DescribeTopNSlowSqlRequestShape', ],
-            'output' => [ 'shape' => 'DescribeTopNSlowSqlResponseShape', ],
         ],
     ],
     'shapes' => [
@@ -1732,155 +1372,6 @@ return [
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
             ],
         ],
-        'BatchEnableAlarmsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'BatchEnableAlarmsResultShape', ],
-            ],
-        ],
-        'EnableAlarmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'EnableAlarmResultShape', ],
-            ],
-        ],
-        'BatchCreateAlarmsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'contacts' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseContact', ], ],
-                'datacenter' => [ 'type' => 'string', 'locationName' => 'datacenter', ],
-                'enabled' => [ 'type' => 'long', 'locationName' => 'enabled', ],
-                'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'ruleType' => [ 'type' => 'long', 'locationName' => 'ruleType', ],
-                'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseRule', ], ],
-                'saveTemplate' => [ 'type' => 'boolean', 'locationName' => 'saveTemplate', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
-                'templateServiceCode' => [ 'type' => 'string', 'locationName' => 'templateServiceCode', ],
-                'webHookContent' => [ 'type' => 'string', 'locationName' => 'webHookContent', ],
-                'webHookProtocol' => [ 'type' => 'string', 'locationName' => 'webHookProtocol', ],
-                'webHookSecret' => [ 'type' => 'string', 'locationName' => 'webHookSecret', ],
-                'webHookUrl' => [ 'type' => 'string', 'locationName' => 'webHookUrl', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'UpdateAlarmRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'contacts' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseContact', ], ],
-                'rule' =>  [ 'shape' => 'BaseRule', ],
-                'webHookContent' => [ 'type' => 'string', 'locationName' => 'webHookContent', ],
-                'webHookProtocol' => [ 'type' => 'string', 'locationName' => 'webHookProtocol', ],
-                'webHookSecret' => [ 'type' => 'string', 'locationName' => 'webHookSecret', ],
-                'webHookUrl' => [ 'type' => 'string', 'locationName' => 'webHookUrl', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
-            ],
-        ],
-        'BatchEnableAlarmsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeAlarmsByIDRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
-            ],
-        ],
-        'UpdateAlarmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DescribeAlarmHistoryRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
-                'alarming' => [ 'type' => 'long', 'locationName' => 'alarming', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeAlarmHistoryAllRegionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeAlarmHistoryAllRegionResultShape', ],
-            ],
-        ],
-        'CreateAlarmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarmIdList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'DisableAlarmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'CreateAlarmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'CreateAlarmResultShape', ],
-            ],
-        ],
-        'DescribeAlarmsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarmList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DescribedAlarm', ], ],
-                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
-            ],
-        ],
-        'BatchDeleteAlarmsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'BatchDeleteAlarmsResultShape', ],
-            ],
-        ],
-        'DescribeAlarmContactsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-                'referenceType' => [ 'type' => 'long', 'locationName' => 'referenceType', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
-            ],
-        ],
-        'BatchCreateAlarmsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarmIDList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'BatchDeleteAlarmsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DescribeAlarmContactsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'contactsList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DescribedNoticeContacts', ], ],
-                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
-            ],
-        ],
         'DescribeAlarmsRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1904,11 +1395,31 @@ return [
                 'result' =>  [ 'shape' => 'DescribeAlarmHistoryResultShape', ],
             ],
         ],
-        'BatchCreateAlarmsResponseShape' => [
+        'EnableAlarmResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'BatchCreateAlarmsResultShape', ],
+                'result' =>  [ 'shape' => 'EnableAlarmResultShape', ],
+            ],
+        ],
+        'UpdateAlarmRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'contacts' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseContact', ], ],
+                'rule' =>  [ 'shape' => 'BaseRule', ],
+                'webHookContent' => [ 'type' => 'string', 'locationName' => 'webHookContent', ],
+                'webHookProtocol' => [ 'type' => 'string', 'locationName' => 'webHookProtocol', ],
+                'webHookSecret' => [ 'type' => 'string', 'locationName' => 'webHookSecret', ],
+                'webHookUrl' => [ 'type' => 'string', 'locationName' => 'webHookUrl', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
+            ],
+        ],
+        'DescribeAlarmsByIDRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
             ],
         ],
         'DescribeAlarmsResponseShape' => [
@@ -1918,10 +1429,23 @@ return [
                 'result' =>  [ 'shape' => 'DescribeAlarmsResultShape', ],
             ],
         ],
-        'BatchDisableAlarmsRequestShape' => [
+        'UpdateAlarmResultShape' => [
             'type' => 'structure',
             'members' => [
-                'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeAlarmHistoryRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
+                'alarming' => [ 'type' => 'long', 'locationName' => 'alarming', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1944,6 +1468,13 @@ return [
             'members' => [
             ],
         ],
+        'DescribeAlarmHistoryAllRegionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeAlarmHistoryAllRegionResultShape', ],
+            ],
+        ],
         'DescribeAlarmContactsResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1951,11 +1482,15 @@ return [
                 'result' =>  [ 'shape' => 'DescribeAlarmContactsResultShape', ],
             ],
         ],
-        'BatchDeleteAlarmsRequestShape' => [
+        'CreateAlarmResultShape' => [
             'type' => 'structure',
             'members' => [
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'alarmIdList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DisableAlarmResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DisableAlarmResponseShape' => [
@@ -1979,13 +1514,6 @@ return [
                 'total' => [ 'type' => 'long', 'locationName' => 'total', ],
             ],
         ],
-        'BatchDisableAlarmsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'BatchDisableAlarmsResultShape', ],
-            ],
-        ],
         'DescribeAlarmsByIDResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1993,16 +1521,35 @@ return [
                 'result' =>  [ 'shape' => 'DescribeAlarmsByIDResultShape', ],
             ],
         ],
+        'DescribeAlarmsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'alarmList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DescribedAlarm', ], ],
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+            ],
+        ],
+        'CreateAlarmResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateAlarmResultShape', ],
+            ],
+        ],
+        'DescribeAlarmContactsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'referenceType' => [ 'type' => 'long', 'locationName' => 'referenceType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
+            ],
+        ],
         'DisableAlarmRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
-            ],
-        ],
-        'BatchDisableAlarmsResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'EnableAlarmRequestShape' => [
@@ -2025,11 +1572,6 @@ return [
                 'result' =>  [ 'shape' => 'UpdateAlarmResultShape', ],
             ],
         ],
-        'BatchEnableAlarmsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'CreateAlarmRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2038,393 +1580,11 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DescribeTemplatesResultShape' => [
+        'DescribeAlarmContactsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
-                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-                'templateCount' => [ 'type' => 'long', 'locationName' => 'templateCount', ],
-                'templateList' => [ 'type' => 'list', 'member' => [ 'shape' => 'TemplateVo', ], ],
-            ],
-        ],
-        'UpdateTemplateResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'UpdateTemplateResultShape', ],
-            ],
-        ],
-        'DescribeTemplatesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeTemplatesResultShape', ],
-            ],
-        ],
-        'DescribeMetricsForCreateTemplateResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'metrics' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricInfo', ], ],
-            ],
-        ],
-        'DescribeTemplatesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
-                'templateType' => [ 'type' => 'long', 'locationName' => 'templateType', ],
-            ],
-        ],
-        'DescribeMetricsForCreateTemplateResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeMetricsForCreateTemplateResultShape', ],
-            ],
-        ],
-        'CreateTemplateResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
-            ],
-        ],
-        'DescribeTemplatesByTemplateIDResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeTemplatesByTemplateIDResultShape', ],
-            ],
-        ],
-        'DeleteTemplatesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'templateIds' => [ 'type' => 'string', 'locationName' => 'templateIds', ],
-            ],
-        ],
-        'ApplyTemplateRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'contacts' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseContact', ], ],
-                'dataCenters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'tagsArray' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
-                'templateType' => [ 'type' => 'long', 'locationName' => 'templateType', ],
-                'webHookContent' => [ 'type' => 'string', 'locationName' => 'webHookContent', ],
-                'webHookProtocol' => [ 'type' => 'string', 'locationName' => 'webHookProtocol', ],
-                'webHookSecret' => [ 'type' => 'string', 'locationName' => 'webHookSecret', ],
-                'webHookUrl' => [ 'type' => 'string', 'locationName' => 'webHookUrl', ],
-                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
-            ],
-        ],
-        'ApplyTemplateResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'ApplyTemplateResultShape', ],
-            ],
-        ],
-        'ApplyTemplateResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ruleIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-            ],
-        ],
-        'DescribeTemplatesByTemplateIDRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'templateType' => [ 'type' => 'long', 'locationName' => 'templateType', ],
-                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
-            ],
-        ],
-        'DescribeMetricsForCreateTemplateRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-            ],
-        ],
-        'DeleteTemplatesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-            ],
-        ],
-        'DeleteTemplatesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DeleteTemplatesResultShape', ],
-            ],
-        ],
-        'DescribeTemplatesByTemplateIDResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'template' =>  [ 'shape' => 'TemplateVo', ],
-            ],
-        ],
-        'UpdateTemplateResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
-            ],
-        ],
-        'CreateTemplateRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'ruleServiceCode' => [ 'type' => 'string', 'locationName' => 'ruleServiceCode', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
-                'templateRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseRuleT', ], ],
-            ],
-        ],
-        'CreateTemplateResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'CreateTemplateResultShape', ],
-            ],
-        ],
-        'UpdateTemplateRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'ruleServiceCode' => [ 'type' => 'string', 'locationName' => 'ruleServiceCode', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
-                'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
-                'templateRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseRuleT', ], ],
-            ],
-        ],
-        'DescribeMetricDataAmRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
-            ],
-        ],
-        'UpdateProbeTaskRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'address' => [ 'type' => 'string', 'locationName' => 'address', ],
-                'frequency' => [ 'type' => 'long', 'locationName' => 'frequency', ],
-                'httpBody' => [ 'type' => 'string', 'locationName' => 'httpBody', ],
-                'httpCookie' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyValue', ], ],
-                'httpHeader' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyValue', ], ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'port' => [ 'type' => 'long', 'locationName' => 'port', ],
-                'probes' => [ 'type' => 'list', 'member' => [ 'shape' => 'Probe', ], ],
-                'targetId' => [ 'type' => 'string', 'locationName' => 'targetId', ],
-                'targetRegion' => [ 'type' => 'string', 'locationName' => 'targetRegion', ],
-                'timeout' => [ 'type' => 'long', 'locationName' => 'timeout', ],
-                'probeTaskID' => [ 'type' => 'string', 'locationName' => 'probeTaskID', ],
-            ],
-        ],
-        'DescribeProbeHistoryResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'events' => [ 'type' => 'list', 'member' => [ 'shape' => 'Event', ], ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'uuid' => [ 'type' => 'string', 'locationName' => 'uuid', ],
-            ],
-        ],
-        'DeleteProbeTaskResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DeleteProbeTaskResultShape', ],
-            ],
-        ],
-        'ProbeTaskEnableRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
-                'taskId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'DescribeProbeHistoryRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'probeTaskID' => [ 'type' => 'string', 'locationName' => 'probeTaskID', ],
-                'probeID' => [ 'type' => 'string', 'locationName' => 'probeID', ],
-            ],
-        ],
-        'DescribeProbeTasksRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'type' => [ 'type' => 'long', 'locationName' => 'type', ],
-                'probeTaskID' => [ 'type' => 'string', 'locationName' => 'probeTaskID', ],
-            ],
-        ],
-        'DiscribeProbesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'probeTaskID' => [ 'type' => 'string', 'locationName' => 'probeTaskID', ],
-            ],
-        ],
-        'DescribeMetricDataAmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'metricDatas' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricData', ], ],
-            ],
-        ],
-        'DiscribeProbesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DiscribeProbesResultShape', ],
-            ],
-        ],
-        'CreateProbeTaskResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'CreateProbeTaskResultShape', ],
-            ],
-        ],
-        'DeleteProbeTaskRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'probeTaskIDs' => [ 'type' => 'string', 'locationName' => 'probeTaskIDs', ],
-            ],
-        ],
-        'CreateProbeTaskResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'suc' => [ 'type' => 'boolean', 'locationName' => 'suc', ],
-                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
-            ],
-        ],
-        'ProbeTaskEnableResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'ProbeTaskEnableResultShape', ],
-            ],
-        ],
-        'DescribeProbeTaskResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeProbeTaskResultShape', ],
-            ],
-        ],
-        'DescribeProbeHistoryResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeProbeHistoryResultShape', ],
-            ],
-        ],
-        'DescribeProbeTasksResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeProbeTasksResultShape', ],
-            ],
-        ],
-        'DescribeProbeTaskRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'probeTaskID' => [ 'type' => 'string', 'locationName' => 'probeTaskID', ],
-            ],
-        ],
-        'UpdateProbeTaskResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'UpdateProbeTaskResultShape', ],
-            ],
-        ],
-        'UpdateProbeTaskResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'suc' => [ 'type' => 'boolean', 'locationName' => 'suc', ],
-            ],
-        ],
-        'DescribeProbeTasksResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
-                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-                'taskInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskInfo', ], ],
-                'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'ProbeTaskEnableResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'suc' => [ 'type' => 'boolean', 'locationName' => 'suc', ],
-            ],
-        ],
-        'DiscribeProbesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'probeList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ProbeInfo', ], ],
-            ],
-        ],
-        'DeleteProbeTaskResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'suc' => [ 'type' => 'boolean', 'locationName' => 'suc', ],
-            ],
-        ],
-        'DescribeMetricDataAmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeMetricDataAmResultShape', ],
-            ],
-        ],
-        'DescribeProbeTaskResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'probes' => [ 'type' => 'list', 'member' => [ 'shape' => 'Probe', ], ],
-                'address' => [ 'type' => 'string', 'locationName' => 'address', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'deleted' => [ 'type' => 'boolean', 'locationName' => 'deleted', ],
-                'enable' => [ 'type' => 'boolean', 'locationName' => 'enable', ],
-                'frequency' => [ 'type' => 'long', 'locationName' => 'frequency', ],
-                'httpBody' => [ 'type' => 'string', 'locationName' => 'httpBody', ],
-                'httpCookie' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyValue', ], ],
-                'httpHeader' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyValue', ], ],
-                'httpType' => [ 'type' => 'long', 'locationName' => 'httpType', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'port' => [ 'type' => 'long', 'locationName' => 'port', ],
-                'probeType' => [ 'type' => 'long', 'locationName' => 'probeType', ],
-                'targetId' => [ 'type' => 'string', 'locationName' => 'targetId', ],
-                'targetRegion' => [ 'type' => 'string', 'locationName' => 'targetRegion', ],
-                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
-                'taskType' => [ 'type' => 'long', 'locationName' => 'taskType', ],
-                'timeout' => [ 'type' => 'long', 'locationName' => 'timeout', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-            ],
-        ],
-        'CreateProbeTaskRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'createProbeTaskSpec' =>  [ 'shape' => 'CreateProbeTaskParam', ],
+                'contactsList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DescribedNoticeContacts', ], ],
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
             ],
         ],
         'DescribeCmMetricDataByTagSpecResponseShape' => [
@@ -2434,248 +1594,15 @@ return [
                 'result' =>  [ 'shape' => 'DescribeCmMetricDataByTagSpecResultShape', ],
             ],
         ],
-        'DeleteNamespaceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DeleteNamespaceResultShape', ],
-            ],
-        ],
-        'DescribeAllRegionAlarmsCmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeAllRegionAlarmsCmResultShape', ],
-            ],
-        ],
-        'DeleteNamespaceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'namespaceUID' => [ 'type' => 'string', 'locationName' => 'namespaceUID', ],
-            ],
-        ],
-        'DeleteObjRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ids' => [ 'type' => 'string', 'locationName' => 'ids', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'namespaceUID' => [ 'type' => 'string', 'locationName' => 'namespaceUID', ],
-            ],
-        ],
-        'DescribeIsUserNewResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
-            ],
-        ],
-        'DescribeObjsByNsUIDRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'namespaceUID' => [ 'type' => 'string', 'locationName' => 'namespaceUID', ],
-            ],
-        ],
-        'DescribeAlarmHistoryCmRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
-                'obi' => [ 'type' => 'string', 'locationName' => 'obi', ],
-                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'UpdateAlarmCmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'UpdateAlarmCmResultShape', ],
-            ],
-        ],
-        'DescribeIsUserNewResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeIsUserNewResultShape', ],
-            ],
-        ],
-        'DescribeMetricsCmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'metricList' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricInfo', ], ],
-            ],
-        ],
-        'DescribeMetricDataCmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeMetricDataCmResultShape', ],
-            ],
-        ],
-        'DescribeAllRegionAlarmsCmRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
-                'obj' => [ 'type' => 'string', 'locationName' => 'obj', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-                'status' => [ 'type' => 'long', 'locationName' => 'status', ],
-                'isAlarming' => [ 'type' => 'long', 'locationName' => 'isAlarming', ],
-                'enabled' => [ 'type' => 'long', 'locationName' => 'enabled', ],
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
-            ],
-        ],
-        'CreateAlarmCmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarmIdList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
         'DescribeCmMetricDataByTagSpecResultShape' => [
             'type' => 'structure',
             'members' => [
                 'metricDatas' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricData', ], ],
             ],
         ],
-        'DescribeObjResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeObjResultShape', ],
-            ],
-        ],
-        'DescribeAlarmsCmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeAlarmsCmResultShape', ],
-            ],
-        ],
-        'DescribeAlarmHistoryAllRegionCmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarmHistoryList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CmAlarmHistory', ], ],
-                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
-                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-            ],
-        ],
-        'DescribeMetricDataCmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'metricDatas' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricDataItemCm', ], ],
-            ],
-        ],
-        'DescribeObjsByNsUIDResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeObjsByNsUIDResultShape', ],
-            ],
-        ],
-        'DescribeNamespacesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DeleteObjResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DescribeMetricsCmRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'namespaceUID' => [ 'type' => 'string', 'locationName' => 'namespaceUID', ],
-                'objUID' => [ 'type' => 'string', 'locationName' => 'objUID', ],
-            ],
-        ],
-        'DescribeAlarmHistoryCmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeAlarmHistoryCmResultShape', ],
-            ],
-        ],
-        'CreateAlarmCmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'CreateAlarmCmResultShape', ],
-            ],
-        ],
-        'DeleteNamespaceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
-            ],
-        ],
-        'DescribeAlarmsCmRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
-                'obj' => [ 'type' => 'string', 'locationName' => 'obj', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-                'status' => [ 'type' => 'long', 'locationName' => 'status', ],
-                'isAlarming' => [ 'type' => 'long', 'locationName' => 'isAlarming', ],
-                'enabled' => [ 'type' => 'long', 'locationName' => 'enabled', ],
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeMetricDataCmRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'aggrType' => [ 'type' => 'string', 'locationName' => 'aggrType', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'metricUID' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'namespaceUID' => [ 'type' => 'string', 'locationName' => 'namespaceUID', ],
-                'objUID' => [ 'type' => 'string', 'locationName' => 'objUID', ],
-            ],
-        ],
-        'DeleteObjResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DeleteObjResultShape', ],
-            ],
-        ],
         'DeleteAlarmsCmResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'DescribeAlarmHistoryAllRegionCmRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
-                'obi' => [ 'type' => 'string', 'locationName' => 'obi', ],
-                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
             ],
         ],
         'DescribeCmMetricDataByTagSpecRequestShape' => [
@@ -2700,130 +1627,11 @@ return [
                 'result' =>  [ 'shape' => 'DeleteAlarmsCmResultShape', ],
             ],
         ],
-        'DescribeNamespacesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeNamespacesResultShape', ],
-            ],
-        ],
-        'DescribeIsUserNewRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DescribeNamespacesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'namespaceList' => [ 'type' => 'list', 'member' => [ 'shape' => 'NsInfo', ], ],
-            ],
-        ],
-        'DescribeAllRegionAlarmsCmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarmList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CmAlarm', ], ],
-                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
-                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-            ],
-        ],
-        'DescribeAlarmHistoryCmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarmHistoryList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CmAlarmHistory', ], ],
-                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
-                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-            ],
-        ],
-        'CreateAlarmCmRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'createCmAlarmSpec' =>  [ 'shape' => 'CreateCmAlarmParam', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeObjRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'namespaceUID' => [ 'type' => 'string', 'locationName' => 'namespaceUID', ],
-                'objUID' => [ 'type' => 'string', 'locationName' => 'objUID', ],
-            ],
-        ],
-        'UpdateAlarmCmRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'calculation' => [ 'type' => 'string', 'locationName' => 'calculation', ],
-                'contactGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'contactPersons' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'downSample' => [ 'type' => 'string', 'locationName' => 'downSample', ],
-                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
-                'noticePeriod' => [ 'type' => 'long', 'locationName' => 'noticePeriod', ],
-                'operation' => [ 'type' => 'string', 'locationName' => 'operation', ],
-                'period' => [ 'type' => 'long', 'locationName' => 'period', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
-                'times' => [ 'type' => 'long', 'locationName' => 'times', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
-            ],
-        ],
-        'DescribeMetricsCmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeMetricsCmResultShape', ],
-            ],
-        ],
-        'DescribeAlarmsCmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarmList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CmAlarm', ], ],
-                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
-                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-            ],
-        ],
-        'DescribeObjsByNsUIDResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
-                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
-                'objList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ObjInfo', ], ],
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-            ],
-        ],
-        'DescribeObjResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'namespaceName' => [ 'type' => 'string', 'locationName' => 'namespaceName', ],
-                'objName' => [ 'type' => 'string', 'locationName' => 'objName', ],
-            ],
-        ],
         'DeleteAlarmsCmRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'ids' => [ 'type' => 'string', 'locationName' => 'ids', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeAlarmHistoryAllRegionCmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeAlarmHistoryAllRegionCmResultShape', ],
-            ],
-        ],
-        'UpdateAlarmCmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
             ],
         ],
         'LastDownsampleRequestShape' => [
@@ -2841,55 +1649,6 @@ return [
                 'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
             ],
         ],
-        'BatchDescribeMetricDataRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-                'aggrType' => [ 'type' => 'string', 'locationName' => 'aggrType', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
-                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
-                'groupBy' => [ 'type' => 'boolean', 'locationName' => 'groupBy', ],
-                'multiResources' => [ 'type' => 'boolean', 'locationName' => 'multiResources', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeSqlserverBlockProcessResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeSqlserverBlockProcessResultShape', ],
-            ],
-        ],
-        'DescribeMetricsForCreateAlarmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeMetricsForCreateAlarmResultShape', ],
-            ],
-        ],
-        'DescribeMetricsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-            ],
-        ],
-        'DescribeMetricDataResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeMetricDataResultShape', ],
-            ],
-        ],
-        'DescribeMetricsForCreateAlarmRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-            ],
-        ],
         'DescribeMetricDataResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2903,16 +1662,11 @@ return [
                 'result' =>  [ 'shape' => 'LastDownsampleResultShape', ],
             ],
         ],
-        'BatchDescribeMetricDataResultShape' => [
+        'DescribeMetricsForCreateAlarmResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'metricDatas' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricData', ], ],
-            ],
-        ],
-        'DescribeMetricsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'metrics' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricDetail', ], ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeMetricsForCreateAlarmResultShape', ],
             ],
         ],
         'DescribeMetricDataRequestShape' => [
@@ -2930,23 +1684,29 @@ return [
                 'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
             ],
         ],
+        'DescribeMetricsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'metrics' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricDetail', ], ],
+            ],
+        ],
         'LastDownsampleResultShape' => [
             'type' => 'structure',
             'members' => [
                 'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'LastDownsampleRespItem', ], ],
             ],
         ],
-        'BatchDescribeMetricDataResponseShape' => [
+        'DescribeMetricsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+            ],
+        ],
+        'DescribeMetricDataResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'BatchDescribeMetricDataResultShape', ],
-            ],
-        ],
-        'DescribeSqlserverBlockProcessResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'LastDownsampleRespItem', ], ],
+                'result' =>  [ 'shape' => 'DescribeMetricDataResultShape', ],
             ],
         ],
         'DescribeMetricsForCreateAlarmResultShape' => [
@@ -2955,21 +1715,10 @@ return [
                 'serviceCodeList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ServiceCodeMetrics', ], ],
             ],
         ],
-        'DescribeSqlserverBlockProcessRequestShape' => [
+        'DescribeMetricsForCreateAlarmRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-                'aggrType' => [ 'type' => 'string', 'locationName' => 'aggrType', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
-                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
-                'groupBy' => [ 'type' => 'boolean', 'locationName' => 'groupBy', ],
-                'time' => [ 'type' => 'string', 'locationName' => 'time', ],
-                'mode' => [ 'type' => 'string', 'locationName' => 'mode', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
             ],
         ],
         'DescribeMetricsResponseShape' => [
@@ -2998,85 +1747,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'metricDataList' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
-            ],
-        ],
-        'DescribeAlarmingRulesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeAlarmingRulesResultShape', ],
-            ],
-        ],
-        'DescribeAlarmingRulesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'datacenter' => [ 'type' => 'string', 'locationName' => 'datacenter', ],
-            ],
-        ],
-        'DescribeAlarmingRulesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarmHistoryList' => [ 'type' => 'list', 'member' => [ 'shape' => 'AlarmHistoryWithDetail', ], ],
-                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
-                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-            ],
-        ],
-        'DescribeRuleCountingResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarmRuleCount' => [ 'type' => 'long', 'locationName' => 'alarmRuleCount', ],
-                'disableRuleCount' => [ 'type' => 'long', 'locationName' => 'disableRuleCount', ],
-                'normalRuleCount' => [ 'type' => 'long', 'locationName' => 'normalRuleCount', ],
-                'serviceCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'subUserPermission' => [ 'type' => 'boolean', 'locationName' => 'subUserPermission', ],
-                'totalRuleCount' => [ 'type' => 'long', 'locationName' => 'totalRuleCount', ],
-                'unknownRuleCount' => [ 'type' => 'long', 'locationName' => 'unknownRuleCount', ],
-            ],
-        ],
-        'DescribeRuleCountingRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'datacenter' => [ 'type' => 'string', 'locationName' => 'datacenter', ],
-                'adminPin' => [ 'type' => 'string', 'locationName' => 'adminPin', ],
-            ],
-        ],
-        'DescribeRuleCountingResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeRuleCountingResultShape', ],
-            ],
-        ],
-        'DescribeTopNSlowSqlResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeTopNSlowSqlResultShape', ],
-            ],
-        ],
-        'DescribeTopNSlowSqlResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'topNsql' => [ 'type' => 'list', 'member' => [ 'shape' => 'SqlInfo', ], ],
-            ],
-        ],
-        'DescribeTopNSlowSqlRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
-                'topN' => [ 'type' => 'long', 'locationName' => 'topN', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
     ],

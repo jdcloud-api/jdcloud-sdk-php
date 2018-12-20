@@ -1,15 +1,15 @@
 <?php
 /**
- * Datastar
+ * Function
  *
  * @category Jdcloud
- * @package  Jdcloud\Datastar
+ * @package  Jdcloud\Function
  * @author   Jdcloud <jdcloud-api@jd.com>
  * @license  Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0
  * @link     https://www.jdcloud.com/help/faq
  */
 
-namespace Jdcloud\Datastar;
+namespace Jdcloud\Function;
 
 use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
@@ -18,12 +18,14 @@ use Jdcloud\Api\ApiProvider;
 use Jdcloud\PresignUrlMiddleware;
 
 /**
- * Client used to interact with datastar.
+ * Client used to interact with function.
  *
- * @method \Jdcloud\Result getLargeScreenData(array $args = [])
- * @method \GuzzleHttp\Promise\Promise getLargeScreenDataAsync(array $args = [])
+ * @method \Jdcloud\Result getTrigger(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getTriggerAsync(array $args = [])
+ * @method \Jdcloud\Result listTrigger(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise listTriggerAsync(array $args = [])
  */
-class DatastarClient extends JdCloudClient
+class FunctionClient extends JdCloudClient
 {
     public function __construct(array $args)
     {
@@ -35,11 +37,11 @@ class DatastarClient extends JdCloudClient
                     [
                         'operations' => [
                         ],
-                        'service' => 'datastar',
+                        'service' => 'function',
                         'presign_param' => 'PresignedUrl',
                     ]
                 ),
-                'datastar'
+                'function'
             );
         };
 

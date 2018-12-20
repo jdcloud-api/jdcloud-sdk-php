@@ -119,6 +119,33 @@ return [
             'input' => [ 'shape' => 'OperateRRRequestShape', ],
             'output' => [ 'shape' => 'OperateRRResponseShape', ],
         ],
+        'BatchSetDnsResolve' => [
+            'name' => 'BatchSetDnsResolve',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/BatchSetDnsResolve',
+            ],
+            'input' => [ 'shape' => 'BatchSetDnsResolveRequestShape', ],
+            'output' => [ 'shape' => 'BatchSetDnsResolveResponseShape', ],
+        ],
+        'SetLB' => [
+            'name' => 'SetLB',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/domain/{domainId}/SetLB',
+            ],
+            'input' => [ 'shape' => 'SetLBRequestShape', ],
+            'output' => [ 'shape' => 'SetLBResponseShape', ],
+        ],
+        'GetLB' => [
+            'name' => 'GetLB',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/domain/{domainId}/GetLB',
+            ],
+            'input' => [ 'shape' => 'GetLBRequestShape', ],
+            'output' => [ 'shape' => 'GetLBResponseShape', ],
+        ],
         'AddUserView' => [
             'name' => 'AddUserView',
             'http' => [
@@ -264,6 +291,7 @@ return [
                 'resolvingStatus' => [ 'type' => 'string', 'locationName' => 'resolvingStatus', ],
                 'creator' => [ 'type' => 'string', 'locationName' => 'creator', ],
                 'jcloudNs' => [ 'type' => 'boolean', 'locationName' => 'jcloudNs', ],
+                'lockStatus' => [ 'type' => 'integer', 'locationName' => 'lockStatus', ],
             ],
         ],
         'Notice' => [
@@ -274,6 +302,16 @@ return [
                 'url' => [ 'type' => 'string', 'locationName' => 'url', ],
             ],
         ],
+        'DomainAdded' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
+                'expirationDate' => [ 'type' => 'long', 'locationName' => 'expirationDate', ],
+                'packId' => [ 'type' => 'integer', 'locationName' => 'packId', ],
+            ],
+        ],
         'Domain' => [
             'type' => 'structure',
             'members' => [
@@ -282,6 +320,7 @@ return [
                 'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
                 'expirationDate' => [ 'type' => 'long', 'locationName' => 'expirationDate', ],
                 'packId' => [ 'type' => 'integer', 'locationName' => 'packId', ],
+                'lockStatus' => [ 'type' => 'integer', 'locationName' => 'lockStatus', ],
             ],
         ],
         'A' => [
@@ -400,6 +439,17 @@ return [
                 'updateTime' => [ 'type' => 'long', 'locationName' => 'updateTime', ],
             ],
         ],
+        'Getlb' => [
+            'type' => 'structure',
+            'members' => [
+                'isBalance' => [ 'type' => 'boolean', 'locationName' => 'isBalance', ],
+                'record' => [ 'type' => 'string', 'locationName' => 'record', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
+                'viewValue' => [ 'type' => 'integer', 'locationName' => 'viewValue', ],
+                'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'HostRRlb', ], ],
+            ],
+        ],
         'Jdvpc' => [
             'type' => 'structure',
             'members' => [
@@ -429,6 +479,7 @@ return [
                 'hostValue' => [ 'type' => 'string', 'locationName' => 'hostValue', ],
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
+                'rate' => [ 'type' => 'double', 'locationName' => 'rate', ],
             ],
         ],
         'ViewTree' => [
@@ -486,10 +537,17 @@ return [
                 'viewValue' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
             ],
         ],
+        'Setlb' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
+            ],
+        ],
         'Getalb' => [
             'type' => 'structure',
             'members' => [
-                'balance' => [ 'type' => 'boolean', 'locationName' => 'balance', ],
+                'isBalance' => [ 'type' => 'boolean', 'locationName' => 'isBalance', ],
                 'record' => [ 'type' => 'string', 'locationName' => 'record', ],
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
@@ -662,7 +720,7 @@ return [
         'AddDomainResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'Domain', ],
+                'data' =>  [ 'shape' => 'DomainAdded', ],
                 'order' => [ 'type' => 'string', 'locationName' => 'order', ],
             ],
         ],
@@ -696,15 +754,15 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DelDomainResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DelDomainResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DelDomainResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'UpdateDomainRequestShape' => [
@@ -742,6 +800,19 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'GetDomainsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetLBResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetLBResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetLBResultShape', ],
             ],
         ],
         'UpdateRRResponseShape' => [
@@ -814,6 +885,22 @@ return [
                 'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
         ],
+        'GetLBRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
+            ],
+        ],
+        'BatchSetDnsResolveResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'OperateRRRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -821,6 +908,13 @@ return [
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
+            ],
+        ],
+        'BatchSetDnsResolveResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'BatchSetDnsResolveResultShape', ],
             ],
         ],
         'UpdateRRResultShape' => [
@@ -837,10 +931,40 @@ return [
                 'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
         ],
+        'SetLBRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'idWeights' => [ 'type' => 'list', 'member' => [ 'shape' => 'Setlb', ], ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
+            ],
+        ],
         'GetViewTreeResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ViewTree', ], ],
+            ],
+        ],
+        'SetLBResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'BatchSetDnsResolveRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' => [ 'type' => 'list', 'member' => [ 'shape' => 'BatchSetDNS', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetLBResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Getlb', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
             ],
         ],
         'SearchRRResultShape' => [
