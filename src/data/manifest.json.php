@@ -25,6 +25,14 @@ return [
         'namespace' => 'Ias',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'jdfusion' => [
+        'namespace' => 'Jdfusion',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'vod' => [
+        'namespace' => 'Vod',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'function' => [
         'namespace' => 'Function',
         'versions' => [ 'latest' => 'v1', ],
@@ -43,6 +51,10 @@ return [
     ],
     'jke' => [
         'namespace' => 'Jke',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'live' => [
+        'namespace' => 'Live',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'ipanti' => [
@@ -81,6 +93,10 @@ return [
         'namespace' => 'Sop',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'iothub' => [
+        'namespace' => 'Iothub',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'xdata' => [
         'namespace' => 'Xdata',
         'versions' => [ 'latest' => 'v1', ],
@@ -115,6 +131,14 @@ return [
     ],
     'streamcomputer' => [
         'namespace' => 'Streamcomputer',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'ossopenapi' => [
+        'namespace' => 'Ossopenapi',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'containerregistry' => [
+        'namespace' => 'Containerregistry',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'ams' => [

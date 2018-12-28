@@ -210,6 +210,13 @@ return [
                 'newestDataTime' => [ 'type' => 'string', 'locationName' => 'newestDataTime', ],
             ],
         ],
+        'Tag' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'Charge' => [
             'type' => 'structure',
             'members' => [
@@ -246,6 +253,7 @@ return [
                 'preferredmaintenanceWindow' => [ 'type' => 'string', 'locationName' => 'preferredmaintenanceWindow', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'isSetSecurityIps' => [ 'type' => 'boolean', 'locationName' => 'isSetSecurityIps', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
         ],
         'DBInstanceSpec' => [
@@ -520,6 +528,13 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'TagFilter' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'CreateInstanceResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -559,6 +574,7 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
