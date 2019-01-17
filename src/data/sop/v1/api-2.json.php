@@ -73,11 +73,12 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'GetSensitiveOpSettingRequestShape' => [
+        'GetSensitiveOpSettingResultShape' => [
             'type' => 'structure',
             'members' => [
-                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+                'extInfo' => [ 'type' => 'string', 'locationName' => 'extInfo', ],
             ],
         ],
         'GetSensitiveOpSettingResponseShape' => [
@@ -87,12 +88,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'GetSensitiveOpSettingResultShape' => [
+        'GetSensitiveOpSettingRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
-                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
-                'extInfo' => [ 'type' => 'string', 'locationName' => 'extInfo', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
     ],

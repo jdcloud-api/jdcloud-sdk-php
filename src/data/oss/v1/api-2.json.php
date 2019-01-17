@@ -63,32 +63,19 @@ return [
                 'displayName' => [ 'type' => 'string', 'locationName' => 'displayName', ],
             ],
         ],
-        'ListBucketsRequestShape' => [
+        'ListBucketsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'ListBucketsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ListBucketsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'PutBucketResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeleteBucketRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'bucketname' => [ 'type' => 'string', 'locationName' => 'bucketname', ],
+                'owner' =>  [ 'shape' => 'User', ],
+                'buckets' => [ 'type' => 'list', 'member' => [ 'shape' => 'Bucket', ], ],
             ],
         ],
         'DeleteBucketResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteBucketResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -100,11 +87,39 @@ return [
                 'bucketname' => [ 'type' => 'string', 'locationName' => 'bucketname', ],
             ],
         ],
-        'ListBucketsResultShape' => [
+        'DeleteBucketRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'owner' =>  [ 'shape' => 'User', ],
-                'buckets' => [ 'type' => 'list', 'member' => [ 'shape' => 'Bucket', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketname' => [ 'type' => 'string', 'locationName' => 'bucketname', ],
+            ],
+        ],
+        'ListBucketsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListBucketsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListBucketsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'PutBucketResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'HeadBucketResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'HeadBucketResponseShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'PutBucketRequestShape' => [
@@ -115,21 +130,6 @@ return [
             ],
         ],
         'PutBucketResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'HeadBucketResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'HeadBucketResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeleteBucketResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],

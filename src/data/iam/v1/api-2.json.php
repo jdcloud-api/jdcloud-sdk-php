@@ -154,18 +154,18 @@ return [
                 'permissionIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
             ],
         ],
-        'Resource' => [
-            'type' => 'structure',
-            'members' => [
-                'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
-            ],
-        ],
         'PermissionDetail' => [
             'type' => 'structure',
             'members' => [
                 'permission' => [ 'type' => 'string', 'locationName' => 'permission', ],
                 'resource' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
+            ],
+        ],
+        'Resource' => [
+            'type' => 'structure',
+            'members' => [
+                'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
             ],
         ],
         'CreatePermissionInfo' => [
@@ -240,6 +240,38 @@ return [
                 'businessAction' => [ 'type' => 'string', 'locationName' => 'businessAction', ],
             ],
         ],
+        'RemovePermissionOfSubUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreatePermissionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddPermissionsToSubUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribePermissionDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribePermissionDetailResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribePermissionsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'permissions' => [ 'type' => 'list', 'member' => [ 'shape' => 'Permission', ], ],
+            ],
+        ],
         'DescribeSubUserPermissionsResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -247,12 +279,35 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'RemovePermissionOfSubUserRequestShape' => [
+        'DescribeSubUserPermissionsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+            ],
+        ],
+        'DescribePermissionDetailRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'permissionId' => [ 'type' => 'integer', 'locationName' => 'permissionId', ],
-                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+            ],
+        ],
+        'DescribePermissionsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
+                'queryType' => [ 'type' => 'integer', 'locationName' => 'queryType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'RemovePermissionOfSubUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DescribePermissionsResponseShape' => [
@@ -267,98 +322,12 @@ return [
             'members' => [
             ],
         ],
-        'DescribeSubUserPermissionsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
-                'permissions' => [ 'type' => 'list', 'member' => [ 'shape' => 'Permission', ], ],
-            ],
-        ],
-        'DescribeSubUserPermissionsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
-            ],
-        ],
-        'UpdatePermissionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribePermissionsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
-                'queryType' => [ 'type' => 'integer', 'locationName' => 'queryType', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribePermissionDetailResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribePermissionDetailResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribePermissionDetailResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'permission' =>  [ 'shape' => 'Permission', ],
-            ],
-        ],
-        'DescribePermissionDetailRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'permissionId' => [ 'type' => 'integer', 'locationName' => 'permissionId', ],
-            ],
-        ],
-        'DescribePermissionsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
-                'permissions' => [ 'type' => 'list', 'member' => [ 'shape' => 'Permission', ], ],
-            ],
-        ],
-        'AddPermissionsToSubUserResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'AddPermissionsToSubUserRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'addPermissionsInfo' =>  [ 'shape' => 'AddPermissionsInfo', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
-            ],
-        ],
-        'CreatePermissionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'RemovePermissionOfSubUserResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'RemovePermissionOfSubUserResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreatePermissionResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'CreatePermissionRequestShape' => [
@@ -368,10 +337,12 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'AddPermissionsToSubUserResponseShape' => [
+        'RemovePermissionOfSubUserRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'permissionId' => [ 'type' => 'integer', 'locationName' => 'permissionId', ],
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
             ],
         ],
         'UpdatePermissionRequestShape' => [
@@ -380,6 +351,53 @@ return [
                 'updatePermissionInfo' =>  [ 'shape' => 'UpdatePermissionInfo', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'permissionId' => [ 'type' => 'integer', 'locationName' => 'permissionId', ],
+            ],
+        ],
+        'UpdatePermissionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddPermissionsToSubUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribePermissionDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'permission' =>  [ 'shape' => 'Permission', ],
+            ],
+        ],
+        'DescribeSubUserPermissionsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'permissions' => [ 'type' => 'list', 'member' => [ 'shape' => 'Permission', ], ],
+            ],
+        ],
+        'CreatePermissionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'VerifySessionTokenRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'verifySessionTokenInfo' =>  [ 'shape' => 'VerifySessionTokenInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'VerifySessionTokenResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'VerifySessionTokenResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetSessionTokenResponseShape' => [
@@ -402,39 +420,11 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'VerifySessionTokenResultShape' => [
+        'DisabledUserAccessKeyRequestShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'VerifySessionTokenResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'VerifySessionTokenRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'verifySessionTokenInfo' =>  [ 'shape' => 'VerifySessionTokenInfo', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DeleteUserAccessKeyResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeUserAccessKeysResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'userAccessKeys' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserAccessKey', ], ],
-            ],
-        ],
-        'CreateSubuserResultShape' => [
-            'type' => 'structure',
-            'members' => [
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
             ],
         ],
         'DeleteUserAccessKeyResultShape' => [
@@ -442,9 +432,10 @@ return [
             'members' => [
             ],
         ],
-        'CreateUserAccessKeyResultShape' => [
+        'EnabledUserAccessKeyResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DeleteUserAccessKeyRequestShape' => [
@@ -454,29 +445,68 @@ return [
                 'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
             ],
         ],
-        'DisabledUserAccessKeyResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DescribeUserAccessKeysRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'EnabledUserAccessKeyResponseShape' => [
+        'DescribeUserAccessKeysResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'userAccessKeys' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserAccessKey', ], ],
+            ],
+        ],
+        'CreateUserAccessKeyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'EnabledUserAccessKeyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+            ],
+        ],
+        'DescribeUserAccessKeysResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeUserAccessKeysResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateUserAccessKeyResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'EnabledUserAccessKeyResultShape' => [
+        'CreateSubuserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisabledUserAccessKeyResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
         ],
-        'CreateSubuserResponseShape' => [
+        'CreateSubuserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'createSubUserInfo' =>  [ 'shape' => 'CreateSubUserInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateUserAccessKeyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteUserAccessKeyResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
@@ -488,44 +518,14 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DisabledUserAccessKeyRequestShape' => [
+        'CreateSubuserResultShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
             ],
         ],
-        'CreateSubuserRequestShape' => [
+        'EnabledUserAccessKeyResultShape' => [
             'type' => 'structure',
             'members' => [
-                'createSubUserInfo' =>  [ 'shape' => 'CreateSubUserInfo', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'EnabledUserAccessKeyRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
-            ],
-        ],
-        'CreateUserAccessKeyResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateUserAccessKeyRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeUserAccessKeysResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeUserAccessKeysResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
     ],

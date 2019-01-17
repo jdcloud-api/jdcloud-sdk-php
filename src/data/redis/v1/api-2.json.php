@@ -192,34 +192,22 @@ return [
                 'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
-        'CreateCacheInstanceResponseShape' => [
+        'ResetCacheInstancePasswordResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'CreateCacheInstanceResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'ModifyCacheInstanceClassRequestShape' => [
+        'DescribeCacheInstancesResultShape' => [
             'type' => 'structure',
             'members' => [
-                'cacheInstanceClass' => [ 'type' => 'string', 'locationName' => 'cacheInstanceClass', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+                'cacheInstances' => [ 'type' => 'list', 'member' => [ 'shape' => 'CacheInstance', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
-        'Filter' => [
+        'ModifyCacheInstanceClassResultShape' => [
             'type' => 'structure',
             'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'DescribeCacheInstanceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+                'orderNum' => [ 'type' => 'string', 'locationName' => 'orderNum', ],
             ],
         ],
         'CreateCacheInstanceRequestShape' => [
@@ -230,40 +218,16 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'ModifyCacheInstanceClassResultShape' => [
+        'CreateCacheInstanceResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'orderNum' => [ 'type' => 'string', 'locationName' => 'orderNum', ],
-            ],
-        ],
-        'ResetCacheInstancePasswordResponseShape' => [
-            'type' => 'structure',
-            'members' => [
+                'result' =>  [ 'shape' => 'CreateCacheInstanceResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteCacheInstanceResponseShape' => [
+        'ModifyCacheInstanceAttributeResultShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModifyCacheInstanceAttributeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ResetCacheInstancePasswordResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'ModifyCacheInstanceClassResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ModifyCacheInstanceClassResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeCacheInstancesResponseShape' => [
@@ -273,18 +237,10 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CreateCacheInstanceResultShape' => [
+        'ResetCacheInstancePasswordResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
-                'orderNum' => [ 'type' => 'string', 'locationName' => 'orderNum', ],
-            ],
-        ],
-        'Sort' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeCacheInstanceResultShape' => [
@@ -293,11 +249,9 @@ return [
                 'cacheInstance' =>  [ 'shape' => 'CacheInstance', ],
             ],
         ],
-        'DescribeCacheInstanceResponseShape' => [
+        'DeleteCacheInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeCacheInstanceResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeCacheInstancesRequestShape' => [
@@ -310,6 +264,40 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'DeleteCacheInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
+        'DeleteCacheInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'Sort' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+            ],
+        ],
+        'CreateCacheInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+                'orderNum' => [ 'type' => 'string', 'locationName' => 'orderNum', ],
+            ],
+        ],
+        'ModifyCacheInstanceClassResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyCacheInstanceClassResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'ModifyCacheInstanceAttributeRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -317,26 +305,6 @@ return [
                 'cacheInstanceDescription' => [ 'type' => 'string', 'locationName' => 'cacheInstanceDescription', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
-            ],
-        ],
-        'ModifyCacheInstanceAttributeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'ChargeSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
-                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
-                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
-            ],
-        ],
-        'DescribeCacheInstancesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'cacheInstances' => [ 'type' => 'list', 'member' => [ 'shape' => 'CacheInstance', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
         'ResetCacheInstancePasswordRequestShape' => [
@@ -347,16 +315,54 @@ return [
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
         ],
-        'DeleteCacheInstanceResultShape' => [
+        'Filter' => [
             'type' => 'structure',
             'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
-        'DeleteCacheInstanceRequestShape' => [
+        'ModifyCacheInstanceAttributeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyCacheInstanceClassRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cacheInstanceClass' => [ 'type' => 'string', 'locationName' => 'cacheInstanceClass', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
+        'ChargeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
+                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
+            ],
+        ],
+        'DescribeCacheInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeCacheInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeCacheInstanceRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
+        'DescribeInstanceClassRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DescribeInstanceClassResponseShape' => [
@@ -373,16 +379,11 @@ return [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
-        'DescribeInstanceClassRequestShape' => [
+        'DescribeUserQuotaResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeUserQuotaResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'quota' =>  [ 'shape' => 'Quota', ],
+                'result' =>  [ 'shape' => 'DescribeUserQuotaResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'Quota' => [
@@ -393,17 +394,16 @@ return [
                 'used' => [ 'type' => 'integer', 'locationName' => 'used', ],
             ],
         ],
-        'DescribeUserQuotaResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeUserQuotaResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeUserQuotaRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeUserQuotaResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'quota' =>  [ 'shape' => 'Quota', ],
             ],
         ],
     ],

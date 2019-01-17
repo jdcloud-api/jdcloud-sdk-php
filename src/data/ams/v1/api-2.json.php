@@ -44,6 +44,12 @@ return [
                 'tsDeltaFact' => [ 'type' => 'string', 'locationName' => 'tsDeltaFact', ],
             ],
         ],
+        'DescribeStreamsInputResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'streamInputDatas' => [ 'type' => 'list', 'member' => [ 'shape' => 'StreamInputData', ], ],
+            ],
+        ],
         'DescribeStreamsInputRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -52,16 +58,17 @@ return [
                 'streamId' => [ 'type' => 'string', 'locationName' => 'streamId', ],
             ],
         ],
-        'DescribeStreamsInputResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'streamInputDatas' => [ 'type' => 'list', 'member' => [ 'shape' => 'StreamInputData', ], ],
-            ],
-        ],
         'DescribeStreamsInputResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeStreamsInputResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAuthenticateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAuthenticateResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -80,13 +87,6 @@ return [
                 'blacklist' => [ 'type' => 'double', 'locationName' => 'blacklist', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'license' => [ 'type' => 'string', 'locationName' => 'license', ],
-            ],
-        ],
-        'DescribeAuthenticateResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeAuthenticateResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
     ],

@@ -301,20 +301,6 @@ return [
         ],
     ],
     'shapes' => [
-        'KeyDescCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
-                'keyDesc' => [ 'type' => 'string', 'locationName' => 'keyDesc', ],
-            ],
-        ],
-        'KeyRotateCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'autoRotate' => [ 'type' => 'boolean', 'locationName' => 'autoRotate', ],
-                'rotationCycle' => [ 'type' => 'integer', 'locationName' => 'rotationCycle', ],
-            ],
-        ],
         'KeyDetail' => [
             'type' => 'structure',
             'members' => [
@@ -325,11 +311,25 @@ return [
                 'keyVersionList' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyVersionItem', ], ],
             ],
         ],
+        'KeyDescCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
+                'keyDesc' => [ 'type' => 'string', 'locationName' => 'keyDesc', ],
+            ],
+        ],
         'KeyCfg' => [
             'type' => 'structure',
             'members' => [
                 'keyDescCfg' =>  [ 'shape' => 'KeyDescCfg', ],
                 'keyRotateCfg' =>  [ 'shape' => 'KeyRotateCfg', ],
+            ],
+        ],
+        'KeyRotateCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'autoRotate' => [ 'type' => 'boolean', 'locationName' => 'autoRotate', ],
+                'rotationCycle' => [ 'type' => 'integer', 'locationName' => 'rotationCycle', ],
             ],
         ],
         'KeyVersionItem' => [
@@ -363,12 +363,29 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
-        'SecretDetail' => [
+        'SecretVersionItem' => [
             'type' => 'structure',
             'members' => [
-                'secretInfo' =>  [ 'shape' => 'SecretInfo', ],
-                'secretVersionCount' => [ 'type' => 'integer', 'locationName' => 'secretVersionCount', ],
-                'secretVersionList' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecretVersionItem', ], ],
+                'secretVersion' => [ 'type' => 'string', 'locationName' => 'secretVersion', ],
+                'secretStatus' => [ 'type' => 'integer', 'locationName' => 'secretStatus', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'expireTime' => [ 'type' => 'string', 'locationName' => 'expireTime', ],
+                'secretData' => [ 'type' => 'string', 'locationName' => 'secretData', ],
+            ],
+        ],
+        'SecretTimeCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'expireTime' => [ 'type' => 'string', 'locationName' => 'expireTime', ],
+            ],
+        ],
+        'SecretCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'secretDescCfg' =>  [ 'shape' => 'SecretDescCfg', ],
+                'secretTimeCfg' =>  [ 'shape' => 'SecretTimeCfg', ],
+                'secretData' => [ 'type' => 'string', 'locationName' => 'secretData', ],
             ],
         ],
         'SecretVersionCfg' => [
@@ -385,60 +402,30 @@ return [
                 'secretDesc' => [ 'type' => 'string', 'locationName' => 'secretDesc', ],
             ],
         ],
-        'SecretCfg' => [
+        'SecretDetail' => [
             'type' => 'structure',
             'members' => [
-                'secretDescCfg' =>  [ 'shape' => 'SecretDescCfg', ],
-                'secretTimeCfg' =>  [ 'shape' => 'SecretTimeCfg', ],
-                'secretData' => [ 'type' => 'string', 'locationName' => 'secretData', ],
+                'secretInfo' =>  [ 'shape' => 'SecretInfo', ],
+                'secretVersionCount' => [ 'type' => 'integer', 'locationName' => 'secretVersionCount', ],
+                'secretVersionList' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecretVersionItem', ], ],
             ],
         ],
-        'SecretTimeCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'expireTime' => [ 'type' => 'string', 'locationName' => 'expireTime', ],
-            ],
-        ],
-        'SecretVersionItem' => [
-            'type' => 'structure',
-            'members' => [
-                'secretVersion' => [ 'type' => 'string', 'locationName' => 'secretVersion', ],
-                'secretStatus' => [ 'type' => 'integer', 'locationName' => 'secretStatus', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'expireTime' => [ 'type' => 'string', 'locationName' => 'expireTime', ],
-                'secretData' => [ 'type' => 'string', 'locationName' => 'secretData', ],
-            ],
-        ],
-        'DisableKeyResponseShape' => [
+        'KeyRotationResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'UpdateKeyDescriptionResponseShape' => [
+        'CreateKeyResultShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CancelKeyVersionDeletionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GenerateDataKeyRequestShape' => [
+        'EnableKeyVersionRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
-            ],
-        ],
-        'ScheduleKeyDeletionRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'delayDays' => [ 'type' => 'integer', 'locationName' => 'delayDays', ],
-                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
             ],
         ],
         'DescribeKeyDetailResponseShape' => [
@@ -448,49 +435,37 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'GenerateDataKeyResponseShape' => [
+        'DescribeKeyDetailRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GenerateDataKeyResultShape', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
+            ],
+        ],
+        'DescribeKeyListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'UpdateKeyDescriptionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keyCfg' =>  [ 'shape' => 'KeyCfg', ],
+                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
+            ],
+        ],
+        'KeyRotationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateKeyDescriptionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateKeyResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'EnableKeyRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
-            ],
-        ],
-        'EncryptResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ciphertextBlob' => [ 'type' => 'string', 'locationName' => 'ciphertextBlob', ],
-            ],
-        ],
-        'DescribeKeyRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
-            ],
-        ],
-        'ScheduleKeyVersionDeletionRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'delayDays' => [ 'type' => 'integer', 'locationName' => 'delayDays', ],
-                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
-                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
-            ],
-        ],
-        'DescribeKeyResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'keyInfo' =>  [ 'shape' => 'KeyInfo', ],
             ],
         ],
         'ScheduleKeyDeletionResponseShape' => [
@@ -499,47 +474,31 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DisableKeyRequestShape' => [
+        'DescribeKeyResultShape' => [
             'type' => 'structure',
             'members' => [
+                'keyInfo' =>  [ 'shape' => 'KeyInfo', ],
+            ],
+        ],
+        'CancelKeyVersionDeletionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateKeyDescriptionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ScheduleKeyDeletionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'delayDays' => [ 'type' => 'integer', 'locationName' => 'delayDays', ],
                 'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
             ],
         ],
-        'CancelKeyVersionDeletionResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DescribeKeyListResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'keyList' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyInfo', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'ScheduleKeyDeletionResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DisableKeyVersionRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
-                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
-            ],
-        ],
-        'KeyRotationResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'EnableKeyVersionResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'ScheduleKeyVersionDeletionResponseShape' => [
+        'EnableKeyVersionResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
@@ -550,18 +509,14 @@ return [
             'members' => [
             ],
         ],
-        'GenerateDataKeyResultShape' => [
+        'EnableKeyResultShape' => [
             'type' => 'structure',
             'members' => [
-                'plaintext' => [ 'type' => 'string', 'locationName' => 'plaintext', ],
-                'ciphertextBlob' => [ 'type' => 'string', 'locationName' => 'ciphertextBlob', ],
             ],
         ],
-        'EncryptResponseShape' => [
+        'EnableKeyVersionResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'EncryptResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DecryptResultShape' => [
@@ -570,40 +525,16 @@ return [
                 'plaintext' => [ 'type' => 'string', 'locationName' => 'plaintext', ],
             ],
         ],
-        'DescribeKeyDetailResultShape' => [
+        'GenerateDataKeyResultShape' => [
             'type' => 'structure',
             'members' => [
-                'keyDetail' =>  [ 'shape' => 'KeyDetail', ],
+                'plaintext' => [ 'type' => 'string', 'locationName' => 'plaintext', ],
+                'ciphertextBlob' => [ 'type' => 'string', 'locationName' => 'ciphertextBlob', ],
             ],
         ],
-        'DisableKeyVersionResponseShape' => [
+        'CancelKeyDeletionResultShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeKeyListRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-            ],
-        ],
-        'ScheduleKeyVersionDeletionResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'EnableKeyResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DecryptRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ciphertextBlob' => [ 'type' => '', 'locationName' => 'ciphertextBlob', ],
-                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
             ],
         ],
         'DescribeKeyListResponseShape' => [
@@ -620,16 +551,28 @@ return [
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
             ],
         ],
-        'EnableKeyVersionResponseShape' => [
+        'ScheduleKeyVersionDeletionResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'GenerateDataKeyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GenerateDataKeyResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'UpdateKeyDescriptionRequestShape' => [
+        'EncryptResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'keyCfg' =>  [ 'shape' => 'KeyCfg', ],
+                'result' =>  [ 'shape' => 'EncryptResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CancelKeyDeletionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
                 'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
             ],
         ],
@@ -639,7 +582,45 @@ return [
                 'keyCfg' =>  [ 'shape' => 'KeyCfg', ],
             ],
         ],
-        'CancelKeyDeletionRequestShape' => [
+        'EnableKeyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EncryptResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ciphertextBlob' => [ 'type' => 'string', 'locationName' => 'ciphertextBlob', ],
+            ],
+        ],
+        'DescribeKeyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'KeyInfo', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GenerateDataKeyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
+            ],
+        ],
+        'DisableKeyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ScheduleKeyVersionDeletionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'delayDays' => [ 'type' => 'integer', 'locationName' => 'delayDays', ],
+                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+            ],
+        ],
+        'DisableKeyRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
@@ -651,13 +632,49 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'EnableKeyResponseShape' => [
+        'EncryptRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'plaintext' => [ 'type' => '', 'locationName' => 'plaintext', ],
+                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
+            ],
+        ],
+        'CancelKeyVersionDeletionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ScheduleKeyDeletionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableKeyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
+            ],
+        ],
+        'DescribeKeyListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keyList' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyInfo', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DisableKeyVersionResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'EnableKeyVersionRequestShape' => [
+        'DisableKeyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisableKeyVersionRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
@@ -670,10 +687,22 @@ return [
                 'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
             ],
         ],
-        'KeyRotationResponseShape' => [
+        'DescribeKeyDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keyDetail' =>  [ 'shape' => 'KeyDetail', ],
+            ],
+        ],
+        'ScheduleKeyVersionDeletionResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeKeyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
             ],
         ],
         'DecryptResponseShape' => [
@@ -683,49 +712,103 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'UpdateKeyDescriptionResultShape' => [
+        'CreateKeyResponseShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'CancelKeyDeletionResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DescribeKeyResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'KeyInfo', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeKeyDetailRequestShape' => [
+        'DecryptRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'ciphertextBlob' => [ 'type' => '', 'locationName' => 'ciphertextBlob', ],
                 'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
             ],
         ],
-        'DisableKeyResultShape' => [
+        'ImportSecretRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'secretPackage' => [ 'type' => '', 'locationName' => 'secretPackage', ],
+            ],
+        ],
+        'CreateSecretRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'secretCfg' =>  [ 'shape' => 'SecretCfg', ],
+            ],
+        ],
+        'DeleteSecretVersionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateSecretVersionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSecretVersionListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'secretDetail' =>  [ 'shape' => 'SecretDetail', ],
+            ],
+        ],
+        'ImportSecretResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
         ],
-        'EncryptRequestShape' => [
+        'CreateSecretResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'plaintext' => [ 'type' => '', 'locationName' => 'plaintext', ],
-                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CreateKeyResultShape' => [
+        'ImportSecretResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisableSecretResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteSecretResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateSecretResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisableSecretResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
         ],
-        'EnableSecretVersionResponseShape' => [
+        'ExportSecretResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'secretPackage' => [ 'type' => 'string', 'locationName' => 'secretPackage', ],
+            ],
+        ],
+        'DescribeSecretListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'secretList' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecretInfo', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'CreateSecretVersionResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
@@ -738,15 +821,54 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CreateSecretResultShape' => [
+        'DisableSecretVersionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+            ],
+        ],
+        'DescribeSecretListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'ExportSecretRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
+            ],
+        ],
+        'UpdateSecretRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'secretDescCfg' =>  [ 'shape' => 'SecretDescCfg', ],
+                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
+            ],
+        ],
+        'DisableSecretRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
+            ],
+        ],
+        'CreateSecretVersionResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
         ],
-        'UpdateSecretResponseShape' => [
+        'DeleteSecretVersionRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+            ],
+        ],
+        'EnableSecretResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'UpdateSecretVersionResultShape' => [
@@ -754,17 +876,31 @@ return [
             'members' => [
             ],
         ],
-        'ExportSecretResponseShape' => [
+        'DescribeSecretVersionListRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'ExportSecretResultShape', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
+            ],
+        ],
+        'DescribeSecretListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSecretListResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteSecretResponseShape' => [
+        'EnableSecretVersionRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+            ],
+        ],
+        'UpdateSecretResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DescribeSecretVersionInfoResultShape' => [
@@ -773,22 +909,67 @@ return [
                 'secretVersionItem' =>  [ 'shape' => 'SecretVersionItem', ],
             ],
         ],
-        'DescribeSecretListResultShape' => [
+        'DeleteSecretVersionResultShape' => [
             'type' => 'structure',
             'members' => [
-                'secretList' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecretInfo', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
-        'ExportSecretResultShape' => [
+        'CreateSecretResultShape' => [
             'type' => 'structure',
             'members' => [
-                'secretPackage' => [ 'type' => 'string', 'locationName' => 'secretPackage', ],
             ],
         ],
-        'ImportSecretResponseShape' => [
+        'DescribeSecretVersionInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+            ],
+        ],
+        'EnableSecretVersionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DisableSecretVersionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EnableSecretVersionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisableSecretVersionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteSecretRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
+            ],
+        ],
+        'EnableSecretResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EnableSecretRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
+            ],
+        ],
+        'ExportSecretResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ExportSecretResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -806,26 +987,9 @@ return [
                 'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
             ],
         ],
-        'ImportSecretResultShape' => [
+        'DeleteSecretResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'DisableSecretResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'UpdateSecretVersionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'EnableSecretResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'UpdateSecretVersionRequestShape' => [
@@ -834,170 +998,6 @@ return [
                 'secretTimeCfg' =>  [ 'shape' => 'SecretTimeCfg', ],
                 'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
-            ],
-        ],
-        'UpdateSecretResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DisableSecretResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateSecretRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'secretCfg' =>  [ 'shape' => 'SecretCfg', ],
-            ],
-        ],
-        'DeleteSecretResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'EnableSecretResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeleteSecretVersionRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
-                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
-            ],
-        ],
-        'DeleteSecretVersionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UpdateSecretRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'secretDescCfg' =>  [ 'shape' => 'SecretDescCfg', ],
-                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
-            ],
-        ],
-        'DisableSecretRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
-            ],
-        ],
-        'DisableSecretVersionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateSecretResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'EnableSecretRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
-            ],
-        ],
-        'DisableSecretVersionResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'ExportSecretRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
-            ],
-        ],
-        'CreateSecretVersionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateSecretVersionResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'EnableSecretVersionRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
-                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
-            ],
-        ],
-        'DeleteSecretVersionResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'EnableSecretVersionResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DescribeSecretVersionListResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'secretDetail' =>  [ 'shape' => 'SecretDetail', ],
-            ],
-        ],
-        'DeleteSecretRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
-            ],
-        ],
-        'ImportSecretRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'secretPackage' => [ 'type' => '', 'locationName' => 'secretPackage', ],
-            ],
-        ],
-        'DisableSecretVersionRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
-                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
-            ],
-        ],
-        'DescribeSecretListRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-            ],
-        ],
-        'DescribeSecretVersionInfoRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
-                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
-            ],
-        ],
-        'DescribeSecretListResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeSecretListResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeSecretVersionListRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
             ],
         ],
     ],

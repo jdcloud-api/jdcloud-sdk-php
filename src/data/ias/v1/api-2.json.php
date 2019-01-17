@@ -205,64 +205,6 @@ return [
                 'userType' => [ 'type' => 'string', 'locationName' => 'userType', ],
             ],
         ],
-        'AppsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-                'clientId' => [ 'type' => 'string', 'locationName' => 'clientId', ],
-                'multiTenant' => [ 'type' => 'boolean', 'locationName' => 'multiTenant', ],
-                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
-                'scope' => [ 'type' => 'string', 'locationName' => 'scope', ],
-                'startTime' => [ 'type' => 'long', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'long', 'locationName' => 'endTime', ],
-                'accountType' => [ 'type' => 'string', 'locationName' => 'accountType', ],
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'offset' => [ 'type' => 'integer', 'locationName' => 'offset', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'AppDetailResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'AppDetailResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AppsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pagination' =>  [ 'shape' => 'Pagination', ],
-                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'AppQueryResultItem', ], ],
-            ],
-        ],
-        'StateResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'StateResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AppsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'AppsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'StateRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'StateResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'states' => [ 'type' => 'list', 'member' => [ 'shape' => 'State', ], ],
-            ],
-        ],
         'AppDetailResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -292,6 +234,57 @@ return [
                 'state' => [ 'type' => 'string', 'locationName' => 'state', ],
             ],
         ],
+        'AppDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AppDetailResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'states' => [ 'type' => 'list', 'member' => [ 'shape' => 'State', ], ],
+            ],
+        ],
+        'AppsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AppsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'AppsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'clientId' => [ 'type' => 'string', 'locationName' => 'clientId', ],
+                'multiTenant' => [ 'type' => 'boolean', 'locationName' => 'multiTenant', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'scope' => [ 'type' => 'string', 'locationName' => 'scope', ],
+                'startTime' => [ 'type' => 'long', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'long', 'locationName' => 'endTime', ],
+                'accountType' => [ 'type' => 'string', 'locationName' => 'accountType', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'offset' => [ 'type' => 'integer', 'locationName' => 'offset', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'StateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'StateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'AppDetailRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -299,38 +292,11 @@ return [
                 'clientId' => [ 'type' => 'string', 'locationName' => 'clientId', ],
             ],
         ],
-        'GetAppsRequestShape' => [
+        'AppsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetAppResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clientId' => [ 'type' => 'string', 'locationName' => 'clientId', ],
-                'clientName' => [ 'type' => 'string', 'locationName' => 'clientName', ],
-                'tokenEndpointAuthMethod' => [ 'type' => 'string', 'locationName' => 'tokenEndpointAuthMethod', ],
-                'grantTypes' => [ 'type' => 'string', 'locationName' => 'grantTypes', ],
-                'responseTypes' => [ 'type' => 'string', 'locationName' => 'responseTypes', ],
-                'redirectUris' => [ 'type' => 'string', 'locationName' => 'redirectUris', ],
-                'clientUri' => [ 'type' => 'string', 'locationName' => 'clientUri', ],
-                'logoUri' => [ 'type' => 'string', 'locationName' => 'logoUri', ],
-                'tosUri' => [ 'type' => 'string', 'locationName' => 'tosUri', ],
-                'policyUri' => [ 'type' => 'string', 'locationName' => 'policyUri', ],
-                'scope' => [ 'type' => 'string', 'locationName' => 'scope', ],
-                'jwksUri' => [ 'type' => 'string', 'locationName' => 'jwksUri', ],
-                'jwks' => [ 'type' => 'string', 'locationName' => 'jwks', ],
-                'contacts' => [ 'type' => 'string', 'locationName' => 'contacts', ],
-                'extension' => [ 'type' => 'string', 'locationName' => 'extension', ],
-                'accessTokenValiditySeconds' => [ 'type' => 'integer', 'locationName' => 'accessTokenValiditySeconds', ],
-                'refreshTokenValiditySeconds' => [ 'type' => 'integer', 'locationName' => 'refreshTokenValiditySeconds', ],
-                'multiTenant' => [ 'type' => 'boolean', 'locationName' => 'multiTenant', ],
-                'secretUpdateTime' => [ 'type' => 'long', 'locationName' => 'secretUpdateTime', ],
-                'updateTime' => [ 'type' => 'long', 'locationName' => 'updateTime', ],
-                'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
-                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
-                'userType' => [ 'type' => 'string', 'locationName' => 'userType', ],
+                'pagination' =>  [ 'shape' => 'Pagination', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'AppQueryResultItem', ], ],
             ],
         ],
         'CreateAppResultShape' => [
@@ -361,55 +327,11 @@ return [
                 'userType' => [ 'type' => 'string', 'locationName' => 'userType', ],
             ],
         ],
-        'CreateAppResponseShape' => [
+        'GetAppsResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'CreateAppResultShape', ],
+                'result' =>  [ 'shape' => 'GetAppsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UpdateAppRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clientName' => [ 'type' => 'string', 'locationName' => 'clientName', ],
-                'tokenEndpointAuthMethod' => [ 'type' => 'string', 'locationName' => 'tokenEndpointAuthMethod', ],
-                'grantTypes' => [ 'type' => 'string', 'locationName' => 'grantTypes', ],
-                'redirectUris' => [ 'type' => 'string', 'locationName' => 'redirectUris', ],
-                'clientUri' => [ 'type' => 'string', 'locationName' => 'clientUri', ],
-                'logoUri' => [ 'type' => 'string', 'locationName' => 'logoUri', ],
-                'tosUri' => [ 'type' => 'string', 'locationName' => 'tosUri', ],
-                'policyUri' => [ 'type' => 'string', 'locationName' => 'policyUri', ],
-                'scope' => [ 'type' => 'string', 'locationName' => 'scope', ],
-                'jwksUri' => [ 'type' => 'string', 'locationName' => 'jwksUri', ],
-                'jwks' => [ 'type' => 'string', 'locationName' => 'jwks', ],
-                'contacts' => [ 'type' => 'string', 'locationName' => 'contacts', ],
-                'extension' => [ 'type' => 'string', 'locationName' => 'extension', ],
-                'accessTokenValiditySeconds' => [ 'type' => 'integer', 'locationName' => 'accessTokenValiditySeconds', ],
-                'refreshTokenValiditySeconds' => [ 'type' => 'integer', 'locationName' => 'refreshTokenValiditySeconds', ],
-                'multiTenant' => [ 'type' => 'boolean', 'locationName' => 'multiTenant', ],
-                'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
-                'userType' => [ 'type' => 'string', 'locationName' => 'userType', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'clientId' => [ 'type' => 'string', 'locationName' => 'clientId', ],
-            ],
-        ],
-        'GetAppsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'apps' => [ 'type' => 'list', 'member' => [ 'shape' => 'ApplicationRes', ], ],
-            ],
-        ],
-        'DeleteAppResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DeleteAppResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UpdateAppResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'UpdateAppResultShape', ],
             ],
         ],
         'CreateAppRequestShape' => [
@@ -434,33 +356,6 @@ return [
                 'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
                 'userType' => [ 'type' => 'string', 'locationName' => 'userType', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DeleteAppResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
-            ],
-        ],
-        'DeleteAppRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'clientId' => [ 'type' => 'string', 'locationName' => 'clientId', ],
-            ],
-        ],
-        'GetAppsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetAppsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetAppResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetAppResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'UpdateAppResultShape' => [
@@ -491,11 +386,116 @@ return [
                 'userType' => [ 'type' => 'string', 'locationName' => 'userType', ],
             ],
         ],
+        'GetAppsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'apps' => [ 'type' => 'list', 'member' => [ 'shape' => 'ApplicationRes', ], ],
+            ],
+        ],
+        'DeleteAppResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteAppResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateAppResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateAppResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetAppResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientId' => [ 'type' => 'string', 'locationName' => 'clientId', ],
+                'clientName' => [ 'type' => 'string', 'locationName' => 'clientName', ],
+                'tokenEndpointAuthMethod' => [ 'type' => 'string', 'locationName' => 'tokenEndpointAuthMethod', ],
+                'grantTypes' => [ 'type' => 'string', 'locationName' => 'grantTypes', ],
+                'responseTypes' => [ 'type' => 'string', 'locationName' => 'responseTypes', ],
+                'redirectUris' => [ 'type' => 'string', 'locationName' => 'redirectUris', ],
+                'clientUri' => [ 'type' => 'string', 'locationName' => 'clientUri', ],
+                'logoUri' => [ 'type' => 'string', 'locationName' => 'logoUri', ],
+                'tosUri' => [ 'type' => 'string', 'locationName' => 'tosUri', ],
+                'policyUri' => [ 'type' => 'string', 'locationName' => 'policyUri', ],
+                'scope' => [ 'type' => 'string', 'locationName' => 'scope', ],
+                'jwksUri' => [ 'type' => 'string', 'locationName' => 'jwksUri', ],
+                'jwks' => [ 'type' => 'string', 'locationName' => 'jwks', ],
+                'contacts' => [ 'type' => 'string', 'locationName' => 'contacts', ],
+                'extension' => [ 'type' => 'string', 'locationName' => 'extension', ],
+                'accessTokenValiditySeconds' => [ 'type' => 'integer', 'locationName' => 'accessTokenValiditySeconds', ],
+                'refreshTokenValiditySeconds' => [ 'type' => 'integer', 'locationName' => 'refreshTokenValiditySeconds', ],
+                'multiTenant' => [ 'type' => 'boolean', 'locationName' => 'multiTenant', ],
+                'secretUpdateTime' => [ 'type' => 'long', 'locationName' => 'secretUpdateTime', ],
+                'updateTime' => [ 'type' => 'long', 'locationName' => 'updateTime', ],
+                'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'userType' => [ 'type' => 'string', 'locationName' => 'userType', ],
+            ],
+        ],
+        'UpdateAppRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientName' => [ 'type' => 'string', 'locationName' => 'clientName', ],
+                'tokenEndpointAuthMethod' => [ 'type' => 'string', 'locationName' => 'tokenEndpointAuthMethod', ],
+                'grantTypes' => [ 'type' => 'string', 'locationName' => 'grantTypes', ],
+                'redirectUris' => [ 'type' => 'string', 'locationName' => 'redirectUris', ],
+                'clientUri' => [ 'type' => 'string', 'locationName' => 'clientUri', ],
+                'logoUri' => [ 'type' => 'string', 'locationName' => 'logoUri', ],
+                'tosUri' => [ 'type' => 'string', 'locationName' => 'tosUri', ],
+                'policyUri' => [ 'type' => 'string', 'locationName' => 'policyUri', ],
+                'scope' => [ 'type' => 'string', 'locationName' => 'scope', ],
+                'jwksUri' => [ 'type' => 'string', 'locationName' => 'jwksUri', ],
+                'jwks' => [ 'type' => 'string', 'locationName' => 'jwks', ],
+                'contacts' => [ 'type' => 'string', 'locationName' => 'contacts', ],
+                'extension' => [ 'type' => 'string', 'locationName' => 'extension', ],
+                'accessTokenValiditySeconds' => [ 'type' => 'integer', 'locationName' => 'accessTokenValiditySeconds', ],
+                'refreshTokenValiditySeconds' => [ 'type' => 'integer', 'locationName' => 'refreshTokenValiditySeconds', ],
+                'multiTenant' => [ 'type' => 'boolean', 'locationName' => 'multiTenant', ],
+                'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
+                'userType' => [ 'type' => 'string', 'locationName' => 'userType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clientId' => [ 'type' => 'string', 'locationName' => 'clientId', ],
+            ],
+        ],
+        'UpdateAppResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateAppResultShape', ],
+            ],
+        ],
+        'DeleteAppRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clientId' => [ 'type' => 'string', 'locationName' => 'clientId', ],
+            ],
+        ],
+        'GetAppResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetAppResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'GetAppRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'clientId' => [ 'type' => 'string', 'locationName' => 'clientId', ],
+            ],
+        ],
+        'DeleteAppResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+            ],
+        ],
+        'GetAppsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
     ],

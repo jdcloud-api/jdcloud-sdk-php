@@ -13,6 +13,15 @@ return [
     'operations' => [
     ],
     'shapes' => [
+        'CategoryTree' => [
+            'type' => 'structure',
+            'members' => [
+                'categoryId' => [ 'type' => 'double', 'locationName' => 'categoryId', ],
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
+                'levelId' => [ 'type' => 'integer', 'locationName' => 'levelId', ],
+                'children' => [ 'type' => 'list', 'member' => [ 'shape' => 'CategoryTree', ], ],
+            ],
+        ],
         'CategoryParent' => [
             'type' => 'structure',
             'members' => [
@@ -27,15 +36,6 @@ return [
                 'categoryId' => [ 'type' => 'double', 'locationName' => 'categoryId', ],
                 'category' => [ 'type' => 'string', 'locationName' => 'category', ],
                 'levelId' => [ 'type' => 'integer', 'locationName' => 'levelId', ],
-            ],
-        ],
-        'CategoryTree' => [
-            'type' => 'structure',
-            'members' => [
-                'categoryId' => [ 'type' => 'double', 'locationName' => 'categoryId', ],
-                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
-                'levelId' => [ 'type' => 'integer', 'locationName' => 'levelId', ],
-                'children' => [ 'type' => 'list', 'member' => [ 'shape' => 'CategoryTree', ], ],
             ],
         ],
         'Code' => [
@@ -126,14 +126,6 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
-        'Template' => [
-            'type' => 'structure',
-            'members' => [
-                'templateType' => [ 'type' => 'integer', 'locationName' => 'templateType', ],
-                'flag' => [ 'type' => 'integer', 'locationName' => 'flag', ],
-                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
-            ],
-        ],
         'DescribeTranscode' => [
             'type' => 'structure',
             'members' => [
@@ -152,6 +144,40 @@ return [
                 'channel' => [ 'type' => 'integer', 'locationName' => 'channel', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'Template' => [
+            'type' => 'structure',
+            'members' => [
+                'templateType' => [ 'type' => 'integer', 'locationName' => 'templateType', ],
+                'flag' => [ 'type' => 'integer', 'locationName' => 'flag', ],
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+            ],
+        ],
+        'Video' => [
+            'type' => 'structure',
+            'members' => [
+                'mid' => [ 'type' => 'string', 'locationName' => 'mid', ],
+                'videoName' => [ 'type' => 'string', 'locationName' => 'videoName', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'imgUrl' => [ 'type' => 'string', 'locationName' => 'imgUrl', ],
+                'categoryId' => [ 'type' => 'double', 'locationName' => 'categoryId', ],
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'size' => [ 'type' => 'double', 'locationName' => 'size', ],
+                'duration' => [ 'type' => 'double', 'locationName' => 'duration', ],
+                'tags' => [ 'type' => 'string', 'locationName' => 'tags', ],
+                'coderateId' => [ 'type' => 'string', 'locationName' => 'coderateId', ],
+                'logoId' => [ 'type' => 'string', 'locationName' => 'logoId', ],
+                'md5' => [ 'type' => 'string', 'locationName' => 'md5', ],
+                'clientIp' => [ 'type' => 'string', 'locationName' => 'clientIp', ],
+                'clientId' => [ 'type' => 'integer', 'locationName' => 'clientId', ],
+                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'codeList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Code', ], ],
+                'categorys' => [ 'type' => 'object', 'locationName' => 'categorys', ],
             ],
         ],
         'VideoImg' => [
@@ -195,32 +221,6 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'imgList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Img', ], ],
-            ],
-        ],
-        'Video' => [
-            'type' => 'structure',
-            'members' => [
-                'mid' => [ 'type' => 'string', 'locationName' => 'mid', ],
-                'videoName' => [ 'type' => 'string', 'locationName' => 'videoName', ],
-                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
-                'imgUrl' => [ 'type' => 'string', 'locationName' => 'imgUrl', ],
-                'categoryId' => [ 'type' => 'double', 'locationName' => 'categoryId', ],
-                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
-                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
-                'size' => [ 'type' => 'double', 'locationName' => 'size', ],
-                'duration' => [ 'type' => 'double', 'locationName' => 'duration', ],
-                'tags' => [ 'type' => 'string', 'locationName' => 'tags', ],
-                'coderateId' => [ 'type' => 'string', 'locationName' => 'coderateId', ],
-                'logoId' => [ 'type' => 'string', 'locationName' => 'logoId', ],
-                'md5' => [ 'type' => 'string', 'locationName' => 'md5', ],
-                'clientIp' => [ 'type' => 'string', 'locationName' => 'clientIp', ],
-                'clientId' => [ 'type' => 'integer', 'locationName' => 'clientId', ],
-                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
-                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-                'codeList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Code', ], ],
-                'categorys' => [ 'type' => 'object', 'locationName' => 'categorys', ],
             ],
         ],
         'Filter' => [

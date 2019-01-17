@@ -47,6 +47,123 @@ return [
             'input' => [ 'shape' => 'UnregistCloudInfoRequestShape', ],
             'output' => [ 'shape' => 'UnregistCloudInfoResponseShape', ],
         ],
+        'GetDeployments' => [
+            'name' => 'GetDeployments',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/deployments',
+            ],
+            'input' => [ 'shape' => 'GetDeploymentsRequestShape', ],
+            'output' => [ 'shape' => 'GetDeploymentsResponseShape', ],
+        ],
+        'CreateDeployment' => [
+            'name' => 'CreateDeployment',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/deployments',
+            ],
+            'input' => [ 'shape' => 'CreateDeploymentRequestShape', ],
+            'output' => [ 'shape' => 'CreateDeploymentResponseShape', ],
+        ],
+        'ReverseDeployment' => [
+            'name' => 'ReverseDeployment',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/deployments:reverse',
+            ],
+            'input' => [ 'shape' => 'ReverseDeploymentRequestShape', ],
+            'output' => [ 'shape' => 'ReverseDeploymentResponseShape', ],
+        ],
+        'GetDeploymentsById' => [
+            'name' => 'GetDeploymentsById',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/deployments/{id}',
+            ],
+            'input' => [ 'shape' => 'GetDeploymentsByIdRequestShape', ],
+            'output' => [ 'shape' => 'GetDeploymentsByIdResponseShape', ],
+        ],
+        'EditDeployment' => [
+            'name' => 'EditDeployment',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/deployments/{id}',
+            ],
+            'input' => [ 'shape' => 'EditDeploymentRequestShape', ],
+            'output' => [ 'shape' => 'EditDeploymentResponseShape', ],
+        ],
+        'DeleteDeployment' => [
+            'name' => 'DeleteDeployment',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/deployments/{id}',
+            ],
+            'input' => [ 'shape' => 'DeleteDeploymentRequestShape', ],
+            'output' => [ 'shape' => 'DeleteDeploymentResponseShape', ],
+        ],
+        'CloneDeployment' => [
+            'name' => 'CloneDeployment',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/deployments/{id}:clone',
+            ],
+            'input' => [ 'shape' => 'CloneDeploymentRequestShape', ],
+            'output' => [ 'shape' => 'CloneDeploymentResponseShape', ],
+        ],
+        'DryrunDeployment' => [
+            'name' => 'DryrunDeployment',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/deployments/{id}:dryrun',
+            ],
+            'input' => [ 'shape' => 'DryrunDeploymentRequestShape', ],
+            'output' => [ 'shape' => 'DryrunDeploymentResponseShape', ],
+        ],
+        'ApplyDeployment' => [
+            'name' => 'ApplyDeployment',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/deployments/{id}:apply',
+            ],
+            'input' => [ 'shape' => 'ApplyDeploymentRequestShape', ],
+            'output' => [ 'shape' => 'ApplyDeploymentResponseShape', ],
+        ],
+        'GetDeploymentResult' => [
+            'name' => 'GetDeploymentResult',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/deployments/{id}/result',
+            ],
+            'input' => [ 'shape' => 'GetDeploymentResultRequestShape', ],
+            'output' => [ 'shape' => 'GetDeploymentResultResponseShape', ],
+        ],
+        'GetDeploymentVersions' => [
+            'name' => 'GetDeploymentVersions',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/deployments/{id}/versions',
+            ],
+            'input' => [ 'shape' => 'GetDeploymentVersionsRequestShape', ],
+            'output' => [ 'shape' => 'GetDeploymentVersionsResponseShape', ],
+        ],
+        'GetDeploymentsVersion' => [
+            'name' => 'GetDeploymentsVersion',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/deployments/{id}/versions/{version_id}',
+            ],
+            'input' => [ 'shape' => 'GetDeploymentsVersionRequestShape', ],
+            'output' => [ 'shape' => 'GetDeploymentsVersionResponseShape', ],
+        ],
+        'RollbackDeploymentsVersion' => [
+            'name' => 'RollbackDeploymentsVersion',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/deployments/{id}/versions/{version_id}:rollback',
+            ],
+            'input' => [ 'shape' => 'RollbackDeploymentsVersionRequestShape', ],
+            'output' => [ 'shape' => 'RollbackDeploymentsVersionResponseShape', ],
+        ],
         'GetDisks' => [
             'name' => 'GetDisks',
             'http' => [
@@ -100,6 +217,330 @@ return [
             ],
             'input' => [ 'shape' => 'DetachDiskToVmInstanceByDiskIdRequestShape', ],
             'output' => [ 'shape' => 'DetachDiskToVmInstanceByDiskIdResponseShape', ],
+        ],
+        'GetBuckets' => [
+            'name' => 'GetBuckets',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/oss_buckets',
+            ],
+            'input' => [ 'shape' => 'GetBucketsRequestShape', ],
+            'output' => [ 'shape' => 'GetBucketsResponseShape', ],
+        ],
+        'CreateBucket' => [
+            'name' => 'CreateBucket',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/oss_buckets',
+            ],
+            'input' => [ 'shape' => 'CreateBucketRequestShape', ],
+            'output' => [ 'shape' => 'CreateBucketResponseShape', ],
+        ],
+        'GetBucketByName' => [
+            'name' => 'GetBucketByName',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/oss_buckets/{name}',
+            ],
+            'input' => [ 'shape' => 'GetBucketByNameRequestShape', ],
+            'output' => [ 'shape' => 'GetBucketByNameResponseShape', ],
+        ],
+        'DeleteBucket' => [
+            'name' => 'DeleteBucket',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/oss_buckets/{name}',
+            ],
+            'input' => [ 'shape' => 'DeleteBucketRequestShape', ],
+            'output' => [ 'shape' => 'DeleteBucketResponseShape', ],
+        ],
+        'GetBucketFiles' => [
+            'name' => 'GetBucketFiles',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/oss_buckets/{name}/files',
+            ],
+            'input' => [ 'shape' => 'GetBucketFilesRequestShape', ],
+            'output' => [ 'shape' => 'GetBucketFilesResponseShape', ],
+        ],
+        'GetTransferTasks' => [
+            'name' => 'GetTransferTasks',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/oss_transferTasks',
+            ],
+            'input' => [ 'shape' => 'GetTransferTasksRequestShape', ],
+            'output' => [ 'shape' => 'GetTransferTasksResponseShape', ],
+        ],
+        'CreateTransferTask' => [
+            'name' => 'CreateTransferTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/oss_transferTasks',
+            ],
+            'input' => [ 'shape' => 'CreateTransferTaskRequestShape', ],
+            'output' => [ 'shape' => 'CreateTransferTaskResponseShape', ],
+        ],
+        'GetTransferTaskById' => [
+            'name' => 'GetTransferTaskById',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/oss_transferTasks/{id}',
+            ],
+            'input' => [ 'shape' => 'GetTransferTaskByIdRequestShape', ],
+            'output' => [ 'shape' => 'GetTransferTaskByIdResponseShape', ],
+        ],
+        'EditTransferTask' => [
+            'name' => 'EditTransferTask',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/oss_transferTasks/{id}',
+            ],
+            'input' => [ 'shape' => 'EditTransferTaskRequestShape', ],
+            'output' => [ 'shape' => 'EditTransferTaskResponseShape', ],
+        ],
+        'DeleteTransferTask' => [
+            'name' => 'DeleteTransferTask',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/oss_transferTasks/{id}',
+            ],
+            'input' => [ 'shape' => 'DeleteTransferTaskRequestShape', ],
+            'output' => [ 'shape' => 'DeleteTransferTaskResponseShape', ],
+        ],
+        'StartTransferTask' => [
+            'name' => 'StartTransferTask',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/oss_transferTasks/{id}:start',
+            ],
+            'input' => [ 'shape' => 'StartTransferTaskRequestShape', ],
+            'output' => [ 'shape' => 'StartTransferTaskResponseShape', ],
+        ],
+        'StopTransferTask' => [
+            'name' => 'StopTransferTask',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/oss_transferTasks/{id}:stop',
+            ],
+            'input' => [ 'shape' => 'StopTransferTaskRequestShape', ],
+            'output' => [ 'shape' => 'StopTransferTaskResponseShape', ],
+        ],
+        'GetTransferTaskProgress' => [
+            'name' => 'GetTransferTaskProgress',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/oss_transferTasks/{id}/progress',
+            ],
+            'input' => [ 'shape' => 'GetTransferTaskProgressRequestShape', ],
+            'output' => [ 'shape' => 'GetTransferTaskProgressResponseShape', ],
+        ],
+        'GetTransferTaskFailedFiles' => [
+            'name' => 'GetTransferTaskFailedFiles',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/oss_transferTasks/{id}/failed-files',
+            ],
+            'input' => [ 'shape' => 'GetTransferTaskFailedFilesRequestShape', ],
+            'output' => [ 'shape' => 'GetTransferTaskFailedFilesResponseShape', ],
+        ],
+        'GetRdsAccountsByInstId' => [
+            'name' => 'GetRdsAccountsByInstId',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/rds_instances/{instId}/accounts',
+            ],
+            'input' => [ 'shape' => 'GetRdsAccountsByInstIdRequestShape', ],
+            'output' => [ 'shape' => 'GetRdsAccountsByInstIdResponseShape', ],
+        ],
+        'CreateRdsAccounts' => [
+            'name' => 'CreateRdsAccounts',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/rds_instances/{instId}/accounts',
+            ],
+            'input' => [ 'shape' => 'CreateRdsAccountsRequestShape', ],
+            'output' => [ 'shape' => 'CreateRdsAccountsResponseShape', ],
+        ],
+        'GetRdsAccountsByInstIdAndAccountName' => [
+            'name' => 'GetRdsAccountsByInstIdAndAccountName',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/rds_instances/{instId}/accounts/{accountName}',
+            ],
+            'input' => [ 'shape' => 'GetRdsAccountsByInstIdAndAccountNameRequestShape', ],
+            'output' => [ 'shape' => 'GetRdsAccountsByInstIdAndAccountNameResponseShape', ],
+        ],
+        'DeleteRdsAccount' => [
+            'name' => 'DeleteRdsAccount',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/rds_instances/{instId}/accounts/{accountName}',
+            ],
+            'input' => [ 'shape' => 'DeleteRdsAccountRequestShape', ],
+            'output' => [ 'shape' => 'DeleteRdsAccountResponseShape', ],
+        ],
+        'GrantRdsAccount' => [
+            'name' => 'GrantRdsAccount',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/rds_instances/{instId}/accounts/{accountName}:grant',
+            ],
+            'input' => [ 'shape' => 'GrantRdsAccountRequestShape', ],
+            'output' => [ 'shape' => 'GrantRdsAccountResponseShape', ],
+        ],
+        'RevokeRdsAccount' => [
+            'name' => 'RevokeRdsAccount',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/rds_instances/{instId}/accounts/{accountName}/databases/{dbName}:revoke',
+            ],
+            'input' => [ 'shape' => 'RevokeRdsAccountRequestShape', ],
+            'output' => [ 'shape' => 'RevokeRdsAccountResponseShape', ],
+        ],
+        'GetRdsDatabasesByInstId' => [
+            'name' => 'GetRdsDatabasesByInstId',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/rds_instances/{instId}/databases',
+            ],
+            'input' => [ 'shape' => 'GetRdsDatabasesByInstIdRequestShape', ],
+            'output' => [ 'shape' => 'GetRdsDatabasesByInstIdResponseShape', ],
+        ],
+        'CreateRdsDatabase' => [
+            'name' => 'CreateRdsDatabase',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/rds_instances/{instId}/databases',
+            ],
+            'input' => [ 'shape' => 'CreateRdsDatabaseRequestShape', ],
+            'output' => [ 'shape' => 'CreateRdsDatabaseResponseShape', ],
+        ],
+        'GetRdsDatabaseByInstIdAndDbName' => [
+            'name' => 'GetRdsDatabaseByInstIdAndDbName',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/rds_instances/{instId}/databases/{dbName}',
+            ],
+            'input' => [ 'shape' => 'GetRdsDatabaseByInstIdAndDbNameRequestShape', ],
+            'output' => [ 'shape' => 'GetRdsDatabaseByInstIdAndDbNameResponseShape', ],
+        ],
+        'DeleteRdsDatabase' => [
+            'name' => 'DeleteRdsDatabase',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/rds_instances/{instId}/databases/{dbName}',
+            ],
+            'input' => [ 'shape' => 'DeleteRdsDatabaseRequestShape', ],
+            'output' => [ 'shape' => 'DeleteRdsDatabaseResponseShape', ],
+        ],
+        'GetRdsInstances' => [
+            'name' => 'GetRdsInstances',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/rds_instances',
+            ],
+            'input' => [ 'shape' => 'GetRdsInstancesRequestShape', ],
+            'output' => [ 'shape' => 'GetRdsInstancesResponseShape', ],
+        ],
+        'CreateRdsInstance' => [
+            'name' => 'CreateRdsInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/rds_instances',
+            ],
+            'input' => [ 'shape' => 'CreateRdsInstanceRequestShape', ],
+            'output' => [ 'shape' => 'CreateRdsInstanceResponseShape', ],
+        ],
+        'GetRdsByInstId' => [
+            'name' => 'GetRdsByInstId',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/rds_instances/{instId}',
+            ],
+            'input' => [ 'shape' => 'GetRdsByInstIdRequestShape', ],
+            'output' => [ 'shape' => 'GetRdsByInstIdResponseShape', ],
+        ],
+        'DeleteRdsByInstId' => [
+            'name' => 'DeleteRdsByInstId',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/rds_instances/{instId}',
+            ],
+            'input' => [ 'shape' => 'DeleteRdsByInstIdRequestShape', ],
+            'output' => [ 'shape' => 'DeleteRdsByInstIdResponseShape', ],
+        ],
+        'GetChannels' => [
+            'name' => 'GetChannels',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/migration_mysqlChannels',
+            ],
+            'input' => [ 'shape' => 'GetChannelsRequestShape', ],
+            'output' => [ 'shape' => 'GetChannelsResponseShape', ],
+        ],
+        'CreateChannel' => [
+            'name' => 'CreateChannel',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/migration_mysqlChannels',
+            ],
+            'input' => [ 'shape' => 'CreateChannelRequestShape', ],
+            'output' => [ 'shape' => 'CreateChannelResponseShape', ],
+        ],
+        'DeleteChannel' => [
+            'name' => 'DeleteChannel',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/migration_mysqlChannels/{id}',
+            ],
+            'input' => [ 'shape' => 'DeleteChannelRequestShape', ],
+            'output' => [ 'shape' => 'DeleteChannelResponseShape', ],
+        ],
+        'StartChannel' => [
+            'name' => 'StartChannel',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/migration_mysqlChannels/{id}:start',
+            ],
+            'input' => [ 'shape' => 'StartChannelRequestShape', ],
+            'output' => [ 'shape' => 'StartChannelResponseShape', ],
+        ],
+        'StopChannel' => [
+            'name' => 'StopChannel',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/migration_mysqlChannels/{id}:stop',
+            ],
+            'input' => [ 'shape' => 'StopChannelRequestShape', ],
+            'output' => [ 'shape' => 'StopChannelResponseShape', ],
+        ],
+        'GetDatasources' => [
+            'name' => 'GetDatasources',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/migration_mysqlDatasources',
+            ],
+            'input' => [ 'shape' => 'GetDatasourcesRequestShape', ],
+            'output' => [ 'shape' => 'GetDatasourcesResponseShape', ],
+        ],
+        'CreateDatasource' => [
+            'name' => 'CreateDatasource',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/migration_mysqlDatasources',
+            ],
+            'input' => [ 'shape' => 'CreateDatasourceRequestShape', ],
+            'output' => [ 'shape' => 'CreateDatasourceResponseShape', ],
+        ],
+        'DeleteDatasource' => [
+            'name' => 'DeleteDatasource',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/migration_mysqlDatasources/{id}',
+            ],
+            'input' => [ 'shape' => 'DeleteDatasourceRequestShape', ],
+            'output' => [ 'shape' => 'DeleteDatasourceResponseShape', ],
         ],
         'GetTaskInfoHistoryById' => [
             'name' => 'GetTaskInfoHistoryById',
@@ -517,12 +958,16 @@ return [
         ],
     ],
     'shapes' => [
-        'CloudNotFoundException' => [
+        'CloudInfoListResp' => [
             'type' => 'structure',
             'members' => [
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'payload' =>  [ 'shape' => 'Payload1', ],
+                'clouds' => [ 'type' => 'list', 'member' => [ 'shape' => 'CloudInfo', ], ],
+            ],
+        ],
+        'GetUserCloudNotFoundResp' => [
+            'type' => 'structure',
+            'members' => [
+                'error' => [ 'type' => 'object', 'locationName' => 'error', ],
             ],
         ],
         'UserNotFoundResp' => [
@@ -537,41 +982,7 @@ return [
                 'cloud' => [ 'type' => 'string', 'locationName' => 'cloud', ],
             ],
         ],
-        'Payload' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-            ],
-        ],
         'CloudInfoResp' => [
-            'type' => 'structure',
-            'members' => [
-                'cloud' =>  [ 'shape' => 'CloudInfo', ],
-            ],
-        ],
-        'CloudInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'vendor' => [ 'type' => 'string', 'locationName' => 'vendor', ],
-                'info' => [ 'type' => 'object', 'locationName' => 'info', ],
-                'metadata' => [ 'type' => 'object', 'locationName' => 'metadata', ],
-            ],
-        ],
-        'GetUserCloudNotFoundResp' => [
-            'type' => 'structure',
-            'members' => [
-                'error' => [ 'type' => 'object', 'locationName' => 'error', ],
-            ],
-        ],
-        'CloudInfoListResp' => [
-            'type' => 'structure',
-            'members' => [
-                'clouds' => [ 'type' => 'list', 'member' => [ 'shape' => 'CloudInfo', ], ],
-            ],
-        ],
-        'CreateCloudInfoReq' => [
             'type' => 'structure',
             'members' => [
                 'cloud' =>  [ 'shape' => 'CloudInfo', ],
@@ -585,45 +996,169 @@ return [
                 'payload' =>  [ 'shape' => 'Payload', ],
             ],
         ],
-        'CloudDataDisk' => [
+        'Payload' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'CloudInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'vendor' => [ 'type' => 'string', 'locationName' => 'vendor', ],
+                'info' => [ 'type' => 'object', 'locationName' => 'info', ],
+                'metadata' => [ 'type' => 'object', 'locationName' => 'metadata', ],
+            ],
+        ],
+        'CloudNotFoundException' => [
+            'type' => 'structure',
+            'members' => [
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'payload' =>  [ 'shape' => 'Payload1', ],
+            ],
+        ],
+        'DeploymentApplyInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'comment' => [ 'type' => 'string', 'locationName' => 'comment', ],
+                'applyTime' => [ 'type' => 'string', 'locationName' => 'applyTime', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'content' =>  [ 'shape' => 'DeploymentResourcesInfo', ],
+            ],
+        ],
+        'DeploymentAttachDisk' => [
+            'type' => 'structure',
+            'members' => [
+                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DeploymentResourcesInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'vms' => [ 'type' => 'object', 'locationName' => 'vms', ],
+                'eips' => [ 'type' => 'object', 'locationName' => 'eips', ],
+                'subnets' => [ 'type' => 'object', 'locationName' => 'subnets', ],
+                'networkInterfaces' => [ 'type' => 'object', 'locationName' => 'networkInterfaces', ],
+                'slbs' => [ 'type' => 'object', 'locationName' => 'slbs', ],
+                'securityGroups' => [ 'type' => 'object', 'locationName' => 'securityGroups', ],
+                'keypairs' => [ 'type' => 'object', 'locationName' => 'keypairs', ],
+                'disks' => [ 'type' => 'object', 'locationName' => 'disks', ],
+                'vpcs' => [ 'type' => 'object', 'locationName' => 'vpcs', ],
+                'vserverGroups' => [ 'type' => 'object', 'locationName' => 'vserverGroups', ],
+                'httpListeners' => [ 'type' => 'object', 'locationName' => 'httpListeners', ],
+                'diskAttachment' => [ 'type' => 'object', 'locationName' => 'diskAttachment', ],
+                'netInterfaceAttachment' => [ 'type' => 'object', 'locationName' => 'netInterfaceAttachment', ],
+                'eipAssociate' => [ 'type' => 'object', 'locationName' => 'eipAssociate', ],
+                'variables' => [ 'type' => 'object', 'locationName' => 'variables', ],
+            ],
+        ],
+        'Apply' => [
+            'type' => 'structure',
+            'members' => [
+                'comment' => [ 'type' => 'string', 'locationName' => 'comment', ],
+            ],
+        ],
+        'BackendServer' => [
+            'type' => 'structure',
+            'members' => [
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'serverId' => [ 'type' => 'string', 'locationName' => 'serverId', ],
+                'serverHealthStatus' => [ 'type' => 'string', 'locationName' => 'serverHealthStatus', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+            ],
+        ],
+        'VpcInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'cidrBlock' => [ 'type' => 'string', 'locationName' => 'cidrBlock', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+            ],
+        ],
+        'CreateSecurityGroup' => [
             'type' => 'structure',
             'members' => [
                 'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
-                'attachments' => [ 'type' => 'list', 'member' => [ 'shape' => 'ArrayDiskAttachment', ], ],
-                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
-                'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
-                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
             ],
         ],
-        'SystemDisk' => [
+        'CreateKeypair' => [
             'type' => 'structure',
             'members' => [
-                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
-                'diskSize' => [ 'type' => 'integer', 'locationName' => 'diskSize', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'keyFingerprint' => [ 'type' => 'string', 'locationName' => 'keyFingerprint', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'publicKey' => [ 'type' => 'string', 'locationName' => 'publicKey', ],
+            ],
+        ],
+        'CreateVserverGroup' => [
+            'type' => 'structure',
+            'members' => [
+                'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
+                'vserverGroupName' => [ 'type' => 'string', 'locationName' => 'vserverGroupName', ],
+                'backendServers' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackendServer', ], ],
+            ],
+        ],
+        'CreateLoadBalancerHTTPListener' => [
+            'type' => 'structure',
+            'members' => [
+                'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
+                'listenerPort' => [ 'type' => 'integer', 'locationName' => 'listenerPort', ],
+                'backendServerPort' => [ 'type' => 'integer', 'locationName' => 'backendServerPort', ],
+                'vserverGroupId' => [ 'type' => 'string', 'locationName' => 'vserverGroupId', ],
+                'bandwidth' => [ 'type' => 'integer', 'locationName' => 'bandwidth', ],
+                'healthCheckConnectPort' => [ 'type' => 'integer', 'locationName' => 'healthCheckConnectPort', ],
+                'healthyThreshold' => [ 'type' => 'integer', 'locationName' => 'healthyThreshold', ],
+                'unhealthyThreshold' => [ 'type' => 'integer', 'locationName' => 'unhealthyThreshold', ],
+                'healthCheckTimeout' => [ 'type' => 'integer', 'locationName' => 'healthCheckTimeout', ],
+                'healthCheckInterval' => [ 'type' => 'integer', 'locationName' => 'healthCheckInterval', ],
+                'healthCheckHttpCode' => [ 'type' => 'string', 'locationName' => 'healthCheckHttpCode', ],
+            ],
+        ],
+        'DeploymentAttachNetInterface' => [
+            'type' => 'structure',
+            'members' => [
+                'interfaceId' => [ 'type' => 'string', 'locationName' => 'interfaceId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'CreateNetInterface' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'associatedPublicIp' => [ 'type' => 'string', 'locationName' => 'associatedPublicIp', ],
+                'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
+                'macAddress' => [ 'type' => 'string', 'locationName' => 'macAddress', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'securityGroupId' => [ 'type' => 'string', 'locationName' => 'securityGroupId', ],
             ],
         ],
-        'DiskItem' => [
+        'ArrayDiskAttachment' => [
             'type' => 'structure',
             'members' => [
-                'disk' =>  [ 'shape' => 'CloudDataDisk', ],
-            ],
-        ],
-        'DataDiskInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'diskSize' => [ 'type' => 'integer', 'locationName' => 'diskSize', ],
-                'diskMediumType' => [ 'type' => 'string', 'locationName' => 'diskMediumType', ],
-                'diskName' => [ 'type' => 'string', 'locationName' => 'diskName', ],
-                'autoDelete' => [ 'type' => 'string', 'locationName' => 'autoDelete', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'CreateDataDisk' => [
@@ -643,23 +1178,182 @@ return [
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
             ],
         ],
-        'AttachDataDisk' => [
+        'CreateVm' => [
             'type' => 'structure',
             'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'hostName' => [ 'type' => 'string', 'locationName' => 'hostName', ],
+                'imageType' =>  [ 'shape' => 'ImageType', ],
+                'instanceType' =>  [ 'shape' => 'InstanceType', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
+                'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+                'instanceFlavorType' => [ 'type' => 'string', 'locationName' => 'instanceFlavorType', ],
+                'securityGroupId' => [ 'type' => 'string', 'locationName' => 'securityGroupId', ],
+                'internetMaxBandwidthIn' => [ 'type' => 'integer', 'locationName' => 'internetMaxBandwidthIn', ],
+                'internetMaxBandwidthOut' => [ 'type' => 'integer', 'locationName' => 'internetMaxBandwidthOut', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'passwordInherit' => [ 'type' => 'boolean', 'locationName' => 'passwordInherit', ],
+                'userData' => [ 'type' => 'string', 'locationName' => 'userData', ],
+                'keyPairName' => [ 'type' => 'string', 'locationName' => 'keyPairName', ],
+                'systemDisk' =>  [ 'shape' => 'SystemDisk', ],
+            ],
+        ],
+        'DeploymentBaseInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'cloudId' => [ 'type' => 'string', 'locationName' => 'cloudId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'readOnly' => [ 'type' => 'integer', 'locationName' => 'readOnly', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'updatedTime' => [ 'type' => 'string', 'locationName' => 'updatedTime', ],
+            ],
+        ],
+        'ReverseDeploymentInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'readOnly' => [ 'type' => 'integer', 'locationName' => 'readOnly', ],
+                'resources' =>  [ 'shape' => 'ReverseDeploymentResourcesInfo', ],
+            ],
+        ],
+        'InstanceType' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'cpu' => [ 'type' => 'integer', 'locationName' => 'cpu', ],
+                'memory' => [ 'type' => 'integer', 'locationName' => 'memory', ],
+            ],
+        ],
+        'AllocateEipAddress' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'bandwidth' => [ 'type' => 'string', 'locationName' => 'bandwidth', ],
+                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+            ],
+        ],
+        'CreateSubnet' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'cidrBlock' => [ 'type' => 'string', 'locationName' => 'cidrBlock', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+            ],
+        ],
+        'ImageType' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'imageSource' => [ 'type' => 'string', 'locationName' => 'imageSource', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'osType' => [ 'type' => 'string', 'locationName' => 'osType', ],
+                'osVersion' => [ 'type' => 'string', 'locationName' => 'osVersion', ],
+                'platform' => [ 'type' => 'string', 'locationName' => 'platform', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+            ],
+        ],
+        'DeploymentAssociateEip' => [
+            'type' => 'structure',
+            'members' => [
+                'eipId' => [ 'type' => 'string', 'locationName' => 'eipId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'deleteWithInstance' => [ 'type' => 'boolean', 'locationName' => 'deleteWithInstance', ],
             ],
         ],
-        'AttachDataDiskReq' => [
+        'SlbInfo' => [
             'type' => 'structure',
             'members' => [
-                'attach' =>  [ 'shape' => 'AttachDataDisk', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'ipAddress' => [ 'type' => 'string', 'locationName' => 'ipAddress', ],
+                'addressType' => [ 'type' => 'string', 'locationName' => 'addressType', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'vpc' => [ 'type' => 'string', 'locationName' => 'vpc', ],
+                'networkType' => [ 'type' => 'string', 'locationName' => 'networkType', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
             ],
         ],
-        'DetachDataDiskReq' => [
+        'SystemDisk' => [
             'type' => 'structure',
             'members' => [
-                'detach' =>  [ 'shape' => 'DetachDataDisk', ],
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
+                'diskSize' => [ 'type' => 'integer', 'locationName' => 'diskSize', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'Deployment' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'ReverseDeploymentResourcesInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'vmIds' => [ 'type' => 'object', 'locationName' => 'vmIds', ],
+                'eipIds' => [ 'type' => 'object', 'locationName' => 'eipIds', ],
+                'subnetIds' => [ 'type' => 'object', 'locationName' => 'subnetIds', ],
+                'networkInterfaceIds' => [ 'type' => 'object', 'locationName' => 'networkInterfaceIds', ],
+                'slbIds' => [ 'type' => 'object', 'locationName' => 'slbIds', ],
+                'securityGroupIds' => [ 'type' => 'object', 'locationName' => 'securityGroupIds', ],
+                'keypairIds' => [ 'type' => 'object', 'locationName' => 'keypairIds', ],
+                'diskIds' => [ 'type' => 'object', 'locationName' => 'diskIds', ],
+                'vpcIds' => [ 'type' => 'object', 'locationName' => 'vpcIds', ],
+                'vserverGroupIds' => [ 'type' => 'object', 'locationName' => 'vserverGroupIds', ],
+                'httpListenerIds' => [ 'type' => 'object', 'locationName' => 'httpListenerIds', ],
+                'diskAttachmentIds' => [ 'type' => 'object', 'locationName' => 'diskAttachmentIds', ],
+                'netInterfaceAttachmentIds' => [ 'type' => 'object', 'locationName' => 'netInterfaceAttachmentIds', ],
+                'eipAssociateIds' => [ 'type' => 'object', 'locationName' => 'eipAssociateIds', ],
+            ],
+        ],
+        'Tag' => [
+            'type' => 'structure',
+            'members' => [
+                'tagKey' => [ 'type' => 'string', 'locationName' => 'tagKey', ],
+                'tagValue' => [ 'type' => 'string', 'locationName' => 'tagValue', ],
+            ],
+        ],
+        'DeploymentInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'info' =>  [ 'shape' => 'DeploymentBaseInfo', ],
+                'content' =>  [ 'shape' => 'DeploymentResourcesInfo', ],
+            ],
+        ],
+        'SysDiskInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'diskSize' => [ 'type' => 'integer', 'locationName' => 'diskSize', ],
+                'diskMediumType' => [ 'type' => 'string', 'locationName' => 'diskMediumType', ],
+                'diskName' => [ 'type' => 'string', 'locationName' => 'diskName', ],
+                'autoDelete' => [ 'type' => 'string', 'locationName' => 'autoDelete', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
         'DiskCreateTask' => [
@@ -668,10 +1362,11 @@ return [
                 'task' =>  [ 'shape' => 'ResourceTFInfo', ],
             ],
         ],
-        'ArrayDiskAttachment' => [
+        'AttachDataDisk' => [
             'type' => 'structure',
             'members' => [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'deleteWithInstance' => [ 'type' => 'boolean', 'locationName' => 'deleteWithInstance', ],
             ],
         ],
         'DataDiskAttachment' => [
@@ -689,16 +1384,6 @@ return [
                 'disks' => [ 'type' => 'list', 'member' => [ 'shape' => 'CloudDataDisk', ], ],
             ],
         ],
-        'SysDiskInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'diskSize' => [ 'type' => 'integer', 'locationName' => 'diskSize', ],
-                'diskMediumType' => [ 'type' => 'string', 'locationName' => 'diskMediumType', ],
-                'diskName' => [ 'type' => 'string', 'locationName' => 'diskName', ],
-                'autoDelete' => [ 'type' => 'string', 'locationName' => 'autoDelete', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-            ],
-        ],
         'ResourceTFInfo' => [
             'type' => 'structure',
             'members' => [
@@ -713,23 +1398,307 @@ return [
                 'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
             ],
         ],
+        'DataDiskInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'diskSize' => [ 'type' => 'integer', 'locationName' => 'diskSize', ],
+                'diskMediumType' => [ 'type' => 'string', 'locationName' => 'diskMediumType', ],
+                'diskName' => [ 'type' => 'string', 'locationName' => 'diskName', ],
+                'autoDelete' => [ 'type' => 'string', 'locationName' => 'autoDelete', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'CloudDataDisk' => [
+            'type' => 'structure',
+            'members' => [
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
+                'attachments' => [ 'type' => 'list', 'member' => [ 'shape' => 'ArrayDiskAttachment', ], ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
+                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'DiskItem' => [
+            'type' => 'structure',
+            'members' => [
+                'disk' =>  [ 'shape' => 'CloudDataDisk', ],
+            ],
+        ],
         'DetachDataDisk' => [
             'type' => 'structure',
             'members' => [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'Tag' => [
+        'CreateOSSBucket' => [
             'type' => 'structure',
             'members' => [
-                'tagKey' => [ 'type' => 'string', 'locationName' => 'tagKey', ],
-                'tagValue' => [ 'type' => 'string', 'locationName' => 'tagValue', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'creationDate' => [ 'type' => 'string', 'locationName' => 'creationDate', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'acl' => [ 'type' => 'string', 'locationName' => 'acl', ],
             ],
         ],
-        'CreateDataDiskReq' => [
+        'OssFileInfo' => [
             'type' => 'structure',
             'members' => [
-                'disk' =>  [ 'shape' => 'CreateDataDisk', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'size' => [ 'type' => 'double', 'locationName' => 'size', ],
+                'lastModifiedTime' => [ 'type' => 'string', 'locationName' => 'lastModifiedTime', ],
+                'storageClass' => [ 'type' => 'string', 'locationName' => 'storageClass', ],
+            ],
+        ],
+        'OssBucketInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'creationDate' => [ 'type' => 'string', 'locationName' => 'creationDate', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+            ],
+        ],
+        'TaskAddressInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'storageType' => [ 'type' => 'string', 'locationName' => 'storageType', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
+                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
+                'prefix' => [ 'type' => 'string', 'locationName' => 'prefix', ],
+            ],
+        ],
+        'TransferTaskFailedFileInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+            ],
+        ],
+        'TransferTaskFailedDetailInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'string', 'locationName' => 'count', ],
+                'files' => [ 'type' => 'list', 'member' => [ 'shape' => 'TransferTaskFailedFileInfo', ], ],
+            ],
+        ],
+        'TransferTaskInfoWithID' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'srcAddress' =>  [ 'shape' => 'TaskAddressInfo', ],
+                'dstAddress' =>  [ 'shape' => 'TaskAddressInfo', ],
+            ],
+        ],
+        'ReturnErrorInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
+                'httpStatus' => [ 'type' => 'integer', 'locationName' => 'httpStatus', ],
+                'payloadInfo' => [ 'type' => 'object', 'locationName' => 'payloadInfo', ],
+            ],
+        ],
+        'TransferTaskProgressInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'timeStart' => [ 'type' => 'string', 'locationName' => 'timeStart', ],
+                'succeedFileCount' => [ 'type' => 'string', 'locationName' => 'succeedFileCount', ],
+                'failedFileCount' => [ 'type' => 'string', 'locationName' => 'failedFileCount', ],
+            ],
+        ],
+        'TransferTaskInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'srcAddress' =>  [ 'shape' => 'TaskAddressInfo', ],
+                'dstAddress' =>  [ 'shape' => 'TaskAddressInfo', ],
+            ],
+        ],
+        'CreateRDSAccount' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+            ],
+        ],
+        'CreateRDSAccountReq' => [
+            'type' => 'structure',
+            'members' => [
+                'account' =>  [ 'shape' => 'CreateRDSAccount', ],
+            ],
+        ],
+        'RdsAccountPrivilege' => [
+            'type' => 'structure',
+            'members' => [
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'privilege' => [ 'type' => 'string', 'locationName' => 'privilege', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+            ],
+        ],
+        'DbPrivilegeInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'privilege' => [ 'type' => 'string', 'locationName' => 'privilege', ],
+            ],
+        ],
+        'RdsAccountInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'accountPrivileges' => [ 'type' => 'list', 'member' => [ 'shape' => 'RdsAccountPrivilege', ], ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+            ],
+        ],
+        'CreateRDSDB' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'characterSetName' => [ 'type' => 'string', 'locationName' => 'characterSetName', ],
+            ],
+        ],
+        'RdsDBInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'characterSetName' => [ 'type' => 'string', 'locationName' => 'characterSetName', ],
+                'accountPrivileges' => [ 'type' => 'list', 'member' => [ 'shape' => 'RdsDBAccessPrivilege', ], ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+            ],
+        ],
+        'RdsDBAccessPrivilege' => [
+            'type' => 'structure',
+            'members' => [
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+                'privilege' => [ 'type' => 'string', 'locationName' => 'privilege', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+            ],
+        ],
+        'RdsInstanceDetailInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
+                'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'payType' => [ 'type' => 'string', 'locationName' => 'payType', ],
+                'storageGB' => [ 'type' => 'integer', 'locationName' => 'storageGB', ],
+                'memoryMB' => [ 'type' => 'double', 'locationName' => 'memoryMB', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'instanceClassType' => [ 'type' => 'string', 'locationName' => 'instanceClassType', ],
+                'connectionMode' => [ 'type' => 'string', 'locationName' => 'connectionMode', ],
+                'connectionString' => [ 'type' => 'string', 'locationName' => 'connectionString', ],
+                'instanceCPU' => [ 'type' => 'integer', 'locationName' => 'instanceCPU', ],
+                'port' => [ 'type' => 'string', 'locationName' => 'port', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+            ],
+        ],
+        'CreateRDSInstanceReq' => [
+            'type' => 'structure',
+            'members' => [
+                'instance' =>  [ 'shape' => 'CreateRDSInstance', ],
+            ],
+        ],
+        'CreateRDSInstance' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'payType' => [ 'type' => 'string', 'locationName' => 'payType', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
+                'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
+                'storageGB' => [ 'type' => 'integer', 'locationName' => 'storageGB', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+            ],
+        ],
+        'CreateChannel' => [
+            'type' => 'structure',
+            'members' => [
+                'channel' =>  [ 'shape' => 'ChannelInfo', ],
+            ],
+        ],
+        'ChannelBaseInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'DatasourceInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'address' => [ 'type' => 'string', 'locationName' => 'address', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'username' => [ 'type' => 'string', 'locationName' => 'username', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+            ],
+        ],
+        'DataMediaInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'cloud' =>  [ 'shape' => 'CloudInfo', ],
+                'datasource' =>  [ 'shape' => 'DatasourceInfo', ],
+                'schema' => [ 'type' => 'string', 'locationName' => 'schema', ],
+                'tables' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ChannelInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'info' =>  [ 'shape' => 'ChannelBaseInfo', ],
+                'source' =>  [ 'shape' => 'DataMediaInfo', ],
+                'target' =>  [ 'shape' => 'DataMediaInfo', ],
+            ],
+        ],
+        'Error' => [
+            'type' => 'structure',
+            'members' => [
+                'info' =>  [ 'shape' => 'Info', ],
+                'payload' => [ 'type' => 'object', 'locationName' => 'payload', ],
+            ],
+        ],
+        'CreateDatasource' => [
+            'type' => 'structure',
+            'members' => [
+                'datasource' =>  [ 'shape' => 'DatasourceInfo', ],
+            ],
+        ],
+        'ReturnError' => [
+            'type' => 'structure',
+            'members' => [
+                'error' =>  [ 'shape' => 'Error', ],
+            ],
+        ],
+        'Info' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'TaskInfo' => [
@@ -768,31 +1737,16 @@ return [
                 'images' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageInfo', ], ],
             ],
         ],
-        'ImageType' => [
+        'VmInstanceCollection' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
-                'imageSource' => [ 'type' => 'string', 'locationName' => 'imageSource', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'osType' => [ 'type' => 'string', 'locationName' => 'osType', ],
-                'osVersion' => [ 'type' => 'string', 'locationName' => 'osVersion', ],
-                'platform' => [ 'type' => 'string', 'locationName' => 'platform', ],
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
-                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'vms' => [ 'type' => 'list', 'member' => [ 'shape' => 'VmInfo', ], ],
             ],
         ],
         'VmInstanceItem' => [
             'type' => 'structure',
             'members' => [
                 'vm' =>  [ 'shape' => 'VmInfoDetail', ],
-            ],
-        ],
-        'SecurityGroup' => [
-            'type' => 'structure',
-            'members' => [
-                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
-                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
             ],
         ],
         'NetAttachment' => [
@@ -803,35 +1757,18 @@ return [
                 'networkInterface' =>  [ 'shape' => 'NetworkInterface', ],
             ],
         ],
-        'CreateVm' => [
+        'SecurityGroup' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
-                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'hostName' => [ 'type' => 'string', 'locationName' => 'hostName', ],
-                'imageType' =>  [ 'shape' => 'ImageType', ],
-                'instanceType' =>  [ 'shape' => 'InstanceType', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
-                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
-                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
-                'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+            ],
+        ],
+        'Ip' => [
+            'type' => 'structure',
+            'members' => [
                 'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
                 'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
-                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
-                'instanceFlavorType' => [ 'type' => 'string', 'locationName' => 'instanceFlavorType', ],
-                'securityGroupId' => [ 'type' => 'string', 'locationName' => 'securityGroupId', ],
-                'internetMaxBandwidthIn' => [ 'type' => 'integer', 'locationName' => 'internetMaxBandwidthIn', ],
-                'internetMaxBandwidthOut' => [ 'type' => 'integer', 'locationName' => 'internetMaxBandwidthOut', ],
-                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
-                'passwordInherit' => [ 'type' => 'boolean', 'locationName' => 'passwordInherit', ],
-                'userData' => [ 'type' => 'string', 'locationName' => 'userData', ],
-                'keyPairName' => [ 'type' => 'string', 'locationName' => 'keyPairName', ],
-                'systemDisk' =>  [ 'shape' => 'SystemDisk', ],
             ],
         ],
         'VmInfoDetail' => [
@@ -860,16 +1797,10 @@ return [
                 'metadata' => [ 'type' => 'string', 'locationName' => 'metadata', ],
             ],
         ],
-        'VmInstanceCollection' => [
+        'VmInstanceCreateTask' => [
             'type' => 'structure',
             'members' => [
-                'vms' => [ 'type' => 'list', 'member' => [ 'shape' => 'VmInfo', ], ],
-            ],
-        ],
-        'CreateVmReq' => [
-            'type' => 'structure',
-            'members' => [
-                'vms' =>  [ 'shape' => 'CreateVm', ],
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
             ],
         ],
         'NetworkInterface' => [
@@ -906,27 +1837,6 @@ return [
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
             ],
         ],
-        'InstanceType' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'cpu' => [ 'type' => 'integer', 'locationName' => 'cpu', ],
-                'memory' => [ 'type' => 'integer', 'locationName' => 'memory', ],
-            ],
-        ],
-        'Ip' => [
-            'type' => 'structure',
-            'members' => [
-                'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
-                'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
-            ],
-        ],
-        'VmInstanceCreateTask' => [
-            'type' => 'structure',
-            'members' => [
-                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
-            ],
-        ],
         'VmInstanceTypeCollection' => [
             'type' => 'structure',
             'members' => [
@@ -947,26 +1857,6 @@ return [
                 'nicLimit' => [ 'type' => 'integer', 'locationName' => 'nicLimit', ],
             ],
         ],
-        'VmKeypairCollection' => [
-            'type' => 'structure',
-            'members' => [
-                'keypairs' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeypairInfo', ], ],
-            ],
-        ],
-        'CreateKeypairReq' => [
-            'type' => 'structure',
-            'members' => [
-                'keypair' =>  [ 'shape' => 'CreateKeypair', ],
-            ],
-        ],
-        'KeypairInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'keyFingerprint' => [ 'type' => 'string', 'locationName' => 'keyFingerprint', ],
-                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
-            ],
-        ],
         'VmKeypairCreateTask' => [
             'type' => 'structure',
             'members' => [
@@ -979,19 +1869,51 @@ return [
                 'keypair' =>  [ 'shape' => 'KeypairInfo', ],
             ],
         ],
-        'CreateKeypair' => [
+        'VmKeypairCollection' => [
+            'type' => 'structure',
+            'members' => [
+                'keypairs' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeypairInfo', ], ],
+            ],
+        ],
+        'KeypairInfo' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'keyFingerprint' => [ 'type' => 'string', 'locationName' => 'keyFingerprint', ],
                 'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
-                'publicKey' => [ 'type' => 'string', 'locationName' => 'publicKey', ],
             ],
         ],
-        'AssociateEipAddressReq' => [
+        'VpcEipCreateTask' => [
             'type' => 'structure',
             'members' => [
-                'associate' =>  [ 'shape' => 'AssociateEipAddress', ],
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'VpcEipItem' => [
+            'type' => 'structure',
+            'members' => [
+                'eipAddress' =>  [ 'shape' => 'EipAddress', ],
+            ],
+        ],
+        'UnassociateEipAddress' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
+            ],
+        ],
+        'AssociateEipAddress' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+            ],
+        ],
+        'VpcEipCollection' => [
+            'type' => 'structure',
+            'members' => [
+                'eipAddresses' => [ 'type' => 'list', 'member' => [ 'shape' => 'EipAddress', ], ],
             ],
         ],
         'EipAddress' => [
@@ -1007,59 +1929,6 @@ return [
                 'allocationTime' => [ 'type' => 'string', 'locationName' => 'allocationTime', ],
             ],
         ],
-        'UnassociateEipAddress' => [
-            'type' => 'structure',
-            'members' => [
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
-                'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
-            ],
-        ],
-        'AllocateEipAddressReq' => [
-            'type' => 'structure',
-            'members' => [
-                'allocate' =>  [ 'shape' => 'AllocateEipAddress', ],
-            ],
-        ],
-        'VpcEipCollection' => [
-            'type' => 'structure',
-            'members' => [
-                'eipAddresses' => [ 'type' => 'list', 'member' => [ 'shape' => 'EipAddress', ], ],
-            ],
-        ],
-        'VpcEipCreateTask' => [
-            'type' => 'structure',
-            'members' => [
-                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
-            ],
-        ],
-        'AssociateEipAddress' => [
-            'type' => 'structure',
-            'members' => [
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
-            ],
-        ],
-        'UnassociateEipAddressReq' => [
-            'type' => 'structure',
-            'members' => [
-                'unassociate' =>  [ 'shape' => 'UnassociateEipAddress', ],
-            ],
-        ],
-        'AllocateEipAddress' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'bandwidth' => [ 'type' => 'string', 'locationName' => 'bandwidth', ],
-                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
-            ],
-        ],
-        'VpcEipItem' => [
-            'type' => 'structure',
-            'members' => [
-                'eipAddress' =>  [ 'shape' => 'EipAddress', ],
-            ],
-        ],
         'ListenerPortsAndProtocol' => [
             'type' => 'structure',
             'members' => [
@@ -1069,75 +1938,10 @@ return [
                 'forwardPort' => [ 'type' => 'integer', 'locationName' => 'forwardPort', ],
             ],
         ],
-        'CreateLoadBalancerHTTPListener' => [
-            'type' => 'structure',
-            'members' => [
-                'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
-                'listenerPort' => [ 'type' => 'integer', 'locationName' => 'listenerPort', ],
-                'backendServerPort' => [ 'type' => 'integer', 'locationName' => 'backendServerPort', ],
-                'vserverGroupId' => [ 'type' => 'string', 'locationName' => 'vserverGroupId', ],
-                'bandwidth' => [ 'type' => 'integer', 'locationName' => 'bandwidth', ],
-                'healthCheckConnectPort' => [ 'type' => 'integer', 'locationName' => 'healthCheckConnectPort', ],
-                'healthyThreshold' => [ 'type' => 'integer', 'locationName' => 'healthyThreshold', ],
-                'unhealthyThreshold' => [ 'type' => 'integer', 'locationName' => 'unhealthyThreshold', ],
-                'healthCheckTimeout' => [ 'type' => 'integer', 'locationName' => 'healthCheckTimeout', ],
-                'healthCheckInterval' => [ 'type' => 'integer', 'locationName' => 'healthCheckInterval', ],
-                'healthCheckHttpCode' => [ 'type' => 'string', 'locationName' => 'healthCheckHttpCode', ],
-            ],
-        ],
-        'CreateLoadBalancerHTTPListenerReq' => [
-            'type' => 'structure',
-            'members' => [
-                'httpListener' =>  [ 'shape' => 'CreateLoadBalancerHTTPListener', ],
-            ],
-        ],
         'VpcNetworkInterfaceItem' => [
             'type' => 'structure',
             'members' => [
                 'netInterface' =>  [ 'shape' => 'NetInterfaceInfo', ],
-            ],
-        ],
-        'VpcNetworkInterfaceCollection' => [
-            'type' => 'structure',
-            'members' => [
-                'netInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetInterfaceInfo', ], ],
-            ],
-        ],
-        'CreateNetInterfaceReq' => [
-            'type' => 'structure',
-            'members' => [
-                'netInterface' =>  [ 'shape' => 'CreateNetInterface', ],
-            ],
-        ],
-        'CreateNetInterface' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
-                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
-                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
-                'associatedPublicIp' => [ 'type' => 'string', 'locationName' => 'associatedPublicIp', ],
-                'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
-                'macAddress' => [ 'type' => 'string', 'locationName' => 'macAddress', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
-                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
-                'securityGroupId' => [ 'type' => 'string', 'locationName' => 'securityGroupId', ],
-            ],
-        ],
-        'DetachNetInterfaceReq' => [
-            'type' => 'structure',
-            'members' => [
-                'detach' =>  [ 'shape' => 'DetachNetInterface', ],
-            ],
-        ],
-        'AttachNetInterfaceReq' => [
-            'type' => 'structure',
-            'members' => [
-                'attach' =>  [ 'shape' => 'AttachNetInterface', ],
             ],
         ],
         'DetachNetInterface' => [
@@ -1170,10 +1974,10 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'VpcSecurityGroupItem' => [
+        'VpcNetworkInterfaceCollection' => [
             'type' => 'structure',
             'members' => [
-                'securityGroup' =>  [ 'shape' => 'SecurityGroupDetail', ],
+                'netInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetInterfaceInfo', ], ],
             ],
         ],
         'PermissionType' => [
@@ -1195,7 +1999,19 @@ return [
                 'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
             ],
         ],
-        'CreateSecurityGroup' => [
+        'VpcSecurityGroupCollection' => [
+            'type' => 'structure',
+            'members' => [
+                'securityGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecurityGroupInfo', ], ],
+            ],
+        ],
+        'VpcSecurityGroupItem' => [
+            'type' => 'structure',
+            'members' => [
+                'securityGroup' =>  [ 'shape' => 'SecurityGroupDetail', ],
+            ],
+        ],
+        'SecurityGroupInfo' => [
             'type' => 'structure',
             'members' => [
                 'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
@@ -1210,29 +2026,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'task' =>  [ 'shape' => 'ResourceTFInfo', ],
-            ],
-        ],
-        'CreateSecurityGroupReq' => [
-            'type' => 'structure',
-            'members' => [
-                'securityGroup' =>  [ 'shape' => 'CreateSecurityGroup', ],
-            ],
-        ],
-        'SecurityGroupInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
-                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
-            ],
-        ],
-        'VpcSecurityGroupCollection' => [
-            'type' => 'structure',
-            'members' => [
-                'securityGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecurityGroupInfo', ], ],
             ],
         ],
         'SecurityGroupDetail' => [
@@ -1251,6 +2044,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'BackendServer2' => [
+            'type' => 'structure',
+            'members' => [
+                'serverId' => [ 'type' => 'string', 'locationName' => 'serverId', ],
+                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
             ],
         ],
         'SlbInfoDetail' => [
@@ -1273,88 +2074,31 @@ return [
                 'loadBalancerSpec' => [ 'type' => 'string', 'locationName' => 'loadBalancerSpec', ],
             ],
         ],
-        'VpcSlbItem' => [
-            'type' => 'structure',
-            'members' => [
-                'slb' =>  [ 'shape' => 'SlbInfoDetail', ],
-            ],
-        ],
-        'BackendServer2' => [
-            'type' => 'structure',
-            'members' => [
-                'serverId' => [ 'type' => 'string', 'locationName' => 'serverId', ],
-                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
-            ],
-        ],
-        'CreateSlb' => [
-            'type' => 'structure',
-            'members' => [
-                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'ipAddress' => [ 'type' => 'string', 'locationName' => 'ipAddress', ],
-                'addressType' => [ 'type' => 'string', 'locationName' => 'addressType', ],
-                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
-                'vpc' => [ 'type' => 'string', 'locationName' => 'vpc', ],
-                'networkType' => [ 'type' => 'string', 'locationName' => 'networkType', ],
-                'masterAz' => [ 'type' => 'string', 'locationName' => 'masterAz', ],
-                'slaveAz' => [ 'type' => 'string', 'locationName' => 'slaveAz', ],
-                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
-                'loadBalancerSpec' => [ 'type' => 'string', 'locationName' => 'loadBalancerSpec', ],
-            ],
-        ],
-        'CreateSlbReq' => [
-            'type' => 'structure',
-            'members' => [
-                'slb' =>  [ 'shape' => 'CreateSlb', ],
-            ],
-        ],
         'VpcSlbCollection' => [
             'type' => 'structure',
             'members' => [
                 'slbs' => [ 'type' => 'list', 'member' => [ 'shape' => 'SlbInfo', ], ],
             ],
         ],
-        'BackendServer' => [
+        'VpcSlbItem' => [
             'type' => 'structure',
             'members' => [
-                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
-                'serverId' => [ 'type' => 'string', 'locationName' => 'serverId', ],
-                'serverHealthStatus' => [ 'type' => 'string', 'locationName' => 'serverHealthStatus', ],
-                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
-                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'slb' =>  [ 'shape' => 'SlbInfoDetail', ],
             ],
         ],
-        'SlbInfo' => [
+        'SubnetInfo' => [
             'type' => 'structure',
             'members' => [
-                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'ipAddress' => [ 'type' => 'string', 'locationName' => 'ipAddress', ],
-                'addressType' => [ 'type' => 'string', 'locationName' => 'addressType', ],
-                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
-                'vpc' => [ 'type' => 'string', 'locationName' => 'vpc', ],
-                'networkType' => [ 'type' => 'string', 'locationName' => 'networkType', ],
-                'masterAz' => [ 'type' => 'string', 'locationName' => 'masterAz', ],
-                'slaveAz' => [ 'type' => 'string', 'locationName' => 'slaveAz', ],
-                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
-            ],
-        ],
-        'CreateSubnetReq' => [
-            'type' => 'structure',
-            'members' => [
-                'subnet' =>  [ 'shape' => 'CreateSubnet', ],
-            ],
-        ],
-        'VpcSubnetItem' => [
-            'type' => 'structure',
-            'members' => [
-                'subnet' =>  [ 'shape' => 'SubnetDesInfo', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetName' => [ 'type' => 'string', 'locationName' => 'subnetName', ],
+                'cidrBlock' => [ 'type' => 'string', 'locationName' => 'cidrBlock', ],
+                'availableIpCount' => [ 'type' => 'integer', 'locationName' => 'availableIpCount', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'endIp' => [ 'type' => 'string', 'locationName' => 'endIp', ],
+                'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
+                'startIp' => [ 'type' => 'string', 'locationName' => 'startIp', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
             ],
         ],
         'SubnetDesInfo' => [
@@ -1370,32 +2114,10 @@ return [
                 'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
             ],
         ],
-        'CreateSubnet' => [
+        'VpcSubnetItem' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
-                'cidrBlock' => [ 'type' => 'string', 'locationName' => 'cidrBlock', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
-                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
-                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
-            ],
-        ],
-        'SubnetInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
-                'subnetName' => [ 'type' => 'string', 'locationName' => 'subnetName', ],
-                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
-                'availableIpCount' => [ 'type' => 'integer', 'locationName' => 'availableIpCount', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'endIp' => [ 'type' => 'string', 'locationName' => 'endIp', ],
-                'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
-                'startIp' => [ 'type' => 'string', 'locationName' => 'startIp', ],
-                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'subnet' =>  [ 'shape' => 'SubnetDesInfo', ],
             ],
         ],
         'VpcSubnetCollection' => [
@@ -1404,34 +2126,10 @@ return [
                 'subnets' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubnetDesInfo', ], ],
             ],
         ],
-        'VpcItem' => [
+        'VpcCreateTask' => [
             'type' => 'structure',
             'members' => [
-                'vpc' =>  [ 'shape' => 'VpcInfoDetail', ],
-            ],
-        ],
-        'VpcInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
-                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
-            ],
-        ],
-        'VpcInfoDetail' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
-                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
-                'subnets' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubnetInfo', ], ],
-                'routeTableIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
             ],
         ],
         'VpcCollection' => [
@@ -1440,49 +2138,29 @@ return [
                 'vpcs' => [ 'type' => 'list', 'member' => [ 'shape' => 'VpcInfo', ], ],
             ],
         ],
-        'CreateVpc' => [
+        'VpcInfoDetail' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
+                'cidrBlock' => [ 'type' => 'string', 'locationName' => 'cidrBlock', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
-                'cidrBlock' => [ 'type' => 'string', 'locationName' => 'cidrBlock', ],
-                'userCidr' => [ 'type' => 'string', 'locationName' => 'userCidr', ],
+                'subnets' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubnetInfo', ], ],
+                'routeTableIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
-        'VpcCreateTask' => [
+        'VpcItem' => [
             'type' => 'structure',
             'members' => [
-                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
-            ],
-        ],
-        'CreateVpcReq' => [
-            'type' => 'structure',
-            'members' => [
-                'vpc' =>  [ 'shape' => 'CreateVpc', ],
-            ],
-        ],
-        'CreateVserverGroup' => [
-            'type' => 'structure',
-            'members' => [
-                'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
-                'vserverGroupName' => [ 'type' => 'string', 'locationName' => 'vserverGroupName', ],
-                'backendServers' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackendServer', ], ],
+                'vpc' =>  [ 'shape' => 'VpcInfoDetail', ],
             ],
         ],
         'VpcVServerGroupCollection' => [
             'type' => 'structure',
             'members' => [
                 'vserverGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'VserverGroupInfo', ], ],
-            ],
-        ],
-        'CreateVserverGroupReq' => [
-            'type' => 'structure',
-            'members' => [
-                'vserverGroup' =>  [ 'shape' => 'CreateVserverGroup', ],
             ],
         ],
         'VserverGroupInfo' => [
@@ -1493,63 +2171,11 @@ return [
                 'vserverGroupName' => [ 'type' => 'string', 'locationName' => 'vserverGroupName', ],
             ],
         ],
-        'RegistCloudInfoRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'body' =>  [ 'shape' => 'CreateCloudInfoReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetCloudInfoByIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'cloud' =>  [ 'shape' => 'CloudInfo', ],
-            ],
-        ],
-        'UnregistCloudInfoResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'RegistCloudInfoResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'cloud' =>  [ 'shape' => 'CloudInfo', ],
-            ],
-        ],
-        'GetCloudInfosResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetCloudInfosResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'RegistCloudInfoResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'RegistCloudInfoResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetCloudInfoByIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetCloudInfoByIdResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetCloudInfosResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clouds' => [ 'type' => 'list', 'member' => [ 'shape' => 'CloudInfo', ], ],
-            ],
-        ],
-        'GetCloudInfosRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'driver' => [ 'type' => 'string', 'locationName' => 'driver', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'GetCloudInfoByIdRequestShape' => [
@@ -1559,11 +2185,42 @@ return [
                 'cloudId' => [ 'type' => 'string', 'locationName' => 'cloudId', ],
             ],
         ],
-        'UnregistCloudInfoRequestShape' => [
+        'GetCloudInfosResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'result' =>  [ 'shape' => 'GetCloudInfosResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetCloudInfosResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clouds' => [ 'type' => 'list', 'member' => [ 'shape' => 'CloudInfo', ], ],
+            ],
+        ],
+        'UnregistCloudInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RegistCloudInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cloud' =>  [ 'shape' => 'CloudInfo', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'cloudId' => [ 'type' => 'string', 'locationName' => 'cloudId', ],
+            ],
+        ],
+        'GetCloudInfoByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cloud' =>  [ 'shape' => 'CloudInfo', ],
+            ],
+        ],
+        'RegistCloudInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cloud' =>  [ 'shape' => 'CloudInfo', ],
             ],
         ],
         'UnregistCloudInfoResultShape' => [
@@ -1571,11 +2228,285 @@ return [
             'members' => [
             ],
         ],
-        'RemoveDiskByIdRequestShape' => [
+        'GetCloudInfoByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetCloudInfoByIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetCloudInfosRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'driver' => [ 'type' => 'string', 'locationName' => 'driver', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'UnregistCloudInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cloudId' => [ 'type' => 'string', 'locationName' => 'cloudId', ],
+            ],
+        ],
+        'GetDeploymentVersionsRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'GetDeploymentsByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deployment' =>  [ 'shape' => 'DeploymentInfo', ],
+            ],
+        ],
+        'CloneDeploymentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deployment' =>  [ 'shape' => 'DeploymentInfo', ],
+            ],
+        ],
+        'GetDeploymentsVersionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetDeploymentsVersionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ReverseDeploymentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deployment' =>  [ 'shape' => 'DeploymentInfo', ],
+            ],
+        ],
+        'GetDeploymentsByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetDeploymentsByIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DryrunDeploymentResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EditDeploymentRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deployment' =>  [ 'shape' => 'DeploymentInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'ApplyDeploymentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deployment' =>  [ 'shape' => 'DeploymentInfo', ],
+            ],
+        ],
+        'DeleteDeploymentResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DryrunDeploymentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetDeploymentVersionsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'versions' => [ 'type' => 'list', 'member' => [ 'shape' => 'DeploymentApplyInfo', ], ],
+            ],
+        ],
+        'RollbackDeploymentsVersionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'version_id' => [ 'type' => 'string', 'locationName' => 'version_id', ],
+            ],
+        ],
+        'GetDeploymentsByIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'CreateDeploymentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deployment' =>  [ 'shape' => 'DeploymentInfo', ],
+            ],
+        ],
+        'CloneDeploymentRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deployment' =>  [ 'shape' => 'Deployment', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'GetDeploymentsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateDeploymentRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deployment' =>  [ 'shape' => 'DeploymentInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetDeploymentsVersionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'version_id' => [ 'type' => 'string', 'locationName' => 'version_id', ],
+            ],
+        ],
+        'GetDeploymentsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetDeploymentsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetDeploymentsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deployments' => [ 'type' => 'list', 'member' => [ 'shape' => 'DeploymentInfo', ], ],
+            ],
+        ],
+        'CreateDeploymentResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateDeploymentResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetDeploymentVersionsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetDeploymentVersionsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetDeploymentsVersionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deployment' =>  [ 'shape' => 'DeploymentInfo', ],
+            ],
+        ],
+        'GetDeploymentResultResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'TaskInfo', ],
+            ],
+        ],
+        'ReverseDeploymentResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ReverseDeploymentResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetDeploymentResultRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'CloneDeploymentResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CloneDeploymentResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RollbackDeploymentsVersionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RollbackDeploymentsVersionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ApplyDeploymentRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'apply' =>  [ 'shape' => 'Apply', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'DeleteDeploymentRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'DeleteDeploymentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EditDeploymentResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EditDeploymentResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ApplyDeploymentResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ApplyDeploymentResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetDeploymentResultResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetDeploymentResultResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ReverseDeploymentRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'reverse' =>  [ 'shape' => 'ReverseDeploymentInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'RollbackDeploymentsVersionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deployment' =>  [ 'shape' => 'DeploymentInfo', ],
+            ],
+        ],
+        'DryrunDeploymentRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'EditDeploymentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deployment' =>  [ 'shape' => 'DeploymentInfo', ],
             ],
         ],
         'GetDiskByIdResponseShape' => [
@@ -1585,61 +2516,16 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'AttachDiskToVmInstanceByDiskIdRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'body' =>  [ 'shape' => 'AttachDataDiskReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-            ],
-        ],
-        'CreateDiskResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
-            ],
-        ],
-        'CreateDiskRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'body' =>  [ 'shape' => 'CreateDataDiskReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'GetDisksResultShape' => [
             'type' => 'structure',
             'members' => [
                 'disks' => [ 'type' => 'list', 'member' => [ 'shape' => 'CloudDataDisk', ], ],
             ],
         ],
-        'DetachDiskToVmInstanceByDiskIdResponseShape' => [
+        'CreateDiskRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetDisksResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetDisksResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AttachDiskToVmInstanceByDiskIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'AttachDiskToVmInstanceByDiskIdResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DetachDiskToVmInstanceByDiskIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'GetDisksRequestShape' => [
-            'type' => 'structure',
-            'members' => [
+                'disk' =>  [ 'shape' => 'CreateDataDisk', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1652,7 +2538,66 @@ return [
         'DetachDiskToVmInstanceByDiskIdRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'body' =>  [ 'shape' => 'DetachDataDiskReq', ],
+                'detach' =>  [ 'shape' => 'DetachDataDisk', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'AttachDiskToVmInstanceByDiskIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'attach' =>  [ 'shape' => 'AttachDataDisk', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'AttachDiskToVmInstanceByDiskIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AttachDiskToVmInstanceByDiskIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetDisksRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetDisksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetDisksResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateDiskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateDiskResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RemoveDiskByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DetachDiskToVmInstanceByDiskIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateDiskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'RemoveDiskByIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
@@ -1664,11 +2609,10 @@ return [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
-        'CreateDiskResponseShape' => [
+        'GetDiskByIdResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'CreateDiskResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'disk' =>  [ 'shape' => 'CloudDataDisk', ],
             ],
         ],
         'RemoveDiskByIdResponseShape' => [
@@ -1677,22 +2621,716 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'GetDiskByIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'disk' =>  [ 'shape' => 'CloudDataDisk', ],
-            ],
-        ],
-        'RemoveDiskByIdResultShape' => [
+        'DetachDiskToVmInstanceByDiskIdResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
         ],
-        'GetTaskInfoHistoryByIdResponseShape' => [
+        'CreateBucketRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GetTaskInfoHistoryByIdResultShape', ],
+                'bucket' =>  [ 'shape' => 'CreateOSSBucket', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteBucketRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'GetBucketByNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'GetBucketsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetBucketFilesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetBucketFilesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteBucketResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteBucketResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetBucketFilesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'marker' => [ 'type' => 'string', 'locationName' => 'marker', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'GetBucketByNameResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bucket' =>  [ 'shape' => 'OssBucketInfo', ],
+            ],
+        ],
+        'GetBucketFilesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'isTruncated' => [ 'type' => 'boolean', 'locationName' => 'isTruncated', ],
+                'marker' => [ 'type' => 'string', 'locationName' => 'marker', ],
+                'files' => [ 'type' => 'list', 'member' => [ 'shape' => 'OssFileInfo', ], ],
+            ],
+        ],
+        'CreateBucketResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateBucketResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateBucketResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'GetBucketsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'buckets' => [ 'type' => 'list', 'member' => [ 'shape' => 'OssBucketInfo', ], ],
+            ],
+        ],
+        'GetBucketsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetBucketsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetBucketByNameResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetBucketByNameResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StartTransferTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EditTransferTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetTransferTaskFailedFilesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bucket' =>  [ 'shape' => 'TransferTaskFailedDetailInfo', ],
+            ],
+        ],
+        'GetTransferTasksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetTransferTasksResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetTransferTaskProgressResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'TransferTaskProgressInfo', ],
+            ],
+        ],
+        'DeleteTransferTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StartTransferTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetTransferTaskByIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'DeleteTransferTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetTransferTasksResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TransferTaskInfoWithID', ], ],
+            ],
+        ],
+        'CreateTransferTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'TransferTaskInfoWithID', ],
+            ],
+        ],
+        'GetTransferTaskByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'TransferTaskInfoWithID', ],
+            ],
+        ],
+        'StopTransferTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EditTransferTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateTransferTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateTransferTaskResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StopTransferTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'GetTransferTaskProgressRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'GetTransferTaskFailedFilesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'StartTransferTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'GetTransferTasksRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteTransferTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'GetTransferTaskProgressResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetTransferTaskProgressResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetTransferTaskFailedFilesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetTransferTaskFailedFilesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetTransferTaskByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetTransferTaskByIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateTransferTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'TransferTaskInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'StopTransferTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EditTransferTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'TransferTaskInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'GrantRdsAccountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetRdsAccountsByInstIdAndAccountNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+            ],
+        ],
+        'GetRdsAccountsByInstIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'accounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'RdsAccountInfo', ], ],
+            ],
+        ],
+        'CreateRdsAccountsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateRdsAccountsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateRdsAccountsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'account' =>  [ 'shape' => 'CreateRDSAccount', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+            ],
+        ],
+        'DeleteRdsAccountResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RevokeRdsAccountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GrantRdsAccountResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteRdsAccountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetRdsAccountsByInstIdAndAccountNameResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'account' =>  [ 'shape' => 'RdsAccountInfo', ],
+            ],
+        ],
+        'DeleteRdsAccountRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+            ],
+        ],
+        'GetRdsAccountsByInstIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+            ],
+        ],
+        'CreateRdsAccountsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'GrantRdsAccountRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dbPrivilegeInfo' =>  [ 'shape' => 'DbPrivilegeInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+            ],
+        ],
+        'GetRdsAccountsByInstIdAndAccountNameResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetRdsAccountsByInstIdAndAccountNameResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetRdsAccountsByInstIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetRdsAccountsByInstIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RevokeRdsAccountResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RevokeRdsAccountRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+            ],
+        ],
+        'GetRdsDatabasesByInstIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dbs' => [ 'type' => 'list', 'member' => [ 'shape' => 'RdsDBInfo', ], ],
+            ],
+        ],
+        'DeleteRdsDatabaseResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteRdsDatabaseResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetRdsDatabaseByInstIdAndDbNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+            ],
+        ],
+        'GetRdsDatabasesByInstIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetRdsDatabasesByInstIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetRdsDatabaseByInstIdAndDbNameResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'db' =>  [ 'shape' => 'RdsDBInfo', ],
+            ],
+        ],
+        'GetRdsDatabasesByInstIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+            ],
+        ],
+        'CreateRdsDatabaseResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateRdsDatabaseResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateRdsDatabaseResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'GetRdsDatabaseByInstIdAndDbNameResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetRdsDatabaseByInstIdAndDbNameResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateRdsDatabaseRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'database' =>  [ 'shape' => 'CreateRDSDB', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+            ],
+        ],
+        'DeleteRdsDatabaseRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+            ],
+        ],
+        'GetRdsByInstIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+            ],
+        ],
+        'GetRdsInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instances' => [ 'type' => 'list', 'member' => [ 'shape' => 'RdsInstanceDetailInfo', ], ],
+            ],
+        ],
+        'CreateRdsInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'DeleteRdsByInstIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+            ],
+        ],
+        'GetRdsByInstIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instance' =>  [ 'shape' => 'RdsInstanceDetailInfo', ],
+            ],
+        ],
+        'GetRdsInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetRdsInstancesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetRdsByInstIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetRdsByInstIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteRdsByInstIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateRdsInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instance' =>  [ 'shape' => 'CreateRDSInstance', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateRdsInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateRdsInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteRdsByInstIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetRdsInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateChannelRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'channel' =>  [ 'shape' => 'ChannelInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'StopChannelRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'DeleteDatasourceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateChannelResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'channel' =>  [ 'shape' => 'ChannelInfo', ],
+            ],
+        ],
+        'GetDatasourcesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'datasources' => [ 'type' => 'list', 'member' => [ 'shape' => 'DatasourceInfo', ], ],
+            ],
+        ],
+        'StartChannelRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'StartChannelResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StopChannelResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetDatasourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetDatasourcesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetDatasourcesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteChannelResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StopChannelResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteDatasourceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'CreateDatasourceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateDatasourceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateChannelResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateChannelResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteChannelRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'GetChannelsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetChannelsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StartChannelResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetChannelsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'channels' => [ 'type' => 'list', 'member' => [ 'shape' => 'ChannelInfo', ], ],
+            ],
+        ],
+        'DeleteChannelResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateDatasourceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'datasource' =>  [ 'shape' => 'DatasourceInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteDatasourceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateDatasourceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'datasource' =>  [ 'shape' => 'DatasourceInfo', ],
+            ],
+        ],
+        'GetChannelsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetTaskInfoHistoryByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskInfo', ], ],
             ],
         ],
         'GetTaskInfoByIdRequestShape' => [
@@ -1703,10 +3341,18 @@ return [
                 'task' => [ 'type' => 'string', 'locationName' => 'task', ],
             ],
         ],
-        'GetTaskInfoHistoryByIdResultShape' => [
+        'GetTaskInfoHistoryByIdResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskInfo', ], ],
+                'result' =>  [ 'shape' => 'GetTaskInfoHistoryByIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetTaskInfoHistoryByIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'task' => [ 'type' => 'string', 'locationName' => 'task', ],
             ],
         ],
         'GetTaskInfoByIdResponseShape' => [
@@ -1722,24 +3368,10 @@ return [
                 'task' =>  [ 'shape' => 'TaskInfo', ],
             ],
         ],
-        'GetTaskInfoHistoryByIdRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'task' => [ 'type' => 'string', 'locationName' => 'task', ],
-            ],
-        ],
         'GetVmImagesResultShape' => [
             'type' => 'structure',
             'members' => [
                 'images' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageInfo', ], ],
-            ],
-        ],
-        'GetVmImagesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetVmImagesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetVmImagesRequestShape' => [
@@ -1749,22 +3381,23 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'RebootVmInstanceByIdResultShape' => [
+        'GetVmImagesResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'result' =>  [ 'shape' => 'GetVmImagesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'GetVmInstancesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'vms' => [ 'type' => 'list', 'member' => [ 'shape' => 'VmInfo', ], ],
-            ],
-        ],
-        'GetVmInstancesByIdRequestShape' => [
+        'RebootVmInstanceByIdRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'StopVmInstanceByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DeleteVmInstanceByIdResultShape' => [
@@ -1772,9 +3405,10 @@ return [
             'members' => [
             ],
         ],
-        'StopVmInstanceByIdResultShape' => [
+        'StopVmInstanceByIdResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateVmInstanceResultShape' => [
@@ -1783,10 +3417,35 @@ return [
                 'task' =>  [ 'shape' => 'ResourceTFInfo', ],
             ],
         ],
-        'GetVmInstancesByIdResponseShape' => [
+        'StartVmInstanceByIdResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GetVmInstancesByIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetVmInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateVmInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'vm' =>  [ 'shape' => 'CreateVm', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'StartVmInstanceByIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'RebootVmInstanceByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -1797,6 +3456,12 @@ return [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
+        'GetVmInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'vms' => [ 'type' => 'list', 'member' => [ 'shape' => 'VmInfo', ], ],
+            ],
+        ],
         'StopVmInstanceByIdRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1804,13 +3469,38 @@ return [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
-        'GetVmInstancesRequestShape' => [
+        'GetVmInstancesByIdRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
-        'StopVmInstanceByIdResponseShape' => [
+        'StartVmInstanceByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'RebootVmInstanceByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetVmInstancesByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetVmInstancesByIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateVmInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateVmInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteVmInstanceByIdResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
@@ -1823,61 +3513,16 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'StartVmInstanceByIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'RebootVmInstanceByIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'RebootVmInstanceByIdRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-            ],
-        ],
-        'CreateVmInstanceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateVmInstanceResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'GetVmInstancesByIdResultShape' => [
             'type' => 'structure',
             'members' => [
                 'vm' =>  [ 'shape' => 'VmInfoDetail', ],
             ],
         ],
-        'DeleteVmInstanceByIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateVmInstanceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'body' =>  [ 'shape' => 'CreateVmReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'StartVmInstanceByIdRequestShape' => [
+        'GetVmInstanceTypesRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-            ],
-        ],
-        'StartVmInstanceByIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'GetVmInstanceTypesResultShape' => [
@@ -1893,7 +3538,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'GetVmInstanceTypesRequestShape' => [
+        'GetVmKeypairsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keypairs' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeypairInfo', ], ],
+            ],
+        ],
+        'GetVmKeypairsRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -1906,23 +3557,15 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'GetVmKeypairsRequestShape' => [
+        'DeleteVmKeypairByNameResultShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetVmKeypairsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetVmKeypairsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateVmKeypairRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'body' =>  [ 'shape' => 'CreateKeypairReq', ],
+                'keypair' =>  [ 'shape' => 'CreateKeypair', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1933,20 +3576,30 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
-        'GetVmKeypairsByNameResultShape' => [
+        'DeleteVmKeypairByNameRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'keypair' =>  [ 'shape' => 'KeypairInfo', ],
-            ],
-        ],
-        'DeleteVmKeypairByNameResultShape' => [
-            'type' => 'structure',
-            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
         'DeleteVmKeypairByNameResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateVmKeypairResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateVmKeypairResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetVmKeypairsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetVmKeypairsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -1956,23 +3609,84 @@ return [
                 'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceTFInfo', ], ],
             ],
         ],
-        'GetVmKeypairsResultShape' => [
+        'GetVmKeypairsByNameResultShape' => [
             'type' => 'structure',
             'members' => [
-                'keypairs' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeypairInfo', ], ],
+                'keypair' =>  [ 'shape' => 'KeypairInfo', ],
             ],
         ],
-        'DeleteVmKeypairByNameRequestShape' => [
+        'GetVpcEipByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetVpcEipByIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteVpcEipByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisassociateVpcEipByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateVpcEipResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'AssociateVpcEipByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AssociateVpcEipByIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetVpcEipsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetVpcEipsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteVpcEipByIdRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
-        'CreateVmKeypairResponseShape' => [
+        'DisassociateVpcEipByIdRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'CreateVmKeypairResultShape', ],
+                'unassociate' =>  [ 'shape' => 'UnassociateEipAddress', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'AssociateVpcEipByIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'associate' =>  [ 'shape' => 'AssociateEipAddress', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'GetVpcEipByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'eipAddress' =>  [ 'shape' => 'EipAddress', ],
+            ],
+        ],
+        'CreateVpcEipResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateVpcEipResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -1984,24 +3698,13 @@ return [
         'CreateVpcEipRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'body' =>  [ 'shape' => 'AllocateEipAddressReq', ],
+                'allocate' =>  [ 'shape' => 'AllocateEipAddress', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'AssociateVpcEipByIdRequestShape' => [
+        'DisassociateVpcEipByIdResultShape' => [
             'type' => 'structure',
             'members' => [
-                'body' =>  [ 'shape' => 'AssociateEipAddressReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-            ],
-        ],
-        'DisassociateVpcEipByIdRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'body' =>  [ 'shape' => 'UnassociateEipAddressReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
         'AssociateVpcEipByIdResultShape' => [
@@ -2010,56 +3713,10 @@ return [
                 'task' =>  [ 'shape' => 'ResourceTFInfo', ],
             ],
         ],
-        'CreateVpcEipResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
-            ],
-        ],
-        'DeleteVpcEipByIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetVpcEipsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetVpcEipsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'GetVpcEipsRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetVpcEipByIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetVpcEipByIdResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetVpcEipsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'eipAddresses' => [ 'type' => 'list', 'member' => [ 'shape' => 'EipAddress', ], ],
-            ],
-        ],
-        'CreateVpcEipResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateVpcEipResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AssociateVpcEipByIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'AssociateVpcEipByIdResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetVpcEipByIdRequestShape' => [
@@ -2069,28 +3726,10 @@ return [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
-        'DisassociateVpcEipByIdResultShape' => [
+        'GetVpcEipsResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'GetVpcEipByIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'eipAddress' =>  [ 'shape' => 'EipAddress', ],
-            ],
-        ],
-        'DeleteVpcEipByIdRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-            ],
-        ],
-        'DisassociateVpcEipByIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'eipAddresses' => [ 'type' => 'list', 'member' => [ 'shape' => 'EipAddress', ], ],
             ],
         ],
         'CreateVpcLBHttpListenerResultShape' => [
@@ -2102,7 +3741,7 @@ return [
         'CreateVpcLBHttpListenerRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'body' =>  [ 'shape' => 'CreateLoadBalancerHTTPListenerReq', ],
+                'httpListener' =>  [ 'shape' => 'CreateLoadBalancerHTTPListener', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -2113,45 +3752,22 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'GetVpcNetworkInterfaceByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'netInterface' =>  [ 'shape' => 'NetInterfaceInfo', ],
+            ],
+        ],
+        'DeleteVpcNetworkInterfaceByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'CreateVpcNetworkInterfaceResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'CreateVpcNetworkInterfaceResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeleteVpcNetworkInterfaceByIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetVpcNetworkInterfaceByIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetVpcNetworkInterfaceByIdResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AttachVpcNetworkInterfaceByIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
-            ],
-        ],
-        'AttachVpcNetworkInterfaceByIdRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'body' =>  [ 'shape' => 'AttachNetInterfaceReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-            ],
-        ],
-        'CreateVpcNetworkInterfaceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'body' =>  [ 'shape' => 'CreateNetInterfaceReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'AttachVpcNetworkInterfaceByIdResponseShape' => [
@@ -2167,32 +3783,41 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DeleteVpcNetworkInterfaceByIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'GetVpcNetworkInterfaceByIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'netInterface' =>  [ 'shape' => 'NetInterfaceInfo', ],
-            ],
-        ],
         'DetachVpcNetworkInterfaceByIdResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
         ],
-        'GetVpcNetworkInterfacesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetVpcNetworkInterfacesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DetachVpcNetworkInterfaceByIdResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteVpcNetworkInterfaceByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AttachVpcNetworkInterfaceByIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'attach' =>  [ 'shape' => 'AttachNetInterface', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'AttachVpcNetworkInterfaceByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'GetVpcNetworkInterfaceByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetVpcNetworkInterfaceByIdResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -2202,9 +3827,24 @@ return [
                 'task' =>  [ 'shape' => 'ResourceTFInfo', ],
             ],
         ],
-        'GetVpcNetworkInterfaceByIdRequestShape' => [
+        'DeleteVpcNetworkInterfaceByIdRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'CreateVpcNetworkInterfaceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'netInterface' =>  [ 'shape' => 'CreateNetInterface', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DetachVpcNetworkInterfaceByIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'detach' =>  [ 'shape' => 'DetachNetInterface', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
@@ -2215,76 +3855,17 @@ return [
                 'netInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetInterfaceInfo', ], ],
             ],
         ],
-        'DetachVpcNetworkInterfaceByIdRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'body' =>  [ 'shape' => 'DetachNetInterfaceReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-            ],
-        ],
-        'DeleteVpcNetworkInterfaceByIdRequestShape' => [
+        'GetVpcNetworkInterfaceByIdRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
-        'GetVpcSecurityGroupByIdRequestShape' => [
+        'GetVpcNetworkInterfacesResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-            ],
-        ],
-        'GetVpcSecurityGroupsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetVpcSecurityGroupByIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'securityGroup' =>  [ 'shape' => 'SecurityGroupDetail', ],
-            ],
-        ],
-        'DeleteVpcSecurityGroupByIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'CreateVpcSecurityGroupResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateVpcSecurityGroupResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeleteVpcSecurityGroupByIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateVpcSecurityGroupRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'body' =>  [ 'shape' => 'CreateSecurityGroupReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetVpcSecurityGroupsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetVpcSecurityGroupsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetVpcSecurityGroupByIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetVpcSecurityGroupByIdResultShape', ],
+                'result' =>  [ 'shape' => 'GetVpcNetworkInterfacesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -2294,10 +3875,68 @@ return [
                 'securityGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecurityGroupInfo', ], ],
             ],
         ],
+        'CreateVpcSecurityGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'securityGroup' =>  [ 'shape' => 'CreateSecurityGroup', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetVpcSecurityGroupByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'securityGroup' =>  [ 'shape' => 'SecurityGroupDetail', ],
+            ],
+        ],
+        'CreateVpcSecurityGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateVpcSecurityGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetVpcSecurityGroupsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetVpcSecurityGroupByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetVpcSecurityGroupByIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CreateVpcSecurityGroupResultShape' => [
             'type' => 'structure',
             'members' => [
                 'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'GetVpcSecurityGroupByIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'DeleteVpcSecurityGroupByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetVpcSecurityGroupsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetVpcSecurityGroupsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteVpcSecurityGroupByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DeleteVpcSecurityGroupByIdRequestShape' => [
@@ -2313,38 +3952,10 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CreateVpcSlbRequestShape' => [
+        'GetVpcSlbsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'body' =>  [ 'shape' => 'CreateSlbReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetVpcSlbByIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'slb' =>  [ 'shape' => 'SlbInfoDetail', ],
-            ],
-        ],
-        'CreateVpcSlbResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateVpcSlbResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetVpcSlbByIdRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-            ],
-        ],
-        'DeleteVpcSlbByIdRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'slbs' => [ 'type' => 'list', 'member' => [ 'shape' => 'SlbInfo', ], ],
             ],
         ],
         'GetVpcSlbsResponseShape' => [
@@ -2360,16 +3971,16 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'CreateVpcSlbResultShape' => [
+        'DeleteVpcSlbByIdRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
-        'GetVpcSlbsResultShape' => [
+        'DeleteVpcSlbByIdResultShape' => [
             'type' => 'structure',
             'members' => [
-                'slbs' => [ 'type' => 'list', 'member' => [ 'shape' => 'SlbInfo', ], ],
             ],
         ],
         'GetVpcSlbByIdResponseShape' => [
@@ -2379,40 +3990,36 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteVpcSlbByIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'GetVpcSubnetsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'subnets' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubnetDesInfo', ], ],
-            ],
-        ],
-        'CreateVpcSubnetResultShape' => [
+        'CreateVpcSlbResultShape' => [
             'type' => 'structure',
             'members' => [
                 'task' =>  [ 'shape' => 'ResourceTFInfo', ],
             ],
         ],
-        'GetVpcSubnetByIdResultShape' => [
+        'CreateVpcSlbRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'subnet' =>  [ 'shape' => 'SubnetDesInfo', ],
-            ],
-        ],
-        'CreateVpcSubnetRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'body' =>  [ 'shape' => 'CreateSubnetReq', ],
+                'slb' =>  [ 'shape' => 'SlbInfo', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'CreateVpcSubnetResponseShape' => [
+        'GetVpcSlbByIdRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'CreateVpcSubnetResultShape', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'GetVpcSlbByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'slb' =>  [ 'shape' => 'SlbInfoDetail', ],
+            ],
+        ],
+        'CreateVpcSlbResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateVpcSlbResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -2423,22 +4030,34 @@ return [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
-        'DeleteVpcSubnetByIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeleteVpcSubnetByIdRequestShape' => [
+        'GetVpcSubnetsRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
         'GetVpcSubnetByIdResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'GetVpcSubnetByIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateVpcSubnetResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'GetVpcSubnetsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subnets' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubnetDesInfo', ], ],
+            ],
+        ],
+        'DeleteVpcSubnetByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -2449,42 +4068,48 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'GetVpcSubnetsRequestShape' => [
+        'GetVpcSubnetByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subnet' =>  [ 'shape' => 'SubnetDesInfo', ],
+            ],
+        ],
+        'DeleteVpcSubnetByIdRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
-        'DeleteVpcSubnetByIdResponseShape' => [
+        'CreateVpcSubnetResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'result' =>  [ 'shape' => 'CreateVpcSubnetResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CreateVpcResponseShape' => [
+        'DeleteVpcSubnetByIdResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'CreateVpcResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'GetVpcsResultShape' => [
+        'CreateVpcSubnetRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'vpcs' => [ 'type' => 'list', 'member' => [ 'shape' => 'VpcInfo', ], ],
-            ],
-        ],
-        'GetVpcsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
+                'subnet' =>  [ 'shape' => 'CreateSubnet', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'GetVpcsResponseShape' => [
+        'CreateVpcRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GetVpcsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'vpc' =>  [ 'shape' => 'VpcInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteVpcByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'GetVpcByIdResponseShape' => [
@@ -2494,9 +4119,24 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteVpcByIdResultShape' => [
+        'GetVpcsResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'result' =>  [ 'shape' => 'GetVpcsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateVpcResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'CreateVpcResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateVpcResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetVpcByIdRequestShape' => [
@@ -2506,17 +4146,23 @@ return [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
-        'CreateVpcRequestShape' => [
+        'DeleteVpcByIdRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'body' =>  [ 'shape' => 'CreateVpcReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'GetVpcsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'CreateVpcResultShape' => [
+        'GetVpcsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+                'vpcs' => [ 'type' => 'list', 'member' => [ 'shape' => 'VpcInfo', ], ],
             ],
         ],
         'DeleteVpcByIdResponseShape' => [
@@ -2531,18 +4177,30 @@ return [
                 'vpc' =>  [ 'shape' => 'VpcInfoDetail', ],
             ],
         ],
-        'DeleteVpcByIdRequestShape' => [
+        'CreateVpcVServerGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'vserverGroup' =>  [ 'shape' => 'CreateVserverGroup', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
-        'GetVpcVServerGroupsResponseShape' => [
+        'CreateVpcVServerGroupResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GetVpcVServerGroupsResultShape', ],
+                'result' =>  [ 'shape' => 'CreateVpcVServerGroupResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetVpcVServerGroupsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'vserverGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'VserverGroupInfo', ], ],
+            ],
+        ],
+        'CreateVpcVServerGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
             ],
         ],
         'GetVpcVServerGroupsRequestShape' => [
@@ -2552,29 +4210,10 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'CreateVpcVServerGroupResultShape' => [
+        'GetVpcVServerGroupsResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
-            ],
-        ],
-        'CreateVpcVServerGroupRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'body' =>  [ 'shape' => 'CreateVserverGroupReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetVpcVServerGroupsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'vserverGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'VserverGroupInfo', ], ],
-            ],
-        ],
-        'CreateVpcVServerGroupResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateVpcVServerGroupResultShape', ],
+                'result' =>  [ 'shape' => 'GetVpcVServerGroupsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],

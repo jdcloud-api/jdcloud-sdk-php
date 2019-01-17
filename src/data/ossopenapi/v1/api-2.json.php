@@ -40,11 +40,11 @@ return [
         ],
     ],
     'shapes' => [
-        'BucketSpaceStatistic' => [
+        'BucketSpaceStatisticQueryResult' => [
             'type' => 'structure',
             'members' => [
-                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
-                'space' => [ 'type' => 'long', 'locationName' => 'space', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'queryList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BucketSpaceStatistic', ], ],
             ],
         ],
         'BucketMonitorStatistic' => [
@@ -55,11 +55,11 @@ return [
                 'time' => [ 'type' => 'string', 'locationName' => 'time', ],
             ],
         ],
-        'BucketSpaceStatisticQueryResult' => [
+        'BucketSpaceStatistic' => [
             'type' => 'structure',
             'members' => [
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'queryList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BucketSpaceStatistic', ], ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'space' => [ 'type' => 'long', 'locationName' => 'space', ],
             ],
         ],
         'BucketMonitorStatisticQueryResult' => [
@@ -79,16 +79,21 @@ return [
                 'replaceKeySuffixWith' => [ 'type' => 'string', 'locationName' => 'replaceKeySuffixWith', ],
             ],
         ],
-        'BackSourceHeaderRule' => [
+        'GetBackSourceConfigurationResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'allowAllHeaders' => [ 'type' => 'boolean', 'locationName' => 'allowAllHeaders', ],
-                'allowHeaders' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'notAllowHeaders' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'setHeaders' => [ 'type' => 'object', 'locationName' => 'setHeaders', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'backSourceRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackSourceRule', ], ],
             ],
         ],
-        'PutBackSourceConfigurationResultShape' => [
+        'GetBackSourceConfigurationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+            ],
+        ],
+        'DeleteBackSourceConfigurationResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -102,32 +107,6 @@ return [
                 'allowQueryString' => [ 'type' => 'boolean', 'locationName' => 'allowQueryString', ],
                 'followRedirects' => [ 'type' => 'boolean', 'locationName' => 'followRedirects', ],
                 'headerRule' =>  [ 'shape' => 'BackSourceHeaderRule', ],
-            ],
-        ],
-        'GetBackSourceConfigurationResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'backSourceRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackSourceRule', ], ],
-            ],
-        ],
-        'BackSourceRuleCondition' => [
-            'type' => 'structure',
-            'members' => [
-                'keyPrefixEquals' => [ 'type' => 'string', 'locationName' => 'keyPrefixEquals', ],
-                'httpErrorCodeReturnedEquals' => [ 'type' => 'integer', 'locationName' => 'httpErrorCodeReturnedEquals', ],
-            ],
-        ],
-        'DeleteBackSourceConfigurationRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
-            ],
-        ],
-        'DeleteBackSourceConfigurationResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'BucketBackSourceConfiguration' => [
@@ -144,29 +123,50 @@ return [
                 'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
             ],
         ],
-        'PutBackSourceConfigurationResponseShape' => [
+        'BackSourceHeaderRule' => [
+            'type' => 'structure',
+            'members' => [
+                'allowAllHeaders' => [ 'type' => 'boolean', 'locationName' => 'allowAllHeaders', ],
+                'allowHeaders' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'notAllowHeaders' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'setHeaders' => [ 'type' => 'object', 'locationName' => 'setHeaders', ],
+            ],
+        ],
+        'GetBackSourceConfigurationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'backSourceRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackSourceRule', ], ],
+            ],
+        ],
+        'DeleteBackSourceConfigurationResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'GetBackSourceConfigurationRequestShape' => [
+        'PutBackSourceConfigurationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteBackSourceConfigurationRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
             ],
         ],
-        'GetBackSourceConfigurationResponseShape' => [
+        'BackSourceRuleCondition' => [
+            'type' => 'structure',
+            'members' => [
+                'keyPrefixEquals' => [ 'type' => 'string', 'locationName' => 'keyPrefixEquals', ],
+                'httpErrorCodeReturnedEquals' => [ 'type' => 'integer', 'locationName' => 'httpErrorCodeReturnedEquals', ],
+            ],
+        ],
+        'PutBackSourceConfigurationResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'backSourceRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackSourceRule', ], ],
-            ],
-        ],
-        'DeleteBackSourceConfigurationResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'CNameQueryResult' => [
@@ -174,15 +174,6 @@ return [
             'members' => [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'resultList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CName', ], ],
-            ],
-        ],
-        'CNameInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
-                'protoType' => [ 'type' => 'integer', 'locationName' => 'protoType', ],
-                'endPoint' => [ 'type' => 'string', 'locationName' => 'endPoint', ],
-                'internal' => [ 'type' => 'string', 'locationName' => 'internal', ],
             ],
         ],
         'CName' => [
@@ -197,6 +188,15 @@ return [
                 'isCName' => [ 'type' => 'integer', 'locationName' => 'isCName', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'protoType' => [ 'type' => 'integer', 'locationName' => 'protoType', ],
+            ],
+        ],
+        'CNameInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
+                'protoType' => [ 'type' => 'integer', 'locationName' => 'protoType', ],
+                'endPoint' => [ 'type' => 'string', 'locationName' => 'endPoint', ],
+                'internal' => [ 'type' => 'string', 'locationName' => 'internal', ],
             ],
         ],
         'ICP' => [

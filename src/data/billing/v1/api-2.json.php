@@ -275,16 +275,6 @@ return [
                 'arrearFee' => [ 'type' => 'double', 'locationName' => 'arrearFee', ],
             ],
         ],
-        'Pagination' => [
-            'type' => 'structure',
-            'members' => [
-                'currPageNo' => [ 'type' => 'integer', 'locationName' => 'currPageNo', ],
-                'numberPages' => [ 'type' => 'integer', 'locationName' => 'numberPages', ],
-                'numberRecords' => [ 'type' => 'integer', 'locationName' => 'numberRecords', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'startIndex' => [ 'type' => 'integer', 'locationName' => 'startIndex', ],
-            ],
-        ],
         'ConsumptionProduct' => [
             'type' => 'structure',
             'members' => [
@@ -299,6 +289,16 @@ return [
                 'arrearFee' => [ 'type' => 'double', 'locationName' => 'arrearFee', ],
                 'productDetails' => [ 'type' => 'list', 'member' => [ 'shape' => 'Consumption', ], ],
                 'productDetailList' => [ 'type' => 'object', 'locationName' => 'productDetailList', ],
+            ],
+        ],
+        'Pagination' => [
+            'type' => 'structure',
+            'members' => [
+                'currPageNo' => [ 'type' => 'integer', 'locationName' => 'currPageNo', ],
+                'numberPages' => [ 'type' => 'integer', 'locationName' => 'numberPages', ],
+                'numberRecords' => [ 'type' => 'integer', 'locationName' => 'numberRecords', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'startIndex' => [ 'type' => 'integer', 'locationName' => 'startIndex', ],
             ],
         ],
         'Formula' => [
@@ -543,78 +543,10 @@ return [
                 'operateTime' => [ 'type' => 'string', 'locationName' => 'operateTime', ],
             ],
         ],
-        'QueryConsumeBillsResponseShape' => [
+        'IsArrearResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'QueryConsumeBillsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'QueryConsumeBillsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pagination' =>  [ 'shape' => 'Pagination', ],
-                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConsumeBillQueryResultItem', ], ],
-            ],
-        ],
-        'QueryConsumeRecordsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'queryType' => [ 'type' => 'integer', 'locationName' => 'queryType', ],
-                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
-                'payType' => [ 'type' => 'integer', 'locationName' => 'payType', ],
-                'payState' => [ 'type' => 'integer', 'locationName' => 'payState', ],
-                'timeType' => [ 'type' => 'integer', 'locationName' => 'timeType', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'ignoreZero' => [ 'type' => 'integer', 'locationName' => 'ignoreZero', ],
-                'site' => [ 'type' => 'integer', 'locationName' => 'site', ],
-                'role' => [ 'type' => 'integer', 'locationName' => 'role', ],
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-            ],
-        ],
-        'QueryResourceBillsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pagination' =>  [ 'shape' => 'Pagination', ],
-                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceBillQueryResultItem', ], ],
-            ],
-        ],
-        'QueryBillStatisticsInfoResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'QueryBillStatisticsInfoResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'IsArrearRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'IsArrearResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
-            ],
-        ],
-        'QueryConsumeRecordsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pagination' =>  [ 'shape' => 'Pagination', ],
-                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConsumeRecord', ], ],
-            ],
-        ],
-        'AdminQueryBillStatisticsInfoResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'BillStatisticsInfoVo', ],
+                'result' =>  [ 'shape' => 'IsArrearResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -627,117 +559,11 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'GetResourceNameRequestShape' => [
+        'QueryConsumptionOverViewResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-            ],
-        ],
-        'IsArrearResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'IsArrearResultShape', ],
+                'result' =>  [ 'shape' => 'QueryConsumptionOverViewResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetBillDetailResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetBillDetailResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'QueryConsumptionOverViewResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'actualFee' => [ 'type' => 'double', 'locationName' => 'actualFee', ],
-                'cashPayFee' => [ 'type' => 'double', 'locationName' => 'cashPayFee', ],
-                'balancePayFee' => [ 'type' => 'double', 'locationName' => 'balancePayFee', ],
-                'cashCouponPayFee' => [ 'type' => 'double', 'locationName' => 'cashCouponPayFee', ],
-                'arrearFee' => [ 'type' => 'double', 'locationName' => 'arrearFee', ],
-                'consumptionProductVoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConsumptionProduct', ], ],
-                'consumptionList' => [ 'type' => 'object', 'locationName' => 'consumptionList', ],
-            ],
-        ],
-        'AdminQueryBillStatisticsInfoRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'queryType' => [ 'type' => 'integer', 'locationName' => 'queryType', ],
-                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
-                'payType' => [ 'type' => 'integer', 'locationName' => 'payType', ],
-                'payState' => [ 'type' => 'integer', 'locationName' => 'payState', ],
-                'timeType' => [ 'type' => 'integer', 'locationName' => 'timeType', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'ignoreZero' => [ 'type' => 'integer', 'locationName' => 'ignoreZero', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-                'site' => [ 'type' => 'integer', 'locationName' => 'site', ],
-                'role' => [ 'type' => 'integer', 'locationName' => 'role', ],
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'QueryBillStatisticsInfoRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'payState' => [ 'type' => 'integer', 'locationName' => 'payState', ],
-                'timeType' => [ 'type' => 'integer', 'locationName' => 'timeType', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'queryType' => [ 'type' => 'integer', 'locationName' => 'queryType', ],
-                'payType' => [ 'type' => 'integer', 'locationName' => 'payType', ],
-                'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetResourceNameResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetResourceNameResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'QueryResourceBillsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'QueryResourceBillsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'QueryConsumeRecordsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'QueryConsumeRecordsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'QueryBillStatisticsInfoResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'totalFee' => [ 'type' => 'double', 'locationName' => 'totalFee', ],
-                'cashPayFee' => [ 'type' => 'double', 'locationName' => 'cashPayFee', ],
-                'cashCouponPayFee' => [ 'type' => 'double', 'locationName' => 'cashCouponPayFee', ],
-                'balancePayFee' => [ 'type' => 'double', 'locationName' => 'balancePayFee', ],
-                'arrearFee' => [ 'type' => 'double', 'locationName' => 'arrearFee', ],
-                'billFee' => [ 'type' => 'double', 'locationName' => 'billFee', ],
-                'discountFee' => [ 'type' => 'double', 'locationName' => 'discountFee', ],
-            ],
-        ],
-        'GetResourceNameResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
             ],
         ],
         'QueryResourceBillsRequestShape' => [
@@ -784,17 +610,138 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'AdminQueryBillStatisticsInfoResultShape' => [
+        'QueryConsumeBillsResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'billStatisticsInfoVo' =>  [ 'shape' => 'BillStatisticsInfoVo', ],
+                'result' =>  [ 'shape' => 'QueryConsumeBillsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'QueryConsumptionOverViewResponseShape' => [
+        'QueryConsumeRecordsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'QueryConsumptionOverViewResultShape', ],
+                'queryType' => [ 'type' => 'integer', 'locationName' => 'queryType', ],
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
+                'payType' => [ 'type' => 'integer', 'locationName' => 'payType', ],
+                'payState' => [ 'type' => 'integer', 'locationName' => 'payState', ],
+                'timeType' => [ 'type' => 'integer', 'locationName' => 'timeType', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'ignoreZero' => [ 'type' => 'integer', 'locationName' => 'ignoreZero', ],
+                'site' => [ 'type' => 'integer', 'locationName' => 'site', ],
+                'role' => [ 'type' => 'integer', 'locationName' => 'role', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+            ],
+        ],
+        'QueryConsumeBillsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pagination' =>  [ 'shape' => 'Pagination', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConsumeBillQueryResultItem', ], ],
+            ],
+        ],
+        'GetBillDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetBillDetailResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetResourceNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+            ],
+        ],
+        'AdminQueryBillStatisticsInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'BillStatisticsInfoVo', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetResourceNameResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetResourceNameResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryConsumptionOverViewResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'actualFee' => [ 'type' => 'double', 'locationName' => 'actualFee', ],
+                'cashPayFee' => [ 'type' => 'double', 'locationName' => 'cashPayFee', ],
+                'balancePayFee' => [ 'type' => 'double', 'locationName' => 'balancePayFee', ],
+                'cashCouponPayFee' => [ 'type' => 'double', 'locationName' => 'cashCouponPayFee', ],
+                'arrearFee' => [ 'type' => 'double', 'locationName' => 'arrearFee', ],
+                'consumptionProductVoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConsumptionProduct', ], ],
+                'consumptionList' => [ 'type' => 'object', 'locationName' => 'consumptionList', ],
+            ],
+        ],
+        'IsArrearResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'QueryConsumeRecordsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pagination' =>  [ 'shape' => 'Pagination', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConsumeRecord', ], ],
+            ],
+        ],
+        'QueryResourceBillsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryResourceBillsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryBillStatisticsInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'totalFee' => [ 'type' => 'double', 'locationName' => 'totalFee', ],
+                'cashPayFee' => [ 'type' => 'double', 'locationName' => 'cashPayFee', ],
+                'cashCouponPayFee' => [ 'type' => 'double', 'locationName' => 'cashCouponPayFee', ],
+                'balancePayFee' => [ 'type' => 'double', 'locationName' => 'balancePayFee', ],
+                'arrearFee' => [ 'type' => 'double', 'locationName' => 'arrearFee', ],
+                'billFee' => [ 'type' => 'double', 'locationName' => 'billFee', ],
+                'discountFee' => [ 'type' => 'double', 'locationName' => 'discountFee', ],
+            ],
+        ],
+        'QueryBillStatisticsInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'payState' => [ 'type' => 'integer', 'locationName' => 'payState', ],
+                'timeType' => [ 'type' => 'integer', 'locationName' => 'timeType', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'queryType' => [ 'type' => 'integer', 'locationName' => 'queryType', ],
+                'payType' => [ 'type' => 'integer', 'locationName' => 'payType', ],
+                'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetBillDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'systemType' => [ 'type' => 'integer', 'locationName' => 'systemType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'billId' => [ 'type' => 'double', 'locationName' => 'billId', ],
             ],
         ],
         'GetBillDetailResultShape' => [
@@ -831,12 +778,65 @@ return [
                 'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
             ],
         ],
-        'GetBillDetailRequestShape' => [
+        'GetResourceNameResultShape' => [
             'type' => 'structure',
             'members' => [
-                'systemType' => [ 'type' => 'integer', 'locationName' => 'systemType', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+            ],
+        ],
+        'AdminQueryBillStatisticsInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'billStatisticsInfoVo' =>  [ 'shape' => 'BillStatisticsInfoVo', ],
+            ],
+        ],
+        'AdminQueryBillStatisticsInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryType' => [ 'type' => 'integer', 'locationName' => 'queryType', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
+                'payType' => [ 'type' => 'integer', 'locationName' => 'payType', ],
+                'payState' => [ 'type' => 'integer', 'locationName' => 'payState', ],
+                'timeType' => [ 'type' => 'integer', 'locationName' => 'timeType', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'ignoreZero' => [ 'type' => 'integer', 'locationName' => 'ignoreZero', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'site' => [ 'type' => 'integer', 'locationName' => 'site', ],
+                'role' => [ 'type' => 'integer', 'locationName' => 'role', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'billId' => [ 'type' => 'double', 'locationName' => 'billId', ],
+            ],
+        ],
+        'QueryResourceBillsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pagination' =>  [ 'shape' => 'Pagination', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceBillQueryResultItem', ], ],
+            ],
+        ],
+        'IsArrearRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'QueryConsumeRecordsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryConsumeRecordsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryBillStatisticsInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryBillStatisticsInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CalculateTotalPriceRequestShape' => [
@@ -858,18 +858,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CalculateTotalPriceResultShape' => [
+        'CalculateTotalPriceResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'totalPrice' => [ 'type' => 'double', 'locationName' => 'totalPrice', ],
-                'totalPriceScale4' => [ 'type' => 'double', 'locationName' => 'totalPriceScale4', ],
-                'discountedTotalPrice' => [ 'type' => 'double', 'locationName' => 'discountedTotalPrice', ],
-                'totalDiscount' => [ 'type' => 'double', 'locationName' => 'totalDiscount', ],
-                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'OrderPriceDetail', ], ],
-                'totalOriginalPrice' => [ 'type' => 'double', 'locationName' => 'totalOriginalPrice', ],
-                'favorableInfos' => [ 'type' => 'string', 'locationName' => 'favorableInfos', ],
-                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
-                'totalUnitPrice' => [ 'type' => 'string', 'locationName' => 'totalUnitPrice', ],
+                'result' =>  [ 'shape' => 'CalculateTotalPriceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CalculateCompensateFeeAndSendCouponsResultShape' => [
@@ -888,17 +881,70 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'CalculateTotalPriceResponseShape' => [
+        'CalculateTotalPriceResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'CalculateTotalPriceResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'totalPrice' => [ 'type' => 'double', 'locationName' => 'totalPrice', ],
+                'totalPriceScale4' => [ 'type' => 'double', 'locationName' => 'totalPriceScale4', ],
+                'discountedTotalPrice' => [ 'type' => 'double', 'locationName' => 'discountedTotalPrice', ],
+                'totalDiscount' => [ 'type' => 'double', 'locationName' => 'totalDiscount', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'OrderPriceDetail', ], ],
+                'totalOriginalPrice' => [ 'type' => 'double', 'locationName' => 'totalOriginalPrice', ],
+                'favorableInfos' => [ 'type' => 'string', 'locationName' => 'favorableInfos', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'totalUnitPrice' => [ 'type' => 'string', 'locationName' => 'totalUnitPrice', ],
+            ],
+        ],
+        'QueryPageByConditionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCodeList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'networkOperator' => [ 'type' => 'integer', 'locationName' => 'networkOperator', ],
+                'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
+                'resourceIdList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'expireInDays' => [ 'type' => 'integer', 'locationName' => 'expireInDays', ],
+                'isOnTrial' => [ 'type' => 'integer', 'locationName' => 'isOnTrial', ],
+                'site' => [ 'type' => 'integer', 'locationName' => 'site', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'billingStatus' => [ 'type' => 'integer', 'locationName' => 'billingStatus', ],
+                'expiringInDays' => [ 'type' => 'integer', 'locationName' => 'expiringInDays', ],
+                'billingTypeList' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'transactionNos' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'opTypes' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'statusList' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'excludeResources' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'orderByClaus' => [ 'type' => 'string', 'locationName' => 'orderByClaus', ],
+                'node' => [ 'type' => 'string', 'locationName' => 'node', ],
+                'departmentId' => [ 'type' => 'integer', 'locationName' => 'departmentId', ],
+                'pinList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'isSpecial' => [ 'type' => 'integer', 'locationName' => 'isSpecial', ],
+                'nodeCode' => [ 'type' => 'string', 'locationName' => 'nodeCode', ],
+                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'offset' => [ 'type' => 'integer', 'locationName' => 'offset', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'SendResourceOrderStatusMessageResultShape' => [
             'type' => 'structure',
             'members' => [
                 'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'QueryPageByConditionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryPageByConditionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'SendResourceOrderStatusMessageRequestShape' => [
@@ -918,24 +964,10 @@ return [
                 'result' =>  [ 'shape' => 'GetExpiringOrdersResultShape', ],
             ],
         ],
-        'GetExpiringOrdersResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pagination' =>  [ 'shape' => 'Pagination', ],
-                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceOrderVo', ], ],
-            ],
-        ],
         'SendResourceOrderStatusMessageResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'SendResourceOrderStatusMessageResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'QueryPageByConditionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'QueryPageByConditionResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -985,43 +1017,11 @@ return [
                 'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceOrderVo', ], ],
             ],
         ],
-        'QueryPageByConditionRequestShape' => [
+        'GetExpiringOrdersResultShape' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
-                'serviceCodeList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
-                'networkOperator' => [ 'type' => 'integer', 'locationName' => 'networkOperator', ],
-                'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
-                'resourceIdList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'expireInDays' => [ 'type' => 'integer', 'locationName' => 'expireInDays', ],
-                'isOnTrial' => [ 'type' => 'integer', 'locationName' => 'isOnTrial', ],
-                'site' => [ 'type' => 'integer', 'locationName' => 'site', ],
-                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
-                'billingStatus' => [ 'type' => 'integer', 'locationName' => 'billingStatus', ],
-                'expiringInDays' => [ 'type' => 'integer', 'locationName' => 'expiringInDays', ],
-                'billingTypeList' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
-                'transactionNos' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'opTypes' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'statusList' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
-                'excludeResources' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'orderByClaus' => [ 'type' => 'string', 'locationName' => 'orderByClaus', ],
-                'node' => [ 'type' => 'string', 'locationName' => 'node', ],
-                'departmentId' => [ 'type' => 'integer', 'locationName' => 'departmentId', ],
-                'pinList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'isSpecial' => [ 'type' => 'integer', 'locationName' => 'isSpecial', ],
-                'nodeCode' => [ 'type' => 'string', 'locationName' => 'nodeCode', ],
-                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'offset' => [ 'type' => 'integer', 'locationName' => 'offset', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'pagination' =>  [ 'shape' => 'Pagination', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceOrderVo', ], ],
             ],
         ],
     ],

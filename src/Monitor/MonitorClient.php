@@ -40,8 +40,6 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeAlarmHistoryAllRegionAsync(array $args = [])
  * @method \Jdcloud\Result deleteAlarmsCm(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteAlarmsCmAsync(array $args = [])
- * @method \Jdcloud\Result describeCmMetricDataByTagSpec(array $args = [])
- * @method \GuzzleHttp\Promise\Promise describeCmMetricDataByTagSpecAsync(array $args = [])
  * @method \Jdcloud\Result describeMetrics(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeMetricsAsync(array $args = [])
  * @method \Jdcloud\Result describeMetricsForCreateAlarm(array $args = [])

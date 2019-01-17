@@ -73,18 +73,18 @@ return [
                 'safeStatus' => [ 'type' => 'integer', 'locationName' => 'safeStatus', ],
             ],
         ],
-        'IpResourceFlow' => [
-            'type' => 'structure',
-            'members' => [
-                'bps' =>  [ 'shape' => 'IpResourceFlowDetail', ],
-                'pps' =>  [ 'shape' => 'IpResourceFlowDetail', ],
-            ],
-        ],
         'IpResourceFlowDetail' => [
             'type' => 'structure',
             'members' => [
                 'used' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
                 'times' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'IpResourceFlow' => [
+            'type' => 'structure',
+            'members' => [
+                'bps' =>  [ 'shape' => 'IpResourceFlowDetail', ],
+                'pps' =>  [ 'shape' => 'IpResourceFlowDetail', ],
             ],
         ],
         'IpResourceInfo' => [
@@ -107,62 +107,10 @@ return [
                 'cause' => [ 'type' => 'integer', 'locationName' => 'cause', ],
             ],
         ],
-        'DescribeIpResourceProtectInfoResultShape' => [
+        'DescribeIpResourceFlowRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpResourceProtectInfo', ], ],
-            ],
-        ],
-        'DescribeIpResourceInfoResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeIpResourceInfoResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeIpResourcesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeIpResourcesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'SetCleanThresholdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DescribeIpResourceFlowResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeIpResourceFlowResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeIpResourceInfoRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
-            ],
-        ],
-        'DescribeIpResourceInfoResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' =>  [ 'shape' => 'IpResourceInfo', ],
-            ],
-        ],
-        'DescribeIpResourceFlowResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' =>  [ 'shape' => 'IpResourceFlow', ],
-            ],
-        ],
-        'DescribeIpResourceProtectInfoRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
-                'limit' => [ 'type' => 'integer', 'locationName' => 'limit', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
             ],
@@ -174,6 +122,13 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'DescribeIpResourceFlowResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeIpResourceFlowResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeIpResourcesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -181,16 +136,43 @@ return [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
-        'DescribeIpResourceProtectInfoResponseShape' => [
+        'SetCleanThresholdResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeIpResourceProtectInfoResultShape', ],
+            ],
+        ],
+        'DescribeIpResourceInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeIpResourceInfoResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeIpResourceProtectInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpResourceProtectInfo', ], ],
             ],
         ],
         'SetCleanThresholdResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeIpResourceProtectInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
+                'limit' => [ 'type' => 'integer', 'locationName' => 'limit', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+            ],
+        ],
+        'DescribeIpResourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeIpResourcesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -202,12 +184,30 @@ return [
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
             ],
         ],
-        'DescribeIpResourceFlowRequestShape' => [
+        'DescribeIpResourceInfoResultShape' => [
             'type' => 'structure',
             'members' => [
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'data' =>  [ 'shape' => 'IpResourceInfo', ],
+            ],
+        ],
+        'DescribeIpResourceInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+            ],
+        ],
+        'DescribeIpResourceFlowResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'IpResourceFlow', ],
+            ],
+        ],
+        'DescribeIpResourceProtectInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeIpResourceProtectInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
     ],

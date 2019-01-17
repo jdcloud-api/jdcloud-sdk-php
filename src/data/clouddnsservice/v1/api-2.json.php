@@ -128,24 +128,6 @@ return [
             'input' => [ 'shape' => 'BatchSetDnsResolveRequestShape', ],
             'output' => [ 'shape' => 'BatchSetDnsResolveResponseShape', ],
         ],
-        'SetLB' => [
-            'name' => 'SetLB',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/domain/{domainId}/SetLB',
-            ],
-            'input' => [ 'shape' => 'SetLBRequestShape', ],
-            'output' => [ 'shape' => 'SetLBResponseShape', ],
-        ],
-        'GetLB' => [
-            'name' => 'GetLB',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/domain/{domainId}/GetLB',
-            ],
-            'input' => [ 'shape' => 'GetLBRequestShape', ],
-            'output' => [ 'shape' => 'GetLBResponseShape', ],
-        ],
         'AddUserView' => [
             'name' => 'AddUserView',
             'http' => [
@@ -279,6 +261,27 @@ return [
                 'clientIp' => [ 'type' => 'string', 'locationName' => 'clientIp', ],
             ],
         ],
+        'DomainAdded' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
+                'expirationDate' => [ 'type' => 'long', 'locationName' => 'expirationDate', ],
+                'packId' => [ 'type' => 'integer', 'locationName' => 'packId', ],
+            ],
+        ],
+        'Domain' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
+                'expirationDate' => [ 'type' => 'long', 'locationName' => 'expirationDate', ],
+                'packId' => [ 'type' => 'integer', 'locationName' => 'packId', ],
+                'lockStatus' => [ 'type' => 'integer', 'locationName' => 'lockStatus', ],
+            ],
+        ],
         'DomainInfo' => [
             'type' => 'structure',
             'members' => [
@@ -302,27 +305,6 @@ return [
                 'url' => [ 'type' => 'string', 'locationName' => 'url', ],
             ],
         ],
-        'DomainAdded' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
-                'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
-                'expirationDate' => [ 'type' => 'long', 'locationName' => 'expirationDate', ],
-                'packId' => [ 'type' => 'integer', 'locationName' => 'packId', ],
-            ],
-        ],
-        'Domain' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
-                'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
-                'expirationDate' => [ 'type' => 'long', 'locationName' => 'expirationDate', ],
-                'packId' => [ 'type' => 'integer', 'locationName' => 'packId', ],
-                'lockStatus' => [ 'type' => 'integer', 'locationName' => 'lockStatus', ],
-            ],
-        ],
         'A' => [
             'type' => 'structure',
             'members' => [
@@ -330,18 +312,18 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
-        'NS' => [
-            'type' => 'structure',
-            'members' => [
-                'tag' => [ 'type' => 'integer', 'locationName' => 'tag', ],
-                'server' => [ 'type' => 'string', 'locationName' => 'server', ],
-            ],
-        ],
         'Result' => [
             'type' => 'structure',
             'members' => [
                 'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
                 'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
+        'NS' => [
+            'type' => 'structure',
+            'members' => [
+                'tag' => [ 'type' => 'integer', 'locationName' => 'tag', ],
+                'server' => [ 'type' => 'string', 'locationName' => 'server', ],
             ],
         ],
         'Monitor' => [
@@ -413,99 +395,6 @@ return [
                 'endTime' => [ 'type' => 'long', 'locationName' => 'endTime', ],
             ],
         ],
-        'Setalb' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
-            ],
-        ],
-        'RRInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'creator' => [ 'type' => 'string', 'locationName' => 'creator', ],
-                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'hostRecord' => [ 'type' => 'string', 'locationName' => 'hostRecord', ],
-                'hostValue' => [ 'type' => 'string', 'locationName' => 'hostValue', ],
-                'jcloudRes' => [ 'type' => 'boolean', 'locationName' => 'jcloudRes', ],
-                'mxPriority' => [ 'type' => 'integer', 'locationName' => 'mxPriority', ],
-                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
-                'ttl' => [ 'type' => 'integer', 'locationName' => 'ttl', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
-                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
-                'viewValue' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
-                'resolvingStatus' => [ 'type' => 'string', 'locationName' => 'resolvingStatus', ],
-                'updateTime' => [ 'type' => 'long', 'locationName' => 'updateTime', ],
-            ],
-        ],
-        'Getlb' => [
-            'type' => 'structure',
-            'members' => [
-                'isBalance' => [ 'type' => 'boolean', 'locationName' => 'isBalance', ],
-                'record' => [ 'type' => 'string', 'locationName' => 'record', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
-                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
-                'viewValue' => [ 'type' => 'integer', 'locationName' => 'viewValue', ],
-                'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'HostRRlb', ], ],
-            ],
-        ],
-        'Jdvpc' => [
-            'type' => 'structure',
-            'members' => [
-                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
-                'binded' => [ 'type' => 'boolean', 'locationName' => 'binded', ],
-            ],
-        ],
-        'BatchSetDNS' => [
-            'type' => 'structure',
-            'members' => [
-                'domainId' => [ 'type' => 'integer', 'locationName' => 'domainId', ],
-                'hostRecord' => [ 'type' => 'string', 'locationName' => 'hostRecord', ],
-                'hostValue' => [ 'type' => 'string', 'locationName' => 'hostValue', ],
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'jcloudRes' => [ 'type' => 'boolean', 'locationName' => 'jcloudRes', ],
-                'mxPriority' => [ 'type' => 'integer', 'locationName' => 'mxPriority', ],
-                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
-                'ttl' => [ 'type' => 'integer', 'locationName' => 'ttl', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
-                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
-                'viewValue' => [ 'type' => 'integer', 'locationName' => 'viewValue', ],
-            ],
-        ],
-        'HostRRlb' => [
-            'type' => 'structure',
-            'members' => [
-                'hostValue' => [ 'type' => 'string', 'locationName' => 'hostValue', ],
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
-                'rate' => [ 'type' => 'double', 'locationName' => 'rate', ],
-            ],
-        ],
-        'ViewTree' => [
-            'type' => 'structure',
-            'members' => [
-                'disabled' => [ 'type' => 'boolean', 'locationName' => 'disabled', ],
-                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
-                'leaf' => [ 'type' => 'boolean', 'locationName' => 'leaf', ],
-                'value' => [ 'type' => 'integer', 'locationName' => 'value', ],
-                'children' => [ 'type' => 'list', 'member' => [ 'shape' => 'ViewTree', ], ],
-            ],
-        ],
-        'AddRR' => [
-            'type' => 'structure',
-            'members' => [
-                'hostRecord' => [ 'type' => 'string', 'locationName' => 'hostRecord', ],
-                'hostValue' => [ 'type' => 'string', 'locationName' => 'hostValue', ],
-                'jcloudRes' => [ 'type' => 'boolean', 'locationName' => 'jcloudRes', ],
-                'mxPriority' => [ 'type' => 'integer', 'locationName' => 'mxPriority', ],
-                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
-                'ttl' => [ 'type' => 'integer', 'locationName' => 'ttl', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
-                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
-                'viewValue' => [ 'type' => 'integer', 'locationName' => 'viewValue', ],
-            ],
-        ],
         'UpdateRR' => [
             'type' => 'structure',
             'members' => [
@@ -537,7 +426,7 @@ return [
                 'viewValue' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
             ],
         ],
-        'Setlb' => [
+        'Setalb' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
@@ -547,12 +436,79 @@ return [
         'Getalb' => [
             'type' => 'structure',
             'members' => [
-                'isBalance' => [ 'type' => 'boolean', 'locationName' => 'isBalance', ],
+                'balance' => [ 'type' => 'boolean', 'locationName' => 'balance', ],
                 'record' => [ 'type' => 'string', 'locationName' => 'record', ],
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
                 'viewValue' => [ 'type' => 'integer', 'locationName' => 'viewValue', ],
                 'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'HostRRlb', ], ],
+            ],
+        ],
+        'AddRR' => [
+            'type' => 'structure',
+            'members' => [
+                'hostRecord' => [ 'type' => 'string', 'locationName' => 'hostRecord', ],
+                'hostValue' => [ 'type' => 'string', 'locationName' => 'hostValue', ],
+                'jcloudRes' => [ 'type' => 'boolean', 'locationName' => 'jcloudRes', ],
+                'mxPriority' => [ 'type' => 'integer', 'locationName' => 'mxPriority', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'ttl' => [ 'type' => 'integer', 'locationName' => 'ttl', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
+                'viewValue' => [ 'type' => 'integer', 'locationName' => 'viewValue', ],
+            ],
+        ],
+        'RRInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'creator' => [ 'type' => 'string', 'locationName' => 'creator', ],
+                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'hostRecord' => [ 'type' => 'string', 'locationName' => 'hostRecord', ],
+                'hostValue' => [ 'type' => 'string', 'locationName' => 'hostValue', ],
+                'jcloudRes' => [ 'type' => 'boolean', 'locationName' => 'jcloudRes', ],
+                'mxPriority' => [ 'type' => 'integer', 'locationName' => 'mxPriority', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'ttl' => [ 'type' => 'integer', 'locationName' => 'ttl', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
+                'viewValue' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'resolvingStatus' => [ 'type' => 'string', 'locationName' => 'resolvingStatus', ],
+                'updateTime' => [ 'type' => 'long', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'Getlb' => [
+            'type' => 'structure',
+            'members' => [
+                'balance' => [ 'type' => 'boolean', 'locationName' => 'balance', ],
+                'record' => [ 'type' => 'string', 'locationName' => 'record', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
+                'viewValue' => [ 'type' => 'integer', 'locationName' => 'viewValue', ],
+                'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'HostRRlb', ], ],
+            ],
+        ],
+        'BatchSetDNS' => [
+            'type' => 'structure',
+            'members' => [
+                'domainId' => [ 'type' => 'integer', 'locationName' => 'domainId', ],
+                'hostRecord' => [ 'type' => 'string', 'locationName' => 'hostRecord', ],
+                'hostValue' => [ 'type' => 'string', 'locationName' => 'hostValue', ],
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'jcloudRes' => [ 'type' => 'boolean', 'locationName' => 'jcloudRes', ],
+                'mxPriority' => [ 'type' => 'integer', 'locationName' => 'mxPriority', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'ttl' => [ 'type' => 'integer', 'locationName' => 'ttl', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
+                'viewValue' => [ 'type' => 'integer', 'locationName' => 'viewValue', ],
+            ],
+        ],
+        'Setlb' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
             ],
         ],
         'ImportDNS' => [
@@ -571,6 +527,46 @@ return [
                 'viewValue' => [ 'type' => 'integer', 'locationName' => 'viewValue', ],
             ],
         ],
+        'Jdvpc' => [
+            'type' => 'structure',
+            'members' => [
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'binded' => [ 'type' => 'boolean', 'locationName' => 'binded', ],
+            ],
+        ],
+        'ViewTree' => [
+            'type' => 'structure',
+            'members' => [
+                'disabled' => [ 'type' => 'boolean', 'locationName' => 'disabled', ],
+                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
+                'leaf' => [ 'type' => 'boolean', 'locationName' => 'leaf', ],
+                'value' => [ 'type' => 'integer', 'locationName' => 'value', ],
+                'children' => [ 'type' => 'list', 'member' => [ 'shape' => 'ViewTree', ], ],
+            ],
+        ],
+        'HostRRlb' => [
+            'type' => 'structure',
+            'members' => [
+                'hostValue' => [ 'type' => 'string', 'locationName' => 'hostValue', ],
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
+                'rate' => [ 'type' => 'double', 'locationName' => 'rate', ],
+            ],
+        ],
+        'UserViewInput' => [
+            'type' => 'structure',
+            'members' => [
+                'viewId' => [ 'type' => 'integer', 'locationName' => 'viewId', ],
+                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
+                'domainId' => [ 'type' => 'integer', 'locationName' => 'domainId', ],
+                'ipRanges' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'isDelete' => [ 'type' => 'integer', 'locationName' => 'isDelete', ],
+                'creator' => [ 'type' => 'string', 'locationName' => 'creator', ],
+                'createTime' => [ 'type' => 'integer', 'locationName' => 'createTime', ],
+                'updator' => [ 'type' => 'string', 'locationName' => 'updator', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+            ],
+        ],
         'DelView' => [
             'type' => 'structure',
             'members' => [
@@ -580,20 +576,20 @@ return [
                 'viewId' => [ 'type' => 'string', 'locationName' => 'viewId', ],
             ],
         ],
-        'AddView' => [
-            'type' => 'structure',
-            'members' => [
-                'domainId' => [ 'type' => 'integer', 'locationName' => 'domainId', ],
-                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
-                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
-                'ipRanges' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
         'DelViewIP' => [
             'type' => 'structure',
             'members' => [
                 'domainId' => [ 'type' => 'integer', 'locationName' => 'domainId', ],
                 'viewId' => [ 'type' => 'integer', 'locationName' => 'viewId', ],
+                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
+                'ipRanges' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'AddView' => [
+            'type' => 'structure',
+            'members' => [
+                'domainId' => [ 'type' => 'integer', 'locationName' => 'domainId', ],
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
                 'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
                 'ipRanges' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
@@ -621,18 +617,13 @@ return [
                 'ipRanges' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
-        'UserViewInput' => [
+        'GetActionLogResultShape' => [
             'type' => 'structure',
             'members' => [
-                'viewId' => [ 'type' => 'integer', 'locationName' => 'viewId', ],
-                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
-                'domainId' => [ 'type' => 'integer', 'locationName' => 'domainId', ],
-                'ipRanges' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'isDelete' => [ 'type' => 'integer', 'locationName' => 'isDelete', ],
-                'creator' => [ 'type' => 'string', 'locationName' => 'creator', ],
-                'createTime' => [ 'type' => 'integer', 'locationName' => 'createTime', ],
-                'updator' => [ 'type' => 'string', 'locationName' => 'updator', ],
-                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Actionlog', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
         'GetActionLogRequestShape' => [
@@ -655,13 +646,63 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'GetActionLogResultShape' => [
+        'GetDomainQueryCountResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Actionlog', ], ],
-                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+                'result' =>  [ 'shape' => 'GetDomainQueryCountResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetDomainQueryTrafficResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
+                'traffic' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+            ],
+        ],
+        'DelDomainResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateDomainRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetDomainQueryTrafficResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetDomainQueryTrafficResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetDomainsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DelDomainRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainId' => [ 'type' => 'integer', 'locationName' => 'domainId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetDomainsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetDomainsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'AddDomainResponseShape' => [
@@ -669,6 +710,30 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'AddDomainResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetDomainsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Domain', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+            ],
+        ],
+        'GetDomainQueryTrafficRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'start' => [ 'type' => 'string', 'locationName' => 'start', ],
+                'end' => [ 'type' => 'string', 'locationName' => 'end', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
+            ],
+        ],
+        'DelDomainResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'GetDomainQueryCountRequestShape' => [
@@ -694,21 +759,11 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DelDomainRequestShape' => [
+        'GetDomainQueryCountResultShape' => [
             'type' => 'structure',
             'members' => [
-                'domainId' => [ 'type' => 'integer', 'locationName' => 'domainId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetDomainQueryTrafficRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
-                'start' => [ 'type' => 'string', 'locationName' => 'start', ],
-                'end' => [ 'type' => 'string', 'locationName' => 'end', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
+                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'traffic' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
             ],
         ],
         'UpdateDomainResponseShape' => [
@@ -724,100 +779,58 @@ return [
                 'order' => [ 'type' => 'string', 'locationName' => 'order', ],
             ],
         ],
-        'GetDomainQueryCountResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
-                'traffic' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
-            ],
-        ],
-        'GetDomainQueryCountResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetDomainQueryCountResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetDomainsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Domain', ], ],
-                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
-            ],
-        ],
-        'GetDomainQueryTrafficResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetDomainQueryTrafficResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DelDomainResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DelDomainResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'UpdateDomainRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetDomainQueryTrafficResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'traffic' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
-            ],
-        ],
         'UpdateDomainResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
         ],
-        'GetDomainsRequestShape' => [
+        'OperateRRResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'BatchSetDnsResolveResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UpdateRRRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'UpdateRR', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
+            ],
+        ],
+        'SearchRRRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
         ],
-        'GetDomainsResponseShape' => [
+        'GetViewTreeRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GetDomainsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'loadMode' => [ 'type' => 'integer', 'locationName' => 'loadMode', ],
+                'packId' => [ 'type' => 'integer', 'locationName' => 'packId', ],
+                'viewId' => [ 'type' => 'integer', 'locationName' => 'viewId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
         ],
-        'SetLBResponseShape' => [
+        'UpdateRRResultShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'GetLBResponseShape' => [
+        'GetViewTreeResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'GetLBResultShape', ],
-            ],
-        ],
-        'UpdateRRResponseShape' => [
-            'type' => 'structure',
-            'members' => [
+                'result' =>  [ 'shape' => 'GetViewTreeResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -835,14 +848,16 @@ return [
                 'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
         ],
-        'GetViewTreeRequestShape' => [
+        'OperateRRResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'loadMode' => [ 'type' => 'integer', 'locationName' => 'loadMode', ],
-                'packId' => [ 'type' => 'integer', 'locationName' => 'packId', ],
-                'viewId' => [ 'type' => 'integer', 'locationName' => 'viewId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetViewTreeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ViewTree', ], ],
             ],
         ],
         'SearchRRResponseShape' => [
@@ -852,53 +867,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'OperateRRResponseShape' => [
+        'BatchSetDnsResolveResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'OperateRRResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'GetViewTreeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetViewTreeResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AddRRResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'AddRRResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UpdateRRRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'req' =>  [ 'shape' => 'UpdateRR', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
-            ],
-        ],
-        'GetLBRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
-            ],
-        ],
-        'BatchSetDnsResolveResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'result' =>  [ 'shape' => 'BatchSetDnsResolveResultShape', ],
             ],
         ],
         'OperateRRRequestShape' => [
@@ -910,61 +883,11 @@ return [
                 'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
         ],
-        'BatchSetDnsResolveResponseShape' => [
+        'AddRRResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'result' =>  [ 'shape' => 'AddRRResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'BatchSetDnsResolveResultShape', ],
-            ],
-        ],
-        'UpdateRRResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'SearchRRRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
-            ],
-        ],
-        'SetLBRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'idWeights' => [ 'type' => 'list', 'member' => [ 'shape' => 'Setlb', ], ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
-            ],
-        ],
-        'GetViewTreeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ViewTree', ], ],
-            ],
-        ],
-        'SetLBResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'BatchSetDnsResolveRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'req' => [ 'type' => 'list', 'member' => [ 'shape' => 'BatchSetDNS', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetLBResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Getlb', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
-                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
             ],
         ],
         'SearchRRResultShape' => [
@@ -976,22 +899,17 @@ return [
                 'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
             ],
         ],
-        'GetUserViewResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetUserViewResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DelUserViewResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DelUserViewResponseShape' => [
+        'UpdateRRResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'BatchSetDnsResolveRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' => [ 'type' => 'list', 'member' => [ 'shape' => 'BatchSetDNS', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'GetUserViewRequestShape' => [
@@ -1005,6 +923,29 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'DelUserViewResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AddUserViewResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AddUserViewResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddUserViewIPResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DelUserViewIPResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DelUserViewRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1012,10 +953,64 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'AddUserViewIPResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetUserViewIPResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+            ],
+        ],
+        'DelUserViewResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddUserViewIPRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'AddViewIP', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetUserViewResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetUserViewResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'AddUserViewResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'Userview', ],
+            ],
+        ],
+        'DelUserViewIPRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'DelViewIP', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DelUserViewIPResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetUserViewIPResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetUserViewIPResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetUserViewResultShape' => [
@@ -1025,6 +1020,13 @@ return [
                 'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+            ],
+        ],
+        'AddUserViewRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'AddView', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'GetUserViewIPRequestShape' => [
@@ -1038,95 +1040,23 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'AddUserViewRequestShape' => [
+        'AddMonitorResultShape' => [
             'type' => 'structure',
             'members' => [
-                'req' =>  [ 'shape' => 'AddView', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetUserViewIPResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetUserViewIPResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetUserViewIPResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
-            ],
-        ],
-        'DelUserViewIPRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'req' =>  [ 'shape' => 'DelViewIP', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'AddUserViewIPRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'req' =>  [ 'shape' => 'AddViewIP', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'AddUserViewIPResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AddUserViewIPResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DelUserViewIPResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DelUserViewIPResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AddUserViewResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'AddUserViewResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetMonitorRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'searchValue' => [ 'type' => 'string', 'locationName' => 'searchValue', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
-            ],
-        ],
-        'GetMonitorAlarmInfoResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'MonitorAlarmInfo', ], ],
             ],
         ],
         'AddMonitorTargetResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetTargetsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subDomainName' => [ 'type' => 'string', 'locationName' => 'subDomainName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
         ],
         'GetMonitorResultShape' => [
@@ -1138,64 +1068,11 @@ return [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Monitor', ], ],
             ],
         ],
-        'AddMonitorResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'GetTargetsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetTargetsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetTargetsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'UpdateMonitorResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'GetTargetsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'subDomainName' => [ 'type' => 'string', 'locationName' => 'subDomainName', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
-            ],
-        ],
-        'OperateMonitorResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'GetMonitorResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'GetMonitorResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'OperateMonitorResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AddMonitorResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AddMonitorTargetResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'UpdateMonitorRequestShape' => [
@@ -1206,10 +1083,33 @@ return [
                 'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
         ],
-        'UpdateMonitorResponseShape' => [
+        'GetMonitorAlarmInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetMonitorAlarmInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetTargetsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'OperateMonitorResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateMonitorResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AddMonitorTargetResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'OperateMonitorRequestShape' => [
@@ -1232,6 +1132,12 @@ return [
                 'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
         ],
+        'AddMonitorResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'AddMonitorTargetRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1241,17 +1147,47 @@ return [
                 'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],
         ],
-        'GetMonitorAlarmInfoResponseShape' => [
+        'OperateMonitorResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GetMonitorAlarmInfoResultShape', ],
+            ],
+        ],
+        'GetTargetsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetTargetsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetMonitorAlarmInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'MonitorAlarmInfo', ], ],
             ],
         ],
         'AddMonitorRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'subDomainName' => [ 'type' => 'string', 'locationName' => 'subDomainName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
+            ],
+        ],
+        'UpdateMonitorResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetMonitorRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'searchValue' => [ 'type' => 'string', 'locationName' => 'searchValue', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'domainId' => [ 'type' => 'string', 'locationName' => 'domainId', ],
             ],

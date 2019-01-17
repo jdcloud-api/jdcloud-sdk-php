@@ -222,72 +222,11 @@ return [
                 'storageParameterList' => [ 'type' => 'list', 'member' => [ 'shape' => 'StorageParameter', ], ],
             ],
         ],
-        'DescribeJobRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'jobId' => [ 'type' => 'integer', 'locationName' => 'jobId', ],
-                'namespaceId' => [ 'type' => 'integer', 'locationName' => 'namespaceId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeJobResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeJobResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'StartJobRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'namespaceId' => [ 'type' => 'string', 'locationName' => 'namespaceId', ],
-                'jobId' => [ 'type' => 'integer', 'locationName' => 'jobId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'AddOrUpdateJobResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'AddOrUpdateJobResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AddOrUpdateJobResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'okInfo' =>  [ 'shape' => 'OkInfo', ],
-            ],
-        ],
-        'StartJobResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
         'DeleteJobRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'namespaceId' => [ 'type' => 'string', 'locationName' => 'namespaceId', ],
                 'jobId' => [ 'type' => 'integer', 'locationName' => 'jobId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetJobListResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'JobStr', ], ],
-            ],
-        ],
-        'DescribeJobResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'jobStr' =>  [ 'shape' => 'JobStr', ],
-            ],
-        ],
-        'AddOrUpdateJobRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'jobStr' =>  [ 'shape' => 'JobStr', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -298,18 +237,46 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DeleteJobResultShape' => [
+        'AddOrUpdateJobResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AddOrUpdateJobResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeJobRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jobId' => [ 'type' => 'integer', 'locationName' => 'jobId', ],
+                'namespaceId' => [ 'type' => 'integer', 'locationName' => 'namespaceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetJobListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'JobStr', ], ],
+            ],
+        ],
+        'StopJobResultShape' => [
             'type' => 'structure',
             'members' => [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
             ],
         ],
-        'DeleteJobResponseShape' => [
+        'StopJobRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'namespaceId' => [ 'type' => 'string', 'locationName' => 'namespaceId', ],
+                'jobId' => [ 'type' => 'integer', 'locationName' => 'jobId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'result' =>  [ 'shape' => 'DeleteJobResultShape', ],
+            ],
+        ],
+        'AddOrUpdateJobRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jobStr' =>  [ 'shape' => 'JobStr', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'GetJobListResponseShape' => [
@@ -319,12 +286,6 @@ return [
                 'result' =>  [ 'shape' => 'GetJobListResultShape', ],
             ],
         ],
-        'StopJobResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
         'StartJobResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -332,7 +293,39 @@ return [
                 'result' =>  [ 'shape' => 'StartJobResultShape', ],
             ],
         ],
-        'StopJobRequestShape' => [
+        'StartJobResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DescribeJobResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeJobResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddOrUpdateJobResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'okInfo' =>  [ 'shape' => 'OkInfo', ],
+            ],
+        ],
+        'DescribeJobResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jobStr' =>  [ 'shape' => 'JobStr', ],
+            ],
+        ],
+        'DeleteJobResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+            ],
+        ],
+        'StartJobRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'namespaceId' => [ 'type' => 'string', 'locationName' => 'namespaceId', ],
@@ -347,30 +340,30 @@ return [
                 'result' =>  [ 'shape' => 'StopJobResultShape', ],
             ],
         ],
-        'UpdateNamespaceResponseShape' => [
+        'DeleteJobResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'UpdateNamespaceResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UpdateNamespaceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
-            ],
-        ],
-        'DeleteNamespaceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
-            ],
-        ],
-        'UpdateNamespaceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'namespaceStr' =>  [ 'shape' => 'Namespace', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'result' =>  [ 'shape' => 'DeleteJobResultShape', ],
+            ],
+        ],
+        'QueryNamespacesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'namespaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'Namespace', ], ],
+            ],
+        ],
+        'CreateNamespaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+            ],
+        ],
+        'QueryNamespaceDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryNamespaceDetailResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'QueryNamespaceDetailRequestShape' => [
@@ -380,11 +373,57 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'CreateNamespaceResponseShape' => [
+        'UpdateNamespaceResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'CreateNamespaceResultShape', ],
+                'result' =>  [ 'shape' => 'UpdateNamespaceResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryNamespaceDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'namespace' =>  [ 'shape' => 'Namespace', ],
+            ],
+        ],
+        'DeleteNamespaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+            ],
+        ],
+        'CreateNamespaceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'namespaceStr' =>  [ 'shape' => 'Namespace', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'QueryNamespacesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryNamespacesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateNamespaceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'namespaceStr' =>  [ 'shape' => 'Namespace', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteNamespaceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteNamespaceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateNamespaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
             ],
         ],
         'QueryNamespacesRequestShape' => [
@@ -401,49 +440,51 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'QueryNamespacesResultShape' => [
+        'CreateNamespaceResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'namespaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'Namespace', ], ],
-            ],
-        ],
-        'QueryNamespaceDetailResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'QueryNamespaceDetailResultShape', ],
+                'result' =>  [ 'shape' => 'CreateNamespaceResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CreateNamespaceRequestShape' => [
+        'DeleteStorageResultShape' => [
             'type' => 'structure',
             'members' => [
-                'namespaceStr' =>  [ 'shape' => 'Namespace', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'GetStorageListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'storageType' => [ 'type' => 'string', 'locationName' => 'storageType', ],
+                'namespaceId' => [ 'type' => 'string', 'locationName' => 'namespaceId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'QueryNamespaceDetailResultShape' => [
+        'DescribeStorageResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'namespace' =>  [ 'shape' => 'Namespace', ],
-            ],
-        ],
-        'DeleteNamespaceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DeleteNamespaceResultShape', ],
+                'result' =>  [ 'shape' => 'DescribeStorageResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CreateNamespaceResultShape' => [
+        'GetStorageListResultShape' => [
             'type' => 'structure',
             'members' => [
-                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'storageList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Storage', ], ],
             ],
         ],
-        'QueryNamespacesResponseShape' => [
+        'AddOrUpdateStorageRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'QueryNamespacesResultShape', ],
+                'storageStr' =>  [ 'shape' => 'Storage', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteStorageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteStorageResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -461,43 +502,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteStorageResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DeleteStorageResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DeleteStorageRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'storageId' => [ 'type' => 'integer', 'locationName' => 'storageId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DeleteStorageResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
-        'DescribeStorageResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeStorageResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetStorageListResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'storageList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Storage', ], ],
-            ],
-        ],
-        'DescribeStorageResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' =>  [ 'shape' => 'Storage', ],
             ],
         ],
         'AddOrUpdateStorageResponseShape' => [
@@ -507,26 +516,17 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeStorageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'Storage', ],
+            ],
+        ],
         'AddOrUpdateStorageResultShape' => [
             'type' => 'structure',
             'members' => [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
-            ],
-        ],
-        'AddOrUpdateStorageRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'storageStr' =>  [ 'shape' => 'Storage', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetStorageListRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'storageType' => [ 'type' => 'string', 'locationName' => 'storageType', ],
-                'namespaceId' => [ 'type' => 'string', 'locationName' => 'namespaceId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
     ],

@@ -185,12 +185,6 @@ return [
                 'disk' => [ 'type' => 'integer', 'locationName' => 'disk', ],
             ],
         ],
-        'Env' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
-            ],
-        ],
         'FunctionSpec' => [
             'type' => 'structure',
             'members' => [
@@ -237,6 +231,12 @@ return [
                 'objectName' => [ 'type' => 'string', 'locationName' => 'objectName', ],
             ],
         ],
+        'Env' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
+            ],
+        ],
         'Statistics' => [
             'type' => 'structure',
             'members' => [
@@ -258,32 +258,14 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
-        'GetAliasResultShape' => [
+        'ListAliasRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'Alias', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
             ],
         ],
-        'GetAliasResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetAliasResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ListAliasResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ListAliasResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeleteAliasResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeleteAliasRequestShape' => [
+        'GetAliasRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -301,38 +283,11 @@ return [
                 'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
             ],
         ],
-        'CreateAliasResultShape' => [
+        'UpdateAliasResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'Alias', ],
-            ],
-        ],
-        'ListAliasRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
-            ],
-        ],
-        'CreateAliasResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateAliasResultShape', ],
+                'result' =>  [ 'shape' => 'UpdateAliasResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UpdateAliasResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' =>  [ 'shape' => 'Alias', ],
-            ],
-        ],
-        'GetAliasRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
-                'aliasName' => [ 'type' => 'string', 'locationName' => 'aliasName', ],
             ],
         ],
         'UpdateAliasRequestShape' => [
@@ -345,16 +300,24 @@ return [
                 'aliasName' => [ 'type' => 'string', 'locationName' => 'aliasName', ],
             ],
         ],
-        'UpdateAliasResponseShape' => [
+        'DeleteAliasRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'UpdateAliasResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
+                'aliasName' => [ 'type' => 'string', 'locationName' => 'aliasName', ],
             ],
         ],
         'DeleteAliasResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListAliasResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListAliasResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -364,10 +327,41 @@ return [
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'Alias', ], ],
             ],
         ],
-        'UpdateFunctionResultShape' => [
+        'UpdateAliasResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'Function', ],
+                'data' =>  [ 'shape' => 'Alias', ],
+            ],
+        ],
+        'CreateAliasResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'Alias', ],
+            ],
+        ],
+        'GetAliasResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'Alias', ],
+            ],
+        ],
+        'CreateAliasResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateAliasResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteAliasResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetAliasResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetAliasResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateFunctionResponseShape' => [
@@ -377,17 +371,17 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteFunctionRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
-            ],
-        ],
         'UpdateFunctionResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'UpdateFunctionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListFunctionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListFunctionResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -398,88 +392,10 @@ return [
                 'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
             ],
         ],
-        'UpdateFunctionRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'entrance' => [ 'type' => 'string', 'locationName' => 'entrance', ],
-                'memory' => [ 'type' => 'integer', 'locationName' => 'memory', ],
-                'runTime' => [ 'type' => 'string', 'locationName' => 'runTime', ],
-                'overTime' => [ 'type' => 'integer', 'locationName' => 'overTime', ],
-                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
-                'code' =>  [ 'shape' => 'Code', ],
-                'environment' =>  [ 'shape' => 'Env', ],
-                'logSetId' => [ 'type' => 'string', 'locationName' => 'logSetId', ],
-                'logTopicId' => [ 'type' => 'string', 'locationName' => 'logTopicId', ],
-                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
-                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
-            ],
-        ],
-        'ListFunctionResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'FunctionSpec', ], ],
-            ],
-        ],
-        'DeleteFunctionResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'TestInvokeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'TestInvokeResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeleteFunctionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ListFunctionRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetFunctionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetFunctionResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateFunctionResultShape' => [
+        'UpdateFunctionResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'Function', ],
-            ],
-        ],
-        'ListFunctionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ListFunctionResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'Filter' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'TestInvokeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' =>  [ 'shape' => 'FunctionInvokeResult', ],
             ],
         ],
         'TestInvokeRequestShape' => [
@@ -491,22 +407,50 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'GetFunctionResultShape' => [
+        'CreateFunctionResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'Function', ],
             ],
         ],
-        'FunctionInvokeResult' => [
+        'DeleteFunctionRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
-                'codeCheckSum' => [ 'type' => 'string', 'locationName' => 'codeCheckSum', ],
-                'invokeTime' => [ 'type' => 'float', 'locationName' => 'invokeTime', ],
-                'billingTime' => [ 'type' => 'double', 'locationName' => 'billingTime', ],
-                'setupMem' => [ 'type' => 'double', 'locationName' => 'setupMem', ],
-                'realMem' => [ 'type' => 'float', 'locationName' => 'realMem', ],
-                'logStr' => [ 'type' => 'string', 'locationName' => 'logStr', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
+            ],
+        ],
+        'DeleteFunctionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetFunctionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetFunctionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ListFunctionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ListFunctionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'FunctionSpec', ], ],
             ],
         ],
         'CreateFunctionRequestShape' => [
@@ -528,17 +472,59 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'ListTriggerResponseShape' => [
+        'GetFunctionResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'ListTriggerResultShape', ],
+                'data' =>  [ 'shape' => 'Function', ],
+            ],
+        ],
+        'TestInvokeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'FunctionInvokeResult', ],
+            ],
+        ],
+        'FunctionInvokeResult' => [
+            'type' => 'structure',
+            'members' => [
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+                'codeCheckSum' => [ 'type' => 'string', 'locationName' => 'codeCheckSum', ],
+                'invokeTime' => [ 'type' => 'float', 'locationName' => 'invokeTime', ],
+                'billingTime' => [ 'type' => 'double', 'locationName' => 'billingTime', ],
+                'setupMem' => [ 'type' => 'double', 'locationName' => 'setupMem', ],
+                'realMem' => [ 'type' => 'float', 'locationName' => 'realMem', ],
+                'logStr' => [ 'type' => 'string', 'locationName' => 'logStr', ],
+            ],
+        ],
+        'UpdateFunctionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'entrance' => [ 'type' => 'string', 'locationName' => 'entrance', ],
+                'memory' => [ 'type' => 'integer', 'locationName' => 'memory', ],
+                'runTime' => [ 'type' => 'string', 'locationName' => 'runTime', ],
+                'overTime' => [ 'type' => 'integer', 'locationName' => 'overTime', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'code' =>  [ 'shape' => 'Code', ],
+                'environment' =>  [ 'shape' => 'Env', ],
+                'logSetId' => [ 'type' => 'string', 'locationName' => 'logSetId', ],
+                'logTopicId' => [ 'type' => 'string', 'locationName' => 'logTopicId', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
+            ],
+        ],
+        'DeleteFunctionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'GetTriggerResponseShape' => [
+        'TestInvokeResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GetTriggerResultShape', ],
+                'result' =>  [ 'shape' => 'TestInvokeResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -551,12 +537,17 @@ return [
                 'versionName' => [ 'type' => 'string', 'locationName' => 'versionName', ],
             ],
         ],
-        'ListTriggerRequestShape' => [
+        'ListTriggerResultShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
-                'versionName' => [ 'type' => 'string', 'locationName' => 'versionName', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'Trigger', ], ],
+            ],
+        ],
+        'ListTriggerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListTriggerResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetTriggerResultShape' => [
@@ -565,23 +556,39 @@ return [
                 'data' =>  [ 'shape' => 'Trigger', ],
             ],
         ],
-        'ListTriggerResultShape' => [
+        'GetTriggerResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'Trigger', ], ],
+                'result' =>  [ 'shape' => 'GetTriggerResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'ListVersionRequestShape' => [
+        'ListTriggerRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
+                'versionName' => [ 'type' => 'string', 'locationName' => 'versionName', ],
             ],
         ],
-        'GetVersionResponseShape' => [
+        'CreateVersionResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GetVersionResultShape', ],
+                'result' =>  [ 'shape' => 'CreateVersionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetVersionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
+                'versionName' => [ 'type' => 'string', 'locationName' => 'versionName', ],
+            ],
+        ],
+        'DeleteVersionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -591,16 +598,30 @@ return [
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'FunctionSpec', ], ],
             ],
         ],
+        'ListVersionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListVersionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'GetVersionResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'Function', ],
             ],
         ],
-        'DeleteVersionResponseShape' => [
+        'ListVersionRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
+            ],
+        ],
+        'CreateVersionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'Function', ],
             ],
         ],
         'DeleteVersionRequestShape' => [
@@ -619,37 +640,16 @@ return [
                 'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
             ],
         ],
+        'GetVersionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetVersionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DeleteVersionResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'ListVersionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ListVersionResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateVersionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateVersionResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateVersionResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' =>  [ 'shape' => 'Function', ],
-            ],
-        ],
-        'GetVersionRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
-                'versionName' => [ 'type' => 'string', 'locationName' => 'versionName', ],
             ],
         ],
     ],

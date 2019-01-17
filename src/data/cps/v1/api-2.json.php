@@ -244,14 +244,6 @@ return [
                 'charge' =>  [ 'shape' => 'Charge', ],
             ],
         ],
-        'ChargeSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
-                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
-                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
-            ],
-        ],
         'Software' => [
             'type' => 'structure',
             'members' => [
@@ -282,6 +274,14 @@ return [
                 'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
                 'softwares' => [ 'type' => 'list', 'member' => [ 'shape' => 'Software', ], ],
+            ],
+        ],
+        'ChargeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
+                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
             ],
         ],
         'Os' => [
@@ -336,75 +336,23 @@ return [
                 'networkType' => [ 'type' => 'string', 'locationName' => 'networkType', ],
             ],
         ],
-        'ModifyBandwidthResponseShape' => [
+        'ModifyInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'ModifyBandwidthResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'ModifyBandwidthResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
             ],
         ],
         'DescribeDeviceTypesResultShape' => [
             'type' => 'structure',
             'members' => [
                 'deviceTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'DeviceType', ], ],
-            ],
-        ],
-        'DescribeInstancesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeInstancesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'StartInstanceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'StartInstanceResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeInstanceRaidResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeInstanceRaidResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeInstanceStatusRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DescribeInstanceStatusResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'cpus' => [ 'type' => 'boolean', 'locationName' => 'cpus', ],
-                'mems' => [ 'type' => 'boolean', 'locationName' => 'mems', ],
-                'disks' => [ 'type' => 'boolean', 'locationName' => 'disks', ],
-                'nics' => [ 'type' => 'boolean', 'locationName' => 'nics', ],
-            ],
-        ],
-        'DescribeDeviceTypesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeDeviceTypesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeInstanceStatusResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeInstanceStatusResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeDeviceRaidsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeDeviceRaidsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeInstanceRaidResultShape' => [
@@ -416,112 +364,10 @@ return [
                 'dataRaidType' => [ 'type' => 'string', 'locationName' => 'dataRaidType', ],
             ],
         ],
-        'StartInstanceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'ModifyBandwidthResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-            ],
-        ],
-        'DescribeSoftwareResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeSoftwareResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'StopInstanceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'StopInstanceResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'RestartInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
                 'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-            ],
-        ],
-        'DescribeInstanceNameRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DescribeDeviceRaidsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
-                'volumeType' => [ 'type' => 'string', 'locationName' => 'volumeType', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeInstanceNameResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeInstanceNameResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeInstanceRaidRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'StartInstanceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-            ],
-        ],
-        'DescribeOSResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeOSResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeDeviceRaidsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'raids' => [ 'type' => 'list', 'member' => [ 'shape' => 'Raid', ], ],
-            ],
-        ],
-        'ReinstallInstanceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-            ],
-        ],
-        'DescribeInstanceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DescribeOSRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeOSResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'oss' => [ 'type' => 'list', 'member' => [ 'shape' => 'Os', ], ],
             ],
         ],
         'DescribeInstancesResultShape' => [
@@ -533,107 +379,25 @@ return [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
-        'CreateInstancesResultShape' => [
+        'DescribeOSRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'ModifyInstanceResponseShape' => [
+        'DescribeInstanceRaidRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'ModifyInstanceResultShape', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeSoftwareResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSoftwareResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'RestartInstanceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'CreateInstancesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'instanceSpec' =>  [ 'shape' => 'InstanceSpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'StopInstanceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-            ],
-        ],
-        'ModifyInstanceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'RestartInstanceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'RestartInstanceResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ReinstallInstanceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ReinstallInstanceResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'StopInstanceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'CreateInstancesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateInstancesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ReinstallInstanceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'instanceSpec' =>  [ 'shape' => 'ReinstallInstanceSpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'ModifyBandwidthRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'bandwidth' => [ 'type' => 'integer', 'locationName' => 'bandwidth', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DescribeSoftwareResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'softwares' => [ 'type' => 'list', 'member' => [ 'shape' => 'Software', ], ],
-            ],
-        ],
-        'DescribeDeviceTypesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DescribeInstanceNameResultShape' => [
@@ -642,39 +406,20 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
-        'DescribeSoftwareRequestShape' => [
+        'DescribeInstanceStatusResultShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'osTypeId' => [ 'type' => 'string', 'locationName' => 'osTypeId', ],
+                'cpus' => [ 'type' => 'boolean', 'locationName' => 'cpus', ],
+                'mems' => [ 'type' => 'boolean', 'locationName' => 'mems', ],
+                'disks' => [ 'type' => 'boolean', 'locationName' => 'disks', ],
+                'nics' => [ 'type' => 'boolean', 'locationName' => 'nics', ],
             ],
         ],
-        'DescribeInstanceResultShape' => [
+        'RestartInstanceResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'instance' =>  [ 'shape' => 'Instance', ],
-            ],
-        ],
-        'Filter' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'DescribeInstanceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeInstanceResultShape', ],
+                'result' =>  [ 'shape' => 'RestartInstanceResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModifyInstanceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
         ],
         'DescribeInstancesRequestShape' => [
@@ -691,6 +436,268 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'DescribeDeviceTypesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'StopInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ModifyInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instance' =>  [ 'shape' => 'Instance', ],
+            ],
+        ],
+        'DescribeDeviceRaidsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeDeviceRaidsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeOSResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'oss' => [ 'type' => 'list', 'member' => [ 'shape' => 'Os', ], ],
+            ],
+        ],
+        'ReinstallInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ReinstallInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeInstanceNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StartInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeSoftwareResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'softwares' => [ 'type' => 'list', 'member' => [ 'shape' => 'Software', ], ],
+            ],
+        ],
+        'StartInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'ReinstallInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'CreateInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'instanceSpec' =>  [ 'shape' => 'InstanceSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeDeviceTypesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeDeviceTypesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeInstanceNameResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceNameResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateInstancesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSoftwareRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'osTypeId' => [ 'type' => 'string', 'locationName' => 'osTypeId', ],
+            ],
+        ],
+        'DescribeInstanceRaidResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceRaidResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstancesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StartInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'StartInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeInstanceStatusRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ModifyBandwidthResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyBandwidthResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StopInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'StopInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeDeviceRaidsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'raids' => [ 'type' => 'list', 'member' => [ 'shape' => 'Raid', ], ],
+            ],
+        ],
+        'DescribeInstanceStatusResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceStatusResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyBandwidthRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'bandwidth' => [ 'type' => 'integer', 'locationName' => 'bandwidth', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'CreateInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeOSResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeOSResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeDeviceRaidsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
+                'volumeType' => [ 'type' => 'string', 'locationName' => 'volumeType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ReinstallInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'instanceSpec' =>  [ 'shape' => 'ReinstallInstanceSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'RestartInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'StopInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'DescribeRegionesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRegionesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeRegionesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -702,10 +709,10 @@ return [
                 'regions' => [ 'type' => 'list', 'member' => [ 'shape' => 'Region', ], ],
             ],
         ],
-        'DescribeRegionesResponseShape' => [
+        'DescribeSubnetResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeRegionesResultShape', ],
+                'result' =>  [ 'shape' => 'DescribeSubnetResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -720,13 +727,6 @@ return [
             'members' => [
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeSubnetResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeSubnetResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
     ],

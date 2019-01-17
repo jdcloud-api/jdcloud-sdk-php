@@ -208,19 +208,39 @@ return [
                 'repositoryUri' => [ 'type' => 'string', 'locationName' => 'repositoryUri', ],
             ],
         ],
-        'DescribeAuthorizationTokensRequestShape' => [
+        'DescribeAuthorizationTokensResultShape' => [
             'type' => 'structure',
             'members' => [
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'authorizationTokens' => [ 'type' => 'list', 'member' => [ 'shape' => 'AuthorizationData', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'GetAuthorizationTokenRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'expiredAfterHours' => [ 'type' => 'integer', 'locationName' => 'expiredAfterHours', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'ReleaseAuthorizationTokenResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAuthorizationTokensResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAuthorizationTokensResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -233,12 +253,26 @@ return [
                 'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
             ],
         ],
-        'GetAuthorizationTokenRequestShape' => [
+        'GetAuthorizationTokenResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'expiredAfterHours' => [ 'type' => 'integer', 'locationName' => 'expiredAfterHours', ],
+                'result' =>  [ 'shape' => 'GetAuthorizationTokenResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAuthorizationTokensRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
+            ],
+        ],
+        'ReleaseAuthorizationTokenResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'GetAuthorizationTokenResultShape' => [
@@ -247,49 +281,6 @@ return [
                 'authorizationToken' => [ 'type' => 'string', 'locationName' => 'authorizationToken', ],
                 'loginCmdLine' => [ 'type' => 'string', 'locationName' => 'loginCmdLine', ],
                 'expiresAt' => [ 'type' => 'string', 'locationName' => 'expiresAt', ],
-            ],
-        ],
-        'GetAuthorizationTokenResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetAuthorizationTokenResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeAuthorizationTokensResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeAuthorizationTokensResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeAuthorizationTokensResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'authorizationTokens' => [ 'type' => 'list', 'member' => [ 'shape' => 'AuthorizationData', ], ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'Filter' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'ReleaseAuthorizationTokenResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DescribeImagesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DeleteImageRequestShape' => [
@@ -301,6 +292,27 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
                 'repositoryName' => [ 'type' => 'string', 'locationName' => 'repositoryName', ],
+            ],
+        ],
+        'DescribeImagesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteImageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeImagesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeImagesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DeleteImageResponseShape' => [
@@ -316,16 +328,11 @@ return [
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
             ],
         ],
-        'DescribeImagesResponseShape' => [
+        'DescribeQuotasRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeImagesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeleteImageResultShape' => [
-            'type' => 'structure',
-            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DescribeQuotasResponseShape' => [
@@ -341,16 +348,62 @@ return [
                 'quotas' => [ 'type' => 'list', 'member' => [ 'shape' => 'Quota', ], ],
             ],
         ],
-        'DescribeQuotasRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'DeleteRegistryResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateRegistryRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeRegistryResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'registry' =>  [ 'shape' => 'Registry', ],
+            ],
+        ],
+        'CheckRegistryNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteRegistryResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateRegistryResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'registry' =>  [ 'shape' => 'Registry', ],
+            ],
+        ],
+        'CheckRegistryNameResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+            ],
+        ],
+        'CreateRegistryResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateRegistryResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeRegistriesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRegistriesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -361,36 +414,9 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteRegistryResultShape' => [
+        'DescribeRegistriesRequestShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'DeleteRegistryRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
-            ],
-        ],
-        'CheckRegistryNameResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
-            ],
-        ],
-        'DescribeRegistriesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeRegistriesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CheckRegistryNameRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -414,55 +440,16 @@ return [
                 'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
             ],
         ],
-        'CreateRegistryResultShape' => [
+        'DeleteRegistryRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'registry' =>  [ 'shape' => 'Registry', ],
-            ],
-        ],
-        'CreateRegistryRequestShape' => [
-            'type' => 'structure',
-            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeRegistriesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'CreateRegistryResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateRegistryResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeRegistryResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'registry' =>  [ 'shape' => 'Registry', ],
-            ],
-        ],
-        'DescribeRepositoriesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeRepositoriesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DeleteRepositoryResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'CreateRepositoryResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'repository' =>  [ 'shape' => 'RepositoryShort', ],
             ],
         ],
         'CheckRepositoryNameResultShape' => [
@@ -472,10 +459,17 @@ return [
                 'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
             ],
         ],
-        'CreateRepositoryResponseShape' => [
+        'CheckRepositoryNameResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'CreateRepositoryResultShape', ],
+                'result' =>  [ 'shape' => 'CheckRepositoryNameResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeRepositoriesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRepositoriesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -488,27 +482,10 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DeleteRepositoryRequestShape' => [
+        'CreateRepositoryResultShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
-                'repositoryName' => [ 'type' => 'string', 'locationName' => 'repositoryName', ],
-            ],
-        ],
-        'CheckRepositoryNameRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
-                'repositoryName' => [ 'type' => 'string', 'locationName' => 'repositoryName', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'CheckRepositoryNameResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CheckRepositoryNameResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'repository' =>  [ 'shape' => 'RepositoryShort', ],
             ],
         ],
         'DescribeRepositoriesResultShape' => [
@@ -516,6 +493,14 @@ return [
             'members' => [
                 'repositories' => [ 'type' => 'list', 'member' => [ 'shape' => 'Repository', ], ],
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DeleteRepositoryRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
+                'repositoryName' => [ 'type' => 'string', 'locationName' => 'repositoryName', ],
             ],
         ],
         'CreateRepositoryRequestShape' => [
@@ -531,6 +516,21 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateRepositoryResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateRepositoryResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CheckRepositoryNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
+                'repositoryName' => [ 'type' => 'string', 'locationName' => 'repositoryName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
     ],

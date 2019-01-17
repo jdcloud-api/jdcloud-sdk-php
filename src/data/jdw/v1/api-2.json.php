@@ -13,6 +13,16 @@ return [
     'operations' => [
     ],
     'shapes' => [
+        'Charge' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeStatus' => [ 'type' => 'string', 'locationName' => 'chargeStatus', ],
+                'chargeStartTime' => [ 'type' => 'string', 'locationName' => 'chargeStartTime', ],
+                'chargeExpiredTime' => [ 'type' => 'string', 'locationName' => 'chargeExpiredTime', ],
+                'chargeRetireTime' => [ 'type' => 'string', 'locationName' => 'chargeRetireTime', ],
+            ],
+        ],
         'DBInstance' => [
             'type' => 'structure',
             'members' => [
@@ -29,16 +39,6 @@ return [
                 'instanceStatus' => [ 'type' => 'string', 'locationName' => 'instanceStatus', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
-            ],
-        ],
-        'Charge' => [
-            'type' => 'structure',
-            'members' => [
-                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
-                'chargeStatus' => [ 'type' => 'string', 'locationName' => 'chargeStatus', ],
-                'chargeStartTime' => [ 'type' => 'string', 'locationName' => 'chargeStartTime', ],
-                'chargeExpiredTime' => [ 'type' => 'string', 'locationName' => 'chargeExpiredTime', ],
-                'chargeRetireTime' => [ 'type' => 'string', 'locationName' => 'chargeRetireTime', ],
             ],
         ],
         'DBInstanceAttribute' => [
@@ -103,19 +103,19 @@ return [
                 'maxNodeNumber' => [ 'type' => 'integer', 'locationName' => 'maxNodeNumber', ],
             ],
         ],
+        'Sort' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+            ],
+        ],
         'Filter' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'Sort' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
             ],
         ],
     ],
