@@ -45,6 +45,10 @@ return [
         'namespace' => 'Kms',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'elite' => [
+        'namespace' => 'Elite',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'ossopenapi' => [
         'namespace' => 'Ossopenapi',
         'versions' => [ 'latest' => 'v1', ],

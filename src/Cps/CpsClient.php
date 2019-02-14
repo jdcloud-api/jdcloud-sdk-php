@@ -22,8 +22,6 @@ use Jdcloud\PresignUrlMiddleware;
  *
  * @method \Jdcloud\Result describeOS(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeOSAsync(array $args = [])
- * @method \Jdcloud\Result describeSoftware(array $args = [])
- * @method \GuzzleHttp\Promise\Promise describeSoftwareAsync(array $args = [])
  * @method \Jdcloud\Result describeInstanceName(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeInstanceNameAsync(array $args = [])
  * @method \Jdcloud\Result modifyInstance(array $args = [])

@@ -20,15 +20,6 @@ return [
             'input' => [ 'shape' => 'DescribeOSRequestShape', ],
             'output' => [ 'shape' => 'DescribeOSResponseShape', ],
         ],
-        'DescribeSoftware' => [
-            'name' => 'DescribeSoftware',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/os/{osTypeId}/softwares',
-            ],
-            'input' => [ 'shape' => 'DescribeSoftwareRequestShape', ],
-            'output' => [ 'shape' => 'DescribeSoftwareResponseShape', ],
-        ],
         'DescribeInstanceName' => [
             'name' => 'DescribeInstanceName',
             'http' => [
@@ -188,6 +179,7 @@ return [
             'members' => [
                 'nameEN' => [ 'type' => 'string', 'locationName' => 'nameEN', ],
                 'nameZH' => [ 'type' => 'string', 'locationName' => 'nameZH', ],
+                'family' => [ 'type' => 'string', 'locationName' => 'family', ],
                 'useTypeEN' => [ 'type' => 'string', 'locationName' => 'useTypeEN', ],
                 'useTypeZH' => [ 'type' => 'string', 'locationName' => 'useTypeZH', ],
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
@@ -203,6 +195,7 @@ return [
                 'dataDiskDetail' => [ 'type' => 'string', 'locationName' => 'dataDiskDetail', ],
                 'gpuConcise' => [ 'type' => 'string', 'locationName' => 'gpuConcise', ],
                 'gpuDetail' => [ 'type' => 'string', 'locationName' => 'gpuDetail', ],
+                'isSoldOut' => [ 'type' => 'boolean', 'locationName' => 'isSoldOut', ],
             ],
         ],
         'Charge' => [
@@ -226,6 +219,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'enableInternet' => [ 'type' => 'string', 'locationName' => 'enableInternet', ],
+                'enableIpv6' => [ 'type' => 'string', 'locationName' => 'enableIpv6', ],
                 'bandwidth' => [ 'type' => 'integer', 'locationName' => 'bandwidth', ],
                 'imageType' => [ 'type' => 'string', 'locationName' => 'imageType', ],
                 'osTypeId' => [ 'type' => 'string', 'locationName' => 'osTypeId', ],
@@ -241,6 +235,7 @@ return [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'privateIp' => [ 'type' => 'string', 'locationName' => 'privateIp', ],
                 'publicIp' => [ 'type' => 'string', 'locationName' => 'publicIp', ],
+                'publicIpv6' => [ 'type' => 'string', 'locationName' => 'publicIpv6', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
             ],
         ],
@@ -258,12 +253,14 @@ return [
             'members' => [
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
+                'hostname' => [ 'type' => 'string', 'locationName' => 'hostname', ],
                 'imageType' => [ 'type' => 'string', 'locationName' => 'imageType', ],
                 'osTypeId' => [ 'type' => 'string', 'locationName' => 'osTypeId', ],
                 'sysRaidTypeId' => [ 'type' => 'string', 'locationName' => 'sysRaidTypeId', ],
                 'dataRaidTypeId' => [ 'type' => 'string', 'locationName' => 'dataRaidTypeId', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'enableInternet' => [ 'type' => 'string', 'locationName' => 'enableInternet', ],
+                'enableIpv6' => [ 'type' => 'string', 'locationName' => 'enableIpv6', ],
                 'networkType' => [ 'type' => 'string', 'locationName' => 'networkType', ],
                 'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
                 'lineType' => [ 'type' => 'string', 'locationName' => 'lineType', ],
@@ -323,6 +320,7 @@ return [
                 'keepData' => [ 'type' => 'string', 'locationName' => 'keepData', ],
                 'dataRaidTypeId' => [ 'type' => 'string', 'locationName' => 'dataRaidTypeId', ],
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'hostname' => [ 'type' => 'string', 'locationName' => 'hostname', ],
                 'softwares' => [ 'type' => 'list', 'member' => [ 'shape' => 'Software', ], ],
             ],
         ],
@@ -393,13 +391,6 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'DescribeSoftwareResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeSoftwareResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeInstanceNameResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -439,6 +430,7 @@ return [
         'DescribeDeviceTypesRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -520,12 +512,6 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'DescribeSoftwareResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'softwares' => [ 'type' => 'list', 'member' => [ 'shape' => 'Software', ], ],
-            ],
-        ],
         'StartInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -565,13 +551,6 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'CreateInstancesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeSoftwareRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'osTypeId' => [ 'type' => 'string', 'locationName' => 'osTypeId', ],
             ],
         ],
         'DescribeInstanceRaidResponseShape' => [

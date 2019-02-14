@@ -506,6 +506,15 @@ return [
             'input' => [ 'shape' => 'DescribeLatestRestoreTimeRequestShape', ],
             'output' => [ 'shape' => 'DescribeLatestRestoreTimeResponseShape', ],
         ],
+        'ModifyParameterGroup' => [
+            'name' => 'ModifyParameterGroup',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:modifyParameterGroup',
+            ],
+            'input' => [ 'shape' => 'ModifyParameterGroupRequestShape', ],
+            'output' => [ 'shape' => 'ModifyParameterGroupResponseShape', ],
+        ],
         'EnableIntercept' => [
             'name' => 'EnableIntercept',
             'http' => [
@@ -523,6 +532,24 @@ return [
             ],
             'input' => [ 'shape' => 'DisableInterceptRequestShape', ],
             'output' => [ 'shape' => 'DisableInterceptResponseShape', ],
+        ],
+        'DescribeInterceptResult' => [
+            'name' => 'DescribeInterceptResult',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/intercept:describeInterceptResult',
+            ],
+            'input' => [ 'shape' => 'DescribeInterceptResultRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInterceptResultResponseShape', ],
+        ],
+        'DescribeIntercept' => [
+            'name' => 'DescribeIntercept',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/intercept',
+            ],
+            'input' => [ 'shape' => 'DescribeInterceptRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInterceptResponseShape', ],
         ],
         'DescribeParameters' => [
             'name' => 'DescribeParameters',
@@ -559,6 +586,69 @@ return [
             ],
             'input' => [ 'shape' => 'ModifyParameterGroupAttributeRequestShape', ],
             'output' => [ 'shape' => 'ModifyParameterGroupAttributeResponseShape', ],
+        ],
+        'DescribeParameterGroups' => [
+            'name' => 'DescribeParameterGroups',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/parameterGroups',
+            ],
+            'input' => [ 'shape' => 'DescribeParameterGroupsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeParameterGroupsResponseShape', ],
+        ],
+        'CreateParameterGroup' => [
+            'name' => 'CreateParameterGroup',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/parameterGroups',
+            ],
+            'input' => [ 'shape' => 'CreateParameterGroupRequestShape', ],
+            'output' => [ 'shape' => 'CreateParameterGroupResponseShape', ],
+        ],
+        'DescribeParameterGroupParameters' => [
+            'name' => 'DescribeParameterGroupParameters',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/parameterGroups/{parameterGroupId}/parameters',
+            ],
+            'input' => [ 'shape' => 'DescribeParameterGroupParametersRequestShape', ],
+            'output' => [ 'shape' => 'DescribeParameterGroupParametersResponseShape', ],
+        ],
+        'ModifyParameterGroupParameters' => [
+            'name' => 'ModifyParameterGroupParameters',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/parameterGroups/{parameterGroupId}/parameters',
+            ],
+            'input' => [ 'shape' => 'ModifyParameterGroupParametersRequestShape', ],
+            'output' => [ 'shape' => 'ModifyParameterGroupParametersResponseShape', ],
+        ],
+        'DescribeParameterModifyRecords' => [
+            'name' => 'DescribeParameterModifyRecords',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/parameterGroups/{parameterGroupId}/records',
+            ],
+            'input' => [ 'shape' => 'DescribeParameterModifyRecordsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeParameterModifyRecordsResponseShape', ],
+        ],
+        'CopyParameterGroup' => [
+            'name' => 'CopyParameterGroup',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/parameterGroups:copyParameterGroup',
+            ],
+            'input' => [ 'shape' => 'CopyParameterGroupRequestShape', ],
+            'output' => [ 'shape' => 'CopyParameterGroupResponseShape', ],
+        ],
+        'DescribeParameterGroupAttachedInstances' => [
+            'name' => 'DescribeParameterGroupAttachedInstances',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/parameterGroups/{parameterGroupId}/instances',
+            ],
+            'input' => [ 'shape' => 'DescribeParameterGroupAttachedInstancesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeParameterGroupAttachedInstancesResponseShape', ],
         ],
         'DescribeIndexPerformance' => [
             'name' => 'DescribeIndexPerformance',
@@ -638,6 +728,20 @@ return [
                 'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
                 'accountStatus' => [ 'type' => 'string', 'locationName' => 'accountStatus', ],
                 'accountPrivileges' => [ 'type' => 'list', 'member' => [ 'shape' => 'AccountPrivilege', ], ],
+            ],
+        ],
+        'AttachedDBInstance' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
+                'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
+                'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
+                'parameterStatus' => [ 'type' => 'string', 'locationName' => 'parameterStatus', ],
+                'instanceStatus' => [ 'type' => 'string', 'locationName' => 'instanceStatus', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
         'AuditFile' => [
@@ -869,6 +973,40 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'ParameterGroup' => [
+            'type' => 'structure',
+            'members' => [
+                'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
+                'parameterGroupName' => [ 'type' => 'string', 'locationName' => 'parameterGroupName', ],
+                'parameterGroupStatus' => [ 'type' => 'string', 'locationName' => 'parameterGroupStatus', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
+                'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'ParameterGroupParameter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'configureValue' => [ 'type' => 'string', 'locationName' => 'configureValue', ],
+                'defaultValue' => [ 'type' => 'string', 'locationName' => 'defaultValue', ],
+                'range' => [ 'type' => 'string', 'locationName' => 'range', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'needRestart' => [ 'type' => 'string', 'locationName' => 'needRestart', ],
+            ],
+        ],
+        'ParameterModifyRecords' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'preModify' => [ 'type' => 'string', 'locationName' => 'preModify', ],
+                'postModify' => [ 'type' => 'string', 'locationName' => 'postModify', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
         'ResourceInfo' => [
@@ -1194,6 +1332,7 @@ return [
                 'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -1244,6 +1383,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeAuditFilesResultShape', ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeAzsRequestShape' => [
@@ -1504,6 +1651,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -1566,6 +1715,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'databases' => [ 'type' => 'list', 'member' => [ 'shape' => 'Database', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
         'RestoreDatabaseFromFileResultShape' => [
@@ -1710,6 +1860,11 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ModifyParameterGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'RebootInstanceResponseShape' => [
@@ -1858,6 +2013,11 @@ return [
                 'dbInstanceAttributes' =>  [ 'shape' => 'DBInstanceAttribute', ],
             ],
         ],
+        'ModifyParameterGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'RebootInstanceRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1881,6 +2041,14 @@ return [
         'DeleteInstanceResponseShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ModifyParameterGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'parameterGroupId' => [ 'type' => '', 'locationName' => 'parameterGroupId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'EnableInternetAccessResultShape' => [
@@ -2013,17 +2181,34 @@ return [
             'members' => [
             ],
         ],
-        'Filter' => [
+        'DisableInterceptResultShape' => [
             'type' => 'structure',
             'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'EnableInterceptResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeInterceptResultRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'DisableInterceptResponseShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeInterceptResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'available' => [ 'type' => 'boolean', 'locationName' => 'available', ],
             ],
         ],
         'DisableInterceptRequestShape' => [
@@ -2033,9 +2218,10 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'DisableInterceptResultShape' => [
+        'DescribeInterceptResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'result' =>  [ 'shape' => 'DescribeInterceptResultShape', ],
             ],
         ],
         'EnableInterceptRequestShape' => [
@@ -2045,9 +2231,35 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'EnableInterceptResultShape' => [
+        'DescribeInterceptResultResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'result' =>  [ 'shape' => 'DescribeInterceptResultResultShape', ],
+            ],
+        ],
+        'InterceptResult' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+                'threadId' => [ 'type' => 'string', 'locationName' => 'threadId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'sql' => [ 'type' => 'string', 'locationName' => 'sql', ],
+            ],
+        ],
+        'DescribeInterceptRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeInterceptResultResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'interceptResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'InterceptResult', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
         'EnableInterceptResponseShape' => [
@@ -2092,9 +2304,21 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'ModifyParameterGroupParametersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'ModifyParameterGroupAttributeResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeParameterGroupAttachedInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instances' => [ 'type' => 'list', 'member' => [ 'shape' => 'AttachedDBInstance', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
         'ModifyParameterGroupAttributeRequestShape' => [
@@ -2106,9 +2330,50 @@ return [
                 'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
             ],
         ],
+        'DescribeParameterModifyRecordsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
+            ],
+        ],
+        'CreateParameterGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'engine' => [ 'type' => '', 'locationName' => 'engine', ],
+                'engineVersion' => [ 'type' => '', 'locationName' => 'engineVersion', ],
+                'parameterGroupName' => [ 'type' => '', 'locationName' => 'parameterGroupName', ],
+                'description' => [ 'type' => '', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'ModifyParameterGroupAttributeResponseShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeParameterGroupParametersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'parameters' => [ 'type' => 'list', 'member' => [ 'shape' => 'ParameterGroupParameter', ], ],
+            ],
+        ],
+        'DescribeParameterGroupsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeParameterGroupParametersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeParameterGroupParametersResultShape', ],
             ],
         ],
         'DeleteParameterGroupResultShape' => [
@@ -2121,11 +2386,105 @@ return [
             'members' => [
             ],
         ],
+        'DescribeParameterGroupAttachedInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeParameterGroupAttachedInstancesResultShape', ],
+            ],
+        ],
+        'ModifyParameterGroupParametersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateParameterGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
+            ],
+        ],
+        'CopyParameterGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
+            ],
+        ],
+        'DescribeParameterModifyRecordsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'records' => [ 'type' => 'list', 'member' => [ 'shape' => 'ParameterModifyRecords', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'CopyParameterGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'parameterGroupId' => [ 'type' => '', 'locationName' => 'parameterGroupId', ],
+                'parameterGroupName' => [ 'type' => '', 'locationName' => 'parameterGroupName', ],
+                'description' => [ 'type' => '', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeParameterGroupsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'parameterGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'ParameterGroup', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeParameterGroupsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeParameterGroupsResultShape', ],
+            ],
+        ],
+        'ModifyParameterGroupParametersRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'parameters' => [ 'type' => '', 'locationName' => 'parameters', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
+            ],
+        ],
+        'DescribeParameterGroupParametersRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
+            ],
+        ],
+        'CopyParameterGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CopyParameterGroupResultShape', ],
+            ],
+        ],
         'DeleteParameterGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
+            ],
+        ],
+        'CreateParameterGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateParameterGroupResultShape', ],
+            ],
+        ],
+        'DescribeParameterGroupAttachedInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
+            ],
+        ],
+        'DescribeParameterModifyRecordsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeParameterModifyRecordsResultShape', ],
             ],
         ],
         'DescribeIndexPerformanceRequestShape' => [
