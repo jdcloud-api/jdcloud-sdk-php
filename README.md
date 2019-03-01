@@ -17,11 +17,12 @@
 
 首先在composer.json添加
 
-	"require" : {
-		"php" : ">=5.5",
-		"jdcloud-api/jdcloud-sdk-php" : ">=0.2",
-	}
-    
+```json
+"require" : {
+	"php" : ">=5.5",
+	"jdcloud-api/jdcloud-sdk-php" : ">=0.2",
+}
+```    
 
 然后使用Composer安装
 
@@ -48,7 +49,7 @@ SDK使用中的任何问题，欢迎您在Github SDK使用问题反馈页面交�
 
 ```php
 
-	use Jdcloud\Credentials\Credentials;
+    use Jdcloud\Credentials\Credentials;
     use Jdcloud\Result;
     use Jdcloud\Vm\VmClient;
     public function testCreateInstances()
@@ -99,12 +100,11 @@ SDK使用中的任何问题，欢迎您在Github SDK使用问题反馈页面交�
 
 
 ```php
-
-        $res = $vm->deleteInstances([
-            'regionId'  => 'cn-north-1',
-            'instanceId'  => 'xxx',
-            'extraHeaders' => [
-                'x-jdcloud-security-token' => 'xxxx'
-            ]
-        ]);
+$res = $vm->deleteInstances([
+    'regionId'  => 'cn-north-1',
+    'instanceId'  => 'xxx',
+    'extraHeaders' => [
+	'x-jdcloud-security-token' => 'xxxx'
+    ]
+]);
 ```
