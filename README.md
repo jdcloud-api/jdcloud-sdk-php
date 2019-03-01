@@ -46,6 +46,8 @@ SDK使用中的任何问题，欢迎您在Github SDK使用问题反馈页面交�
 ## 调用示例 ##
 以下是创建单个云主机实例详情的调用示例
 
+```php
+
 	use Jdcloud\Credentials\Credentials;
     use Jdcloud\Result;
     use Jdcloud\Vm\VmClient;
@@ -91,8 +93,12 @@ SDK使用中的任何问题，欢迎您在Github SDK使用问题反馈页面交�
             print("Error Detail Message: ". $e->getJdcloudErrorMessage(). "\n");
         }
     }
+```
 
 如果需要设置额外的header，例如要调用开启了MFA操作保护的接口，需要传递x-jdcloud-security-token，则按照如下方式：
+
+
+```php
 
         $res = $vm->deleteInstances([
             'regionId'  => 'cn-north-1',
@@ -101,3 +107,4 @@ SDK使用中的任何问题，欢迎您在Github SDK使用问题反馈页面交�
                 'x-jdcloud-security-token' => 'xxxx'
             ]
         ]);
+```
