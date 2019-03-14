@@ -26,6 +26,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeAlarmsAsync(array $args = [])
  * @method \Jdcloud\Result createAlarm(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createAlarmAsync(array $args = [])
+ * @method \Jdcloud\Result deleteAlarms(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteAlarmsAsync(array $args = [])
  * @method \Jdcloud\Result describeAlarmsByID(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeAlarmsByIDAsync(array $args = [])
  * @method \Jdcloud\Result updateAlarm(array $args = [])

@@ -515,6 +515,15 @@ return [
             'input' => [ 'shape' => 'ModifyParameterGroupRequestShape', ],
             'output' => [ 'shape' => 'ModifyParameterGroupResponseShape', ],
         ],
+        'ExchangeInstanceDns' => [
+            'name' => 'ExchangeInstanceDns',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:exchangeInstanceDns',
+            ],
+            'input' => [ 'shape' => 'ExchangeInstanceDnsRequestShape', ],
+            'output' => [ 'shape' => 'ExchangeInstanceDnsResponseShape', ],
+        ],
         'EnableIntercept' => [
             'name' => 'EnableIntercept',
             'http' => [
@@ -1931,6 +1940,11 @@ return [
                 'result' =>  [ 'shape' => 'DescribeLatestRestoreTimeResultShape', ],
             ],
         ],
+        'ExchangeInstanceDnsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'CreateInstanceByTimeRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2016,6 +2030,14 @@ return [
         'ModifyParameterGroupResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ExchangeInstanceDnsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'targetInstanceId' => [ 'type' => '', 'locationName' => 'targetInstanceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'RebootInstanceRequestShape' => [
@@ -2140,6 +2162,11 @@ return [
                 'startWindow' => [ 'type' => '', 'locationName' => 'startWindow', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ExchangeInstanceDnsResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'CreateInstanceResultShape' => [

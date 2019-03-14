@@ -1,15 +1,15 @@
 <?php
 /**
- * Billing
+ * Partner
  *
  * @category Jdcloud
- * @package  Jdcloud\Billing
+ * @package  Jdcloud\Partner
  * @author   Jdcloud <jdcloud-api@jd.com>
  * @license  Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0
  * @link     https://www.jdcloud.com/help/faq
  */
 
-namespace Jdcloud\Billing;
+namespace Jdcloud\Partner;
 
 use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
@@ -18,14 +18,12 @@ use Jdcloud\Api\ApiProvider;
 use Jdcloud\PresignUrlMiddleware;
 
 /**
- * Client used to interact with billing.
+ * Client used to interact with partner.
  *
- * @method \Jdcloud\Result queryBillSummary(array $args = [])
- * @method \GuzzleHttp\Promise\Promise queryBillSummaryAsync(array $args = [])
- * @method \Jdcloud\Result queryBillDetail(array $args = [])
- * @method \GuzzleHttp\Promise\Promise queryBillDetailAsync(array $args = [])
+ * @method \Jdcloud\Result queryMyCustomerList(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryMyCustomerListAsync(array $args = [])
  */
-class BillingClient extends JdCloudClient
+class PartnerClient extends JdCloudClient
 {
     public function __construct(array $args)
     {
@@ -37,11 +35,11 @@ class BillingClient extends JdCloudClient
                     [
                         'operations' => [
                         ],
-                        'service' => 'billing',
+                        'service' => 'partner',
                         'presign_param' => 'PresignedUrl',
                     ]
                 ),
-                'billing'
+                'partner'
             );
         };
 

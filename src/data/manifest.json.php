@@ -5,12 +5,24 @@ return [
         'namespace' => 'Rds',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'kubernetes' => [
+        'namespace' => 'Kubernetes',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'pod' => [
+        'namespace' => 'Pod',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'jke' => [
         'namespace' => 'Jke',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'ams' => [
         'namespace' => 'Ams',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'jdro' => [
+        'namespace' => 'Jdro',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'vod' => [
@@ -139,6 +151,10 @@ return [
     ],
     'containerregistry' => [
         'namespace' => 'Containerregistry',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'partner' => [
+        'namespace' => 'Partner',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'nc' => [

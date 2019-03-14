@@ -132,6 +132,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeLatestRestoreTimeAsync(array $args = [])
  * @method \Jdcloud\Result modifyParameterGroup(array $args = [])
  * @method \GuzzleHttp\Promise\Promise modifyParameterGroupAsync(array $args = [])
+ * @method \Jdcloud\Result exchangeInstanceDns(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise exchangeInstanceDnsAsync(array $args = [])
  * @method \Jdcloud\Result enableIntercept(array $args = [])
  * @method \GuzzleHttp\Promise\Promise enableInterceptAsync(array $args = [])
  * @method \Jdcloud\Result disableIntercept(array $args = [])

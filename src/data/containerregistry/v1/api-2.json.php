@@ -458,6 +458,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -501,6 +502,7 @@ return [
         'DeleteRepositoryRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
                 'repositoryName' => [ 'type' => 'string', 'locationName' => 'repositoryName', ],

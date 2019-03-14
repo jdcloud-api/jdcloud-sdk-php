@@ -56,6 +56,24 @@ return [
             'input' => [ 'shape' => 'DeleteLiveAppRequestShape', ],
             'output' => [ 'shape' => 'DeleteLiveAppResponseShape', ],
         ],
+        'DescribeLivePlayAuthKey' => [
+            'name' => 'DescribeLivePlayAuthKey',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/livePlayAuthKey',
+            ],
+            'input' => [ 'shape' => 'DescribeLivePlayAuthKeyRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLivePlayAuthKeyResponseShape', ],
+        ],
+        'SetLivePlayAuthKey' => [
+            'name' => 'SetLivePlayAuthKey',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/livePlayAuthKey',
+            ],
+            'input' => [ 'shape' => 'SetLivePlayAuthKeyRequestShape', ],
+            'output' => [ 'shape' => 'SetLivePlayAuthKeyResponseShape', ],
+        ],
         'DescribeLiveDomains' => [
             'name' => 'DescribeLiveDomains',
             'http' => [
@@ -218,6 +236,24 @@ return [
             'input' => [ 'shape' => 'AddLiveRecordTaskRequestShape', ],
             'output' => [ 'shape' => 'AddLiveRecordTaskResponseShape', ],
         ],
+        'DescribeLiveSnapshotData' => [
+            'name' => 'DescribeLiveSnapshotData',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/liveSnapshotData',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveSnapshotDataRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveSnapshotDataResponseShape', ],
+        ],
+        'DescribeLivePornData' => [
+            'name' => 'DescribeLivePornData',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/livePornData',
+            ],
+            'input' => [ 'shape' => 'DescribeLivePornDataRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLivePornDataResponseShape', ],
+        ],
         'AddCustomLiveStreamSnapshotTemplate' => [
             'name' => 'AddCustomLiveStreamSnapshotTemplate',
             'http' => [
@@ -379,6 +415,33 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeLiveStreamPublishListRequestShape', ],
             'output' => [ 'shape' => 'DescribeLiveStreamPublishListResponseShape', ],
+        ],
+        'OpenLiveTimeshift' => [
+            'name' => 'OpenLiveTimeshift',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/liveTimeshift:open',
+            ],
+            'input' => [ 'shape' => 'OpenLiveTimeshiftRequestShape', ],
+            'output' => [ 'shape' => 'OpenLiveTimeshiftResponseShape', ],
+        ],
+        'CloseLiveTimeshift' => [
+            'name' => 'CloseLiveTimeshift',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/liveTimeshift:close',
+            ],
+            'input' => [ 'shape' => 'CloseLiveTimeshiftRequestShape', ],
+            'output' => [ 'shape' => 'CloseLiveTimeshiftResponseShape', ],
+        ],
+        'DescribeLiveTimeshiftConfigs' => [
+            'name' => 'DescribeLiveTimeshiftConfigs',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/liveTimeshift:configs',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveTimeshiftConfigsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveTimeshiftConfigsResponseShape', ],
         ],
         'AddLiveStreamDomainTranscode' => [
             'name' => 'AddLiveStreamDomainTranscode',
@@ -567,6 +630,7 @@ return [
                 'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
                 'playDomainCname' => [ 'type' => 'string', 'locationName' => 'playDomainCname', ],
                 'domainStatus' => [ 'type' => 'string', 'locationName' => 'domainStatus', ],
+                'playType' => [ 'type' => 'string', 'locationName' => 'playType', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
@@ -579,7 +643,7 @@ return [
                 'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'duration' => [ 'type' => 'double', 'locationName' => 'duration', ],
+                'duration' => [ 'type' => 'long', 'locationName' => 'duration', ],
                 'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
                 'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
                 'ossBucket' => [ 'type' => 'string', 'locationName' => 'ossBucket', ],
@@ -603,12 +667,6 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
             ],
         ],
-        'RecordConfig' => [
-            'type' => 'structure',
-            'members' => [
-                'mytemplate1' => [ 'type' => 'string', 'locationName' => 'mytemplate1', ],
-            ],
-        ],
         'RecordApp' => [
             'type' => 'structure',
             'members' => [
@@ -624,6 +682,44 @@ return [
                 'saveEndpoint' => [ 'type' => 'string', 'locationName' => 'saveEndpoint', ],
                 'recordFileType' => [ 'type' => 'string', 'locationName' => 'recordFileType', ],
                 'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+            ],
+        ],
+        'PornData' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'date' => [ 'type' => 'string', 'locationName' => 'date', ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+            ],
+        ],
+        'RecordDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
+                'duration' => [ 'type' => 'double', 'locationName' => 'duration', ],
+            ],
+        ],
+        'RecordData' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'date' => [ 'type' => 'string', 'locationName' => 'date', ],
+                'total' => [ 'type' => 'double', 'locationName' => 'total', ],
+                'detail' => [ 'type' => 'list', 'member' => [ 'shape' => 'RecordDetail', ], ],
+            ],
+        ],
+        'SnapshotData' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'date' => [ 'type' => 'string', 'locationName' => 'date', ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
             ],
         ],
         'SnapshotTemplate' => [
@@ -666,10 +762,10 @@ return [
         'StreamInfo' => [
             'type' => 'structure',
             'members' => [
-                'audioFrameRate' => [ 'type' => 'double', 'locationName' => 'audioFrameRate', ],
+                'audioFrameRate' => [ 'type' => 'long', 'locationName' => 'audioFrameRate', ],
                 'streamUrl' => [ 'type' => 'string', 'locationName' => 'streamUrl', ],
-                'bitRate' => [ 'type' => 'double', 'locationName' => 'bitRate', ],
-                'videoFrameRate' => [ 'type' => 'double', 'locationName' => 'videoFrameRate', ],
+                'bitRate' => [ 'type' => 'long', 'locationName' => 'bitRate', ],
+                'videoFrameRate' => [ 'type' => 'long', 'locationName' => 'videoFrameRate', ],
                 'time' => [ 'type' => 'string', 'locationName' => 'time', ],
             ],
         ],
@@ -698,6 +794,42 @@ return [
             'members' => [
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
                 'notifyUrl' => [ 'type' => 'string', 'locationName' => 'notifyUrl', ],
+            ],
+        ],
+        'RestartConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomains' => [ 'type' => 'list', 'member' => [ 'shape' => 'ShiftPublishDomain', ], ],
+                'playDomains' => [ 'type' => 'list', 'member' => [ 'shape' => 'RestartPlayDomain', ], ],
+            ],
+        ],
+        'RestartPlayDomain' => [
+            'type' => 'structure',
+            'members' => [
+                'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
+                'restartStatus' => [ 'type' => 'string', 'locationName' => 'restartStatus', ],
+                'playType' => [ 'type' => 'string', 'locationName' => 'playType', ],
+            ],
+        ],
+        'ShiftPlayDomain' => [
+            'type' => 'structure',
+            'members' => [
+                'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
+                'timeshiftStatus' => [ 'type' => 'string', 'locationName' => 'timeshiftStatus', ],
+                'playType' => [ 'type' => 'string', 'locationName' => 'playType', ],
+            ],
+        ],
+        'TimeshiftConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomains' => [ 'type' => 'list', 'member' => [ 'shape' => 'ShiftPublishDomain', ], ],
+                'playDomains' => [ 'type' => 'list', 'member' => [ 'shape' => 'ShiftPlayDomain', ], ],
+            ],
+        ],
+        'ShiftPublishDomain' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
             ],
         ],
         'TemplateConfig' => [
@@ -810,7 +942,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'apps' => [ 'type' => 'list', 'member' => [ 'shape' => 'App', ], ],
             ],
         ],
@@ -846,6 +978,46 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLivePlayAuthKeyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
+                'authStatus' => [ 'type' => 'string', 'locationName' => 'authStatus', ],
+                'authKey' => [ 'type' => 'string', 'locationName' => 'authKey', ],
+            ],
+        ],
+        'DescribeLivePlayAuthKeyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
+            ],
+        ],
+        'SetLivePlayAuthKeyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
+                'authStatus' => [ 'type' => 'string', 'locationName' => 'authStatus', ],
+                'authKey' => [ 'type' => 'string', 'locationName' => 'authKey', ],
+            ],
+        ],
+        'SetLivePlayAuthKeyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLivePlayAuthKeyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLivePlayAuthKeyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetLivePlayAuthKeyResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DescribeLiveDomainDetailRequestShape' => [
@@ -939,7 +1111,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'domainDetails' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainDetails', ], ],
             ],
         ],
@@ -986,7 +1158,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'recordTemplates' => [ 'type' => 'list', 'member' => [ 'shape' => 'RecordTemplate', ], ],
             ],
         ],
@@ -1057,7 +1229,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'recordConfigs' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveRecordConfig', ], ],
             ],
         ],
@@ -1200,6 +1372,52 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeLivePornDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribeLivePornDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pornData' => [ 'type' => 'list', 'member' => [ 'shape' => 'PornData', ], ],
+            ],
+        ],
+        'DescribeLivePornDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLivePornDataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveSnapshotDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribeLiveSnapshotDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'snapshotData' => [ 'type' => 'list', 'member' => [ 'shape' => 'SnapshotData', ], ],
+            ],
+        ],
+        'DescribeLiveSnapshotDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveSnapshotDataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DeleteCustomLiveStreamSnapshotTemplateResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1229,7 +1447,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'snapshotConfigs' => [ 'type' => 'list', 'member' => [ 'shape' => 'SnapshotConfig', ], ],
             ],
         ],
@@ -1244,7 +1462,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'snapshotTemplates' => [ 'type' => 'list', 'member' => [ 'shape' => 'SnapshotTemplate', ], ],
             ],
         ],
@@ -1517,7 +1735,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'onlineStreamInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'OnlineStreamInfo', ], ],
             ],
         ],
@@ -1526,7 +1744,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'liveStreamPublishInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveStreamPublishInfo', ], ],
             ],
         ],
@@ -1565,6 +1783,64 @@ return [
             'members' => [
             ],
         ],
+        'OpenLiveTimeshiftRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
+            ],
+        ],
+        'CloseLiveTimeshiftResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveTimeshiftConfigsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveTimeshiftConfigsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'OpenLiveTimeshiftResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeLiveTimeshiftConfigsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'timeshiftConfigs' => [ 'type' => 'list', 'member' => [ 'shape' => 'TimeshiftConfig', ], ],
+            ],
+        ],
+        'CloseLiveTimeshiftResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'OpenLiveTimeshiftResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CloseLiveTimeshiftRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
+            ],
+        ],
+        'DescribeLiveTimeshiftConfigsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
+            ],
+        ],
         'DeleteLiveStreamDomainTranscodeRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1597,7 +1873,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'transcodeTemplates' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeInfo', ], ],
             ],
         ],
@@ -1749,7 +2025,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'transcodeConfigs' => [ 'type' => 'list', 'member' => [ 'shape' => 'TemplateConfig', ], ],
             ],
         ],
@@ -1798,7 +2074,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'watermarkConfigs' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveStreamRecordConfig', ], ],
             ],
         ],
@@ -1834,7 +2110,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'watermarkTemplates' => [ 'type' => 'list', 'member' => [ 'shape' => 'WatermarkTemplate', ], ],
             ],
         ],
