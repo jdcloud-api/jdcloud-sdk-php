@@ -53,6 +53,10 @@ return [
         'namespace' => 'Billing',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'deploy' => [
+        'namespace' => 'Deploy',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'kms' => [
         'namespace' => 'Kms',
         'versions' => [ 'latest' => 'v1', ],
@@ -91,6 +95,10 @@ return [
     ],
     'ias' => [
         'namespace' => 'Ias',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'portal' => [
+        'namespace' => 'Portal',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'mongodb' => [

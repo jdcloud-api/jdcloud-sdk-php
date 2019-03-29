@@ -635,6 +635,23 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
+        'RecordFile' => [
+            'type' => 'structure',
+            'members' => [
+                'fileId' => [ 'type' => 'string', 'locationName' => 'fileId', ],
+                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
+                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+                'bitrate' => [ 'type' => 'integer', 'locationName' => 'bitrate', ],
+                'fps' => [ 'type' => 'integer', 'locationName' => 'fps', ],
+                'imgUrl' => [ 'type' => 'string', 'locationName' => 'imgUrl', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
         'File' => [
             'type' => 'structure',
             'members' => [
@@ -759,14 +776,26 @@ return [
                 'ossObject' => [ 'type' => 'string', 'locationName' => 'ossObject', ],
             ],
         ],
+        'BandwidthStatisticResultData' => [
+            'type' => 'structure',
+            'members' => [
+                'value' => [ 'type' => 'integer', 'locationName' => 'value', ],
+                'maxValueTime' => [ 'type' => 'integer', 'locationName' => 'maxValueTime', ],
+            ],
+        ],
+        'TrafficStatisticResultData' => [
+            'type' => 'structure',
+            'members' => [
+                'value' => [ 'type' => 'integer', 'locationName' => 'value', ],
+            ],
+        ],
         'StreamInfo' => [
             'type' => 'structure',
             'members' => [
-                'audioFrameRate' => [ 'type' => 'long', 'locationName' => 'audioFrameRate', ],
-                'streamUrl' => [ 'type' => 'string', 'locationName' => 'streamUrl', ],
-                'bitRate' => [ 'type' => 'long', 'locationName' => 'bitRate', ],
-                'videoFrameRate' => [ 'type' => 'long', 'locationName' => 'videoFrameRate', ],
-                'time' => [ 'type' => 'string', 'locationName' => 'time', ],
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
         'OnlineStreamInfo' => [
@@ -796,10 +825,18 @@ return [
                 'notifyUrl' => [ 'type' => 'string', 'locationName' => 'notifyUrl', ],
             ],
         ],
+        'TimeshiftPlayDomain' => [
+            'type' => 'structure',
+            'members' => [
+                'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
+                'timeshiftStatus' => [ 'type' => 'string', 'locationName' => 'timeshiftStatus', ],
+                'playType' => [ 'type' => 'string', 'locationName' => 'playType', ],
+            ],
+        ],
         'RestartConfig' => [
             'type' => 'structure',
             'members' => [
-                'publishDomains' => [ 'type' => 'list', 'member' => [ 'shape' => 'ShiftPublishDomain', ], ],
+                'publishDomains' => [ 'type' => 'list', 'member' => [ 'shape' => 'RestartPublishDomain', ], ],
                 'playDomains' => [ 'type' => 'list', 'member' => [ 'shape' => 'RestartPlayDomain', ], ],
             ],
         ],
@@ -811,22 +848,20 @@ return [
                 'playType' => [ 'type' => 'string', 'locationName' => 'playType', ],
             ],
         ],
-        'ShiftPlayDomain' => [
+        'TimeshiftPublishDomain' => [
             'type' => 'structure',
             'members' => [
-                'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
-                'timeshiftStatus' => [ 'type' => 'string', 'locationName' => 'timeshiftStatus', ],
-                'playType' => [ 'type' => 'string', 'locationName' => 'playType', ],
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
             ],
         ],
         'TimeshiftConfig' => [
             'type' => 'structure',
             'members' => [
-                'publishDomains' => [ 'type' => 'list', 'member' => [ 'shape' => 'ShiftPublishDomain', ], ],
-                'playDomains' => [ 'type' => 'list', 'member' => [ 'shape' => 'ShiftPlayDomain', ], ],
+                'publishDomains' => [ 'type' => 'list', 'member' => [ 'shape' => 'TimeshiftPublishDomain', ], ],
+                'playDomains' => [ 'type' => 'list', 'member' => [ 'shape' => 'TimeshiftPlayDomain', ], ],
             ],
         ],
-        'ShiftPublishDomain' => [
+        'RestartPublishDomain' => [
             'type' => 'structure',
             'members' => [
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
@@ -1148,8 +1183,8 @@ return [
         'AddLiveStreamAppRecordRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'template' => [ 'type' => 'string', 'locationName' => 'template', ],
             ],
         ],
@@ -1527,8 +1562,8 @@ return [
         'AddLiveStreamAppSnapshotRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'template' => [ 'type' => 'string', 'locationName' => 'template', ],
             ],
         ],
@@ -1637,11 +1672,34 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'TranscodeDurationStatisticResult' => [
+            'type' => 'structure',
+            'members' => [
+                'date' => [ 'type' => 'string', 'locationName' => 'date', ],
+                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
+            ],
+        ],
+        'BandwidthStatisticResult' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
+            ],
+        ],
+        'TrafficStatisticResult' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
+            ],
+        ],
         'ForbidLiveStreamRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
             ],
         ],
@@ -1725,8 +1783,8 @@ return [
         'ResumeLiveStreamRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
             ],
         ],
@@ -1836,7 +1894,7 @@ return [
         'DescribeLiveTimeshiftConfigsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
             ],
@@ -1852,8 +1910,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
-                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
             ],
         ],
         'DeleteLiveStreamDomainTranscodeResponseShape' => [
@@ -2059,8 +2117,8 @@ return [
         'AddLiveStreamAppWatermarkRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'template' => [ 'type' => 'string', 'locationName' => 'template', ],
             ],
         ],

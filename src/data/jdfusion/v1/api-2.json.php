@@ -47,6 +47,15 @@ return [
             'input' => [ 'shape' => 'UnregistCloudInfoRequestShape', ],
             'output' => [ 'shape' => 'UnregistCloudInfoResponseShape', ],
         ],
+        'ValidCloudInfo' => [
+            'name' => 'ValidCloudInfo',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/cloud_info/{cloudId}/valid',
+            ],
+            'input' => [ 'shape' => 'ValidCloudInfoRequestShape', ],
+            'output' => [ 'shape' => 'ValidCloudInfoResponseShape', ],
+        ],
         'GetDeployments' => [
             'name' => 'GetDeployments',
             'http' => [
@@ -164,6 +173,15 @@ return [
             'input' => [ 'shape' => 'RollbackDeploymentsVersionRequestShape', ],
             'output' => [ 'shape' => 'RollbackDeploymentsVersionResponseShape', ],
         ],
+        'GetDeploymentsResultsByIdRecord' => [
+            'name' => 'GetDeploymentsResultsByIdRecord',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/deployments/{id}/results/{record}',
+            ],
+            'input' => [ 'shape' => 'GetDeploymentsResultsByIdRecordRequestShape', ],
+            'output' => [ 'shape' => 'GetDeploymentsResultsByIdRecordResponseShape', ],
+        ],
         'GetDisks' => [
             'name' => 'GetDisks',
             'http' => [
@@ -276,7 +294,7 @@ return [
             'name' => 'CreateTransferTask',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/oss_transferTasks',
+                'requestUri' => '/v1/regions/{regionId}/oss_transferTasks_simple',
             ],
             'input' => [ 'shape' => 'CreateTransferTaskRequestShape', ],
             'output' => [ 'shape' => 'CreateTransferTaskResponseShape', ],
@@ -397,6 +415,15 @@ return [
             ],
             'input' => [ 'shape' => 'RevokeRdsAccountRequestShape', ],
             'output' => [ 'shape' => 'RevokeRdsAccountResponseShape', ],
+        ],
+        'GrantRdsAccountsByTask' => [
+            'name' => 'GrantRdsAccountsByTask',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/rds_instances/{instId}/accounts/{accountName}:grantByTask',
+            ],
+            'input' => [ 'shape' => 'GrantRdsAccountsByTaskRequestShape', ],
+            'output' => [ 'shape' => 'GrantRdsAccountsByTaskResponseShape', ],
         ],
         'GetRdsDatabasesByInstId' => [
             'name' => 'GetRdsDatabasesByInstId',
@@ -541,6 +568,33 @@ return [
             ],
             'input' => [ 'shape' => 'DeleteDatasourceRequestShape', ],
             'output' => [ 'shape' => 'DeleteDatasourceResponseShape', ],
+        ],
+        'GetRdsSpecification' => [
+            'name' => 'GetRdsSpecification',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/rds_specification/{engine}',
+            ],
+            'input' => [ 'shape' => 'GetRdsSpecificationRequestShape', ],
+            'output' => [ 'shape' => 'GetRdsSpecificationResponseShape', ],
+        ],
+        'GetRegions' => [
+            'name' => 'GetRegions',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/regions',
+            ],
+            'input' => [ 'shape' => 'GetRegionsRequestShape', ],
+            'output' => [ 'shape' => 'GetRegionsResponseShape', ],
+        ],
+        'GetRegionsAvailableZones' => [
+            'name' => 'GetRegionsAvailableZones',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/regions_availableZones/{region}',
+            ],
+            'input' => [ 'shape' => 'GetRegionsAvailableZonesRequestShape', ],
+            'output' => [ 'shape' => 'GetRegionsAvailableZonesResponseShape', ],
         ],
         'GetTaskInfoHistoryById' => [
             'name' => 'GetTaskInfoHistoryById',
@@ -731,6 +785,15 @@ return [
             'input' => [ 'shape' => 'DisassociateVpcEipByIdRequestShape', ],
             'output' => [ 'shape' => 'DisassociateVpcEipByIdResponseShape', ],
         ],
+        'GetLbHttpListener' => [
+            'name' => 'GetLbHttpListener',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/vpc_lbHttpListener',
+            ],
+            'input' => [ 'shape' => 'GetLbHttpListenerRequestShape', ],
+            'output' => [ 'shape' => 'GetLbHttpListenerResponseShape', ],
+        ],
         'CreateVpcLBHttpListener' => [
             'name' => 'CreateVpcLBHttpListener',
             'http' => [
@@ -830,6 +893,24 @@ return [
             'input' => [ 'shape' => 'CreateVpcSecurityGroupRequestShape', ],
             'output' => [ 'shape' => 'CreateVpcSecurityGroupResponseShape', ],
         ],
+        'CreateSecurityGroupsRule' => [
+            'name' => 'CreateSecurityGroupsRule',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/vpc_securityGroups/{id}/rule',
+            ],
+            'input' => [ 'shape' => 'CreateSecurityGroupsRuleRequestShape', ],
+            'output' => [ 'shape' => 'CreateSecurityGroupsRuleResponseShape', ],
+        ],
+        'DeleteSecurityGroupsRule' => [
+            'name' => 'DeleteSecurityGroupsRule',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/vpc_securityGroups/{id}/rule',
+            ],
+            'input' => [ 'shape' => 'DeleteSecurityGroupsRuleRequestShape', ],
+            'output' => [ 'shape' => 'DeleteSecurityGroupsRuleResponseShape', ],
+        ],
         'GetVpcSlbById' => [
             'name' => 'GetVpcSlbById',
             'http' => [
@@ -865,6 +946,51 @@ return [
             ],
             'input' => [ 'shape' => 'CreateVpcSlbRequestShape', ],
             'output' => [ 'shape' => 'CreateVpcSlbResponseShape', ],
+        ],
+        'StartSlb' => [
+            'name' => 'StartSlb',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/vpc_slbs/{id}:start',
+            ],
+            'input' => [ 'shape' => 'StartSlbRequestShape', ],
+            'output' => [ 'shape' => 'StartSlbResponseShape', ],
+        ],
+        'StopSlb' => [
+            'name' => 'StopSlb',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/vpc_slbs/{id}:stop',
+            ],
+            'input' => [ 'shape' => 'StopSlbRequestShape', ],
+            'output' => [ 'shape' => 'StopSlbResponseShape', ],
+        ],
+        'DeleteSlbsListener' => [
+            'name' => 'DeleteSlbsListener',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/vpc_slbs_listener/{id}',
+            ],
+            'input' => [ 'shape' => 'DeleteSlbsListenerRequestShape', ],
+            'output' => [ 'shape' => 'DeleteSlbsListenerResponseShape', ],
+        ],
+        'StartSlbListener' => [
+            'name' => 'StartSlbListener',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/vpc_slbs_listener/{id}:start',
+            ],
+            'input' => [ 'shape' => 'StartSlbListenerRequestShape', ],
+            'output' => [ 'shape' => 'StartSlbListenerResponseShape', ],
+        ],
+        'StopSlbListener' => [
+            'name' => 'StopSlbListener',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/vpc_slbs_listener/{id}:stop',
+            ],
+            'input' => [ 'shape' => 'StopSlbListenerRequestShape', ],
+            'output' => [ 'shape' => 'StopSlbListenerResponseShape', ],
         ],
         'GetVpcSubnetById' => [
             'name' => 'GetVpcSubnetById',
@@ -956,6 +1082,24 @@ return [
             'input' => [ 'shape' => 'CreateVpcVServerGroupRequestShape', ],
             'output' => [ 'shape' => 'CreateVpcVServerGroupResponseShape', ],
         ],
+        'GetVserverGroupsById' => [
+            'name' => 'GetVserverGroupsById',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/vpc_vserverGroups/{id}',
+            ],
+            'input' => [ 'shape' => 'GetVserverGroupsByIdRequestShape', ],
+            'output' => [ 'shape' => 'GetVserverGroupsByIdResponseShape', ],
+        ],
+        'DeleteVserverGroup' => [
+            'name' => 'DeleteVserverGroup',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/vpc_vserverGroups/{id}',
+            ],
+            'input' => [ 'shape' => 'DeleteVserverGroupRequestShape', ],
+            'output' => [ 'shape' => 'DeleteVserverGroupResponseShape', ],
+        ],
     ],
     'shapes' => [
         'CloudInfoListResp' => [
@@ -1030,11 +1174,32 @@ return [
                 'content' =>  [ 'shape' => 'DeploymentResourcesInfo', ],
             ],
         ],
+        'CreateSgRule' => [
+            'type' => 'structure',
+            'members' => [
+                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'fromPort' => [ 'type' => 'integer', 'locationName' => 'fromPort', ],
+                'toPort' => [ 'type' => 'integer', 'locationName' => 'toPort', ],
+                'securityGroupId' => [ 'type' => 'string', 'locationName' => 'securityGroupId', ],
+                'nicType' => [ 'type' => 'string', 'locationName' => 'nicType', ],
+                'policy' => [ 'type' => 'string', 'locationName' => 'policy', ],
+                'priority' => [ 'type' => 'integer', 'locationName' => 'priority', ],
+                'cidrIp' => [ 'type' => 'string', 'locationName' => 'cidrIp', ],
+            ],
+        ],
         'DeploymentAttachDisk' => [
             'type' => 'structure',
             'members' => [
                 'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DeploymentBucket' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'acl' => [ 'type' => 'string', 'locationName' => 'acl', ],
             ],
         ],
         'DeploymentResourcesInfo' => [
@@ -1046,6 +1211,7 @@ return [
                 'networkInterfaces' => [ 'type' => 'object', 'locationName' => 'networkInterfaces', ],
                 'slbs' => [ 'type' => 'object', 'locationName' => 'slbs', ],
                 'securityGroups' => [ 'type' => 'object', 'locationName' => 'securityGroups', ],
+                'securityGroupRules' => [ 'type' => 'object', 'locationName' => 'securityGroupRules', ],
                 'keypairs' => [ 'type' => 'object', 'locationName' => 'keypairs', ],
                 'disks' => [ 'type' => 'object', 'locationName' => 'disks', ],
                 'vpcs' => [ 'type' => 'object', 'locationName' => 'vpcs', ],
@@ -1054,6 +1220,11 @@ return [
                 'diskAttachment' => [ 'type' => 'object', 'locationName' => 'diskAttachment', ],
                 'netInterfaceAttachment' => [ 'type' => 'object', 'locationName' => 'netInterfaceAttachment', ],
                 'eipAssociate' => [ 'type' => 'object', 'locationName' => 'eipAssociate', ],
+                'rds' => [ 'type' => 'object', 'locationName' => 'rds', ],
+                'rdsDatabase' => [ 'type' => 'object', 'locationName' => 'rdsDatabase', ],
+                'rdsAccount' => [ 'type' => 'object', 'locationName' => 'rdsAccount', ],
+                'rdsAccountGrant' => [ 'type' => 'object', 'locationName' => 'rdsAccountGrant', ],
+                'bucket' => [ 'type' => 'object', 'locationName' => 'bucket', ],
                 'variables' => [ 'type' => 'object', 'locationName' => 'variables', ],
             ],
         ],
@@ -1129,11 +1300,46 @@ return [
                 'healthCheckHttpCode' => [ 'type' => 'string', 'locationName' => 'healthCheckHttpCode', ],
             ],
         ],
+        'CreateRDSInstance' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'payType' => [ 'type' => 'string', 'locationName' => 'payType', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
+                'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
+                'storageGB' => [ 'type' => 'integer', 'locationName' => 'storageGB', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'DeploymentRdsAccount' => [
+            'type' => 'structure',
+            'members' => [
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+            ],
+        ],
         'DeploymentAttachNetInterface' => [
             'type' => 'structure',
             'members' => [
                 'interfaceId' => [ 'type' => 'string', 'locationName' => 'interfaceId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DeploymentRdsDatabase' => [
+            'type' => 'structure',
+            'members' => [
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'characterSetName' => [ 'type' => 'string', 'locationName' => 'characterSetName', ],
             ],
         ],
         'CreateNetInterface' => [
@@ -1221,6 +1427,7 @@ return [
                 'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'updatedTime' => [ 'type' => 'string', 'locationName' => 'updatedTime', ],
+                'lastOperation' => [ 'type' => 'string', 'locationName' => 'lastOperation', ],
             ],
         ],
         'ReverseDeploymentInfo' => [
@@ -1281,6 +1488,7 @@ return [
             'members' => [
                 'eipId' => [ 'type' => 'string', 'locationName' => 'eipId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
             ],
         ],
         'SlbInfo' => [
@@ -1305,6 +1513,15 @@ return [
                 'category' => [ 'type' => 'string', 'locationName' => 'category', ],
                 'diskSize' => [ 'type' => 'integer', 'locationName' => 'diskSize', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'DeploymentAccountGrant' => [
+            'type' => 'structure',
+            'members' => [
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'privilege' => [ 'type' => 'string', 'locationName' => 'privilege', ],
             ],
         ],
         'Deployment' => [
@@ -1401,6 +1618,7 @@ return [
         'DataDiskInfo' => [
             'type' => 'structure',
             'members' => [
+                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
                 'diskSize' => [ 'type' => 'integer', 'locationName' => 'diskSize', ],
                 'diskMediumType' => [ 'type' => 'string', 'locationName' => 'diskMediumType', ],
                 'diskName' => [ 'type' => 'string', 'locationName' => 'diskName', ],
@@ -1446,6 +1664,17 @@ return [
                 'acl' => [ 'type' => 'string', 'locationName' => 'acl', ],
             ],
         ],
+        'OssBucketDetailInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'acl' => [ 'type' => 'string', 'locationName' => 'acl', ],
+                'intranetEndpoint' => [ 'type' => 'string', 'locationName' => 'intranetEndpoint', ],
+                'extranetEndpoint' => [ 'type' => 'string', 'locationName' => 'extranetEndpoint', ],
+                'creationDate' => [ 'type' => 'string', 'locationName' => 'creationDate', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+            ],
+        ],
         'OssFileInfo' => [
             'type' => 'structure',
             'members' => [
@@ -1473,6 +1702,23 @@ return [
                 'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
                 'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
                 'prefix' => [ 'type' => 'string', 'locationName' => 'prefix', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+            ],
+        ],
+        'SimpleTaskAddressInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
+                'prefix' => [ 'type' => 'string', 'locationName' => 'prefix', ],
+            ],
+        ],
+        'TransferSimpleTaskInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'srcAddress' =>  [ 'shape' => 'SimpleTaskAddressInfo', ],
+                'dstAddress' =>  [ 'shape' => 'SimpleTaskAddressInfo', ],
             ],
         ],
         'TransferTaskFailedFileInfo' => [
@@ -1615,24 +1861,6 @@ return [
                 'instance' =>  [ 'shape' => 'CreateRDSInstance', ],
             ],
         ],
-        'CreateRDSInstance' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'payType' => [ 'type' => 'string', 'locationName' => 'payType', ],
-                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
-                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
-                'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
-                'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
-                'storageGB' => [ 'type' => 'integer', 'locationName' => 'storageGB', ],
-                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
-                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
-            ],
-        ],
         'CreateChannel' => [
             'type' => 'structure',
             'members' => [
@@ -1699,6 +1927,38 @@ return [
             'members' => [
                 'code' => [ 'type' => 'string', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'RdsSpecificationDisk' => [
+            'type' => 'structure',
+            'members' => [
+                'list' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'min' => [ 'type' => 'integer', 'locationName' => 'min', ],
+                'max' => [ 'type' => 'integer', 'locationName' => 'max', ],
+            ],
+        ],
+        'RdsSpecification' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
+                'cpu' => [ 'type' => 'integer', 'locationName' => 'cpu', ],
+                'memoryGB' => [ 'type' => 'integer', 'locationName' => 'memoryGB', ],
+                'disk' =>  [ 'shape' => 'RdsSpecificationDisk', ],
+            ],
+        ],
+        'AzInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneId' => [ 'type' => 'string', 'locationName' => 'zoneId', ],
+                'localName' => [ 'type' => 'string', 'locationName' => 'localName', ],
+            ],
+        ],
+        'RegionInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'localName' => [ 'type' => 'string', 'locationName' => 'localName', ],
+                'vendor' => [ 'type' => 'string', 'locationName' => 'vendor', ],
             ],
         ],
         'TaskInfo' => [
@@ -1779,6 +2039,7 @@ return [
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'hostName' => [ 'type' => 'string', 'locationName' => 'hostName', ],
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
                 'imageType' =>  [ 'shape' => 'ImageType', ],
                 'instanceType' =>  [ 'shape' => 'InstanceType', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
@@ -1788,6 +2049,7 @@ return [
                 'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
                 'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
+                'securityGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'sysDiskInfo' =>  [ 'shape' => 'SysDiskInfo', ],
@@ -1835,6 +2097,8 @@ return [
                 'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+                'securityGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'VmInstanceTypeCollection' => [
@@ -1900,7 +2164,6 @@ return [
             'members' => [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
-                'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
             ],
         ],
         'AssociateEipAddress' => [
@@ -1929,6 +2192,23 @@ return [
                 'allocationTime' => [ 'type' => 'string', 'locationName' => 'allocationTime', ],
             ],
         ],
+        'LbHttpListener' => [
+            'type' => 'structure',
+            'members' => [
+                'listenerPort' => [ 'type' => 'integer', 'locationName' => 'listenerPort', ],
+                'backendServerPort' => [ 'type' => 'integer', 'locationName' => 'backendServerPort', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'scheduler' => [ 'type' => 'string', 'locationName' => 'scheduler', ],
+                'vServerGroupId' => [ 'type' => 'string', 'locationName' => 'vServerGroupId', ],
+                'healthCheck' => [ 'type' => 'string', 'locationName' => 'healthCheck', ],
+                'healthCheckConnectPort' => [ 'type' => 'integer', 'locationName' => 'healthCheckConnectPort', ],
+                'healthyThreshold' => [ 'type' => 'integer', 'locationName' => 'healthyThreshold', ],
+                'unhealthyThreshold' => [ 'type' => 'integer', 'locationName' => 'unhealthyThreshold', ],
+                'healthCheckTimeout' => [ 'type' => 'integer', 'locationName' => 'healthCheckTimeout', ],
+                'healthCheckInterval' => [ 'type' => 'integer', 'locationName' => 'healthCheckInterval', ],
+                'healthCheckHttpCode' => [ 'type' => 'string', 'locationName' => 'healthCheckHttpCode', ],
+            ],
+        ],
         'ListenerPortsAndProtocol' => [
             'type' => 'structure',
             'members' => [
@@ -1936,6 +2216,15 @@ return [
                 'listenerProtocol' => [ 'type' => 'string', 'locationName' => 'listenerProtocol', ],
                 'listenerForward' => [ 'type' => 'string', 'locationName' => 'listenerForward', ],
                 'forwardPort' => [ 'type' => 'integer', 'locationName' => 'forwardPort', ],
+            ],
+        ],
+        'PrivateIp' => [
+            'type' => 'structure',
+            'members' => [
+                'ipAddress' => [ 'type' => 'string', 'locationName' => 'ipAddress', ],
+                'primary' => [ 'type' => 'boolean', 'locationName' => 'primary', ],
+                'eipId' => [ 'type' => 'string', 'locationName' => 'eipId', ],
+                'eipAddress' => [ 'type' => 'string', 'locationName' => 'eipAddress', ],
             ],
         ],
         'VpcNetworkInterfaceItem' => [
@@ -1966,6 +2255,8 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'securityGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'privateIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'PrivateIp', ], ],
             ],
         ],
         'AttachNetInterface' => [
@@ -2099,6 +2390,8 @@ return [
                 'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
                 'startIp' => [ 'type' => 'string', 'locationName' => 'startIp', ],
                 'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
             ],
         ],
         'SubnetDesInfo' => [
@@ -2157,10 +2450,32 @@ return [
                 'vpc' =>  [ 'shape' => 'VpcInfoDetail', ],
             ],
         ],
+        'VpcListInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'cidrBlock' => [ 'type' => 'string', 'locationName' => 'cidrBlock', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'subnetIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'routeTableIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'VpcVServerGroupCollection' => [
             'type' => 'structure',
             'members' => [
                 'vserverGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'VserverGroupInfo', ], ],
+            ],
+        ],
+        'VserverGroupDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
+                'vserverGroupId' => [ 'type' => 'string', 'locationName' => 'vserverGroupId', ],
+                'vserverGroupName' => [ 'type' => 'string', 'locationName' => 'vserverGroupName', ],
+                'backendServers' => [ 'type' => 'list', 'member' => [ 'shape' => 'VserverGroupBackendServer', ], ],
             ],
         ],
         'VserverGroupInfo' => [
@@ -2169,6 +2484,14 @@ return [
                 'cloudID' => [ 'type' => 'string', 'locationName' => 'cloudID', ],
                 'vserverGroupId' => [ 'type' => 'string', 'locationName' => 'vserverGroupId', ],
                 'vserverGroupName' => [ 'type' => 'string', 'locationName' => 'vserverGroupName', ],
+            ],
+        ],
+        'VserverGroupBackendServer' => [
+            'type' => 'structure',
+            'members' => [
+                'serverId' => [ 'type' => 'string', 'locationName' => 'serverId', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
             ],
         ],
         'RegistCloudInfoResponseShape' => [
@@ -2183,6 +2506,12 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'cloudId' => [ 'type' => 'string', 'locationName' => 'cloudId', ],
+            ],
+        ],
+        'ValidCloudInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetCloudInfosResponseShape' => [
@@ -2202,6 +2531,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ValidCloudInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cloudId' => [ 'type' => 'string', 'locationName' => 'cloudId', ],
             ],
         ],
         'RegistCloudInfoRequestShape' => [
@@ -2247,6 +2583,11 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'cloudId' => [ 'type' => 'string', 'locationName' => 'cloudId', ],
+            ],
+        ],
+        'ValidCloudInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'GetDeploymentVersionsRequestShape' => [
@@ -2457,6 +2798,19 @@ return [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
+        'GetDeploymentsResultsByIdRecordResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'TaskInfo', ],
+            ],
+        ],
+        'GetDeploymentsResultsByIdRecordResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetDeploymentsResultsByIdRecordResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DeleteDeploymentResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2501,6 +2855,14 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'GetDeploymentsResultsByIdRecordRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'record' => [ 'type' => 'string', 'locationName' => 'record', ],
             ],
         ],
         'EditDeploymentResultShape' => [
@@ -2561,6 +2923,7 @@ return [
         'GetDisksRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'vmId' => [ 'type' => 'string', 'locationName' => 'vmId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -2682,7 +3045,7 @@ return [
         'GetBucketByNameResultShape' => [
             'type' => 'structure',
             'members' => [
-                'bucket' =>  [ 'shape' => 'OssBucketInfo', ],
+                'bucket' =>  [ 'shape' => 'OssBucketDetailInfo', ],
             ],
         ],
         'GetBucketFilesResultShape' => [
@@ -2739,7 +3102,7 @@ return [
         'GetTransferTaskFailedFilesResultShape' => [
             'type' => 'structure',
             'members' => [
-                'bucket' =>  [ 'shape' => 'TransferTaskFailedDetailInfo', ],
+                'task' =>  [ 'shape' => 'TransferTaskFailedDetailInfo', ],
             ],
         ],
         'GetTransferTasksResponseShape' => [
@@ -2880,7 +3243,7 @@ return [
         'CreateTransferTaskRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'task' =>  [ 'shape' => 'TransferTaskInfo', ],
+                'task' =>  [ 'shape' => 'TransferSimpleTaskInfo', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -2917,6 +3280,51 @@ return [
                 'accounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'RdsAccountInfo', ], ],
             ],
         ],
+        'RevokeRdsAccountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteRdsAccountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GrantRdsAccountsByTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cloud' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'DeleteRdsAccountRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+            ],
+        ],
+        'CreateRdsAccountsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'GrantRdsAccountRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dbPrivilegeInfo' =>  [ 'shape' => 'DbPrivilegeInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+            ],
+        ],
+        'RevokeRdsAccountResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CreateRdsAccountsResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -2938,9 +3346,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'RevokeRdsAccountResultShape' => [
+        'GrantRdsAccountsByTaskRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'info' =>  [ 'shape' => 'DbPrivilegeInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
             ],
         ],
         'GrantRdsAccountResponseShape' => [
@@ -2949,23 +3361,10 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteRdsAccountResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'GetRdsAccountsByInstIdAndAccountNameResultShape' => [
             'type' => 'structure',
             'members' => [
                 'account' =>  [ 'shape' => 'RdsAccountInfo', ],
-            ],
-        ],
-        'DeleteRdsAccountRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
-                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
             ],
         ],
         'GetRdsAccountsByInstIdRequestShape' => [
@@ -2975,19 +3374,11 @@ return [
                 'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
             ],
         ],
-        'CreateRdsAccountsResultShape' => [
+        'GrantRdsAccountsByTaskResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
-            ],
-        ],
-        'GrantRdsAccountRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dbPrivilegeInfo' =>  [ 'shape' => 'DbPrivilegeInfo', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instId' => [ 'type' => 'string', 'locationName' => 'instId', ],
-                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+                'result' =>  [ 'shape' => 'GrantRdsAccountsByTaskResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetRdsAccountsByInstIdAndAccountNameResponseShape' => [
@@ -3001,12 +3392,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'GetRdsAccountsByInstIdResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'RevokeRdsAccountResponseShape' => [
-            'type' => 'structure',
-            'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -3327,6 +3712,65 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'GetRdsSpecificationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
+            ],
+        ],
+        'GetRdsSpecificationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetRdsSpecificationResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetRdsSpecificationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'specifications' => [ 'type' => 'list', 'member' => [ 'shape' => 'RdsSpecification', ], ],
+            ],
+        ],
+        'GetRegionsAvailableZonesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+            ],
+        ],
+        'GetRegionsAvailableZonesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetRegionsAvailableZonesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetRegionsAvailableZonesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'azs' => [ 'type' => 'list', 'member' => [ 'shape' => 'AzInfo', ], ],
+            ],
+        ],
+        'GetRegionsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetRegionsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetRegionsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regions' => [ 'type' => 'list', 'member' => [ 'shape' => 'RegionInfo', ], ],
+            ],
+        ],
+        'GetRegionsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'GetTaskInfoHistoryByIdResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -3522,6 +3966,7 @@ return [
         'GetVmInstanceTypesRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -3745,6 +4190,26 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'GetLbHttpListenerRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'slbid' => [ 'type' => 'string', 'locationName' => 'slbid', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetLbHttpListenerResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'httpListeners' => [ 'type' => 'list', 'member' => [ 'shape' => 'LbHttpListener', ], ],
+            ],
+        ],
+        'GetLbHttpListenerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetLbHttpListenerResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CreateVpcLBHttpListenerResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3780,6 +4245,7 @@ return [
         'GetVpcNetworkInterfacesRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'vmId' => [ 'type' => 'string', 'locationName' => 'vmId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -3875,6 +4341,21 @@ return [
                 'securityGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecurityGroupInfo', ], ],
             ],
         ],
+        'CreateSecurityGroupsRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'sgRule' =>  [ 'shape' => 'CreateSgRule', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'CreateSecurityGroupsRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateSecurityGroupsRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CreateVpcSecurityGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3895,6 +4376,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DeleteSecurityGroupsRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'GetVpcSecurityGroupsRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3912,6 +4398,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'DeleteSecurityGroupsRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetVpcSecurityGroupByIdRequestShape' => [
@@ -3939,6 +4431,27 @@ return [
             'members' => [
             ],
         ],
+        'CreateSecurityGroupsRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'DeleteSecurityGroupsRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'fromPort' => [ 'type' => 'string', 'locationName' => 'fromPort', ],
+                'toPort' => [ 'type' => 'string', 'locationName' => 'toPort', ],
+                'nicType' => [ 'type' => 'string', 'locationName' => 'nicType', ],
+                'policy' => [ 'type' => 'string', 'locationName' => 'policy', ],
+                'priority' => [ 'type' => 'string', 'locationName' => 'priority', ],
+                'cidrIp' => [ 'type' => 'string', 'locationName' => 'cidrIp', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
         'DeleteVpcSecurityGroupByIdRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3952,35 +4465,21 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'GetVpcSlbsResultShape' => [
+        'StopSlbResultShape' => [
             'type' => 'structure',
             'members' => [
-                'slbs' => [ 'type' => 'list', 'member' => [ 'shape' => 'SlbInfo', ], ],
             ],
         ],
-        'GetVpcSlbsResponseShape' => [
+        'StopSlbListenerResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'GetVpcSlbsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'GetVpcSlbsRequestShape' => [
+        'StopSlbResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DeleteVpcSlbByIdRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-            ],
-        ],
-        'DeleteVpcSlbByIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetVpcSlbByIdResponseShape' => [
@@ -3988,19 +4487,6 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'GetVpcSlbByIdResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateVpcSlbResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
-            ],
-        ],
-        'CreateVpcSlbRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'slb' =>  [ 'shape' => 'SlbInfo', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'GetVpcSlbByIdRequestShape' => [
@@ -4016,11 +4502,131 @@ return [
                 'slb' =>  [ 'shape' => 'SlbInfoDetail', ],
             ],
         ],
+        'StartSlbListenerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StopSlbListenerResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteSlbsListenerResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetVpcSlbsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'slbs' => [ 'type' => 'list', 'member' => [ 'shape' => 'SlbInfo', ], ],
+            ],
+        ],
+        'StartSlbResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StopSlbListenerRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'listenerPort' => [ 'type' => 'integer', 'locationName' => 'listenerPort', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'DeleteSlbsListenerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetVpcSlbsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetVpcSlbsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StartSlbResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'StartSlbRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'GetVpcSlbsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'StopSlbRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'DeleteVpcSlbByIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'DeleteVpcSlbByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'StartSlbListenerResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateVpcSlbResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'ResourceTFInfo', ],
+            ],
+        ],
+        'CreateVpcSlbRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'slb' =>  [ 'shape' => 'SlbInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'CreateVpcSlbResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'CreateVpcSlbResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StartSlbListenerRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'listenerPort' => [ 'type' => 'integer', 'locationName' => 'listenerPort', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'DeleteSlbsListenerRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'listenerPort' => [ 'type' => 'integer', 'locationName' => 'listenerPort', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
         'GetVpcSubnetByIdRequestShape' => [
@@ -4162,7 +4768,7 @@ return [
         'GetVpcsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'vpcs' => [ 'type' => 'list', 'member' => [ 'shape' => 'VpcInfo', ], ],
+                'vpcs' => [ 'type' => 'list', 'member' => [ 'shape' => 'VpcListInfo', ], ],
             ],
         ],
         'DeleteVpcByIdResponseShape' => [
@@ -4177,6 +4783,12 @@ return [
                 'vpc' =>  [ 'shape' => 'VpcInfoDetail', ],
             ],
         ],
+        'GetVserverGroupsByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'vserverGroup' =>  [ 'shape' => 'VserverGroupDetail', ],
+            ],
+        ],
         'CreateVpcVServerGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -4184,11 +4796,50 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'DeleteVserverGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteVserverGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetVpcVServerGroupsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'slbid' => [ 'type' => 'string', 'locationName' => 'slbid', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteVserverGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'GetVpcVServerGroupsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetVpcVServerGroupsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CreateVpcVServerGroupResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'CreateVpcVServerGroupResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetVserverGroupsByIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
         'GetVpcVServerGroupsResultShape' => [
@@ -4203,17 +4854,10 @@ return [
                 'task' =>  [ 'shape' => 'ResourceTFInfo', ],
             ],
         ],
-        'GetVpcVServerGroupsRequestShape' => [
+        'GetVserverGroupsByIdResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'slbid' => [ 'type' => 'string', 'locationName' => 'slbid', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetVpcVServerGroupsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetVpcVServerGroupsResultShape', ],
+                'result' =>  [ 'shape' => 'GetVserverGroupsByIdResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
