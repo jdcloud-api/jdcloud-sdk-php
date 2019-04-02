@@ -49,13 +49,15 @@ SDK使用中的任何问题，欢迎您在Github SDK使用问题反馈页面交�
 
 ```php
 
+    require 'vendor/autoload.php';
+    
     use Jdcloud\Credentials\Credentials;
     use Jdcloud\Result;
     use Jdcloud\Vm\VmClient;
     public function testCreateInstances()
     {
         $vm = new VmClient([
-            'credentials'  => new Credentials('35DDDCFFB86CF2D494F0F3B6B0B3EF68', '93C107EF1F3A0C46C6329C04F561A29E'),
+            'credentials'  => new Credentials('ak', 'sk'),
             'version' => 'latest',
             'scheme' => 'https',
             'http'    => [
