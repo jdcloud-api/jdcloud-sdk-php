@@ -46,6 +46,7 @@ SDK使用中的任何问题，欢迎您在Github SDK使用问题反馈页面交�
 
 ## 调用示例 ##
 以下是创建单个云主机实例详情的调用示例
+假设要调用的业务线为vm，则use Jdcloud\Vm\VmClient，使用VmClient发起调用，支持的接口可以在src/Vm/VmClient.php查看；可以根据自己调用的业务线调用对应的{$service}Client。
 
 ```php
 
