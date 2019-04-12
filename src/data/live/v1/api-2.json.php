@@ -236,6 +236,123 @@ return [
             'input' => [ 'shape' => 'AddLiveRecordTaskRequestShape', ],
             'output' => [ 'shape' => 'AddLiveRecordTaskResponseShape', ],
         ],
+        'DescribePublishStreamInfoData' => [
+            'name' => 'DescribePublishStreamInfoData',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describePublishStreamInfoData',
+            ],
+            'input' => [ 'shape' => 'DescribePublishStreamInfoDataRequestShape', ],
+            'output' => [ 'shape' => 'DescribePublishStreamInfoDataResponseShape', ],
+        ],
+        'DescribeLiveStreamHistoryUserNum' => [
+            'name' => 'DescribeLiveStreamHistoryUserNum',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLiveStreamHistoryUserNum',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveStreamHistoryUserNumRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveStreamHistoryUserNumResponseShape', ],
+        ],
+        'DescribeLivePublishStreamNum' => [
+            'name' => 'DescribeLivePublishStreamNum',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLivePublishStreamNum',
+            ],
+            'input' => [ 'shape' => 'DescribeLivePublishStreamNumRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLivePublishStreamNumResponseShape', ],
+        ],
+        'DescribeLiveStreamPlayerRankingData' => [
+            'name' => 'DescribeLiveStreamPlayerRankingData',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLiveStreamPlayerRankingData',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveStreamPlayerRankingDataRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveStreamPlayerRankingDataResponseShape', ],
+        ],
+        'DescribeLiveTranscodeStreamList' => [
+            'name' => 'DescribeLiveTranscodeStreamList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLiveTranscodeStreamList',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveTranscodeStreamListRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveTranscodeStreamListResponseShape', ],
+        ],
+        'DescribeLiveTranscodeStreamNum' => [
+            'name' => 'DescribeLiveTranscodeStreamNum',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLiveTranscodeStreamNum',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveTranscodeStreamNumRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveTranscodeStreamNumResponseShape', ],
+        ],
+        'DescribeLiveTranscodeStreamPlayerUserNum' => [
+            'name' => 'DescribeLiveTranscodeStreamPlayerUserNum',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLiveTranscodeStreamPlayerUserNum',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveTranscodeStreamPlayerUserNumRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveTranscodeStreamPlayerUserNumResponseShape', ],
+        ],
+        'DescribeLiveTranscodeStreamBandwidth' => [
+            'name' => 'DescribeLiveTranscodeStreamBandwidth',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLiveTranscodeStreamBandwidth',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveTranscodeStreamBandwidthRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveTranscodeStreamBandwidthResponseShape', ],
+        ],
+        'DescribeLiveTranscodingDurationData' => [
+            'name' => 'DescribeLiveTranscodingDurationData',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLiveTranscodingDurationData',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveTranscodingDurationDataRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveTranscodingDurationDataResponseShape', ],
+        ],
+        'DescribeLiveStreamBandwidthData' => [
+            'name' => 'DescribeLiveStreamBandwidthData',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLiveStreamBandwidthData',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveStreamBandwidthDataRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveStreamBandwidthDataResponseShape', ],
+        ],
+        'DescribeLiveStreamPublishBandwidthData' => [
+            'name' => 'DescribeLiveStreamPublishBandwidthData',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLiveStreamPublishBandwidthData',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveStreamPublishBandwidthDataRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveStreamPublishBandwidthDataResponseShape', ],
+        ],
+        'DescribeLiveStreamTrafficData' => [
+            'name' => 'DescribeLiveStreamTrafficData',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLiveStreamTrafficData',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveStreamTrafficDataRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveStreamTrafficDataResponseShape', ],
+        ],
+        'DescribeLiveStreamPublishTrafficData' => [
+            'name' => 'DescribeLiveStreamPublishTrafficData',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLiveStreamPublishTrafficData',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveStreamPublishTrafficDataRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveStreamPublishTrafficDataResponseShape', ],
+        ],
         'DescribeLiveSnapshotData' => [
             'name' => 'DescribeLiveSnapshotData',
             'http' => [
@@ -370,6 +487,15 @@ return [
             ],
             'input' => [ 'shape' => 'ResumeLiveStreamRequestShape', ],
             'output' => [ 'shape' => 'ResumeLiveStreamResponseShape', ],
+        ],
+        'DescribeLiveStreamInfo' => [
+            'name' => 'DescribeLiveStreamInfo',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/streams/{publishDomain}/appNames/{appName}/streamNames/{streamName}/streamInfo',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveStreamInfoRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveStreamInfoResponseShape', ],
         ],
         'SetLiveStreamNotifyConfig' => [
             'name' => 'SetLiveStreamNotifyConfig',
@@ -701,6 +827,13 @@ return [
                 'template' => [ 'type' => 'string', 'locationName' => 'template', ],
             ],
         ],
+        'BandwidthStatisticResultData' => [
+            'type' => 'structure',
+            'members' => [
+                'value' => [ 'type' => 'long', 'locationName' => 'value', ],
+                'maxValueTime' => [ 'type' => 'long', 'locationName' => 'maxValueTime', ],
+            ],
+        ],
         'PornData' => [
             'type' => 'structure',
             'members' => [
@@ -716,6 +849,12 @@ return [
             'members' => [
                 'format' => [ 'type' => 'string', 'locationName' => 'format', ],
                 'duration' => [ 'type' => 'double', 'locationName' => 'duration', ],
+            ],
+        ],
+        'TranscodeDurationStatisticData' => [
+            'type' => 'structure',
+            'members' => [
+                'duration' => [ 'type' => 'string', 'locationName' => 'duration', ],
             ],
         ],
         'RecordData' => [
@@ -737,6 +876,32 @@ return [
                 'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
                 'date' => [ 'type' => 'string', 'locationName' => 'date', ],
                 'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+            ],
+        ],
+        'TrafficStatisticResultData' => [
+            'type' => 'structure',
+            'members' => [
+                'value' => [ 'type' => 'long', 'locationName' => 'value', ],
+            ],
+        ],
+        'PublishStreamInfoData' => [
+            'type' => 'structure',
+            'members' => [
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'fps' => [ 'type' => 'string', 'locationName' => 'fps', ],
+                'bitrate' => [ 'type' => 'string', 'locationName' => 'bitrate', ],
+                'pushEdgeNodeIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'anchorIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'flvBandWidth' => [ 'type' => 'long', 'locationName' => 'flvBandWidth', ],
+                'flvPlayerCount' => [ 'type' => 'long', 'locationName' => 'flvPlayerCount', ],
+                'hlsBandWidth' => [ 'type' => 'long', 'locationName' => 'hlsBandWidth', ],
+                'hlsPlayerCount' => [ 'type' => 'long', 'locationName' => 'hlsPlayerCount', ],
+            ],
+        ],
+        'LiveStreamUserNumResultData' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'long', 'locationName' => 'count', ],
             ],
         ],
         'SnapshotTemplate' => [
@@ -774,19 +939,6 @@ return [
                 'ossBucket' => [ 'type' => 'string', 'locationName' => 'ossBucket', ],
                 'ossEndpoint' => [ 'type' => 'string', 'locationName' => 'ossEndpoint', ],
                 'ossObject' => [ 'type' => 'string', 'locationName' => 'ossObject', ],
-            ],
-        ],
-        'BandwidthStatisticResultData' => [
-            'type' => 'structure',
-            'members' => [
-                'value' => [ 'type' => 'integer', 'locationName' => 'value', ],
-                'maxValueTime' => [ 'type' => 'integer', 'locationName' => 'maxValueTime', ],
-            ],
-        ],
-        'TrafficStatisticResultData' => [
-            'type' => 'structure',
-            'members' => [
-                'value' => [ 'type' => 'integer', 'locationName' => 'value', ],
             ],
         ],
         'StreamInfo' => [
@@ -1319,6 +1471,7 @@ return [
                 'saveEndpoint' => [ 'type' => 'string', 'locationName' => 'saveEndpoint', ],
                 'recordFileType' => [ 'type' => 'string', 'locationName' => 'recordFileType', ],
                 'saveObject' => [ 'type' => 'string', 'locationName' => 'saveObject', ],
+                'taskExternalId' => [ 'type' => 'string', 'locationName' => 'taskExternalId', ],
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
@@ -1407,6 +1560,237 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeLiveStreamPlayerRankingDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'protocolType' => [ 'type' => 'string', 'locationName' => 'protocolType', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamPlayerUserNumResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveTranscodeStreamPlayerUserNumResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamPlayerUserNumRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'ispName' => [ 'type' => 'string', 'locationName' => 'ispName', ],
+                'locationName' => [ 'type' => 'string', 'locationName' => 'locationName', ],
+                'protocolType' => [ 'type' => 'string', 'locationName' => 'protocolType', ],
+                'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribePublishStreamInfoDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribePublishStreamInfoDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribePublishStreamInfoDataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'BandwidthStatisticResult' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'data' =>  [ 'shape' => 'BandwidthStatisticResultData', ],
+            ],
+        ],
+        'DescribeLivePublishStreamNumRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'protocolType' => [ 'type' => 'string', 'locationName' => 'protocolType', ],
+                'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'PublishStreamInfoResult' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'data' =>  [ 'shape' => 'PublishStreamInfoData', ],
+            ],
+        ],
+        'DescribeLivePublishStreamNumResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveStreamUserNumResult', ], ],
+            ],
+        ],
+        'LiveStreamPlayerRankingResult' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'ranking' => [ 'type' => 'long', 'locationName' => 'ranking', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'playerCount' => [ 'type' => 'long', 'locationName' => 'playerCount', ],
+            ],
+        ],
+        'DescribeLiveStreamHistoryUserNumResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveStreamUserNumResult', ], ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamPlayerUserNumResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveStreamUserNumResult', ], ],
+            ],
+        ],
+        'DescribeLiveStreamPlayerRankingDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveStreamPlayerRankingDataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'LiveStreamUserNumResult' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'data' =>  [ 'shape' => 'LiveStreamUserNumResultData', ],
+            ],
+        ],
+        'DescribeLiveStreamHistoryUserNumResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveStreamHistoryUserNumResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamNumResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'datetime' => [ 'type' => 'string', 'locationName' => 'datetime', ],
+                'streamCount' => [ 'type' => 'integer', 'locationName' => 'streamCount', ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveTranscodeStreamListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveStreamPlayerRankingDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveStreamPlayerRankingResult', ], ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamBandwidthRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'ispName' => [ 'type' => 'string', 'locationName' => 'ispName', ],
+                'locationName' => [ 'type' => 'string', 'locationName' => 'locationName', ],
+                'protocolType' => [ 'type' => 'string', 'locationName' => 'protocolType', ],
+                'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamNumRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamBandwidthResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveTranscodeStreamBandwidthResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamBandwidthResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BandwidthStatisticResult', ], ],
+            ],
+        ],
+        'DescribePublishStreamInfoDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'PublishStreamInfoResult', ], ],
+            ],
+        ],
+        'LiveTranscodeStreamResult' => [
+            'type' => 'structure',
+            'members' => [
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'DescribeLivePublishStreamNumResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLivePublishStreamNumResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamNumResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveTranscodeStreamNumResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveStreamHistoryUserNumRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'ispName' => [ 'type' => 'string', 'locationName' => 'ispName', ],
+                'locationName' => [ 'type' => 'string', 'locationName' => 'locationName', ],
+                'protocolType' => [ 'type' => 'string', 'locationName' => 'protocolType', ],
+                'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveTranscodeStreamResult', ], ],
+            ],
+        ],
         'DescribeLivePornDataRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1417,16 +1801,40 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
             ],
         ],
-        'DescribeLivePornDataResultShape' => [
+        'DescribeLiveTranscodingDurationDataRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'pornData' => [ 'type' => 'list', 'member' => [ 'shape' => 'PornData', ], ],
+                'grade' => [ 'type' => 'string', 'locationName' => 'grade', ],
+                'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
             ],
         ],
-        'DescribeLivePornDataResponseShape' => [
+        'DescribeLiveStreamPublishTrafficDataRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeLivePornDataResultShape', ],
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'ispName' => [ 'type' => 'string', 'locationName' => 'ispName', ],
+                'locationName' => [ 'type' => 'string', 'locationName' => 'locationName', ],
+                'protocolType' => [ 'type' => 'string', 'locationName' => 'protocolType', ],
+                'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribeLiveStreamTrafficDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveStreamTrafficDataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveStreamPublishBandwidthDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveStreamPublishBandwidthDataResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -1440,6 +1848,12 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
             ],
         ],
+        'DescribeLiveStreamBandwidthDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BandwidthStatisticResult', ], ],
+            ],
+        ],
         'DescribeLiveSnapshotDataResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1451,6 +1865,122 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeLiveSnapshotDataResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveTranscodingDurationDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveTranscodingDurationDataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveStreamPublishBandwidthDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BandwidthStatisticResult', ], ],
+            ],
+        ],
+        'DescribeLivePornDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLivePornDataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveStreamPublishTrafficDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'TrafficStatisticResult', ], ],
+            ],
+        ],
+        'DescribeLiveStreamPublishTrafficDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveStreamPublishTrafficDataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveTranscodingDurationDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeDurationStatisticResult', ], ],
+            ],
+        ],
+        'DescribeLivePornDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pornData' => [ 'type' => 'list', 'member' => [ 'shape' => 'PornData', ], ],
+            ],
+        ],
+        'TranscodeDurationStatisticResult' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'data' =>  [ 'shape' => 'TranscodeDurationStatisticData', ],
+            ],
+        ],
+        'DescribeLiveStreamPublishBandwidthDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'ispName' => [ 'type' => 'string', 'locationName' => 'ispName', ],
+                'locationName' => [ 'type' => 'string', 'locationName' => 'locationName', ],
+                'protocolType' => [ 'type' => 'string', 'locationName' => 'protocolType', ],
+                'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribeLiveStreamTrafficDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'ispName' => [ 'type' => 'string', 'locationName' => 'ispName', ],
+                'locationName' => [ 'type' => 'string', 'locationName' => 'locationName', ],
+                'protocolType' => [ 'type' => 'string', 'locationName' => 'protocolType', ],
+                'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribeLiveStreamBandwidthDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveStreamBandwidthDataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'TrafficStatisticResult' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'data' =>  [ 'shape' => 'TrafficStatisticResultData', ],
+            ],
+        ],
+        'DescribeLiveStreamBandwidthDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'ispName' => [ 'type' => 'string', 'locationName' => 'ispName', ],
+                'locationName' => [ 'type' => 'string', 'locationName' => 'locationName', ],
+                'protocolType' => [ 'type' => 'string', 'locationName' => 'protocolType', ],
+                'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribeLiveStreamTrafficDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'TrafficStatisticResult', ], ],
             ],
         ],
         'DeleteCustomLiveStreamSnapshotTemplateResultShape' => [
@@ -1672,35 +2202,79 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'TranscodeDurationStatisticResult' => [
-            'type' => 'structure',
-            'members' => [
-                'date' => [ 'type' => 'string', 'locationName' => 'date', ],
-                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
-            ],
-        ],
-        'BandwidthStatisticResult' => [
-            'type' => 'structure',
-            'members' => [
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
-            ],
-        ],
-        'TrafficStatisticResult' => [
-            'type' => 'structure',
-            'members' => [
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
-            ],
-        ],
         'ForbidLiveStreamRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+            ],
+        ],
+        'DescribeLiveStreamInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+            ],
+        ],
+        'DeleteLiveStreamNotifyConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+            ],
+        ],
+        'DescribeLiveStreamOnlineListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveStreamOnlineListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ResumeLiveStreamResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeLiveStreamNotifyConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+            ],
+        ],
+        'DescribeLiveStreamNotifyConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveStreamNotifyConfigResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetLiveStreamNotifyConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'notifyUrl' => [ 'type' => 'string', 'locationName' => 'notifyUrl', ],
+            ],
+        ],
+        'DeleteLiveStreamNotifyConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ForbidLiveStreamResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteLiveStreamNotifyConfigResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetLiveStreamNotifyConfigResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'ResumeLiveStreamResponseShape' => [
@@ -1736,30 +2310,6 @@ return [
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
             ],
         ],
-        'DeleteLiveStreamNotifyConfigRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
-            ],
-        ],
-        'DescribeLiveStreamOnlineListResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeLiveStreamOnlineListResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ResumeLiveStreamResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DescribeLiveStreamNotifyConfigRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
-            ],
-        ],
         'DescribeLiveStreamPublishListResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1767,10 +2317,10 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeLiveStreamNotifyConfigResponseShape' => [
+        'DescribeLiveStreamInfoResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeLiveStreamNotifyConfigResultShape', ],
+                'result' =>  [ 'shape' => 'DescribeLiveStreamInfoResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -1806,27 +2356,13 @@ return [
                 'liveStreamPublishInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveStreamPublishInfo', ], ],
             ],
         ],
-        'SetLiveStreamNotifyConfigRequestShape' => [
+        'DescribeLiveStreamInfoResultShape' => [
             'type' => 'structure',
             'members' => [
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
-                'notifyUrl' => [ 'type' => 'string', 'locationName' => 'notifyUrl', ],
-            ],
-        ],
-        'DeleteLiveStreamNotifyConfigResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ForbidLiveStreamResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeleteLiveStreamNotifyConfigResultShape' => [
-            'type' => 'structure',
-            'members' => [
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
         'DescribeLiveStreamNotifyConfigResultShape' => [
@@ -1834,11 +2370,6 @@ return [
             'members' => [
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
                 'notifyUrl' => [ 'type' => 'string', 'locationName' => 'notifyUrl', ],
-            ],
-        ],
-        'SetLiveStreamNotifyConfigResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'OpenLiveTimeshiftRequestShape' => [

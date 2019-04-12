@@ -20,6 +20,12 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with mps.
  *
+ * @method \Jdcloud\Result getStyleDelimiter(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getStyleDelimiterAsync(array $args = [])
+ * @method \Jdcloud\Result setStyleDelimiter(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise setStyleDelimiterAsync(array $args = [])
+ * @method \Jdcloud\Result deleteStyleDelimiter(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteStyleDelimiterAsync(array $args = [])
  * @method \Jdcloud\Result listThumbnailTask(array $args = [])
  * @method \GuzzleHttp\Promise\Promise listThumbnailTaskAsync(array $args = [])
  * @method \Jdcloud\Result createThumbnailTask(array $args = [])

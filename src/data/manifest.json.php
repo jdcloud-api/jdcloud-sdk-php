@@ -25,6 +25,10 @@ return [
         'namespace' => 'Jdro',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'zfs' => [
+        'namespace' => 'Zfs',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'vod' => [
         'namespace' => 'Vod',
         'versions' => [ 'latest' => 'v1', ],
@@ -87,6 +91,10 @@ return [
     ],
     'jcq' => [
         'namespace' => 'Jcq',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'rms' => [
+        'namespace' => 'Rms',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'baseanti' => [

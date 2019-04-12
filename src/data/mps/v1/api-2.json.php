@@ -11,11 +11,38 @@ return [
 //        'serviceId' => 'mps',
     ],
     'operations' => [
+        'GetStyleDelimiter' => [
+            'name' => 'GetStyleDelimiter',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/buckets/{bucketName}/styleDelimiter/',
+            ],
+            'input' => [ 'shape' => 'GetStyleDelimiterRequestShape', ],
+            'output' => [ 'shape' => 'GetStyleDelimiterResponseShape', ],
+        ],
+        'SetStyleDelimiter' => [
+            'name' => 'SetStyleDelimiter',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/buckets/{bucketName}/styleDelimiter/',
+            ],
+            'input' => [ 'shape' => 'SetStyleDelimiterRequestShape', ],
+            'output' => [ 'shape' => 'SetStyleDelimiterResponseShape', ],
+        ],
+        'DeleteStyleDelimiter' => [
+            'name' => 'DeleteStyleDelimiter',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/buckets/{bucketName}/styleDelimiter/',
+            ],
+            'input' => [ 'shape' => 'DeleteStyleDelimiterRequestShape', ],
+            'output' => [ 'shape' => 'DeleteStyleDelimiterResponseShape', ],
+        ],
         'ListThumbnailTask' => [
             'name' => 'ListThumbnailTask',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/1.0.0/regions/{regionId}/thumbnail',
+                'requestUri' => '/v1/regions/{regionId}/thumbnail',
             ],
             'input' => [ 'shape' => 'ListThumbnailTaskRequestShape', ],
             'output' => [ 'shape' => 'ListThumbnailTaskResponseShape', ],
@@ -24,7 +51,7 @@ return [
             'name' => 'CreateThumbnailTask',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/1.0.0/regions/{regionId}/thumbnail',
+                'requestUri' => '/v1/regions/{regionId}/thumbnail',
             ],
             'input' => [ 'shape' => 'CreateThumbnailTaskRequestShape', ],
             'output' => [ 'shape' => 'CreateThumbnailTaskResponseShape', ],
@@ -33,7 +60,7 @@ return [
             'name' => 'GetThumbnailTask',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/1.0.0/regions/{regionId}/thumbnail/{taskId}',
+                'requestUri' => '/v1/regions/{regionId}/thumbnail/{taskId}',
             ],
             'input' => [ 'shape' => 'GetThumbnailTaskRequestShape', ],
             'output' => [ 'shape' => 'GetThumbnailTaskResponseShape', ],
@@ -42,7 +69,7 @@ return [
             'name' => 'GetNotification',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/1.0.0/regions/{regionId}/notification',
+                'requestUri' => '/v1/regions/{regionId}/notification',
             ],
             'input' => [ 'shape' => 'GetNotificationRequestShape', ],
             'output' => [ 'shape' => 'GetNotificationResponseShape', ],
@@ -51,13 +78,112 @@ return [
             'name' => 'SetNotification',
             'http' => [
                 'method' => 'PUT',
-                'requestUri' => '/1.0.0/regions/{regionId}/notification',
+                'requestUri' => '/v1/regions/{regionId}/notification',
             ],
             'input' => [ 'shape' => 'SetNotificationRequestShape', ],
             'output' => [ 'shape' => 'SetNotificationResponseShape', ],
         ],
     ],
     'shapes' => [
+        'SetStyleDelimiterResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetStyleDelimiterResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteStyleDelimiterResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetStyleDelimiterRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+            ],
+        ],
+        'DeleteStyleDelimiterRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+            ],
+        ],
+        'StyleDelimiterConf' => [
+            'type' => 'structure',
+            'members' => [
+                'delimiters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'SetStyleDelimiterRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'delimiters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+            ],
+        ],
+        'GetStyleDelimiterResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'delimiters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'GetStyleDelimiterResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'delimiters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DeleteStyleDelimiterResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ImageStyleCount' => [
+            'type' => 'structure',
+            'members' => [
+                'styleCount' => [ 'type' => 'integer', 'locationName' => 'styleCount', ],
+            ],
+        ],
+        'ImageStyleID' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+            ],
+        ],
+        'ImageStyleQueryResult' => [
+            'type' => 'structure',
+            'members' => [
+                'styleName' => [ 'type' => 'string', 'locationName' => 'styleName', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'imageStyleList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageStyle', ], ],
+            ],
+        ],
+        'ImageStyle' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'styleName' => [ 'type' => 'string', 'locationName' => 'styleName', ],
+                'params' => [ 'type' => 'string', 'locationName' => 'params', ],
+                'paramAlias' => [ 'type' => 'string', 'locationName' => 'paramAlias', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'status' => [ 'type' => 'byte', 'locationName' => 'status', ],
+                'modifyTime' => [ 'type' => 'date', 'locationName' => 'modifyTime', ],
+                'createdTime' => [ 'type' => 'date', 'locationName' => 'createdTime', ],
+            ],
+        ],
         'GetThumbnailTaskRequestShape' => [
             'type' => 'structure',
             'members' => [

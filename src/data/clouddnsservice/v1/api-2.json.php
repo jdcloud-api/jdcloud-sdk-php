@@ -504,6 +504,13 @@ return [
                 'viewValue' => [ 'type' => 'integer', 'locationName' => 'viewValue', ],
             ],
         ],
+        'SetRR' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'SetRecords', ], ],
+            ],
+        ],
         'Setlb' => [
             'type' => 'structure',
             'members' => [
@@ -541,6 +548,7 @@ return [
                 'label' => [ 'type' => 'string', 'locationName' => 'label', ],
                 'leaf' => [ 'type' => 'boolean', 'locationName' => 'leaf', ],
                 'value' => [ 'type' => 'integer', 'locationName' => 'value', ],
+                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
                 'children' => [ 'type' => 'list', 'member' => [ 'shape' => 'ViewTree', ], ],
             ],
         ],
@@ -551,6 +559,21 @@ return [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
                 'rate' => [ 'type' => 'double', 'locationName' => 'rate', ],
+            ],
+        ],
+        'SetRecords' => [
+            'type' => 'structure',
+            'members' => [
+                'records' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'views' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+            ],
+        ],
+        'SubDomainExist' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'isExist' => [ 'type' => 'integer', 'locationName' => 'isExist', ],
             ],
         ],
         'UserViewInput' => [
@@ -573,7 +596,7 @@ return [
                 'domainId' => [ 'type' => 'integer', 'locationName' => 'domainId', ],
                 'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
                 'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
-                'viewId' => [ 'type' => 'string', 'locationName' => 'viewId', ],
+                'viewId' => [ 'type' => 'integer', 'locationName' => 'viewId', ],
             ],
         ],
         'DelViewIP' => [
@@ -917,7 +940,7 @@ return [
             'members' => [
                 'domainId' => [ 'type' => 'integer', 'locationName' => 'domainId', ],
                 'viewId' => [ 'type' => 'integer', 'locationName' => 'viewId', ],
-                'viewName' => [ 'type' => 'integer', 'locationName' => 'viewName', ],
+                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -1034,7 +1057,7 @@ return [
             'members' => [
                 'domainId' => [ 'type' => 'integer', 'locationName' => 'domainId', ],
                 'viewId' => [ 'type' => 'integer', 'locationName' => 'viewId', ],
-                'viewName' => [ 'type' => 'integer', 'locationName' => 'viewName', ],
+                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
