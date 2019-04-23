@@ -26,6 +26,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise getSaleServiceByDeliverNumberAsync(array $args = [])
  * @method \Jdcloud\Result confirmSaleServiceDelivery(array $args = [])
  * @method \GuzzleHttp\Promise\Promise confirmSaleServiceDeliveryAsync(array $args = [])
+ * @method \Jdcloud\Result getStoreService(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getStoreServiceAsync(array $args = [])
  */
 class EliteClient extends JdCloudClient
 {
