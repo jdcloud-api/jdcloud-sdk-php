@@ -1,6 +1,7 @@
 language: php
 
 before_script:
+ - mkdir build
  - composer install
  
 env:
