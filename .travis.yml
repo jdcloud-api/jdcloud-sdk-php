@@ -8,4 +8,4 @@ env:
  - PHP_TEST_AK="0E91C3765B78CBD71715F9BF24997AF3"
  
  script:
- - /vendor/phpunit/phpunit/phpunit
+ - ./vendor/phpunit/phpunit/phpunit
