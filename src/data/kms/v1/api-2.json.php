@@ -431,7 +431,7 @@ return [
         'DescribeKeyDetailResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'KeyDetail', ],
+                'result' =>  [ 'shape' => 'DescribeKeyDetailResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -597,7 +597,7 @@ return [
         'DescribeKeyResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'KeyInfo', ],
+                'result' =>  [ 'shape' => 'DescribeKeyResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -817,7 +817,7 @@ return [
         'DescribeSecretVersionInfoResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'SecretVersionItem', ],
+                'result' =>  [ 'shape' => 'DescribeSecretVersionInfoResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -976,7 +976,7 @@ return [
         'DescribeSecretVersionListResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'SecretDetail', ],
+                'result' =>  [ 'shape' => 'DescribeSecretVersionListResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],

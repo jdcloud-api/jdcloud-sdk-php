@@ -13,6 +13,13 @@ use Jdcloud\Endpoint\EndpointProvider;
  */
 class DiskClientTest extends TestCase
 {
+    private function getCred(){
+        $ak = getenv('PHP_TEST_AK');
+        $sk = getenv('PHP_TEST_SK');
+        print("KEY" . $ak . " sk: " . $sk);
+        $cred = new Credentials($ak, $sk);
+        return $cred;
+    }
     
     public function testDescribeDisks()
         {
@@ -21,7 +28,7 @@ class DiskClientTest extends TestCase
             ]);
     
             $client = new DiskClient([
-                'credentials'  => new Credentials('ak', 'sk'),
+                'credentials'  => $this->getCred(),
                 'version' => 'latest',
                 'endpoint_provider' => $fix_endpoint,
                 'scheme' => 'http'
@@ -34,30 +41,31 @@ class DiskClientTest extends TestCase
                     'pageNumber'  => '1',
                     'pageSize'  => '10',
                     'filters'     => [
-                        [
-                            'name' => 'diskType',
-                            'values' => ['ssd', 'premium-hdd']
-                        ],
+//                         [
+//                             'name' => 'diskType',
+//                             'values' => ['ssd', 'premium-hdd']
+//                         ],
                         [
                             'name' => 'az',
-                            'values' => ['cn-north-1']
+                            'values' => ['cn-north-1a']
                         ]
                     ],
-                    'tags'     => [
-                        [
-                            'key' => 'diskType',
-                            'values' => ['ssd', 'premium-hdd']
-                        ],
-                        [
-                            'key' => 'az',
-                            'values' => ['cn-north-1']
-                        ]
-                    ]
+//                     'tags'     => [
+//                         [
+//                             'key' => 'diskType',
+//                             'values' => ['ssd', 'premium-hdd']
+//                         ],
+//                         [
+//                             'key' => 'az',
+//                             'values' => ['cn-north-1']
+//                         ]
+//                     ]
             ]);
             var_dump($res);
             $this->assertNotNull($res);
             $this->assertNotNull($res['requestId']);
             $this->assertNotNull($res['result']);
+            $this->assertNotNull($res['result']['totalCount']);
             }catch (\Jdcloud\Exception\JdcloudException $e) {
                 print("ERROR");
                 var_dump($e->getMessage());

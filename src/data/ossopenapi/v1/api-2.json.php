@@ -83,7 +83,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'backSourceRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackSourceRule', ], ],
+                'result' =>  [ 'shape' => 'GetBackSourceConfigurationResultShape', ],
             ],
         ],
         'GetBackSourceConfigurationRequestShape' => [

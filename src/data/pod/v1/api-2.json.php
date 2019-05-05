@@ -717,7 +717,7 @@ return [
         'DecribeContainerResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'Container', ],
+                'result' =>  [ 'shape' => 'DecribeContainerResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -854,7 +854,7 @@ return [
         'DescribePodResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'Pod', ],
+                'result' =>  [ 'shape' => 'DescribePodResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],

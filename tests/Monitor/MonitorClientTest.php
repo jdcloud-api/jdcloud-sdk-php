@@ -13,14 +13,21 @@ use Jdcloud\Endpoint\EndpointProvider;
  */
 class MonitorClientTest extends TestCase
 {
+    private function getCred(){
+        $ak = getenv('PHP_TEST_AK');
+        $sk = getenv('PHP_TEST_SK');
+        print("KEY" . $ak . " sk: " . $sk);
+        $cred = new Credentials($ak, $sk);
+        return $cred;
+    }
+    
     public function testdescribeMetrics()
     {        
         $client = new MonitorClient([
-            'credentials'  => new Credentials('ak', 'sk'),
+            'credentials'  => $this->getCred(),
+            
             'version' => 'latest',
-            'http'    => [
-                'verify' => 'C:/ca-bundle.crt'
-            ]
+            'scheme' => 'http'
         ]);
         
         
@@ -33,6 +40,7 @@ class MonitorClientTest extends TestCase
             $this->assertNotNull($res);
             $this->assertNotNull($res['requestId']);
             $this->assertNotNull($res['result']);
+            $this->assertNotNull($res['result']['metrics']);
         }catch (\Jdcloud\Exception\JdcloudException $e) {
             print("ERROR");
             var_dump($e->getMessage());
@@ -43,11 +51,10 @@ class MonitorClientTest extends TestCase
 //     public function testcreateAlarm()
 //     {
 //         $client = new MonitorClient([
-//             'credentials'  => new Credentials('35DDDCFFB86CF2D494F0F3B6B0B3EF68', '93C107EF1F3A0C46C6329C04F561A29E'),
+//             'credentials'  => $this->getCred(),
+            
 //             'version' => 'latest',
-//             'http'    => [
-//                 'verify' => 'C:/ca-bundle.crt'
-//             ]
+//             'scheme' => 'http'
 //         ]);
         
         

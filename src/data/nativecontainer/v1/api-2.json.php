@@ -533,7 +533,7 @@ return [
         'DescribeContainerResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'Container', ],
+                'result' =>  [ 'shape' => 'DescribeContainerResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],

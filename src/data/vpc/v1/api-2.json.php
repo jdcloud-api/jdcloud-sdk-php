@@ -2189,7 +2189,7 @@ return [
         'ModifyVpcPeeringResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'vpcPeering' =>  [ 'shape' => 'VpcPeering', ],
+                'vpcPeering' =>  [ 'shape' => 'ModifyVpcPeeringResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],

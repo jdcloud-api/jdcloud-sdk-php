@@ -590,7 +590,7 @@ return [
         'BackupDownloadURLResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'BackupDownloadURL', ],
+                'result' =>  [ 'shape' => 'BackupDownloadURLResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],

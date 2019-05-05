@@ -1210,7 +1210,7 @@ return [
         'DescribeInstanceResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'Instance', ],
+                'result' =>  [ 'shape' => 'DescribeInstanceResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
