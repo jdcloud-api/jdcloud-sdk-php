@@ -11,15 +11,6 @@ return [
 //        'serviceId' => 'portal',
     ],
     'operations' => [
-        'DescribeProducts' => [
-            'name' => 'DescribeProducts',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/products',
-            ],
-            'input' => [ 'shape' => 'DescribeProductsRequestShape', ],
-            'output' => [ 'shape' => 'DescribeProductsResponseShape', ],
-        ],
         'DescribeProduct' => [
             'name' => 'DescribeProduct',
             'http' => [
@@ -128,13 +119,6 @@ return [
                 'txtVoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ProductTxt', ], ],
             ],
         ],
-        'DescribeProductsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeProductsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeProductsByIdRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -176,20 +160,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'Navigation', ], ],
-            ],
-        ],
-        'DescribeProductsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'lang' => [ 'type' => 'string', 'locationName' => 'lang', ],
-                'ak' => [ 'type' => 'string', 'locationName' => 'ak', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeProductsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'Navigation', ],
             ],
         ],
     ],

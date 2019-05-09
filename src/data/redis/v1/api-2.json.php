@@ -113,13 +113,20 @@ return [
             'members' => [
                 'baseId' => [ 'type' => 'string', 'locationName' => 'baseId', ],
                 'backupFileName' => [ 'type' => 'string', 'locationName' => 'backupFileName', ],
-                'spaceId' => [ 'type' => 'string', 'locationName' => 'spaceId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
                 'backupStartTime' => [ 'type' => 'string', 'locationName' => 'backupStartTime', ],
                 'backupEndTime' => [ 'type' => 'string', 'locationName' => 'backupEndTime', ],
                 'backupType' => [ 'type' => 'integer', 'locationName' => 'backupType', ],
-                'backupSize' => [ 'type' => 'integer', 'locationName' => 'backupSize', ],
+                'backupSize' => [ 'type' => 'long', 'locationName' => 'backupSize', ],
                 'backupStatus' => [ 'type' => 'integer', 'locationName' => 'backupStatus', ],
                 'backupDownloadURL' => [ 'type' => 'string', 'locationName' => 'backupDownloadURL', ],
+            ],
+        ],
+        'Tag' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'Charge' => [
@@ -150,6 +157,10 @@ return [
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'instanceVersion' => [ 'type' => 'string', 'locationName' => 'instanceVersion', ],
                 'auth' => [ 'type' => 'boolean', 'locationName' => 'auth', ],
+                'redisVersion' => [ 'type' => 'string', 'locationName' => 'redisVersion', ],
+                'cacheInstanceType' => [ 'type' => 'string', 'locationName' => 'cacheInstanceType', ],
+                'ipv6On' => [ 'type' => 'integer', 'locationName' => 'ipv6On', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
         ],
         'CacheInstanceSpec' => [
@@ -162,6 +173,8 @@ return [
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
                 'azId' =>  [ 'shape' => 'AzIdSpec', ],
                 'cacheInstanceDescription' => [ 'type' => 'string', 'locationName' => 'cacheInstanceDescription', ],
+                'redisVersion' => [ 'type' => 'string', 'locationName' => 'redisVersion', ],
+                'ipv6On' => [ 'type' => 'integer', 'locationName' => 'ipv6On', ],
             ],
         ],
         'ConfigItem' => [
@@ -171,15 +184,31 @@ return [
                 'configValue' => [ 'type' => 'string', 'locationName' => 'configValue', ],
             ],
         ],
+        'DownloadUrl' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'link' => [ 'type' => 'string', 'locationName' => 'link', ],
+            ],
+        ],
         'InstanceClass' => [
             'type' => 'structure',
             'members' => [
                 'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'cpu' => [ 'type' => 'integer', 'locationName' => 'cpu', ],
                 'memoryMB' => [ 'type' => 'integer', 'locationName' => 'memoryMB', ],
                 'diskGB' => [ 'type' => 'integer', 'locationName' => 'diskGB', ],
-                'maxConnetction' => [ 'type' => 'integer', 'locationName' => 'maxConnetction', ],
+                'maxConnection' => [ 'type' => 'integer', 'locationName' => 'maxConnection', ],
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+            ],
+        ],
+        'InstanceName' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
             ],
         ],
         'OrderStatus' => [
@@ -261,6 +290,7 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
+                'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -315,6 +345,13 @@ return [
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
         ],
+        'TagFilter' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'Filter' => [
             'type' => 'structure',
             'members' => [
@@ -362,6 +399,7 @@ return [
         'DescribeInstanceClassRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'redisVersion' => [ 'type' => 'string', 'locationName' => 'redisVersion', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],

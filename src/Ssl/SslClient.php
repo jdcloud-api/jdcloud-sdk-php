@@ -1,15 +1,15 @@
 <?php
 /**
- * Portal
+ * Ssl
  *
  * @category Jdcloud
- * @package  Jdcloud\Portal
+ * @package  Jdcloud\Ssl
  * @author   Jdcloud <jdcloud-api@jd.com>
  * @license  Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0
  * @link     https://www.jdcloud.com/help/faq
  */
 
-namespace Jdcloud\Portal;
+namespace Jdcloud\Ssl;
 
 use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
@@ -18,14 +18,20 @@ use Jdcloud\Api\ApiProvider;
 use Jdcloud\PresignUrlMiddleware;
 
 /**
- * Client used to interact with portal.
+ * Client used to interact with ssl.
  *
- * @method \Jdcloud\Result describeProduct(array $args = [])
- * @method \GuzzleHttp\Promise\Promise describeProductAsync(array $args = [])
- * @method \Jdcloud\Result describeProductsById(array $args = [])
- * @method \GuzzleHttp\Promise\Promise describeProductsByIdAsync(array $args = [])
+ * @method \Jdcloud\Result describeCerts(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeCertsAsync(array $args = [])
+ * @method \Jdcloud\Result describeCert(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeCertAsync(array $args = [])
+ * @method \Jdcloud\Result deleteCerts(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteCertsAsync(array $args = [])
+ * @method \Jdcloud\Result uploadCert(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise uploadCertAsync(array $args = [])
+ * @method \Jdcloud\Result downloadCert(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise downloadCertAsync(array $args = [])
  */
-class PortalClient extends JdCloudClient
+class SslClient extends JdCloudClient
 {
     public function __construct(array $args)
     {
@@ -37,11 +43,11 @@ class PortalClient extends JdCloudClient
                     [
                         'operations' => [
                         ],
-                        'service' => 'portal',
+                        'service' => 'ssl',
                         'presign_param' => 'PresignedUrl',
                     ]
                 ),
-                'portal'
+                'ssl'
             );
         };
 

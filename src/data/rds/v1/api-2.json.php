@@ -227,6 +227,15 @@ return [
             'input' => [ 'shape' => 'DeleteBackupSynchronicityRequestShape', ],
             'output' => [ 'shape' => 'DeleteBackupSynchronicityResponseShape', ],
         ],
+        'CreateInstanceByTimeInCrossRegion' => [
+            'name' => 'CreateInstanceByTimeInCrossRegion',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/backupSynchronicities:createInstanceByTimeInCrossRegion',
+            ],
+            'input' => [ 'shape' => 'CreateInstanceByTimeInCrossRegionRequestShape', ],
+            'output' => [ 'shape' => 'CreateInstanceByTimeInCrossRegionResponseShape', ],
+        ],
         'DescribeBinlogs' => [
             'name' => 'DescribeBinlogs',
             'http' => [
@@ -487,6 +496,15 @@ return [
             ],
             'input' => [ 'shape' => 'CreateInstanceByTimeRequestShape', ],
             'output' => [ 'shape' => 'CreateInstanceByTimeResponseShape', ],
+        ],
+        'CreateROInstance' => [
+            'name' => 'CreateROInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:createROInstance',
+            ],
+            'input' => [ 'shape' => 'CreateROInstanceRequestShape', ],
+            'output' => [ 'shape' => 'CreateROInstanceResponseShape', ],
         ],
         'ModifyConnectionMode' => [
             'name' => 'ModifyConnectionMode',
@@ -831,12 +849,19 @@ return [
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
                 'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
+                'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
+                'instanceStorageGB' => [ 'type' => 'integer', 'locationName' => 'instanceStorageGB', ],
+                'instanceCPU' => [ 'type' => 'integer', 'locationName' => 'instanceCPU', ],
+                'instanceMemoryMB' => [ 'type' => 'integer', 'locationName' => 'instanceMemoryMB', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'azId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'instanceStatus' => [ 'type' => 'string', 'locationName' => 'instanceStatus', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'sourceInstanceId' => [ 'type' => 'string', 'locationName' => 'sourceInstanceId', ],
             ],
         ],
         'Charge' => [
@@ -866,6 +891,8 @@ return [
                 'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
                 'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
                 'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
+                'instanceStorageType' => [ 'type' => 'string', 'locationName' => 'instanceStorageType', ],
+                'storageEncrypted' => [ 'type' => 'boolean', 'locationName' => 'storageEncrypted', ],
                 'instanceStorageGB' => [ 'type' => 'integer', 'locationName' => 'instanceStorageGB', ],
                 'instanceCPU' => [ 'type' => 'integer', 'locationName' => 'instanceCPU', ],
                 'instanceMemoryMB' => [ 'type' => 'integer', 'locationName' => 'instanceMemoryMB', ],
@@ -873,6 +900,9 @@ return [
                 'azId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
+                'parameterGroupName' => [ 'type' => 'string', 'locationName' => 'parameterGroupName', ],
+                'parameterStatus' => [ 'type' => 'string', 'locationName' => 'parameterStatus', ],
                 'internalDomainName' => [ 'type' => 'string', 'locationName' => 'internalDomainName', ],
                 'publicDomainName' => [ 'type' => 'string', 'locationName' => 'publicDomainName', ],
                 'instancePort' => [ 'type' => 'string', 'locationName' => 'instancePort', ],
@@ -881,6 +911,8 @@ return [
                 'instanceStatus' => [ 'type' => 'string', 'locationName' => 'instanceStatus', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
+                'sourceInstanceId' => [ 'type' => 'string', 'locationName' => 'sourceInstanceId', ],
+                'roInstanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'primaryNode' =>  [ 'shape' => 'DBInstanceNode', ],
                 'secondaryNode' =>  [ 'shape' => 'DBInstanceNode', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
@@ -918,6 +950,9 @@ return [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'parameterGroup' => [ 'type' => 'string', 'locationName' => 'parameterGroup', ],
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
+                'instanceStorageType' => [ 'type' => 'string', 'locationName' => 'instanceStorageType', ],
+                'storageEncrypted' => [ 'type' => 'boolean', 'locationName' => 'storageEncrypted', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
             ],
         ],
         'Database' => [
@@ -1036,6 +1071,9 @@ return [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'parameterGroup' => [ 'type' => 'string', 'locationName' => 'parameterGroup', ],
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
+                'instanceStorageType' => [ 'type' => 'string', 'locationName' => 'instanceStorageType', ],
+                'storageEncrypted' => [ 'type' => 'boolean', 'locationName' => 'storageEncrypted', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
             ],
         ],
         'SlowLogAttributes' => [
@@ -1507,17 +1545,37 @@ return [
                 'result' =>  [ 'shape' => 'DescribeBackupsResultShape', ],
             ],
         ],
-        'DeleteBackupSynchronicityResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DescribeBackupSynchronicitiesRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateInstanceByTimeInCrossRegionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeBackupSynchronicitiesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'backupSynchronicities' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackupSynchronicity', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DeleteBackupSynchronicityRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'serviceId' => [ 'type' => 'string', 'locationName' => 'serviceId', ],
+            ],
+        ],
+        'DeleteBackupSynchronicityResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'CreateBackupSynchronicityRequestShape' => [
@@ -1533,18 +1591,19 @@ return [
             'members' => [
             ],
         ],
-        'DescribeBackupSynchronicitiesResultShape' => [
+        'CreateInstanceByTimeInCrossRegionResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'backupSynchronicities' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackupSynchronicity', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'result' =>  [ 'shape' => 'CreateInstanceByTimeInCrossRegionResultShape', ],
             ],
         ],
-        'DeleteBackupSynchronicityRequestShape' => [
+        'CreateInstanceByTimeInCrossRegionRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'restoreTime' => [ 'type' => 'string', 'locationName' => 'restoreTime', ],
                 'serviceId' => [ 'type' => 'string', 'locationName' => 'serviceId', ],
+                'instanceSpec' =>  [ 'shape' => 'RestoredNewDBInstanceSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'CreateBackupSynchronicityResultShape' => [
@@ -2145,6 +2204,30 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'CreateROInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'roInstanceId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
+            ],
+        ],
+        'CreateROInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
+                'instanceStorageType' => [ 'type' => 'string', 'locationName' => 'instanceStorageType', ],
+                'instanceStorageGB' => [ 'type' => 'integer', 'locationName' => 'instanceStorageGB', ],
+                'azId' => [ 'type' => 'string', 'locationName' => 'azId', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'parameterGroup' => [ 'type' => 'string', 'locationName' => 'parameterGroup', ],
+                'storageEncrypted' => [ 'type' => 'boolean', 'locationName' => 'storageEncrypted', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'ModifyConnectionModeResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2154,6 +2237,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'CreateInstanceResultShape', ],
+            ],
+        ],
+        'CreateROInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateROInstanceResultShape', ],
             ],
         ],
         'ModifyBackupPolicyRequestShape' => [

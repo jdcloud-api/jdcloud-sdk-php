@@ -17,6 +17,10 @@ return [
         'namespace' => 'Ipanti',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'ssl' => [
+        'namespace' => 'Ssl',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'oss' => [
         'namespace' => 'Oss',
         'versions' => [ 'latest' => 'v1', ],

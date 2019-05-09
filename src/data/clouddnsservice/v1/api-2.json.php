@@ -576,6 +576,14 @@ return [
                 'isExist' => [ 'type' => 'integer', 'locationName' => 'isExist', ],
             ],
         ],
+        'ResourceInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+            ],
+        ],
         'UserViewInput' => [
             'type' => 'structure',
             'members' => [
