@@ -11,6 +11,24 @@ return [
 //        'serviceId' => 'elite',
     ],
     'operations' => [
+        'JdxReportOrder' => [
+            'name' => 'JdxReportOrder',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/jdxReportOrder',
+            ],
+            'input' => [ 'shape' => 'JdxReportOrderRequestShape', ],
+            'output' => [ 'shape' => 'JdxReportOrderResponseShape', ],
+        ],
+        'JdxQueryPrice' => [
+            'name' => 'JdxQueryPrice',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/jdxQueryPrice',
+            ],
+            'input' => [ 'shape' => 'JdxQueryPriceRequestShape', ],
+            'output' => [ 'shape' => 'JdxQueryPriceResponseShape', ],
+        ],
         'ListSaleService' => [
             'name' => 'ListSaleService',
             'http' => [
@@ -66,6 +84,30 @@ return [
                 'settlementPrice' => [ 'type' => 'string', 'locationName' => 'settlementPrice', ],
             ],
         ],
+        'OrderPriceProtocolVo' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
+                'formula' => [ 'type' => 'list', 'member' => [ 'shape' => 'OrderResourceFormulaVo', ], ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'timeSpan' => [ 'type' => 'integer', 'locationName' => 'timeSpan', ],
+                'timeUnit' => [ 'type' => 'integer', 'locationName' => 'timeUnit', ],
+                'networkOperator' => [ 'type' => 'integer', 'locationName' => 'networkOperator', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'OrderResourceFormulaVo' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
+            ],
+        ],
         'ProductServiceVo' => [
             'type' => 'structure',
             'members' => [
@@ -103,6 +145,34 @@ return [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ProductServiceVo', ], ],
             ],
         ],
+        'QueryPriceParam' => [
+            'type' => 'structure',
+            'members' => [
+                'cmd' => [ 'type' => 'integer', 'locationName' => 'cmd', ],
+                'packageCount' => [ 'type' => 'integer', 'locationName' => 'packageCount', ],
+                'orderList' => [ 'type' => 'list', 'member' => [ 'shape' => 'OrderPriceProtocolVo', ], ],
+            ],
+        ],
+        'QueryPriceResultVo' => [
+            'type' => 'structure',
+            'members' => [
+                'totalPrice' => [ 'type' => 'double', 'locationName' => 'totalPrice', ],
+                'totalPriceScale4' => [ 'type' => 'double', 'locationName' => 'totalPriceScale4', ],
+                'discountedTotalPrice' => [ 'type' => 'double', 'locationName' => 'discountedTotalPrice', ],
+                'totalDiscount' => [ 'type' => 'double', 'locationName' => 'totalDiscount', ],
+                'totalOriginalPrice' => [ 'type' => 'double', 'locationName' => 'totalOriginalPrice', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+            ],
+        ],
+        'ReportOrderInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
+                'distributorAccount' => [ 'type' => 'string', 'locationName' => 'distributorAccount', ],
+                'distributorName' => [ 'type' => 'string', 'locationName' => 'distributorName', ],
+                'extraInfo' => [ 'type' => 'string', 'locationName' => 'extraInfo', ],
+            ],
+        ],
         'StoreServiceDetailVo' => [
             'type' => 'structure',
             'members' => [
@@ -121,6 +191,49 @@ return [
                 'storeServiceDetails' => [ 'type' => 'list', 'member' => [ 'shape' => 'StoreServiceDetailVo', ], ],
                 'orderNum' => [ 'type' => 'integer', 'locationName' => 'orderNum', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'JdxReportOrderResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'JdxReportOrderRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'reportOrderInfo' =>  [ 'shape' => 'ReportOrderInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'JdxReportOrderResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'JdxReportOrderResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'JdxQueryPriceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryPriceParam' =>  [ 'shape' => 'QueryPriceParam', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'JdxQueryPriceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'JdxQueryPriceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'JdxQueryPriceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'data' =>  [ 'shape' => 'QueryPriceResultVo', ],
             ],
         ],
         'GetSaleServiceByDeliverNumberResultShape' => [

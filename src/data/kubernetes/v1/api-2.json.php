@@ -65,6 +65,42 @@ return [
             'input' => [ 'shape' => 'SetUserMetricsRequestShape', ],
             'output' => [ 'shape' => 'SetUserMetricsResponseShape', ],
         ],
+        'AbortUpgrade' => [
+            'name' => 'AbortUpgrade',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}:abortUpgrade',
+            ],
+            'input' => [ 'shape' => 'AbortUpgradeRequestShape', ],
+            'output' => [ 'shape' => 'AbortUpgradeResponseShape', ],
+        ],
+        'DescribeProgress' => [
+            'name' => 'DescribeProgress',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}/progress',
+            ],
+            'input' => [ 'shape' => 'DescribeProgressRequestShape', ],
+            'output' => [ 'shape' => 'DescribeProgressResponseShape', ],
+        ],
+        'SetAutoUpgrade' => [
+            'name' => 'SetAutoUpgrade',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}:setAutoUpgrade',
+            ],
+            'input' => [ 'shape' => 'SetAutoUpgradeRequestShape', ],
+            'output' => [ 'shape' => 'SetAutoUpgradeResponseShape', ],
+        ],
+        'UpgradeCluster' => [
+            'name' => 'UpgradeCluster',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}:upgradeCluster',
+            ],
+            'input' => [ 'shape' => 'UpgradeClusterRequestShape', ],
+            'output' => [ 'shape' => 'UpgradeClusterResponseShape', ],
+        ],
         'DescribeNodeGroups' => [
             'name' => 'DescribeNodeGroups',
             'http' => [
@@ -128,6 +164,15 @@ return [
             'input' => [ 'shape' => 'SetAutoRepairRequestShape', ],
             'output' => [ 'shape' => 'SetAutoRepairResponseShape', ],
         ],
+        'RollbackNodeGroupUpgrade' => [
+            'name' => 'RollbackNodeGroupUpgrade',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/nodeGroups/{nodeGroupId}:rollbackNodeGroupUpgrade',
+            ],
+            'input' => [ 'shape' => 'RollbackNodeGroupUpgradeRequestShape', ],
+            'output' => [ 'shape' => 'RollbackNodeGroupUpgradeResponseShape', ],
+        ],
         'DescribeQuotas' => [
             'name' => 'DescribeQuotas',
             'http' => [
@@ -146,15 +191,6 @@ return [
             'input' => [ 'shape' => 'DescribeServerConfigRequestShape', ],
             'output' => [ 'shape' => 'DescribeServerConfigResponseShape', ],
         ],
-        'DescribeImages' => [
-            'name' => 'DescribeImages',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/images',
-            ],
-            'input' => [ 'shape' => 'DescribeImagesRequestShape', ],
-            'output' => [ 'shape' => 'DescribeImagesResponseShape', ],
-        ],
         'DescribeVersions' => [
             'name' => 'DescribeVersions',
             'http' => [
@@ -163,6 +199,33 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeVersionsRequestShape', ],
             'output' => [ 'shape' => 'DescribeVersionsResponseShape', ],
+        ],
+        'DescribeNodeVersion' => [
+            'name' => 'DescribeNodeVersion',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/nodeVersions/{nodeVersion}',
+            ],
+            'input' => [ 'shape' => 'DescribeNodeVersionRequestShape', ],
+            'output' => [ 'shape' => 'DescribeNodeVersionResponseShape', ],
+        ],
+        'DescribeUpgradableMasterVersions' => [
+            'name' => 'DescribeUpgradableMasterVersions',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}/upgradableMasterVersions',
+            ],
+            'input' => [ 'shape' => 'DescribeUpgradableMasterVersionsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeUpgradableMasterVersionsResponseShape', ],
+        ],
+        'DescribeUpgradableNodeVersions' => [
+            'name' => 'DescribeUpgradableNodeVersions',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}/upgradableNodeVersions',
+            ],
+            'input' => [ 'shape' => 'DescribeUpgradableNodeVersionsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeUpgradableNodeVersionsResponseShape', ],
         ],
     ],
     'shapes' => [
@@ -233,10 +296,18 @@ return [
                 'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
                 'instanceTemplateId' => [ 'type' => 'string', 'locationName' => 'instanceTemplateId', ],
                 'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'stateMessage' => [ 'type' => 'string', 'locationName' => 'stateMessage', ],
                 'autoRepair' => [ 'type' => 'string', 'locationName' => 'autoRepair', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'Tag' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'NodeConfig' => [
@@ -293,6 +364,16 @@ return [
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
+        'MaintenanceWindowSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'periodType' => [ 'type' => 'string', 'locationName' => 'periodType', ],
+                'startDay' => [ 'type' => 'integer', 'locationName' => 'startDay', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'timeZone' => [ 'type' => 'string', 'locationName' => 'timeZone', ],
+                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
+            ],
+        ],
         'NodeImage' => [
             'type' => 'structure',
             'members' => [
@@ -317,6 +398,13 @@ return [
                 'nodeImages' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeImage', ], ],
             ],
         ],
+        'MasterProgress' => [
+            'type' => 'structure',
+            'members' => [
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'progress' => [ 'type' => 'string', 'locationName' => 'progress', ],
+            ],
+        ],
         'NodeVersion' => [
             'type' => 'structure',
             'members' => [
@@ -333,6 +421,15 @@ return [
                 'defaultNodeVersion' => [ 'type' => 'string', 'locationName' => 'defaultNodeVersion', ],
                 'versionStatus' => [ 'type' => 'string', 'locationName' => 'versionStatus', ],
                 'nodeVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeVersion', ], ],
+            ],
+        ],
+        'NodeGroupProgress' => [
+            'type' => 'structure',
+            'members' => [
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'updatedCount' => [ 'type' => 'integer', 'locationName' => 'updatedCount', ],
             ],
         ],
         'ValidNodeConfig' => [
@@ -356,6 +453,13 @@ return [
                 'validMasterVersions' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'defaultMasterVersion' => [ 'type' => 'string', 'locationName' => 'defaultMasterVersion', ],
                 'validNodeConfig' => [ 'type' => 'list', 'member' => [ 'shape' => 'ValidNodeConfig', ], ],
+            ],
+        ],
+        'TagFilter' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'CreateClusterRequestShape' => [
@@ -401,7 +505,19 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'AbortUpgradeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'SetUserMetricsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpgradeClusterResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
@@ -412,6 +528,14 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'CreateClusterResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeProgressRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'nodeGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
         'DescribeClusterResponseShape' => [
@@ -437,6 +561,11 @@ return [
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
+        'AbortUpgradeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DescribeClustersRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -458,6 +587,22 @@ return [
             'members' => [
             ],
         ],
+        'SetAutoUpgradeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpgradeClusterRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'scope' => [ 'type' => 'string', 'locationName' => 'scope', ],
+                'nodeGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'verison' => [ 'type' => 'string', 'locationName' => 'verison', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
         'ModifyClusterResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -469,11 +614,34 @@ return [
                 'cluster' =>  [ 'shape' => 'Cluster', ],
             ],
         ],
+        'SetAutoUpgradeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'autoUpgrade' => [ 'type' => 'boolean', 'locationName' => 'autoUpgrade', ],
+                'maintenanceWindow' =>  [ 'shape' => 'MaintenanceWindowSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'AbortUpgradeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
         'DescribeClusterRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'DescribeProgressResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'masterProgress' =>  [ 'shape' => 'MasterProgress', ],
+                'nodeGroupProgresses' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeGroupProgress', ], ],
             ],
         ],
         'DeleteClusterResponseShape' => [
@@ -490,10 +658,27 @@ return [
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
+        'UpgradeClusterResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'ModifyClusterResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeProgressResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeProgressResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetAutoUpgradeResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'CreateNodeGroupResultShape' => [
@@ -524,6 +709,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'CreateNodeGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RollbackNodeGroupUpgradeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -605,6 +796,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
@@ -614,6 +806,11 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeNodeGroupsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RollbackNodeGroupUpgradeResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'CreateNodeGroupRequestShape' => [
@@ -636,6 +833,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'RollbackNodeGroupUpgradeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+            ],
+        ],
         'DescribeQuotasResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -656,6 +860,21 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeUpgradableNodeVersionsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'nodeGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'DescribeNodeVersionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeNodeVersionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeServerConfigResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -668,12 +887,23 @@ return [
                 'masterVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'MasterVersion', ], ],
             ],
         ],
-        'DescribeImagesRequestShape' => [
+        'DescribeUpgradableMasterVersionsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'masterVersion' => [ 'type' => 'string', 'locationName' => 'masterVersion', ],
-                'masterImageCode' => [ 'type' => 'string', 'locationName' => 'masterImageCode', ],
+                'masterVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'MasterVersion', ], ],
+            ],
+        ],
+        'DescribeUpgradableMasterVersionsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'DescribeUpgradableNodeVersionsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ndoeVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeVersion', ], ],
             ],
         ],
         'DescribeVersionsRequestShape' => [
@@ -690,10 +920,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeImagesResultShape' => [
+        'DescribeUpgradableNodeVersionsResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'masterImages' => [ 'type' => 'list', 'member' => [ 'shape' => 'MasterImage', ], ],
+                'result' =>  [ 'shape' => 'DescribeUpgradableNodeVersionsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeVersionsResponseShape' => [
@@ -703,17 +934,30 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeImagesResponseShape' => [
+        'DescribeNodeVersionRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeImagesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'nodeVersion' => [ 'type' => 'string', 'locationName' => 'nodeVersion', ],
             ],
         ],
         'DescribeServerConfigRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeNodeVersionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'nodeVersion' =>  [ 'shape' => 'NodeVersion', ],
+            ],
+        ],
+        'DescribeUpgradableMasterVersionsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeUpgradableMasterVersionsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
     ],

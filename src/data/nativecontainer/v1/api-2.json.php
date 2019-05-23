@@ -110,6 +110,33 @@ return [
             'input' => [ 'shape' => 'RebuildContainerRequestShape', ],
             'output' => [ 'shape' => 'RebuildContainerResponseShape', ],
         ],
+        'ExecCreate' => [
+            'name' => 'ExecCreate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/containers/{containerId}:execCreate',
+            ],
+            'input' => [ 'shape' => 'ExecCreateRequestShape', ],
+            'output' => [ 'shape' => 'ExecCreateResponseShape', ],
+        ],
+        'ExecGetExitCode' => [
+            'name' => 'ExecGetExitCode',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/containers/{containerId}:execGetExitCode',
+            ],
+            'input' => [ 'shape' => 'ExecGetExitCodeRequestShape', ],
+            'output' => [ 'shape' => 'ExecGetExitCodeResponseShape', ],
+        ],
+        'ResizeTTY' => [
+            'name' => 'ResizeTTY',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/containers/{containerId}:resizeTTY',
+            ],
+            'input' => [ 'shape' => 'ResizeTTYRequestShape', ],
+            'output' => [ 'shape' => 'ResizeTTYResponseShape', ],
+        ],
         'DescribeQuota' => [
             'name' => 'DescribeQuota',
             'http' => [
@@ -157,6 +184,14 @@ return [
         ],
     ],
     'shapes' => [
+        'BindInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+            ],
+        ],
         'NetworkInterfacePrivateIp' => [
             'type' => 'structure',
             'members' => [
@@ -396,6 +431,15 @@ return [
                 'email' => [ 'type' => 'string', 'locationName' => 'email', ],
             ],
         ],
+        'InstanceInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'bind' => [ 'type' => 'list', 'member' => [ 'shape' => 'BindInfo', ], ],
+            ],
+        ],
         'Quota' => [
             'type' => 'structure',
             'members' => [
@@ -433,10 +477,27 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ExecGetExitCodeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'execId' => [ 'type' => 'string', 'locationName' => 'execId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'containerId' => [ 'type' => 'string', 'locationName' => 'containerId', ],
+            ],
+        ],
         'DisassociateElasticIpResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ExecCreateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'tty' => [ 'type' => 'boolean', 'locationName' => 'tty', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'containerId' => [ 'type' => 'string', 'locationName' => 'containerId', ],
             ],
         ],
         'RebuildContainerResponseShape' => [
@@ -486,6 +547,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ExecCreateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'execId' => [ 'type' => 'string', 'locationName' => 'execId', ],
+            ],
+        ],
         'DeleteContainerRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -497,6 +564,11 @@ return [
             'type' => 'structure',
             'members' => [
                 'containerIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ResizeTTYResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DisassociateElasticIpRequestShape' => [
@@ -515,6 +587,13 @@ return [
         'StopContainerResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ExecCreateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ExecCreateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateContainersRequestShape' => [
@@ -548,6 +627,12 @@ return [
         'DisassociateElasticIpResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ExecGetExitCodeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'exitCode' => [ 'type' => 'integer', 'locationName' => 'exitCode', ],
             ],
         ],
         'DeleteContainerResultShape' => [
@@ -598,6 +683,12 @@ return [
                 'container' =>  [ 'shape' => 'Container', ],
             ],
         ],
+        'ResizeTTYResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeContainerRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -642,9 +733,26 @@ return [
                 'args' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'tty' => [ 'type' => 'boolean', 'locationName' => 'tty', ],
                 'workingDir' => [ 'type' => 'string', 'locationName' => 'workingDir', ],
-                'evns' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'envs' => [ 'type' => 'list', 'member' => [ 'shape' => 'EnvVar', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'containerId' => [ 'type' => 'string', 'locationName' => 'containerId', ],
+            ],
+        ],
+        'ResizeTTYRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
+                'execId' => [ 'type' => 'string', 'locationName' => 'execId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'containerId' => [ 'type' => 'string', 'locationName' => 'containerId', ],
+            ],
+        ],
+        'ExecGetExitCodeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ExecGetExitCodeResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'StartContainerResponseShape' => [

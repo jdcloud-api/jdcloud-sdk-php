@@ -48,7 +48,7 @@ class SignatureV4 implements SignatureInterface
         $parsed = $this->parseRequest($request);
         $parsed['headers']['x-jdcloud-algorithm'] = ['JDCLOUD2-HMAC-SHA256'];
         $parsed['headers']['x-jdcloud-date'] = [$ldt];
-        $parsed['headers']['x-jdcloud-nonce'] = [uniqid()];
+        $parsed['headers']['x-jdcloud-nonce'] = [uniqid('php', true)];
 
         if ($token = $credentials->getSecurityToken()) {
             $parsed['headers']['x-jdcloud-security-token'] = [$token];

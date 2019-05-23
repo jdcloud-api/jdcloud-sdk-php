@@ -29,12 +29,20 @@ return [
         'namespace' => 'Redis',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'antipro' => [
+        'namespace' => 'Antipro',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'billing' => [
         'namespace' => 'Billing',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'deploy' => [
         'namespace' => 'Deploy',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'compile' => [
+        'namespace' => 'Compile',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'sop' => [
@@ -119,6 +127,10 @@ return [
     ],
     'datastar' => [
         'namespace' => 'Datastar',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'userpool' => [
+        'namespace' => 'Userpool',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'kms' => [

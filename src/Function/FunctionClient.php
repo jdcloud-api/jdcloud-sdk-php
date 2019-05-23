@@ -46,8 +46,6 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise asyncInvokeAsync(array $args = [])
  * @method \Jdcloud\Result getTrigger(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getTriggerAsync(array $args = [])
- * @method \Jdcloud\Result listTrigger(array $args = [])
- * @method \GuzzleHttp\Promise\Promise listTriggerAsync(array $args = [])
  * @method \Jdcloud\Result listVersion(array $args = [])
  * @method \GuzzleHttp\Promise\Promise listVersionAsync(array $args = [])
  * @method \Jdcloud\Result createVersion(array $args = [])

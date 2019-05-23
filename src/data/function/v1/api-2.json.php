@@ -128,15 +128,6 @@ return [
             'input' => [ 'shape' => 'GetTriggerRequestShape', ],
             'output' => [ 'shape' => 'GetTriggerResponseShape', ],
         ],
-        'ListTrigger' => [
-            'name' => 'ListTrigger',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/functions/{functionName}/versions/{versionName}:innerlisttriggers',
-            ],
-            'input' => [ 'shape' => 'ListTriggerRequestShape', ],
-            'output' => [ 'shape' => 'ListTriggerResponseShape', ],
-        ],
         'ListVersion' => [
             'name' => 'ListVersion',
             'http' => [
@@ -231,6 +222,41 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
+        'CreateFunctionInput' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'entrance' => [ 'type' => 'string', 'locationName' => 'entrance', ],
+                'memory' => [ 'type' => 'integer', 'locationName' => 'memory', ],
+                'runTime' => [ 'type' => 'string', 'locationName' => 'runTime', ],
+                'overTime' => [ 'type' => 'integer', 'locationName' => 'overTime', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'code' =>  [ 'shape' => 'Code', ],
+                'environment' =>  [ 'shape' => 'Env', ],
+                'logSetId' => [ 'type' => 'string', 'locationName' => 'logSetId', ],
+                'logTopicId' => [ 'type' => 'string', 'locationName' => 'logTopicId', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+            ],
+        ],
+        'UpdateFunctionInput' => [
+            'type' => 'structure',
+            'members' => [
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'entrance' => [ 'type' => 'string', 'locationName' => 'entrance', ],
+                'memory' => [ 'type' => 'integer', 'locationName' => 'memory', ],
+                'runTime' => [ 'type' => 'string', 'locationName' => 'runTime', ],
+                'overTime' => [ 'type' => 'integer', 'locationName' => 'overTime', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'code' =>  [ 'shape' => 'Code', ],
+                'environment' =>  [ 'shape' => 'Env', ],
+                'logSetId' => [ 'type' => 'string', 'locationName' => 'logSetId', ],
+                'logTopicId' => [ 'type' => 'string', 'locationName' => 'logTopicId', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+            ],
+        ],
         'Code' => [
             'type' => 'structure',
             'members' => [
@@ -255,6 +281,16 @@ return [
                 'maxCodeSize' => [ 'type' => 'integer', 'locationName' => 'maxCodeSize', ],
             ],
         ],
+        'OssTrigger' => [
+            'type' => 'structure',
+            'members' => [
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
+                'configId' => [ 'type' => 'string', 'locationName' => 'configId', ],
+                'events' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'prefix' => [ 'type' => 'string', 'locationName' => 'prefix', ],
+                'suffix' => [ 'type' => 'string', 'locationName' => 'suffix', ],
+            ],
+        ],
         'Trigger' => [
             'type' => 'structure',
             'members' => [
@@ -265,6 +301,27 @@ return [
                 'eventSourceId' => [ 'type' => 'string', 'locationName' => 'eventSourceId', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'ApiTrigger' => [
+            'type' => 'structure',
+            'members' => [
+                'apiId' => [ 'type' => 'string', 'locationName' => 'apiId', ],
+                'apiGroupId' => [ 'type' => 'string', 'locationName' => 'apiGroupId', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'revision' => [ 'type' => 'string', 'locationName' => 'revision', ],
+                'apiName' => [ 'type' => 'string', 'locationName' => 'apiName', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'path' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'deploymentStatus' => [ 'type' => 'integer', 'locationName' => 'deploymentStatus', ],
+            ],
+        ],
+        'ListTriggerData' => [
+            'type' => 'structure',
+            'members' => [
+                'ossTriggers' => [ 'type' => 'list', 'member' => [ 'shape' => 'OssTrigger', ], ],
+                'apiGwTriggers' => [ 'type' => 'list', 'member' => [ 'shape' => 'ApiTrigger', ], ],
             ],
         ],
         'ListAliasRequestShape' => [
@@ -428,7 +485,7 @@ return [
         'ListFunctionResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'FunctionSpec', ], ],
+                'data' =>  [ 'shape' => 'ListFunctionResult', ],
             ],
         ],
         'FunctionInvokeResult' => [
@@ -491,8 +548,18 @@ return [
         'ListFunctionRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'listAll' => [ 'type' => 'boolean', 'locationName' => 'listAll', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ListFunctionResult' => [
+            'type' => 'structure',
+            'members' => [
+                'functions' => [ 'type' => 'list', 'member' => [ 'shape' => 'FunctionSpec', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
         'CreateFunctionRequestShape' => [
@@ -566,19 +633,6 @@ return [
                 'versionName' => [ 'type' => 'string', 'locationName' => 'versionName', ],
             ],
         ],
-        'ListTriggerResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'Trigger', ], ],
-            ],
-        ],
-        'ListTriggerResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ListTriggerResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'GetTriggerResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -590,14 +644,6 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'GetTriggerResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ListTriggerRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
-                'versionName' => [ 'type' => 'string', 'locationName' => 'versionName', ],
             ],
         ],
         'CreateVersionResponseShape' => [
