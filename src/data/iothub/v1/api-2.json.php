@@ -92,51 +92,6 @@ return [
             'input' => [ 'shape' => 'CheckDeviceIdRequestShape', ],
             'output' => [ 'shape' => 'CheckDeviceIdResponseShape', ],
         ],
-        'EdgeEnroll' => [
-            'name' => 'EdgeEnroll',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/edge/{edgeId}',
-            ],
-            'input' => [ 'shape' => 'EdgeEnrollRequestShape', ],
-            'output' => [ 'shape' => 'EdgeEnrollResponseShape', ],
-        ],
-        'DeleteEdge' => [
-            'name' => 'DeleteEdge',
-            'http' => [
-                'method' => 'DELETE',
-                'requestUri' => '/v1/edge/{edgeId}',
-            ],
-            'input' => [ 'shape' => 'DeleteEdgeRequestShape', ],
-            'output' => [ 'shape' => 'DeleteEdgeResponseShape', ],
-        ],
-        'DeleteModule' => [
-            'name' => 'DeleteModule',
-            'http' => [
-                'method' => 'DELETE',
-                'requestUri' => '/v1/edge/{edgeId}/module/{moduleId}',
-            ],
-            'input' => [ 'shape' => 'DeleteModuleRequestShape', ],
-            'output' => [ 'shape' => 'DeleteModuleResponseShape', ],
-        ],
-        'DeployModule' => [
-            'name' => 'DeployModule',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/edge/{edgeId}/module/{moduleId}:deploy',
-            ],
-            'input' => [ 'shape' => 'DeployModuleRequestShape', ],
-            'output' => [ 'shape' => 'DeployModuleResponseShape', ],
-        ],
-        'ModuleEnroll' => [
-            'name' => 'ModuleEnroll',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/edge/{edgeId}/module:enroll',
-            ],
-            'input' => [ 'shape' => 'ModuleEnrollRequestShape', ],
-            'output' => [ 'shape' => 'ModuleEnrollResponseShape', ],
-        ],
         'ModuleEnrollment' => [
             'name' => 'ModuleEnrollment',
             'http' => [
@@ -189,6 +144,21 @@ return [
             'members' => [
                 'method' => [ 'type' => 'string', 'locationName' => 'method', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'RegionInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'regionName' => [ 'type' => 'string', 'locationName' => 'regionName', ],
+                'azInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'Azs', ], ],
+            ],
+        ],
+        'Azs' => [
+            'type' => 'structure',
+            'members' => [
+                'azId' => [ 'type' => 'string', 'locationName' => 'azId', ],
+                'azName' => [ 'type' => 'string', 'locationName' => 'azName', ],
             ],
         ],
         'DeviceCommandVO' => [
@@ -581,103 +551,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'data' => [ 'type' => 'string', 'locationName' => 'data', ],
-            ],
-        ],
-        'DeleteModuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'edgeId' => [ 'type' => 'string', 'locationName' => 'edgeId', ],
-                'moduleId' => [ 'type' => 'string', 'locationName' => 'moduleId', ],
-            ],
-        ],
-        'DeployModuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'edgeId' => [ 'type' => 'string', 'locationName' => 'edgeId', ],
-                'moduleId' => [ 'type' => 'string', 'locationName' => 'moduleId', ],
-            ],
-        ],
-        'DeployModuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModuleEnrollResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModuleEnrollResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeployModuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'EdgeEnrollResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeleteEdgeRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'edgeId' => [ 'type' => 'string', 'locationName' => 'edgeId', ],
-            ],
-        ],
-        'DeleteModuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModuleEnrollRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
-                'moduleId' => [ 'type' => 'string', 'locationName' => 'moduleId', ],
-                'moduleTypeId' => [ 'type' => 'string', 'locationName' => 'moduleTypeId', ],
-                'moduleConfId' => [ 'type' => 'string', 'locationName' => 'moduleConfId', ],
-                'isDeploy' => [ 'type' => 'integer', 'locationName' => 'isDeploy', ],
-                'edgeId' => [ 'type' => 'string', 'locationName' => 'edgeId', ],
-            ],
-        ],
-        'EdgeEnrollRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'edgeName' => [ 'type' => 'string', 'locationName' => 'edgeName', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'os' => [ 'type' => 'string', 'locationName' => 'os', ],
-                'hardware' => [ 'type' => 'string', 'locationName' => 'hardware', ],
-                'edgeDesc' => [ 'type' => 'string', 'locationName' => 'edgeDesc', ],
-                'edgeId' => [ 'type' => 'string', 'locationName' => 'edgeId', ],
-            ],
-        ],
-        'DeleteEdgeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeleteEdgeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'EdgeEnrollResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeleteModuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'ModuleEnrollmentResponseShape' => [

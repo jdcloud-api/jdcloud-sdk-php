@@ -65,6 +65,10 @@ return [
         'namespace' => 'Clouddnsservice',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'ag' => [
+        'namespace' => 'Ag',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'cps' => [
         'namespace' => 'Cps',
         'versions' => [ 'latest' => 'v1', ],
@@ -87,6 +91,10 @@ return [
     ],
     'disk' => [
         'namespace' => 'Disk',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'sts' => [
+        'namespace' => 'Sts',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'nc' => [
@@ -155,6 +163,10 @@ return [
     ],
     'jcq' => [
         'namespace' => 'Jcq',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'resourcetag' => [
+        'namespace' => 'Resourcetag',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'baseanti' => [
