@@ -1,15 +1,15 @@
 <?php
 /**
- * Sts
+ * Sms
  *
  * @category Jdcloud
- * @package  Jdcloud\Sts
+ * @package  Jdcloud\Sms
  * @author   Jdcloud <jdcloud-api@jd.com>
  * @license  Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0
  * @link     https://www.jdcloud.com/help/faq
  */
 
-namespace Jdcloud\Sts;
+namespace Jdcloud\Sms;
 
 use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
@@ -18,12 +18,14 @@ use Jdcloud\Api\ApiProvider;
 use Jdcloud\PresignUrlMiddleware;
 
 /**
- * Client used to interact with sts.
+ * Client used to interact with sms.
  *
- * @method \Jdcloud\Result assumeRole(array $args = [])
- * @method \GuzzleHttp\Promise\Promise assumeRoleAsync(array $args = [])
+ * @method \Jdcloud\Result sendBatchSms(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise sendBatchSmsAsync(array $args = [])
+ * @method \Jdcloud\Result pullMtMsgByMobile(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise pullMtMsgByMobileAsync(array $args = [])
  */
-class StsClient extends JdCloudClient
+class SmsClient extends JdCloudClient
 {
     public function __construct(array $args)
     {
@@ -35,11 +37,11 @@ class StsClient extends JdCloudClient
                     [
                         'operations' => [
                         ],
-                        'service' => 'sts',
+                        'service' => 'sms',
                         'presign_param' => 'PresignedUrl',
                     ]
                 ),
-                'sts'
+                'sms'
             );
         };
 

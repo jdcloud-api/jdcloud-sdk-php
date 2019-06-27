@@ -11,6 +11,105 @@ return [
 //        'serviceId' => 'iam',
     ],
     'operations' => [
+        'EnableSubUserAccessKey' => [
+            'name' => 'EnableSubUserAccessKey',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/subUser/{subUser}/accessKey/{accessKey}:enable',
+            ],
+            'input' => [ 'shape' => 'EnableSubUserAccessKeyRequestShape', ],
+            'output' => [ 'shape' => 'EnableSubUserAccessKeyResponseShape', ],
+        ],
+        'DisableSubUserAccessKey' => [
+            'name' => 'DisableSubUserAccessKey',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/subUser/{subUser}/accessKey/{accessKey}:disable',
+            ],
+            'input' => [ 'shape' => 'DisableSubUserAccessKeyRequestShape', ],
+            'output' => [ 'shape' => 'DisableSubUserAccessKeyResponseShape', ],
+        ],
+        'DeleteSubUserAccessKey' => [
+            'name' => 'DeleteSubUserAccessKey',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/subUser/{subUser}/accessKey/{accessKey}',
+            ],
+            'input' => [ 'shape' => 'DeleteSubUserAccessKeyRequestShape', ],
+            'output' => [ 'shape' => 'DeleteSubUserAccessKeyResponseShape', ],
+        ],
+        'CreateGroup' => [
+            'name' => 'CreateGroup',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/group',
+            ],
+            'input' => [ 'shape' => 'CreateGroupRequestShape', ],
+            'output' => [ 'shape' => 'CreateGroupResponseShape', ],
+        ],
+        'DescribeGroup' => [
+            'name' => 'DescribeGroup',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/group/{groupName}',
+            ],
+            'input' => [ 'shape' => 'DescribeGroupRequestShape', ],
+            'output' => [ 'shape' => 'DescribeGroupResponseShape', ],
+        ],
+        'UpdateGroup' => [
+            'name' => 'UpdateGroup',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/group/{groupName}',
+            ],
+            'input' => [ 'shape' => 'UpdateGroupRequestShape', ],
+            'output' => [ 'shape' => 'UpdateGroupResponseShape', ],
+        ],
+        'DeleteGroup' => [
+            'name' => 'DeleteGroup',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/group/{groupName}',
+            ],
+            'input' => [ 'shape' => 'DeleteGroupRequestShape', ],
+            'output' => [ 'shape' => 'DeleteGroupResponseShape', ],
+        ],
+        'DetachGroupPolicy' => [
+            'name' => 'DetachGroupPolicy',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/group/{groupName}:detachGroupPolicy',
+            ],
+            'input' => [ 'shape' => 'DetachGroupPolicyRequestShape', ],
+            'output' => [ 'shape' => 'DetachGroupPolicyResponseShape', ],
+        ],
+        'AttachGroupPolicy' => [
+            'name' => 'AttachGroupPolicy',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/group/{groupName}:attachGroupPolicy',
+            ],
+            'input' => [ 'shape' => 'AttachGroupPolicyRequestShape', ],
+            'output' => [ 'shape' => 'AttachGroupPolicyResponseShape', ],
+        ],
+        'RemoveSubUserFromGroup' => [
+            'name' => 'RemoveSubUserFromGroup',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/group/{groupName}:removeSubUserFromGroup',
+            ],
+            'input' => [ 'shape' => 'RemoveSubUserFromGroupRequestShape', ],
+            'output' => [ 'shape' => 'RemoveSubUserFromGroupResponseShape', ],
+        ],
+        'AddSubUserToGroup' => [
+            'name' => 'AddSubUserToGroup',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/group/{groupName}:addSubUserToGroup',
+            ],
+            'input' => [ 'shape' => 'AddSubUserToGroupRequestShape', ],
+            'output' => [ 'shape' => 'AddSubUserToGroupResponseShape', ],
+        ],
         'CreatePermission' => [
             'name' => 'CreatePermission',
             'http' => [
@@ -74,6 +173,96 @@ return [
             'input' => [ 'shape' => 'RemovePermissionOfSubUserRequestShape', ],
             'output' => [ 'shape' => 'RemovePermissionOfSubUserResponseShape', ],
         ],
+        'CreatePolicy' => [
+            'name' => 'CreatePolicy',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/policy',
+            ],
+            'input' => [ 'shape' => 'CreatePolicyRequestShape', ],
+            'output' => [ 'shape' => 'CreatePolicyResponseShape', ],
+        ],
+        'DescribePolicy' => [
+            'name' => 'DescribePolicy',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/policy/{policyName}',
+            ],
+            'input' => [ 'shape' => 'DescribePolicyRequestShape', ],
+            'output' => [ 'shape' => 'DescribePolicyResponseShape', ],
+        ],
+        'DeletePolicy' => [
+            'name' => 'DeletePolicy',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/policy/{policyName}',
+            ],
+            'input' => [ 'shape' => 'DeletePolicyRequestShape', ],
+            'output' => [ 'shape' => 'DeletePolicyResponseShape', ],
+        ],
+        'UpdatePolicyDescription' => [
+            'name' => 'UpdatePolicyDescription',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/policy/{policyName}/description',
+            ],
+            'input' => [ 'shape' => 'UpdatePolicyDescriptionRequestShape', ],
+            'output' => [ 'shape' => 'UpdatePolicyDescriptionResponseShape', ],
+        ],
+        'CreateRole' => [
+            'name' => 'CreateRole',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/role',
+            ],
+            'input' => [ 'shape' => 'CreateRoleRequestShape', ],
+            'output' => [ 'shape' => 'CreateRoleResponseShape', ],
+        ],
+        'DescribeRole' => [
+            'name' => 'DescribeRole',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/role/{roleName}',
+            ],
+            'input' => [ 'shape' => 'DescribeRoleRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRoleResponseShape', ],
+        ],
+        'DeleteRole' => [
+            'name' => 'DeleteRole',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/role/{roleName}',
+            ],
+            'input' => [ 'shape' => 'DeleteRoleRequestShape', ],
+            'output' => [ 'shape' => 'DeleteRoleResponseShape', ],
+        ],
+        'UpdateAssumeRolePolicy' => [
+            'name' => 'UpdateAssumeRolePolicy',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/role/{roleName}/assumeRolePolicy',
+            ],
+            'input' => [ 'shape' => 'UpdateAssumeRolePolicyRequestShape', ],
+            'output' => [ 'shape' => 'UpdateAssumeRolePolicyResponseShape', ],
+        ],
+        'AttachRolePolicy' => [
+            'name' => 'AttachRolePolicy',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/role/{roleName}:attachRolePolicy',
+            ],
+            'input' => [ 'shape' => 'AttachRolePolicyRequestShape', ],
+            'output' => [ 'shape' => 'AttachRolePolicyResponseShape', ],
+        ],
+        'DetachRolePolicy' => [
+            'name' => 'DetachRolePolicy',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/role/{roleName}:detachRolePolicy',
+            ],
+            'input' => [ 'shape' => 'DetachRolePolicyRequestShape', ],
+            'output' => [ 'shape' => 'DetachRolePolicyResponseShape', ],
+        ],
         'CreateSubUser' => [
             'name' => 'CreateSubUser',
             'http' => [
@@ -82,6 +271,51 @@ return [
             ],
             'input' => [ 'shape' => 'CreateSubUserRequestShape', ],
             'output' => [ 'shape' => 'CreateSubUserResponseShape', ],
+        ],
+        'DescribeSubUser' => [
+            'name' => 'DescribeSubUser',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/subUser/{subUser}',
+            ],
+            'input' => [ 'shape' => 'DescribeSubUserRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSubUserResponseShape', ],
+        ],
+        'UpdateSubUser' => [
+            'name' => 'UpdateSubUser',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/subUser/{subUser}',
+            ],
+            'input' => [ 'shape' => 'UpdateSubUserRequestShape', ],
+            'output' => [ 'shape' => 'UpdateSubUserResponseShape', ],
+        ],
+        'DeleteSubUser' => [
+            'name' => 'DeleteSubUser',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/subUser/{subUser}',
+            ],
+            'input' => [ 'shape' => 'DeleteSubUserRequestShape', ],
+            'output' => [ 'shape' => 'DeleteSubUserResponseShape', ],
+        ],
+        'DetachSubUserPolicy' => [
+            'name' => 'DetachSubUserPolicy',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/subUser/{subUser}:detachSubUserPolicy',
+            ],
+            'input' => [ 'shape' => 'DetachSubUserPolicyRequestShape', ],
+            'output' => [ 'shape' => 'DetachSubUserPolicyResponseShape', ],
+        ],
+        'AttachSubUserPolicy' => [
+            'name' => 'AttachSubUserPolicy',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/subUser/{subUser}:attachSubUserPolicy',
+            ],
+            'input' => [ 'shape' => 'AttachSubUserPolicyRequestShape', ],
+            'output' => [ 'shape' => 'AttachSubUserPolicyResponseShape', ],
         ],
         'DescribeUserAccessKeys' => [
             'name' => 'DescribeUserAccessKeys',
@@ -276,7 +510,6 @@ return [
         'CreateRoleInfo' => [
             'type' => 'structure',
             'members' => [
-                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
                 'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
                 'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
                 'assumeRolePolicyDocument' => [ 'type' => 'string', 'locationName' => 'assumeRolePolicyDocument', ],
@@ -503,7 +736,6 @@ return [
         'RoleInfo' => [
             'type' => 'structure',
             'members' => [
-                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
                 'roleId' => [ 'type' => 'string', 'locationName' => 'roleId', ],
                 'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
                 'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
@@ -710,6 +942,205 @@ return [
                 'mFAInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'MFAInfo', ], ],
             ],
         ],
+        'DeleteSubUserAccessKeyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+            ],
+        ],
+        'EnableSubUserAccessKeyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteSubUserAccessKeyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisableSubUserAccessKeyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableSubUserAccessKeyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+            ],
+        ],
+        'EnableSubUserAccessKeyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisableSubUserAccessKeyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+            ],
+        ],
+        'DeleteSubUserAccessKeyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DisableSubUserAccessKeyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DetachGroupPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RemoveSubUserFromGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+            ],
+        ],
+        'DetachGroupPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AttachGroupPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AttachGroupPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AttachGroupPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+            ],
+        ],
+        'DeleteGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RemoveSubUserFromGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'group' =>  [ 'shape' => 'CreateGroupRes', ],
+            ],
+        ],
+        'CreateGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddSubUserToGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+            ],
+        ],
+        'AddSubUserToGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'group' =>  [ 'shape' => 'GroupDetail', ],
+            ],
+        ],
+        'UpdateGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'updateGroupInfo' =>  [ 'shape' => 'UpdateGroupInfo', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+            ],
+        ],
+        'DescribeGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+            ],
+        ],
+        'CreateGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'createGroupInfo' =>  [ 'shape' => 'CreateGroupInfo', ],
+            ],
+        ],
+        'DetachGroupPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+            ],
+        ],
+        'RemoveSubUserFromGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+            ],
+        ],
+        'DescribeGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddSubUserToGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'RemovePermissionOfSubUserResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -852,10 +1283,234 @@ return [
             'members' => [
             ],
         ],
+        'DeletePolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeletePolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeletePolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+            ],
+        ],
+        'CreatePolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreatePolicyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdatePolicyDescriptionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreatePolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policy' =>  [ 'shape' => 'Policy', ],
+            ],
+        ],
+        'UpdatePolicyDescriptionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'updatePolicyDescriptionInfo' =>  [ 'shape' => 'UpdatePolicyDescriptionInfo', ],
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+            ],
+        ],
+        'DescribePolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policy' =>  [ 'shape' => 'PolicyDetail', ],
+            ],
+        ],
+        'DescribePolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+            ],
+        ],
+        'UpdatePolicyDescriptionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreatePolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'createPolicyInfo' =>  [ 'shape' => 'CreatePolicyInfo', ],
+            ],
+        ],
+        'DescribePolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribePolicyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateRoleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateRoleResultShape', ],
+            ],
+        ],
+        'UpdateAssumeRolePolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DetachRolePolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeRoleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRoleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeRoleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'roleInfo' =>  [ 'shape' => 'RoleInfo', ],
+            ],
+        ],
+        'DescribeRoleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+            ],
+        ],
+        'AttachRolePolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateRoleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'roleInfo' =>  [ 'shape' => 'RoleInfo', ],
+            ],
+        ],
+        'DeleteRoleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DetachRolePolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteRoleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+            ],
+        ],
+        'UpdateAssumeRolePolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'updateAssumeRolePolicyInfo' =>  [ 'shape' => 'UpdateAssumeRolePolicyInfo', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+            ],
+        ],
+        'AttachRolePolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateRoleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'createRoleInfo' =>  [ 'shape' => 'CreateRoleInfo', ],
+            ],
+        ],
+        'DeleteRoleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DetachRolePolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+            ],
+        ],
+        'AttachRolePolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+            ],
+        ],
+        'UpdateAssumeRolePolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateSubUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' =>  [ 'shape' => 'CreateSubUserRes', ],
+            ],
+        ],
+        'DeleteSubUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DetachSubUserPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeSubUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+            ],
+        ],
+        'DetachSubUserPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+            ],
+        ],
+        'DescribeSubUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' =>  [ 'shape' => 'SubUser', ],
+            ],
+        ],
         'CreateSubUserResultShape' => [
             'type' => 'structure',
             'members' => [
                 'subUser' =>  [ 'shape' => 'CreateSubUserRes', ],
+            ],
+        ],
+        'AttachSubUserPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateSubUserRequestShape' => [
@@ -864,10 +1519,60 @@ return [
                 'createSubUserInfo' =>  [ 'shape' => 'CreateSubUserInfo', ],
             ],
         ],
+        'DeleteSubUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+            ],
+        ],
         'CreateSubUserResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'CreateSubUserResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSubUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSubUserResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateSubUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'updateSubUserInfo' =>  [ 'shape' => 'UpdateSubUserInfo', ],
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+            ],
+        ],
+        'DeleteSubUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AttachSubUserPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+            ],
+        ],
+        'DetachSubUserPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AttachSubUserPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateSubUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateSubUserResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],

@@ -11,11 +11,20 @@ return [
 //        'serviceId' => 'rms',
     ],
     'operations' => [
+        'QueryPackageRemainder' => [
+            'name' => 'QueryPackageRemainder',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/queryPackageRemainder',
+            ],
+            'input' => [ 'shape' => 'QueryPackageRemainderRequestShape', ],
+            'output' => [ 'shape' => 'QueryPackageRemainderResponseShape', ],
+        ],
         'SendBatchMsg' => [
             'name' => 'SendBatchMsg',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/sendBatchMsg',
+                'requestUri' => '/v2/regions/{regionId}/sendBatchMsg',
             ],
             'input' => [ 'shape' => 'SendBatchMsgRequestShape', ],
             'output' => [ 'shape' => 'SendBatchMsgResponseShape', ],
@@ -24,7 +33,7 @@ return [
             'name' => 'QuerySendStatus',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/querySendStatus',
+                'requestUri' => '/v2/regions/{regionId}/querySendStatus',
             ],
             'input' => [ 'shape' => 'QuerySendStatusRequestShape', ],
             'output' => [ 'shape' => 'QuerySendStatusResponseShape', ],
@@ -33,57 +42,48 @@ return [
             'name' => 'AddTemplate',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/addTemplate',
+                'requestUri' => '/v2/regions/{regionId}/addTemplate',
             ],
             'input' => [ 'shape' => 'AddTemplateRequestShape', ],
             'output' => [ 'shape' => 'AddTemplateResponseShape', ],
         ],
-        'QueryOneTemplate' => [
-            'name' => 'QueryOneTemplate',
+        'QueryTemplateById' => [
+            'name' => 'QueryTemplateById',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/queryOneTemplate',
+                'requestUri' => '/v2/regions/{regionId}/queryTemplateById',
             ],
-            'input' => [ 'shape' => 'QueryOneTemplateRequestShape', ],
-            'output' => [ 'shape' => 'QueryOneTemplateResponseShape', ],
+            'input' => [ 'shape' => 'QueryTemplateByIdRequestShape', ],
+            'output' => [ 'shape' => 'QueryTemplateByIdResponseShape', ],
         ],
         'QueryTemplateList' => [
             'name' => 'QueryTemplateList',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/queryTemplateList',
+                'requestUri' => '/v2/regions/{regionId}/queryTemplateList',
             ],
             'input' => [ 'shape' => 'QueryTemplateListRequestShape', ],
             'output' => [ 'shape' => 'QueryTemplateListResponseShape', ],
         ],
     ],
     'shapes' => [
-        'RespAddTemplateData' => [
-            'type' => 'structure',
-            'members' => [
-                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
-            ],
-        ],
-        'RespQueryOneTemplateResourceList' => [
-            'type' => 'structure',
-            'members' => [
-                'size' => [ 'type' => 'string', 'locationName' => 'size', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
-                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
-                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
-            ],
-        ],
         'RespQueryTemplateListData' => [
             'type' => 'structure',
             'members' => [
-                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'contentSize' => [ 'type' => 'string', 'locationName' => 'contentSize', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
                 'title' => [ 'type' => 'string', 'locationName' => 'title', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'contentSize' => [ 'type' => 'string', 'locationName' => 'contentSize', ],
+                'aptitudesId' => [ 'type' => 'string', 'locationName' => 'aptitudesId', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'RespTemplateData' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
             ],
         ],
         'SendStatus' => [
@@ -91,7 +91,7 @@ return [
             'members' => [
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'sequenceNumber' => [ 'type' => 'string', 'locationName' => 'sequenceNumber', ],
                 'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
                 'mobileNum' => [ 'type' => 'string', 'locationName' => 'mobileNum', ],
                 'stateFlag' => [ 'type' => 'integer', 'locationName' => 'stateFlag', ],
@@ -101,9 +101,6 @@ return [
         'SendBatchMsg' => [
             'type' => 'structure',
             'members' => [
-                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'sequenceNumber' => [ 'type' => 'string', 'locationName' => 'sequenceNumber', ],
             ],
         ],
@@ -114,28 +111,39 @@ return [
                 'detailList' => [ 'type' => 'list', 'member' => [ 'shape' => 'SendStatus', ], ],
             ],
         ],
-        'QuerySendStatusSpec' => [
+        'TemplateContent' => [
             'type' => 'structure',
             'members' => [
-                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'fileType' => [ 'type' => 'string', 'locationName' => 'fileType', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
-        'SendBatchMsgSpec' => [
+        'QueryPackageRemainderRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-                'messageId' => [ 'type' => 'string', 'locationName' => 'messageId', ],
-                'phone' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'params' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'QueryAddTemplateContent' => [
+        'QueryPackageRemainderResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
-                'txt' => [ 'type' => 'string', 'locationName' => 'txt', ],
-                'file' => [ 'type' => 'string', 'locationName' => 'file', ],
+                'result' =>  [ 'shape' => 'QueryPackageRemainderResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RespPackageResult' => [
+            'type' => 'structure',
+            'members' => [
+                'remainder' => [ 'type' => 'long', 'locationName' => 'remainder', ],
+            ],
+        ],
+        'QueryPackageRemainderResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'RespPackageResult', ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'QuerySendStatusResponseShape' => [
@@ -155,7 +163,9 @@ return [
         'QuerySendStatusRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'querySendStatusSpec' =>  [ 'shape' => 'QuerySendStatusSpec', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'sequenceNumber' => [ 'type' => 'string', 'locationName' => 'sequenceNumber', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -163,12 +173,18 @@ return [
             'type' => 'structure',
             'members' => [
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'QuerySendStatus', ], ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'SendBatchMsgRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'sendBatchMsgSpec' =>  [ 'shape' => 'SendBatchMsgSpec', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'phone' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'params' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -176,41 +192,64 @@ return [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'SendBatchMsg', ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'AddTemplateResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'RespAddTemplateData', ], ],
+                'data' =>  [ 'shape' => 'RespTemplateData', ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'QueryTemplateByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryTemplateByIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'QueryTemplateListRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-                'searchKey' => [ 'type' => 'string', 'locationName' => 'searchKey', ],
-                'pageNum' => [ 'type' => 'string', 'locationName' => 'pageNum', ],
-                'pageLimit' => [ 'type' => 'string', 'locationName' => 'pageLimit', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageLimit' => [ 'type' => 'integer', 'locationName' => 'pageLimit', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'QueryOneTemplateResultShape' => [
+        'RespTemplatePageResult' => [
             'type' => 'structure',
             'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'RespQueryOneTemplateResourceList', ], ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'mediaLength' => [ 'type' => 'string', 'locationName' => 'mediaLength', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
-                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
-                'isTuiding' => [ 'type' => 'string', 'locationName' => 'isTuiding', ],
+                'count' => [ 'type' => 'long', 'locationName' => 'count', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageCount' => [ 'type' => 'integer', 'locationName' => 'pageCount', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'RespQueryTemplateListData', ], ],
+            ],
+        ],
+        'QueryTemplateByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'RespQueryTemplateListData', ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'QueryTemplateByIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'AddTemplateRequestShape' => [
@@ -223,8 +262,8 @@ return [
                 'aptitudes' => [ 'type' => 'string', 'locationName' => 'aptitudes', ],
                 'title' => [ 'type' => 'string', 'locationName' => 'title', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'isTuiding' => [ 'type' => 'string', 'locationName' => 'isTuiding', ],
-                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'QueryAddTemplateContent', ], ],
+                'unsubscribe' => [ 'type' => 'string', 'locationName' => 'unsubscribe', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TemplateContent', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -235,13 +274,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'QueryOneTemplateRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'QueryTemplateListResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -249,20 +281,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'QueryOneTemplateResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'QueryOneTemplateResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'QueryTemplateListResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'RespQueryTemplateListData', ], ],
+                'data' =>  [ 'shape' => 'RespTemplatePageResult', ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'totalElements' => [ 'type' => 'string', 'locationName' => 'totalElements', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
     ],

@@ -11,6 +11,15 @@ return [
 //        'serviceId' => 'sts',
     ],
     'operations' => [
+        'AssumeRole' => [
+            'name' => 'AssumeRole',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/sessionToken:assumeRole',
+            ],
+            'input' => [ 'shape' => 'AssumeRoleRequestShape', ],
+            'output' => [ 'shape' => 'AssumeRoleResponseShape', ],
+        ],
     ],
     'shapes' => [
         'AssumeRoleInfo' => [
@@ -18,7 +27,6 @@ return [
             'members' => [
                 'roleJrn' => [ 'type' => 'string', 'locationName' => 'roleJrn', ],
                 'roleSessionName' => [ 'type' => 'string', 'locationName' => 'roleSessionName', ],
-                'policy' => [ 'type' => 'string', 'locationName' => 'policy', ],
                 'durationSeconds' => [ 'type' => 'integer', 'locationName' => 'durationSeconds', ],
             ],
         ],
@@ -50,6 +58,25 @@ return [
                 'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
                 'sessionToken' => [ 'type' => 'string', 'locationName' => 'sessionToken', ],
                 'expiration' => [ 'type' => 'string', 'locationName' => 'expiration', ],
+            ],
+        ],
+        'AssumeRoleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'credentials' =>  [ 'shape' => 'Credentials', ],
+            ],
+        ],
+        'AssumeRoleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AssumeRoleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AssumeRoleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'assumeRoleInfo' =>  [ 'shape' => 'AssumeRoleInfo', ],
             ],
         ],
     ],

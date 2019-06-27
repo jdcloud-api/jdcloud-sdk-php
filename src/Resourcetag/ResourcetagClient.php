@@ -1,15 +1,15 @@
 <?php
 /**
- * Sts
+ * Resourcetag
  *
  * @category Jdcloud
- * @package  Jdcloud\Sts
+ * @package  Jdcloud\Resourcetag
  * @author   Jdcloud <jdcloud-api@jd.com>
  * @license  Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0
  * @link     https://www.jdcloud.com/help/faq
  */
 
-namespace Jdcloud\Sts;
+namespace Jdcloud\Resourcetag;
 
 use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
@@ -18,12 +18,14 @@ use Jdcloud\Api\ApiProvider;
 use Jdcloud\PresignUrlMiddleware;
 
 /**
- * Client used to interact with sts.
+ * Client used to interact with resourcetag.
  *
- * @method \Jdcloud\Result assumeRole(array $args = [])
- * @method \GuzzleHttp\Promise\Promise assumeRoleAsync(array $args = [])
+ * @method \Jdcloud\Result tagResources(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise tagResourcesAsync(array $args = [])
+ * @method \Jdcloud\Result unTagResources(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise unTagResourcesAsync(array $args = [])
  */
-class StsClient extends JdCloudClient
+class ResourcetagClient extends JdCloudClient
 {
     public function __construct(array $args)
     {
@@ -35,11 +37,11 @@ class StsClient extends JdCloudClient
                     [
                         'operations' => [
                         ],
-                        'service' => 'sts',
+                        'service' => 'resourcetag',
                         'presign_param' => 'PresignedUrl',
                     ]
                 ),
-                'sts'
+                'resourcetag'
             );
         };
 

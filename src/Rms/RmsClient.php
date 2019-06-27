@@ -20,14 +20,16 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with rms.
  *
+ * @method \Jdcloud\Result queryPackageRemainder(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryPackageRemainderAsync(array $args = [])
  * @method \Jdcloud\Result sendBatchMsg(array $args = [])
  * @method \GuzzleHttp\Promise\Promise sendBatchMsgAsync(array $args = [])
  * @method \Jdcloud\Result querySendStatus(array $args = [])
  * @method \GuzzleHttp\Promise\Promise querySendStatusAsync(array $args = [])
  * @method \Jdcloud\Result addTemplate(array $args = [])
  * @method \GuzzleHttp\Promise\Promise addTemplateAsync(array $args = [])
- * @method \Jdcloud\Result queryOneTemplate(array $args = [])
- * @method \GuzzleHttp\Promise\Promise queryOneTemplateAsync(array $args = [])
+ * @method \Jdcloud\Result queryTemplateById(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryTemplateByIdAsync(array $args = [])
  * @method \Jdcloud\Result queryTemplateList(array $args = [])
  * @method \GuzzleHttp\Promise\Promise queryTemplateListAsync(array $args = [])
  */

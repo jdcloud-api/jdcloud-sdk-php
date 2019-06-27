@@ -1,15 +1,15 @@
 <?php
 /**
- * Sts
+ * Order
  *
  * @category Jdcloud
- * @package  Jdcloud\Sts
+ * @package  Jdcloud\Order
  * @author   Jdcloud <jdcloud-api@jd.com>
  * @license  Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0
  * @link     https://www.jdcloud.com/help/faq
  */
 
-namespace Jdcloud\Sts;
+namespace Jdcloud\Order;
 
 use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
@@ -18,12 +18,16 @@ use Jdcloud\Api\ApiProvider;
 use Jdcloud\PresignUrlMiddleware;
 
 /**
- * Client used to interact with sts.
+ * Client used to interact with order.
  *
- * @method \Jdcloud\Result assumeRole(array $args = [])
- * @method \GuzzleHttp\Promise\Promise assumeRoleAsync(array $args = [])
+ * @method \Jdcloud\Result payOrder(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise payOrderAsync(array $args = [])
+ * @method \Jdcloud\Result queryOrders(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryOrdersAsync(array $args = [])
+ * @method \Jdcloud\Result queryOrder(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryOrderAsync(array $args = [])
  */
-class StsClient extends JdCloudClient
+class OrderClient extends JdCloudClient
 {
     public function __construct(array $args)
     {
@@ -35,11 +39,11 @@ class StsClient extends JdCloudClient
                     [
                         'operations' => [
                         ],
-                        'service' => 'sts',
+                        'service' => 'order',
                         'presign_param' => 'PresignedUrl',
                     ]
                 ),
-                'sts'
+                'order'
             );
         };
 

@@ -55,11 +55,15 @@ return [
     ],
     'rms' => [
         'namespace' => 'Rms',
-        'versions' => [ 'latest' => 'v1', ],
+        'versions' => [ 'latest' => 'v2', ],
     ],
     'portal' => [
         'namespace' => 'Portal',
         'versions' => [ 'latest' => 'v1', ],
+    ],
+    'order' => [
+        'namespace' => 'Order',
+        'versions' => [ 'latest' => 'v2', ],
     ],
     'clouddnsservice' => [
         'namespace' => 'Clouddnsservice',
@@ -161,6 +165,10 @@ return [
         'namespace' => 'Iothub',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'sms' => [
+        'namespace' => 'Sms',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'jcq' => [
         'namespace' => 'Jcq',
         'versions' => [ 'latest' => 'v1', ],
@@ -189,6 +197,10 @@ return [
         'namespace' => 'Jdfusion',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'renewal' => [
+        'namespace' => 'Renewal',
+        'versions' => [ 'latest' => 'v2', ],
+    ],
     'vpc' => [
         'namespace' => 'Vpc',
         'versions' => [ 'latest' => 'v1', ],
@@ -203,6 +215,10 @@ return [
     ],
     'cr' => [
         'namespace' => 'Cr',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'pipeline' => [
+        'namespace' => 'Pipeline',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'containerregistry' => [

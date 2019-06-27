@@ -524,14 +524,14 @@ return [
             'input' => [ 'shape' => 'QueryPushDomainORAppOrStreamRequestShape', ],
             'output' => [ 'shape' => 'QueryPushDomainORAppOrStreamResponseShape', ],
         ],
-        'CreateLiveDomain' => [
-            'name' => 'CreateLiveDomain',
+        'BatchCreateLiveDomain' => [
+            'name' => 'BatchCreateLiveDomain',
             'http' => [
                 'method' => 'POST',
                 'requestUri' => '/v1/liveDomain:batchCreate',
             ],
-            'input' => [ 'shape' => 'CreateLiveDomainRequestShape', ],
-            'output' => [ 'shape' => 'CreateLiveDomainResponseShape', ],
+            'input' => [ 'shape' => 'BatchCreateLiveDomainRequestShape', ],
+            'output' => [ 'shape' => 'BatchCreateLiveDomainResponseShape', ],
         ],
         'QueryLiveDomainDetail' => [
             'name' => 'QueryLiveDomainDetail',
@@ -568,6 +568,96 @@ return [
             ],
             'input' => [ 'shape' => 'QueryLivePrefetchTaskRequestShape', ],
             'output' => [ 'shape' => 'QueryLivePrefetchTaskResponseShape', ],
+        ],
+        'QueryRefreshTaskByIds' => [
+            'name' => 'QueryRefreshTaskByIds',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/task:queryByIds',
+            ],
+            'input' => [ 'shape' => 'QueryRefreshTaskByIdsRequestShape', ],
+            'output' => [ 'shape' => 'QueryRefreshTaskByIdsResponseShape', ],
+        ],
+        'QueryRefreshTaskById' => [
+            'name' => 'QueryRefreshTaskById',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/task/{taskId}',
+            ],
+            'input' => [ 'shape' => 'QueryRefreshTaskByIdRequestShape', ],
+            'output' => [ 'shape' => 'QueryRefreshTaskByIdResponseShape', ],
+        ],
+        'CreateRefreshTaskForCallback' => [
+            'name' => 'CreateRefreshTaskForCallback',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/task:createForCallback',
+            ],
+            'input' => [ 'shape' => 'CreateRefreshTaskForCallbackRequestShape', ],
+            'output' => [ 'shape' => 'CreateRefreshTaskForCallbackResponseShape', ],
+        ],
+        'CreateRefreshTaskForCallbackV2' => [
+            'name' => 'CreateRefreshTaskForCallbackV2',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/task:createForCallbackV2',
+            ],
+            'input' => [ 'shape' => 'CreateRefreshTaskForCallbackV2RequestShape', ],
+            'output' => [ 'shape' => 'CreateRefreshTaskForCallbackV2ResponseShape', ],
+        ],
+        'QueryRefreshTask' => [
+            'name' => 'QueryRefreshTask',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/task',
+            ],
+            'input' => [ 'shape' => 'QueryRefreshTaskRequestShape', ],
+            'output' => [ 'shape' => 'QueryRefreshTaskResponseShape', ],
+        ],
+        'CreateRefreshTask' => [
+            'name' => 'CreateRefreshTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/task',
+            ],
+            'input' => [ 'shape' => 'CreateRefreshTaskRequestShape', ],
+            'output' => [ 'shape' => 'CreateRefreshTaskResponseShape', ],
+        ],
+        'GetAllUpperNodeIpList' => [
+            'name' => 'GetAllUpperNodeIpList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/serviceNode:getAllUpperNodeIpList',
+            ],
+            'input' => [ 'shape' => 'GetAllUpperNodeIpListRequestShape', ],
+            'output' => [ 'shape' => 'GetAllUpperNodeIpListResponseShape', ],
+        ],
+        'GetSslCertList' => [
+            'name' => 'GetSslCertList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/sslCert',
+            ],
+            'input' => [ 'shape' => 'GetSslCertListRequestShape', ],
+            'output' => [ 'shape' => 'GetSslCertListResponseShape', ],
+        ],
+        'GetSslCertDetail' => [
+            'name' => 'GetSslCertDetail',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/sslCert/{sslCertId}',
+            ],
+            'input' => [ 'shape' => 'GetSslCertDetailRequestShape', ],
+            'output' => [ 'shape' => 'GetSslCertDetailResponseShape', ],
+        ],
+        'UploadCert' => [
+            'name' => 'UploadCert',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/sslCert:upload',
+            ],
+            'input' => [ 'shape' => 'UploadCertRequestShape', ],
+            'output' => [ 'shape' => 'UploadCertResponseShape', ],
         ],
         'QueryMixStatisticsData' => [
             'name' => 'QueryMixStatisticsData',
@@ -659,6 +749,24 @@ return [
             'input' => [ 'shape' => 'QueryStatisticsTopIpRequestShape', ],
             'output' => [ 'shape' => 'QueryStatisticsTopIpResponseShape', ],
         ],
+        'QueryDomainsLog' => [
+            'name' => 'QueryDomainsLog',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/logs',
+            ],
+            'input' => [ 'shape' => 'QueryDomainsLogRequestShape', ],
+            'output' => [ 'shape' => 'QueryDomainsLogResponseShape', ],
+        ],
+        'QueryDomainLog' => [
+            'name' => 'QueryDomainLog',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/domain/{domain}/log',
+            ],
+            'input' => [ 'shape' => 'QueryDomainLogRequestShape', ],
+            'output' => [ 'shape' => 'QueryDomainLogResponseShape', ],
+        ],
         'QueryStatisticsTopUrl' => [
             'name' => 'QueryStatisticsTopUrl',
             'http' => [
@@ -680,31 +788,6 @@ return [
                 'flowPercent' => [ 'type' => 'string', 'locationName' => 'flowPercent', ],
             ],
         ],
-        'OverviewTrafficItem' => [
-            'type' => 'structure',
-            'members' => [
-                'avgbandwidth' => [ 'type' => 'long', 'locationName' => 'avgbandwidth', ],
-                'flow' => [ 'type' => 'long', 'locationName' => 'flow', ],
-                'pv' => [ 'type' => 'long', 'locationName' => 'pv', ],
-                'maxavgbandwidthtime' => [ 'type' => 'string', 'locationName' => 'maxavgbandwidthtime', ],
-                'details' => [ 'type' => 'list', 'member' => [ 'shape' => 'OverviewTrafficDetailItem', ], ],
-            ],
-        ],
-        'DomainbdwItem' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'domainType' => [ 'type' => 'string', 'locationName' => 'domainType', ],
-                'timeStamp' => [ 'type' => 'long', 'locationName' => 'timeStamp', ],
-            ],
-        ],
-        'StreamDiagramItem' => [
-            'type' => 'structure',
-            'members' => [
-                'timeStamp' => [ 'type' => 'long', 'locationName' => 'timeStamp', ],
-                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
-            ],
-        ],
         'StreamTableItem' => [
             'type' => 'structure',
             'members' => [
@@ -720,80 +803,32 @@ return [
             'members' => [
                 'topKey' => [ 'type' => 'string', 'locationName' => 'topKey', ],
                 'topValue' => [ 'type' => 'object', 'locationName' => 'topValue', ],
-                'topFlowValue' => [ 'type' => 'double', 'locationName' => 'topFlowValue', ],
-                'topFlowPercent' => [ 'type' => 'string', 'locationName' => 'topFlowPercent', ],
+                'topDataValue' => [ 'type' => 'double', 'locationName' => 'topDataValue', ],
+                'topDataPercent' => [ 'type' => 'string', 'locationName' => 'topDataPercent', ],
                 'details' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopNRespItemDetail', ], ],
             ],
         ],
-        'CodeTypeDetailItem' => [
+        'TopUrlItem' => [
             'type' => 'structure',
             'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'count' => [ 'type' => 'long', 'locationName' => 'count', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
                 'rank' => [ 'type' => 'integer', 'locationName' => 'rank', ],
-                'percent' => [ 'type' => 'string', 'locationName' => 'percent', ],
-            ],
-        ],
-        'CodeDetailItem' => [
-            'type' => 'structure',
-            'members' => [
-                'timeStamp' => [ 'type' => 'long', 'locationName' => 'timeStamp', ],
-                'ok' => [ 'type' => 'long', 'locationName' => 'ok', ],
-                'badGateway' => [ 'type' => 'long', 'locationName' => 'badGateway', ],
-                'badRequest' => [ 'type' => 'long', 'locationName' => 'badRequest', ],
-                'forbidden' => [ 'type' => 'long', 'locationName' => 'forbidden', ],
-                'found' => [ 'type' => 'long', 'locationName' => 'found', ],
-                'gatewayTimeout' => [ 'type' => 'long', 'locationName' => 'gatewayTimeout', ],
-                'internalServerError' => [ 'type' => 'long', 'locationName' => 'internalServerError', ],
-                'movedPermanently' => [ 'type' => 'long', 'locationName' => 'movedPermanently', ],
-                'notFound' => [ 'type' => 'long', 'locationName' => 'notFound', ],
-                'notModified' => [ 'type' => 'long', 'locationName' => 'notModified', ],
-                'partialContent' => [ 'type' => 'long', 'locationName' => 'partialContent', ],
-                'requestedRangeNotSuitable' => [ 'type' => 'long', 'locationName' => 'requestedRangeNotSuitable', ],
-                'other' => [ 'type' => 'long', 'locationName' => 'other', ],
-                'serviceUnavailable' => [ 'type' => 'long', 'locationName' => 'serviceUnavailable', ],
+                'flow' => [ 'type' => 'double', 'locationName' => 'flow', ],
+                'flowUnit' => [ 'type' => 'string', 'locationName' => 'flowUnit', ],
+                'flowPercent' => [ 'type' => 'string', 'locationName' => 'flowPercent', ],
+                'pv' => [ 'type' => 'long', 'locationName' => 'pv', ],
+                'pvUnit' => [ 'type' => 'string', 'locationName' => 'pvUnit', ],
+                'pvPercent' => [ 'type' => 'string', 'locationName' => 'pvPercent', ],
+                'uv' => [ 'type' => 'long', 'locationName' => 'uv', ],
+                'uvUnit' => [ 'type' => 'string', 'locationName' => 'uvUnit', ],
+                'uvPercent' => [ 'type' => 'string', 'locationName' => 'uvPercent', ],
             ],
         ],
         'TopNRespItemDetail' => [
             'type' => 'structure',
             'members' => [
                 'timeStamp' => [ 'type' => 'long', 'locationName' => 'timeStamp', ],
-                'data' => [ 'type' => 'int64', 'locationName' => 'data', ],
-            ],
-        ],
-        'OripvTopItem' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'hitpv' => [ 'type' => 'long', 'locationName' => 'hitpv', ],
-                'pv' => [ 'type' => 'long', 'locationName' => 'pv', ],
-                'oripv' => [ 'type' => 'long', 'locationName' => 'oripv', ],
-                'oripvPercent' => [ 'type' => 'string', 'locationName' => 'oripvPercent', ],
-            ],
-        ],
-        'HitrationTableItem' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'domainType' => [ 'type' => 'string', 'locationName' => 'domainType', ],
-                'pv' => [ 'type' => 'long', 'locationName' => 'pv', ],
-                'hitpv' => [ 'type' => 'long', 'locationName' => 'hitpv', ],
-                'hitRatio' => [ 'type' => 'string', 'locationName' => 'hitRatio', ],
-            ],
-        ],
-        'OriBandwithDetailItem' => [
-            'type' => 'structure',
-            'members' => [
-                'timeStamp' => [ 'type' => 'long', 'locationName' => 'timeStamp', ],
-                'avgoribandwidth' => [ 'type' => 'double', 'locationName' => 'avgoribandwidth', ],
-            ],
-        ],
-        'TotalDetalItem' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
-                'oriData' => [ 'type' => 'object', 'locationName' => 'oriData', ],
-                'timeStamp' => [ 'type' => 'long', 'locationName' => 'timeStamp', ],
+                'data' => [ 'type' => 'double', 'locationName' => 'data', ],
             ],
         ],
         'CodeTypeItem' => [
@@ -806,33 +841,20 @@ return [
                 'details' => [ 'type' => 'list', 'member' => [ 'shape' => 'CodeTypeDetailItem', ], ],
             ],
         ],
-        'OriDiagramItem' => [
-            'type' => 'structure',
-            'members' => [
-                'oriRatio' => [ 'type' => 'string', 'locationName' => 'oriRatio', ],
-                'avgbandwidth' => [ 'type' => 'double', 'locationName' => 'avgbandwidth', ],
-                'avgoribandwidth' => [ 'type' => 'double', 'locationName' => 'avgoribandwidth', ],
-                'timeStamp' => [ 'type' => 'long', 'locationName' => 'timeStamp', ],
-            ],
-        ],
-        'OverviewTrafficDetailItem' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'long', 'locationName' => 'data', ],
-                'timeStamp' => [ 'type' => 'string', 'locationName' => 'timeStamp', ],
-            ],
-        ],
         'AvgspeedItem' => [
             'type' => 'structure',
             'members' => [
                 'area' => [ 'type' => 'string', 'locationName' => 'area', ],
-                'avgspeed' => [ 'type' => 'long', 'locationName' => 'avgspeed', ],
+                'avgspeed' => [ 'type' => 'double', 'locationName' => 'avgspeed', ],
+                'avgspeedUnit' => [ 'type' => 'string', 'locationName' => 'avgspeedUnit', ],
                 'firstpkgtime' => [ 'type' => 'double', 'locationName' => 'firstpkgtime', ],
+                'firstpkgtimeUnit' => [ 'type' => 'string', 'locationName' => 'firstpkgtimeUnit', ],
                 'errorRatio' => [ 'type' => 'double', 'locationName' => 'errorRatio', ],
                 'flow' => [ 'type' => 'double', 'locationName' => 'flow', ],
+                'flowUnit' => [ 'type' => 'string', 'locationName' => 'flowUnit', ],
                 'flowPercent' => [ 'type' => 'double', 'locationName' => 'flowPercent', ],
                 'pv' => [ 'type' => 'long', 'locationName' => 'pv', ],
-                'hitRatio' => [ 'type' => 'integer', 'locationName' => 'hitRatio', ],
+                'hitRatio' => [ 'type' => 'double', 'locationName' => 'hitRatio', ],
             ],
         ],
         'HitRatioDiagramItem' => [
@@ -866,14 +888,6 @@ return [
                 'topTimeStamp' => [ 'type' => 'long', 'locationName' => 'topTimeStamp', ],
             ],
         ],
-        'OribandwidthTopItem' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'total' => [ 'type' => 'double', 'locationName' => 'total', ],
-                'detail' => [ 'type' => 'list', 'member' => [ 'shape' => 'OriBandwithDetailItem', ], ],
-            ],
-        ],
         'OridbwTableItem' => [
             'type' => 'structure',
             'members' => [
@@ -893,17 +907,166 @@ return [
         'PushStreamInfoItem' => [
             'type' => 'structure',
             'members' => [
+                'app' => [ 'type' => 'string', 'locationName' => 'app', ],
                 'stream' => [ 'type' => 'string', 'locationName' => 'stream', ],
                 'clientIp' => [ 'type' => 'string', 'locationName' => 'clientIp', ],
-                'startTimeStamp' => [ 'type' => 'long', 'locationName' => 'startTimeStamp', ],
-                'endTimeStamp' => [ 'type' => 'long', 'locationName' => 'endTimeStamp', ],
+                'nodeIp' => [ 'type' => 'string', 'locationName' => 'nodeIp', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'duration' => [ 'type' => 'long', 'locationName' => 'duration', ],
+            ],
+        ],
+        'OverviewTrafficItem' => [
+            'type' => 'structure',
+            'members' => [
+                'avgbandwidth' => [ 'type' => 'long', 'locationName' => 'avgbandwidth', ],
+                'flow' => [ 'type' => 'long', 'locationName' => 'flow', ],
+                'pv' => [ 'type' => 'long', 'locationName' => 'pv', ],
+                'maxavgbandwidthtime' => [ 'type' => 'string', 'locationName' => 'maxavgbandwidthtime', ],
+                'details' => [ 'type' => 'list', 'member' => [ 'shape' => 'OverviewTrafficDetailItem', ], ],
+            ],
+        ],
+        'DomainbdwItem' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'domainType' => [ 'type' => 'string', 'locationName' => 'domainType', ],
+                'topTimeStamp' => [ 'type' => 'long', 'locationName' => 'topTimeStamp', ],
+                'pv' => [ 'type' => 'long', 'locationName' => 'pv', ],
+                'flow' => [ 'type' => 'double', 'locationName' => 'flow', ],
+                'avgbandwidth' => [ 'type' => 'double', 'locationName' => 'avgbandwidth', ],
+            ],
+        ],
+        'StreamDiagramItem' => [
+            'type' => 'structure',
+            'members' => [
+                'timeStamp' => [ 'type' => 'long', 'locationName' => 'timeStamp', ],
+                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
+            ],
+        ],
+        'CodeTypeDetailItem' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'count' => [ 'type' => 'long', 'locationName' => 'count', ],
+                'rank' => [ 'type' => 'integer', 'locationName' => 'rank', ],
+                'percent' => [ 'type' => 'string', 'locationName' => 'percent', ],
+            ],
+        ],
+        'CodeDetailItem' => [
+            'type' => 'structure',
+            'members' => [
+                'timeStamp' => [ 'type' => 'long', 'locationName' => 'timeStamp', ],
+                'ok' => [ 'type' => 'double', 'locationName' => 'ok', ],
+                'badGateway' => [ 'type' => 'double', 'locationName' => 'badGateway', ],
+                'badRequest' => [ 'type' => 'double', 'locationName' => 'badRequest', ],
+                'forbidden' => [ 'type' => 'double', 'locationName' => 'forbidden', ],
+                'found' => [ 'type' => 'double', 'locationName' => 'found', ],
+                'gatewayTimeout' => [ 'type' => 'double', 'locationName' => 'gatewayTimeout', ],
+                'internalServerError' => [ 'type' => 'double', 'locationName' => 'internalServerError', ],
+                'movedPermanently' => [ 'type' => 'double', 'locationName' => 'movedPermanently', ],
+                'notFound' => [ 'type' => 'double', 'locationName' => 'notFound', ],
+                'notModified' => [ 'type' => 'double', 'locationName' => 'notModified', ],
+                'partialContent' => [ 'type' => 'double', 'locationName' => 'partialContent', ],
+                'requestedRangeNotSuitable' => [ 'type' => 'double', 'locationName' => 'requestedRangeNotSuitable', ],
+                'other' => [ 'type' => 'double', 'locationName' => 'other', ],
+                'serviceUnavailable' => [ 'type' => 'double', 'locationName' => 'serviceUnavailable', ],
+            ],
+        ],
+        'OripvTopItem' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'hitpv' => [ 'type' => 'long', 'locationName' => 'hitpv', ],
+                'pv' => [ 'type' => 'long', 'locationName' => 'pv', ],
+                'oripv' => [ 'type' => 'long', 'locationName' => 'oripv', ],
+                'oripvPercent' => [ 'type' => 'string', 'locationName' => 'oripvPercent', ],
+            ],
+        ],
+        'HitrationTableItem' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'domainType' => [ 'type' => 'string', 'locationName' => 'domainType', ],
+                'pv' => [ 'type' => 'long', 'locationName' => 'pv', ],
+                'hitPv' => [ 'type' => 'long', 'locationName' => 'hitPv', ],
+                'oriPV' => [ 'type' => 'long', 'locationName' => 'oriPV', ],
+                'hitRatio' => [ 'type' => 'string', 'locationName' => 'hitRatio', ],
+            ],
+        ],
+        'OriBandwithDetailItem' => [
+            'type' => 'structure',
+            'members' => [
+                'timeStamp' => [ 'type' => 'long', 'locationName' => 'timeStamp', ],
+                'avgoribandwidth' => [ 'type' => 'double', 'locationName' => 'avgoribandwidth', ],
+            ],
+        ],
+        'TotalDetalItem' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
+                'oriData' => [ 'type' => 'object', 'locationName' => 'oriData', ],
+                'timeStamp' => [ 'type' => 'long', 'locationName' => 'timeStamp', ],
+            ],
+        ],
+        'OriDiagramItem' => [
+            'type' => 'structure',
+            'members' => [
+                'oriRatio' => [ 'type' => 'string', 'locationName' => 'oriRatio', ],
+                'avgbandwidth' => [ 'type' => 'double', 'locationName' => 'avgbandwidth', ],
+                'avgoribandwidth' => [ 'type' => 'double', 'locationName' => 'avgoribandwidth', ],
+                'timeStamp' => [ 'type' => 'long', 'locationName' => 'timeStamp', ],
+            ],
+        ],
+        'OnlineStreamInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'app' => [ 'type' => 'string', 'locationName' => 'app', ],
+                'stream' => [ 'type' => 'string', 'locationName' => 'stream', ],
+                'clientIp' => [ 'type' => 'string', 'locationName' => 'clientIp', ],
+                'serverIp' => [ 'type' => 'string', 'locationName' => 'serverIp', ],
+                'frameRate' => [ 'type' => 'double', 'locationName' => 'frameRate', ],
+                'frameLossRate' => [ 'type' => 'double', 'locationName' => 'frameLossRate', ],
+                'lastActive' => [ 'type' => 'long', 'locationName' => 'lastActive', ],
+                'realFps' => [ 'type' => 'long', 'locationName' => 'realFps', ],
+                'uploadSpeed' => [ 'type' => 'long', 'locationName' => 'uploadSpeed', ],
+                'videoCodecId' => [ 'type' => 'long', 'locationName' => 'videoCodecId', ],
+                'videoDataRate' => [ 'type' => 'long', 'locationName' => 'videoDataRate', ],
+                'audioCodecId' => [ 'type' => 'long', 'locationName' => 'audioCodecId', ],
+            ],
+        ],
+        'OverviewTrafficDetailItem' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'long', 'locationName' => 'data', ],
+                'timeStamp' => [ 'type' => 'string', 'locationName' => 'timeStamp', ],
+            ],
+        ],
+        'OribandwidthTopItem' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'total' => [ 'type' => 'double', 'locationName' => 'total', ],
+                'details' => [ 'type' => 'list', 'member' => [ 'shape' => 'OriBandwithDetailItem', ], ],
+            ],
+        ],
+        'AreaIspbdwDetailItem' => [
+            'type' => 'structure',
+            'members' => [
+                'area' => [ 'type' => 'string', 'locationName' => 'area', ],
+                'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
+                'flowPercent' => [ 'type' => 'string', 'locationName' => 'flowPercent', ],
+                'pvPercent' => [ 'type' => 'string', 'locationName' => 'pvPercent', ],
+                'avgbandwidth' => [ 'type' => 'double', 'locationName' => 'avgbandwidth', ],
+                'flow' => [ 'type' => 'double', 'locationName' => 'flow', ],
+                'pv' => [ 'type' => 'long', 'locationName' => 'pv', ],
+                'topTimeStamp' => [ 'type' => 'long', 'locationName' => 'topTimeStamp', ],
             ],
         ],
         'AreaIspItem' => [
             'type' => 'structure',
             'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'code' => [ 'type' => 'string', 'locationName' => 'code', ],
             ],
         ],
@@ -912,8 +1075,9 @@ return [
             'members' => [
                 'stream' => [ 'type' => 'string', 'locationName' => 'stream', ],
                 'app' => [ 'type' => 'string', 'locationName' => 'app', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'forbiddenType' => [ 'type' => 'string', 'locationName' => 'forbiddenType', ],
                 'ttl' => [ 'type' => 'long', 'locationName' => 'ttl', ],
+                'forbiddenTypeDesc' => [ 'type' => 'string', 'locationName' => 'forbiddenTypeDesc', ],
             ],
         ],
         'DeleteStream' => [
@@ -930,6 +1094,14 @@ return [
                 'id' => [ 'type' => 'long', 'locationName' => 'id', ],
             ],
         ],
+        'UrlItemV2' => [
+            'type' => 'structure',
+            'members' => [
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'urlId' => [ 'type' => 'string', 'locationName' => 'urlId', ],
+                'callbackUrl' => [ 'type' => 'string', 'locationName' => 'callbackUrl', ],
+            ],
+        ],
         'ExtraCacheTime' => [
             'type' => 'structure',
             'members' => [
@@ -944,6 +1116,14 @@ return [
                 'headerName' => [ 'type' => 'string', 'locationName' => 'headerName', ],
                 'headerValue' => [ 'type' => 'string', 'locationName' => 'headerValue', ],
                 'headerOp' => [ 'type' => 'string', 'locationName' => 'headerOp', ],
+            ],
+        ],
+        'UrlTask' => [
+            'type' => 'structure',
+            'members' => [
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
         'ProtocolConvert' => [
@@ -1021,15 +1201,23 @@ return [
                 'defaultSourceHost' => [ 'type' => 'string', 'locationName' => 'defaultSourceHost', ],
             ],
         ],
+        'UrlItem' => [
+            'type' => 'structure',
+            'members' => [
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'urlId' => [ 'type' => 'long', 'locationName' => 'urlId', ],
+            ],
+        ],
         'ForbiddenStreamHistoryItem' => [
             'type' => 'structure',
             'members' => [
                 'stream' => [ 'type' => 'string', 'locationName' => 'stream', ],
                 'app' => [ 'type' => 'string', 'locationName' => 'app', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'forbiddenType' => [ 'type' => 'string', 'locationName' => 'forbiddenType', ],
                 'ttl' => [ 'type' => 'long', 'locationName' => 'ttl', ],
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'forbiddenTypeDesc' => [ 'type' => 'string', 'locationName' => 'forbiddenTypeDesc', ],
             ],
         ],
         'FeeDomain' => [
@@ -1057,6 +1245,20 @@ return [
                 'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
             ],
         ],
+        'RefreshTask' => [
+            'type' => 'structure',
+            'members' => [
+                'createDate' => [ 'type' => 'string', 'locationName' => 'createDate', ],
+                'failed' => [ 'type' => 'float', 'locationName' => 'failed', ],
+                'success' => [ 'type' => 'float', 'locationName' => 'success', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'retryStatus' => [ 'type' => 'string', 'locationName' => 'retryStatus', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'urlTasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'UrlTask', ], ],
+            ],
+        ],
         'DomainGroupItem' => [
             'type' => 'structure',
             'members' => [
@@ -1082,6 +1284,22 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
+        'SslCertModel' => [
+            'type' => 'structure',
+            'members' => [
+                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
+                'certName' => [ 'type' => 'string', 'locationName' => 'certName', ],
+                'commonName' => [ 'type' => 'string', 'locationName' => 'commonName', ],
+                'certType' => [ 'type' => 'string', 'locationName' => 'certType', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'deletable' => [ 'type' => 'integer', 'locationName' => 'deletable', ],
+                'digest' => [ 'type' => 'string', 'locationName' => 'digest', ],
+                'aliasName' => [ 'type' => 'string', 'locationName' => 'aliasName', ],
+                'dnsNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'downloadable' => [ 'type' => 'integer', 'locationName' => 'downloadable', ],
+            ],
+        ],
         'StatisticsTopUrlData' => [
             'type' => 'structure',
             'members' => [
@@ -1094,6 +1312,17 @@ return [
             'members' => [
                 'area' => [ 'type' => 'string', 'locationName' => 'area', ],
                 'ispStat' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+            ],
+        ],
+        'DomainLog' => [
+            'type' => 'structure',
+            'members' => [
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'md5' => [ 'type' => 'string', 'locationName' => 'md5', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'size' => [ 'type' => 'long', 'locationName' => 'size', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
             ],
         ],
         'StatisticsTopIpItem' => [
@@ -1152,6 +1381,58 @@ return [
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'data' => [ 'type' => 'object', 'locationName' => 'data', ],
+            ],
+        ],
+        'DomainsLog' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'domainLogs' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainLog', ], ],
+            ],
+        ],
+        'StreamHistoryInfoForYY' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'avgupspeed' => [ 'type' => 'long', 'locationName' => 'avgupspeed', ],
+                'avgupframerate' => [ 'type' => 'long', 'locationName' => 'avgupframerate', ],
+                'pushEdgeNodeIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'anchorIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'flvBandWidth' => [ 'type' => 'long', 'locationName' => 'flvBandWidth', ],
+                'flvPlayerCount' => [ 'type' => 'long', 'locationName' => 'flvPlayerCount', ],
+                'hlsBandWidth' => [ 'type' => 'long', 'locationName' => 'hlsBandWidth', ],
+                'hlsPlayerCount' => [ 'type' => 'long', 'locationName' => 'hlsPlayerCount', ],
+            ],
+        ],
+        'StreamRankingForYY' => [
+            'type' => 'structure',
+            'members' => [
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'ranking' => [ 'type' => 'integer', 'locationName' => 'ranking', ],
+                'playerCount' => [ 'type' => 'long', 'locationName' => 'playerCount', ],
+            ],
+        ],
+        'AccessUserlogModel' => [
+            'type' => 'structure',
+            'members' => [
+                'logUrl' => [ 'type' => 'string', 'locationName' => 'logUrl', ],
+                'logSize' => [ 'type' => 'long', 'locationName' => 'logSize', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'UserLogInfoModel' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'logFileFullPath' => [ 'type' => 'string', 'locationName' => 'logFileFullPath', ],
+                'interval' => [ 'type' => 'string', 'locationName' => 'interval', ],
+                'logType' => [ 'type' => 'string', 'locationName' => 'logType', ],
+                'logSize' => [ 'type' => 'long', 'locationName' => 'logSize', ],
+                'logMD5' => [ 'type' => 'string', 'locationName' => 'logMD5', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
             ],
         ],
         'QueryOnlineBillingTypeResponseShape' => [
@@ -1571,6 +1852,10 @@ return [
                 'certificate' => [ 'type' => '', 'locationName' => 'certificate', ],
                 'rsaKey' => [ 'type' => '', 'locationName' => 'rsaKey', ],
                 'jumpType' => [ 'type' => '', 'locationName' => 'jumpType', ],
+                'certFrom' => [ 'type' => '', 'locationName' => 'certFrom', ],
+                'sslCertId' => [ 'type' => '', 'locationName' => 'sslCertId', ],
+                'syncToSsl' => [ 'type' => '', 'locationName' => 'syncToSsl', ],
+                'certName' => [ 'type' => '', 'locationName' => 'certName', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
@@ -2195,6 +2480,12 @@ return [
                 'certificate' => [ 'type' => 'string', 'locationName' => 'certificate', ],
                 'rsaKey' => [ 'type' => 'string', 'locationName' => 'rsaKey', ],
                 'jumpType' => [ 'type' => 'string', 'locationName' => 'jumpType', ],
+                'certFrom' => [ 'type' => 'string', 'locationName' => 'certFrom', ],
+                'sslCertId' => [ 'type' => 'string', 'locationName' => 'sslCertId', ],
+                'certName' => [ 'type' => 'string', 'locationName' => 'certName', ],
+                'certType' => [ 'type' => 'string', 'locationName' => 'certType', ],
+                'sslCertStartTime' => [ 'type' => 'string', 'locationName' => 'sslCertStartTime', ],
+                'sslCertEndTime' => [ 'type' => 'string', 'locationName' => 'sslCertEndTime', ],
             ],
         ],
         'BatchCreateResultShape' => [
@@ -2283,6 +2574,10 @@ return [
             'members' => [
                 'certificate' => [ 'type' => '', 'locationName' => 'certificate', ],
                 'rsaKey' => [ 'type' => '', 'locationName' => 'rsaKey', ],
+                'certFrom' => [ 'type' => '', 'locationName' => 'certFrom', ],
+                'sslCertId' => [ 'type' => '', 'locationName' => 'sslCertId', ],
+                'syncToSsl' => [ 'type' => '', 'locationName' => 'syncToSsl', ],
+                'certName' => [ 'type' => '', 'locationName' => 'certName', ],
                 'protocolConverts' => [ 'type' => '', 'locationName' => 'protocolConverts', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
@@ -2387,7 +2682,13 @@ return [
                 'result' =>  [ 'shape' => 'DeleteForbiddenStreamResultShape', ],
             ],
         ],
-        'CreateLiveDomainRequestShape' => [
+        'QueryLiveDomainDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'BatchCreateLiveDomainRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'playDomain' => [ 'type' => '', 'locationName' => 'playDomain', ],
@@ -2401,22 +2702,11 @@ return [
                 'domainSource' => [ 'type' => '', 'locationName' => 'domainSource', ],
             ],
         ],
-        'CreateLiveDomainResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'CreateLiveDomainResponseShape' => [
+        'BatchCreateLiveDomainResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'CreateLiveDomainResultShape', ],
-            ],
-        ],
-        'QueryLiveDomainDetailRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'result' =>  [ 'shape' => 'BatchCreateLiveDomainResultShape', ],
             ],
         ],
         'QueryLiveDomainAppsResultShape' => [
@@ -2492,12 +2782,23 @@ return [
                 'publishNormalTimeout' => [ 'type' => 'string', 'locationName' => 'publishNormalTimeout', ],
                 'notifyCustomUrl' => [ 'type' => 'string', 'locationName' => 'notifyCustomUrl', ],
                 'notifyCustomAuthKey' => [ 'type' => 'string', 'locationName' => 'notifyCustomAuthKey', ],
+                'certFrom' => [ 'type' => 'string', 'locationName' => 'certFrom', ],
+                'sslCertId' => [ 'type' => 'string', 'locationName' => 'sslCertId', ],
+                'certName' => [ 'type' => 'string', 'locationName' => 'certName', ],
+                'certType' => [ 'type' => 'string', 'locationName' => 'certType', ],
+                'sslCertStartTime' => [ 'type' => 'string', 'locationName' => 'sslCertStartTime', ],
+                'sslCertEndTime' => [ 'type' => 'string', 'locationName' => 'sslCertEndTime', ],
             ],
         ],
         'QueryLiveDomainAppsRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'BatchCreateLiveDomainResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'CreateLiveDomainPrefecthTaskResultShape' => [
@@ -2539,6 +2840,227 @@ return [
                 'result' =>  [ 'shape' => 'QueryLivePrefetchTaskResultShape', ],
             ],
         ],
+        'QueryRefreshTaskByIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'QueryRefreshTaskByIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'task' =>  [ 'shape' => 'RefreshTask', ],
+            ],
+        ],
+        'QueryRefreshTaskByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryRefreshTaskByIdResultShape', ],
+            ],
+        ],
+        'QueryRefreshTaskByIdsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'RefreshTask', ], ],
+            ],
+        ],
+        'CreateRefreshTaskForCallbackResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'errorCount' => [ 'type' => 'integer', 'locationName' => 'errorCount', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'QueryRefreshTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => '', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => '', 'locationName' => 'endTime', ],
+                'keyword' => [ 'type' => '', 'locationName' => 'keyword', ],
+                'taskId' => [ 'type' => '', 'locationName' => 'taskId', ],
+                'taskStatus' => [ 'type' => '', 'locationName' => 'taskStatus', ],
+                'taskType' => [ 'type' => '', 'locationName' => 'taskType', ],
+                'pageNumber' => [ 'type' => '', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => '', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'QueryRefreshTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'RefreshTask', ], ],
+            ],
+        ],
+        'CreateRefreshTaskForCallbackV2RequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskType' => [ 'type' => '', 'locationName' => 'taskType', ],
+                'urlItems' => [ 'type' => '', 'locationName' => 'urlItems', ],
+            ],
+        ],
+        'CreateRefreshTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateRefreshTaskResultShape', ],
+            ],
+        ],
+        'CreateRefreshTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'errorCount' => [ 'type' => 'integer', 'locationName' => 'errorCount', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'CreateRefreshTaskForCallbackRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskType' => [ 'type' => '', 'locationName' => 'taskType', ],
+                'urlItems' => [ 'type' => '', 'locationName' => 'urlItems', ],
+            ],
+        ],
+        'CreateRefreshTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskType' => [ 'type' => '', 'locationName' => 'taskType', ],
+                'urls' => [ 'type' => '', 'locationName' => 'urls', ],
+            ],
+        ],
+        'QueryRefreshTaskByIdsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskIds' => [ 'type' => '', 'locationName' => 'taskIds', ],
+                'keyword' => [ 'type' => '', 'locationName' => 'keyword', ],
+            ],
+        ],
+        'CreateRefreshTaskForCallbackV2ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'errorCount' => [ 'type' => 'integer', 'locationName' => 'errorCount', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'CreateRefreshTaskForCallbackV2ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateRefreshTaskForCallbackV2ResultShape', ],
+            ],
+        ],
+        'QueryRefreshTaskByIdsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryRefreshTaskByIdsResultShape', ],
+            ],
+        ],
+        'CreateRefreshTaskForCallbackResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateRefreshTaskForCallbackResultShape', ],
+            ],
+        ],
+        'QueryRefreshTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryRefreshTaskResultShape', ],
+            ],
+        ],
+        'GetAllUpperNodeIpListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetAllUpperNodeIpListResultShape', ],
+            ],
+        ],
+        'GetAllUpperNodeIpListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetAllUpperNodeIpListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ipList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'GetSslCertListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'UploadCertResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
+                'digest' => [ 'type' => 'string', 'locationName' => 'digest', ],
+            ],
+        ],
+        'UploadCertResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UploadCertResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UploadCertRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certName' => [ 'type' => 'string', 'locationName' => 'certName', ],
+                'keyFile' => [ 'type' => 'string', 'locationName' => 'keyFile', ],
+                'certFile' => [ 'type' => 'string', 'locationName' => 'certFile', ],
+                'aliasName' => [ 'type' => 'string', 'locationName' => 'aliasName', ],
+            ],
+        ],
+        'GetSslCertListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certList' => [ 'type' => 'list', 'member' => [ 'shape' => 'SslCertModel', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'GetSslCertDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetSslCertDetailResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetSslCertListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetSslCertListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetSslCertDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'sslCertId' => [ 'type' => 'string', 'locationName' => 'sslCertId', ],
+            ],
+        ],
+        'GetSslCertDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
+                'certName' => [ 'type' => 'string', 'locationName' => 'certName', ],
+                'commonName' => [ 'type' => 'string', 'locationName' => 'commonName', ],
+                'certType' => [ 'type' => 'string', 'locationName' => 'certType', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'deletable' => [ 'type' => 'integer', 'locationName' => 'deletable', ],
+                'digest' => [ 'type' => 'string', 'locationName' => 'digest', ],
+                'aliasName' => [ 'type' => 'string', 'locationName' => 'aliasName', ],
+                'dnsNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'downloadable' => [ 'type' => 'integer', 'locationName' => 'downloadable', ],
+            ],
+        ],
         'QueryLiveStatisticsDataResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2546,6 +3068,12 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'statistics' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsDataItem', ], ],
+            ],
+        ],
+        'QueryDomainsLogResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'logs' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainsLog', ], ],
             ],
         ],
         'QueryStatisticsTopUrlResultShape' => [
@@ -2557,27 +3085,14 @@ return [
                 'urlData' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsTopUrlData', ], ],
             ],
         ],
-        'QueryStatisticsDataGroupByAreaResponseShape' => [
+        'QueryDomainsLogRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryStatisticsDataGroupByAreaResultShape', ],
-            ],
-        ],
-        'QueryMixStatisticsWithAreaDataResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryMixStatisticsWithAreaDataResultShape', ],
-            ],
-        ],
-        'QueryLiveTrafficGroupSumResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'statistics' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsGroupSumDataItem', ], ],
+                'domains' => [ 'type' => '', 'locationName' => 'domains', ],
+                'startTime' => [ 'type' => '', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => '', 'locationName' => 'endTime', ],
+                'interval' => [ 'type' => '', 'locationName' => 'interval', ],
+                'logType' => [ 'type' => '', 'locationName' => 'logType', ],
             ],
         ],
         'QueryStatisticsDataGroupByAreaResultShape' => [
@@ -2589,35 +3104,11 @@ return [
                 'statistics' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsWithAreaGroupDetail', ], ],
             ],
         ],
-        'QueryStatisticsDataGroupSumResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'statistics' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsGroupSumDataItem', ], ],
-            ],
-        ],
         'QueryStatisticsDataResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'QueryStatisticsDataResultShape', ],
-            ],
-        ],
-        'QueryStatisticsDataGroupByAreaRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'startTime' => [ 'type' => '', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => '', 'locationName' => 'endTime', ],
-                'domain' => [ 'type' => '', 'locationName' => 'domain', ],
-                'subDomain' => [ 'type' => '', 'locationName' => 'subDomain', ],
-                'fields' => [ 'type' => '', 'locationName' => 'fields', ],
-                'area' => [ 'type' => '', 'locationName' => 'area', ],
-                'isp' => [ 'type' => '', 'locationName' => 'isp', ],
-                'origin' => [ 'type' => '', 'locationName' => 'origin', ],
-                'period' => [ 'type' => '', 'locationName' => 'period', ],
-                'groupBy' => [ 'type' => '', 'locationName' => 'groupBy', ],
             ],
         ],
         'QueryMixTrafficGroupSumResultShape' => [
@@ -2629,53 +3120,21 @@ return [
                 'statistics' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsGroupSumDataItem', ], ],
             ],
         ],
-        'QueryMixTrafficGroupSumResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryMixTrafficGroupSumResultShape', ],
-            ],
-        ],
         'QueryLiveStatisticsDataRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'startTime' => [ 'type' => '', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => '', 'locationName' => 'endTime', ],
                 'domain' => [ 'type' => '', 'locationName' => 'domain', ],
-                'appname' => [ 'type' => '', 'locationName' => 'appname', ],
-                'streamname' => [ 'type' => '', 'locationName' => 'streamname', ],
-                'subDomain' => [ 'type' => '', 'locationName' => 'subDomain', ],
-                'fields' => [ 'type' => '', 'locationName' => 'fields', ],
-                'area' => [ 'type' => '', 'locationName' => 'area', ],
-                'isp' => [ 'type' => '', 'locationName' => 'isp', ],
-                'reqMethod' => [ 'type' => '', 'locationName' => 'reqMethod', ],
-                'scheme' => [ 'type' => '', 'locationName' => 'scheme', ],
-                'period' => [ 'type' => '', 'locationName' => 'period', ],
-            ],
-        ],
-        'QueryLiveStatisticsAreaDataGroupByResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryLiveStatisticsAreaDataGroupByResultShape', ],
-            ],
-        ],
-        'QueryLiveTrafficGroupSumRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'startTime' => [ 'type' => '', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => '', 'locationName' => 'endTime', ],
-                'domain' => [ 'type' => '', 'locationName' => 'domain', ],
-                'subDomain' => [ 'type' => '', 'locationName' => 'subDomain', ],
                 'appName' => [ 'type' => '', 'locationName' => 'appName', ],
                 'streamName' => [ 'type' => '', 'locationName' => 'streamName', ],
+                'subDomain' => [ 'type' => '', 'locationName' => 'subDomain', ],
                 'fields' => [ 'type' => '', 'locationName' => 'fields', ],
                 'area' => [ 'type' => '', 'locationName' => 'area', ],
                 'isp' => [ 'type' => '', 'locationName' => 'isp', ],
+                'reqMethod' => [ 'type' => '', 'locationName' => 'reqMethod', ],
                 'scheme' => [ 'type' => '', 'locationName' => 'scheme', ],
                 'period' => [ 'type' => '', 'locationName' => 'period', ],
-                'groupBy' => [ 'type' => '', 'locationName' => 'groupBy', ],
-                'reqMethod' => [ 'type' => '', 'locationName' => 'reqMethod', ],
             ],
         ],
         'QueryLiveStatisticsDataResponseShape' => [
@@ -2703,6 +3162,151 @@ return [
                 'statistics' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsDataItem', ], ],
             ],
         ],
+        'QueryStatisticsTopIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'ipData' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsTopIpData', ], ],
+            ],
+        ],
+        'QueryLiveStatisticsAreaDataGroupByResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'statistics' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsWithAreaGroupDetail', ], ],
+            ],
+        ],
+        'QueryMixStatisticsDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryMixStatisticsDataResultShape', ],
+            ],
+        ],
+        'QueryMixTrafficGroupSumRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => '', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => '', 'locationName' => 'endTime', ],
+                'domain' => [ 'type' => '', 'locationName' => 'domain', ],
+                'fields' => [ 'type' => '', 'locationName' => 'fields', ],
+                'area' => [ 'type' => '', 'locationName' => 'area', ],
+                'isp' => [ 'type' => '', 'locationName' => 'isp', ],
+                'period' => [ 'type' => '', 'locationName' => 'period', ],
+                'groupBy' => [ 'type' => '', 'locationName' => 'groupBy', ],
+            ],
+        ],
+        'QueryDomainLogResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'urls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainLog', ], ],
+            ],
+        ],
+        'QueryStatisticsDataGroupByAreaResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryStatisticsDataGroupByAreaResultShape', ],
+            ],
+        ],
+        'QueryMixStatisticsWithAreaDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryMixStatisticsWithAreaDataResultShape', ],
+            ],
+        ],
+        'QueryLiveTrafficGroupSumResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'statistics' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsGroupSumDataItem', ], ],
+            ],
+        ],
+        'QueryStatisticsDataGroupSumResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'statistics' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsGroupSumDataItem', ], ],
+            ],
+        ],
+        'QueryStatisticsDataGroupByAreaRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => '', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => '', 'locationName' => 'endTime', ],
+                'domain' => [ 'type' => '', 'locationName' => 'domain', ],
+                'subDomain' => [ 'type' => '', 'locationName' => 'subDomain', ],
+                'fields' => [ 'type' => '', 'locationName' => 'fields', ],
+                'area' => [ 'type' => '', 'locationName' => 'area', ],
+                'isp' => [ 'type' => '', 'locationName' => 'isp', ],
+                'origin' => [ 'type' => '', 'locationName' => 'origin', ],
+                'period' => [ 'type' => '', 'locationName' => 'period', ],
+                'groupBy' => [ 'type' => '', 'locationName' => 'groupBy', ],
+            ],
+        ],
+        'QueryMixTrafficGroupSumResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryMixTrafficGroupSumResultShape', ],
+            ],
+        ],
+        'QueryLiveStatisticsAreaDataGroupByResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryLiveStatisticsAreaDataGroupByResultShape', ],
+            ],
+        ],
+        'QueryLiveTrafficGroupSumRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => '', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => '', 'locationName' => 'endTime', ],
+                'domain' => [ 'type' => '', 'locationName' => 'domain', ],
+                'subDomain' => [ 'type' => '', 'locationName' => 'subDomain', ],
+                'appName' => [ 'type' => '', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => '', 'locationName' => 'streamName', ],
+                'fields' => [ 'type' => '', 'locationName' => 'fields', ],
+                'area' => [ 'type' => '', 'locationName' => 'area', ],
+                'isp' => [ 'type' => '', 'locationName' => 'isp', ],
+                'scheme' => [ 'type' => '', 'locationName' => 'scheme', ],
+                'period' => [ 'type' => '', 'locationName' => 'period', ],
+                'groupBy' => [ 'type' => '', 'locationName' => 'groupBy', ],
+                'reqMethod' => [ 'type' => '', 'locationName' => 'reqMethod', ],
+            ],
+        ],
+        'QueryDomainLogRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => '', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => '', 'locationName' => 'endTime', ],
+                'interval' => [ 'type' => '', 'locationName' => 'interval', ],
+                'logType' => [ 'type' => '', 'locationName' => 'logType', ],
+                'pageSize' => [ 'type' => '', 'locationName' => 'pageSize', ],
+                'pageNumber' => [ 'type' => '', 'locationName' => 'pageNumber', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryDomainLogResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryDomainLogResultShape', ],
+            ],
+        ],
         'QueryMixStatisticsDataRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2713,15 +3317,6 @@ return [
                 'area' => [ 'type' => '', 'locationName' => 'area', ],
                 'isp' => [ 'type' => '', 'locationName' => 'isp', ],
                 'period' => [ 'type' => '', 'locationName' => 'period', ],
-            ],
-        ],
-        'QueryStatisticsTopIpResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'ipData' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsTopIpData', ], ],
             ],
         ],
         'QueryStatisticsTopUrlResponseShape' => [
@@ -2744,15 +3339,6 @@ return [
                 'origin' => [ 'type' => '', 'locationName' => 'origin', ],
                 'period' => [ 'type' => '', 'locationName' => 'period', ],
                 'groupBy' => [ 'type' => '', 'locationName' => 'groupBy', ],
-            ],
-        ],
-        'QueryLiveStatisticsAreaDataGroupByResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'statistics' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsWithAreaGroupDetail', ], ],
             ],
         ],
         'QueryMixStatisticsWithAreaDataResultShape' => [
@@ -2840,26 +3426,6 @@ return [
                 'result' =>  [ 'shape' => 'QueryLiveTrafficGroupSumResultShape', ],
             ],
         ],
-        'QueryMixStatisticsDataResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryMixStatisticsDataResultShape', ],
-            ],
-        ],
-        'QueryMixTrafficGroupSumRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'startTime' => [ 'type' => '', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => '', 'locationName' => 'endTime', ],
-                'domain' => [ 'type' => '', 'locationName' => 'domain', ],
-                'fields' => [ 'type' => '', 'locationName' => 'fields', ],
-                'area' => [ 'type' => '', 'locationName' => 'area', ],
-                'isp' => [ 'type' => '', 'locationName' => 'isp', ],
-                'period' => [ 'type' => '', 'locationName' => 'period', ],
-                'groupBy' => [ 'type' => '', 'locationName' => 'groupBy', ],
-            ],
-        ],
         'QueryStatisticsTopIpRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2869,6 +3435,13 @@ return [
                 'subDomain' => [ 'type' => '', 'locationName' => 'subDomain', ],
                 'size' => [ 'type' => '', 'locationName' => 'size', ],
                 'topBy' => [ 'type' => '', 'locationName' => 'topBy', ],
+            ],
+        ],
+        'QueryDomainsLogResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryDomainsLogResultShape', ],
             ],
         ],
     ],
