@@ -60,6 +60,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeElasticIpResourcesAsync(array $args = [])
  * @method \Jdcloud\Result describeCpsIpResources(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeCpsIpResourcesAsync(array $args = [])
+ * @method \Jdcloud\Result describeCcsIpResources(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeCcsIpResourcesAsync(array $args = [])
  * @method \Jdcloud\Result describeOperationRecords(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeOperationRecordsAsync(array $args = [])
  */

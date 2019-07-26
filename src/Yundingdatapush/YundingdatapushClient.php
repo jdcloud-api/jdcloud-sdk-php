@@ -1,15 +1,15 @@
 <?php
 /**
- * Sms
+ * Yundingdatapush
  *
  * @category Jdcloud
- * @package  Jdcloud\Sms
+ * @package  Jdcloud\Yundingdatapush
  * @author   Jdcloud <jdcloud-api@jd.com>
  * @license  Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0
  * @link     https://www.jdcloud.com/help/faq
  */
 
-namespace Jdcloud\Sms;
+namespace Jdcloud\Yundingdatapush;
 
 use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
@@ -18,16 +18,10 @@ use Jdcloud\Api\ApiProvider;
 use Jdcloud\PresignUrlMiddleware;
 
 /**
- * Client used to interact with sms.
+ * Client used to interact with yundingdatapush.
  *
- * @method \Jdcloud\Result batchSend(array $args = [])
- * @method \GuzzleHttp\Promise\Promise batchSendAsync(array $args = [])
- * @method \Jdcloud\Result statusReport(array $args = [])
- * @method \GuzzleHttp\Promise\Promise statusReportAsync(array $args = [])
- * @method \Jdcloud\Result reply(array $args = [])
- * @method \GuzzleHttp\Promise\Promise replyAsync(array $args = [])
  */
-class SmsClient extends JdCloudClient
+class YundingdatapushClient extends JdCloudClient
 {
     public function __construct(array $args)
     {
@@ -39,11 +33,11 @@ class SmsClient extends JdCloudClient
                     [
                         'operations' => [
                         ],
-                        'service' => 'sms',
+                        'service' => 'yundingdatapush',
                         'presign_param' => 'PresignedUrl',
                     ]
                 ),
-                'sms'
+                'yundingdatapush'
             );
         };
 

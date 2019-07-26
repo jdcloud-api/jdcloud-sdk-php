@@ -191,6 +191,15 @@ return [
             'input' => [ 'shape' => 'DescribeCpsIpResourcesRequestShape', ],
             'output' => [ 'shape' => 'DescribeCpsIpResourcesResponseShape', ],
         ],
+        'DescribeCcsIpResources' => [
+            'name' => 'DescribeCcsIpResources',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/ccsIpResources',
+            ],
+            'input' => [ 'shape' => 'DescribeCcsIpResourcesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeCcsIpResourcesResponseShape', ],
+        ],
         'DescribeOperationRecords' => [
             'name' => 'DescribeOperationRecords',
             'http' => [
@@ -421,6 +430,8 @@ return [
                 'datagramRangeMin' => [ 'type' => 'long', 'locationName' => 'datagramRangeMin', ],
                 'datagramRangeMax' => [ 'type' => 'long', 'locationName' => 'datagramRangeMax', ],
                 'geoBlackList' => [ 'type' => 'list', 'member' => [ 'shape' => 'GeoBlack', ], ],
+                'ipBlackList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ipWhiteList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'ProtectionRuleSpec' => [
@@ -438,6 +449,8 @@ return [
                 'datagramRangeMin' => [ 'type' => 'long', 'locationName' => 'datagramRangeMin', ],
                 'datagramRangeMax' => [ 'type' => 'long', 'locationName' => 'datagramRangeMax', ],
                 'geoBlackList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ipBlackList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ipWhiteList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeAttackStatisticsResponseShape' => [
@@ -877,11 +890,28 @@ return [
                 'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
+        'DescribeCcsIpResourcesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpResource', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+            ],
+        ],
         'DescribeElasticIpResourcesResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeElasticIpResourcesResultShape', ],
                 'error' =>  [ 'shape' => 'DescribeElasticIpResourcesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeCcsIpResourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeCcsIpResourcesResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeCcsIpResourcesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -908,6 +938,14 @@ return [
                 'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+            ],
+        ],
+        'DescribeCcsIpResourcesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DescribeOperationRecordsRequestShape' => [

@@ -83,15 +83,6 @@ return [
             'input' => [ 'shape' => 'CreateDomainRequestShape', ],
             'output' => [ 'shape' => 'CreateDomainResponseShape', ],
         ],
-        'VerifyDomain' => [
-            'name' => 'VerifyDomain',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/domains:verify',
-            ],
-            'input' => [ 'shape' => 'VerifyDomainRequestShape', ],
-            'output' => [ 'shape' => 'VerifyDomainResponseShape', ],
-        ],
         'GetDomain' => [
             'name' => 'GetDomain',
             'http' => [
@@ -218,6 +209,33 @@ return [
             'input' => [ 'shape' => 'GetIPRuleRequestShape', ],
             'output' => [ 'shape' => 'GetIPRuleResponseShape', ],
         ],
+        'CreateVideoUploadTask' => [
+            'name' => 'CreateVideoUploadTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/videoUploadTask',
+            ],
+            'input' => [ 'shape' => 'CreateVideoUploadTaskRequestShape', ],
+            'output' => [ 'shape' => 'CreateVideoUploadTaskResponseShape', ],
+        ],
+        'RefreshVideoUploadTask' => [
+            'name' => 'RefreshVideoUploadTask',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/videoUploadTask:refresh',
+            ],
+            'input' => [ 'shape' => 'RefreshVideoUploadTaskRequestShape', ],
+            'output' => [ 'shape' => 'RefreshVideoUploadTaskResponseShape', ],
+        ],
+        'CreateImageUploadTask' => [
+            'name' => 'CreateImageUploadTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/imageUploadTask',
+            ],
+            'input' => [ 'shape' => 'CreateImageUploadTaskRequestShape', ],
+            'output' => [ 'shape' => 'CreateImageUploadTaskResponseShape', ],
+        ],
         'SubmitTranscodeJob' => [
             'name' => 'SubmitTranscodeJob',
             'http' => [
@@ -235,15 +253,6 @@ return [
             ],
             'input' => [ 'shape' => 'BatchSubmitTranscodeJobsRequestShape', ],
             'output' => [ 'shape' => 'BatchSubmitTranscodeJobsResponseShape', ],
-        ],
-        'GetTranscodeTask' => [
-            'name' => 'GetTranscodeTask',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/transcodeTasks/{taskId}',
-            ],
-            'input' => [ 'shape' => 'GetTranscodeTaskRequestShape', ],
-            'output' => [ 'shape' => 'GetTranscodeTaskResponseShape', ],
         ],
         'ListTranscodeTemplates' => [
             'name' => 'ListTranscodeTemplates',
@@ -409,14 +418,23 @@ return [
         ],
     ],
     'shapes' => [
-        'ListAllCategoriesResp' => [
+        'CreateCategoryRequestObject' => [
             'type' => 'structure',
             'members' => [
-                'flatResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'GetCategoryResp', ], ],
-                'treeResult' =>  [ 'shape' => 'CategoryTreeNode', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'parentId' => [ 'type' => 'long', 'locationName' => 'parentId', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
         ],
-        'CreateCategoryResp' => [
+        'UpdateCategoryRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'parentId' => [ 'type' => 'long', 'locationName' => 'parentId', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'CategoryObject' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'long', 'locationName' => 'id', ],
@@ -428,49 +446,26 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
-        'UpdateCategoryResp' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'level' => [ 'type' => 'integer', 'locationName' => 'level', ],
-                'parentId' => [ 'type' => 'long', 'locationName' => 'parentId', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-            ],
-        ],
-        'GetCategoryResp' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'level' => [ 'type' => 'integer', 'locationName' => 'level', ],
-                'parentId' => [ 'type' => 'long', 'locationName' => 'parentId', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-            ],
-        ],
-        'CreateCategoryReq' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'level' => [ 'type' => 'integer', 'locationName' => 'level', ],
-                'parentId' => [ 'type' => 'long', 'locationName' => 'parentId', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-            ],
-        ],
-        'GetCategoryWithChildrenResp' => [
+        'GetCategoryWithChildrenResultObject' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'long', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'level' => [ 'type' => 'integer', 'locationName' => 'level', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'children' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubCategory', ], ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-                'children' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+            ],
+        ],
+        'ListCategoriesResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'CategoryObject', ], ],
             ],
         ],
         'CategoryTreeNode' => [
@@ -485,14 +480,22 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
-        'UpdateCategoryReq' => [
+        'ListAllCategoriesResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'flatResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'CategoryObject', ], ],
+                'treeResult' =>  [ 'shape' => 'CategoryTreeNode', ],
+            ],
+        ],
+        'SubCategory' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'long', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'level' => [ 'type' => 'integer', 'locationName' => 'level', ],
-                'parentId' => [ 'type' => 'long', 'locationName' => 'parentId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
         'Sort' => [
@@ -519,22 +522,42 @@ return [
                 'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
             ],
         ],
-        'DeleteHeaderReq' => [
+        'CreateDomainRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'SetRefererRuleRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'config' =>  [ 'shape' => 'RefererRuleConfigObject', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+            ],
+        ],
+        'SetIPRuleRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'config' =>  [ 'shape' => 'IPRuleConfigObject', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+            ],
+        ],
+        'DeleteHeaderRequestObject' => [
             'type' => 'structure',
             'members' => [
                 'headerName' => [ 'type' => 'string', 'locationName' => 'headerName', ],
                 'headerType' => [ 'type' => 'string', 'locationName' => 'headerType', ],
             ],
         ],
-        'SetHeaderReq' => [
+        'GetAllTypeRuleResultObject' => [
             'type' => 'structure',
             'members' => [
-                'headerName' => [ 'type' => 'string', 'locationName' => 'headerName', ],
-                'headerValue' => [ 'type' => 'string', 'locationName' => 'headerValue', ],
-                'headerType' => [ 'type' => 'string', 'locationName' => 'headerType', ],
+                'referer' =>  [ 'shape' => 'GetRefererRuleResultObject', ],
+                'url' =>  [ 'shape' => 'GetURLRuleResultObject', ],
+                'ip' =>  [ 'shape' => 'GetIPRuleResultObject', ],
             ],
         ],
-        'VerifyDomainResp' => [
+        'VerifyDomainResultObject' => [
             'type' => 'structure',
             'members' => [
                 'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
@@ -542,117 +565,206 @@ return [
                 'icpInfo' => [ 'type' => 'string', 'locationName' => 'icpInfo', ],
             ],
         ],
-        'GetHeaderResp' => [
+        'GetIPRuleResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
+                'config' =>  [ 'shape' => 'IPRuleConfigObject', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+            ],
+        ],
+        'ListHeadersResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'headers' => [ 'type' => 'list', 'member' => [ 'shape' => 'GetHeaderResultObject', ], ],
+            ],
+        ],
+        'GetURLRuleResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
+                'config' =>  [ 'shape' => 'URLRuleConfigObject', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+            ],
+        ],
+        'SetURLRuleRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'config' =>  [ 'shape' => 'URLRuleConfigObject', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+            ],
+        ],
+        'IPRuleConfigObject' => [
+            'type' => 'structure',
+            'members' => [
+                'ips' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'RefererRuleConfigObject' => [
+            'type' => 'structure',
+            'members' => [
+                'strategy' => [ 'type' => 'string', 'locationName' => 'strategy', ],
+                'domains' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'allowBlank' => [ 'type' => 'boolean', 'locationName' => 'allowBlank', ],
+            ],
+        ],
+        'GetHeaderResultObject' => [
             'type' => 'structure',
             'members' => [
                 'headerName' => [ 'type' => 'string', 'locationName' => 'headerName', ],
                 'headerValue' => [ 'type' => 'string', 'locationName' => 'headerValue', ],
                 'headerType' => [ 'type' => 'string', 'locationName' => 'headerType', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
-        'SetRefererRuleReq' => [
+        'GetRefererRuleResultObject' => [
             'type' => 'structure',
             'members' => [
                 'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
-                'config' => [ 'type' => 'object', 'locationName' => 'config', ],
+                'config' =>  [ 'shape' => 'RefererRuleConfigObject', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
             ],
         ],
-        'SetURLRuleReq' => [
+        'SetHeaderRequestObject' => [
             'type' => 'structure',
             'members' => [
-                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
-                'config' => [ 'type' => 'object', 'locationName' => 'config', ],
-                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'headerName' => [ 'type' => 'string', 'locationName' => 'headerName', ],
+                'headerValue' => [ 'type' => 'string', 'locationName' => 'headerValue', ],
+                'headerType' => [ 'type' => 'string', 'locationName' => 'headerType', ],
             ],
         ],
-        'GetDomainResp' => [
+        'ListDomainsResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainObject', ], ],
+            ],
+        ],
+        'DomainObject' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'source' => [ 'type' => 'string', 'locationName' => 'source', ],
                 'asDefault' => [ 'type' => 'boolean', 'locationName' => 'asDefault', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
-        'GetURLRuleResp' => [
+        'URLRuleConfigObject' => [
             'type' => 'structure',
             'members' => [
-                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
-                'config' => [ 'type' => 'object', 'locationName' => 'config', ],
-                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'authType' => [ 'type' => 'string', 'locationName' => 'authType', ],
+                'authKey' => [ 'type' => 'string', 'locationName' => 'authKey', ],
             ],
         ],
-        'GetAllTypeRuleResp' => [
+        'UploadCallbackRequestObject' => [
             'type' => 'structure',
             'members' => [
-                'referer' =>  [ 'shape' => 'GetRefererRuleResp', ],
-                'url' =>  [ 'shape' => 'GetURLRuleResp', ],
-                'ip' =>  [ 'shape' => 'GetIPRuleResp', ],
-            ],
-        ],
-        'GetRefererRuleResp' => [
-            'type' => 'structure',
-            'members' => [
-                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
-                'config' => [ 'type' => 'object', 'locationName' => 'config', ],
-                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-            ],
-        ],
-        'CreateDomainResp' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
-                'source' => [ 'type' => 'string', 'locationName' => 'source', ],
-                'asDefault' => [ 'type' => 'boolean', 'locationName' => 'asDefault', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
+                'size' => [ 'type' => 'long', 'locationName' => 'size', ],
+                'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
+                'coderateId' => [ 'type' => 'string', 'locationName' => 'coderateId', ],
+                'logoId' => [ 'type' => 'string', 'locationName' => 'logoId', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
             ],
         ],
-        'CreateDomainReq' => [
+        'UploadCallbackResultObject' => [
             'type' => 'structure',
             'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'mid' => [ 'type' => 'string', 'locationName' => 'mid', ],
             ],
         ],
-        'SetIPRuleReq' => [
-            'type' => 'structure',
-            'members' => [
-                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
-                'config' => [ 'type' => 'object', 'locationName' => 'config', ],
-                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
-            ],
-        ],
-        'GetIPRuleResp' => [
-            'type' => 'structure',
-            'members' => [
-                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
-                'config' => [ 'type' => 'object', 'locationName' => 'config', ],
-                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-            ],
-        ],
-        'SubmitTranscodeJobReq' => [
+        'VideoUploadTaskObject' => [
             'type' => 'structure',
             'members' => [
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
-                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'watermarkIds' => [ 'type' => 'string', 'locationName' => 'watermarkIds', ],
+                'uploadUrl' => [ 'type' => 'string', 'locationName' => 'uploadUrl', ],
             ],
         ],
-        'GetTranscodeTaskResp' => [
+        'CreateVideoUploadTaskRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'httpMethod' => [ 'type' => 'string', 'locationName' => 'httpMethod', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'fileSize' => [ 'type' => 'long', 'locationName' => 'fileSize', ],
+                'coverUrl' => [ 'type' => 'string', 'locationName' => 'coverUrl', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'transcodeTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+            ],
+        ],
+        'CreateImageUploadTaskRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'httpMethod' => [ 'type' => 'string', 'locationName' => 'httpMethod', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'fileSize' => [ 'type' => 'long', 'locationName' => 'fileSize', ],
+            ],
+        ],
+        'ImageUploadTaskObject' => [
+            'type' => 'structure',
+            'members' => [
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+                'uploadUrl' => [ 'type' => 'string', 'locationName' => 'uploadUrl', ],
+            ],
+        ],
+        'QueryCDNBasicDataResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'isps' => [ 'type' => 'list', 'member' => [ 'shape' => 'BasicItem', ], ],
+                'areas' => [ 'type' => 'object', 'locationName' => 'areas', ],
+            ],
+        ],
+        'DataItem' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
+            ],
+        ],
+        'BasicItem' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'QueryCDNStatsDataResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataItem', ], ],
+            ],
+        ],
+        'BatchSubmitTranscodeJobsRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'bulkItems' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubmitTranscodeJobRequestObject', ], ],
+            ],
+        ],
+        'SubmitTranscodeJobRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
+                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+            ],
+        ],
+        'TranscodeTaskObject' => [
             'type' => 'structure',
             'members' => [
                 'taskId' => [ 'type' => 'long', 'locationName' => 'taskId', ],
@@ -661,7 +773,7 @@ return [
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'progress' => [ 'type' => 'string', 'locationName' => 'progress', ],
                 'size' => [ 'type' => 'long', 'locationName' => 'size', ],
-                'transcodeTemplateId' => [ 'type' => 'integer', 'locationName' => 'transcodeTemplateId', ],
+                'templateId' => [ 'type' => 'integer', 'locationName' => 'templateId', ],
                 'bitrate' => [ 'type' => 'long', 'locationName' => 'bitrate', ],
                 'codec' => [ 'type' => 'string', 'locationName' => 'codec', ],
                 'format' => [ 'type' => 'string', 'locationName' => 'format', ],
@@ -672,7 +784,19 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
-        'TranscodeTask' => [
+        'SubmitTranscodeJobResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubmittedTranscodeTask', ], ],
+            ],
+        ],
+        'BatchSubmitTranscodeJobsResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubmittedTranscodeTask', ], ],
+            ],
+        ],
+        'SubmittedTranscodeTask' => [
             'type' => 'structure',
             'members' => [
                 'taskId' => [ 'type' => 'long', 'locationName' => 'taskId', ],
@@ -687,16 +811,6 @@ return [
                 'format' => [ 'type' => 'string', 'locationName' => 'format', ],
             ],
         ],
-        'CreateTranscodeTemplateReq' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'video' =>  [ 'shape' => 'Video', ],
-                'audio' =>  [ 'shape' => 'Audio', ],
-                'encapsulation' =>  [ 'shape' => 'Encapsulation', ],
-                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
-            ],
-        ],
         'Video' => [
             'type' => 'structure',
             'members' => [
@@ -707,7 +821,17 @@ return [
                 'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
             ],
         ],
-        'GetTranscodeTemplateResp' => [
+        'ListTranscodeTemplatesResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeTemplateObject', ], ],
+            ],
+        ],
+        'TranscodeTemplateObject' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'long', 'locationName' => 'id', ],
@@ -717,19 +841,9 @@ return [
                 'encapsulation' =>  [ 'shape' => 'Encapsulation', ],
                 'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
                 'source' => [ 'type' => 'string', 'locationName' => 'source', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-            ],
-        ],
-        'UpdateTranscodeTemplateReq' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'video' =>  [ 'shape' => 'Video', ],
-                'audio' =>  [ 'shape' => 'Audio', ],
-                'encapsulation' =>  [ 'shape' => 'Encapsulation', ],
-                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
             ],
         ],
         'Audio' => [
@@ -739,34 +853,29 @@ return [
                 'bitrate' => [ 'type' => 'integer', 'locationName' => 'bitrate', ],
                 'sampleRate' => [ 'type' => 'integer', 'locationName' => 'sampleRate', ],
                 'channels' => [ 'type' => 'integer', 'locationName' => 'channels', ],
+                'comfortable' => [ 'type' => 'boolean', 'locationName' => 'comfortable', ],
             ],
         ],
-        'UpdateTranscodeTemplateResp' => [
+        'UpdateTranscodeTemplateRequestObject' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'video' =>  [ 'shape' => 'Video', ],
                 'audio' =>  [ 'shape' => 'Audio', ],
                 'encapsulation' =>  [ 'shape' => 'Encapsulation', ],
                 'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
-                'source' => [ 'type' => 'string', 'locationName' => 'source', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
             ],
         ],
-        'CreateTranscodeTemplateResp' => [
+        'CreateTranscodeTemplateRequestObject' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'video' =>  [ 'shape' => 'Video', ],
                 'audio' =>  [ 'shape' => 'Audio', ],
                 'encapsulation' =>  [ 'shape' => 'Encapsulation', ],
                 'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
-                'source' => [ 'type' => 'string', 'locationName' => 'source', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
             ],
         ],
         'UploadCallbackReq' => [
@@ -790,72 +899,18 @@ return [
                 'mid' => [ 'type' => 'string', 'locationName' => 'mid', ],
             ],
         ],
-        'BatchDeleteVideosReq' => [
+        'BatchUpdateVideosResultObject' => [
             'type' => 'structure',
             'members' => [
-                'videoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'okVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'notFoundVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'failedVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
-        'DeleteVideoStreamsReq' => [
+        'GetPlayInfoResultObject' => [
             'type' => 'structure',
             'members' => [
-                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
-            ],
-        ],
-        'VideoPlayInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
-                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
-                'mediaType' => [ 'type' => 'integer', 'locationName' => 'mediaType', ],
-                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
-                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
-                'size' => [ 'type' => 'long', 'locationName' => 'size', ],
-                'duration' => [ 'type' => 'long', 'locationName' => 'duration', ],
-                'bitrate' => [ 'type' => 'long', 'locationName' => 'bitrate', ],
-                'codec' => [ 'type' => 'string', 'locationName' => 'codec', ],
-                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
-                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
-                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
-                'fps' => [ 'type' => 'string', 'locationName' => 'fps', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-            ],
-        ],
-        'GetVideoResp' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'coverUrl' => [ 'type' => 'string', 'locationName' => 'coverUrl', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'fileSize' => [ 'type' => 'long', 'locationName' => 'fileSize', ],
-                'checksum' => [ 'type' => 'string', 'locationName' => 'checksum', ],
-                'duration' => [ 'type' => 'long', 'locationName' => 'duration', ],
-                'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
-                'categoryName' => [ 'type' => 'string', 'locationName' => 'categoryName', ],
-                'snapshots' => [ 'type' => 'list', 'member' => [ 'shape' => 'Snapshot', ], ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-            ],
-        ],
-        'UpdateVideoReq' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
-                'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'coverUrl' => [ 'type' => 'string', 'locationName' => 'coverUrl', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-            ],
-        ],
-        'GetPlayInfoResp' => [
-            'type' => 'structure',
-            'members' => [
-                'videoInfo' =>  [ 'shape' => 'VideoBaseInfo', ],
+                'baseInfo' =>  [ 'shape' => 'VideoBaseInfo', ],
                 'playInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'VideoPlayInfo', ], ],
             ],
         ],
@@ -878,16 +933,16 @@ return [
                 'categoryName' => [ 'type' => 'string', 'locationName' => 'categoryName', ],
                 'tags' => [ 'type' => 'string', 'locationName' => 'tags', ],
                 'duration' => [ 'type' => 'long', 'locationName' => 'duration', ],
-                'coverImgUrl' => [ 'type' => 'string', 'locationName' => 'coverImgUrl', ],
+                'coverUrl' => [ 'type' => 'string', 'locationName' => 'coverUrl', ],
             ],
         ],
-        'BatchUpdateVideosReq' => [
+        'BatchUpdateVideosRequestObject' => [
             'type' => 'structure',
             'members' => [
-                'contents' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+                'bulkItems' => [ 'type' => 'list', 'member' => [ 'shape' => 'BatchUpdateVideosBulkItem', ], ],
             ],
         ],
-        'UpdateVideoResp' => [
+        'VideoObject' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
@@ -906,18 +961,97 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
-        'BatchDeleteVideosResp' => [
+        'UpdateVideoRequestObject' => [
             'type' => 'structure',
             'members' => [
-                'deletedVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'categoryId' => [ 'type' => 'int64', 'locationName' => 'categoryId', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'coverUrl' => [ 'type' => 'string', 'locationName' => 'coverUrl', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'BatchChangeCategoryRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
+                'videoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'BatchUpdateVideosBulkItem' => [
+            'type' => 'structure',
+            'members' => [
+                'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'categoryId' => [ 'type' => 'int64', 'locationName' => 'categoryId', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'coverUrl' => [ 'type' => 'string', 'locationName' => 'coverUrl', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'VideoPlayInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
+                'mediaType' => [ 'type' => 'integer', 'locationName' => 'mediaType', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'size' => [ 'type' => 'long', 'locationName' => 'size', ],
+                'duration' => [ 'type' => 'long', 'locationName' => 'duration', ],
+                'bitrate' => [ 'type' => 'long', 'locationName' => 'bitrate', ],
+                'codec' => [ 'type' => 'string', 'locationName' => 'codec', ],
+                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
+                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'fps' => [ 'type' => 'string', 'locationName' => 'fps', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'DeleteVideoStreamsRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+            ],
+        ],
+        'DeleteVideoStreamsResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'okTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'notFoundTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'failedTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+            ],
+        ],
+        'ListVideosResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'VideoObject', ], ],
+            ],
+        ],
+        'BatchDeleteVideosRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'videoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'BatchChangeCategoryResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'okVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'notFoundVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
-        'BatchUpdateVideosResp' => [
+        'BatchDeleteVideosResultObject' => [
             'type' => 'structure',
             'members' => [
-                'updateVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'okVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'notFoundVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'failedVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'NotifyConfig' => [
@@ -948,37 +1082,33 @@ return [
                 'duration' => [ 'type' => 'double', 'locationName' => 'duration', ],
             ],
         ],
-        'GetWatermarkResp' => [
+        'QueryStorageSizeResultObject' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'imgUrl' => [ 'type' => 'string', 'locationName' => 'imgUrl', ],
-                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
-                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
-                'position' => [ 'type' => 'string', 'locationName' => 'position', ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'offsetX' => [ 'type' => 'integer', 'locationName' => 'offsetX', ],
-                'offsetY' => [ 'type' => 'integer', 'locationName' => 'offsetY', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'data' =>  [ 'shape' => 'StorageSize', ],
             ],
         ],
-        'UpdateWatermarkReq' => [
+        'StorageSize' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'imgUrl' => [ 'type' => 'string', 'locationName' => 'imgUrl', ],
-                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
-                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
-                'position' => [ 'type' => 'string', 'locationName' => 'position', ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'offsetX' => [ 'type' => 'integer', 'locationName' => 'offsetX', ],
-                'offsetY' => [ 'type' => 'integer', 'locationName' => 'offsetY', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'size' => [ 'type' => 'long', 'locationName' => 'size', ],
             ],
         ],
-        'CreateWatermarkReq' => [
+        'Task' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'long', 'locationName' => 'taskId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'categoryId' => [ 'type' => 'double', 'locationName' => 'categoryId', ],
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
+                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
+                'size' => [ 'type' => 'double', 'locationName' => 'size', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+            ],
+        ],
+        'CreateWatermarkRequestObject' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
@@ -991,10 +1121,9 @@ return [
                 'offsetY' => [ 'type' => 'integer', 'locationName' => 'offsetY', ],
             ],
         ],
-        'CreateWatermarkResp' => [
+        'UpdateWatermarkRequestObject' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'imgUrl' => [ 'type' => 'string', 'locationName' => 'imgUrl', ],
                 'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
@@ -1003,11 +1132,19 @@ return [
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
                 'offsetX' => [ 'type' => 'integer', 'locationName' => 'offsetX', ],
                 'offsetY' => [ 'type' => 'integer', 'locationName' => 'offsetY', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
-        'UpdateWatermarkResp' => [
+        'ListWatermarksResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'WatermarkObject', ], ],
+            ],
+        ],
+        'WatermarkObject' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'long', 'locationName' => 'id', ],
@@ -1026,9 +1163,7 @@ return [
         'UpdateCategoryRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'level' => [ 'type' => 'integer', 'locationName' => 'level', ],
                 'parentId' => [ 'type' => 'long', 'locationName' => 'parentId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
@@ -1048,6 +1183,11 @@ return [
         'ListCategoriesResultShape' => [
             'type' => 'structure',
             'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'CategoryObject', ], ],
             ],
         ],
         'GetCategoryResultShape' => [
@@ -1128,9 +1268,9 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'level' => [ 'type' => 'integer', 'locationName' => 'level', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'children' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubCategory', ], ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-                'children' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
             ],
         ],
         'GetCategoryResponseShape' => [
@@ -1163,7 +1303,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'level' => [ 'type' => 'integer', 'locationName' => 'level', ],
                 'parentId' => [ 'type' => 'long', 'locationName' => 'parentId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
@@ -1203,17 +1342,10 @@ return [
             'members' => [
             ],
         ],
-        'VerifyDomainRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
-            ],
-        ],
         'SetURLRuleRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
-                'config' => [ 'type' => 'object', 'locationName' => 'config', ],
+                'config' =>  [ 'shape' => 'URLRuleConfigObject', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
                 'domainId' => [ 'type' => 'long', 'locationName' => 'domainId', ],
             ],
@@ -1221,8 +1353,7 @@ return [
         'SetRefererRuleRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
-                'config' => [ 'type' => 'object', 'locationName' => 'config', ],
+                'config' =>  [ 'shape' => 'RefererRuleConfigObject', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
                 'domainId' => [ 'type' => 'long', 'locationName' => 'domainId', ],
             ],
@@ -1296,6 +1427,7 @@ return [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'source' => [ 'type' => 'string', 'locationName' => 'source', ],
                 'asDefault' => [ 'type' => 'boolean', 'locationName' => 'asDefault', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
@@ -1335,15 +1467,18 @@ return [
             'type' => 'structure',
             'members' => [
                 'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
-                'config' => [ 'type' => 'object', 'locationName' => 'config', ],
+                'config' =>  [ 'shape' => 'RefererRuleConfigObject', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
         'ListDomainsResultShape' => [
             'type' => 'structure',
             'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainObject', ], ],
             ],
         ],
         'DisableDomainRequestShape' => [
@@ -1374,6 +1509,7 @@ return [
         'ListHeadersResultShape' => [
             'type' => 'structure',
             'members' => [
+                'headers' => [ 'type' => 'list', 'member' => [ 'shape' => 'GetHeaderResultObject', ], ],
             ],
         ],
         'SetURLRuleResponseShape' => [
@@ -1386,10 +1522,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
-                'config' => [ 'type' => 'object', 'locationName' => 'config', ],
+                'config' =>  [ 'shape' => 'IPRuleConfigObject', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
         'DeleteHeaderResponseShape' => [
@@ -1410,21 +1544,6 @@ return [
             'members' => [
             ],
         ],
-        'VerifyDomainResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
-                'verified' => [ 'type' => 'boolean', 'locationName' => 'verified', ],
-                'icpInfo' => [ 'type' => 'string', 'locationName' => 'icpInfo', ],
-            ],
-        ],
-        'VerifyDomainResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'VerifyDomainResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'SetHeaderRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1443,10 +1562,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
-                'config' => [ 'type' => 'object', 'locationName' => 'config', ],
+                'config' =>  [ 'shape' => 'URLRuleConfigObject', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
         'CreateDomainResultShape' => [
@@ -1455,6 +1572,7 @@ return [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'source' => [ 'type' => 'string', 'locationName' => 'source', ],
                 'asDefault' => [ 'type' => 'boolean', 'locationName' => 'asDefault', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
@@ -1476,8 +1594,7 @@ return [
         'SetIPRuleRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
-                'config' => [ 'type' => 'object', 'locationName' => 'config', ],
+                'config' =>  [ 'shape' => 'IPRuleConfigObject', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
                 'domainId' => [ 'type' => 'long', 'locationName' => 'domainId', ],
             ],
@@ -1492,7 +1609,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'headerName' => [ 'type' => 'string', 'locationName' => 'headerName', ],
-                'headerValue' => [ 'type' => 'string', 'locationName' => 'headerValue', ],
                 'headerType' => [ 'type' => 'string', 'locationName' => 'headerType', ],
                 'domainId' => [ 'type' => 'long', 'locationName' => 'domainId', ],
             ],
@@ -1514,37 +1630,101 @@ return [
             'members' => [
             ],
         ],
+        'CreateImageUploadTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateImageUploadTaskResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RefreshVideoUploadTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
+            ],
+        ],
+        'CreateVideoUploadTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateVideoUploadTaskResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateVideoUploadTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'httpMethod' => [ 'type' => 'string', 'locationName' => 'httpMethod', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'fileSize' => [ 'type' => 'long', 'locationName' => 'fileSize', ],
+                'coverUrl' => [ 'type' => 'string', 'locationName' => 'coverUrl', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'transcodeTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+            ],
+        ],
+        'RefreshVideoUploadTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RefreshVideoUploadTaskResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateImageUploadTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+                'uploadUrl' => [ 'type' => 'string', 'locationName' => 'uploadUrl', ],
+            ],
+        ],
+        'CreateImageUploadTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'httpMethod' => [ 'type' => 'string', 'locationName' => 'httpMethod', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'fileSize' => [ 'type' => 'long', 'locationName' => 'fileSize', ],
+            ],
+        ],
+        'RefreshVideoUploadTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
+                'uploadUrl' => [ 'type' => 'string', 'locationName' => 'uploadUrl', ],
+            ],
+        ],
+        'CreateVideoUploadTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
+                'uploadUrl' => [ 'type' => 'string', 'locationName' => 'uploadUrl', ],
+            ],
+        ],
         'SubmitTranscodeJobResultShape' => [
             'type' => 'structure',
             'members' => [
-                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeTask', ], ],
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubmittedTranscodeTask', ], ],
             ],
         ],
         'SubmitTranscodeJobRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
-                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'watermarkIds' => [ 'type' => 'string', 'locationName' => 'watermarkIds', ],
+                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
             ],
         ],
         'BatchSubmitTranscodeJobsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'jobs' => [ 'type' => '', 'locationName' => 'jobs', ],
+                'bulkItems' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubmitTranscodeJobRequestObject', ], ],
             ],
         ],
         'BatchSubmitTranscodeJobsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeTask', ], ],
-            ],
-        ],
-        'GetTranscodeTaskResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetTranscodeTaskResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubmittedTranscodeTask', ], ],
             ],
         ],
         'SubmitTranscodeJobResponseShape' => [
@@ -1561,37 +1741,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'GetTranscodeTaskRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'taskId' => [ 'type' => 'long', 'locationName' => 'taskId', ],
-            ],
-        ],
-        'GetTranscodeTaskResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'taskId' => [ 'type' => 'long', 'locationName' => 'taskId', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'mediaType' => [ 'type' => 'integer', 'locationName' => 'mediaType', ],
-                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
-                'progress' => [ 'type' => 'string', 'locationName' => 'progress', ],
-                'size' => [ 'type' => 'long', 'locationName' => 'size', ],
-                'transcodeTemplateId' => [ 'type' => 'integer', 'locationName' => 'transcodeTemplateId', ],
-                'bitrate' => [ 'type' => 'long', 'locationName' => 'bitrate', ],
-                'codec' => [ 'type' => 'string', 'locationName' => 'codec', ],
-                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
-                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
-                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
-                'fps' => [ 'type' => 'string', 'locationName' => 'fps', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-            ],
-        ],
         'ListTranscodeTemplatesRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
             ],
         ],
         'DeleteTranscodeTemplateResponseShape' => [
@@ -1603,12 +1758,12 @@ return [
         'UpdateTranscodeTemplateRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'video' =>  [ 'shape' => 'Video', ],
                 'audio' =>  [ 'shape' => 'Audio', ],
                 'encapsulation' =>  [ 'shape' => 'Encapsulation', ],
                 'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
                 'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
             ],
         ],
@@ -1622,6 +1777,7 @@ return [
                 'encapsulation' =>  [ 'shape' => 'Encapsulation', ],
                 'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
                 'source' => [ 'type' => 'string', 'locationName' => 'source', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
@@ -1635,13 +1791,18 @@ return [
         'ListTranscodeTemplatesResultShape' => [
             'type' => 'structure',
             'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeTemplateObject', ], ],
             ],
         ],
         'CreateTranscodeTemplateResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'CreateTranscodeTemplateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetTranscodeTemplateRequestShape' => [
@@ -1660,6 +1821,7 @@ return [
                 'encapsulation' =>  [ 'shape' => 'Encapsulation', ],
                 'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
                 'source' => [ 'type' => 'string', 'locationName' => 'source', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
@@ -1674,6 +1836,7 @@ return [
                 'encapsulation' =>  [ 'shape' => 'Encapsulation', ],
                 'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
                 'source' => [ 'type' => 'string', 'locationName' => 'source', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
@@ -1686,8 +1849,8 @@ return [
         'ListTranscodeTemplatesResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'ListTranscodeTemplatesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetTranscodeTemplateResponseShape' => [
@@ -1705,13 +1868,14 @@ return [
                 'audio' =>  [ 'shape' => 'Audio', ],
                 'encapsulation' =>  [ 'shape' => 'Encapsulation', ],
                 'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
             ],
         ],
         'UpdateTranscodeTemplateResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'UpdateTranscodeTemplateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetVideoPlayInfoResponseShape' => [
@@ -1724,14 +1888,15 @@ return [
         'BatchDeleteVideosResultShape' => [
             'type' => 'structure',
             'members' => [
-                'deletedVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'okVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'notFoundVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'failedVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'GetVideoPlayInfoResultShape' => [
             'type' => 'structure',
             'members' => [
-                'videoInfo' =>  [ 'shape' => 'VideoBaseInfo', ],
+                'baseInfo' =>  [ 'shape' => 'VideoBaseInfo', ],
                 'playInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'VideoPlayInfo', ], ],
             ],
         ],
@@ -1797,13 +1962,17 @@ return [
         'BatchUpdateVideosResultShape' => [
             'type' => 'structure',
             'members' => [
-                'updateVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'okVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'notFoundVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'failedVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DeleteVideoStreamsResultShape' => [
             'type' => 'structure',
             'members' => [
+                'okTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'notFoundTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'failedTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
             ],
         ],
         'BatchDeleteVideosRequestShape' => [
@@ -1846,7 +2015,7 @@ return [
         'BatchUpdateVideosRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'contents' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+                'bulkItems' => [ 'type' => 'list', 'member' => [ 'shape' => 'BatchUpdateVideosBulkItem', ], ],
             ],
         ],
         'BatchUpdateVideosResponseShape' => [
@@ -1859,9 +2028,8 @@ return [
         'UpdateVideoRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
+                'categoryId' => [ 'type' => 'int64', 'locationName' => 'categoryId', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'coverUrl' => [ 'type' => 'string', 'locationName' => 'coverUrl', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
@@ -1887,12 +2055,18 @@ return [
         'DeleteVideoStreamsResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'result' =>  [ 'shape' => 'DeleteVideoStreamsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ListVideosResultShape' => [
             'type' => 'structure',
             'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'VideoObject', ], ],
             ],
         ],
         'DeleteVideoResultShape' => [
@@ -1922,6 +2096,11 @@ return [
         'ListWatermarksResultShape' => [
             'type' => 'structure',
             'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'WatermarkObject', ], ],
             ],
         ],
         'UpdateWatermarkResultShape' => [
@@ -1956,7 +2135,6 @@ return [
         'UpdateWatermarkRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'imgUrl' => [ 'type' => 'string', 'locationName' => 'imgUrl', ],
                 'width' => [ 'type' => 'integer', 'locationName' => 'width', ],

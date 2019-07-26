@@ -54,6 +54,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise disassociateElasticIpAsync(array $args = [])
  * @method \Jdcloud\Result getContainerLogs(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getContainerLogsAsync(array $args = [])
+ * @method \Jdcloud\Result rebuildPod(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise rebuildPodAsync(array $args = [])
  * @method \Jdcloud\Result describeQuota(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeQuotaAsync(array $args = [])
  * @method \Jdcloud\Result describeSecrets(array $args = [])

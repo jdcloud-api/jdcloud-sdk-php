@@ -74,6 +74,15 @@ return [
             'input' => [ 'shape' => 'DescribeCpsIpResourcesRequestShape', ],
             'output' => [ 'shape' => 'DescribeCpsIpResourcesResponseShape', ],
         ],
+        'DescribeCcsIpResources' => [
+            'name' => 'DescribeCcsIpResources',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/ccsIpResources',
+            ],
+            'input' => [ 'shape' => 'DescribeCcsIpResourcesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeCcsIpResourcesResponseShape', ],
+        ],
         'DescribeIpResourceInfo' => [
             'name' => 'DescribeIpResourceInfo',
             'http' => [
@@ -196,7 +205,7 @@ return [
                 'cleanThresholdBps' => [ 'type' => 'long', 'locationName' => 'cleanThresholdBps', ],
                 'cleanThresholdPps' => [ 'type' => 'long', 'locationName' => 'cleanThresholdPps', ],
                 'blackHoleThreshold' => [ 'type' => 'long', 'locationName' => 'blackHoleThreshold', ],
-                'instanceId' => [ 'type' => 'long', 'locationName' => 'instanceId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'instanceType' => [ 'type' => 'integer', 'locationName' => 'instanceType', ],
                 'safeStatus' => [ 'type' => 'integer', 'locationName' => 'safeStatus', ],
@@ -401,10 +410,27 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeCcsIpResourcesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpResource', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+            ],
+        ],
         'DescribeIpSafetyInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeCcsIpResourcesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -480,6 +506,14 @@ return [
             'members' => [
                 'ipCleanThresholdSpec' =>  [ 'shape' => 'IpCleanThresholdSpec', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeCcsIpResourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeCcsIpResourcesResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeCcsIpResourcesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeIpResourceFlowRequestShape' => [

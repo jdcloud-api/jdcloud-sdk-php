@@ -1,15 +1,15 @@
 <?php
 /**
- * Sms
+ * Logs
  *
  * @category Jdcloud
- * @package  Jdcloud\Sms
+ * @package  Jdcloud\Logs
  * @author   Jdcloud <jdcloud-api@jd.com>
  * @license  Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0
  * @link     https://www.jdcloud.com/help/faq
  */
 
-namespace Jdcloud\Sms;
+namespace Jdcloud\Logs;
 
 use Jdcloud\JdCloudClient;
 use Jdcloud\Api\Service;
@@ -18,16 +18,16 @@ use Jdcloud\Api\ApiProvider;
 use Jdcloud\PresignUrlMiddleware;
 
 /**
- * Client used to interact with sms.
+ * Client used to interact with logs.
  *
- * @method \Jdcloud\Result batchSend(array $args = [])
- * @method \GuzzleHttp\Promise\Promise batchSendAsync(array $args = [])
- * @method \Jdcloud\Result statusReport(array $args = [])
- * @method \GuzzleHttp\Promise\Promise statusReportAsync(array $args = [])
- * @method \Jdcloud\Result reply(array $args = [])
- * @method \GuzzleHttp\Promise\Promise replyAsync(array $args = [])
+ * @method \Jdcloud\Result describeLogdCA(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeLogdCAAsync(array $args = [])
+ * @method \Jdcloud\Result describeInstanceCollectConfs(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeInstanceCollectConfsAsync(array $args = [])
+ * @method \Jdcloud\Result put(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise putAsync(array $args = [])
  */
-class SmsClient extends JdCloudClient
+class LogsClient extends JdCloudClient
 {
     public function __construct(array $args)
     {
@@ -39,11 +39,11 @@ class SmsClient extends JdCloudClient
                     [
                         'operations' => [
                         ],
-                        'service' => 'sms',
+                        'service' => 'logs',
                         'presign_param' => 'PresignedUrl',
                     ]
                 ),
-                'sms'
+                'logs'
             );
         };
 

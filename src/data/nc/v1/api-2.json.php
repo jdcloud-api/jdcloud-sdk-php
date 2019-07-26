@@ -310,6 +310,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
                 'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
+                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
                 'multiAttachable' => [ 'type' => 'boolean', 'locationName' => 'multiAttachable', ],

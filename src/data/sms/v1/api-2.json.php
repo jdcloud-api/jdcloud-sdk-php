@@ -11,23 +11,32 @@ return [
 //        'serviceId' => 'sms',
     ],
     'operations' => [
-        'SendBatchSms' => [
-            'name' => 'SendBatchSms',
+        'BatchSend' => [
+            'name' => 'BatchSend',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/sendBatchSms',
+                'requestUri' => '/v1/regions/{regionId}/batchSend',
             ],
-            'input' => [ 'shape' => 'SendBatchSmsRequestShape', ],
-            'output' => [ 'shape' => 'SendBatchSmsResponseShape', ],
+            'input' => [ 'shape' => 'BatchSendRequestShape', ],
+            'output' => [ 'shape' => 'BatchSendResponseShape', ],
         ],
-        'PullMtMsgByMobile' => [
-            'name' => 'PullMtMsgByMobile',
+        'StatusReport' => [
+            'name' => 'StatusReport',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/pullMtMsgByMobile',
+                'requestUri' => '/v1/regions/{regionId}/statusReport',
             ],
-            'input' => [ 'shape' => 'PullMtMsgByMobileRequestShape', ],
-            'output' => [ 'shape' => 'PullMtMsgByMobileResponseShape', ],
+            'input' => [ 'shape' => 'StatusReportRequestShape', ],
+            'output' => [ 'shape' => 'StatusReportResponseShape', ],
+        ],
+        'Reply' => [
+            'name' => 'Reply',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/reply',
+            ],
+            'input' => [ 'shape' => 'ReplyRequestShape', ],
+            'output' => [ 'shape' => 'ReplyResponseShape', ],
         ],
     ],
     'shapes' => [
@@ -66,49 +75,107 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
-        'SendBatchSmsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'SendBatchSms', ], ],
-            ],
-        ],
-        'SendBatchSmsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'SendBatchSmsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'PullMtMsgByMobileRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'PullMtMsgByMobileResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'PullMtMsgByMobileResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'SendBatchSmsRequestShape' => [
+        'ReplyResp' => [
             'type' => 'structure',
             'members' => [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'signId' => [ 'type' => 'string', 'locationName' => 'signId', ],
+                'phoneNum' => [ 'type' => 'string', 'locationName' => 'phoneNum', ],
+                'dataTime' => [ 'type' => 'string', 'locationName' => 'dataTime', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+            ],
+        ],
+        'BatchSendResp' => [
+            'type' => 'structure',
+            'members' => [
+                'sequenceNumber' => [ 'type' => 'string', 'locationName' => 'sequenceNumber', ],
+            ],
+        ],
+        'StatusReportResp' => [
+            'type' => 'structure',
+            'members' => [
+                'phoneNum' => [ 'type' => 'string', 'locationName' => 'phoneNum', ],
+                'sequenceNumber' => [ 'type' => 'string', 'locationName' => 'sequenceNumber', ],
+                'sendTime' => [ 'type' => 'string', 'locationName' => 'sendTime', ],
+                'reportTime' => [ 'type' => 'string', 'locationName' => 'reportTime', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'splitNum' => [ 'type' => 'integer', 'locationName' => 'splitNum', ],
+            ],
+        ],
+        'BatchSendRequestShape' => [
+            'type' => 'structure',
+            'members' => [
                 'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
-                'phone' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'signId' => [ 'type' => 'string', 'locationName' => 'signId', ],
+                'phoneList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'params' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'PullMtMsgByMobileResultShape' => [
+        'StatusReportResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'PullMtMsgByMobile', ], ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatusReportResp', ], ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'BatchSendResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'BatchSendResp', ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'StatusReportRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'sequenceNumber' => [ 'type' => 'string', 'locationName' => 'sequenceNumber', ],
+                'phoneList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ReplyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ReplyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'BatchSendResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'BatchSendResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ReplyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'dataDate' => [ 'type' => 'string', 'locationName' => 'dataDate', ],
+                'phoneList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ReplyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ReplyResp', ], ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'StatusReportResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'StatusReportResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
     ],

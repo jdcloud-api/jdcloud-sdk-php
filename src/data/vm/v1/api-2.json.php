@@ -101,6 +101,24 @@ return [
             'input' => [ 'shape' => 'ModifyImageAttributeRequestShape', ],
             'output' => [ 'shape' => 'ModifyImageAttributeResponseShape', ],
         ],
+        'ImportImage' => [
+            'name' => 'ImportImage',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/images:import',
+            ],
+            'input' => [ 'shape' => 'ImportImageRequestShape', ],
+            'output' => [ 'shape' => 'ImportImageResponseShape', ],
+        ],
+        'ImageTasks' => [
+            'name' => 'ImageTasks',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/imageTasks',
+            ],
+            'input' => [ 'shape' => 'ImageTasksRequestShape', ],
+            'output' => [ 'shape' => 'ImageTasksResponseShape', ],
+        ],
         'DescribeInstances' => [
             'name' => 'DescribeInstances',
             'http' => [
@@ -308,6 +326,60 @@ return [
             'input' => [ 'shape' => 'RebuildInstanceRequestShape', ],
             'output' => [ 'shape' => 'RebuildInstanceResponseShape', ],
         ],
+        'DescribeInstanceTemplates' => [
+            'name' => 'DescribeInstanceTemplates',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instanceTemplates',
+            ],
+            'input' => [ 'shape' => 'DescribeInstanceTemplatesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInstanceTemplatesResponseShape', ],
+        ],
+        'CreateInstanceTemplate' => [
+            'name' => 'CreateInstanceTemplate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instanceTemplates',
+            ],
+            'input' => [ 'shape' => 'CreateInstanceTemplateRequestShape', ],
+            'output' => [ 'shape' => 'CreateInstanceTemplateResponseShape', ],
+        ],
+        'DescribeInstanceTemplate' => [
+            'name' => 'DescribeInstanceTemplate',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instanceTemplates/{instanceTemplateId}',
+            ],
+            'input' => [ 'shape' => 'DescribeInstanceTemplateRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInstanceTemplateResponseShape', ],
+        ],
+        'UpdateInstanceTemplate' => [
+            'name' => 'UpdateInstanceTemplate',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/instanceTemplates/{instanceTemplateId}',
+            ],
+            'input' => [ 'shape' => 'UpdateInstanceTemplateRequestShape', ],
+            'output' => [ 'shape' => 'UpdateInstanceTemplateResponseShape', ],
+        ],
+        'DeleteInstanceTemplate' => [
+            'name' => 'DeleteInstanceTemplate',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/instanceTemplates/{instanceTemplateId}',
+            ],
+            'input' => [ 'shape' => 'DeleteInstanceTemplateRequestShape', ],
+            'output' => [ 'shape' => 'DeleteInstanceTemplateResponseShape', ],
+        ],
+        'VerifyInstanceTemplate' => [
+            'name' => 'VerifyInstanceTemplate',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instanceTemplates/{instanceTemplateId}:verify',
+            ],
+            'input' => [ 'shape' => 'VerifyInstanceTemplateRequestShape', ],
+            'output' => [ 'shape' => 'VerifyInstanceTemplateResponseShape', ],
+        ],
         'DescribeInstanceTypes' => [
             'name' => 'DescribeInstanceTypes',
             'http' => [
@@ -408,7 +480,7 @@ return [
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
                 'multiAttachable' => [ 'type' => 'boolean', 'locationName' => 'multiAttachable', ],
                 'encrypted' => [ 'type' => 'boolean', 'locationName' => 'encrypted', ],
-                'enable' => [ 'type' => 'boolean', 'locationName' => 'enable', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
@@ -578,6 +650,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
                 'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
+                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
                 'multiAttachable' => [ 'type' => 'boolean', 'locationName' => 'multiAttachable', ],
@@ -642,7 +715,11 @@ return [
                 'systemDisk' =>  [ 'shape' => 'InstanceDiskAttachmentSpec', ],
                 'dataDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceDiskAttachmentSpec', ], ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
+                'userdata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Userdata', ], ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'noPassword' => [ 'type' => 'boolean', 'locationName' => 'noPassword', ],
+                'noKeyNames' => [ 'type' => 'boolean', 'locationName' => 'noKeyNames', ],
+                'noElasticIp' => [ 'type' => 'boolean', 'locationName' => 'noElasticIp', ],
             ],
         ],
         'ElasticIpSpec' => [
@@ -653,11 +730,26 @@ return [
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
             ],
         ],
+        'Userdata' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'InstanceStatus' => [
             'type' => 'structure',
             'members' => [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'InstanceTemplateNetworkInterface' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
             ],
         ],
         'InstanceTemplateElasticIp' => [
@@ -666,22 +758,6 @@ return [
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
                 'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
                 'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
-            ],
-        ],
-        'InstanceTemplateNetworkInterfaceAttachmentSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'deviceIndex' => [ 'type' => 'integer', 'locationName' => 'deviceIndex', ],
-                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
-                'networkInterface' =>  [ 'shape' => 'InstanceTemplateNetworkInterfaceSpec', ],
-            ],
-        ],
-        'InstanceTemplateNetworkInterfaceSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
-                'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
             ],
         ],
         'InstanceTemplateDiskAttachment' => [
@@ -703,7 +779,7 @@ return [
                 'includePassword' => [ 'type' => 'boolean', 'locationName' => 'includePassword', ],
                 'systemDisk' =>  [ 'shape' => 'InstanceTemplateDiskAttachment', ],
                 'dataDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceTemplateDiskAttachment', ], ],
-                'primaryNetworkInterface' =>  [ 'shape' => 'InstanceTemplateNetworkInterfaceAttachmentSpec', ],
+                'primaryNetworkInterface' =>  [ 'shape' => 'InstanceTemplateNetworkInterfaceAttachment', ],
                 'elasticIp' =>  [ 'shape' => 'InstanceTemplateElasticIp', ],
                 'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
@@ -725,6 +801,14 @@ return [
                 'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
                 'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+            ],
+        ],
+        'InstanceTemplateNetworkInterfaceAttachment' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceIndex' => [ 'type' => 'integer', 'locationName' => 'deviceIndex', ],
+                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+                'networkInterface' =>  [ 'shape' => 'InstanceTemplateNetworkInterface', ],
             ],
         ],
         'InstanceTemplateDiskSpec' => [
@@ -751,6 +835,22 @@ return [
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
                 'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
                 'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+            ],
+        ],
+        'InstanceTemplateNetworkInterfaceAttachmentSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceIndex' => [ 'type' => 'integer', 'locationName' => 'deviceIndex', ],
+                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+                'networkInterface' =>  [ 'shape' => 'InstanceTemplateNetworkInterfaceSpec', ],
+            ],
+        ],
+        'InstanceTemplateNetworkInterfaceSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
             ],
         ],
         'InstanceTemplateSpec' => [
@@ -810,6 +910,27 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'TaskInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'integer', 'locationName' => 'taskId', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+                'progress' => [ 'type' => 'integer', 'locationName' => 'progress', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'finishedTime' => [ 'type' => 'string', 'locationName' => 'finishedTime', ],
+            ],
+        ],
+        'UserSysDisk' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'systemType' => [ 'type' => 'string', 'locationName' => 'systemType', ],
+                'systemDiskSize' => [ 'type' => 'integer', 'locationName' => 'systemDiskSize', ],
+            ],
+        ],
         'ShareImageResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -826,6 +947,13 @@ return [
         'UnShareImageResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ImportImageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+                'importTaskId' => [ 'type' => 'integer', 'locationName' => 'importTaskId', ],
             ],
         ],
         'DeleteImageResponseShape' => [
@@ -885,6 +1013,19 @@ return [
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
             ],
         ],
+        'ImageTasksRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskAction' => [ 'type' => 'string', 'locationName' => 'taskAction', ],
+                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'UnShareImageResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -911,6 +1052,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ImageTasksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ImageTasksResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeImageConstraintsResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -922,6 +1070,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'images' => [ 'type' => 'list', 'member' => [ 'shape' => 'Image', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'ImageTasksResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskSet' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskInfo', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
@@ -942,6 +1097,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'pins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ImportImageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ImportImageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ShareImageRequestShape' => [
@@ -980,6 +1142,23 @@ return [
         'ShareImageResponseShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ImportImageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'architecture' => [ 'type' => 'string', 'locationName' => 'architecture', ],
+                'osType' => [ 'type' => 'string', 'locationName' => 'osType', ],
+                'platform' => [ 'type' => 'string', 'locationName' => 'platform', ],
+                'diskFormat' => [ 'type' => 'string', 'locationName' => 'diskFormat', ],
+                'systemDiskSizeGB' => [ 'type' => 'integer', 'locationName' => 'systemDiskSizeGB', ],
+                'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
+                'osVersion' => [ 'type' => 'string', 'locationName' => 'osVersion', ],
+                'imageName' => [ 'type' => 'string', 'locationName' => 'imageName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'forceImport' => [ 'type' => 'boolean', 'locationName' => 'forceImport', ],
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DescribeImageConstraintsRequestShape' => [
@@ -1463,9 +1642,128 @@ return [
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
             ],
         ],
+        'DescribeInstanceTemplatesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceTemplatesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteInstanceTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'VerifyInstanceTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceTemplateId' => [ 'type' => 'string', 'locationName' => 'instanceTemplateId', ],
+            ],
+        ],
+        'CreateInstanceTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceTemplateId' => [ 'type' => 'string', 'locationName' => 'instanceTemplateId', ],
+            ],
+        ],
+        'DeleteInstanceTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeInstanceTemplatesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteInstanceTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceTemplateId' => [ 'type' => 'string', 'locationName' => 'instanceTemplateId', ],
+            ],
+        ],
+        'DescribeInstanceTemplatesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceTemplates' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceTemplate', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'VerifyInstanceTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'VerifyInstanceTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateInstanceTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceTemplateId' => [ 'type' => 'string', 'locationName' => 'instanceTemplateId', ],
+            ],
+        ],
+        'DescribeInstanceTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceTemplate' =>  [ 'shape' => 'InstanceTemplate', ],
+            ],
+        ],
+        'DescribeInstanceTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceTemplateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateInstanceTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateInstanceTemplateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeInstanceTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceTemplateId' => [ 'type' => 'string', 'locationName' => 'instanceTemplateId', ],
+            ],
+        ],
+        'CreateInstanceTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceTemplateData' =>  [ 'shape' => 'InstanceTemplateSpec', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'UpdateInstanceTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateInstanceTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DescribeInstanceTypesRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],

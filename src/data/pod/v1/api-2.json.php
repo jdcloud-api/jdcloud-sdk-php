@@ -164,6 +164,15 @@ return [
             'input' => [ 'shape' => 'GetContainerLogsRequestShape', ],
             'output' => [ 'shape' => 'GetContainerLogsResponseShape', ],
         ],
+        'RebuildPod' => [
+            'name' => 'RebuildPod',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/pods/{podId}:rebuild',
+            ],
+            'input' => [ 'shape' => 'RebuildPodRequestShape', ],
+            'output' => [ 'shape' => 'RebuildPodResponseShape', ],
+        ],
         'DescribeQuota' => [
             'name' => 'DescribeQuota',
             'http' => [
@@ -211,6 +220,14 @@ return [
         ],
     ],
     'shapes' => [
+        'BindInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+            ],
+        ],
         'CloudDisk' => [
             'type' => 'structure',
             'members' => [
@@ -229,6 +246,7 @@ return [
                 'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
                 'sizeGB' => [ 'type' => 'integer', 'locationName' => 'sizeGB', ],
                 'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
+                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
                 'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
             ],
         ],
@@ -411,6 +429,15 @@ return [
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
             ],
         ],
+        'InstanceInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'bind' => [ 'type' => 'list', 'member' => [ 'shape' => 'BindInfo', ], ],
+            ],
+        ],
         'SecurityGroupSimple' => [
             'type' => 'structure',
             'members' => [
@@ -449,6 +476,7 @@ return [
                 'sizeGB' => [ 'type' => 'integer', 'locationName' => 'sizeGB', ],
                 'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
                 'formatVolume' => [ 'type' => 'boolean', 'locationName' => 'formatVolume', ],
+                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
                 'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
             ],
         ],
@@ -506,6 +534,13 @@ return [
                 'chargeRetireTime' => [ 'type' => 'string', 'locationName' => 'chargeRetireTime', ],
             ],
         ],
+        'Tag' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'PodCondition' => [
             'type' => 'structure',
             'members' => [
@@ -539,6 +574,7 @@ return [
                 'podStatus' =>  [ 'shape' => 'PodStatus', ],
                 'elasticIp' =>  [ 'shape' => 'ElasticIp', ],
                 'primaryNetworkInterface' =>  [ 'shape' => 'NetworkInterfaceAttachment', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
@@ -617,6 +653,22 @@ return [
                 'used' => [ 'type' => 'integer', 'locationName' => 'used', ],
             ],
         ],
+        'RebuildContainerSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'containerName' => [ 'type' => 'string', 'locationName' => 'containerName', ],
+                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'args' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'env' => [ 'type' => 'list', 'member' => [ 'shape' => 'EnvSpec', ], ],
+                'image' => [ 'type' => 'string', 'locationName' => 'image', ],
+                'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
+                'tty' => [ 'type' => 'boolean', 'locationName' => 'tty', ],
+                'workingDir' => [ 'type' => 'string', 'locationName' => 'workingDir', ],
+                'livenessProbe' =>  [ 'shape' => 'ProbeSpec', ],
+                'readinessProbe' =>  [ 'shape' => 'ProbeSpec', ],
+                'volumeMounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'VolumeMount', ], ],
+            ],
+        ],
         'DockerRegistryData' => [
             'type' => 'structure',
             'members' => [
@@ -633,6 +685,13 @@ return [
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'createdAt' => [ 'type' => 'string', 'locationName' => 'createdAt', ],
                 'data' =>  [ 'shape' => 'DockerRegistryData', ],
+            ],
+        ],
+        'TagFilter' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'AttachResultShape' => [
@@ -810,6 +869,20 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'RebuildPodRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'containers' => [ 'type' => 'list', 'member' => [ 'shape' => 'RebuildContainerSpec', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
+            ],
+        ],
+        'RebuildPodResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribePodsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -843,6 +916,11 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribePodsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RebuildPodResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'GetContainerLogsResultShape' => [
@@ -901,6 +979,7 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],

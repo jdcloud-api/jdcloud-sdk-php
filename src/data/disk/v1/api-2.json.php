@@ -121,6 +121,12 @@ return [
         ],
     ],
     'shapes' => [
+        'Bind' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+            ],
+        ],
         'Tag' => [
             'type' => 'structure',
             'members' => [
@@ -165,7 +171,7 @@ return [
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
                 'multiAttachable' => [ 'type' => 'boolean', 'locationName' => 'multiAttachable', ],
                 'encrypted' => [ 'type' => 'boolean', 'locationName' => 'encrypted', ],
-                'enable' => [ 'type' => 'boolean', 'locationName' => 'enable', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
@@ -187,6 +193,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
                 'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
+                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
                 'multiAttachable' => [ 'type' => 'boolean', 'locationName' => 'multiAttachable', ],
@@ -207,6 +214,16 @@ return [
                 'defaultThroughput' => [ 'type' => 'integer', 'locationName' => 'defaultThroughput', ],
                 'stepThroughput' => [ 'type' => 'float', 'locationName' => 'stepThroughput', ],
                 'maxThroughput' => [ 'type' => 'integer', 'locationName' => 'maxThroughput', ],
+                'scalableIOPS' => [ 'type' => 'boolean', 'locationName' => 'scalableIOPS', ],
+                'maxStepIOPS' => [ 'type' => 'integer', 'locationName' => 'maxStepIOPS', ],
+            ],
+        ],
+        'Data' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'bind' => [ 'type' => 'list', 'member' => [ 'shape' => 'Bind', ], ],
             ],
         ],
         'Quota' => [
@@ -376,6 +393,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
+                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
             ],

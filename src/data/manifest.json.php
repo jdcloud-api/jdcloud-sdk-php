@@ -61,6 +61,10 @@ return [
         'namespace' => 'Portal',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'logs' => [
+        'namespace' => 'Logs',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'order' => [
         'namespace' => 'Order',
         'versions' => [ 'latest' => 'v2', ],
@@ -75,10 +79,6 @@ return [
     ],
     'cps' => [
         'namespace' => 'Cps',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
-    'cdn' => [
-        'namespace' => 'Cdn',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'streambus' => [
@@ -135,6 +135,10 @@ return [
     ],
     'vod' => [
         'namespace' => 'Vod',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'yundingdatapush' => [
+        'namespace' => 'Yundingdatapush',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'datastar' => [

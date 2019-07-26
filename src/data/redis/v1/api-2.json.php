@@ -74,6 +74,15 @@ return [
             'input' => [ 'shape' => 'ResetCacheInstancePasswordRequestShape', ],
             'output' => [ 'shape' => 'ResetCacheInstancePasswordResponseShape', ],
         ],
+        'DescribeClusterInfo' => [
+            'name' => 'DescribeClusterInfo',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/cacheInstance/{cacheInstanceId}/clusterInfo',
+            ],
+            'input' => [ 'shape' => 'DescribeClusterInfoRequestShape', ],
+            'output' => [ 'shape' => 'DescribeClusterInfoResponseShape', ],
+        ],
         'DescribeInstanceClass' => [
             'name' => 'DescribeInstanceClass',
             'http' => [
@@ -175,6 +184,25 @@ return [
                 'cacheInstanceDescription' => [ 'type' => 'string', 'locationName' => 'cacheInstanceDescription', ],
                 'redisVersion' => [ 'type' => 'string', 'locationName' => 'redisVersion', ],
                 'ipv6On' => [ 'type' => 'integer', 'locationName' => 'ipv6On', ],
+            ],
+        ],
+        'ClusterInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'proxies' =>  [ 'shape' => 'Proxy', ],
+                'shards' =>  [ 'shape' => 'Shard', ],
+            ],
+        ],
+        'Shard' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'Proxy' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
         'ConfigItem' => [
@@ -283,6 +311,13 @@ return [
             'members' => [
             ],
         ],
+        'DescribeClusterInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeClusterInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeCacheInstancesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -345,11 +380,24 @@ return [
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
         ],
+        'DescribeClusterInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
         'TagFilter' => [
             'type' => 'structure',
             'members' => [
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeClusterInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'info' =>  [ 'shape' => 'ClusterInfo', ],
             ],
         ],
         'Filter' => [
