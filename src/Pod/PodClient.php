@@ -20,8 +20,8 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with pod.
  *
- * @method \Jdcloud\Result decribeContainer(array $args = [])
- * @method \GuzzleHttp\Promise\Promise decribeContainerAsync(array $args = [])
+ * @method \Jdcloud\Result describeContainer(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeContainerAsync(array $args = [])
  * @method \Jdcloud\Result attach(array $args = [])
  * @method \GuzzleHttp\Promise\Promise attachAsync(array $args = [])
  * @method \Jdcloud\Result execCreate(array $args = [])
@@ -32,6 +32,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise execStartAsync(array $args = [])
  * @method \Jdcloud\Result resizeTTY(array $args = [])
  * @method \GuzzleHttp\Promise\Promise resizeTTYAsync(array $args = [])
+ * @method \Jdcloud\Result describeInstanceTypes(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeInstanceTypesAsync(array $args = [])
  * @method \Jdcloud\Result describePods(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describePodsAsync(array $args = [])
  * @method \Jdcloud\Result createPods(array $args = [])

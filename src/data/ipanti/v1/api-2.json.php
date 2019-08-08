@@ -928,24 +928,6 @@ return [
                 'blockTime' => [ 'type' => 'long', 'locationName' => 'blockTime', ],
             ],
         ],
-        'CcIpLimitSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'ccSpeedLimit' => [ 'type' => 'long', 'locationName' => 'ccSpeedLimit', ],
-                'ccSpeedPeriod' => [ 'type' => 'long', 'locationName' => 'ccSpeedPeriod', ],
-            ],
-        ],
-        'CCSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'ccProtectMode' => [ 'type' => 'integer', 'locationName' => 'ccProtectMode', ],
-                'ccThreshold' => [ 'type' => 'long', 'locationName' => 'ccThreshold', ],
-                'hostQps' => [ 'type' => 'long', 'locationName' => 'hostQps', ],
-                'hostUrlQps' => [ 'type' => 'long', 'locationName' => 'hostUrlQps', ],
-                'ipHostQps' => [ 'type' => 'long', 'locationName' => 'ipHostQps', ],
-                'ipHostUrlQps' => [ 'type' => 'long', 'locationName' => 'ipHostUrlQps', ],
-            ],
-        ],
         'CertInfo' => [
             'type' => 'structure',
             'members' => [
@@ -1038,18 +1020,6 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-            ],
-        ],
-        'DDosAttackLog' => [
-            'type' => 'structure',
-            'members' => [
-                'attackTraffic' => [ 'type' => 'double', 'locationName' => 'attackTraffic', ],
-                'blackHole' => [ 'type' => 'integer', 'locationName' => 'blackHole', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'instanceId' => [ 'type' => 'long', 'locationName' => 'instanceId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
@@ -1154,13 +1124,6 @@ return [
                 'ipSetId' => [ 'type' => 'string', 'locationName' => 'ipSetId', ],
                 'ipSetName' => [ 'type' => 'string', 'locationName' => 'ipSetName', ],
                 'ip' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'GeoBlack' => [
-            'type' => 'structure',
-            'members' => [
-                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'Instance' => [

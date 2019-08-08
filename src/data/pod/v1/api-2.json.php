@@ -11,14 +11,14 @@ return [
 //        'serviceId' => 'pod',
     ],
     'operations' => [
-        'DecribeContainer' => [
-            'name' => 'DecribeContainer',
+        'DescribeContainer' => [
+            'name' => 'DescribeContainer',
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/v1/regions/{regionId}/pods/{podId}/containers/{containerName}',
             ],
-            'input' => [ 'shape' => 'DecribeContainerRequestShape', ],
-            'output' => [ 'shape' => 'DecribeContainerResponseShape', ],
+            'input' => [ 'shape' => 'DescribeContainerRequestShape', ],
+            'output' => [ 'shape' => 'DescribeContainerResponseShape', ],
         ],
         'Attach' => [
             'name' => 'Attach',
@@ -64,6 +64,15 @@ return [
             ],
             'input' => [ 'shape' => 'ResizeTTYRequestShape', ],
             'output' => [ 'shape' => 'ResizeTTYResponseShape', ],
+        ],
+        'DescribeInstanceTypes' => [
+            'name' => 'DescribeInstanceTypes',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instanceTypes',
+            ],
+            'input' => [ 'shape' => 'DescribeInstanceTypesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInstanceTypesResponseShape', ],
         ],
         'DescribePods' => [
             'name' => 'DescribePods',
@@ -232,8 +241,11 @@ return [
             'type' => 'structure',
             'members' => [
                 'volumeId' => [ 'type' => 'string', 'locationName' => 'volumeId', ],
+                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
                 'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
+                'sizeGB' => [ 'type' => 'integer', 'locationName' => 'sizeGB', ],
                 'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
+                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
                 'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
             ],
         ],
@@ -242,7 +254,7 @@ return [
             'members' => [
                 'volumeId' => [ 'type' => 'string', 'locationName' => 'volumeId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'snapshot' => [ 'type' => 'string', 'locationName' => 'snapshot', ],
+                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
                 'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
                 'sizeGB' => [ 'type' => 'integer', 'locationName' => 'sizeGB', ],
                 'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
@@ -255,6 +267,13 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'Request' => [
+            'type' => 'structure',
+            'members' => [
+                'cpu' => [ 'type' => 'string', 'locationName' => 'cpu', ],
+                'memoryMB' => [ 'type' => 'string', 'locationName' => 'memoryMB', ],
             ],
         ],
         'ContainerState' => [
@@ -292,6 +311,13 @@ return [
                 'lastState' =>  [ 'shape' => 'ContainerState', ],
             ],
         ],
+        'ResourceRequests' => [
+            'type' => 'structure',
+            'members' => [
+                'requests' =>  [ 'shape' => 'Request', ],
+                'limits' =>  [ 'shape' => 'Request', ],
+            ],
+        ],
         'ContainerStateTerminated' => [
             'type' => 'structure',
             'members' => [
@@ -303,10 +329,17 @@ return [
                 'startedAt' => [ 'type' => 'string', 'locationName' => 'startedAt', ],
             ],
         ],
-        'TcpSocketSpec' => [
+        'Probe' => [
             'type' => 'structure',
             'members' => [
-                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'initialDelaySeconds' => [ 'type' => 'integer', 'locationName' => 'initialDelaySeconds', ],
+                'periodSeconds' => [ 'type' => 'integer', 'locationName' => 'periodSeconds', ],
+                'timeoutSeconds' => [ 'type' => 'integer', 'locationName' => 'timeoutSeconds', ],
+                'failureThreshold' => [ 'type' => 'integer', 'locationName' => 'failureThreshold', ],
+                'successThreshold' => [ 'type' => 'integer', 'locationName' => 'successThreshold', ],
+                'exec' =>  [ 'shape' => 'Exec', ],
+                'httpGet' =>  [ 'shape' => 'Hg', ],
+                'tcpSocket' =>  [ 'shape' => 'TcpSocket', ],
             ],
         ],
         'Exec' => [
@@ -323,18 +356,48 @@ return [
                 'readOnly' => [ 'type' => 'boolean', 'locationName' => 'readOnly', ],
             ],
         ],
-        'ResourceRequestsSpec' => [
+        'TcpSocket' => [
             'type' => 'structure',
             'members' => [
-                'requests' =>  [ 'shape' => 'RequestSpec', ],
-                'limits' =>  [ 'shape' => 'RequestSpec', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
             ],
         ],
-        'RequestSpec' => [
+        'Container' => [
             'type' => 'structure',
             'members' => [
-                'cpu' => [ 'type' => 'string', 'locationName' => 'cpu', ],
-                'memoryMB' => [ 'type' => 'string', 'locationName' => 'memoryMB', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'args' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'env' => [ 'type' => 'list', 'member' => [ 'shape' => 'Env', ], ],
+                'image' => [ 'type' => 'string', 'locationName' => 'image', ],
+                'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
+                'tty' => [ 'type' => 'boolean', 'locationName' => 'tty', ],
+                'workingDir' => [ 'type' => 'string', 'locationName' => 'workingDir', ],
+                'livenessProbe' =>  [ 'shape' => 'Probe', ],
+                'readinessProbe' =>  [ 'shape' => 'Probe', ],
+                'resources' =>  [ 'shape' => 'ResourceRequests', ],
+                'systemDisk' =>  [ 'shape' => 'CloudDisk', ],
+                'volumeMounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'VolumeMount', ], ],
+                'containerStatus' =>  [ 'shape' => 'ContainerStatus', ],
+            ],
+        ],
+        'Env' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'ContainerStateRunning' => [
+            'type' => 'structure',
+            'members' => [
+                'startedAt' => [ 'type' => 'string', 'locationName' => 'startedAt', ],
+            ],
+        ],
+        'ExecSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'EnvSpec' => [
@@ -344,42 +407,39 @@ return [
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
-        'Container' => [
+        'TcpSocketSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+            ],
+        ],
+        'ResourceRequestsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'requests' =>  [ 'shape' => 'RequestSpec', ],
+                'limits' =>  [ 'shape' => 'RequestSpec', ],
+            ],
+        ],
+        'VolumeMountSpec' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'args' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'env' => [ 'type' => 'list', 'member' => [ 'shape' => 'EnvSpec', ], ],
-                'image' => [ 'type' => 'string', 'locationName' => 'image', ],
-                'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
-                'tty' => [ 'type' => 'boolean', 'locationName' => 'tty', ],
-                'workingDir' => [ 'type' => 'string', 'locationName' => 'workingDir', ],
-                'livenessProbe' =>  [ 'shape' => 'ProbeSpec', ],
-                'readinessProbe' =>  [ 'shape' => 'ProbeSpec', ],
-                'resources' =>  [ 'shape' => 'ResourceRequestsSpec', ],
-                'systemDisk' =>  [ 'shape' => 'CloudDiskSpec', ],
-                'volumeMounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'VolumeMount', ], ],
-                'containerStatus' =>  [ 'shape' => 'ContainerStatus', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+                'readOnly' => [ 'type' => 'boolean', 'locationName' => 'readOnly', ],
             ],
         ],
-        'ProbeSpec' => [
+        'HhSpec' => [
             'type' => 'structure',
             'members' => [
-                'initialDelaySeconds' => [ 'type' => 'integer', 'locationName' => 'initialDelaySeconds', ],
-                'periodSeconds' => [ 'type' => 'integer', 'locationName' => 'periodSeconds', ],
-                'timeoutSeconds' => [ 'type' => 'integer', 'locationName' => 'timeoutSeconds', ],
-                'failureThreshold' => [ 'type' => 'integer', 'locationName' => 'failureThreshold', ],
-                'successThreshold' => [ 'type' => 'integer', 'locationName' => 'successThreshold', ],
-                'exec' =>  [ 'shape' => 'Exec', ],
-                'httpGet' =>  [ 'shape' => 'Hg', ],
-                'tcpSocket' =>  [ 'shape' => 'TcpSocketSpec', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
-        'ContainerStateRunning' => [
+        'RequestSpec' => [
             'type' => 'structure',
             'members' => [
-                'startedAt' => [ 'type' => 'string', 'locationName' => 'startedAt', ],
+                'cpu' => [ 'type' => 'string', 'locationName' => 'cpu', ],
+                'memoryMB' => [ 'type' => 'string', 'locationName' => 'memoryMB', ],
             ],
         ],
         'ContainerSpec' => [
@@ -397,7 +457,30 @@ return [
                 'readinessProbe' =>  [ 'shape' => 'ProbeSpec', ],
                 'resources' =>  [ 'shape' => 'ResourceRequestsSpec', ],
                 'systemDisk' =>  [ 'shape' => 'CloudDiskSpec', ],
-                'volumeMounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'VolumeMount', ], ],
+                'volumeMounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'VolumeMountSpec', ], ],
+            ],
+        ],
+        'ProbeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'initialDelaySeconds' => [ 'type' => 'integer', 'locationName' => 'initialDelaySeconds', ],
+                'periodSeconds' => [ 'type' => 'integer', 'locationName' => 'periodSeconds', ],
+                'timeoutSeconds' => [ 'type' => 'integer', 'locationName' => 'timeoutSeconds', ],
+                'failureThreshold' => [ 'type' => 'integer', 'locationName' => 'failureThreshold', ],
+                'successThreshold' => [ 'type' => 'integer', 'locationName' => 'successThreshold', ],
+                'exec' =>  [ 'shape' => 'ExecSpec', ],
+                'httpGet' =>  [ 'shape' => 'HgSpec', ],
+                'tcpSocket' =>  [ 'shape' => 'TcpSocketSpec', ],
+            ],
+        ],
+        'HgSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'scheme' => [ 'type' => 'string', 'locationName' => 'scheme', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'httpHeader' => [ 'type' => 'list', 'member' => [ 'shape' => 'HhSpec', ], ],
             ],
         ],
         'PodDnsConfigOption' => [
@@ -415,6 +498,30 @@ return [
                 'options' => [ 'type' => 'list', 'member' => [ 'shape' => 'PodDnsConfigOption', ], ],
             ],
         ],
+        'PodDnsConfigOptionSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'DnsConfigSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'nameservers' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'searches' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'options' => [ 'type' => 'list', 'member' => [ 'shape' => 'PodDnsConfigOptionSpec', ], ],
+            ],
+        ],
+        'DockerRegistryData' => [
+            'type' => 'structure',
+            'members' => [
+                'server' => [ 'type' => 'string', 'locationName' => 'server', ],
+                'username' => [ 'type' => 'string', 'locationName' => 'username', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+            ],
+        ],
         'ElasticIp' => [
             'type' => 'structure',
             'members' => [
@@ -422,7 +529,30 @@ return [
                 'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
             ],
         ],
+        'ChargeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
+                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
+            ],
+        ],
+        'ElasticIpSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+                'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
+            ],
+        ],
         'HostAlias' => [
+            'type' => 'structure',
+            'members' => [
+                'hostnames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+            ],
+        ],
+        'HostAliasSpec' => [
             'type' => 'structure',
             'members' => [
                 'hostnames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
@@ -451,6 +581,7 @@ return [
                 'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
                 'macAddress' => [ 'type' => 'string', 'locationName' => 'macAddress', ],
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'securityGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecurityGroupSimple', ], ],
                 'sanityCheck' => [ 'type' => 'boolean', 'locationName' => 'sanityCheck', ],
@@ -466,12 +597,45 @@ return [
                 'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
             ],
         ],
+        'InstanceTypeState' => [
+            'type' => 'structure',
+            'members' => [
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'inStock' => [ 'type' => 'boolean', 'locationName' => 'inStock', ],
+                'online' => [ 'type' => 'boolean', 'locationName' => 'online', ],
+            ],
+        ],
+        'InstanceType' => [
+            'type' => 'structure',
+            'members' => [
+                'family' => [ 'type' => 'string', 'locationName' => 'family', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'cpu' => [ 'type' => 'integer', 'locationName' => 'cpu', ],
+                'memoryMB' => [ 'type' => 'integer', 'locationName' => 'memoryMB', ],
+                'nicLimit' => [ 'type' => 'integer', 'locationName' => 'nicLimit', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'state' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceTypeState', ], ],
+            ],
+        ],
         'JDCloudVolumeSource' => [
             'type' => 'structure',
             'members' => [
                 'volumeId' => [ 'type' => 'string', 'locationName' => 'volumeId', ],
+                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+                'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
+                'sizeGB' => [ 'type' => 'integer', 'locationName' => 'sizeGB', ],
+                'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
+                'formatVolume' => [ 'type' => 'boolean', 'locationName' => 'formatVolume', ],
+                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
+                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+            ],
+        ],
+        'JDCloudVolumeSourceSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'volumeId' => [ 'type' => 'string', 'locationName' => 'volumeId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'snapshot' => [ 'type' => 'string', 'locationName' => 'snapshot', ],
+                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
                 'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
                 'sizeGB' => [ 'type' => 'integer', 'locationName' => 'sizeGB', ],
                 'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
@@ -481,6 +645,12 @@ return [
             ],
         ],
         'LogConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'logDriver' => [ 'type' => 'string', 'locationName' => 'logDriver', ],
+            ],
+        ],
+        'LogConfigSpec' => [
             'type' => 'structure',
             'members' => [
                 'logDriver' => [ 'type' => 'string', 'locationName' => 'logDriver', ],
@@ -597,14 +767,6 @@ return [
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
             ],
         ],
-        'ChargeSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
-                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
-                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
-            ],
-        ],
         'PodSpec' => [
             'type' => 'structure',
             'members' => [
@@ -615,34 +777,21 @@ return [
                 'terminationGracePeriodSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGracePeriodSeconds', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
-                'dnsConfig' =>  [ 'shape' => 'DnsConfig', ],
-                'logConfig' =>  [ 'shape' => 'LogConfig', ],
-                'hostAliases' => [ 'type' => 'list', 'member' => [ 'shape' => 'HostAlias', ], ],
-                'volumes' => [ 'type' => 'list', 'member' => [ 'shape' => 'Volume', ], ],
+                'dnsConfig' =>  [ 'shape' => 'DnsConfigSpec', ],
+                'logConfig' =>  [ 'shape' => 'LogConfigSpec', ],
+                'hostAliases' => [ 'type' => 'list', 'member' => [ 'shape' => 'HostAliasSpec', ], ],
+                'volumes' => [ 'type' => 'list', 'member' => [ 'shape' => 'VolumeSpec', ], ],
                 'containers' => [ 'type' => 'list', 'member' => [ 'shape' => 'ContainerSpec', ], ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
-                'elasticIp' =>  [ 'shape' => 'ElasticIp', ],
+                'elasticIp' =>  [ 'shape' => 'ElasticIpSpec', ],
                 'primaryNetworkInterface' =>  [ 'shape' => 'NetworkInterfaceAttachmentSpec', ],
             ],
         ],
-        'TcpSocket' => [
+        'VolumeSpec' => [
             'type' => 'structure',
             'members' => [
-                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
-                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
-            ],
-        ],
-        'Probe' => [
-            'type' => 'structure',
-            'members' => [
-                'initialDelaySeconds' => [ 'type' => 'integer', 'locationName' => 'initialDelaySeconds', ],
-                'periodSeconds' => [ 'type' => 'integer', 'locationName' => 'periodSeconds', ],
-                'timeoutSeconds' => [ 'type' => 'integer', 'locationName' => 'timeoutSeconds', ],
-                'failureThreshold' => [ 'type' => 'integer', 'locationName' => 'failureThreshold', ],
-                'successThreshold' => [ 'type' => 'integer', 'locationName' => 'successThreshold', ],
-                'exec' =>  [ 'shape' => 'Exec', ],
-                'httpGet' =>  [ 'shape' => 'Hg', ],
-                'tcpSocket' =>  [ 'shape' => 'TcpSocket', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'jdcloudDisk' =>  [ 'shape' => 'JDCloudVolumeSourceSpec', ],
             ],
         ],
         'Quota' => [
@@ -656,7 +805,7 @@ return [
         'RebuildContainerSpec' => [
             'type' => 'structure',
             'members' => [
-                'containerName' => [ 'type' => 'string', 'locationName' => 'containerName', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'args' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'env' => [ 'type' => 'list', 'member' => [ 'shape' => 'EnvSpec', ], ],
@@ -666,16 +815,7 @@ return [
                 'workingDir' => [ 'type' => 'string', 'locationName' => 'workingDir', ],
                 'livenessProbe' =>  [ 'shape' => 'ProbeSpec', ],
                 'readinessProbe' =>  [ 'shape' => 'ProbeSpec', ],
-                'volumeMounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'VolumeMount', ], ],
-            ],
-        ],
-        'DockerRegistryData' => [
-            'type' => 'structure',
-            'members' => [
-                'server' => [ 'type' => 'string', 'locationName' => 'server', ],
-                'username' => [ 'type' => 'string', 'locationName' => 'username', ],
-                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
-                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'volumeMounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'VolumeMountSpec', ], ],
             ],
         ],
         'Secret' => [
@@ -752,6 +892,14 @@ return [
             'members' => [
             ],
         ],
+        'DescribeContainerRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
+                'containerName' => [ 'type' => 'string', 'locationName' => 'containerName', ],
+            ],
+        ],
         'ExecStartResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -773,11 +921,10 @@ return [
                 'execCode' => [ 'type' => 'integer', 'locationName' => 'execCode', ],
             ],
         ],
-        'DecribeContainerResponseShape' => [
+        'DescribeContainerResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DecribeContainerResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'container' =>  [ 'shape' => 'Container', ],
             ],
         ],
         'ExecCreateResponseShape' => [
@@ -787,23 +934,16 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DecribeContainerResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'container' =>  [ 'shape' => 'Container', ],
-            ],
-        ],
-        'DecribeContainerRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
-                'containerName' => [ 'type' => 'string', 'locationName' => 'containerName', ],
-            ],
-        ],
         'ResizeTTYResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeContainerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeContainerResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -819,6 +959,36 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeInstanceTypesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceType', ], ],
+                'specificInstanceTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceType', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeInstanceTypesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceTypesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeInstanceTypesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'AssociateElasticIpResponseShape' => [
@@ -970,6 +1140,7 @@ return [
             'members' => [
                 'podSpec' =>  [ 'shape' => 'PodSpec', ],
                 'maxCount' => [ 'type' => 'integer', 'locationName' => 'maxCount', ],
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1038,14 +1209,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'Filter' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'StartPodRequestShape' => [

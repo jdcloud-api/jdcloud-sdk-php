@@ -11,6 +11,15 @@ return [
 //        'serviceId' => 'ossopenapi',
     ],
     'operations' => [
+        'GetSingleBucketCapacity' => [
+            'name' => 'GetSingleBucketCapacity',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/capacity/{bucketName}',
+            ],
+            'input' => [ 'shape' => 'GetSingleBucketCapacityRequestShape', ],
+            'output' => [ 'shape' => 'GetSingleBucketCapacityResponseShape', ],
+        ],
         'GetBackSourceConfiguration' => [
             'name' => 'GetBackSourceConfiguration',
             'http' => [
@@ -40,6 +49,67 @@ return [
         ],
     ],
     'shapes' => [
+        'BucketCapacityStatistic' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'value' => [ 'type' => 'long', 'locationName' => 'value', ],
+                'time' => [ 'type' => 'string', 'locationName' => 'time', ],
+                'capacityType' => [ 'type' => 'integer', 'locationName' => 'capacityType', ],
+            ],
+        ],
+        'GetSingleBucketCapacityRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'capacityTypes' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'beginTime' => [ 'type' => 'string', 'locationName' => 'beginTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'periodType' => [ 'type' => 'integer', 'locationName' => 'periodType', ],
+                'method' => [ 'type' => 'integer', 'locationName' => 'method', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+            ],
+        ],
+        'GetSingleBucketCapacityResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetSingleBucketCapacityResultShape', ],
+            ],
+        ],
+        'SingleBucketCapacityRequestCondition' => [
+            'type' => 'structure',
+            'members' => [
+                'capacityTypes' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'beginTime' => [ 'type' => 'string', 'locationName' => 'beginTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'periodType' => [ 'type' => 'integer', 'locationName' => 'periodType', ],
+                'method' => [ 'type' => 'integer', 'locationName' => 'method', ],
+            ],
+        ],
+        'BucketCapacityCondition' => [
+            'type' => 'structure',
+            'members' => [
+                'capacityTypes' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'beginTime' => [ 'type' => 'string', 'locationName' => 'beginTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'periodType' => [ 'type' => 'integer', 'locationName' => 'periodType', ],
+                'method' => [ 'type' => 'integer', 'locationName' => 'method', ],
+                'bucketNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'BucketCapacityQueryResult' => [
+            'type' => 'structure',
+            'members' => [
+                'resultList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BucketCapacityStatistic', ], ],
+            ],
+        ],
+        'GetSingleBucketCapacityResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'resultList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BucketCapacityStatistic', ], ],
+            ],
+        ],
         'BucketSpaceStatisticQueryResult' => [
             'type' => 'structure',
             'members' => [
@@ -209,6 +279,41 @@ return [
             'type' => 'structure',
             'members' => [
                 'imageExtensions' => [ 'type' => 'string', 'locationName' => 'imageExtensions', ],
+            ],
+        ],
+        'SignatureInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
+                'httpMethod' => [ 'type' => 'string', 'locationName' => 'httpMethod', ],
+                'resourcePath' => [ 'type' => 'string', 'locationName' => 'resourcePath', ],
+                'xAmzContentSha256' => [ 'type' => 'string', 'locationName' => 'xAmzContentSha256', ],
+                'additionalSignatureHeaders' => [ 'type' => 'object', 'locationName' => 'additionalSignatureHeaders', ],
+                'signatureParameters' => [ 'type' => 'object', 'locationName' => 'signatureParameters', ],
+            ],
+        ],
+        'SignatureResult' => [
+            'type' => 'structure',
+            'members' => [
+                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
+                'httpMethod' => [ 'type' => 'string', 'locationName' => 'httpMethod', ],
+                'resourcePath' => [ 'type' => 'string', 'locationName' => 'resourcePath', ],
+                'xAmzDate' => [ 'type' => 'string', 'locationName' => 'xAmzDate', ],
+                'xAmzContentSha256' => [ 'type' => 'string', 'locationName' => 'xAmzContentSha256', ],
+                'xAmzMetaRequesterPin' => [ 'type' => 'string', 'locationName' => 'xAmzMetaRequesterPin', ],
+                'xAmzMetaRequesterId' => [ 'type' => 'string', 'locationName' => 'xAmzMetaRequesterId', ],
+                'additionalSignatureHeaders' => [ 'type' => 'object', 'locationName' => 'additionalSignatureHeaders', ],
+                'signatureParameters' => [ 'type' => 'object', 'locationName' => 'signatureParameters', ],
+                'authorization' => [ 'type' => 'string', 'locationName' => 'authorization', ],
+            ],
+        ],
+        'UserBillCode' => [
+            'type' => 'structure',
+            'members' => [
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'storageResourceType' => [ 'type' => 'string', 'locationName' => 'storageResourceType', ],
+                'processResourceType' => [ 'type' => 'string', 'locationName' => 'processResourceType', ],
             ],
         ],
     ],

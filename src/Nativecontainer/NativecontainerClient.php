@@ -48,6 +48,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise execGetExitCodeAsync(array $args = [])
  * @method \Jdcloud\Result resizeTTY(array $args = [])
  * @method \GuzzleHttp\Promise\Promise resizeTTYAsync(array $args = [])
+ * @method \Jdcloud\Result describeInstanceTypes(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeInstanceTypesAsync(array $args = [])
  * @method \Jdcloud\Result describeQuota(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeQuotaAsync(array $args = [])
  * @method \Jdcloud\Result describeSecrets(array $args = [])

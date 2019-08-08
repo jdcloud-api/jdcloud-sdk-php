@@ -11,6 +11,51 @@ return [
 //        'serviceId' => 'logs',
     ],
     'operations' => [
+        'DescribeCollectInfo' => [
+            'name' => 'DescribeCollectInfo',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/collectinfos/{collectInfoUID}',
+            ],
+            'input' => [ 'shape' => 'DescribeCollectInfoRequestShape', ],
+            'output' => [ 'shape' => 'DescribeCollectInfoResponseShape', ],
+        ],
+        'UpdateCollectInfo' => [
+            'name' => 'UpdateCollectInfo',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/collectinfos/{collectInfoUID}',
+            ],
+            'input' => [ 'shape' => 'UpdateCollectInfoRequestShape', ],
+            'output' => [ 'shape' => 'UpdateCollectInfoResponseShape', ],
+        ],
+        'DescribeCollectResources' => [
+            'name' => 'DescribeCollectResources',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/collectinfos/{collectInfoUID}/resources',
+            ],
+            'input' => [ 'shape' => 'DescribeCollectResourcesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeCollectResourcesResponseShape', ],
+        ],
+        'UpdateCollectResources' => [
+            'name' => 'UpdateCollectResources',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/collectinfos/{collectInfoUID}:updateResources',
+            ],
+            'input' => [ 'shape' => 'UpdateCollectResourcesRequestShape', ],
+            'output' => [ 'shape' => 'UpdateCollectResourcesResponseShape', ],
+        ],
+        'CreateCollectInfo' => [
+            'name' => 'CreateCollectInfo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/logtopics/{logtopicUID}/collectinfos',
+            ],
+            'input' => [ 'shape' => 'CreateCollectInfoRequestShape', ],
+            'output' => [ 'shape' => 'CreateCollectInfoResponseShape', ],
+        ],
         'DescribeLogdCA' => [
             'name' => 'DescribeLogdCA',
             'http' => [
@@ -28,6 +73,96 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeInstanceCollectConfsRequestShape', ],
             'output' => [ 'shape' => 'DescribeInstanceCollectConfsResponseShape', ],
+        ],
+        'DescribeLogsets' => [
+            'name' => 'DescribeLogsets',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/logsets',
+            ],
+            'input' => [ 'shape' => 'DescribeLogsetsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLogsetsResponseShape', ],
+        ],
+        'CreateLogset' => [
+            'name' => 'CreateLogset',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/logsets',
+            ],
+            'input' => [ 'shape' => 'CreateLogsetRequestShape', ],
+            'output' => [ 'shape' => 'CreateLogsetResponseShape', ],
+        ],
+        'DescribeLogset' => [
+            'name' => 'DescribeLogset',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}',
+            ],
+            'input' => [ 'shape' => 'DescribeLogsetRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLogsetResponseShape', ],
+        ],
+        'UpdateLogset' => [
+            'name' => 'UpdateLogset',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}',
+            ],
+            'input' => [ 'shape' => 'UpdateLogsetRequestShape', ],
+            'output' => [ 'shape' => 'UpdateLogsetResponseShape', ],
+        ],
+        'DeleteLogset' => [
+            'name' => 'DeleteLogset',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUIDs}',
+            ],
+            'input' => [ 'shape' => 'DeleteLogsetRequestShape', ],
+            'output' => [ 'shape' => 'DeleteLogsetResponseShape', ],
+        ],
+        'DescribeLogtopics' => [
+            'name' => 'DescribeLogtopics',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics',
+            ],
+            'input' => [ 'shape' => 'DescribeLogtopicsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLogtopicsResponseShape', ],
+        ],
+        'CreateLogtopic' => [
+            'name' => 'CreateLogtopic',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics',
+            ],
+            'input' => [ 'shape' => 'CreateLogtopicRequestShape', ],
+            'output' => [ 'shape' => 'CreateLogtopicResponseShape', ],
+        ],
+        'DeleteLogtopic' => [
+            'name' => 'DeleteLogtopic',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUIDs}',
+            ],
+            'input' => [ 'shape' => 'DeleteLogtopicRequestShape', ],
+            'output' => [ 'shape' => 'DeleteLogtopicResponseShape', ],
+        ],
+        'DescribeLogtopic' => [
+            'name' => 'DescribeLogtopic',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/logtopics/{logtopicUID}',
+            ],
+            'input' => [ 'shape' => 'DescribeLogtopicRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLogtopicResponseShape', ],
+        ],
+        'UpdateLogtopic' => [
+            'name' => 'UpdateLogtopic',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/logtopics/{logtopicUID}',
+            ],
+            'input' => [ 'shape' => 'UpdateLogtopicRequestShape', ],
+            'output' => [ 'shape' => 'UpdateLogtopicResponseShape', ],
         ],
         'Put' => [
             'name' => 'Put',
@@ -279,6 +414,16 @@ return [
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
             ],
         ],
+        'SearchLogContextSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'anchor' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'lineSize' => [ 'type' => 'string', 'locationName' => 'lineSize', ],
+                'time' => [ 'type' => 'long', 'locationName' => 'time', ],
+            ],
+        ],
         'ShipperEnd' => [
             'type' => 'structure',
             'members' => [
@@ -423,6 +568,136 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
+        'CreateCollectInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
+            ],
+        ],
+        'UpdateCollectInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateCollectInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateCollectInfoResultShape', ],
+            ],
+        ],
+        'UpdateCollectInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
+                'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
+                'logFile' => [ 'type' => 'string', 'locationName' => 'logFile', ],
+                'logFilters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'filterEnabled' => [ 'type' => 'boolean', 'locationName' => 'filterEnabled', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
+            ],
+        ],
+        'DescribeCollectInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeCollectInfoResultShape', ],
+            ],
+        ],
+        'DescribeCollectInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'detail' =>  [ 'shape' => 'CollectTempalteEnd', ],
+                'enabled' => [ 'type' => 'long', 'locationName' => 'enabled', ],
+                'hasResource' => [ 'type' => 'boolean', 'locationName' => 'hasResource', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
+                'templateUID' => [ 'type' => 'string', 'locationName' => 'templateUID', ],
+            ],
+        ],
+        'UpdateCollectInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeCollectResourcesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
+            ],
+        ],
+        'UpdateCollectResourcesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeCollectResourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeCollectResourcesResultShape', ],
+            ],
+        ],
+        'UpdateCollectResourcesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
+            ],
+        ],
+        'CreateCollectInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
+                'templateUID' => [ 'type' => 'string', 'locationName' => 'templateUID', ],
+                'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
+                'logFile' => [ 'type' => 'string', 'locationName' => 'logFile', ],
+                'logFilters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'filterEnabled' => [ 'type' => 'boolean', 'locationName' => 'filterEnabled', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'DescribeCollectResourcesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceEnd', ], ],
+                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
+                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'UpdateCollectResourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeCollectInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
+            ],
+        ],
         'DescribeLogdCAResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -463,6 +738,231 @@ return [
                 'cert' => [ 'type' => 'string', 'locationName' => 'cert', ],
                 'expiryDate' => [ 'type' => 'long', 'locationName' => 'expiryDate', ],
                 'privateKey' => [ 'type' => 'string', 'locationName' => 'privateKey', ],
+            ],
+        ],
+        'DescribeLogsetRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+            ],
+        ],
+        'DescribeLogsetsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeLogsetsResultShape', ],
+            ],
+        ],
+        'DescribeLogsetsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'LogsetEnd', ], ],
+                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
+                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'CreateLogsetResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
+            ],
+        ],
+        'DescribeLogsetResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'hasTopic' => [ 'type' => 'boolean', 'locationName' => 'hasTopic', ],
+                'lifeCycle' => [ 'type' => 'long', 'locationName' => 'lifeCycle', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+            ],
+        ],
+        'DeleteLogsetResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateLogsetRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'lifeCycle' => [ 'type' => 'long', 'locationName' => 'lifeCycle', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeLogsetResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeLogsetResultShape', ],
+            ],
+        ],
+        'UpdateLogsetResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeLogsetsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'UpdateLogsetRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'lifeCycle' => [ 'type' => 'long', 'locationName' => 'lifeCycle', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+            ],
+        ],
+        'DeleteLogsetRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUIDs' => [ 'type' => 'string', 'locationName' => 'logsetUIDs', ],
+            ],
+        ],
+        'DeleteLogsetResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateLogsetResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateLogsetResultShape', ],
+            ],
+        ],
+        'UpdateLogsetResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateLogtopicRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+            ],
+        ],
+        'DescribeLogtopicsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'LogtopicDetailEnd', ], ],
+                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
+                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'CreateLogtopicResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateLogtopicResultShape', ],
+            ],
+        ],
+        'DeleteLogtopicRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUIDs' => [ 'type' => 'string', 'locationName' => 'logtopicUIDs', ],
+            ],
+        ],
+        'DescribeLogtopicsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+            ],
+        ],
+        'DescribeLogtopicRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'UpdateLogtopicResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateLogtopicResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateLogtopicResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
+            ],
+        ],
+        'DeleteLogtopicResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeLogtopicResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'logsetName' => [ 'type' => 'string', 'locationName' => 'logsetName', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+            ],
+        ],
+        'DeleteLogtopicResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLogtopicsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeLogtopicsResultShape', ],
+            ],
+        ],
+        'UpdateLogtopicRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'DescribeLogtopicResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeLogtopicResultShape', ],
             ],
         ],
         'PutRequestShape' => [

@@ -20,6 +20,8 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with ossopenapi.
  *
+ * @method \Jdcloud\Result getSingleBucketCapacity(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getSingleBucketCapacityAsync(array $args = [])
  * @method \Jdcloud\Result getBackSourceConfiguration(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getBackSourceConfigurationAsync(array $args = [])
  * @method \Jdcloud\Result putBackSourceConfiguration(array $args = [])

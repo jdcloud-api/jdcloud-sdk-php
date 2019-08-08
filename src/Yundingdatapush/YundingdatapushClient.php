@@ -20,6 +20,14 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with yundingdatapush.
  *
+ * @method \Jdcloud\Result describeDatapushVenders(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeDatapushVendersAsync(array $args = [])
+ * @method \Jdcloud\Result addDatapushVender(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise addDatapushVenderAsync(array $args = [])
+ * @method \Jdcloud\Result deleteDatapushVender(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteDatapushVenderAsync(array $args = [])
+ * @method \Jdcloud\Result describeRdsInstances(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeRdsInstancesAsync(array $args = [])
  */
 class YundingdatapushClient extends JdCloudClient
 {

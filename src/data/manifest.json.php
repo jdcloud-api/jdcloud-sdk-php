@@ -13,12 +13,12 @@ return [
         'namespace' => 'Streamcomputer',
         'versions' => [ 'latest' => 'v1', ],
     ],
-    'ipanti' => [
-        'namespace' => 'Ipanti',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
     'ssl' => [
         'namespace' => 'Ssl',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'ipanti' => [
+        'namespace' => 'Ipanti',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'oss' => [
@@ -32,6 +32,10 @@ return [
     'antipro' => [
         'namespace' => 'Antipro',
         'versions' => [ 'latest' => 'v1', ],
+    ],
+    'domainservice' => [
+        'namespace' => 'Domainservice',
+        'versions' => [ 'latest' => 'v2', ],
     ],
     'billing' => [
         'namespace' => 'Billing',

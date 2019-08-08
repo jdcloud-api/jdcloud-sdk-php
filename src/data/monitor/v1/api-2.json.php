@@ -95,7 +95,7 @@ return [
         'DescribeAlarmHistoryAllRegion' => [
             'name' => 'DescribeAlarmHistoryAllRegion',
             'http' => [
-                'method' => 'POST',
+                'method' => 'GET',
                 'requestUri' => '/v1/ruleNoticeHistory',
             ],
             'input' => [ 'shape' => 'DescribeAlarmHistoryAllRegionRequestShape', ],
@@ -155,6 +155,15 @@ return [
             'input' => [ 'shape' => 'PutMetricDataRequestShape', ],
             'output' => [ 'shape' => 'PutMetricDataResponseShape', ],
         ],
+        'DescribeServices' => [
+            'name' => 'DescribeServices',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/services',
+            ],
+            'input' => [ 'shape' => 'DescribeServicesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeServicesResponseShape', ],
+        ],
     ],
     'shapes' => [
         'AddTagsSpec' => [
@@ -164,8 +173,16 @@ return [
                 'groupCode' => [ 'type' => 'string', 'locationName' => 'groupCode', ],
                 'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'srcServiceCode' => [ 'type' => 'string', 'locationName' => 'srcServiceCode', ],
                 'tagK' => [ 'type' => 'string', 'locationName' => 'tagK', ],
                 'tagV' => [ 'type' => 'string', 'locationName' => 'tagV', ],
+            ],
+        ],
+        'AgentStatus' => [
+            'type' => 'structure',
+            'members' => [
+                'uuid' => [ 'type' => 'string', 'locationName' => 'uuid', ],
+                'value' => [ 'type' => 'long', 'locationName' => 'value', ],
             ],
         ],
         'Alarm' => [
@@ -179,18 +196,31 @@ return [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
                 'metricName' => [ 'type' => 'string', 'locationName' => 'metricName', ],
+                'noticeLevel' =>  [ 'shape' => 'NoticeLevel', ],
                 'noticePeriod' => [ 'type' => 'long', 'locationName' => 'noticePeriod', ],
                 'noticeTime' => [ 'type' => 'string', 'locationName' => 'noticeTime', ],
                 'operation' => [ 'type' => 'string', 'locationName' => 'operation', ],
                 'period' => [ 'type' => 'long', 'locationName' => 'period', ],
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'status' => [ 'type' => 'long', 'locationName' => 'status', ],
                 'tag' => [ 'type' => 'string', 'locationName' => 'tag', ],
                 'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
                 'times' => [ 'type' => 'long', 'locationName' => 'times', ],
                 'value' => [ 'type' => 'double', 'locationName' => 'value', ],
+                'webHookContent' => [ 'type' => 'string', 'locationName' => 'webHookContent', ],
+                'webHookProtocol' => [ 'type' => 'string', 'locationName' => 'webHookProtocol', ],
+                'webHookSecret' => [ 'type' => 'string', 'locationName' => 'webHookSecret', ],
+                'webHookUrl' => [ 'type' => 'string', 'locationName' => 'webHookUrl', ],
+            ],
+        ],
+        'NoticeLevel' => [
+            'type' => 'structure',
+            'members' => [
+                'custom' => [ 'type' => 'boolean', 'locationName' => 'custom', ],
+                'levels' => [ 'type' => 'object', 'locationName' => 'levels', ],
             ],
         ],
         'DescribedNoticeContacts' => [
@@ -204,17 +234,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'contacts' => [ 'type' => 'list', 'member' => [ 'shape' => 'DescribedNoticeContacts', ], ],
+                'durationTimes' => [ 'type' => 'long', 'locationName' => 'durationTimes', ],
+                'noticeDurationTime' => [ 'type' => 'long', 'locationName' => 'noticeDurationTime', ],
                 'noticeLevel' => [ 'type' => 'string', 'locationName' => 'noticeLevel', ],
                 'noticeTime' => [ 'type' => 'long', 'locationName' => 'noticeTime', ],
                 'rule' =>  [ 'shape' => 'Rule', ],
                 'value' => [ 'type' => 'double', 'locationName' => 'value', ],
-            ],
-        ],
-        'NoticeLevel' => [
-            'type' => 'structure',
-            'members' => [
-                'custom' => [ 'type' => 'boolean', 'locationName' => 'custom', ],
-                'levels' => [ 'type' => 'object', 'locationName' => 'levels', ],
             ],
         ],
         'Rule' => [
@@ -245,6 +270,7 @@ return [
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'rootRuleId' => [ 'type' => 'long', 'locationName' => 'rootRuleId', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
                 'ruleType' => [ 'type' => 'long', 'locationName' => 'ruleType', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'status' => [ 'type' => 'long', 'locationName' => 'status', ],
@@ -297,6 +323,7 @@ return [
                 'contacts' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseContact', ], ],
                 'dataCenters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'tagsArray' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
                 'templateType' => [ 'type' => 'long', 'locationName' => 'templateType', ],
@@ -318,6 +345,7 @@ return [
                 'noticePeriod' => [ 'type' => 'long', 'locationName' => 'noticePeriod', ],
                 'operation' => [ 'type' => 'string', 'locationName' => 'operation', ],
                 'period' => [ 'type' => 'long', 'locationName' => 'period', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
                 'ruleType' => [ 'type' => 'long', 'locationName' => 'ruleType', ],
                 'tags' => [ 'type' => 'object', 'locationName' => 'tags', ],
                 'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
@@ -351,6 +379,7 @@ return [
                 'datacenter' => [ 'type' => 'string', 'locationName' => 'datacenter', ],
                 'enabled' => [ 'type' => 'long', 'locationName' => 'enabled', ],
                 'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
                 'ruleType' => [ 'type' => 'long', 'locationName' => 'ruleType', ],
                 'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseRule', ], ],
                 'saveTemplate' => [ 'type' => 'boolean', 'locationName' => 'saveTemplate', ],
@@ -483,6 +512,7 @@ return [
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'rootRuleId' => [ 'type' => 'long', 'locationName' => 'rootRuleId', ],
                 'ruleId' => [ 'type' => 'long', 'locationName' => 'ruleId', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'status' => [ 'type' => 'long', 'locationName' => 'status', ],
                 'tag' => [ 'type' => 'string', 'locationName' => 'tag', ],
@@ -514,11 +544,20 @@ return [
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'rootRuleId' => [ 'type' => 'long', 'locationName' => 'rootRuleId', ],
                 'ruleId' => [ 'type' => 'long', 'locationName' => 'ruleId', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'tag' => [ 'type' => 'string', 'locationName' => 'tag', ],
                 'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
                 'times' => [ 'type' => 'long', 'locationName' => 'times', ],
                 'value' => [ 'type' => 'double', 'locationName' => 'value', ],
+            ],
+        ],
+        'Contacts' => [
+            'type' => 'structure',
+            'members' => [
+                'group' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'person' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'withPin' => [ 'type' => 'boolean', 'locationName' => 'withPin', ],
             ],
         ],
         'CreateAlarmParam' => [
@@ -535,6 +574,7 @@ return [
                 'operation' => [ 'type' => 'string', 'locationName' => 'operation', ],
                 'period' => [ 'type' => 'long', 'locationName' => 'period', ],
                 'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'tags' => [ 'type' => 'object', 'locationName' => 'tags', ],
                 'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
@@ -565,6 +605,7 @@ return [
                 'objUIDs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'operation' => [ 'type' => 'string', 'locationName' => 'operation', ],
                 'period' => [ 'type' => 'long', 'locationName' => 'period', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
                 'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
                 'times' => [ 'type' => 'long', 'locationName' => 'times', ],
             ],
@@ -595,7 +636,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'address' => [ 'type' => 'string', 'locationName' => 'address', ],
-                'frequency' => [ 'type' => 'long', 'locationName' => 'frequency', ],
                 'httpBody' => [ 'type' => 'string', 'locationName' => 'httpBody', ],
                 'httpCookie' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyValue', ], ],
                 'httpHeader' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyValue', ], ],
@@ -607,7 +647,6 @@ return [
                 'targetId' => [ 'type' => 'string', 'locationName' => 'targetId', ],
                 'targetRegion' => [ 'type' => 'string', 'locationName' => 'targetRegion', ],
                 'taskType' => [ 'type' => 'long', 'locationName' => 'taskType', ],
-                'timeout' => [ 'type' => 'long', 'locationName' => 'timeout', ],
             ],
         ],
         'KeyValue' => [
@@ -634,6 +673,24 @@ return [
                 'timeout' => [ 'type' => 'long', 'locationName' => 'timeout', ],
             ],
         ],
+        'SiteMonitorSmtpOption' => [
+            'type' => 'structure',
+            'members' => [
+                'passwd' => [ 'type' => 'string', 'locationName' => 'passwd', ],
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'timeout' => [ 'type' => 'long', 'locationName' => 'timeout', ],
+                'user' => [ 'type' => 'string', 'locationName' => 'user', ],
+            ],
+        ],
+        'SiteMonitorFtpOption' => [
+            'type' => 'structure',
+            'members' => [
+                'loginType' => [ 'type' => 'string', 'locationName' => 'loginType', ],
+                'passwd' => [ 'type' => 'string', 'locationName' => 'passwd', ],
+                'timeout' => [ 'type' => 'long', 'locationName' => 'timeout', ],
+                'user' => [ 'type' => 'string', 'locationName' => 'user', ],
+            ],
+        ],
         'SiteMonitorSource' => [
             'type' => 'structure',
             'members' => [
@@ -652,6 +709,7 @@ return [
                 'cycle' => [ 'type' => 'long', 'locationName' => 'cycle', ],
                 'defaultSource' => [ 'type' => 'string', 'locationName' => 'defaultSource', ],
                 'enabled' => [ 'type' => 'string', 'locationName' => 'enabled', ],
+                'ftpOption' =>  [ 'shape' => 'SiteMonitorFtpOption', ],
                 'hawkeyeId' => [ 'type' => 'long', 'locationName' => 'hawkeyeId', ],
                 'httpOption' =>  [ 'shape' => 'SiteMonitorHttpOption', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
@@ -659,10 +717,11 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'port' => [ 'type' => 'string', 'locationName' => 'port', ],
+                'smtpOption' =>  [ 'shape' => 'SiteMonitorSmtpOption', ],
                 'source' => [ 'type' => 'list', 'member' => [ 'shape' => 'SiteMonitorSource', ], ],
                 'stats' => [ 'type' => 'object', 'locationName' => 'stats', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
                 'tcpOption' =>  [ 'shape' => 'SiteMonitorTcpOption', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'udpOption' =>  [ 'shape' => 'SiteMonitorUdpOption', ],
                 'updatedTime' => [ 'type' => 'long', 'locationName' => 'updatedTime', ],
             ],
@@ -681,7 +740,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'reqContent' => [ 'type' => 'string', 'locationName' => 'reqContent', ],
+                'reqContentType' => [ 'type' => 'string', 'locationName' => 'reqContentType', ],
                 'resCheck' => [ 'type' => 'string', 'locationName' => 'resCheck', ],
+                'resCheckType' => [ 'type' => 'string', 'locationName' => 'resCheckType', ],
                 'timeout' => [ 'type' => 'long', 'locationName' => 'timeout', ],
             ],
         ],
@@ -806,6 +867,49 @@ return [
                 'unknownRuleCount' => [ 'type' => 'long', 'locationName' => 'unknownRuleCount', ],
             ],
         ],
+        'GroupInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'charts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Chart', ], ],
+                'groupCode' => [ 'type' => 'string', 'locationName' => 'groupCode', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'metrics' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'tags' => [ 'type' => 'object', 'locationName' => 'tags', ],
+                'webCode' => [ 'type' => 'string', 'locationName' => 'webCode', ],
+            ],
+        ],
+        'GroupTree' => [
+            'type' => 'structure',
+            'members' => [
+                'childs' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupNode', ], ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+            ],
+        ],
+        'GroupNode' => [
+            'type' => 'structure',
+            'members' => [
+                'childs' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupNode', ], ],
+                'groupCode' => [ 'type' => 'string', 'locationName' => 'groupCode', ],
+                'parent' => [ 'type' => 'string', 'locationName' => 'parent', ],
+            ],
+        ],
+        'ServiceInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'groupTree' =>  [ 'shape' => 'GroupTree', ],
+                'metricGroup' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupInfo', ], ],
+                'metricsTimeDelay' => [ 'type' => 'long', 'locationName' => 'metricsTimeDelay', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'timeInterval' => [ 'type' => 'long', 'locationName' => 'timeInterval', ],
+            ],
+        ],
+        'DescribeServicesEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'services' => [ 'type' => 'list', 'member' => [ 'shape' => 'ServiceInfo', ], ],
+            ],
+        ],
         'LastDownsampleRespItem' => [
             'type' => 'structure',
             'members' => [
@@ -854,11 +958,16 @@ return [
                 'period' => [ 'type' => 'long', 'locationName' => 'period', ],
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'status' => [ 'type' => 'long', 'locationName' => 'status', ],
                 'tags' => [ 'type' => 'object', 'locationName' => 'tags', ],
                 'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
                 'times' => [ 'type' => 'long', 'locationName' => 'times', ],
+                'webHookContent' => [ 'type' => 'string', 'locationName' => 'webHookContent', ],
+                'webHookProtocol' => [ 'type' => 'string', 'locationName' => 'webHookProtocol', ],
+                'webHookSecret' => [ 'type' => 'string', 'locationName' => 'webHookSecret', ],
+                'webHookUrl' => [ 'type' => 'string', 'locationName' => 'webHookUrl', ],
             ],
         ],
         'DescribedAlarmHistory' => [
@@ -866,6 +975,8 @@ return [
             'members' => [
                 'alarm' =>  [ 'shape' => 'DescribedAlarm', ],
                 'contacts' => [ 'type' => 'list', 'member' => [ 'shape' => 'DescribedNoticeContacts', ], ],
+                'durationTimes' => [ 'type' => 'long', 'locationName' => 'durationTimes', ],
+                'noticeDurationTime' => [ 'type' => 'long', 'locationName' => 'noticeDurationTime', ],
                 'noticeLevelTriggered' => [ 'type' => 'string', 'locationName' => 'noticeLevelTriggered', ],
                 'noticeTime' => [ 'type' => 'string', 'locationName' => 'noticeTime', ],
                 'value' => [ 'type' => 'double', 'locationName' => 'value', ],
@@ -950,6 +1061,7 @@ return [
                 'calculateUnit' => [ 'type' => 'string', 'locationName' => 'calculateUnit', ],
                 'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
             ],
         ],
         'ServiceMetricAggregateItem' => [
@@ -970,17 +1082,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'ServiceMetric', ], ],
-            ],
-        ],
-        'GroupInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'charts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Chart', ], ],
-                'groupCode' => [ 'type' => 'string', 'locationName' => 'groupCode', ],
-                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
-                'metrics' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'tags' => [ 'type' => 'object', 'locationName' => 'tags', ],
-                'webCode' => [ 'type' => 'string', 'locationName' => 'webCode', ],
             ],
         ],
         'HandleTag' => [
@@ -1021,6 +1122,7 @@ return [
                 'groupCode' => [ 'type' => 'string', 'locationName' => 'groupCode', ],
                 'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'srcServiceCode' => [ 'type' => 'string', 'locationName' => 'srcServiceCode', ],
                 'tags' =>  [ 'shape' => 'HandleTags', ],
             ],
         ],
@@ -1209,6 +1311,13 @@ return [
                 'unknownRuleCount' => [ 'type' => 'long', 'locationName' => 'unknownRuleCount', ],
             ],
         ],
+        'RuleResourceInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+            ],
+        ],
         'RuleState' => [
             'type' => 'structure',
             'members' => [
@@ -1217,14 +1326,20 @@ return [
                 'state' => [ 'type' => 'long', 'locationName' => 'state', ],
             ],
         ],
-        'ServiceInfo' => [
+        'SendEmailSpec' => [
             'type' => 'structure',
             'members' => [
-                'metricGroup' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupInfo', ], ],
-                'metricsTimeDelay' => [ 'type' => 'long', 'locationName' => 'metricsTimeDelay', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
-                'timeInterval' => [ 'type' => 'long', 'locationName' => 'timeInterval', ],
+                'contacts' =>  [ 'shape' => 'Contacts', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+            ],
+        ],
+        'SendSmsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'contacts' =>  [ 'shape' => 'Contacts', ],
+                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+                'templateParam' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'SiteMonitor' => [
@@ -1236,6 +1351,7 @@ return [
                 'cycle' => [ 'type' => 'long', 'locationName' => 'cycle', ],
                 'defaultSource' => [ 'type' => 'string', 'locationName' => 'defaultSource', ],
                 'enabled' => [ 'type' => 'string', 'locationName' => 'enabled', ],
+                'ftpOption' =>  [ 'shape' => 'SiteMonitorFtpOption', ],
                 'hawkeyeId' => [ 'type' => 'long', 'locationName' => 'hawkeyeId', ],
                 'httpOption' =>  [ 'shape' => 'SiteMonitorHttpOption', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
@@ -1243,10 +1359,11 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'port' => [ 'type' => 'string', 'locationName' => 'port', ],
+                'smtpOption' =>  [ 'shape' => 'SiteMonitorSmtpOption', ],
                 'source' => [ 'type' => 'list', 'member' => [ 'shape' => 'SiteMonitorSource', ], ],
                 'stats' => [ 'type' => 'object', 'locationName' => 'stats', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
                 'tcpOption' =>  [ 'shape' => 'SiteMonitorTcpOption', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'udpOption' =>  [ 'shape' => 'SiteMonitorUdpOption', ],
                 'updatedTime' => [ 'type' => 'long', 'locationName' => 'updatedTime', ],
             ],
@@ -1321,6 +1438,7 @@ return [
             'members' => [
                 'abnormalCount' => [ 'type' => 'long', 'locationName' => 'abnormalCount', ],
                 'address' => [ 'type' => 'string', 'locationName' => 'address', ],
+                'deleted' => [ 'type' => 'boolean', 'locationName' => 'deleted', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'probeAvailability' => [ 'type' => 'double', 'locationName' => 'probeAvailability', ],
@@ -1344,6 +1462,40 @@ return [
                 'templateRulesString' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'templateType' => [ 'type' => 'long', 'locationName' => 'templateType', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'TestSiteMonitorOut' => [
+            'type' => 'structure',
+            'members' => [
+                'error' => [ 'type' => 'string', 'locationName' => 'error', ],
+                'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
+                'status' => [ 'type' => 'long', 'locationName' => 'status', ],
+            ],
+        ],
+        'TestSiteMonitorSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'address' => [ 'type' => 'string', 'locationName' => 'address', ],
+                'advanceChecked' => [ 'type' => 'string', 'locationName' => 'advanceChecked', ],
+                'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
+                'cycle' => [ 'type' => 'long', 'locationName' => 'cycle', ],
+                'defaultSource' => [ 'type' => 'string', 'locationName' => 'defaultSource', ],
+                'enabled' => [ 'type' => 'string', 'locationName' => 'enabled', ],
+                'ftpOption' =>  [ 'shape' => 'SiteMonitorFtpOption', ],
+                'hawkeyeId' => [ 'type' => 'long', 'locationName' => 'hawkeyeId', ],
+                'httpOption' =>  [ 'shape' => 'SiteMonitorHttpOption', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'isDeleted' => [ 'type' => 'string', 'locationName' => 'isDeleted', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'port' => [ 'type' => 'string', 'locationName' => 'port', ],
+                'smtpOption' =>  [ 'shape' => 'SiteMonitorSmtpOption', ],
+                'source' => [ 'type' => 'list', 'member' => [ 'shape' => 'SiteMonitorSource', ], ],
+                'stats' => [ 'type' => 'object', 'locationName' => 'stats', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'tcpOption' =>  [ 'shape' => 'SiteMonitorTcpOption', ],
+                'udpOption' =>  [ 'shape' => 'SiteMonitorUdpOption', ],
+                'updatedTime' => [ 'type' => 'long', 'locationName' => 'updatedTime', ],
             ],
         ],
         'UpdateAlarmResponseEnd' => [
@@ -1374,6 +1526,7 @@ return [
                 'noticePeriod' => [ 'type' => 'long', 'locationName' => 'noticePeriod', ],
                 'operation' => [ 'type' => 'string', 'locationName' => 'operation', ],
                 'period' => [ 'type' => 'long', 'locationName' => 'period', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
                 'times' => [ 'type' => 'long', 'locationName' => 'times', ],
@@ -1390,17 +1543,12 @@ return [
         'UpdateProbeTaskSpec' => [
             'type' => 'structure',
             'members' => [
-                'address' => [ 'type' => 'string', 'locationName' => 'address', ],
-                'frequency' => [ 'type' => 'long', 'locationName' => 'frequency', ],
                 'httpBody' => [ 'type' => 'string', 'locationName' => 'httpBody', ],
                 'httpCookie' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyValue', ], ],
                 'httpHeader' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyValue', ], ],
+                'httpType' => [ 'type' => 'long', 'locationName' => 'httpType', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'port' => [ 'type' => 'long', 'locationName' => 'port', ],
                 'probes' => [ 'type' => 'list', 'member' => [ 'shape' => 'Probe', ], ],
-                'targetId' => [ 'type' => 'string', 'locationName' => 'targetId', ],
-                'targetRegion' => [ 'type' => 'string', 'locationName' => 'targetRegion', ],
-                'timeout' => [ 'type' => 'long', 'locationName' => 'timeout', ],
             ],
         ],
         'UpdateSiteMonitorSpec' => [
@@ -1412,6 +1560,7 @@ return [
                 'cycle' => [ 'type' => 'long', 'locationName' => 'cycle', ],
                 'defaultSource' => [ 'type' => 'string', 'locationName' => 'defaultSource', ],
                 'enabled' => [ 'type' => 'string', 'locationName' => 'enabled', ],
+                'ftpOption' =>  [ 'shape' => 'SiteMonitorFtpOption', ],
                 'hawkeyeId' => [ 'type' => 'long', 'locationName' => 'hawkeyeId', ],
                 'httpOption' =>  [ 'shape' => 'SiteMonitorHttpOption', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
@@ -1419,10 +1568,11 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'port' => [ 'type' => 'string', 'locationName' => 'port', ],
+                'smtpOption' =>  [ 'shape' => 'SiteMonitorSmtpOption', ],
                 'source' => [ 'type' => 'list', 'member' => [ 'shape' => 'SiteMonitorSource', ], ],
                 'stats' => [ 'type' => 'object', 'locationName' => 'stats', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
                 'tcpOption' =>  [ 'shape' => 'SiteMonitorTcpOption', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'udpOption' =>  [ 'shape' => 'SiteMonitorUdpOption', ],
                 'updatedTime' => [ 'type' => 'long', 'locationName' => 'updatedTime', ],
             ],
@@ -1436,6 +1586,16 @@ return [
                 'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
                 'templateRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseRuleT', ], ],
+            ],
+        ],
+        'UpdateWebHookReq' => [
+            'type' => 'structure',
+            'members' => [
+                'active' => [ 'type' => 'long', 'locationName' => 'active', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
             ],
         ],
         'UpdateWidgetSpec' => [
@@ -1476,6 +1636,7 @@ return [
                 'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'groupCode' => [ 'type' => 'string', 'locationName' => 'groupCode', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'resourceIdList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
@@ -1608,6 +1769,7 @@ return [
                 'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'groupCode' => [ 'type' => 'string', 'locationName' => 'groupCode', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'resourceIdList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
@@ -1646,6 +1808,7 @@ return [
                 'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'groupCode' => [ 'type' => 'string', 'locationName' => 'groupCode', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'ruleType' => [ 'type' => 'long', 'locationName' => 'ruleType', ],
                 'status' => [ 'type' => 'long', 'locationName' => 'status', ],
@@ -1761,6 +1924,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'type' => [ 'type' => 'long', 'locationName' => 'type', ],
             ],
         ],
         'LastDownsampleResultShape' => [
@@ -1796,6 +1960,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'type' => [ 'type' => 'long', 'locationName' => 'type', ],
             ],
         ],
         'DescribeMetricDataResponseShape' => [
@@ -1844,6 +2009,26 @@ return [
             'type' => 'structure',
             'members' => [
                 'metricDataList' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
+            ],
+        ],
+        'DescribeServicesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeServicesResultShape', ],
+            ],
+        ],
+        'DescribeServicesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'productType' => [ 'type' => 'long', 'locationName' => 'productType', ],
+            ],
+        ],
+        'DescribeServicesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'services' => [ 'type' => 'list', 'member' => [ 'shape' => 'ServiceInfo', ], ],
             ],
         ],
     ],
