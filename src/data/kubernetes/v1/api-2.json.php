@@ -101,6 +101,15 @@ return [
             'input' => [ 'shape' => 'UpgradeClusterRequestShape', ],
             'output' => [ 'shape' => 'UpgradeClusterResponseShape', ],
         ],
+        'SetAddons' => [
+            'name' => 'SetAddons',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}:setAddons',
+            ],
+            'input' => [ 'shape' => 'SetAddonsRequestShape', ],
+            'output' => [ 'shape' => 'SetAddonsResponseShape', ],
+        ],
         'DescribeNodeGroups' => [
             'name' => 'DescribeNodeGroups',
             'http' => [
@@ -229,6 +238,20 @@ return [
         ],
     ],
     'shapes' => [
+        'AddonConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+            ],
+        ],
+        'AddonConfigSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+            ],
+        ],
         'LabelSpec' => [
             'type' => 'structure',
             'members' => [
@@ -257,6 +280,15 @@ return [
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
             ],
         ],
+        'NodeGroupProgress' => [
+            'type' => 'structure',
+            'members' => [
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'updatedCount' => [ 'type' => 'integer', 'locationName' => 'updatedCount', ],
+            ],
+        ],
         'Cluster' => [
             'type' => 'structure',
             'members' => [
@@ -279,6 +311,11 @@ return [
                 'endpointPort' => [ 'type' => 'string', 'locationName' => 'endpointPort', ],
                 'dashboardPort' => [ 'type' => 'string', 'locationName' => 'dashboardPort', ],
                 'userMetrics' => [ 'type' => 'boolean', 'locationName' => 'userMetrics', ],
+                'addonsConfig' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddonConfig', ], ],
+                'autoUpgrade' => [ 'type' => 'boolean', 'locationName' => 'autoUpgrade', ],
+                'maintenanceWindow' =>  [ 'shape' => 'MaintenanceWindow', ],
+                'upgradePlan' =>  [ 'shape' => 'UpgradePlan', ],
+                'masterProgress' =>  [ 'shape' => 'MaintenanceWindow', ],
             ],
         ],
         'NodeGroup' => [
@@ -299,8 +336,30 @@ return [
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'stateMessage' => [ 'type' => 'string', 'locationName' => 'stateMessage', ],
-                'autoRepair' => [ 'type' => 'string', 'locationName' => 'autoRepair', ],
+                'autoRepair' => [ 'type' => 'boolean', 'locationName' => 'autoRepair', ],
+                'progress' =>  [ 'shape' => 'NodeGroupProgress', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'MaintenanceWindow' => [
+            'type' => 'structure',
+            'members' => [
+                'periodType' => [ 'type' => 'string', 'locationName' => 'periodType', ],
+                'startDay' => [ 'type' => 'integer', 'locationName' => 'startDay', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
+            ],
+        ],
+        'UpgradePlan' => [
+            'type' => 'structure',
+            'members' => [
+                'mode' => [ 'type' => 'string', 'locationName' => 'mode', ],
+                'scope' => [ 'type' => 'string', 'locationName' => 'scope', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'masterExpectedVersion' => [ 'type' => 'string', 'locationName' => 'masterExpectedVersion', ],
+                'nodeExpectedVersion' => [ 'type' => 'string', 'locationName' => 'nodeExpectedVersion', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
             ],
         ],
         'Tag' => [
@@ -423,15 +482,6 @@ return [
                 'nodeVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeVersion', ], ],
             ],
         ],
-        'NodeGroupProgress' => [
-            'type' => 'structure',
-            'members' => [
-                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
-                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'updatedCount' => [ 'type' => 'integer', 'locationName' => 'updatedCount', ],
-            ],
-        ],
         'ValidNodeConfig' => [
             'type' => 'structure',
             'members' => [
@@ -476,26 +526,8 @@ return [
                 'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
                 'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
                 'userMetrics' => [ 'type' => 'boolean', 'locationName' => 'userMetrics', ],
+                'addonsConfig' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddonConfigSpec', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'CreateClusterResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-            ],
-        ],
-        'SetUserMetricsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'Filter' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeClustersResponseShape' => [
@@ -511,7 +543,7 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'SetUserMetricsResponseShape' => [
+        'SetAddonsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
@@ -538,13 +570,6 @@ return [
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
-        'DescribeClusterResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeClusterResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeClustersResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -552,18 +577,12 @@ return [
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
             ],
         ],
-        'ModifyClusterRequestShape' => [
+        'SetAddonsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'addonsConfig' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddonConfigSpec', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-            ],
-        ],
-        'AbortUpgradeResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'DescribeClustersRequestShape' => [
@@ -582,30 +601,10 @@ return [
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
-        'DeleteClusterResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'SetAutoUpgradeResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UpgradeClusterRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'scope' => [ 'type' => 'string', 'locationName' => 'scope', ],
-                'nodeGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'verison' => [ 'type' => 'string', 'locationName' => 'verison', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-            ],
-        ],
-        'ModifyClusterResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'DescribeClusterResultShape' => [
@@ -619,13 +618,6 @@ return [
             'members' => [
                 'autoUpgrade' => [ 'type' => 'boolean', 'locationName' => 'autoUpgrade', ],
                 'maintenanceWindow' =>  [ 'shape' => 'MaintenanceWindowSpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-            ],
-        ],
-        'AbortUpgradeRequestShape' => [
-            'type' => 'structure',
-            'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
@@ -644,29 +636,12 @@ return [
                 'nodeGroupProgresses' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeGroupProgress', ], ],
             ],
         ],
-        'DeleteClusterResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'SetUserMetricsRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-            ],
-        ],
-        'UpgradeClusterResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'ModifyClusterResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeProgressResponseShape' => [
@@ -679,6 +654,101 @@ return [
         'SetAutoUpgradeResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'SetAddonsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateClusterResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'SetUserMetricsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'SetUserMetricsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeClusterResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeClusterResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyClusterRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'AbortUpgradeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteClusterResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpgradeClusterRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'scope' => [ 'type' => 'string', 'locationName' => 'scope', ],
+                'nodeGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'ModifyClusterResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AbortUpgradeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'DeleteClusterResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpgradeClusterResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyClusterResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateNodeGroupResultShape' => [

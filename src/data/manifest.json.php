@@ -121,6 +121,10 @@ return [
         'namespace' => 'Pod',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'iotcore' => [
+        'namespace' => 'Iotcore',
+        'versions' => [ 'latest' => 'v2', ],
+    ],
     'jke' => [
         'namespace' => 'Jke',
         'versions' => [ 'latest' => 'v1', ],
@@ -235,6 +239,14 @@ return [
     ],
     'partner' => [
         'namespace' => 'Partner',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'iotcloudgateway' => [
+        'namespace' => 'Iotcloudgateway',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'industrydata' => [
+        'namespace' => 'Industrydata',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'jdw' => [

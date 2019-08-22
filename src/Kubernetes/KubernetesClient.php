@@ -40,6 +40,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise setAutoUpgradeAsync(array $args = [])
  * @method \Jdcloud\Result upgradeCluster(array $args = [])
  * @method \GuzzleHttp\Promise\Promise upgradeClusterAsync(array $args = [])
+ * @method \Jdcloud\Result setAddons(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise setAddonsAsync(array $args = [])
  * @method \Jdcloud\Result describeNodeGroups(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeNodeGroupsAsync(array $args = [])
  * @method \Jdcloud\Result createNodeGroup(array $args = [])

@@ -11,6 +11,15 @@ return [
 //        'serviceId' => 'elite',
     ],
     'operations' => [
+        'JdxQueryDeliveryInfo' => [
+            'name' => 'JdxQueryDeliveryInfo',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/jdxQueryDeliveryInfo',
+            ],
+            'input' => [ 'shape' => 'JdxQueryDeliveryInfoRequestShape', ],
+            'output' => [ 'shape' => 'JdxQueryDeliveryInfoResponseShape', ],
+        ],
         'JdxReportOrder' => [
             'name' => 'JdxReportOrder',
             'http' => [
@@ -20,6 +29,15 @@ return [
             'input' => [ 'shape' => 'JdxReportOrderRequestShape', ],
             'output' => [ 'shape' => 'JdxReportOrderResponseShape', ],
         ],
+        'JdxCreateOrder' => [
+            'name' => 'JdxCreateOrder',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/jdxCreateOrder',
+            ],
+            'input' => [ 'shape' => 'JdxCreateOrderRequestShape', ],
+            'output' => [ 'shape' => 'JdxCreateOrderResponseShape', ],
+        ],
         'JdxQueryPrice' => [
             'name' => 'JdxQueryPrice',
             'http' => [
@@ -28,6 +46,15 @@ return [
             ],
             'input' => [ 'shape' => 'JdxQueryPriceRequestShape', ],
             'output' => [ 'shape' => 'JdxQueryPriceResponseShape', ],
+        ],
+        'JdxQueryProduct' => [
+            'name' => 'JdxQueryProduct',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/jdxQueryProduct',
+            ],
+            'input' => [ 'shape' => 'JdxQueryProductRequestShape', ],
+            'output' => [ 'shape' => 'JdxQueryProductResponseShape', ],
         ],
         'ListSaleService' => [
             'name' => 'ListSaleService',
@@ -67,11 +94,85 @@ return [
         ],
     ],
     'shapes' => [
+        'CartExtraChargeVo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'buyNum' => [ 'type' => 'integer', 'locationName' => 'buyNum', ],
+            ],
+        ],
         'ConfirmDeliveryInfo' => [
             'type' => 'structure',
             'members' => [
                 'deliverNumber' => [ 'type' => 'string', 'locationName' => 'deliverNumber', ],
                 'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+            ],
+        ],
+        'CreateOrderInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'productId' => [ 'type' => 'integer', 'locationName' => 'productId', ],
+                'skuId' => [ 'type' => 'integer', 'locationName' => 'skuId', ],
+                'buyNum' => [ 'type' => 'integer', 'locationName' => 'buyNum', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'cartExtraChargeVos' => [ 'type' => 'list', 'member' => [ 'shape' => 'CartExtraChargeVo', ], ],
+            ],
+        ],
+        'CreateOrderResultVo' => [
+            'type' => 'structure',
+            'members' => [
+                'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
+            ],
+        ],
+        'JdxSkuExtraChargeVo' => [
+            'type' => 'structure',
+            'members' => [
+                'extraChargeName' => [ 'type' => 'string', 'locationName' => 'extraChargeName', ],
+                'extraChargeUnit' => [ 'type' => 'string', 'locationName' => 'extraChargeUnit', ],
+                'sellingPrice' => [ 'type' => 'double', 'locationName' => 'sellingPrice', ],
+                'numType' => [ 'type' => 'integer', 'locationName' => 'numType', ],
+                'num' => [ 'type' => 'string', 'locationName' => 'num', ],
+            ],
+        ],
+        'JdxProductSkuVo' => [
+            'type' => 'structure',
+            'members' => [
+                'skuId' => [ 'type' => 'integer', 'locationName' => 'skuId', ],
+                'skuName' => [ 'type' => 'string', 'locationName' => 'skuName', ],
+                'saleAttributes' => [ 'type' => 'string', 'locationName' => 'saleAttributes', ],
+                'maxBuyNum' => [ 'type' => 'integer', 'locationName' => 'maxBuyNum', ],
+                'minBuyNum' => [ 'type' => 'integer', 'locationName' => 'minBuyNum', ],
+                'skuSellingPrice' => [ 'type' => 'double', 'locationName' => 'skuSellingPrice', ],
+                'skuExtraChargeList' => [ 'type' => 'list', 'member' => [ 'shape' => 'JdxSkuExtraChargeVo', ], ],
+            ],
+        ],
+        'JdxProductVo' => [
+            'type' => 'structure',
+            'members' => [
+                'productId' => [ 'type' => 'integer', 'locationName' => 'productId', ],
+                'productName' => [ 'type' => 'string', 'locationName' => 'productName', ],
+                'trademarkUrl' => [ 'type' => 'string', 'locationName' => 'trademarkUrl', ],
+                'categoryLevel1Name' => [ 'type' => 'string', 'locationName' => 'categoryLevel1Name', ],
+                'categoryLevel2Name' => [ 'type' => 'string', 'locationName' => 'categoryLevel2Name', ],
+                'deliveryForm' => [ 'type' => 'integer', 'locationName' => 'deliveryForm', ],
+                'deliveryFormName' => [ 'type' => 'string', 'locationName' => 'deliveryFormName', ],
+                'introduction' => [ 'type' => 'string', 'locationName' => 'introduction', ],
+                'sellType' => [ 'type' => 'integer', 'locationName' => 'sellType', ],
+                'sellTypeName' => [ 'type' => 'string', 'locationName' => 'sellTypeName', ],
+                'refundDays' => [ 'type' => 'integer', 'locationName' => 'refundDays', ],
+                'pcProductDetail' => [ 'type' => 'string', 'locationName' => 'pcProductDetail', ],
+                'mProductDetail' => [ 'type' => 'string', 'locationName' => 'mProductDetail', ],
+                'productSkuList' => [ 'type' => 'list', 'member' => [ 'shape' => 'JdxProductSkuVo', ], ],
+            ],
+        ],
+        'JdxProductVoListData' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNo' => [ 'type' => 'integer', 'locationName' => 'pageNo', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalRecord' => [ 'type' => 'integer', 'locationName' => 'totalRecord', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'JdxProductVo', ], ],
             ],
         ],
         'OrderItemExtraChargeInfo' => [
@@ -113,6 +214,9 @@ return [
             'members' => [
                 'deliverNumber' => [ 'type' => 'string', 'locationName' => 'deliverNumber', ],
                 'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
+                'buyerPin' => [ 'type' => 'string', 'locationName' => 'buyerPin', ],
+                'mappingCode' => [ 'type' => 'string', 'locationName' => 'mappingCode', ],
+                'supportAutoDeliver' => [ 'type' => 'integer', 'locationName' => 'supportAutoDeliver', ],
                 'productId' => [ 'type' => 'integer', 'locationName' => 'productId', ],
                 'skuId' => [ 'type' => 'integer', 'locationName' => 'skuId', ],
                 'skuName' => [ 'type' => 'string', 'locationName' => 'skuName', ],
@@ -143,6 +247,14 @@ return [
                 'totalRecord' => [ 'type' => 'integer', 'locationName' => 'totalRecord', ],
                 'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ProductServiceVo', ], ],
+            ],
+        ],
+        'QueryDeliveryInfoResultVo' => [
+            'type' => 'structure',
+            'members' => [
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'effectiveDt' => [ 'type' => 'string', 'locationName' => 'effectiveDt', ],
+                'failureDt' => [ 'type' => 'string', 'locationName' => 'failureDt', ],
             ],
         ],
         'QueryPriceParam' => [
@@ -193,11 +305,48 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
+        'JdxQueryDeliveryInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'JdxQueryDeliveryInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'data' =>  [ 'shape' => 'QueryDeliveryInfoResultVo', ],
+            ],
+        ],
+        'JdxQueryDeliveryInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'JdxQueryDeliveryInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'JdxReportOrderResultShape' => [
             'type' => 'structure',
             'members' => [
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'JdxCreateOrderResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'data' =>  [ 'shape' => 'CreateOrderResultVo', ],
+            ],
+        ],
+        'JdxCreateOrderRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'createOrderInfo' =>  [ 'shape' => 'CreateOrderInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'JdxReportOrderRequestShape' => [
@@ -211,6 +360,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'JdxReportOrderResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'JdxCreateOrderResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'JdxCreateOrderResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -234,6 +390,29 @@ return [
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'data' =>  [ 'shape' => 'QueryPriceResultVo', ],
+            ],
+        ],
+        'JdxQueryProductResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'data' =>  [ 'shape' => 'JdxProductVoListData', ],
+            ],
+        ],
+        'JdxQueryProductResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'JdxQueryProductResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'JdxQueryProductRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNo' => [ 'type' => 'integer', 'locationName' => 'pageNo', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'GetSaleServiceByDeliverNumberResultShape' => [

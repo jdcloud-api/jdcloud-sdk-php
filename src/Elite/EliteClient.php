@@ -20,10 +20,16 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with elite.
  *
+ * @method \Jdcloud\Result jdxQueryDeliveryInfo(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise jdxQueryDeliveryInfoAsync(array $args = [])
  * @method \Jdcloud\Result jdxReportOrder(array $args = [])
  * @method \GuzzleHttp\Promise\Promise jdxReportOrderAsync(array $args = [])
+ * @method \Jdcloud\Result jdxCreateOrder(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise jdxCreateOrderAsync(array $args = [])
  * @method \Jdcloud\Result jdxQueryPrice(array $args = [])
  * @method \GuzzleHttp\Promise\Promise jdxQueryPriceAsync(array $args = [])
+ * @method \Jdcloud\Result jdxQueryProduct(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise jdxQueryProductAsync(array $args = [])
  * @method \Jdcloud\Result listSaleService(array $args = [])
  * @method \GuzzleHttp\Promise\Promise listSaleServiceAsync(array $args = [])
  * @method \Jdcloud\Result getSaleServiceByDeliverNumber(array $args = [])
