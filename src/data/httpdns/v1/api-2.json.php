@@ -134,7 +134,7 @@ return [
         'CountData' => [
             'type' => 'structure',
             'members' => [
-                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'count' => [ 'type' => 'list', 'member' => [ 'shape' => 'Count', ], ],
             ],
         ],
@@ -151,7 +151,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
         'Totalcount' => [
@@ -282,7 +282,7 @@ return [
         'AddDomainsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'domainNames' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
+                'domainNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -294,7 +294,7 @@ return [
         'DelDomainsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'domainNames' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
+                'domainNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],

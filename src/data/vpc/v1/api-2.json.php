@@ -1248,7 +1248,7 @@ return [
         'AssociateNetworkAclRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'subnetIds' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
+                'subnetIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'networkAclId' => [ 'type' => 'string', 'locationName' => 'networkAclId', ],
             ],
@@ -1265,7 +1265,7 @@ return [
         'RemoveNetworkAclRulesRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'ruleIds' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
+                'ruleIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'networkAclId' => [ 'type' => 'string', 'locationName' => 'networkAclId', ],
             ],
@@ -1548,7 +1548,7 @@ return [
         'RemoveNetworkSecurityGroupRulesRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'ruleIds' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
+                'ruleIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'networkSecurityGroupId' => [ 'type' => 'string', 'locationName' => 'networkSecurityGroupId', ],
             ],
@@ -1740,7 +1740,7 @@ return [
         'RemoveRouteTableRulesRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'ruleIds' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
+                'ruleIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
             ],

@@ -1537,8 +1537,8 @@ return [
         'DescribeCCGraphResultShape' => [
             'type' => 'structure',
             'members' => [
-                'postProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
-                'preProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'postProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'preProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'time' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
             ],
@@ -1546,8 +1546,8 @@ return [
         'DescribeDDoSGraphResultShape' => [
             'type' => 'structure',
             'members' => [
-                'preProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
-                'postProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'preProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'postProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
                 'time' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
             ],
@@ -1564,7 +1564,7 @@ return [
         'DescribeFwdGraphResultShape' => [
             'type' => 'structure',
             'members' => [
-                'forwardRecord' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'forwardRecord' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
                 'time' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
             ],

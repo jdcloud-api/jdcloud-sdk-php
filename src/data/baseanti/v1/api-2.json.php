@@ -181,10 +181,10 @@ return [
         'IpCleanThresholdRange' => [
             'type' => 'structure',
             'members' => [
-                'ipCleanThresholdBpsMax' => [ 'type' => 'int64', 'locationName' => 'ipCleanThresholdBpsMax', ],
-                'ipCleanThresholdBpsMin' => [ 'type' => 'int64', 'locationName' => 'ipCleanThresholdBpsMin', ],
-                'ipCleanThresholdPpsMax' => [ 'type' => 'int64', 'locationName' => 'ipCleanThresholdPpsMax', ],
-                'ipCleanThresholdPpsMin' => [ 'type' => 'int64', 'locationName' => 'ipCleanThresholdPpsMin', ],
+                'ipCleanThresholdBpsMax' => [ 'type' => 'long', 'locationName' => 'ipCleanThresholdBpsMax', ],
+                'ipCleanThresholdBpsMin' => [ 'type' => 'long', 'locationName' => 'ipCleanThresholdBpsMin', ],
+                'ipCleanThresholdPpsMax' => [ 'type' => 'long', 'locationName' => 'ipCleanThresholdPpsMax', ],
+                'ipCleanThresholdPpsMin' => [ 'type' => 'long', 'locationName' => 'ipCleanThresholdPpsMin', ],
             ],
         ],
         'IpCleanThresholdSpec' => [
@@ -215,8 +215,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'time' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'postProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
-                'preProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'postProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'preProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
             ],
         ],

@@ -1294,7 +1294,7 @@ return [
         'GrantPrivilegeRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'accountPrivileges' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
+                'accountPrivileges' => [ 'type' => 'list', 'member' => [ 'shape' => 'AccountPrivilege', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
@@ -2571,7 +2571,7 @@ return [
         'ModifyParametersRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'parameters' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
+                'parameters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Parameter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],

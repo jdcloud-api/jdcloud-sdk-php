@@ -701,8 +701,8 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'transcodeTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
-                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'transcodeTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
         'CreateImageUploadTaskRequestObject' => [
@@ -760,8 +760,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
-                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
-                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
         'TranscodeTaskObject' => [
@@ -802,7 +802,7 @@ return [
                 'taskId' => [ 'type' => 'long', 'locationName' => 'taskId', ],
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
                 'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
-                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
         'Encapsulation' => [
@@ -965,7 +965,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'categoryId' => [ 'type' => 'int64', 'locationName' => 'categoryId', ],
+                'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'coverUrl' => [ 'type' => 'string', 'locationName' => 'coverUrl', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
@@ -983,7 +983,7 @@ return [
             'members' => [
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'categoryId' => [ 'type' => 'int64', 'locationName' => 'categoryId', ],
+                'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'coverUrl' => [ 'type' => 'string', 'locationName' => 'coverUrl', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
@@ -1012,15 +1012,15 @@ return [
         'DeleteVideoStreamsRequestObject' => [
             'type' => 'structure',
             'members' => [
-                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
         'DeleteVideoStreamsResultObject' => [
             'type' => 'structure',
             'members' => [
-                'okTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
-                'notFoundTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
-                'failedTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'okTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'notFoundTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'failedTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
         'ListVideosResultObject' => [
@@ -1661,8 +1661,8 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'transcodeTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
-                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'transcodeTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
         'RefreshVideoUploadTaskResponseShape' => [
@@ -1711,8 +1711,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
-                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
-                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
         'BatchSubmitTranscodeJobsRequestShape' => [
@@ -1929,7 +1929,7 @@ return [
         'DeleteVideoStreamsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
             ],
         ],
@@ -1970,9 +1970,9 @@ return [
         'DeleteVideoStreamsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'okTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
-                'notFoundTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
-                'failedTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'okTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'notFoundTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'failedTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
         'BatchDeleteVideosRequestShape' => [
@@ -2029,7 +2029,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'categoryId' => [ 'type' => 'int64', 'locationName' => 'categoryId', ],
+                'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'coverUrl' => [ 'type' => 'string', 'locationName' => 'coverUrl', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],

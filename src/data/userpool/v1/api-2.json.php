@@ -112,7 +112,7 @@ return [
         'AdminSetUsersPasswordRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'userPasswords' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
+                'userPasswords' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserPassword', ], ],
                 'poolName' => [ 'type' => 'string', 'locationName' => 'poolName', ],
             ],
         ],
@@ -161,7 +161,7 @@ return [
         'AdminCreateUserRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'poolUsers' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
+                'poolUsers' => [ 'type' => 'list', 'member' => [ 'shape' => 'PoolUser', ], ],
                 'poolName' => [ 'type' => 'string', 'locationName' => 'poolName', ],
             ],
         ],

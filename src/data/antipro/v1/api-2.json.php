@@ -320,8 +320,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'time' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'postProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
-                'preProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'postProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'preProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
             ],
         ],

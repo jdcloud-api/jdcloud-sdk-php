@@ -687,9 +687,9 @@ return [
         'GetDomainQueryTrafficResultShape' => [
             'type' => 'structure',
             'members' => [
-                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'traffic' => [ 'type' => 'list', 'member' => [ 'type' => 'number', ], ],
+                'traffic' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
             ],
         ],
         'DelDomainResponseShape' => [
@@ -793,8 +793,8 @@ return [
         'GetDomainQueryCountResultShape' => [
             'type' => 'structure',
             'members' => [
-                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
-                'traffic' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'traffic' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
         'UpdateDomainResponseShape' => [

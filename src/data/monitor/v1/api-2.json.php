@@ -555,8 +555,8 @@ return [
         'Contacts' => [
             'type' => 'structure',
             'members' => [
-                'group' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
-                'person' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'group' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'person' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'withPin' => [ 'type' => 'boolean', 'locationName' => 'withPin', ],
             ],
         ],
@@ -2008,7 +2008,7 @@ return [
         'PutMetricDataRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'metricDataList' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
+                'metricDataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricDataCm', ], ],
             ],
         ],
         'DescribeServicesResponseShape' => [

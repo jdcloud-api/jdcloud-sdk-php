@@ -609,7 +609,7 @@ return [
         'ModifyInstanceConfigRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'instanceConfig' => [ 'type' => 'list', 'member' => [ 'type' => '', ], ],
+                'instanceConfig' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigItem', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
