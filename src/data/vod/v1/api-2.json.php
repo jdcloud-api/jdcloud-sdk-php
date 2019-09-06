@@ -209,6 +209,24 @@ return [
             'input' => [ 'shape' => 'GetIPRuleRequestShape', ],
             'output' => [ 'shape' => 'GetIPRuleResponseShape', ],
         ],
+        'SetHttpSsl' => [
+            'name' => 'SetHttpSsl',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/domains/{domainId}:setHttpSsl',
+            ],
+            'input' => [ 'shape' => 'SetHttpSslRequestShape', ],
+            'output' => [ 'shape' => 'SetHttpSslResponseShape', ],
+        ],
+        'GetHttpSsl' => [
+            'name' => 'GetHttpSsl',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/domains/{domainId}:getHttpSsl',
+            ],
+            'input' => [ 'shape' => 'GetHttpSslRequestShape', ],
+            'output' => [ 'shape' => 'GetHttpSslResponseShape', ],
+        ],
         'CreateVideoUploadTask' => [
             'name' => 'CreateVideoUploadTask',
             'http' => [
@@ -235,6 +253,69 @@ return [
             ],
             'input' => [ 'shape' => 'CreateImageUploadTaskRequestShape', ],
             'output' => [ 'shape' => 'CreateImageUploadTaskResponseShape', ],
+        ],
+        'SubmitQualityDetectionJob' => [
+            'name' => 'SubmitQualityDetectionJob',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/qualityDetectionJobs:submit',
+            ],
+            'input' => [ 'shape' => 'SubmitQualityDetectionJobRequestShape', ],
+            'output' => [ 'shape' => 'SubmitQualityDetectionJobResponseShape', ],
+        ],
+        'BatchSubmitQualityDetectionJobs' => [
+            'name' => 'BatchSubmitQualityDetectionJobs',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/qualityDetectionJobs:batchSubmit',
+            ],
+            'input' => [ 'shape' => 'BatchSubmitQualityDetectionJobsRequestShape', ],
+            'output' => [ 'shape' => 'BatchSubmitQualityDetectionJobsResponseShape', ],
+        ],
+        'ListQualityDetectionTemplates' => [
+            'name' => 'ListQualityDetectionTemplates',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/qualityDetectionTemplates',
+            ],
+            'input' => [ 'shape' => 'ListQualityDetectionTemplatesRequestShape', ],
+            'output' => [ 'shape' => 'ListQualityDetectionTemplatesResponseShape', ],
+        ],
+        'CreateQualityDetectionTemplate' => [
+            'name' => 'CreateQualityDetectionTemplate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/qualityDetectionTemplates',
+            ],
+            'input' => [ 'shape' => 'CreateQualityDetectionTemplateRequestShape', ],
+            'output' => [ 'shape' => 'CreateQualityDetectionTemplateResponseShape', ],
+        ],
+        'GetQualityDetectionTemplate' => [
+            'name' => 'GetQualityDetectionTemplate',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/qualityDetectionTemplates/{templateId}',
+            ],
+            'input' => [ 'shape' => 'GetQualityDetectionTemplateRequestShape', ],
+            'output' => [ 'shape' => 'GetQualityDetectionTemplateResponseShape', ],
+        ],
+        'UpdateQualityDetectionTemplate' => [
+            'name' => 'UpdateQualityDetectionTemplate',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/qualityDetectionTemplates/{templateId}',
+            ],
+            'input' => [ 'shape' => 'UpdateQualityDetectionTemplateRequestShape', ],
+            'output' => [ 'shape' => 'UpdateQualityDetectionTemplateResponseShape', ],
+        ],
+        'DeleteQualityDetectionTemplate' => [
+            'name' => 'DeleteQualityDetectionTemplate',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/qualityDetectionTemplates/{templateId}',
+            ],
+            'input' => [ 'shape' => 'DeleteQualityDetectionTemplateRequestShape', ],
+            'output' => [ 'shape' => 'DeleteQualityDetectionTemplateResponseShape', ],
         ],
         'SubmitTranscodeJob' => [
             'name' => 'SubmitTranscodeJob',
@@ -513,15 +594,6 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
-        'PageProperties' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
-                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
-            ],
-        ],
         'CreateDomainRequestObject' => [
             'type' => 'structure',
             'members' => [
@@ -616,6 +688,17 @@ return [
                 'headerType' => [ 'type' => 'string', 'locationName' => 'headerType', ],
             ],
         ],
+        'SetHttpSslRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'source' => [ 'type' => 'string', 'locationName' => 'source', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'sslCert' => [ 'type' => 'string', 'locationName' => 'sslCert', ],
+                'sslKey' => [ 'type' => 'string', 'locationName' => 'sslKey', ],
+                'jumpType' => [ 'type' => 'string', 'locationName' => 'jumpType', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+            ],
+        ],
         'GetRefererRuleResultObject' => [
             'type' => 'structure',
             'members' => [
@@ -640,6 +723,17 @@ return [
                 'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
                 'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
                 'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainObject', ], ],
+            ],
+        ],
+        'GetHttpSslResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'source' => [ 'type' => 'string', 'locationName' => 'source', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'sslCert' => [ 'type' => 'string', 'locationName' => 'sslCert', ],
+                'sslKey' => [ 'type' => 'string', 'locationName' => 'sslKey', ],
+                'jumpType' => [ 'type' => 'string', 'locationName' => 'jumpType', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
             ],
         ],
         'DomainObject' => [
@@ -718,6 +812,55 @@ return [
             'members' => [
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
                 'uploadUrl' => [ 'type' => 'string', 'locationName' => 'uploadUrl', ],
+            ],
+        ],
+        'SubmitQualityDetectionJobRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'mediaId' => [ 'type' => 'string', 'locationName' => 'mediaId', ],
+                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+            ],
+        ],
+        'BatchSubmitQualityDetectionJobsRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'bulkItems' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubmitQualityDetectionJobRequestObject', ], ],
+            ],
+        ],
+        'QualityDetectionTemplateObject' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
+                'detections' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'UpdateQualityDetectionTemplateRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'detections' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ListQualityDetectionTemplatesResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'QualityDetectionTemplateObject', ], ],
+            ],
+        ],
+        'CreateQualityDetectionTemplateRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
+                'detections' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'QueryCDNBasicDataResultObject' => [
@@ -1108,17 +1251,30 @@ return [
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
             ],
         ],
+        'UploadTask' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'long', 'locationName' => 'taskId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
+                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
+                'size' => [ 'type' => 'long', 'locationName' => 'size', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+            ],
+        ],
         'CreateWatermarkRequestObject' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'imgUrl' => [ 'type' => 'string', 'locationName' => 'imgUrl', ],
-                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
-                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'width' => [ 'type' => 'string', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'string', 'locationName' => 'height', ],
+                'sizeUnit' => [ 'type' => 'string', 'locationName' => 'sizeUnit', ],
                 'position' => [ 'type' => 'string', 'locationName' => 'position', ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'offsetX' => [ 'type' => 'integer', 'locationName' => 'offsetX', ],
-                'offsetY' => [ 'type' => 'integer', 'locationName' => 'offsetY', ],
+                'offsetX' => [ 'type' => 'string', 'locationName' => 'offsetX', ],
+                'offsetY' => [ 'type' => 'string', 'locationName' => 'offsetY', ],
+                'offsetUnit' => [ 'type' => 'string', 'locationName' => 'offsetUnit', ],
             ],
         ],
         'UpdateWatermarkRequestObject' => [
@@ -1126,12 +1282,13 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'imgUrl' => [ 'type' => 'string', 'locationName' => 'imgUrl', ],
-                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
-                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'width' => [ 'type' => 'string', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'string', 'locationName' => 'height', ],
+                'sizeUnit' => [ 'type' => 'string', 'locationName' => 'sizeUnit', ],
                 'position' => [ 'type' => 'string', 'locationName' => 'position', ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'offsetX' => [ 'type' => 'integer', 'locationName' => 'offsetX', ],
-                'offsetY' => [ 'type' => 'integer', 'locationName' => 'offsetY', ],
+                'offsetX' => [ 'type' => 'string', 'locationName' => 'offsetX', ],
+                'offsetY' => [ 'type' => 'string', 'locationName' => 'offsetY', ],
+                'offsetUnit' => [ 'type' => 'string', 'locationName' => 'offsetUnit', ],
             ],
         ],
         'ListWatermarksResultObject' => [
@@ -1150,12 +1307,13 @@ return [
                 'id' => [ 'type' => 'long', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'imgUrl' => [ 'type' => 'string', 'locationName' => 'imgUrl', ],
-                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
-                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'width' => [ 'type' => 'string', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'string', 'locationName' => 'height', ],
+                'sizeUnit' => [ 'type' => 'string', 'locationName' => 'sizeUnit', ],
                 'position' => [ 'type' => 'string', 'locationName' => 'position', ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'offsetX' => [ 'type' => 'integer', 'locationName' => 'offsetX', ],
-                'offsetY' => [ 'type' => 'integer', 'locationName' => 'offsetY', ],
+                'offsetX' => [ 'type' => 'string', 'locationName' => 'offsetX', ],
+                'offsetY' => [ 'type' => 'string', 'locationName' => 'offsetY', ],
+                'offsetUnit' => [ 'type' => 'string', 'locationName' => 'offsetUnit', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
@@ -1371,6 +1529,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'GetHttpSslResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetHttpSslResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'ListDomainsResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1395,6 +1560,18 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
+            ],
+        ],
+        'SetHttpSslRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'source' => [ 'type' => 'string', 'locationName' => 'source', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'sslCert' => [ 'type' => 'string', 'locationName' => 'sslCert', ],
+                'sslKey' => [ 'type' => 'string', 'locationName' => 'sslKey', ],
+                'jumpType' => [ 'type' => 'string', 'locationName' => 'jumpType', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'domainId' => [ 'type' => 'long', 'locationName' => 'domainId', ],
             ],
         ],
         'GetURLRuleRequestShape' => [
@@ -1457,6 +1634,12 @@ return [
                 'domainId' => [ 'type' => 'long', 'locationName' => 'domainId', ],
             ],
         ],
+        'SetHttpSslResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'EnableDomainRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1479,6 +1662,11 @@ return [
                 'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
                 'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
                 'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainObject', ], ],
+            ],
+        ],
+        'SetHttpSslResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DisableDomainRequestShape' => [
@@ -1582,6 +1770,23 @@ return [
         'SetURLRuleResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'GetHttpSslRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainId' => [ 'type' => 'long', 'locationName' => 'domainId', ],
+            ],
+        ],
+        'GetHttpSslResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'source' => [ 'type' => 'string', 'locationName' => 'source', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'sslCert' => [ 'type' => 'string', 'locationName' => 'sslCert', ],
+                'sslKey' => [ 'type' => 'string', 'locationName' => 'sslKey', ],
+                'jumpType' => [ 'type' => 'string', 'locationName' => 'jumpType', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
             ],
         ],
         'ListHeadersResponseShape' => [
@@ -1699,6 +1904,158 @@ return [
             'members' => [
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
                 'uploadUrl' => [ 'type' => 'string', 'locationName' => 'uploadUrl', ],
+            ],
+        ],
+        'BatchSubmitQualityDetectionJobsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bulkItems' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubmitQualityDetectionJobRequestObject', ], ],
+            ],
+        ],
+        'BatchSubmitQualityDetectionJobsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SubmitQualityDetectionJobResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'BatchSubmitQualityDetectionJobsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SubmitQualityDetectionJobRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'mediaId' => [ 'type' => 'string', 'locationName' => 'mediaId', ],
+                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+            ],
+        ],
+        'SubmitQualityDetectionJobResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateQualityDetectionTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateQualityDetectionTemplateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetQualityDetectionTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+            ],
+        ],
+        'GetQualityDetectionTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
+                'detections' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'GetQualityDetectionTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetQualityDetectionTemplateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListQualityDetectionTemplatesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'ListQualityDetectionTemplatesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'QualityDetectionTemplateObject', ], ],
+            ],
+        ],
+        'CreateQualityDetectionTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
+                'detections' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'CreateQualityDetectionTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateQualityDetectionTemplateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateQualityDetectionTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'detections' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+            ],
+        ],
+        'ListQualityDetectionTemplatesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListQualityDetectionTemplatesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateQualityDetectionTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
+                'detections' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'UpdateQualityDetectionTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
+                'detections' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'DeleteQualityDetectionTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteQualityDetectionTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteQualityDetectionTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
             ],
         ],
         'SubmitTranscodeJobResultShape' => [
@@ -2079,12 +2436,13 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'imgUrl' => [ 'type' => 'string', 'locationName' => 'imgUrl', ],
-                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
-                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'width' => [ 'type' => 'string', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'string', 'locationName' => 'height', ],
+                'sizeUnit' => [ 'type' => 'string', 'locationName' => 'sizeUnit', ],
                 'position' => [ 'type' => 'string', 'locationName' => 'position', ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'offsetX' => [ 'type' => 'integer', 'locationName' => 'offsetX', ],
-                'offsetY' => [ 'type' => 'integer', 'locationName' => 'offsetY', ],
+                'offsetX' => [ 'type' => 'string', 'locationName' => 'offsetX', ],
+                'offsetY' => [ 'type' => 'string', 'locationName' => 'offsetY', ],
+                'offsetUnit' => [ 'type' => 'string', 'locationName' => 'offsetUnit', ],
             ],
         ],
         'GetWatermarkRequestShape' => [
@@ -2109,12 +2467,13 @@ return [
                 'id' => [ 'type' => 'long', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'imgUrl' => [ 'type' => 'string', 'locationName' => 'imgUrl', ],
-                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
-                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'width' => [ 'type' => 'string', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'string', 'locationName' => 'height', ],
+                'sizeUnit' => [ 'type' => 'string', 'locationName' => 'sizeUnit', ],
                 'position' => [ 'type' => 'string', 'locationName' => 'position', ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'offsetX' => [ 'type' => 'integer', 'locationName' => 'offsetX', ],
-                'offsetY' => [ 'type' => 'integer', 'locationName' => 'offsetY', ],
+                'offsetX' => [ 'type' => 'string', 'locationName' => 'offsetX', ],
+                'offsetY' => [ 'type' => 'string', 'locationName' => 'offsetY', ],
+                'offsetUnit' => [ 'type' => 'string', 'locationName' => 'offsetUnit', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
@@ -2137,12 +2496,13 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'imgUrl' => [ 'type' => 'string', 'locationName' => 'imgUrl', ],
-                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
-                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'width' => [ 'type' => 'string', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'string', 'locationName' => 'height', ],
+                'sizeUnit' => [ 'type' => 'string', 'locationName' => 'sizeUnit', ],
                 'position' => [ 'type' => 'string', 'locationName' => 'position', ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'offsetX' => [ 'type' => 'integer', 'locationName' => 'offsetX', ],
-                'offsetY' => [ 'type' => 'integer', 'locationName' => 'offsetY', ],
+                'offsetX' => [ 'type' => 'string', 'locationName' => 'offsetX', ],
+                'offsetY' => [ 'type' => 'string', 'locationName' => 'offsetY', ],
+                'offsetUnit' => [ 'type' => 'string', 'locationName' => 'offsetUnit', ],
                 'watermarkId' => [ 'type' => 'long', 'locationName' => 'watermarkId', ],
             ],
         ],
@@ -2185,12 +2545,13 @@ return [
                 'id' => [ 'type' => 'long', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'imgUrl' => [ 'type' => 'string', 'locationName' => 'imgUrl', ],
-                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
-                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'width' => [ 'type' => 'string', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'string', 'locationName' => 'height', ],
+                'sizeUnit' => [ 'type' => 'string', 'locationName' => 'sizeUnit', ],
                 'position' => [ 'type' => 'string', 'locationName' => 'position', ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'offsetX' => [ 'type' => 'integer', 'locationName' => 'offsetX', ],
-                'offsetY' => [ 'type' => 'integer', 'locationName' => 'offsetY', ],
+                'offsetX' => [ 'type' => 'string', 'locationName' => 'offsetX', ],
+                'offsetY' => [ 'type' => 'string', 'locationName' => 'offsetY', ],
+                'offsetUnit' => [ 'type' => 'string', 'locationName' => 'offsetUnit', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
@@ -2201,12 +2562,13 @@ return [
                 'id' => [ 'type' => 'long', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'imgUrl' => [ 'type' => 'string', 'locationName' => 'imgUrl', ],
-                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
-                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'width' => [ 'type' => 'string', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'string', 'locationName' => 'height', ],
+                'sizeUnit' => [ 'type' => 'string', 'locationName' => 'sizeUnit', ],
                 'position' => [ 'type' => 'string', 'locationName' => 'position', ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'offsetX' => [ 'type' => 'integer', 'locationName' => 'offsetX', ],
-                'offsetY' => [ 'type' => 'integer', 'locationName' => 'offsetY', ],
+                'offsetX' => [ 'type' => 'string', 'locationName' => 'offsetX', ],
+                'offsetY' => [ 'type' => 'string', 'locationName' => 'offsetY', ],
+                'offsetUnit' => [ 'type' => 'string', 'locationName' => 'offsetUnit', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],

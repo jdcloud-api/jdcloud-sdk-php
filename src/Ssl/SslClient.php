@@ -30,6 +30,10 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise uploadCertAsync(array $args = [])
  * @method \Jdcloud\Result downloadCert(array $args = [])
  * @method \GuzzleHttp\Promise\Promise downloadCertAsync(array $args = [])
+ * @method \Jdcloud\Result updateCertName(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise updateCertNameAsync(array $args = [])
+ * @method \Jdcloud\Result updateCert(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise updateCertAsync(array $args = [])
  */
 class SslClient extends JdCloudClient
 {

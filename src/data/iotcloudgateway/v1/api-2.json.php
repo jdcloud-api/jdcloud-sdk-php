@@ -81,6 +81,31 @@ return [
                 'deviceSecret' => [ 'type' => 'string', 'locationName' => 'deviceSecret', ],
             ],
         ],
+        'Erpinstance' => [
+            'type' => 'structure',
+            'members' => [
+                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'instanceVersion' => [ 'type' => 'string', 'locationName' => 'instanceVersion', ],
+                'instanceRegion' => [ 'type' => 'string', 'locationName' => 'instanceRegion', ],
+                'instanceStatus' => [ 'type' => 'string', 'locationName' => 'instanceStatus', ],
+                'instanceFlavor' => [ 'type' => 'string', 'locationName' => 'instanceFlavor', ],
+                'azId' => [ 'type' => 'string', 'locationName' => 'azId', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'exposedDomain' => [ 'type' => 'string', 'locationName' => 'exposedDomain', ],
+                'replica' => [ 'type' => 'integer', 'locationName' => 'replica', ],
+                'cloudstorage' => [ 'type' => 'integer', 'locationName' => 'cloudstorage', ],
+                'serviceConfig' => [ 'type' => 'string', 'locationName' => 'serviceConfig', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'gw_dev_id' => [ 'type' => 'string', 'locationName' => 'gw_dev_id', ],
+                'gw_dev_num' => [ 'type' => 'integer', 'locationName' => 'gw_dev_num', ],
+                'chargeType' => [ 'type' => 'integer', 'locationName' => 'chargeType', ],
+                'chargeExpired' => [ 'type' => 'string', 'locationName' => 'chargeExpired', ],
+                'is_deleted' => [ 'type' => 'integer', 'locationName' => 'is_deleted', ],
+            ],
+        ],
         'FlavorSpec' => [
             'type' => 'structure',
             'members' => [
@@ -257,6 +282,21 @@ return [
             'type' => 'structure',
             'members' => [
                 'instance' =>  [ 'shape' => 'Instance', ],
+            ],
+        ],
+        'TagFilter' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'QueryInstanceExposeDomainResultShape' => [

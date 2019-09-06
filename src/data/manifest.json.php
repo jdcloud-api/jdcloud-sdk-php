@@ -61,6 +61,10 @@ return [
         'namespace' => 'Rms',
         'versions' => [ 'latest' => 'v2', ],
     ],
+    'edcps' => [
+        'namespace' => 'Edcps',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'portal' => [
         'namespace' => 'Portal',
         'versions' => [ 'latest' => 'v1', ],

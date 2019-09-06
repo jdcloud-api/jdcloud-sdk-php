@@ -20,10 +20,16 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with resourcetag.
  *
+ * @method \Jdcloud\Result describeResources(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeResourcesAsync(array $args = [])
+ * @method \Jdcloud\Result describeTags(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeTagsAsync(array $args = [])
  * @method \Jdcloud\Result tagResources(array $args = [])
  * @method \GuzzleHttp\Promise\Promise tagResourcesAsync(array $args = [])
  * @method \Jdcloud\Result unTagResources(array $args = [])
  * @method \GuzzleHttp\Promise\Promise unTagResourcesAsync(array $args = [])
+ * @method \Jdcloud\Result queryResource(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryResourceAsync(array $args = [])
  */
 class ResourcetagClient extends JdCloudClient
 {

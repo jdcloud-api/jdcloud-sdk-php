@@ -50,11 +50,29 @@ return [
         'DownloadCert' => [
             'name' => 'DownloadCert',
             'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/sslCert/{certId}:download',
+                'method' => 'POST',
+                'requestUri' => '/v1/sslCert:download',
             ],
             'input' => [ 'shape' => 'DownloadCertRequestShape', ],
             'output' => [ 'shape' => 'DownloadCertResponseShape', ],
+        ],
+        'UpdateCertName' => [
+            'name' => 'UpdateCertName',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/sslCert:updateName',
+            ],
+            'input' => [ 'shape' => 'UpdateCertNameRequestShape', ],
+            'output' => [ 'shape' => 'UpdateCertNameResponseShape', ],
+        ],
+        'UpdateCert' => [
+            'name' => 'UpdateCert',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/sslCert:updateCert',
+            ],
+            'input' => [ 'shape' => 'UpdateCertRequestShape', ],
+            'output' => [ 'shape' => 'UpdateCertResponseShape', ],
         ],
     ],
     'shapes' => [
@@ -79,6 +97,7 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'dnsNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'digest' => [ 'type' => 'string', 'locationName' => 'digest', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'usedBy' => [ 'type' => 'list', 'member' => [ 'shape' => 'CertBindInfo', ], ],
             ],
         ],
@@ -96,6 +115,17 @@ return [
                 'aliasName' => [ 'type' => 'string', 'locationName' => 'aliasName', ],
                 'dnsNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'downloadable' => [ 'type' => 'integer', 'locationName' => 'downloadable', ],
+                'updateable' => [ 'type' => 'integer', 'locationName' => 'updateable', ],
+                'certStatus' => [ 'type' => 'integer', 'locationName' => 'certStatus', ],
+            ],
+        ],
+        'CertQuotaLimitDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'freeUploadCertCount' => [ 'type' => 'integer', 'locationName' => 'freeUploadCertCount', ],
+                'freeDVSingleCount' => [ 'type' => 'integer', 'locationName' => 'freeDVSingleCount', ],
             ],
         ],
         'DiscountDetailList' => [
@@ -115,6 +145,10 @@ return [
                 'keyFile' => [ 'type' => 'string', 'locationName' => 'keyFile', ],
                 'certFile' => [ 'type' => 'string', 'locationName' => 'certFile', ],
                 'digest' => [ 'type' => 'string', 'locationName' => 'digest', ],
+                'caCertFile' => [ 'type' => 'string', 'locationName' => 'caCertFile', ],
+                'serverType' => [ 'type' => 'string', 'locationName' => 'serverType', ],
+                'certEncryptePassword' => [ 'type' => 'string', 'locationName' => 'certEncryptePassword', ],
+                'commonName' => [ 'type' => 'string', 'locationName' => 'commonName', ],
             ],
         ],
         'RecordDescDetail' => [
@@ -126,6 +160,7 @@ return [
                 'brand' => [ 'type' => 'string', 'locationName' => 'brand', ],
                 'certType' => [ 'type' => 'string', 'locationName' => 'certType', ],
                 'domainCount' => [ 'type' => 'integer', 'locationName' => 'domainCount', ],
+                'wildcardDomainCount' => [ 'type' => 'integer', 'locationName' => 'wildcardDomainCount', ],
                 'certValidity' => [ 'type' => 'integer', 'locationName' => 'certValidity', ],
                 'commonName' => [ 'type' => 'string', 'locationName' => 'commonName', ],
                 'state' => [ 'type' => 'integer', 'locationName' => 'state', ],
@@ -135,6 +170,7 @@ return [
                 'corpAddr' => [ 'type' => 'string', 'locationName' => 'corpAddr', ],
                 'dnsNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'errorMessage' => [ 'type' => 'string', 'locationName' => 'errorMessage', ],
             ],
         ],
         'RecordListDetail' => [
@@ -150,12 +186,8 @@ return [
                 'state' => [ 'type' => 'integer', 'locationName' => 'state', ],
                 'partnerOrderId' => [ 'type' => 'string', 'locationName' => 'partnerOrderId', ],
                 'domainCount' => [ 'type' => 'integer', 'locationName' => 'domainCount', ],
+                'wildcardDomainCount' => [ 'type' => 'integer', 'locationName' => 'wildcardDomainCount', ],
                 'dnsNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'DeleteCertsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
                 'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
             ],
         ],
@@ -163,13 +195,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
-            ],
-        ],
-        'DownloadCertResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DownloadCertResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'serverType' => [ 'type' => 'string', 'locationName' => 'serverType', ],
             ],
         ],
         'DescribeCertsResponseShape' => [
@@ -186,6 +212,20 @@ return [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
+        'UpdateCertNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
+                'certName' => [ 'type' => 'string', 'locationName' => 'certName', ],
+            ],
+        ],
+        'UpdateCertNameResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateCertNameResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeCertResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -200,42 +240,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeCertRequestShape' => [
+        'UpdateCertNameResultShape' => [
             'type' => 'structure',
             'members' => [
-                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
-            ],
-        ],
-        'DescribeCertsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
-            ],
-        ],
-        'DescribeCertResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
-                'certName' => [ 'type' => 'string', 'locationName' => 'certName', ],
-                'commonName' => [ 'type' => 'string', 'locationName' => 'commonName', ],
-                'certType' => [ 'type' => 'string', 'locationName' => 'certType', ],
-                'issuer' => [ 'type' => 'string', 'locationName' => 'issuer', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'dnsNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'digest' => [ 'type' => 'string', 'locationName' => 'digest', ],
-                'usedBy' => [ 'type' => 'list', 'member' => [ 'shape' => 'CertBindInfo', ], ],
-            ],
-        ],
-        'UploadCertRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'certName' => [ 'type' => 'string', 'locationName' => 'certName', ],
-                'keyFile' => [ 'type' => 'string', 'locationName' => 'keyFile', ],
-                'certFile' => [ 'type' => 'string', 'locationName' => 'certFile', ],
-                'aliasName' => [ 'type' => 'string', 'locationName' => 'aliasName', ],
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'UploadCertResultShape' => [
@@ -258,11 +267,95 @@ return [
                 'certDesc' => [ 'type' => 'list', 'member' => [ 'shape' => 'DownloadCertDesc', ], ],
             ],
         ],
+        'UpdateCertRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
+                'keyFile' => [ 'type' => 'string', 'locationName' => 'keyFile', ],
+                'certFile' => [ 'type' => 'string', 'locationName' => 'certFile', ],
+            ],
+        ],
+        'DeleteCertsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
+            ],
+        ],
+        'DownloadCertResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DownloadCertResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeCertRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
+            ],
+        ],
+        'DescribeCertsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'certIds' => [ 'type' => 'string', 'locationName' => 'certIds', ],
+            ],
+        ],
+        'UpdateCertResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
+                'digest' => [ 'type' => 'string', 'locationName' => 'digest', ],
+            ],
+        ],
+        'DescribeCertResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
+                'certName' => [ 'type' => 'string', 'locationName' => 'certName', ],
+                'commonName' => [ 'type' => 'string', 'locationName' => 'commonName', ],
+                'certType' => [ 'type' => 'string', 'locationName' => 'certType', ],
+                'issuer' => [ 'type' => 'string', 'locationName' => 'issuer', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'dnsNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'digest' => [ 'type' => 'string', 'locationName' => 'digest', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'usedBy' => [ 'type' => 'list', 'member' => [ 'shape' => 'CertBindInfo', ], ],
+            ],
+        ],
+        'UploadCertRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certName' => [ 'type' => 'string', 'locationName' => 'certName', ],
+                'keyFile' => [ 'type' => 'string', 'locationName' => 'keyFile', ],
+                'certFile' => [ 'type' => 'string', 'locationName' => 'certFile', ],
+                'aliasName' => [ 'type' => 'string', 'locationName' => 'aliasName', ],
+            ],
+        ],
         'DeleteCertsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DeleteCertsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateCertResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateCertResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ValidateQueryResult' => [
+            'type' => 'structure',
+            'members' => [
+                'validateKey' => [ 'type' => 'string', 'locationName' => 'validateKey', ],
+                'validateValue' => [ 'type' => 'string', 'locationName' => 'validateValue', ],
             ],
         ],
     ],

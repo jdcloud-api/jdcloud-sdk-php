@@ -11,6 +11,24 @@ return [
 //        'serviceId' => 'resourcetag',
     ],
     'operations' => [
+        'DescribeResources' => [
+            'name' => 'DescribeResources',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/tags:describeResources',
+            ],
+            'input' => [ 'shape' => 'DescribeResourcesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeResourcesResponseShape', ],
+        ],
+        'DescribeTags' => [
+            'name' => 'DescribeTags',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/describeTags',
+            ],
+            'input' => [ 'shape' => 'DescribeTagsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeTagsResponseShape', ],
+        ],
         'TagResources' => [
             'name' => 'TagResources',
             'http' => [
@@ -29,8 +47,25 @@ return [
             'input' => [ 'shape' => 'UnTagResourcesRequestShape', ],
             'output' => [ 'shape' => 'UnTagResourcesResponseShape', ],
         ],
+        'QueryResource' => [
+            'name' => 'QueryResource',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/queryResource',
+            ],
+            'input' => [ 'shape' => 'QueryResourceRequestShape', ],
+            'output' => [ 'shape' => 'QueryResourceResponseShape', ],
+        ],
     ],
     'shapes' => [
+        'CostAttrTagKeyInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'tagKey' => [ 'type' => 'string', 'locationName' => 'tagKey', ],
+                'costAttr' => [ 'type' => 'boolean', 'locationName' => 'costAttr', ],
+                'tagKeyValid' => [ 'type' => 'boolean', 'locationName' => 'tagKeyValid', ],
+            ],
+        ],
         'FailedResourcesMap' => [
             'type' => 'structure',
             'members' => [
@@ -41,15 +76,11 @@ return [
         'FrontResourcesReqVo' => [
             'type' => 'structure',
             'members' => [
-                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
-                'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'serviceCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'orderCondition' => [ 'type' => 'string', 'locationName' => 'orderCondition', ],
-                'descOrAsc' => [ 'type' => 'string', 'locationName' => 'descOrAsc', ],
-                'currentPage' => [ 'type' => 'integer', 'locationName' => 'currentPage', ],
+                'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'currentPage' => [ 'type' => 'integer', 'locationName' => 'currentPage', ],
             ],
         ],
         'TagFilter' => [
@@ -109,6 +140,11 @@ return [
                 'mariadbRoResourceCount' => [ 'type' => 'long', 'locationName' => 'mariadbRoResourceCount', ],
                 'pgResourceCount' => [ 'type' => 'long', 'locationName' => 'pgResourceCount', ],
                 'cdnResourceCount' => [ 'type' => 'long', 'locationName' => 'cdnResourceCount', ],
+                'nativecontainerResourceCount' => [ 'type' => 'long', 'locationName' => 'nativecontainerResourceCount', ],
+                'podResourceCount' => [ 'type' => 'long', 'locationName' => 'podResourceCount', ],
+                'jqsResourceCount' => [ 'type' => 'long', 'locationName' => 'jqsResourceCount', ],
+                'zfsResourceCount' => [ 'type' => 'long', 'locationName' => 'zfsResourceCount', ],
+                'kubernetesNodegroupResourceCount' => [ 'type' => 'long', 'locationName' => 'kubernetesNodegroupResourceCount', ],
             ],
         ],
         'FrontTagsResourcesInfo' => [
@@ -120,13 +156,50 @@ return [
                 'pageInfo' =>  [ 'shape' => 'PageInfo', ],
             ],
         ],
-        'ResourceReqVo' => [
+        'QueryResourceReqVo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+            ],
+        ],
+        'ResetTagResourcesInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
+            ],
+        ],
+        'ResetTagResourcesReqVo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'resourceTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource2TagsMap', ], ],
+            ],
+        ],
+        'Resource2TagsMap' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+            ],
+        ],
+        'ResetTagResourcesResVo' => [
             'type' => 'structure',
             'members' => [
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'resetTagResourcesInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResetTagResourcesInfo', ], ],
+            ],
+        ],
+        'ResourceReqVo' => [
+            'type' => 'structure',
+            'members' => [
                 'serviceCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'orderCondition' => [ 'type' => 'string', 'locationName' => 'orderCondition', ],
                 'descOrAsc' => [ 'type' => 'string', 'locationName' => 'descOrAsc', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
@@ -137,8 +210,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'jrn' => [ 'type' => 'string', 'locationName' => 'jrn', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
         ],
@@ -157,11 +230,30 @@ return [
                 'resourceId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'TagCostAttrOperateInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'tagKey' => [ 'type' => 'string', 'locationName' => 'tagKey', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
+            ],
+        ],
+        'TagCostAttrOperateReq' => [
+            'type' => 'structure',
+            'members' => [
+                'operations' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagCostAttrOperation', ], ],
+            ],
+        ],
+        'TagCostAttrOperation' => [
+            'type' => 'structure',
+            'members' => [
+                'tagKey' => [ 'type' => 'string', 'locationName' => 'tagKey', ],
+                'operate' => [ 'type' => 'integer', 'locationName' => 'operate', ],
+            ],
+        ],
         'TagKeysReqVo' => [
             'type' => 'structure',
             'members' => [
-                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'serviceCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
             ],
@@ -177,8 +269,6 @@ return [
         'TagResourcesReqVo' => [
             'type' => 'structure',
             'members' => [
-                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourcesMap', ], ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
@@ -195,8 +285,6 @@ return [
         'TagValuesReqVo' => [
             'type' => 'structure',
             'members' => [
-                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
             ],
         ],
@@ -206,6 +294,14 @@ return [
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'tagValues' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'TagsReqVo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'kind' => [ 'type' => 'string', 'locationName' => 'kind', ],
+                'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
             ],
         ],
         'TagsResVo' => [
@@ -219,8 +315,6 @@ return [
         'UnTagResourcesReqVo' => [
             'type' => 'structure',
             'members' => [
-                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourcesMap', ], ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
@@ -241,6 +335,25 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeResourcesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'ResourceResVo', ],
+            ],
+        ],
+        'TagResourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'TagResourcesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryResourceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'TagResourcesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -252,6 +365,13 @@ return [
             'members' => [
                 'unTagResources' =>  [ 'shape' => 'UnTagResourcesReqVo', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'QueryResourceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryResourceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'TagResourcesRequestShape' => [
@@ -267,11 +387,60 @@ return [
                 'data' =>  [ 'shape' => 'UnTagResourcesResVo', ],
             ],
         ],
-        'TagResourcesResponseShape' => [
+        'DescribeTagsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'TagResourcesResultShape', ],
+                'data' =>  [ 'shape' => 'TagsResVo', ],
+            ],
+        ],
+        'DescribeTagsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeTagsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeResourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeResourcesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryResourceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryResource' =>  [ 'shape' => 'QueryResourceReqVo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeResourcesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceVo' =>  [ 'shape' => 'ResourceReqVo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeTagsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'tagKeysVo' =>  [ 'shape' => 'TagsReqVo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetCostAttrTagKeysResult' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'costAttrTagKeyInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'CostAttrTagKeyInfo', ], ],
+                'pageInfo' =>  [ 'shape' => 'PageInfo', ],
+            ],
+        ],
+        'TagCostAttrOperateResult' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'operateInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagCostAttrOperateInfo', ], ],
             ],
         ],
         'FrontResourcesResult' => [
