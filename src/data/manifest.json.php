@@ -223,7 +223,7 @@ return [
     ],
     'monitor' => [
         'namespace' => 'Monitor',
-        'versions' => [ 'latest' => 'v1', ],
+        'versions' => [ 'latest' => 'v2', ],
     ],
     'xdata' => [
         'namespace' => 'Xdata',

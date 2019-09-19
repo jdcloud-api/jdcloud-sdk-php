@@ -200,6 +200,15 @@ return [
             'input' => [ 'shape' => 'DisassociateElasticIpRequestShape', ],
             'output' => [ 'shape' => 'DisassociateElasticIpResponseShape', ],
         ],
+        'ResetPassword' => [
+            'name' => 'ResetPassword',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:resetPassword',
+            ],
+            'input' => [ 'shape' => 'ResetPasswordRequestShape', ],
+            'output' => [ 'shape' => 'ResetPasswordResponseShape', ],
+        ],
         'DescribeInstanceMonitorInfo' => [
             'name' => 'DescribeInstanceMonitorInfo',
             'http' => [
@@ -208,6 +217,51 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeInstanceMonitorInfoRequestShape', ],
             'output' => [ 'shape' => 'DescribeInstanceMonitorInfoResponseShape', ],
+        ],
+        'QueryKeypairs' => [
+            'name' => 'QueryKeypairs',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/keypairs',
+            ],
+            'input' => [ 'shape' => 'QueryKeypairsRequestShape', ],
+            'output' => [ 'shape' => 'QueryKeypairsResponseShape', ],
+        ],
+        'CreateKeypairs' => [
+            'name' => 'CreateKeypairs',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/keypairs',
+            ],
+            'input' => [ 'shape' => 'CreateKeypairsRequestShape', ],
+            'output' => [ 'shape' => 'CreateKeypairsResponseShape', ],
+        ],
+        'ImportKeypairs' => [
+            'name' => 'ImportKeypairs',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/keypairs:import',
+            ],
+            'input' => [ 'shape' => 'ImportKeypairsRequestShape', ],
+            'output' => [ 'shape' => 'ImportKeypairsResponseShape', ],
+        ],
+        'QueryKeypair' => [
+            'name' => 'QueryKeypair',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/keypairs/{keypairId}',
+            ],
+            'input' => [ 'shape' => 'QueryKeypairRequestShape', ],
+            'output' => [ 'shape' => 'QueryKeypairResponseShape', ],
+        ],
+        'DeleteKeypairs' => [
+            'name' => 'DeleteKeypairs',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/keypairs/{keypairId}',
+            ],
+            'input' => [ 'shape' => 'DeleteKeypairsRequestShape', ],
+            'output' => [ 'shape' => 'DeleteKeypairsResponseShape', ],
         ],
         'QueryListeners' => [
             'name' => 'QueryListeners',
@@ -667,6 +721,8 @@ return [
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
                 'publicIp' => [ 'type' => 'string', 'locationName' => 'publicIp', ],
                 'publicIpv6' => [ 'type' => 'string', 'locationName' => 'publicIpv6', ],
+                'keypairId' => [ 'type' => 'string', 'locationName' => 'keypairId', ],
+                'agentStatus' => [ 'type' => 'string', 'locationName' => 'agentStatus', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
             ],
         ],
@@ -692,7 +748,21 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
                 'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'userData' => [ 'type' => 'string', 'locationName' => 'userData', ],
+                'keypairId' => [ 'type' => 'string', 'locationName' => 'keypairId', ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
+            ],
+        ],
+        'Keypair' => [
+            'type' => 'structure',
+            'members' => [
+                'keypairId' => [ 'type' => 'string', 'locationName' => 'keypairId', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'publicKey' => [ 'type' => 'string', 'locationName' => 'publicKey', ],
+                'fingerPrint' => [ 'type' => 'string', 'locationName' => 'fingerPrint', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
         'Listener' => [
@@ -704,21 +774,15 @@ return [
                 'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
                 'algorithm' => [ 'type' => 'string', 'locationName' => 'algorithm', ],
                 'stickySession' => [ 'type' => 'string', 'locationName' => 'stickySession', ],
-                'stickySessionTimeout' => [ 'type' => 'integer', 'locationName' => 'stickySessionTimeout', ],
-                'cookieType' => [ 'type' => 'string', 'locationName' => 'cookieType', ],
                 'realIp' => [ 'type' => 'string', 'locationName' => 'realIp', ],
-                'certificateId' => [ 'type' => 'string', 'locationName' => 'certificateId', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'headers' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'healthCheck' => [ 'type' => 'string', 'locationName' => 'healthCheck', ],
                 'healthCheckTimeout' => [ 'type' => 'integer', 'locationName' => 'healthCheckTimeout', ],
                 'healthCheckInterval' => [ 'type' => 'integer', 'locationName' => 'healthCheckInterval', ],
                 'healthyThreshold' => [ 'type' => 'integer', 'locationName' => 'healthyThreshold', ],
                 'unhealthyThreshold' => [ 'type' => 'integer', 'locationName' => 'unhealthyThreshold', ],
-                'healthCheckUri' => [ 'type' => 'string', 'locationName' => 'healthCheckUri', ],
-                'healthCheckHttpCode' => [ 'type' => 'string', 'locationName' => 'healthCheckHttpCode', ],
                 'healthCheckIp' => [ 'type' => 'string', 'locationName' => 'healthCheckIp', ],
                 'serverGroupId' => [ 'type' => 'string', 'locationName' => 'serverGroupId', ],
             ],
@@ -731,21 +795,14 @@ return [
                 'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
                 'algorithm' => [ 'type' => 'string', 'locationName' => 'algorithm', ],
                 'stickySession' => [ 'type' => 'string', 'locationName' => 'stickySession', ],
-                'stickySessionTimeout' => [ 'type' => 'integer', 'locationName' => 'stickySessionTimeout', ],
-                'cookieType' => [ 'type' => 'string', 'locationName' => 'cookieType', ],
                 'realIp' => [ 'type' => 'string', 'locationName' => 'realIp', ],
-                'certificateId' => [ 'type' => 'string', 'locationName' => 'certificateId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'headers' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'healthCheck' => [ 'type' => 'string', 'locationName' => 'healthCheck', ],
                 'healthCheckTimeout' => [ 'type' => 'integer', 'locationName' => 'healthCheckTimeout', ],
                 'healthCheckInterval' => [ 'type' => 'integer', 'locationName' => 'healthCheckInterval', ],
                 'healthyThreshold' => [ 'type' => 'integer', 'locationName' => 'healthyThreshold', ],
                 'unhealthyThreshold' => [ 'type' => 'integer', 'locationName' => 'unhealthyThreshold', ],
-                'healthCheckUri' => [ 'type' => 'string', 'locationName' => 'healthCheckUri', ],
-                'healthCheckHttpCode' => [ 'type' => 'string', 'locationName' => 'healthCheckHttpCode', ],
-                'healthCheckIp' => [ 'type' => 'string', 'locationName' => 'healthCheckIp', ],
                 'serverGroupId' => [ 'type' => 'string', 'locationName' => 'serverGroupId', ],
             ],
         ],
@@ -852,6 +909,8 @@ return [
                 'dataRaidTypeId' => [ 'type' => 'string', 'locationName' => 'dataRaidTypeId', ],
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
                 'hostname' => [ 'type' => 'string', 'locationName' => 'hostname', ],
+                'userData' => [ 'type' => 'string', 'locationName' => 'userData', ],
+                'keypairId' => [ 'type' => 'string', 'locationName' => 'keypairId', ],
             ],
         ],
         'RenewalResource' => [
@@ -1166,6 +1225,7 @@ return [
                 'networkType' => [ 'type' => 'string', 'locationName' => 'networkType', ],
                 'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'keypairId' => [ 'type' => 'string', 'locationName' => 'keypairId', ],
                 'enableInternet' => [ 'type' => 'string', 'locationName' => 'enableInternet', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -1220,6 +1280,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ResetPasswordResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ResetPasswordResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeOSResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1242,6 +1309,15 @@ return [
         'DescribeInstanceNameRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ResetPasswordRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -1404,6 +1480,12 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'ResetPasswordResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
         'DescribeOSResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1458,6 +1540,128 @@ return [
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'QueryKeypairResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'server' =>  [ 'shape' => 'Keypair', ],
+            ],
+        ],
+        'CreateKeypairsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keypairId' => [ 'type' => 'string', 'locationName' => 'keypairId', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'publicKey' => [ 'type' => 'string', 'locationName' => 'publicKey', ],
+                'fingerPrint' => [ 'type' => 'string', 'locationName' => 'fingerPrint', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'privateKey' => [ 'type' => 'string', 'locationName' => 'privateKey', ],
+            ],
+        ],
+        'DeleteKeypairsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'DeleteKeypairsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteKeypairsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ImportKeypairsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keypairId' => [ 'type' => 'string', 'locationName' => 'keypairId', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'publicKey' => [ 'type' => 'string', 'locationName' => 'publicKey', ],
+                'fingerPrint' => [ 'type' => 'string', 'locationName' => 'fingerPrint', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'QueryKeypairsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'servers' => [ 'type' => 'list', 'member' => [ 'shape' => 'Keypair', ], ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'QueryKeypairRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'keypairId' => [ 'type' => 'string', 'locationName' => 'keypairId', ],
+            ],
+        ],
+        'ImportKeypairsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ImportKeypairsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryKeypairsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryKeypairsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryKeypairsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'QueryKeypairResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryKeypairResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateKeypairsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateKeypairsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteKeypairsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'keypairId' => [ 'type' => 'string', 'locationName' => 'keypairId', ],
+            ],
+        ],
+        'CreateKeypairsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ImportKeypairsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'publicKey' => [ 'type' => 'string', 'locationName' => 'publicKey', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'QueryListenersResultShape' => [
@@ -1561,21 +1765,14 @@ return [
             'members' => [
                 'algorithm' => [ 'type' => 'string', 'locationName' => 'algorithm', ],
                 'stickySession' => [ 'type' => 'string', 'locationName' => 'stickySession', ],
-                'stickySessionTimeout' => [ 'type' => 'integer', 'locationName' => 'stickySessionTimeout', ],
-                'cookieType' => [ 'type' => 'string', 'locationName' => 'cookieType', ],
                 'realIp' => [ 'type' => 'string', 'locationName' => 'realIp', ],
-                'certificateId' => [ 'type' => 'string', 'locationName' => 'certificateId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'headers' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'healthCheck' => [ 'type' => 'string', 'locationName' => 'healthCheck', ],
                 'healthCheckTimeout' => [ 'type' => 'integer', 'locationName' => 'healthCheckTimeout', ],
                 'healthCheckInterval' => [ 'type' => 'integer', 'locationName' => 'healthCheckInterval', ],
                 'healthyThreshold' => [ 'type' => 'integer', 'locationName' => 'healthyThreshold', ],
                 'unhealthyThreshold' => [ 'type' => 'integer', 'locationName' => 'unhealthyThreshold', ],
-                'healthCheckUri' => [ 'type' => 'string', 'locationName' => 'healthCheckUri', ],
-                'healthCheckHttpCode' => [ 'type' => 'string', 'locationName' => 'healthCheckHttpCode', ],
-                'healthCheckIp' => [ 'type' => 'string', 'locationName' => 'healthCheckIp', ],
                 'serverGroupId' => [ 'type' => 'string', 'locationName' => 'serverGroupId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'listenerId' => [ 'type' => 'string', 'locationName' => 'listenerId', ],
