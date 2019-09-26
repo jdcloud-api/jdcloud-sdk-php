@@ -74,6 +74,33 @@ return [
             'input' => [ 'shape' => 'DeleteGroupRequestShape', ],
             'output' => [ 'shape' => 'DeleteGroupResponseShape', ],
         ],
+        'DescribeGroupSubUsers' => [
+            'name' => 'DescribeGroupSubUsers',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/group/{groupName}/subUsers',
+            ],
+            'input' => [ 'shape' => 'DescribeGroupSubUsersRequestShape', ],
+            'output' => [ 'shape' => 'DescribeGroupSubUsersResponseShape', ],
+        ],
+        'DescribeGroups' => [
+            'name' => 'DescribeGroups',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/groups',
+            ],
+            'input' => [ 'shape' => 'DescribeGroupsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeGroupsResponseShape', ],
+        ],
+        'DescribeAttachedGroupPolicies' => [
+            'name' => 'DescribeAttachedGroupPolicies',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/group/{groupName}/policies',
+            ],
+            'input' => [ 'shape' => 'DescribeAttachedGroupPoliciesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAttachedGroupPoliciesResponseShape', ],
+        ],
         'DetachGroupPolicy' => [
             'name' => 'DetachGroupPolicy',
             'http' => [
@@ -209,6 +236,15 @@ return [
             'input' => [ 'shape' => 'UpdatePolicyDescriptionRequestShape', ],
             'output' => [ 'shape' => 'UpdatePolicyDescriptionResponseShape', ],
         ],
+        'DescribePolicies' => [
+            'name' => 'DescribePolicies',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/policies',
+            ],
+            'input' => [ 'shape' => 'DescribePoliciesRequestShape', ],
+            'output' => [ 'shape' => 'DescribePoliciesResponseShape', ],
+        ],
         'CreateRole' => [
             'name' => 'CreateRole',
             'http' => [
@@ -245,6 +281,15 @@ return [
             'input' => [ 'shape' => 'UpdateAssumeRolePolicyRequestShape', ],
             'output' => [ 'shape' => 'UpdateAssumeRolePolicyResponseShape', ],
         ],
+        'DescribeRoles' => [
+            'name' => 'DescribeRoles',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/roles',
+            ],
+            'input' => [ 'shape' => 'DescribeRolesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRolesResponseShape', ],
+        ],
         'AttachRolePolicy' => [
             'name' => 'AttachRolePolicy',
             'http' => [
@@ -262,6 +307,15 @@ return [
             ],
             'input' => [ 'shape' => 'DetachRolePolicyRequestShape', ],
             'output' => [ 'shape' => 'DetachRolePolicyResponseShape', ],
+        ],
+        'DescribeRolePolicies' => [
+            'name' => 'DescribeRolePolicies',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/role/{roleName}/policies',
+            ],
+            'input' => [ 'shape' => 'DescribeRolePoliciesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRolePoliciesResponseShape', ],
         ],
         'CreateSubUser' => [
             'name' => 'CreateSubUser',
@@ -298,6 +352,33 @@ return [
             ],
             'input' => [ 'shape' => 'DeleteSubUserRequestShape', ],
             'output' => [ 'shape' => 'DeleteSubUserResponseShape', ],
+        ],
+        'DescribeSubUsers' => [
+            'name' => 'DescribeSubUsers',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/subUsers',
+            ],
+            'input' => [ 'shape' => 'DescribeSubUsersRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSubUsersResponseShape', ],
+        ],
+        'DescribeSubUserGroups' => [
+            'name' => 'DescribeSubUserGroups',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/subUser/{subUser}/groups',
+            ],
+            'input' => [ 'shape' => 'DescribeSubUserGroupsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSubUserGroupsResponseShape', ],
+        ],
+        'DescribeAttachedSubUserPolicies' => [
+            'name' => 'DescribeAttachedSubUserPolicies',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/subUser/{subUser}/policies',
+            ],
+            'input' => [ 'shape' => 'DescribeAttachedSubUserPoliciesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAttachedSubUserPoliciesResponseShape', ],
         ],
         'DetachSubUserPolicy' => [
             'name' => 'DetachSubUserPolicy',
@@ -1035,6 +1116,14 @@ return [
             'members' => [
             ],
         ],
+        'DescribeGroupSubUsersRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+            ],
+        ],
         'AttachGroupPolicyRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1051,6 +1140,27 @@ return [
         'RemoveSubUserFromGroupResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeGroupsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeGroupsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAttachedGroupPoliciesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'policies' => [ 'type' => 'list', 'member' => [ 'shape' => 'Policy', ], ],
+            ],
+        ],
+        'DescribeGroupSubUsersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeGroupSubUsersResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateGroupResultShape' => [
@@ -1079,10 +1189,23 @@ return [
                 'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
             ],
         ],
+        'DescribeGroupsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'groups' => [ 'type' => 'list', 'member' => [ 'shape' => 'Group', ], ],
+            ],
+        ],
         'AddSubUserToGroupResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAttachedGroupPoliciesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
             ],
         ],
         'DescribeGroupResultShape' => [
@@ -1098,6 +1221,15 @@ return [
                 'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
             ],
         ],
+        'DescribeGroupsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
+                'sort' => [ 'type' => 'integer', 'locationName' => 'sort', ],
+            ],
+        ],
         'DescribeGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1108,6 +1240,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'createGroupInfo' =>  [ 'shape' => 'CreateGroupInfo', ],
+            ],
+        ],
+        'DescribeAttachedGroupPoliciesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAttachedGroupPoliciesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DetachGroupPolicyRequestShape' => [
@@ -1129,6 +1268,13 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeGroupResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeGroupSubUsersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'subUsers' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubUserInfo', ], ],
             ],
         ],
         'AddSubUserToGroupResultShape' => [
@@ -1337,6 +1483,13 @@ return [
                 'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
             ],
         ],
+        'DescribePoliciesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribePoliciesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'UpdatePolicyDescriptionResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1349,18 +1502,28 @@ return [
                 'createPolicyInfo' =>  [ 'shape' => 'CreatePolicyInfo', ],
             ],
         ],
+        'DescribePoliciesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
+                'queryType' => [ 'type' => 'integer', 'locationName' => 'queryType', ],
+                'sort' => [ 'type' => 'integer', 'locationName' => 'sort', ],
+            ],
+        ],
+        'DescribePoliciesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'policies' => [ 'type' => 'list', 'member' => [ 'shape' => 'Policy', ], ],
+            ],
+        ],
         'DescribePolicyResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribePolicyResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateRoleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'CreateRoleResultShape', ],
             ],
         ],
         'UpdateAssumeRolePolicyResponseShape' => [
@@ -1374,17 +1537,18 @@ return [
             'members' => [
             ],
         ],
+        'DescribeRolePoliciesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'policies' => [ 'type' => 'list', 'member' => [ 'shape' => 'RolePolicy', ], ],
+            ],
+        ],
         'DescribeRoleResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeRoleResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeRoleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'roleInfo' =>  [ 'shape' => 'RoleInfo', ],
             ],
         ],
         'DescribeRoleRequestShape' => [
@@ -1396,12 +1560,6 @@ return [
         'AttachRolePolicyResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'CreateRoleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'roleInfo' =>  [ 'shape' => 'RoleInfo', ],
             ],
         ],
         'DeleteRoleResultShape' => [
@@ -1434,12 +1592,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CreateRoleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'createRoleInfo' =>  [ 'shape' => 'CreateRoleInfo', ],
-            ],
-        ],
         'DeleteRoleResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1453,6 +1605,13 @@ return [
                 'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
             ],
         ],
+        'DescribeRolePoliciesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRolePoliciesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'AttachRolePolicyRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1460,21 +1619,81 @@ return [
                 'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
             ],
         ],
+        'CreateRoleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateRoleResultShape', ],
+            ],
+        ],
+        'DescribeRolesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+                'sort' => [ 'type' => 'integer', 'locationName' => 'sort', ],
+            ],
+        ],
+        'DescribeRoleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'roleInfo' =>  [ 'shape' => 'RoleInfo', ],
+            ],
+        ],
+        'CreateRoleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'roleInfo' =>  [ 'shape' => 'RoleInfo', ],
+            ],
+        ],
+        'DescribeRolesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'roles' => [ 'type' => 'list', 'member' => [ 'shape' => 'ListRoleInfo', ], ],
+            ],
+        ],
+        'DescribeRolePoliciesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
+                'sort' => [ 'type' => 'integer', 'locationName' => 'sort', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+            ],
+        ],
+        'CreateRoleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'createRoleInfo' =>  [ 'shape' => 'CreateRoleInfo', ],
+            ],
+        ],
+        'DescribeRolesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRolesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'UpdateAssumeRolePolicyResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
         ],
-        'UpdateSubUserResultShape' => [
+        'DescribeSubUserGroupsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'subUser' =>  [ 'shape' => 'CreateSubUserRes', ],
+                'groups' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupInfo', ], ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
             ],
         ],
-        'DeleteSubUserResponseShape' => [
+        'DescribeAttachedSubUserPoliciesRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
             ],
         ],
         'DetachSubUserPolicyResultShape' => [
@@ -1482,10 +1701,13 @@ return [
             'members' => [
             ],
         ],
-        'DescribeSubUserRequestShape' => [
+        'DescribeSubUsersRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
+                'sort' => [ 'type' => 'integer', 'locationName' => 'sort', ],
             ],
         ],
         'DetachSubUserPolicyRequestShape' => [
@@ -1507,6 +1729,13 @@ return [
                 'subUser' =>  [ 'shape' => 'CreateSubUserRes', ],
             ],
         ],
+        'DescribeSubUsersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSubUsersResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'AttachSubUserPolicyResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1517,6 +1746,58 @@ return [
             'type' => 'structure',
             'members' => [
                 'createSubUserInfo' =>  [ 'shape' => 'CreateSubUserInfo', ],
+            ],
+        ],
+        'DescribeAttachedSubUserPoliciesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'policies' => [ 'type' => 'list', 'member' => [ 'shape' => 'Policy', ], ],
+            ],
+        ],
+        'DescribeSubUsersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUsers' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubUser', ], ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+            ],
+        ],
+        'DescribeAttachedSubUserPoliciesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAttachedSubUserPoliciesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateSubUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateSubUserResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateSubUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' =>  [ 'shape' => 'CreateSubUserRes', ],
+            ],
+        ],
+        'DeleteSubUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSubUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+            ],
+        ],
+        'DescribeSubUserGroupsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
             ],
         ],
         'DeleteSubUserRequestShape' => [
@@ -1569,10 +1850,10 @@ return [
             'members' => [
             ],
         ],
-        'UpdateSubUserResponseShape' => [
+        'DescribeSubUserGroupsResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'UpdateSubUserResultShape', ],
+                'result' =>  [ 'shape' => 'DescribeSubUserGroupsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],

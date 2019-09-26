@@ -214,6 +214,8 @@ return [
             'members' => [
                 'deliverNumber' => [ 'type' => 'string', 'locationName' => 'deliverNumber', ],
                 'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
+                'orderType' => [ 'type' => 'integer', 'locationName' => 'orderType', ],
+                'orderTypeName' => [ 'type' => 'string', 'locationName' => 'orderTypeName', ],
                 'buyerPin' => [ 'type' => 'string', 'locationName' => 'buyerPin', ],
                 'mappingCode' => [ 'type' => 'string', 'locationName' => 'mappingCode', ],
                 'supportAutoDeliver' => [ 'type' => 'integer', 'locationName' => 'supportAutoDeliver', ],

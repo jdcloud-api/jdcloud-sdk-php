@@ -73,6 +73,10 @@ return [
         'namespace' => 'Logs',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'jdccs' => [
+        'namespace' => 'Jdccs',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'order' => [
         'namespace' => 'Order',
         'versions' => [ 'latest' => 'v2', ],
@@ -243,6 +247,10 @@ return [
     ],
     'partner' => [
         'namespace' => 'Partner',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'iotcard' => [
+        'namespace' => 'Iotcard',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'iotcloudgateway' => [
