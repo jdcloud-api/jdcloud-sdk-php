@@ -218,6 +218,15 @@ return [
             'input' => [ 'shape' => 'DescribePolicyRequestShape', ],
             'output' => [ 'shape' => 'DescribePolicyResponseShape', ],
         ],
+        'UpdatePolicy' => [
+            'name' => 'UpdatePolicy',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/policy/{policyName}',
+            ],
+            'input' => [ 'shape' => 'UpdatePolicyRequestShape', ],
+            'output' => [ 'shape' => 'UpdatePolicyResponseShape', ],
+        ],
         'DeletePolicy' => [
             'name' => 'DeletePolicy',
             'http' => [
@@ -618,6 +627,7 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
                 'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
                 'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
                 'secretAccessKey' => [ 'type' => 'string', 'locationName' => 'secretAccessKey', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
@@ -1434,12 +1444,6 @@ return [
             'members' => [
             ],
         ],
-        'DeletePolicyResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DeletePolicyRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1450,6 +1454,37 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'CreatePolicyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribePolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policy' =>  [ 'shape' => 'PolicyDetail', ],
+            ],
+        ],
+        'UpdatePolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'updatePolicyInfo' =>  [ 'shape' => 'UpdatePolicyInfo', ],
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+            ],
+        ],
+        'CreatePolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'createPolicyInfo' =>  [ 'shape' => 'CreatePolicyInfo', ],
+            ],
+        ],
+        'DeletePolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdatePolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -1471,12 +1506,6 @@ return [
                 'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
             ],
         ],
-        'DescribePolicyResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'policy' =>  [ 'shape' => 'PolicyDetail', ],
-            ],
-        ],
         'DescribePolicyRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1496,10 +1525,9 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CreatePolicyRequestShape' => [
+        'UpdatePolicyResultShape' => [
             'type' => 'structure',
             'members' => [
-                'createPolicyInfo' =>  [ 'shape' => 'CreatePolicyInfo', ],
             ],
         ],
         'DescribePoliciesRequestShape' => [

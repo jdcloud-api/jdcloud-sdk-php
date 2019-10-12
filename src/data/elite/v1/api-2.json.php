@@ -214,6 +214,7 @@ return [
             'members' => [
                 'deliverNumber' => [ 'type' => 'string', 'locationName' => 'deliverNumber', ],
                 'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
+                'refOrderNumber' => [ 'type' => 'string', 'locationName' => 'refOrderNumber', ],
                 'orderType' => [ 'type' => 'integer', 'locationName' => 'orderType', ],
                 'orderTypeName' => [ 'type' => 'string', 'locationName' => 'orderTypeName', ],
                 'buyerPin' => [ 'type' => 'string', 'locationName' => 'buyerPin', ],

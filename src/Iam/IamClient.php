@@ -66,6 +66,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise createPolicyAsync(array $args = [])
  * @method \Jdcloud\Result describePolicy(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describePolicyAsync(array $args = [])
+ * @method \Jdcloud\Result updatePolicy(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise updatePolicyAsync(array $args = [])
  * @method \Jdcloud\Result deletePolicy(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deletePolicyAsync(array $args = [])
  * @method \Jdcloud\Result updatePolicyDescription(array $args = [])

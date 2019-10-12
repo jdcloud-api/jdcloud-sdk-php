@@ -183,7 +183,7 @@ return [
     ],
     'iothub' => [
         'namespace' => 'Iothub',
-        'versions' => [ 'latest' => 'v1', ],
+        'versions' => [ 'latest' => 'v2', ],
     ],
     'sms' => [
         'namespace' => 'Sms',
@@ -220,6 +220,10 @@ return [
     'renewal' => [
         'namespace' => 'Renewal',
         'versions' => [ 'latest' => 'v2', ],
+    ],
+    'iotlink' => [
+        'namespace' => 'Iotlink',
+        'versions' => [ 'latest' => 'v1', ],
     ],
     'vpc' => [
         'namespace' => 'Vpc',
