@@ -52,12 +52,9 @@ SDK使用中的任何问题，欢迎您[SDK使用问题反馈页面](https://git
     public function testCreateInstances()
     {
         $vm = new VmClient([
-            'credentials'  => new Credentials('35DDDCFFB86CF2D494F0F3B6B0B3EF68', '93C107EF1F3A0C46C6329C04F561A29E'),
+            'credentials'  => new Credentials('ak', 'sk'),
             'version' => 'latest',
-            'scheme' => 'https',
-            'http'    => [
-                'verify' => 'C:/ca-bundle.crt'
-            ]
+            'scheme' => 'https'
         ]);
         
         
@@ -109,7 +106,7 @@ $fix_endpoint = EndpointProvider::patterns([
 ]);
 
 $vm = new VmClient([
-    'credentials'  => new Credentials('xxx', 'xxx'),
+    'credentials'  => new Credentials('ak', 'sk'),
     'version' => 'latest',
      'debug' => [
          'logfn'        => function ($msg) { echo $msg . "\n"; }, //输出调试详细日志
