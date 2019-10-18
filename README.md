@@ -17,12 +17,11 @@
 
 首先在composer.json添加
 
-```json
-"require" : {
-	"php" : ">=5.5",
-	"jdcloud-api/jdcloud-sdk-php" : ">=0.2",
-}
-```    
+	"require" : {
+		"php" : ">=5.5",
+		"jdcloud-api/jdcloud-sdk-php" : ">=4.0.0"
+	}
+    
 
 然后使用Composer安装
 
@@ -36,7 +35,7 @@
 
  
 
-SDK使用中的任何问题，欢迎您在Github SDK使用问题反馈页面交流。
+SDK使用中的任何问题，欢迎您[SDK使用问题反馈页面](https://github.com/jdcloud-api/jdcloud-sdk-php/issues)交流。
 
 
 
@@ -45,21 +44,15 @@ SDK使用中的任何问题，欢迎您在Github SDK使用问题反馈页面交�
  
 
 ## 调用示例 ##
-以下是创建单个云主机实例详情的调用示例:
+以下是创建单个云主机实例详情的调用示例
 
-注意：假设要调用的业务线为vm，则use Jdcloud\Vm\VmClient，使用VmClient发起调用，支持的接口可以在src/Vm/VmClient.php查看；可以根据自己调用的业务线调用对应的{$service}Client。
-
-```php
-
-    require 'vendor/autoload.php';
-    
-    use Jdcloud\Credentials\Credentials;
+	use Jdcloud\Credentials\Credentials;
     use Jdcloud\Result;
     use Jdcloud\Vm\VmClient;
     public function testCreateInstances()
     {
         $vm = new VmClient([
-            'credentials'  => new Credentials('ak', 'sk'),
+            'credentials'  => new Credentials('35DDDCFFB86CF2D494F0F3B6B0B3EF68', '93C107EF1F3A0C46C6329C04F561A29E'),
             'version' => 'latest',
             'scheme' => 'https',
             'http'    => [
@@ -98,16 +91,38 @@ SDK使用中的任何问题，欢迎您在Github SDK使用问题反馈页面交�
             print("Error Detail Message: ". $e->getJdcloudErrorMessage(). "\n");
         }
     }
-```
 
 如果需要设置额外的header，例如要调用开启了MFA操作保护的接口，需要传递x-jdcloud-security-token，则按照如下方式：
 
-```php
-$res = $vm->deleteInstances([
-    'regionId'  => 'cn-north-1',
-    'instanceId'  => 'xxx',
-    'extraHeaders' => [
-	'x-jdcloud-security-token' => 'xxxx'
+        $res = $vm->deleteInstances([
+            'regionId'  => 'cn-north-1',
+            'instanceId'  => 'xxx',
+            'extraHeaders' => [
+                'x-jdcloud-security-token' => 'xxxx'
+            ]
+        ]);
+
+如果需要设置访问点，配置超时等，请参考如下更复杂的例子：
+```
+$fix_endpoint = EndpointProvider::patterns([
+    '*/*' => ['endpoint' => 'vm.cn-north-1.jdcloud-api.com'] //指定非默认访问地址 step 1
+]);
+
+$vm = new VmClient([
+    'credentials'  => new Credentials('35DDDCFFB86CF2D494F0F3B6B0B3EF68', '93C107EF1F3A0C46C6329C04F561A29E'),
+    'version' => 'latest',
+     'debug' => [
+         'logfn'        => function ($msg) { echo $msg . "\n"; }, //输出调试详细日志
+         ],
+     'validate' => false, //关闭客户端参数验证
+     'endpoint_provider' => $fix_endpoint, //指定非默认访问地址 step 2
+     'scheme' => 'https',
+     'http'    => [
+        'verify' => 'C:/ca-bundle.crt', //指定本地证书文件
+        'connect_timeout' => 20,   //指定连接超时         
+         'timeout' => 5   //指定请求超时 
     ]
 ]);
 ```
+        
+更多调用示例参考  [SDK使用Demo](https://github.com/jdcloud-api/jdcloud-sdk-php/tree/master/tests)
