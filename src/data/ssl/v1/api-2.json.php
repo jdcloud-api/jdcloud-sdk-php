@@ -50,8 +50,8 @@ return [
         'DownloadCert' => [
             'name' => 'DownloadCert',
             'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/sslCert:download',
+                'method' => 'GET',
+                'requestUri' => '/v1/sslCert/{certId}:download',
             ],
             'input' => [ 'shape' => 'DownloadCertRequestShape', ],
             'output' => [ 'shape' => 'DownloadCertResponseShape', ],
@@ -194,8 +194,8 @@ return [
         'DownloadCertRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
                 'serverType' => [ 'type' => 'string', 'locationName' => 'serverType', ],
+                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
             ],
         ],
         'DescribeCertsResponseShape' => [

@@ -302,6 +302,8 @@ return [
                 'creator' => [ 'type' => 'string', 'locationName' => 'creator', ],
                 'jcloudNs' => [ 'type' => 'boolean', 'locationName' => 'jcloudNs', ],
                 'lockStatus' => [ 'type' => 'integer', 'locationName' => 'lockStatus', ],
+                'probeNsList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'defNsList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'Notice' => [
@@ -331,6 +333,14 @@ return [
             'members' => [
                 'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
                 'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
+        'BackupAddressesInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'address' => [ 'type' => 'string', 'locationName' => 'address', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
             ],
         ],
         'Monitor' => [
@@ -369,6 +379,25 @@ return [
                 'switchRecoverRule' => [ 'type' => 'integer', 'locationName' => 'switchRecoverRule', ],
                 'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
                 'usedType' => [ 'type' => 'integer', 'locationName' => 'usedType', ],
+                'backupAddressList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackupAddressesInfo', ], ],
+                'requestHeaders' => [ 'type' => 'list', 'member' => [ 'shape' => 'HttpHeader', ], ],
+                'responseBodyMatch' => [ 'type' => 'string', 'locationName' => 'responseBodyMatch', ],
+                'responseCodeRanges' => [ 'type' => 'list', 'member' => [ 'shape' => 'HttpResponseCodeRange', ], ],
+                'effectAddr' => [ 'type' => 'string', 'locationName' => 'effectAddr', ],
+            ],
+        ],
+        'HttpHeader' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'HttpResponseCodeRange' => [
+            'type' => 'structure',
+            'members' => [
+                'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
+                'end' => [ 'type' => 'integer', 'locationName' => 'end', ],
             ],
         ],
         'MonitorAlarmInfo' => [
@@ -401,6 +430,9 @@ return [
                 'protocol' => [ 'type' => 'integer', 'locationName' => 'protocol', ],
                 'stopRecoverRule' => [ 'type' => 'integer', 'locationName' => 'stopRecoverRule', ],
                 'switchRecoverRule' => [ 'type' => 'integer', 'locationName' => 'switchRecoverRule', ],
+                'requestHeaders' => [ 'type' => 'list', 'member' => [ 'shape' => 'HttpHeader', ], ],
+                'responseBodyMatch' => [ 'type' => 'string', 'locationName' => 'responseBodyMatch', ],
+                'responseCodeRanges' => [ 'type' => 'list', 'member' => [ 'shape' => 'HttpResponseCodeRange', ], ],
             ],
         ],
         'Getlb' => [
@@ -484,6 +516,16 @@ return [
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'SetRecords', ], ],
             ],
         ],
+        'Records' => [
+            'type' => 'structure',
+            'members' => [
+                'record' => [ 'type' => 'string', 'locationName' => 'record', ],
+                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
+                'ttl' => [ 'type' => 'integer', 'locationName' => 'ttl', ],
+                'prior' => [ 'type' => 'integer', 'locationName' => 'prior', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+            ],
+        ],
         'AddRR' => [
             'type' => 'structure',
             'members' => [
@@ -548,6 +590,14 @@ return [
                 'rate' => [ 'type' => 'double', 'locationName' => 'rate', ],
             ],
         ],
+        'RecordsReqs' => [
+            'type' => 'structure',
+            'members' => [
+                'records' => [ 'type' => 'list', 'member' => [ 'shape' => 'Records', ], ],
+                'views' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+            ],
+        ],
         'ImportDNS' => [
             'type' => 'structure',
             'members' => [
@@ -561,6 +611,13 @@ return [
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
                 'viewValue' => [ 'type' => 'integer', 'locationName' => 'viewValue', ],
+            ],
+        ],
+        'ResourceRecordSetReqs' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'RecordsReqs', ], ],
             ],
         ],
         'ResourceInfo' => [

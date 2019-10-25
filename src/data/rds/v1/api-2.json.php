@@ -1007,6 +1007,8 @@ return [
                 'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
                 'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
                 'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
+                'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
+                'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
             ],
         ],
         'DBInstanceSpec' => [

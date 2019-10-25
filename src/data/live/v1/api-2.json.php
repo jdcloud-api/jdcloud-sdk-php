@@ -155,6 +155,105 @@ return [
             'input' => [ 'shape' => 'AddLiveRestartDomainRequestShape', ],
             'output' => [ 'shape' => 'AddLiveRestartDomainResponseShape', ],
         ],
+        'AddCustomLiveStreamQualityDetectionTemplate' => [
+            'name' => 'AddCustomLiveStreamQualityDetectionTemplate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/qualityDetectionCustoms:template',
+            ],
+            'input' => [ 'shape' => 'AddCustomLiveStreamQualityDetectionTemplateRequestShape', ],
+            'output' => [ 'shape' => 'AddCustomLiveStreamQualityDetectionTemplateResponseShape', ],
+        ],
+        'DescribeCustomLiveStreamQualityDetectionTemplates' => [
+            'name' => 'DescribeCustomLiveStreamQualityDetectionTemplates',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/qualityDetectionCustoms',
+            ],
+            'input' => [ 'shape' => 'DescribeCustomLiveStreamQualityDetectionTemplatesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeCustomLiveStreamQualityDetectionTemplatesResponseShape', ],
+        ],
+        'AddLiveStreamAppQualityDetection' => [
+            'name' => 'AddLiveStreamAppQualityDetection',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/qualityDetectionApps:template',
+            ],
+            'input' => [ 'shape' => 'AddLiveStreamAppQualityDetectionRequestShape', ],
+            'output' => [ 'shape' => 'AddLiveStreamAppQualityDetectionResponseShape', ],
+        ],
+        'AddLiveStreamDomainQualityDetection' => [
+            'name' => 'AddLiveStreamDomainQualityDetection',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/qualityDetectionDomains:template',
+            ],
+            'input' => [ 'shape' => 'AddLiveStreamDomainQualityDetectionRequestShape', ],
+            'output' => [ 'shape' => 'AddLiveStreamDomainQualityDetectionResponseShape', ],
+        ],
+        'SetLiveStreamQualityDetectionNotifyConfig' => [
+            'name' => 'SetLiveStreamQualityDetectionNotifyConfig',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/qualityDetectionNotifys:config',
+            ],
+            'input' => [ 'shape' => 'SetLiveStreamQualityDetectionNotifyConfigRequestShape', ],
+            'output' => [ 'shape' => 'SetLiveStreamQualityDetectionNotifyConfigResponseShape', ],
+        ],
+        'DeleteCustomLiveStreamQualityDetectionTemplate' => [
+            'name' => 'DeleteCustomLiveStreamQualityDetectionTemplate',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/qualityDetectionCustoms/{template}',
+            ],
+            'input' => [ 'shape' => 'DeleteCustomLiveStreamQualityDetectionTemplateRequestShape', ],
+            'output' => [ 'shape' => 'DeleteCustomLiveStreamQualityDetectionTemplateResponseShape', ],
+        ],
+        'DeleteLiveStreamAppQualityDetection' => [
+            'name' => 'DeleteLiveStreamAppQualityDetection',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/qualityDetectionApps/{publishDomain}/appNames/{appName}/templates/{template}',
+            ],
+            'input' => [ 'shape' => 'DeleteLiveStreamAppQualityDetectionRequestShape', ],
+            'output' => [ 'shape' => 'DeleteLiveStreamAppQualityDetectionResponseShape', ],
+        ],
+        'DeleteLiveStreamDomainQualityDetection' => [
+            'name' => 'DeleteLiveStreamDomainQualityDetection',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/qualityDetectionDomains/{publishDomain}/templates/{template}',
+            ],
+            'input' => [ 'shape' => 'DeleteLiveStreamDomainQualityDetectionRequestShape', ],
+            'output' => [ 'shape' => 'DeleteLiveStreamDomainQualityDetectionResponseShape', ],
+        ],
+        'DescribeLiveStreamQualityDetectionNotifyConfig' => [
+            'name' => 'DescribeLiveStreamQualityDetectionNotifyConfig',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/qualityDetectionNotifys/{publishDomain}:config',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveStreamQualityDetectionNotifyConfigRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveStreamQualityDetectionNotifyConfigResponseShape', ],
+        ],
+        'DeleteLiveStreamQualityDetectionNotifyConfig' => [
+            'name' => 'DeleteLiveStreamQualityDetectionNotifyConfig',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/qualityDetectionNotifys/{publishDomain}:config',
+            ],
+            'input' => [ 'shape' => 'DeleteLiveStreamQualityDetectionNotifyConfigRequestShape', ],
+            'output' => [ 'shape' => 'DeleteLiveStreamQualityDetectionNotifyConfigResponseShape', ],
+        ],
+        'DescribeQualityDetectionBinding' => [
+            'name' => 'DescribeQualityDetectionBinding',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/qualityDetectionTemplates/{template}:binding',
+            ],
+            'input' => [ 'shape' => 'DescribeQualityDetectionBindingRequestShape', ],
+            'output' => [ 'shape' => 'DescribeQualityDetectionBindingResponseShape', ],
+        ],
         'DescribeCustomLiveStreamRecordTemplates' => [
             'name' => 'DescribeCustomLiveStreamRecordTemplates',
             'http' => [
@@ -947,6 +1046,32 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
+        'DomainTemplateConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+                'modules' => [ 'type' => 'string', 'locationName' => 'modules', ],
+            ],
+        ],
+        'QualityDetectionTemplate' => [
+            'type' => 'structure',
+            'members' => [
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+                'modules' => [ 'type' => 'string', 'locationName' => 'modules', ],
+            ],
+        ],
+        'QualityDetectionConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'qualityDetectionConfig' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'RecordFile' => [
             'type' => 'structure',
             'members' => [
@@ -961,18 +1086,6 @@ return [
                 'bitrate' => [ 'type' => 'integer', 'locationName' => 'bitrate', ],
                 'fps' => [ 'type' => 'integer', 'locationName' => 'fps', ],
                 'fileUrl' => [ 'type' => 'string', 'locationName' => 'fileUrl', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-            ],
-        ],
-        'DomainTemplateConfig' => [
-            'type' => 'structure',
-            'members' => [
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
-                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
-                'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
-                'recordPeriod' => [ 'type' => 'integer', 'locationName' => 'recordPeriod', ],
-                'recordFileType' => [ 'type' => 'integer', 'locationName' => 'recordFileType', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
@@ -1372,6 +1485,20 @@ return [
                 'watermarkConfig' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'UpdateQualityDetectionTemplateRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+                'modules' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'CreateQualityDetectionTemplateRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+                'modules' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'AddLiveAppResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1693,6 +1820,213 @@ return [
         'StartLiveDomainResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DeleteLiveStreamDomainQualityDetectionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+            ],
+        ],
+        'DeleteLiveStreamQualityDetectionNotifyConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+            ],
+        ],
+        'DescribeQualityDetectionBindingResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bindingList' => [ 'type' => 'list', 'member' => [ 'shape' => 'TemplateBinding', ], ],
+            ],
+        ],
+        'AddCustomLiveStreamQualityDetectionTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddLiveStreamDomainQualityDetectionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+            ],
+        ],
+        'AddCustomLiveStreamQualityDetectionTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+                'modules' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'SetLiveStreamQualityDetectionNotifyConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteLiveStreamAppQualityDetectionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteLiveStreamQualityDetectionNotifyConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddCustomLiveStreamQualityDetectionTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeLiveStreamQualityDetectionNotifyConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+            ],
+        ],
+        'DescribeCustomLiveStreamQualityDetectionTemplatesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'DeleteLiveStreamQualityDetectionNotifyConfigResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AddLiveStreamDomainQualityDetectionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetLiveStreamQualityDetectionNotifyConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'notifyUrl' => [ 'type' => 'string', 'locationName' => 'notifyUrl', ],
+            ],
+        ],
+        'DeleteLiveStreamAppQualityDetectionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteLiveStreamDomainQualityDetectionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddLiveStreamDomainQualityDetectionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeQualityDetectionBindingRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+            ],
+        ],
+        'DeleteLiveStreamAppQualityDetectionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+            ],
+        ],
+        'DescribeLiveStreamQualityDetectionNotifyConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveStreamQualityDetectionNotifyConfigResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteLiveStreamDomainQualityDetectionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeQualityDetectionBindingResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeQualityDetectionBindingResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteCustomLiveStreamQualityDetectionTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeCustomLiveStreamQualityDetectionTemplatesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'qualityDetectionTemplates' => [ 'type' => 'list', 'member' => [ 'shape' => 'QualityDetectionTemplate', ], ],
+            ],
+        ],
+        'DescribeCustomLiveStreamQualityDetectionTemplatesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeCustomLiveStreamQualityDetectionTemplatesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteCustomLiveStreamQualityDetectionTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+            ],
+        ],
+        'AddLiveStreamAppQualityDetectionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+            ],
+        ],
+        'AddLiveStreamAppQualityDetectionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AddLiveStreamAppQualityDetectionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetLiveStreamQualityDetectionNotifyConfigResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeLiveStreamQualityDetectionNotifyConfigResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'notifyUrl' => [ 'type' => 'string', 'locationName' => 'notifyUrl', ],
+            ],
+        ],
+        'DeleteCustomLiveStreamQualityDetectionTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeLiveStreamRecordNotifyConfigResponseShape' => [

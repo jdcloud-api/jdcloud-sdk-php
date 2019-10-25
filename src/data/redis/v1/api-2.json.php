@@ -155,6 +155,15 @@ return [
             'input' => [ 'shape' => 'DescribeClusterInfoRequestShape', ],
             'output' => [ 'shape' => 'DescribeClusterInfoResponseShape', ],
         ],
+        'DescribeSlowLog' => [
+            'name' => 'DescribeSlowLog',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/cacheInstance/{cacheInstanceId}/slowLog',
+            ],
+            'input' => [ 'shape' => 'DescribeSlowLogRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSlowLogResponseShape', ],
+        ],
         'DescribeInstanceClass' => [
             'name' => 'DescribeInstanceClass',
             'http' => [
@@ -444,6 +453,13 @@ return [
                 'orderNum' => [ 'type' => 'string', 'locationName' => 'orderNum', ],
             ],
         ],
+        'DescribeSlowLogResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'slowLogs' => [ 'type' => 'list', 'member' => [ 'shape' => 'SlowLog', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
         'DescribeInstanceConfigRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -485,12 +501,21 @@ return [
                 'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
                 'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
                 'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
+                'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
+                'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
             ],
         ],
         'DescribeCacheInstanceResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeCacheInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSlowLogResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSlowLogResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -584,6 +609,18 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeDownloadUrlResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSlowLogRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'shardId' => [ 'type' => 'string', 'locationName' => 'shardId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
         ],
         'RestoreInstanceResponseShape' => [

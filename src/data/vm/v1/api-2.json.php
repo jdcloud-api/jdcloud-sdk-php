@@ -74,6 +74,24 @@ return [
             'input' => [ 'shape' => 'UnShareImageRequestShape', ],
             'output' => [ 'shape' => 'UnShareImageResponseShape', ],
         ],
+        'ReleaseImage' => [
+            'name' => 'ReleaseImage',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/images/{imageId}:release',
+            ],
+            'input' => [ 'shape' => 'ReleaseImageRequestShape', ],
+            'output' => [ 'shape' => 'ReleaseImageResponseShape', ],
+        ],
+        'UnReleaseImage' => [
+            'name' => 'UnReleaseImage',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/images/{imageId}:unrelease',
+            ],
+            'input' => [ 'shape' => 'UnReleaseImageRequestShape', ],
+            'output' => [ 'shape' => 'UnReleaseImageResponseShape', ],
+        ],
         'DescribeImageMembers' => [
             'name' => 'DescribeImageMembers',
             'http' => [
@@ -529,6 +547,8 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'sizeMB' => [ 'type' => 'integer', 'locationName' => 'sizeMB', ],
                 'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'ownerPin' => [ 'type' => 'string', 'locationName' => 'ownerPin', ],
+                'launchPermission' => [ 'type' => 'string', 'locationName' => 'launchPermission', ],
                 'systemDisk' =>  [ 'shape' => 'InstanceDiskAttachment', ],
                 'dataDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceDiskAttachment', ], ],
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
@@ -630,6 +650,8 @@ return [
                 'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
                 'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
                 'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
+                'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
+                'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
             ],
         ],
         'InstanceDiskAttachmentSpec' => [
@@ -931,22 +953,12 @@ return [
                 'systemDiskSize' => [ 'type' => 'integer', 'locationName' => 'systemDiskSize', ],
             ],
         ],
-        'ShareImageResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'CopyImagesRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'sourceImageIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'destinationRegion' => [ 'type' => 'string', 'locationName' => 'destinationRegion', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'UnShareImageResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'ImportImageResultShape' => [
@@ -956,22 +968,136 @@ return [
                 'importTaskId' => [ 'type' => 'integer', 'locationName' => 'importTaskId', ],
             ],
         ],
+        'DescribeImageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeImageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyImageAttributeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteImageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UnShareImageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteImageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+            ],
+        ],
+        'DescribeImagesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'images' => [ 'type' => 'list', 'member' => [ 'shape' => 'Image', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'ImageTasksResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskSet' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskInfo', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeImageConstraintsBatchResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imageConstraints' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageConstraint', ], ],
+            ],
+        ],
+        'ReleaseImageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+            ],
+        ],
+        'CopyImagesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CopyImagesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeImageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'image' =>  [ 'shape' => 'Image', ],
+            ],
+        ],
+        'ImportImageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'architecture' => [ 'type' => 'string', 'locationName' => 'architecture', ],
+                'osType' => [ 'type' => 'string', 'locationName' => 'osType', ],
+                'platform' => [ 'type' => 'string', 'locationName' => 'platform', ],
+                'diskFormat' => [ 'type' => 'string', 'locationName' => 'diskFormat', ],
+                'systemDiskSizeGB' => [ 'type' => 'integer', 'locationName' => 'systemDiskSizeGB', ],
+                'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
+                'osVersion' => [ 'type' => 'string', 'locationName' => 'osVersion', ],
+                'imageName' => [ 'type' => 'string', 'locationName' => 'imageName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'forceImport' => [ 'type' => 'boolean', 'locationName' => 'forceImport', ],
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'UnShareImageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+            ],
+        ],
+        'ShareImageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UnShareImageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ReleaseImageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UnReleaseImageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DeleteImageResponseShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'UnReleaseImageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
             ],
         ],
         'DescribeImagesResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeImagesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeImageResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeImageResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -986,16 +1112,6 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeImageMembersResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModifyImageAttributeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeleteImageResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'DescribeImageConstraintsResultShape' => [
@@ -1026,19 +1142,7 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'UnShareImageResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DescribeImageRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
-            ],
-        ],
-        'DeleteImageRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -1050,6 +1154,11 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeImageConstraintsBatchResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UnReleaseImageResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'ImageTasksResponseShape' => [
@@ -1066,31 +1175,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeImagesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'images' => [ 'type' => 'list', 'member' => [ 'shape' => 'Image', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'ImageTasksResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'taskSet' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskInfo', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-            ],
-        ],
         'DescribeImageConstraintsBatchRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeImageConstraintsBatchResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'imageConstraints' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageConstraint', ], ],
             ],
         ],
         'DescribeImageMembersResultShape' => [
@@ -1121,22 +1210,9 @@ return [
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
             ],
         ],
-        'CopyImagesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CopyImagesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'ModifyImageAttributeResponseShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'DescribeImageResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'image' =>  [ 'shape' => 'Image', ],
             ],
         ],
         'ShareImageResponseShape' => [
@@ -1144,21 +1220,9 @@ return [
             'members' => [
             ],
         ],
-        'ImportImageRequestShape' => [
+        'ReleaseImageResultShape' => [
             'type' => 'structure',
             'members' => [
-                'architecture' => [ 'type' => 'string', 'locationName' => 'architecture', ],
-                'osType' => [ 'type' => 'string', 'locationName' => 'osType', ],
-                'platform' => [ 'type' => 'string', 'locationName' => 'platform', ],
-                'diskFormat' => [ 'type' => 'string', 'locationName' => 'diskFormat', ],
-                'systemDiskSizeGB' => [ 'type' => 'integer', 'locationName' => 'systemDiskSizeGB', ],
-                'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
-                'osVersion' => [ 'type' => 'string', 'locationName' => 'osVersion', ],
-                'imageName' => [ 'type' => 'string', 'locationName' => 'imageName', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'forceImport' => [ 'type' => 'boolean', 'locationName' => 'forceImport', ],
-                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DescribeImageConstraintsRequestShape' => [
@@ -1175,18 +1239,11 @@ return [
                 'platform' => [ 'type' => 'string', 'locationName' => 'platform', ],
                 'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'rootDeviceType' => [ 'type' => 'string', 'locationName' => 'rootDeviceType', ],
+                'launchPermission' => [ 'type' => 'string', 'locationName' => 'launchPermission', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'UnShareImageRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
             ],
         ],
         'AttachNetworkInterfaceResultShape' => [

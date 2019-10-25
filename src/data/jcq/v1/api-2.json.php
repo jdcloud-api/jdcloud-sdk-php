@@ -92,6 +92,24 @@ return [
             'input' => [ 'shape' => 'DescribeMessageRequestShape', ],
             'output' => [ 'shape' => 'DescribeMessageResponseShape', ],
         ],
+        'DescribeMessageTrace' => [
+            'name' => 'DescribeMessageTrace',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/topics/{topicName}/messageTrace/{messageId}',
+            ],
+            'input' => [ 'shape' => 'DescribeMessageTraceRequestShape', ],
+            'output' => [ 'shape' => 'DescribeMessageTraceResponseShape', ],
+        ],
+        'DescribeMessagesByBusinessId' => [
+            'name' => 'DescribeMessagesByBusinessId',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/topics/{topicName}/messagesWithBusinessId',
+            ],
+            'input' => [ 'shape' => 'DescribeMessagesByBusinessIdRequestShape', ],
+            'output' => [ 'shape' => 'DescribeMessagesByBusinessIdResponseShape', ],
+        ],
         'DescribePermission' => [
             'name' => 'DescribePermission',
             'http' => [
@@ -145,6 +163,15 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeSubscriptionRequestShape', ],
             'output' => [ 'shape' => 'DescribeSubscriptionResponseShape', ],
+        ],
+        'ModifySubscriptionAttribute' => [
+            'name' => 'ModifySubscriptionAttribute',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/topics/{topicName}/subscriptions/{consumerGroupId}',
+            ],
+            'input' => [ 'shape' => 'ModifySubscriptionAttributeRequestShape', ],
+            'output' => [ 'shape' => 'ModifySubscriptionAttributeResponseShape', ],
         ],
         'DeleteSubscription' => [
             'name' => 'DeleteSubscription',
@@ -218,6 +245,26 @@ return [
                 'httpAddress' => [ 'type' => 'string', 'locationName' => 'httpAddress', ],
             ],
         ],
+        'ConsumeInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'consumerGroupId' => [ 'type' => 'string', 'locationName' => 'consumerGroupId', ],
+                'messageConsumeStatus' => [ 'type' => 'string', 'locationName' => 'messageConsumeStatus', ],
+                'successTimes' => [ 'type' => 'integer', 'locationName' => 'successTimes', ],
+                'failedTimes' => [ 'type' => 'integer', 'locationName' => 'failedTimes', ],
+                'consumerInfoDetailList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConsumerInfoDetail', ], ],
+            ],
+        ],
+        'ConsumerInfoDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'consumerIp' => [ 'type' => 'string', 'locationName' => 'consumerIp', ],
+                'timeStamp' => [ 'type' => 'double', 'locationName' => 'timeStamp', ],
+                'costTime' => [ 'type' => 'integer', 'locationName' => 'costTime', ],
+                'consumeTimes' => [ 'type' => 'integer', 'locationName' => 'consumeTimes', ],
+                'consumerStatus' => [ 'type' => 'string', 'locationName' => 'consumerStatus', ],
+            ],
+        ],
         'DeadLetter' => [
             'type' => 'structure',
             'members' => [
@@ -244,11 +291,35 @@ return [
                 'storeTime' => [ 'type' => 'double', 'locationName' => 'storeTime', ],
             ],
         ],
+        'MessageTraceInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'produceInfo' =>  [ 'shape' => 'ProduceInfo', ],
+                'consumeInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConsumeInfo', ], ],
+            ],
+        ],
+        'ProduceInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'address' => [ 'type' => 'string', 'locationName' => 'address', ],
+                'timeStamp' => [ 'type' => 'double', 'locationName' => 'timeStamp', ],
+                'costTime' => [ 'type' => 'integer', 'locationName' => 'costTime', ],
+                'messageSendStatus' => [ 'type' => 'string', 'locationName' => 'messageSendStatus', ],
+                'delayTime' => [ 'type' => 'double', 'locationName' => 'delayTime', ],
+            ],
+        ],
         'Permission' => [
             'type' => 'structure',
             'members' => [
                 'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
                 'permission' => [ 'type' => 'string', 'locationName' => 'permission', ],
+            ],
+        ],
+        'Queue' => [
+            'type' => 'structure',
+            'members' => [
+                'queueId' => [ 'type' => 'integer', 'locationName' => 'queueId', ],
+                'queuePermission' => [ 'type' => 'string', 'locationName' => 'queuePermission', ],
             ],
         ],
         'Subscription' => [
@@ -297,6 +368,20 @@ return [
                 'threshold' => [ 'type' => 'integer', 'locationName' => 'threshold', ],
                 'topicPermission' => [ 'type' => 'string', 'locationName' => 'topicPermission', ],
                 'topicType' => [ 'type' => 'string', 'locationName' => 'topicType', ],
+            ],
+        ],
+        'TopicRouteInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'brokerAddress' => [ 'type' => 'string', 'locationName' => 'brokerAddress', ],
+                'queues' => [ 'type' => 'list', 'member' => [ 'shape' => 'Queue', ], ],
+            ],
+        ],
+        'TopicWrapper' => [
+            'type' => 'structure',
+            'members' => [
+                'topic' =>  [ 'shape' => 'Topic', ],
+                'routeInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopicRouteInfo', ], ],
             ],
         ],
         'DescribeAccessPointRequestShape' => [
@@ -455,6 +540,42 @@ return [
                 'messageIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'DescribeMessagesByBusinessIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'businessId' => [ 'type' => 'string', 'locationName' => 'businessId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'topicName' => [ 'type' => 'string', 'locationName' => 'topicName', ],
+            ],
+        ],
+        'DescribeMessagesByBusinessIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeMessagesByBusinessIdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeMessagesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeMessagesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeMessageTraceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'topicName' => [ 'type' => 'string', 'locationName' => 'topicName', ],
+                'messageId' => [ 'type' => 'string', 'locationName' => 'messageId', ],
+            ],
+        ],
+        'DescribeMessageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'message' =>  [ 'shape' => 'Message', ],
+            ],
+        ],
         'DescribeMessagesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -466,15 +587,10 @@ return [
             'members' => [
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'topicName' => [ 'type' => 'string', 'locationName' => 'topicName', ],
-            ],
-        ],
-        'DescribeMessagesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeMessagesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeMessageResponseShape' => [
@@ -484,10 +600,16 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeMessageResultShape' => [
+        'DescribeMessagesByBusinessIdResultShape' => [
             'type' => 'structure',
             'members' => [
-                'message' =>  [ 'shape' => 'Message', ],
+                'messages' => [ 'type' => 'list', 'member' => [ 'shape' => 'Message', ], ],
+            ],
+        ],
+        'DescribeMessageTraceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'messageTraceInfo' =>  [ 'shape' => 'MessageTraceInfo', ],
             ],
         ],
         'DescribeMessageRequestShape' => [
@@ -496,6 +618,13 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'topicName' => [ 'type' => 'string', 'locationName' => 'topicName', ],
                 'messageId' => [ 'type' => 'string', 'locationName' => 'messageId', ],
+            ],
+        ],
+        'DescribeMessageTraceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeMessageTraceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'RemovePermissionResultShape' => [
@@ -612,6 +741,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ModifySubscriptionAttributeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CleanMessagesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -629,6 +764,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'consumerGroupId' => [ 'type' => 'string', 'locationName' => 'consumerGroupId', ],
+                'messageInvisibleTimeInSeconds' => [ 'type' => 'integer', 'locationName' => 'messageInvisibleTimeInSeconds', ],
+                'dlqEnable' => [ 'type' => 'boolean', 'locationName' => 'dlqEnable', ],
+                'maxRetryTimes' => [ 'type' => 'integer', 'locationName' => 'maxRetryTimes', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'topicName' => [ 'type' => 'string', 'locationName' => 'topicName', ],
             ],
@@ -666,6 +804,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ModifySubscriptionAttributeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DescribeSubscriptionRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -678,6 +821,17 @@ return [
             'type' => 'structure',
             'members' => [
                 'subscription' =>  [ 'shape' => 'Subscription', ],
+            ],
+        ],
+        'ModifySubscriptionAttributeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'maxRetryTimes' => [ 'type' => 'integer', 'locationName' => 'maxRetryTimes', ],
+                'messageInvisibleTimeInSeconds' => [ 'type' => 'integer', 'locationName' => 'messageInvisibleTimeInSeconds', ],
+                'dlqEnable' => [ 'type' => 'boolean', 'locationName' => 'dlqEnable', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'topicName' => [ 'type' => 'string', 'locationName' => 'topicName', ],
+                'consumerGroupId' => [ 'type' => 'string', 'locationName' => 'consumerGroupId', ],
             ],
         ],
         'TagFilter' => [

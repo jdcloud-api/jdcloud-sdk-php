@@ -52,6 +52,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeDownloadUrlAsync(array $args = [])
  * @method \Jdcloud\Result describeClusterInfo(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeClusterInfoAsync(array $args = [])
+ * @method \Jdcloud\Result describeSlowLog(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeSlowLogAsync(array $args = [])
  * @method \Jdcloud\Result describeInstanceClass(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeInstanceClassAsync(array $args = [])
  * @method \Jdcloud\Result describeUserQuota(array $args = [])
