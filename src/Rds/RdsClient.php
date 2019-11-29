@@ -154,6 +154,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeLogsAsync(array $args = [])
  * @method \Jdcloud\Result updateLogDownloadURLInternal(array $args = [])
  * @method \GuzzleHttp\Promise\Promise updateLogDownloadURLInternalAsync(array $args = [])
+ * @method \Jdcloud\Result describeLogDownloadURL(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeLogDownloadURLAsync(array $args = [])
  * @method \Jdcloud\Result describeParameters(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeParametersAsync(array $args = [])
  * @method \Jdcloud\Result modifyParameters(array $args = [])

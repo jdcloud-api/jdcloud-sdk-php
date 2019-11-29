@@ -614,6 +614,15 @@ return [
             'input' => [ 'shape' => 'UpdateLogDownloadURLInternalRequestShape', ],
             'output' => [ 'shape' => 'UpdateLogDownloadURLInternalResponseShape', ],
         ],
+        'DescribeLogDownloadURL' => [
+            'name' => 'DescribeLogDownloadURL',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/log/{logId}:describeLogDownloadURL',
+            ],
+            'input' => [ 'shape' => 'DescribeLogDownloadURLRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLogDownloadURLResponseShape', ],
+        ],
         'DescribeParameters' => [
             'name' => 'DescribeParameters',
             'http' => [
@@ -919,6 +928,8 @@ return [
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'instanceStatus' => [ 'type' => 'string', 'locationName' => 'instanceStatus', ],
+                'publicDomainName' => [ 'type' => 'string', 'locationName' => 'publicDomainName', ],
+                'internalDomainName' => [ 'type' => 'string', 'locationName' => 'internalDomainName', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'backupSynchronicity' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackupSynchronicityAbstract', ], ],
                 'charge' =>  [ 'shape' => 'Charge', ],
@@ -1107,7 +1118,7 @@ return [
         'Log' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'sizeByte' => [ 'type' => 'integer', 'locationName' => 'sizeByte', ],
                 'lastModified' => [ 'type' => 'string', 'locationName' => 'lastModified', ],
@@ -1764,6 +1775,7 @@ return [
         'DescribeBinlogDownloadURLRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'seconds' => [ 'type' => 'integer', 'locationName' => 'seconds', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'binlogBackupId' => [ 'type' => 'string', 'locationName' => 'binlogBackupId', ],
@@ -2109,6 +2121,8 @@ return [
             'members' => [
                 'newInstanceClass' => [ 'type' => 'string', 'locationName' => 'newInstanceClass', ],
                 'newInstanceStorageGB' => [ 'type' => 'integer', 'locationName' => 'newInstanceStorageGB', ],
+                'newInstanceStorageType' => [ 'type' => 'string', 'locationName' => 'newInstanceStorageType', ],
+                'storageEncrypted' => [ 'type' => 'boolean', 'locationName' => 'storageEncrypted', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2531,8 +2545,15 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeLogDownloadURLResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLogDownloadURLResultShape', ],
             ],
         ],
         'DescribeLogsResponseShape' => [
@@ -2554,14 +2575,30 @@ return [
                 'result' =>  [ 'shape' => 'UpdateLogDownloadURLInternalResultShape', ],
             ],
         ],
+        'DescribeLogDownloadURLResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publicURL' => [ 'type' => 'string', 'locationName' => 'publicURL', ],
+                'internalURL' => [ 'type' => 'string', 'locationName' => 'internalURL', ],
+            ],
+        ],
         'DescribeLogsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'dbInstances' => [ 'type' => 'list', 'member' => [ 'shape' => 'Log', ], ],
+                'logs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Log', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
         'UpdateLogDownloadURLInternalRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'seconds' => [ 'type' => '', 'locationName' => 'seconds', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'logId' => [ 'type' => 'string', 'locationName' => 'logId', ],
+            ],
+        ],
+        'DescribeLogDownloadURLRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'seconds' => [ 'type' => '', 'locationName' => 'seconds', ],

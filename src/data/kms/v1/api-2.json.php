@@ -110,6 +110,33 @@ return [
             'input' => [ 'shape' => 'DecryptRequestShape', ],
             'output' => [ 'shape' => 'DecryptResponseShape', ],
         ],
+        'GetPublicKey' => [
+            'name' => 'GetPublicKey',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/key/{keyId}:GetPublicKey',
+            ],
+            'input' => [ 'shape' => 'GetPublicKeyRequestShape', ],
+            'output' => [ 'shape' => 'GetPublicKeyResponseShape', ],
+        ],
+        'Sign' => [
+            'name' => 'Sign',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/key/{keyId}:Sign',
+            ],
+            'input' => [ 'shape' => 'SignRequestShape', ],
+            'output' => [ 'shape' => 'SignResponseShape', ],
+        ],
+        'Validate' => [
+            'name' => 'Validate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/key/{keyId}:Validate',
+            ],
+            'input' => [ 'shape' => 'ValidateRequestShape', ],
+            'output' => [ 'shape' => 'ValidateResponseShape', ],
+        ],
         'GenerateDataKey' => [
             'name' => 'GenerateDataKey',
             'http' => [
@@ -316,6 +343,7 @@ return [
             'members' => [
                 'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
                 'keyDesc' => [ 'type' => 'string', 'locationName' => 'keyDesc', ],
+                'keyType' => [ 'type' => 'integer', 'locationName' => 'keyType', ],
             ],
         ],
         'KeyCfg' => [
@@ -419,6 +447,7 @@ return [
         'CreateKeyResultShape' => [
             'type' => 'structure',
             'members' => [
+                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
             ],
         ],
         'EnableKeyVersionRequestShape' => [
@@ -448,6 +477,13 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'GetPublicKeyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetPublicKeyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'UpdateKeyDescriptionRequestShape' => [
@@ -484,6 +520,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetPublicKeyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publicKeyBlob' => [ 'type' => 'string', 'locationName' => 'publicKeyBlob', ],
             ],
         ],
         'UpdateKeyDescriptionResultShape' => [
@@ -556,11 +598,25 @@ return [
             'members' => [
             ],
         ],
+        'ValidateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ValidateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'GenerateDataKeyResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'GenerateDataKeyResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SignRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'plaintext' => [ 'type' => '', 'locationName' => 'plaintext', ],
+                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
             ],
         ],
         'EncryptResponseShape' => [
@@ -620,10 +676,24 @@ return [
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
             ],
         ],
+        'ValidateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'plaintext' => [ 'type' => '', 'locationName' => 'plaintext', ],
+                'signature' => [ 'type' => '', 'locationName' => 'signature', ],
+                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
+            ],
+        ],
         'DisableKeyRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
+            ],
+        ],
+        'SignResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'signature' => [ 'type' => 'string', 'locationName' => 'signature', ],
             ],
         ],
         'CancelKeyDeletionResponseShape' => [
@@ -666,6 +736,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ValidateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'validated' => [ 'type' => 'boolean', 'locationName' => 'validated', ],
             ],
         ],
         'DisableKeyResponseShape' => [
@@ -712,10 +788,24 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'GetPublicKeyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
+            ],
+        ],
+        'SignResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SignResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CreateKeyResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateKeyResultShape', ],
             ],
         ],
         'DecryptRequestShape' => [
@@ -764,6 +854,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateSecretResultShape', ],
             ],
         ],
         'ImportSecretResponseShape' => [
@@ -917,6 +1008,7 @@ return [
         'CreateSecretResultShape' => [
             'type' => 'structure',
             'members' => [
+                'secretId' => [ 'type' => 'string', 'locationName' => 'secretId', ],
             ],
         ],
         'DescribeSecretVersionInfoRequestShape' => [

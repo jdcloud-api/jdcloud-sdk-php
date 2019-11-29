@@ -162,7 +162,7 @@ return [
             'members' => [
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'changeInfo' => [ 'type' => 'string', 'locationName' => 'changeInfo', ],
-                'changeMap' => [ 'type' => 'object', 'locationName' => 'changeMap', ],
+                'changeMap' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'describe' => [ 'type' => 'string', 'locationName' => 'describe', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
@@ -181,7 +181,7 @@ return [
             'members' => [
                 'disableRollback' => [ 'type' => 'boolean', 'locationName' => 'disableRollback', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'params' => [ 'type' => 'object', 'locationName' => 'params', ],
+                'params' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
                 'timeout' => [ 'type' => 'long', 'locationName' => 'timeout', ],
             ],
         ],
@@ -254,7 +254,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'documentation' => [ 'type' => 'string', 'locationName' => 'documentation', ],
-                'properties' => [ 'type' => 'object', 'locationName' => 'properties', ],
+                'properties' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
             ],
         ],
         'ResourceAttribute' => [
@@ -288,10 +288,10 @@ return [
         'ResourceTypes' => [
             'type' => 'structure',
             'members' => [
-                'attributes' => [ 'type' => 'object', 'locationName' => 'attributes', ],
+                'attributes' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'documentation' => [ 'type' => 'string', 'locationName' => 'documentation', ],
-                'properties' => [ 'type' => 'object', 'locationName' => 'properties', ],
+                'properties' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
             ],
         ],
         'StackOut' => [
@@ -302,9 +302,9 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'disableRollback' => [ 'type' => 'boolean', 'locationName' => 'disableRollback', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'input' => [ 'type' => 'object', 'locationName' => 'input', ],
+                'input' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'output' => [ 'type' => 'object', 'locationName' => 'output', ],
+                'output' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'stackVersion' => [ 'type' => 'long', 'locationName' => 'stackVersion', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
@@ -353,7 +353,7 @@ return [
         'DescribeResourceTypeSpecificationResultShape' => [
             'type' => 'structure',
             'members' => [
-                'propertyTypes' => [ 'type' => 'object', 'locationName' => 'propertyTypes', ],
+                'propertyTypes' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
                 'resourceTypes' =>  [ 'shape' => 'ResourceTypes', ],
             ],
         ],

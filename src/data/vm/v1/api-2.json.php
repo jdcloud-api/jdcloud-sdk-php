@@ -742,6 +742,7 @@ return [
                 'noPassword' => [ 'type' => 'boolean', 'locationName' => 'noPassword', ],
                 'noKeyNames' => [ 'type' => 'boolean', 'locationName' => 'noKeyNames', ],
                 'noElasticIp' => [ 'type' => 'boolean', 'locationName' => 'noElasticIp', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
         ],
         'ElasticIpSpec' => [

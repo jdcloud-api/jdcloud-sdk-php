@@ -164,6 +164,60 @@ return [
             'input' => [ 'shape' => 'UpdateLogtopicRequestShape', ],
             'output' => [ 'shape' => 'UpdateLogtopicResponseShape', ],
         ],
+        'TestMetricTask' => [
+            'name' => 'TestMetricTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictaskTest',
+            ],
+            'input' => [ 'shape' => 'TestMetricTaskRequestShape', ],
+            'output' => [ 'shape' => 'TestMetricTaskResponseShape', ],
+        ],
+        'DescribeMetricTasks' => [
+            'name' => 'DescribeMetricTasks',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictasks',
+            ],
+            'input' => [ 'shape' => 'DescribeMetricTasksRequestShape', ],
+            'output' => [ 'shape' => 'DescribeMetricTasksResponseShape', ],
+        ],
+        'CreateMetricTask' => [
+            'name' => 'CreateMetricTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictasks',
+            ],
+            'input' => [ 'shape' => 'CreateMetricTaskRequestShape', ],
+            'output' => [ 'shape' => 'CreateMetricTaskResponseShape', ],
+        ],
+        'DescribeMetricTask' => [
+            'name' => 'DescribeMetricTask',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictasks/{logmetrictaskUID}',
+            ],
+            'input' => [ 'shape' => 'DescribeMetricTaskRequestShape', ],
+            'output' => [ 'shape' => 'DescribeMetricTaskResponseShape', ],
+        ],
+        'UpdateMetricTask' => [
+            'name' => 'UpdateMetricTask',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictasks/{logmetrictaskUID}',
+            ],
+            'input' => [ 'shape' => 'UpdateMetricTaskRequestShape', ],
+            'output' => [ 'shape' => 'UpdateMetricTaskResponseShape', ],
+        ],
+        'DeleteMetricTask' => [
+            'name' => 'DeleteMetricTask',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictasks/{logmetrictaskUID}',
+            ],
+            'input' => [ 'shape' => 'DeleteMetricTaskRequestShape', ],
+            'output' => [ 'shape' => 'DeleteMetricTaskResponseShape', ],
+        ],
         'Put' => [
             'name' => 'Put',
             'http' => [
@@ -172,6 +226,24 @@ return [
             ],
             'input' => [ 'shape' => 'PutRequestShape', ],
             'output' => [ 'shape' => 'PutResponseShape', ],
+        ],
+        'SearchLogContext' => [
+            'name' => 'SearchLogContext',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/logcontext',
+            ],
+            'input' => [ 'shape' => 'SearchLogContextRequestShape', ],
+            'output' => [ 'shape' => 'SearchLogContextResponseShape', ],
+        ],
+        'Search' => [
+            'name' => 'Search',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/search',
+            ],
+            'input' => [ 'shape' => 'SearchRequestShape', ],
+            'output' => [ 'shape' => 'SearchResponseShape', ],
         ],
     ],
     'shapes' => [
@@ -230,6 +302,21 @@ return [
                 'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
             ],
         ],
+        'CreateMetricTaskSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'aggregate' => [ 'type' => 'string', 'locationName' => 'aggregate', ],
+                'customUnit' => [ 'type' => 'string', 'locationName' => 'customUnit', ],
+                'dataField' => [ 'type' => 'string', 'locationName' => 'dataField', ],
+                'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
+                'filterOpen' => [ 'type' => 'string', 'locationName' => 'filterOpen', ],
+                'filterType' => [ 'type' => 'string', 'locationName' => 'filterType', ],
+                'interval' => [ 'type' => 'long', 'locationName' => 'interval', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
+            ],
+        ],
         'CreateShipperSpec' => [
             'type' => 'structure',
             'members' => [
@@ -237,7 +324,7 @@ return [
                 'fileFormat' => [ 'type' => 'string', 'locationName' => 'fileFormat', ],
                 'fileSize' => [ 'type' => 'long', 'locationName' => 'fileSize', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'targetConf' => [ 'type' => 'object', 'locationName' => 'targetConf', ],
+                'targetConf' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
                 'targetType' => [ 'type' => 'long', 'locationName' => 'targetType', ],
                 'timeInterval' => [ 'type' => 'long', 'locationName' => 'timeInterval', ],
             ],
@@ -277,13 +364,13 @@ return [
         'Match' => [
             'type' => 'structure',
             'members' => [
-                'eq' => [ 'type' => 'object', 'locationName' => 'eq', ],
-                'not' => [ 'type' => 'object', 'locationName' => 'not', ],
-                'range' => [ 'type' => 'object', 'locationName' => 'range', ],
-                'regexp' => [ 'type' => 'object', 'locationName' => 'regexp', ],
-                'simple_query_string' => [ 'type' => 'object', 'locationName' => 'simple_query_string', ],
-                'simpleQuery' => [ 'type' => 'object', 'locationName' => 'simpleQuery', ],
-                'substring' => [ 'type' => 'object', 'locationName' => 'substring', ],
+                'eq' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'not' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'range' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'regexp' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'simple_query_string' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'simpleQuery' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'substring' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
             ],
         ],
         'SimpleQueryItem' => [
@@ -319,7 +406,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'tags' => [ 'type' => 'object', 'locationName' => 'tags', ],
+                'tags' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
                 'timestamp' => [ 'type' => 'string', 'locationName' => 'timestamp', ],
             ],
         ],
@@ -328,6 +415,13 @@ return [
             'members' => [
                 'cer' => [ 'type' => 'string', 'locationName' => 'cer', ],
                 'expiryDate' => [ 'type' => 'string', 'locationName' => 'expiryDate', ],
+            ],
+        ],
+        'DescribeMetricTasksSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
             ],
         ],
         'Entry' => [
@@ -398,6 +492,24 @@ return [
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
             ],
         ],
+        'MetrictaskDetailEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'aggregate' => [ 'type' => 'string', 'locationName' => 'aggregate', ],
+                'cretedTime' => [ 'type' => 'string', 'locationName' => 'cretedTime', ],
+                'customUnit' => [ 'type' => 'string', 'locationName' => 'customUnit', ],
+                'dataField' => [ 'type' => 'string', 'locationName' => 'dataField', ],
+                'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
+                'filterOpen' => [ 'type' => 'string', 'locationName' => 'filterOpen', ],
+                'filterType' => [ 'type' => 'string', 'locationName' => 'filterType', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'interval' => [ 'type' => 'long', 'locationName' => 'interval', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
         'Resource' => [
             'type' => 'structure',
             'members' => [
@@ -420,7 +532,7 @@ return [
                 'anchor' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
                 'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'lineSize' => [ 'type' => 'string', 'locationName' => 'lineSize', ],
+                'lineSize' => [ 'type' => 'long', 'locationName' => 'lineSize', ],
                 'time' => [ 'type' => 'long', 'locationName' => 'time', ],
             ],
         ],
@@ -442,7 +554,7 @@ return [
                 'resourceUIDs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'status' => [ 'type' => 'long', 'locationName' => 'status', ],
-                'targetConf' => [ 'type' => 'object', 'locationName' => 'targetConf', ],
+                'targetConf' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
                 'targetType' => [ 'type' => 'long', 'locationName' => 'targetType', ],
                 'timeInterval' => [ 'type' => 'long', 'locationName' => 'timeInterval', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
@@ -557,7 +669,7 @@ return [
         'TargetConf' => [
             'type' => 'structure',
             'members' => [
-                'targetConf' => [ 'type' => 'object', 'locationName' => 'targetConf', ],
+                'targetConf' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
                 'targetType' => [ 'type' => 'long', 'locationName' => 'targetType', ],
             ],
         ],
@@ -566,6 +678,28 @@ return [
             'members' => [
                 'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'TestMetricTaskSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'aggregate' => [ 'type' => 'string', 'locationName' => 'aggregate', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'dataField' => [ 'type' => 'string', 'locationName' => 'dataField', ],
+                'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
+                'filterOpen' => [ 'type' => 'string', 'locationName' => 'filterOpen', ],
+                'filterType' => [ 'type' => 'string', 'locationName' => 'filterType', ],
+            ],
+        ],
+        'UpdateMetricTaskSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'customUnit' => [ 'type' => 'string', 'locationName' => 'customUnit', ],
+                'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
+                'filterOpen' => [ 'type' => 'string', 'locationName' => 'filterOpen', ],
+                'filterType' => [ 'type' => 'string', 'locationName' => 'filterType', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
             ],
         ],
         'CreateCollectInfoResultShape' => [
@@ -965,6 +1099,165 @@ return [
                 'result' =>  [ 'shape' => 'DescribeLogtopicResultShape', ],
             ],
         ],
+        'TestMetricTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'TestMetricTaskResultShape', ],
+            ],
+        ],
+        'DescribeMetricTasksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeMetricTasksResultShape', ],
+            ],
+        ],
+        'CreateMetricTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'aggregate' => [ 'type' => 'string', 'locationName' => 'aggregate', ],
+                'customUnit' => [ 'type' => 'string', 'locationName' => 'customUnit', ],
+                'dataField' => [ 'type' => 'string', 'locationName' => 'dataField', ],
+                'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
+                'filterOpen' => [ 'type' => 'string', 'locationName' => 'filterOpen', ],
+                'filterType' => [ 'type' => 'string', 'locationName' => 'filterType', ],
+                'interval' => [ 'type' => 'long', 'locationName' => 'interval', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'DescribeMetricTasksResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetrictaskDetailEnd', ], ],
+                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
+                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'DescribeMetricTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeMetricTaskResultShape', ],
+            ],
+        ],
+        'DeleteMetricTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'suc' => [ 'type' => 'string', 'locationName' => 'suc', ],
+            ],
+        ],
+        'DescribeMetricTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+                'logmetrictaskUID' => [ 'type' => 'string', 'locationName' => 'logmetrictaskUID', ],
+            ],
+        ],
+        'DescribeMetricTasksRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'UpdateMetricTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'UpdateMetricTaskResultShape', ],
+            ],
+        ],
+        'CreateMetricTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateMetricTaskResultShape', ],
+            ],
+        ],
+        'DeleteMetricTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DeleteMetricTaskResultShape', ],
+            ],
+        ],
+        'DescribeMetricTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'MetrictaskDetailEnd', ],
+            ],
+        ],
+        'DeleteMetricTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+                'logmetrictaskUID' => [ 'type' => 'string', 'locationName' => 'logmetrictaskUID', ],
+            ],
+        ],
+        'UpdateMetricTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'customUnit' => [ 'type' => 'string', 'locationName' => 'customUnit', ],
+                'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
+                'filterOpen' => [ 'type' => 'string', 'locationName' => 'filterOpen', ],
+                'filterType' => [ 'type' => 'string', 'locationName' => 'filterType', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+                'logmetrictaskUID' => [ 'type' => 'string', 'locationName' => 'logmetrictaskUID', ],
+            ],
+        ],
+        'UpdateMetricTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'suc' => [ 'type' => 'string', 'locationName' => 'suc', ],
+            ],
+        ],
+        'TestMetricTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'aggregate' => [ 'type' => 'string', 'locationName' => 'aggregate', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'dataField' => [ 'type' => 'string', 'locationName' => 'dataField', ],
+                'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
+                'filterOpen' => [ 'type' => 'string', 'locationName' => 'filterOpen', ],
+                'filterType' => [ 'type' => 'string', 'locationName' => 'filterType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'TestMetricTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'lines' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
+            ],
+        ],
+        'CreateMetricTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'suc' => [ 'type' => 'string', 'locationName' => 'suc', ],
+            ],
+        ],
         'PutRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -983,6 +1276,62 @@ return [
         'PutResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'SearchLogContextResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+            ],
+        ],
+        'SearchLogContextResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SearchLogContextResultShape', ],
+            ],
+        ],
+        'SearchResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+            ],
+        ],
+        'SearchLogContextRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'anchor' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'lineSize' => [ 'type' => 'long', 'locationName' => 'lineSize', ],
+                'time' => [ 'type' => 'long', 'locationName' => 'time', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'SearchResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SearchResultShape', ],
+            ],
+        ],
+        'SearchRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'expr' => [ 'type' => 'string', 'locationName' => 'expr', ],
+                'caseSensitive' => [ 'type' => 'boolean', 'locationName' => 'caseSensitive', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
             ],
         ],
     ],

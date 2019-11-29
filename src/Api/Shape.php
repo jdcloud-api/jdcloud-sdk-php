@@ -27,6 +27,7 @@ class Shape extends AbstractModel
             'float'     => 'Jdcloud\Api\Shape',
             'long'      => 'Jdcloud\Api\Shape',
             'string'    => 'Jdcloud\Api\Shape',
+            'object'    => 'Jdcloud\Api\Shape',
             'byte'      => 'Jdcloud\Api\Shape',
             'character' => 'Jdcloud\Api\Shape',
             'blob'      => 'Jdcloud\Api\Shape',

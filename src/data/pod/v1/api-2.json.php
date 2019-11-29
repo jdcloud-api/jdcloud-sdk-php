@@ -182,6 +182,15 @@ return [
             'input' => [ 'shape' => 'RebuildPodRequestShape', ],
             'output' => [ 'shape' => 'RebuildPodResponseShape', ],
         ],
+        'ResizePod' => [
+            'name' => 'ResizePod',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/pods/{podId}:resize',
+            ],
+            'input' => [ 'shape' => 'ResizePodRequestShape', ],
+            'output' => [ 'shape' => 'ResizePodResponseShape', ],
+        ],
         'DescribeQuota' => [
             'name' => 'DescribeQuota',
             'http' => [
@@ -394,6 +403,27 @@ return [
                 'startedAt' => [ 'type' => 'string', 'locationName' => 'startedAt', ],
             ],
         ],
+        'ResourceRequestsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'requests' =>  [ 'shape' => 'RequestSpec', ],
+                'limits' =>  [ 'shape' => 'RequestSpec', ],
+            ],
+        ],
+        'ContainerResourceSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'resources' =>  [ 'shape' => 'ResourceRequestsSpec', ],
+            ],
+        ],
+        'RequestSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'cpu' => [ 'type' => 'string', 'locationName' => 'cpu', ],
+                'memoryMB' => [ 'type' => 'string', 'locationName' => 'memoryMB', ],
+            ],
+        ],
         'ExecSpec' => [
             'type' => 'structure',
             'members' => [
@@ -413,13 +443,6 @@ return [
                 'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
             ],
         ],
-        'ResourceRequestsSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'requests' =>  [ 'shape' => 'RequestSpec', ],
-                'limits' =>  [ 'shape' => 'RequestSpec', ],
-            ],
-        ],
         'VolumeMountSpec' => [
             'type' => 'structure',
             'members' => [
@@ -433,13 +456,6 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
-            ],
-        ],
-        'RequestSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'cpu' => [ 'type' => 'string', 'locationName' => 'cpu', ],
-                'memoryMB' => [ 'type' => 'string', 'locationName' => 'memoryMB', ],
             ],
         ],
         'ContainerSpec' => [
@@ -993,12 +1009,6 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
-        'AssociateElasticIpResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribePodRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1012,26 +1022,6 @@ return [
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
-            ],
-        ],
-        'DescribePodResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pod' =>  [ 'shape' => 'Pod', ],
-            ],
-        ],
-        'DisassociateElasticIpResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CheckPodNameRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'podName' => [ 'type' => 'string', 'locationName' => 'podName', ],
-                'maxCount' => [ 'type' => 'integer', 'locationName' => 'maxCount', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'CheckPodNameResponseShape' => [
@@ -1060,14 +1050,6 @@ return [
             'members' => [
                 'pods' => [ 'type' => 'list', 'member' => [ 'shape' => 'Pod', ], ],
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'ModifyPodAttributeRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
             ],
         ],
         'GetContainerLogsRequestShape' => [
@@ -1101,6 +1083,108 @@ return [
                 'logs' =>  [ 'shape' => 'Logs', ],
             ],
         ],
+        'ResizePodRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'containerResources' => [ 'type' => 'list', 'member' => [ 'shape' => 'ContainerResourceSpec', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
+            ],
+        ],
+        'CheckPodNameResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+            ],
+        ],
+        'StopPodResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DisassociateElasticIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'StopPodResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeletePodRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
+            ],
+        ],
+        'AssociateElasticIpRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
+            ],
+        ],
+        'DeletePodResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyPodAttributeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ResizePodResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyPodAttributeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AssociateElasticIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribePodResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pod' =>  [ 'shape' => 'Pod', ],
+            ],
+        ],
+        'DisassociateElasticIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CheckPodNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'podName' => [ 'type' => 'string', 'locationName' => 'podName', ],
+                'maxCount' => [ 'type' => 'integer', 'locationName' => 'maxCount', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ModifyPodAttributeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
+            ],
+        ],
         'DescribePodResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1119,22 +1203,10 @@ return [
             'members' => [
             ],
         ],
-        'CheckPodNameResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
-            ],
-        ],
         'StartPodResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'StopPodResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'CreatePodsRequestShape' => [
@@ -1169,37 +1241,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DisassociateElasticIpResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'StopPodResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeletePodRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
-            ],
-        ],
-        'AssociateElasticIpRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
-            ],
-        ],
-        'DeletePodResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'CreatePodsResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1207,7 +1248,7 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'ModifyPodAttributeResponseShape' => [
+        'ResizePodResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
@@ -1230,11 +1271,6 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
-            ],
-        ],
-        'ModifyPodAttributeResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'DescribeQuotaResultShape' => [

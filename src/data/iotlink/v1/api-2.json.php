@@ -90,6 +90,7 @@ return [
             'members' => [
                 'iccid' => [ 'type' => 'string', 'locationName' => 'iccid', ],
                 'msisdn' => [ 'type' => 'string', 'locationName' => 'msisdn', ],
+                'imsi' => [ 'type' => 'string', 'locationName' => 'imsi', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
@@ -106,6 +107,7 @@ return [
             'members' => [
                 'iccid' => [ 'type' => 'string', 'locationName' => 'iccid', ],
                 'msisdn' => [ 'type' => 'string', 'locationName' => 'msisdn', ],
+                'imsi' => [ 'type' => 'string', 'locationName' => 'imsi', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
@@ -121,6 +123,7 @@ return [
             'members' => [
                 'iccid' => [ 'type' => 'string', 'locationName' => 'iccid', ],
                 'msisdn' => [ 'type' => 'string', 'locationName' => 'msisdn', ],
+                'imsi' => [ 'type' => 'string', 'locationName' => 'imsi', ],
                 'onlinestatus' => [ 'type' => 'string', 'locationName' => 'onlinestatus', ],
             ],
         ],

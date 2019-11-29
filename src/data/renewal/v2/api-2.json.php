@@ -123,6 +123,17 @@ return [
                 'returnURL' => [ 'type' => 'string', 'locationName' => 'returnURL', ],
             ],
         ],
+        'SetExpiredRenewParam' => [
+            'type' => 'structure',
+            'members' => [
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'resourceIds' => [ 'type' => 'string', 'locationName' => 'resourceIds', ],
+                'renewStatus' => [ 'type' => 'string', 'locationName' => 'renewStatus', ],
+                'relationStatus' => [ 'type' => 'string', 'locationName' => 'relationStatus', ],
+            ],
+        ],
         'SetRenewalParam' => [
             'type' => 'structure',
             'members' => [

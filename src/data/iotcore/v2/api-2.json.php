@@ -11,6 +11,15 @@ return [
 //        'serviceId' => 'iotcore',
     ],
     'operations' => [
+        'InvokeThingTopic' => [
+            'name' => 'InvokeThingTopic',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/instances/{instanceId}/products/{productKey}/devices/{identifier}/topic',
+            ],
+            'input' => [ 'shape' => 'InvokeThingTopicRequestShape', ],
+            'output' => [ 'shape' => 'InvokeThingTopicResponseShape', ],
+        ],
         'DescribeThingShadow' => [
             'name' => 'DescribeThingShadow',
             'http' => [
@@ -155,6 +164,15 @@ return [
             'input' => [ 'shape' => 'ExportThingModelRequestShape', ],
             'output' => [ 'shape' => 'ExportThingModelResponseShape', ],
         ],
+        'CreateProductTopic' => [
+            'name' => 'CreateProductTopic',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/instances/{instanceId}/products/{productKey}/topics',
+            ],
+            'input' => [ 'shape' => 'CreateProductTopicRequestShape', ],
+            'output' => [ 'shape' => 'CreateProductTopicResponseShape', ],
+        ],
     ],
     'shapes' => [
         'RegionInfo' => [
@@ -190,7 +208,6 @@ return [
                 'parentId' => [ 'type' => 'string', 'locationName' => 'parentId', ],
                 'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
-                'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
                 'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
                 'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
@@ -198,9 +215,19 @@ return [
                 'lastConnectedTime' => [ 'type' => 'long', 'locationName' => 'lastConnectedTime', ],
                 'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
                 'updatedTime' => [ 'type' => 'long', 'locationName' => 'updatedTime', ],
+                'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
                 'productName' => [ 'type' => 'string', 'locationName' => 'productName', ],
+                'productSecret' => [ 'type' => 'string', 'locationName' => 'productSecret', ],
                 'model' => [ 'type' => 'string', 'locationName' => 'model', ],
                 'manufacturer' => [ 'type' => 'string', 'locationName' => 'manufacturer', ],
+                'dynamicRegister' => [ 'type' => 'integer', 'locationName' => 'dynamicRegister', ],
+            ],
+        ],
+        'ThingServiceMsg' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'msgId' => [ 'type' => 'string', 'locationName' => 'msgId', ],
             ],
         ],
         'DeviceBatch' => [
@@ -235,6 +262,16 @@ return [
                 'output' => [ 'type' => 'object', 'locationName' => 'output', ],
                 'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
                 'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
+                'msgId' => [ 'type' => 'string', 'locationName' => 'msgId', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ThingServiceParam' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'input' => [ 'type' => 'object', 'locationName' => 'input', ],
+                'callbackBeanName' => [ 'type' => 'string', 'locationName' => 'callbackBeanName', ],
             ],
         ],
         'TopicList' => [
@@ -389,6 +426,32 @@ return [
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
             ],
         ],
+        'ProductService' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'input' => [ 'type' => 'list', 'member' => [ 'shape' => 'ProductProperty', ], ],
+                'output' => [ 'type' => 'list', 'member' => [ 'shape' => 'ProductProperty', ], ],
+                'customized' => [ 'type' => 'boolean', 'locationName' => 'customized', ],
+                'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'ProductProperty' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'dataType' => [ 'type' => 'string', 'locationName' => 'dataType', ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
+                'unitName' => [ 'type' => 'string', 'locationName' => 'unitName', ],
+                'min' => [ 'type' => 'double', 'locationName' => 'min', ],
+                'max' => [ 'type' => 'double', 'locationName' => 'max', ],
+                'step' => [ 'type' => 'double', 'locationName' => 'step', ],
+                'length' => [ 'type' => 'integer', 'locationName' => 'length', ],
+                'enumInfo' => [ 'type' => 'object', 'locationName' => 'enumInfo', ],
+            ],
+        ],
         'ProductAbility' => [
             'type' => 'structure',
             'members' => [
@@ -420,21 +483,6 @@ return [
                 'updatedTime' => [ 'type' => 'long', 'locationName' => 'updatedTime', ],
                 'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
                 'ossPath' => [ 'type' => 'string', 'locationName' => 'ossPath', ],
-            ],
-        ],
-        'ProductProperty' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'dataType' => [ 'type' => 'string', 'locationName' => 'dataType', ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'unitName' => [ 'type' => 'string', 'locationName' => 'unitName', ],
-                'min' => [ 'type' => 'double', 'locationName' => 'min', ],
-                'max' => [ 'type' => 'double', 'locationName' => 'max', ],
-                'step' => [ 'type' => 'double', 'locationName' => 'step', ],
-                'length' => [ 'type' => 'integer', 'locationName' => 'length', ],
-                'enumInfo' => [ 'type' => 'object', 'locationName' => 'enumInfo', ],
             ],
         ],
         'SharedUserPage' => [
@@ -633,6 +681,7 @@ return [
                 'productName' => [ 'type' => 'string', 'locationName' => 'productName', ],
                 'model' => [ 'type' => 'string', 'locationName' => 'model', ],
                 'manufacturer' => [ 'type' => 'string', 'locationName' => 'manufacturer', ],
+                'dynamicRegister' => [ 'type' => 'integer', 'locationName' => 'dynamicRegister', ],
             ],
         ],
         'QueryDeviceDetailResponseShape' => [
@@ -683,6 +732,12 @@ return [
                 'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
             ],
         ],
+        'InvokeThingTopicResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'msgId' => [ 'type' => 'string', 'locationName' => 'msgId', ],
+            ],
+        ],
         'Filter' => [
             'type' => 'structure',
             'members' => [
@@ -702,6 +757,17 @@ return [
             'members' => [
                 'state' => [ 'type' => 'object', 'locationName' => 'state', ],
                 'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+                'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
+            ],
+        ],
+        'InvokeThingTopicRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'topicShortName' => [ 'type' => 'string', 'locationName' => 'topicShortName', ],
+                'topicMessage' => [ 'type' => 'string', 'locationName' => 'topicMessage', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
@@ -730,6 +796,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'InvokeThingTopicResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'InvokeThingTopicResultShape', ],
             ],
         ],
         'InvokeThingServiceResultShape' => [
@@ -775,6 +848,7 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'input' => [ 'type' => 'object', 'locationName' => 'input', ],
+                'callbackBeanName' => [ 'type' => 'string', 'locationName' => 'callbackBeanName', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
@@ -794,6 +868,7 @@ return [
                 'model' => [ 'type' => 'string', 'locationName' => 'model', ],
                 'manufacturer' => [ 'type' => 'string', 'locationName' => 'manufacturer', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
@@ -868,6 +943,7 @@ return [
                 'productType' => [ 'type' => 'integer', 'locationName' => 'productType', ],
                 'productDescription' => [ 'type' => 'string', 'locationName' => 'productDescription', ],
                 'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'internalTags' => [ 'type' => 'object', 'locationName' => 'internalTags', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -981,6 +1057,30 @@ return [
         'ImportThingModelResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'CreateProductTopicResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateProductTopicResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateProductTopicResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'topicId' => [ 'type' => 'string', 'locationName' => 'topicId', ],
+            ],
+        ],
+        'CreateProductTopicRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'topicShortName' => [ 'type' => 'string', 'locationName' => 'topicShortName', ],
+                'topicOperation' => [ 'type' => 'string', 'locationName' => 'topicOperation', ],
+                'topicDescription' => [ 'type' => 'string', 'locationName' => 'topicDescription', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
             ],
         ],
     ],

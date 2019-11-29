@@ -24,6 +24,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise queryBillSummaryAsync(array $args = [])
  * @method \Jdcloud\Result queryBillDetail(array $args = [])
  * @method \GuzzleHttp\Promise\Promise queryBillDetailAsync(array $args = [])
+ * @method \Jdcloud\Result calculateTotalPrice(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise calculateTotalPriceAsync(array $args = [])
  */
 class BillingClient extends JdCloudClient
 {

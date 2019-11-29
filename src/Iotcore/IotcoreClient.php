@@ -20,6 +20,8 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with iotcore.
  *
+ * @method \Jdcloud\Result invokeThingTopic(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise invokeThingTopicAsync(array $args = [])
  * @method \Jdcloud\Result describeThingShadow(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeThingShadowAsync(array $args = [])
  * @method \Jdcloud\Result updateThingShadow(array $args = [])
@@ -52,6 +54,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise importThingModelAsync(array $args = [])
  * @method \Jdcloud\Result exportThingModel(array $args = [])
  * @method \GuzzleHttp\Promise\Promise exportThingModelAsync(array $args = [])
+ * @method \Jdcloud\Result createProductTopic(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createProductTopicAsync(array $args = [])
  */
 class IotcoreClient extends JdCloudClient
 {

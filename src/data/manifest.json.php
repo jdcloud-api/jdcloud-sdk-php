@@ -93,12 +93,20 @@ return [
         'namespace' => 'Cps',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'cdn' => [
+        'namespace' => 'Cdn',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'streambus' => [
         'namespace' => 'Streambus',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'httpdns' => [
         'namespace' => 'Httpdns',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'apigateway' => [
+        'namespace' => 'Apigateway',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'mps' => [
@@ -217,6 +225,10 @@ return [
         'namespace' => 'Jdfusion',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'detection' => [
+        'namespace' => 'Detection',
+        'versions' => [ 'latest' => 'v2', ],
+    ],
     'renewal' => [
         'namespace' => 'Renewal',
         'versions' => [ 'latest' => 'v2', ],
@@ -224,6 +236,10 @@ return [
     'iotlink' => [
         'namespace' => 'Iotlink',
         'versions' => [ 'latest' => 'v1', ],
+    ],
+    'yunding' => [
+        'namespace' => 'Yunding',
+        'versions' => [ 'latest' => 'v2', ],
     ],
     'vpc' => [
         'namespace' => 'Vpc',

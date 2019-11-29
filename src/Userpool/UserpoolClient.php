@@ -20,14 +20,30 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with userpool.
  *
- * @method \Jdcloud\Result adminGetUsers(array $args = [])
- * @method \GuzzleHttp\Promise\Promise adminGetUsersAsync(array $args = [])
+ * @method \Jdcloud\Result createUserPool(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createUserPoolAsync(array $args = [])
+ * @method \Jdcloud\Result associateUserPoolClient(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise associateUserPoolClientAsync(array $args = [])
+ * @method \Jdcloud\Result disassociateUserPoolClient(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise disassociateUserPoolClientAsync(array $args = [])
+ * @method \Jdcloud\Result listUserPoolClients(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise listUserPoolClientsAsync(array $args = [])
  * @method \Jdcloud\Result adminCreateUser(array $args = [])
  * @method \GuzzleHttp\Promise\Promise adminCreateUserAsync(array $args = [])
+ * @method \Jdcloud\Result adminGetUser(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise adminGetUserAsync(array $args = [])
+ * @method \Jdcloud\Result adminUpdateUserAttribute(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise adminUpdateUserAttributeAsync(array $args = [])
  * @method \Jdcloud\Result listUsers(array $args = [])
  * @method \GuzzleHttp\Promise\Promise listUsersAsync(array $args = [])
  * @method \Jdcloud\Result adminSetUsersPassword(array $args = [])
  * @method \GuzzleHttp\Promise\Promise adminSetUsersPasswordAsync(array $args = [])
+ * @method \Jdcloud\Result adminEnableUser(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise adminEnableUserAsync(array $args = [])
+ * @method \Jdcloud\Result adminDisableUser(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise adminDisableUserAsync(array $args = [])
+ * @method \Jdcloud\Result adminDeleteUser(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise adminDeleteUserAsync(array $args = [])
  */
 class UserpoolClient extends JdCloudClient
 {

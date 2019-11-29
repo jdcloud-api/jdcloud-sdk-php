@@ -269,7 +269,7 @@ return [
         'Env' => [
             'type' => 'structure',
             'members' => [
-                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
+                'data' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
             ],
         ],
         'Statistics' => [

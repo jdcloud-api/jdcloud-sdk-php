@@ -110,6 +110,15 @@ return [
             'input' => [ 'shape' => 'RebuildContainerRequestShape', ],
             'output' => [ 'shape' => 'RebuildContainerResponseShape', ],
         ],
+        'ResizeContainer' => [
+            'name' => 'ResizeContainer',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/containers/{containerId}:resize',
+            ],
+            'input' => [ 'shape' => 'ResizeContainerRequestShape', ],
+            'output' => [ 'shape' => 'ResizeContainerResponseShape', ],
+        ],
         'ExecCreate' => [
             'name' => 'ExecCreate',
             'http' => [
@@ -539,6 +548,12 @@ return [
                 'containerId' => [ 'type' => 'string', 'locationName' => 'containerId', ],
             ],
         ],
+        'ResizeContainerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'RebuildContainerResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -660,6 +675,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'containerId' => [ 'type' => 'string', 'locationName' => 'containerId', ],
+            ],
+        ],
+        'ResizeContainerRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'containerId' => [ 'type' => 'string', 'locationName' => 'containerId', ],
             ],
@@ -793,6 +816,11 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'ExecGetExitCodeResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ResizeContainerResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'StartContainerResponseShape' => [

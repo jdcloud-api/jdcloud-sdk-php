@@ -42,6 +42,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise getLogsAsync(array $args = [])
  * @method \Jdcloud\Result rebuildContainer(array $args = [])
  * @method \GuzzleHttp\Promise\Promise rebuildContainerAsync(array $args = [])
+ * @method \Jdcloud\Result resizeContainer(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise resizeContainerAsync(array $args = [])
  * @method \Jdcloud\Result execCreate(array $args = [])
  * @method \GuzzleHttp\Promise\Promise execCreateAsync(array $args = [])
  * @method \Jdcloud\Result execGetExitCode(array $args = [])

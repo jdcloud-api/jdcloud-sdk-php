@@ -109,8 +109,16 @@ class SignatureProvider
     {
         return function ($version, $service, $region) {
             switch ($version) {
-                default:
+                case 'v4':
+                    return new SignatureV4($service, $region);
+                case 'v4-unsigned-body':
                     return new SignatureV4($service, $region, ['unsigned-body' => 'true']);
+                case 'jdv3':
+                    return new SignatureJdv3($service, $region);
+                case 'jdv3-unsigned-body':
+                    return new SignatureJdv3($service, $region, ['unsigned-body' => 'true']);
+                default:
+                    return null;
             }
         };
     }

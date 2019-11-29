@@ -92,6 +92,24 @@ return [
             'input' => [ 'shape' => 'SetLiveDomainCertificateRequestShape', ],
             'output' => [ 'shape' => 'SetLiveDomainCertificateResponseShape', ],
         ],
+        'DescribeLiveRestartDomainCertificate' => [
+            'name' => 'DescribeLiveRestartDomainCertificate',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/liveRestartDomainCertificate',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveRestartDomainCertificateRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveRestartDomainCertificateResponseShape', ],
+        ],
+        'SetLiveRestartDomainCertificate' => [
+            'name' => 'SetLiveRestartDomainCertificate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/liveRestartDomainCertificate',
+            ],
+            'input' => [ 'shape' => 'SetLiveRestartDomainCertificateRequestShape', ],
+            'output' => [ 'shape' => 'SetLiveRestartDomainCertificateResponseShape', ],
+        ],
         'DescribeLiveDomains' => [
             'name' => 'DescribeLiveDomains',
             'http' => [
@@ -253,6 +271,33 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeQualityDetectionBindingRequestShape', ],
             'output' => [ 'shape' => 'DescribeQualityDetectionBindingResponseShape', ],
+        ],
+        'OpenLiveP2p' => [
+            'name' => 'OpenLiveP2p',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/liveP2p:open',
+            ],
+            'input' => [ 'shape' => 'OpenLiveP2pRequestShape', ],
+            'output' => [ 'shape' => 'OpenLiveP2pResponseShape', ],
+        ],
+        'CloseLiveP2p' => [
+            'name' => 'CloseLiveP2p',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/liveP2p:close',
+            ],
+            'input' => [ 'shape' => 'CloseLiveP2pRequestShape', ],
+            'output' => [ 'shape' => 'CloseLiveP2pResponseShape', ],
+        ],
+        'DescribeLiveP2pConfigs' => [
+            'name' => 'DescribeLiveP2pConfigs',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/liveP2p:configs',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveP2pConfigsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveP2pConfigsResponseShape', ],
         ],
         'DescribeCustomLiveStreamRecordTemplates' => [
             'name' => 'DescribeCustomLiveStreamRecordTemplates',
@@ -1009,6 +1054,13 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
+        'Sort' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+            ],
+        ],
         'TemplateBinding' => [
             'type' => 'structure',
             'members' => [
@@ -1016,6 +1068,14 @@ return [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
                 'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DomainDetails' => [
@@ -1044,6 +1104,42 @@ return [
                 'playType' => [ 'type' => 'string', 'locationName' => 'playType', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'P2pPlayDomain' => [
+            'type' => 'structure',
+            'members' => [
+                'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
+                'p2pStatus' => [ 'type' => 'string', 'locationName' => 'p2pStatus', ],
+                'playType' => [ 'type' => 'string', 'locationName' => 'playType', ],
+            ],
+        ],
+        'P2pRequestBody' => [
+            'type' => 'structure',
+            'members' => [
+                'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
+            ],
+        ],
+        'P2pResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'p2pConfigs' => [ 'type' => 'list', 'member' => [ 'shape' => 'P2pConfigs', ], ],
+            ],
+        ],
+        'P2pPublishDomain' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+            ],
+        ],
+        'P2pConfigs' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomains' => [ 'type' => 'list', 'member' => [ 'shape' => 'P2pPublishDomain', ], ],
+                'playDomains' => [ 'type' => 'list', 'member' => [ 'shape' => 'P2pPlayDomain', ], ],
             ],
         ],
         'DomainTemplateConfig' => [
@@ -1553,14 +1649,6 @@ return [
             'members' => [
             ],
         ],
-        'Filter' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
         'StopLiveAppResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1654,6 +1742,19 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'SetLiveRestartDomainCertificateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveRestartDomainCertificateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveRestartDomainCertificateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeLiveDomainCertificateResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1663,9 +1764,34 @@ return [
                 'title' => [ 'type' => 'string', 'locationName' => 'title', ],
             ],
         ],
+        'DescribeLiveRestartDomainCertificateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'restartDomain' => [ 'type' => 'string', 'locationName' => 'restartDomain', ],
+            ],
+        ],
         'SetLiveDomainCertificateResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'SetLiveRestartDomainCertificateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'restartDomain' => [ 'type' => 'string', 'locationName' => 'restartDomain', ],
+                'certStatus' => [ 'type' => 'string', 'locationName' => 'certStatus', ],
+                'cert' => [ 'type' => 'string', 'locationName' => 'cert', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+            ],
+        ],
+        'DescribeLiveRestartDomainCertificateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'restartDomain' => [ 'type' => 'string', 'locationName' => 'restartDomain', ],
+                'certStatus' => [ 'type' => 'string', 'locationName' => 'certStatus', ],
+                'cert' => [ 'type' => 'string', 'locationName' => 'cert', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
             ],
         ],
         'SetLiveDomainCertificateRequestShape' => [
@@ -1676,6 +1802,11 @@ return [
                 'cert' => [ 'type' => 'string', 'locationName' => 'cert', ],
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+            ],
+        ],
+        'SetLiveRestartDomainCertificateResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DescribeLiveDomainCertificateRequestShape' => [
@@ -2027,6 +2158,64 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'OpenLiveP2pResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CloseLiveP2pRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
+            ],
+        ],
+        'DescribeLiveP2pConfigsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'p2pConfigs' => [ 'type' => 'list', 'member' => [ 'shape' => 'P2pConfigs', ], ],
+            ],
+        ],
+        'OpenLiveP2pRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
+            ],
+        ],
+        'DescribeLiveP2pConfigsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveP2pConfigsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'OpenLiveP2pResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeLiveP2pConfigsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'playDomain' => [ 'type' => 'string', 'locationName' => 'playDomain', ],
+            ],
+        ],
+        'CloseLiveP2pResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CloseLiveP2pResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DescribeLiveStreamRecordNotifyConfigResponseShape' => [

@@ -156,14 +156,14 @@ class SignatureV4 implements SignatureInterface
 
     protected function getPayload(RequestInterface $request)
     {
-//         if ($this->unsigned && $request->getUri()->getScheme() == 'https') {
-//             return self::UNSIGNED_PAYLOAD;
-//         }
-//         // Calculate the request signature payload
-//         if ($request->hasHeader('x-jdcloud-content-sha256')) {
-//             // Handle streaming operations (e.g. Glacier.UploadArchive)
-//             return $request->getHeaderLine('x-jdcloud-content-sha256');
-//         }
+        if ($this->unsigned && $request->getUri()->getScheme() == 'https') {
+            return self::UNSIGNED_PAYLOAD;
+        }
+        // Calculate the request signature payload
+        if ($request->hasHeader('x-jdcloud-content-sha256')) {
+            // Handle streaming operations (e.g. Glacier.UploadArchive)
+            return $request->getHeaderLine('x-jdcloud-content-sha256');
+        }
 
         if (!$request->getBody()->isSeekable()) {
             throw new CouldNotCreateChecksumException('sha256');

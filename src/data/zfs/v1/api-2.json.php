@@ -94,6 +94,13 @@ return [
         ],
     ],
     'shapes' => [
+        'Tag' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'FileSystem' => [
             'type' => 'structure',
             'members' => [
@@ -103,8 +110,10 @@ return [
                 'numberOfMountTargets' => [ 'type' => 'integer', 'locationName' => 'numberOfMountTargets', ],
                 'sizeByte' =>  [ 'shape' => 'SizeByte', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'fileSystemType' => [ 'type' => 'string', 'locationName' => 'fileSystemType', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'dnsName' => [ 'type' => 'string', 'locationName' => 'dnsName', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
         ],
         'SizeByte' => [
@@ -125,13 +134,6 @@ return [
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'dnsName' => [ 'type' => 'string', 'locationName' => 'dnsName', ],
-            ],
-        ],
-        'Tag' => [
-            'type' => 'structure',
-            'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'TagFilter' => [
@@ -231,6 +233,7 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'fileSystemType' => [ 'type' => 'string', 'locationName' => 'fileSystemType', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -246,6 +249,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],

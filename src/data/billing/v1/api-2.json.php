@@ -29,6 +29,15 @@ return [
             'input' => [ 'shape' => 'QueryBillDetailRequestShape', ],
             'output' => [ 'shape' => 'QueryBillDetailResponseShape', ],
         ],
+        'CalculateTotalPrice' => [
+            'name' => 'CalculateTotalPrice',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/calculateTotalPrice',
+            ],
+            'input' => [ 'shape' => 'CalculateTotalPriceRequestShape', ],
+            'output' => [ 'shape' => 'CalculateTotalPriceResponseShape', ],
+        ],
     ],
     'shapes' => [
         'BillQueryCondition' => [
@@ -51,6 +60,15 @@ return [
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
             ],
         ],
+        'ArrearInfoVo' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'arrearFee' => [ 'type' => 'double', 'locationName' => 'arrearFee', ],
+                'firstArrearDate' => [ 'type' => 'string', 'locationName' => 'firstArrearDate', ],
+                'arrearDays' => [ 'type' => 'integer', 'locationName' => 'arrearDays', ],
+            ],
+        ],
         'BillStatisticsInfoVo' => [
             'type' => 'structure',
             'members' => [
@@ -61,6 +79,13 @@ return [
                 'arrearFee' => [ 'type' => 'double', 'locationName' => 'arrearFee', ],
                 'billFee' => [ 'type' => 'double', 'locationName' => 'billFee', ],
                 'discountFee' => [ 'type' => 'double', 'locationName' => 'discountFee', ],
+            ],
+        ],
+        'ResourceTagVo' => [
+            'type' => 'structure',
+            'members' => [
+                'tagKey' => [ 'type' => 'string', 'locationName' => 'tagKey', ],
+                'tagValue' => [ 'type' => 'string', 'locationName' => 'tagValue', ],
             ],
         ],
         'BillSummary' => [
@@ -88,6 +113,7 @@ return [
                 'balancePayFee' => [ 'type' => 'double', 'locationName' => 'balancePayFee', ],
                 'cashPayFee' => [ 'type' => 'double', 'locationName' => 'cashPayFee', ],
                 'arrearFee' => [ 'type' => 'double', 'locationName' => 'arrearFee', ],
+                'tagDetails' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceTagVo', ], ],
             ],
         ],
         'CompatibleBill' => [
@@ -153,6 +179,7 @@ return [
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'formula' => [ 'type' => 'string', 'locationName' => 'formula', ],
                 'formulaStr' => [ 'type' => 'string', 'locationName' => 'formulaStr', ],
+                'tagDetails' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceTagVo', ], ],
             ],
         ],
         'ConsumeRecord' => [
@@ -180,6 +207,8 @@ return [
                 'isBillGenerated' => [ 'type' => 'integer', 'locationName' => 'isBillGenerated', ],
                 'subBillId' => [ 'type' => 'double', 'locationName' => 'subBillId', ],
                 'refundNo' => [ 'type' => 'string', 'locationName' => 'refundNo', ],
+                'actualFee' => [ 'type' => 'double', 'locationName' => 'actualFee', ],
+                'formulaName' => [ 'type' => 'string', 'locationName' => 'formulaName', ],
             ],
         ],
         'Consumption' => [
@@ -192,6 +221,7 @@ return [
                 'balancePayFee' => [ 'type' => 'double', 'locationName' => 'balancePayFee', ],
                 'cashCouponPayFee' => [ 'type' => 'double', 'locationName' => 'cashCouponPayFee', ],
                 'arrearFee' => [ 'type' => 'double', 'locationName' => 'arrearFee', ],
+                'groupTagValue' => [ 'type' => 'string', 'locationName' => 'groupTagValue', ],
             ],
         ],
         'ConsumptionProduct' => [
@@ -208,6 +238,7 @@ return [
                 'arrearFee' => [ 'type' => 'double', 'locationName' => 'arrearFee', ],
                 'productDetails' => [ 'type' => 'list', 'member' => [ 'shape' => 'Consumption', ], ],
                 'productDetailList' => [ 'type' => 'object', 'locationName' => 'productDetailList', ],
+                'groupTagValue' => [ 'type' => 'string', 'locationName' => 'groupTagValue', ],
             ],
         ],
         'Pagination' => [
@@ -218,6 +249,52 @@ return [
                 'numberRecords' => [ 'type' => 'integer', 'locationName' => 'numberRecords', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'startIndex' => [ 'type' => 'integer', 'locationName' => 'startIndex', ],
+            ],
+        ],
+        'EbsBillVo' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'dataSourceId' => [ 'type' => 'string', 'locationName' => 'dataSourceId', ],
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'chargeTime' => [ 'type' => 'string', 'locationName' => 'chargeTime', ],
+                'payFee' => [ 'type' => 'double', 'locationName' => 'payFee', ],
+                'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'purchasePrice' => [ 'type' => 'double', 'locationName' => 'purchasePrice', ],
+                'supplier' => [ 'type' => 'string', 'locationName' => 'supplier', ],
+                'org' => [ 'type' => 'string', 'locationName' => 'org', ],
+                'userGroup' => [ 'type' => 'integer', 'locationName' => 'userGroup', ],
+                'domainOrderId' => [ 'type' => 'string', 'locationName' => 'domainOrderId', ],
+                'traderName' => [ 'type' => 'string', 'locationName' => 'traderName', ],
+                'orderType' => [ 'type' => 'string', 'locationName' => 'orderType', ],
+                'taxRate' => [ 'type' => 'double', 'locationName' => 'taxRate', ],
+                'deptNo' => [ 'type' => 'string', 'locationName' => 'deptNo', ],
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'EbsSeperateBillVo' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'dataSourceId' => [ 'type' => 'string', 'locationName' => 'dataSourceId', ],
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'chargeTime' => [ 'type' => 'string', 'locationName' => 'chargeTime', ],
+                'totalFee' => [ 'type' => 'double', 'locationName' => 'totalFee', ],
+                'seperateFee' => [ 'type' => 'double', 'locationName' => 'seperateFee', ],
+                'org' => [ 'type' => 'string', 'locationName' => 'org', ],
+                'userGroup' => [ 'type' => 'integer', 'locationName' => 'userGroup', ],
+                'traderName' => [ 'type' => 'string', 'locationName' => 'traderName', ],
+                'orderType' => [ 'type' => 'string', 'locationName' => 'orderType', ],
+                'costFee' => [ 'type' => 'double', 'locationName' => 'costFee', ],
+                'taxRate' => [ 'type' => 'double', 'locationName' => 'taxRate', ],
+                'deptNo' => [ 'type' => 'string', 'locationName' => 'deptNo', ],
+                'sourceId' => [ 'type' => 'string', 'locationName' => 'sourceId', ],
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'Formula' => [
@@ -301,6 +378,7 @@ return [
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
                 'sourceId' => [ 'type' => 'string', 'locationName' => 'sourceId', ],
             ],
@@ -358,6 +436,7 @@ return [
                 'settleTime' => [ 'type' => 'string', 'locationName' => 'settleTime', ],
                 'systemType' => [ 'type' => 'integer', 'locationName' => 'systemType', ],
                 'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'tagDetails' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceTagVo', ], ],
             ],
         ],
         'ResourceOrderQueryCondition' => [
@@ -396,6 +475,28 @@ return [
                 'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'offset' => [ 'type' => 'integer', 'locationName' => 'offset', ],
+            ],
+        ],
+        'ResourceOrderStatusCondition' => [
+            'type' => 'structure',
+            'members' => [
+                'site' => [ 'type' => 'integer', 'locationName' => 'site', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'resourceIdList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'ResourceOrderStatusResultItem' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
         'ResourceOrderStatusVo' => [
@@ -492,6 +593,7 @@ return [
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
                 'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
                 'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -505,6 +607,7 @@ return [
                 'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
                 'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -515,6 +618,52 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'QueryBillSummaryResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EbsSeperateBillVoRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'ebsSeperateBillVoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'EbsSeperateBillVo', ], ],
+            ],
+        ],
+        'EbsBillVoRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'ebsBillVoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'EbsBillVo', ], ],
+            ],
+        ],
+        'CalculateTotalPriceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cmd' => [ 'type' => 'integer', 'locationName' => 'cmd', ],
+                'orderList' => [ 'type' => 'list', 'member' => [ 'shape' => 'OrderPriceProtocol', ], ],
+                'operateTime' => [ 'type' => 'string', 'locationName' => 'operateTime', ],
+                'promotionInfo' => [ 'type' => 'string', 'locationName' => 'promotionInfo', ],
+                'clientType' => [ 'type' => 'integer', 'locationName' => 'clientType', ],
+                'packageCount' => [ 'type' => 'integer', 'locationName' => 'packageCount', ],
+                'processType' => [ 'type' => 'integer', 'locationName' => 'processType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CalculateTotalPriceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CalculateTotalPriceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CalculateTotalPriceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'totalPrice' => [ 'type' => 'double', 'locationName' => 'totalPrice', ],
+                'totalPriceScale4' => [ 'type' => 'double', 'locationName' => 'totalPriceScale4', ],
+                'discountedTotalPrice' => [ 'type' => 'double', 'locationName' => 'discountedTotalPrice', ],
+                'totalDiscount' => [ 'type' => 'double', 'locationName' => 'totalDiscount', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'OrderPriceDetail', ], ],
+                'totalOriginalPrice' => [ 'type' => 'double', 'locationName' => 'totalOriginalPrice', ],
+                'favorableInfos' => [ 'type' => 'string', 'locationName' => 'favorableInfos', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'totalUnitPrice' => [ 'type' => 'double', 'locationName' => 'totalUnitPrice', ],
             ],
         ],
     ],

@@ -11,6 +11,33 @@ return [
 //        'serviceId' => 'edcps',
     ],
     'operations' => [
+        'DescribeAliasIps' => [
+            'name' => 'DescribeAliasIps',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/aliasIps',
+            ],
+            'input' => [ 'shape' => 'DescribeAliasIpsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAliasIpsResponseShape', ],
+        ],
+        'CreateAliasIp' => [
+            'name' => 'CreateAliasIp',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/aliasIps',
+            ],
+            'input' => [ 'shape' => 'CreateAliasIpRequestShape', ],
+            'output' => [ 'shape' => 'CreateAliasIpResponseShape', ],
+        ],
+        'DeleteAliasIp' => [
+            'name' => 'DeleteAliasIp',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/aliasIps/{aliasIpId}',
+            ],
+            'input' => [ 'shape' => 'DeleteAliasIpRequestShape', ],
+            'output' => [ 'shape' => 'DeleteAliasIpResponseShape', ],
+        ],
         'DescribeElasticIps' => [
             'name' => 'DescribeElasticIps',
             'http' => [
@@ -37,6 +64,15 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeElasticIpRequestShape', ],
             'output' => [ 'shape' => 'DescribeElasticIpResponseShape', ],
+        ],
+        'DeleteelasticIp' => [
+            'name' => 'DeleteelasticIp',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/elasticIps/{elasticIpId}',
+            ],
+            'input' => [ 'shape' => 'DeleteelasticIpRequestShape', ],
+            'output' => [ 'shape' => 'DeleteelasticIpResponseShape', ],
         ],
         'ModifyElasticIpBandwidth' => [
             'name' => 'ModifyElasticIpBandwidth',
@@ -100,6 +136,15 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeInstanceRequestShape', ],
             'output' => [ 'shape' => 'DescribeInstanceResponseShape', ],
+        ],
+        'DeleteInstance' => [
+            'name' => 'DeleteInstance',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}',
+            ],
+            'input' => [ 'shape' => 'DeleteInstanceRequestShape', ],
+            'output' => [ 'shape' => 'DeleteInstanceResponseShape', ],
         ],
         'DescribeInstances' => [
             'name' => 'DescribeInstances',
@@ -290,6 +335,33 @@ return [
             'input' => [ 'shape' => 'DescribeEdCPSRegionsRequestShape', ],
             'output' => [ 'shape' => 'DescribeEdCPSRegionsResponseShape', ],
         ],
+        'DescribeSecondaryCidrs' => [
+            'name' => 'DescribeSecondaryCidrs',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/secondaryCidrs',
+            ],
+            'input' => [ 'shape' => 'DescribeSecondaryCidrsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSecondaryCidrsResponseShape', ],
+        ],
+        'CreateSecondaryCidr' => [
+            'name' => 'CreateSecondaryCidr',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/secondaryCidrs',
+            ],
+            'input' => [ 'shape' => 'CreateSecondaryCidrRequestShape', ],
+            'output' => [ 'shape' => 'CreateSecondaryCidrResponseShape', ],
+        ],
+        'DeleteSecondaryCidr' => [
+            'name' => 'DeleteSecondaryCidr',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/secondaryCidrs/{secondaryCidrId}',
+            ],
+            'input' => [ 'shape' => 'DeleteSecondaryCidrRequestShape', ],
+            'output' => [ 'shape' => 'DeleteSecondaryCidrResponseShape', ],
+        ],
         'DescribeSubnets' => [
             'name' => 'DescribeSubnets',
             'http' => [
@@ -390,6 +462,46 @@ return [
                 'azName' => [ 'type' => 'string', 'locationName' => 'azName', ],
             ],
         ],
+        'AliasIp' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'secondaryCidrId' => [ 'type' => 'string', 'locationName' => 'secondaryCidrId', ],
+                'aliasIpId' => [ 'type' => 'string', 'locationName' => 'aliasIpId', ],
+                'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
+            ],
+        ],
+        'AliasIpErrorInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'AliasIpInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
+            ],
+        ],
+        'AliasIpSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'aliasIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'AliasIpInfo', ], ],
+            ],
+        ],
+        'AliasIpSuccessInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'aliasIpId' => [ 'type' => 'string', 'locationName' => 'aliasIpId', ],
+                'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
+            ],
+        ],
         'DeviceType' => [
             'type' => 'structure',
             'members' => [
@@ -427,6 +539,7 @@ return [
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'aliasIpId' => [ 'type' => 'string', 'locationName' => 'aliasIpId', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
             ],
         ],
@@ -522,6 +635,7 @@ return [
                 'userData' => [ 'type' => 'string', 'locationName' => 'userData', ],
                 'keypairId' => [ 'type' => 'string', 'locationName' => 'keypairId', ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
+                'aliasIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'AliasIpInfo', ], ],
             ],
         ],
         'Keypair' => [
@@ -604,6 +718,29 @@ return [
                 'available' => [ 'type' => 'integer', 'locationName' => 'available', ],
             ],
         ],
+        'SecondaryCidr' => [
+            'type' => 'structure',
+            'members' => [
+                'secondaryCidrId' => [ 'type' => 'string', 'locationName' => 'secondaryCidrId', ],
+                'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'vpcName' => [ 'type' => 'string', 'locationName' => 'vpcName', ],
+                'availableIpCount' => [ 'type' => 'integer', 'locationName' => 'availableIpCount', ],
+                'totalIpCount' => [ 'type' => 'integer', 'locationName' => 'totalIpCount', ],
+            ],
+        ],
+        'SecondaryCidrSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
         'Subnet' => [
             'type' => 'structure',
             'members' => [
@@ -627,6 +764,8 @@ return [
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
+                'secondaryCidr' => [ 'type' => 'string', 'locationName' => 'secondaryCidr', ],
+                'secondaryCidrName' => [ 'type' => 'string', 'locationName' => 'secondaryCidrName', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
@@ -648,6 +787,76 @@ return [
                 'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'CreateAliasIpRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'aliasIpSpec' =>  [ 'shape' => 'AliasIpSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteAliasIpRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'aliasIpId' => [ 'type' => 'string', 'locationName' => 'aliasIpId', ],
+            ],
+        ],
+        'DeleteAliasIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteAliasIpResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateAliasIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'successList' => [ 'type' => 'list', 'member' => [ 'shape' => 'AliasIpSuccessInfo', ], ],
+                'errorList' => [ 'type' => 'list', 'member' => [ 'shape' => 'AliasIpErrorInfo', ], ],
+            ],
+        ],
+        'DescribeAliasIpsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateAliasIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateAliasIpResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAliasIpsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAliasIpsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteAliasIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'DescribeAliasIpsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'aliasIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'AliasIp', ], ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
         'DescribeElasticIpsRequestShape' => [
@@ -676,11 +885,26 @@ return [
                 'elasticIp' =>  [ 'shape' => 'ElasticIp', ],
             ],
         ],
+        'DeleteelasticIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteelasticIpResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeElasticIpStockResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeElasticIpStockResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteelasticIpRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
             ],
         ],
         'DescribeElasticIpResponseShape' => [
@@ -763,6 +987,12 @@ return [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
+        'DeleteelasticIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
         'ApplyElasticIpsResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -793,6 +1023,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'instance' =>  [ 'shape' => 'Instance', ],
+            ],
+        ],
+        'DeleteInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'DescribeInstanceStatusResponseShape' => [
@@ -950,6 +1188,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'StartInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteInstanceResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -1178,6 +1423,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DeleteInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
         'DescribeDeviceRaidsResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1342,6 +1593,68 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeEdCPSRegionsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSecondaryCidrsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateSecondaryCidrRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'secondaryCidrSpec' =>  [ 'shape' => 'SecondaryCidrSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeSecondaryCidrsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'secondaryCidrs' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecondaryCidr', ], ],
+            ],
+        ],
+        'DeleteSecondaryCidrRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'secondaryCidrId' => [ 'type' => 'string', 'locationName' => 'secondaryCidrId', ],
+            ],
+        ],
+        'DeleteSecondaryCidrResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'CreateSecondaryCidrResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateSecondaryCidrResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSecondaryCidrsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSecondaryCidrsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteSecondaryCidrResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteSecondaryCidrResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateSecondaryCidrResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'secondaryCidrId' => [ 'type' => 'string', 'locationName' => 'secondaryCidrId', ],
             ],
         ],
         'ModifySubnetRequestShape' => [
