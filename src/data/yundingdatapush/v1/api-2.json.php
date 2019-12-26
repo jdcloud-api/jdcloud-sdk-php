@@ -83,6 +83,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AddDatapushVenderResultShape', ],
             ],
         ],
         'DescribeDatapushVendersRequestShape' => [
@@ -101,6 +102,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DeleteDatapushVenderResultShape', ],
             ],
         ],
         'DescribeDatapushVendersResponseShape' => [
@@ -126,7 +128,7 @@ return [
         'DescribeRdsInstancesResultShape' => [
             'type' => 'structure',
             'members' => [
-                'venders' => [ 'type' => 'list', 'member' => [ 'shape' => 'RdsInstance', ], ],
+                'rdsInstances' => [ 'type' => 'list', 'member' => [ 'shape' => 'RdsInstance', ], ],
             ],
         ],
         'DescribeRdsInstancesRequestShape' => [
@@ -144,6 +146,7 @@ return [
         'AddDatapushVenderResultShape' => [
             'type' => 'structure',
             'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
             ],
         ],
         'DeleteDatapushVenderRequestShape' => [
@@ -157,6 +160,7 @@ return [
         'DeleteDatapushVenderResultShape' => [
             'type' => 'structure',
             'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
             ],
         ],
     ],

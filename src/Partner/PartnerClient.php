@@ -22,6 +22,12 @@ use Jdcloud\PresignUrlMiddleware;
  *
  * @method \Jdcloud\Result queryMyCustomerList(array $args = [])
  * @method \GuzzleHttp\Promise\Promise queryMyCustomerListAsync(array $args = [])
+ * @method \Jdcloud\Result getTotalConsumption(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getTotalConsumptionAsync(array $args = [])
+ * @method \Jdcloud\Result getEachConsumption(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getEachConsumptionAsync(array $args = [])
+ * @method \Jdcloud\Result describeCustomerBillByProduct(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeCustomerBillByProductAsync(array $args = [])
  */
 class PartnerClient extends JdCloudClient
 {

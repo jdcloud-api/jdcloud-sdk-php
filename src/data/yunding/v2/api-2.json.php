@@ -29,6 +29,105 @@ return [
             'input' => [ 'shape' => 'UnassignSecondaryIpsRequestShape', ],
             'output' => [ 'shape' => 'UnassignSecondaryIpsResponseShape', ],
         ],
+        'DescribeRdsInstances' => [
+            'name' => 'DescribeRdsInstances',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/ydRdsInstances',
+            ],
+            'input' => [ 'shape' => 'DescribeRdsInstancesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRdsInstancesResponseShape', ],
+        ],
+        'DescribeRdsInstance' => [
+            'name' => 'DescribeRdsInstance',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/ydRdsInstances/{instanceId}',
+            ],
+            'input' => [ 'shape' => 'DescribeRdsInstanceRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRdsInstanceResponseShape', ],
+        ],
+        'DescribeInstanceInfo' => [
+            'name' => 'DescribeInstanceInfo',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/ydRdsInstances/{instanceId}:describeInstanceInfo',
+            ],
+            'input' => [ 'shape' => 'DescribeInstanceInfoRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInstanceInfoResponseShape', ],
+        ],
+        'DescribeRdsWhiteList' => [
+            'name' => 'DescribeRdsWhiteList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/ydRdsInstances/{instanceId}/whiteList',
+            ],
+            'input' => [ 'shape' => 'DescribeRdsWhiteListRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRdsWhiteListResponseShape', ],
+        ],
+        'ModifyRdsWhiteList' => [
+            'name' => 'ModifyRdsWhiteList',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v2/regions/{regionId}/ydRdsInstances/{instanceId}/whiteList',
+            ],
+            'input' => [ 'shape' => 'ModifyRdsWhiteListRequestShape', ],
+            'output' => [ 'shape' => 'ModifyRdsWhiteListResponseShape', ],
+        ],
+        'DescribeRdsAccounts' => [
+            'name' => 'DescribeRdsAccounts',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/ydRdsInstances/{instanceId}/accounts',
+            ],
+            'input' => [ 'shape' => 'DescribeRdsAccountsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRdsAccountsResponseShape', ],
+        ],
+        'CreateRdsAccount' => [
+            'name' => 'CreateRdsAccount',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/ydRdsInstances/{instanceId}/accounts',
+            ],
+            'input' => [ 'shape' => 'CreateRdsAccountRequestShape', ],
+            'output' => [ 'shape' => 'CreateRdsAccountResponseShape', ],
+        ],
+        'DeleteRdsAccount' => [
+            'name' => 'DeleteRdsAccount',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v2/regions/{regionId}/ydRdsInstances/{instanceId}/accounts/{accountName}',
+            ],
+            'input' => [ 'shape' => 'DeleteRdsAccountRequestShape', ],
+            'output' => [ 'shape' => 'DeleteRdsAccountResponseShape', ],
+        ],
+        'GrantRdsPrivilege' => [
+            'name' => 'GrantRdsPrivilege',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/ydRdsInstances/{instanceId}/accounts/{accountName}:grantPrivilege',
+            ],
+            'input' => [ 'shape' => 'GrantRdsPrivilegeRequestShape', ],
+            'output' => [ 'shape' => 'GrantRdsPrivilegeResponseShape', ],
+        ],
+        'DescribeRdsDatabases' => [
+            'name' => 'DescribeRdsDatabases',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/ydRdsInstances/{instanceId}/databases',
+            ],
+            'input' => [ 'shape' => 'DescribeRdsDatabasesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRdsDatabasesResponseShape', ],
+        ],
+        'CreateRdsDatabase' => [
+            'name' => 'CreateRdsDatabase',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/ydRdsInstances/{instanceId}/databases',
+            ],
+            'input' => [ 'shape' => 'CreateRdsDatabaseRequestShape', ],
+            'output' => [ 'shape' => 'CreateRdsDatabaseResponseShape', ],
+        ],
         'DeleteRdsDatabase' => [
             'name' => 'DeleteRdsDatabase',
             'http' => [
@@ -38,14 +137,14 @@ return [
             'input' => [ 'shape' => 'DeleteRdsDatabaseRequestShape', ],
             'output' => [ 'shape' => 'DeleteRdsDatabaseResponseShape', ],
         ],
-        'DeleteVmInstance' => [
-            'name' => 'DeleteVmInstance',
+        'DescribeYdRdsInstances' => [
+            'name' => 'DescribeYdRdsInstances',
             'http' => [
-                'method' => 'DELETE',
-                'requestUri' => '/v2/regions/{regionId}/ydVmInstances/{instanceId}',
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/rdsInstances',
             ],
-            'input' => [ 'shape' => 'DeleteVmInstanceRequestShape', ],
-            'output' => [ 'shape' => 'DeleteVmInstanceResponseShape', ],
+            'input' => [ 'shape' => 'DescribeYdRdsInstancesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeYdRdsInstancesResponseShape', ],
         ],
     ],
     'shapes' => [
@@ -428,6 +527,7 @@ return [
                 'toPort' => [ 'type' => 'double', 'locationName' => 'toPort', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
             ],
         ],
         'NetworkSecurityGroup' => [
@@ -439,6 +539,8 @@ return [
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'securityGroupRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecurityGroupRule', ], ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'networkSecurityGroupType' => [ 'type' => 'string', 'locationName' => 'networkSecurityGroupType', ],
+                'networkInterfaceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'Filter' => [
@@ -449,25 +551,23 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
-        'AccountPrivilege' => [
+        'DeleteRdsAccountResultShape' => [
             'type' => 'structure',
             'members' => [
-                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
-                'privilege' => [ 'type' => 'string', 'locationName' => 'privilege', ],
             ],
         ],
-        'WhiteList' => [
+        'DescribeInstanceInfoResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'ips' => [ 'type' => 'string', 'locationName' => 'ips', ],
+                'result' =>  [ 'shape' => 'DescribeInstanceInfoResultShape', ],
             ],
         ],
-        'DBAccessPrivilege' => [
+        'DeleteRdsAccountRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
-                'privilege' => [ 'type' => 'string', 'locationName' => 'privilege', ],
             ],
         ],
         'Database' => [
@@ -480,12 +580,254 @@ return [
                 'accessPrivilege' => [ 'type' => 'list', 'member' => [ 'shape' => 'DBAccessPrivilege', ], ],
             ],
         ],
+        'GrantRdsPrivilegeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeRdsInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRdsInstanceResultShape', ],
+            ],
+        ],
+        'GrantRdsPrivilegeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'accountPrivileges' => [ 'type' => 'list', 'member' => [ 'shape' => 'AccountPrivilege', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+            ],
+        ],
+        'DescribeRdsDatabasesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'databases' => [ 'type' => 'list', 'member' => [ 'shape' => 'Database', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeRdsInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dbInstanceAttributes' =>  [ 'shape' => 'DBInstanceAttribute', ],
+            ],
+        ],
+        'DescribeYdRdsInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeYdRdsInstancesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeRdsInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DeleteRdsDatabaseResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateRdsDatabaseResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeRdsInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRdsInstancesResultShape', ],
+            ],
+        ],
+        'DescribeRdsAccountsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRdsAccountsResultShape', ],
+            ],
+        ],
+        'DescribeInstanceInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceStatus' => [ 'type' => 'string', 'locationName' => 'instanceStatus', ],
+                'internalDns' => [ 'type' => 'string', 'locationName' => 'internalDns', ],
+            ],
+        ],
+        'ModifyRdsWhiteListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AccountPrivilege' => [
+            'type' => 'structure',
+            'members' => [
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'privilege' => [ 'type' => 'string', 'locationName' => 'privilege', ],
+            ],
+        ],
+        'ModifyRdsWhiteListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DBAccessPrivilege' => [
+            'type' => 'structure',
+            'members' => [
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+                'privilege' => [ 'type' => 'string', 'locationName' => 'privilege', ],
+            ],
+        ],
+        'GrantRdsPrivilegeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeRdsAccountsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'CreateRdsAccountResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeRdsInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dbInstances' => [ 'type' => 'list', 'member' => [ 'shape' => 'DBInstance', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'CreateRdsAccountRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'accountName' => [ 'type' => '', 'locationName' => 'accountName', ],
+                'accountPassword' => [ 'type' => '', 'locationName' => 'accountPassword', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'CreateRdsDatabaseRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dbName' => [ 'type' => '', 'locationName' => 'dbName', ],
+                'characterSetName' => [ 'type' => '', 'locationName' => 'characterSetName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'CreateRdsDatabaseResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'WhiteList' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'ips' => [ 'type' => 'string', 'locationName' => 'ips', ],
+            ],
+        ],
+        'DescribeYdRdsInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusters' => [ 'type' => 'list', 'member' => [ 'shape' => 'RdsInstance', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
         'DeleteRdsDatabaseResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
         ],
-        'DeleteRdsDatabaseResponseShape' => [
+        'ModifyRdsWhiteListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ips' => [ 'type' => 'string', 'locationName' => 'ips', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeRdsWhiteListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeYdRdsInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeRdsAccountsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'accounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Account', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeRdsDatabasesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRdsDatabasesResultShape', ],
+            ],
+        ],
+        'DescribeRdsWhiteListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'whiteLists' => [ 'type' => 'list', 'member' => [ 'shape' => 'WhiteList', ], ],
+            ],
+        ],
+        'DescribeInstanceInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeRdsInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeRdsDatabasesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'CreateRdsAccountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeRdsWhiteListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRdsWhiteListResultShape', ],
+            ],
+        ],
+        'DeleteRdsAccountResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -511,11 +853,6 @@ return [
             'members' => [
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
-            ],
-        ],
-        'DeleteVmInstanceResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'InstanceDiskAttachmentSpec' => [
@@ -617,13 +954,6 @@ return [
                 'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
             ],
         ],
-        'DeleteVmInstanceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
         'InstanceTypeState' => [
             'type' => 'structure',
             'members' => [
@@ -647,11 +977,6 @@ return [
                 'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
                 'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
                 'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
-            ],
-        ],
-        'DeleteVmInstanceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
     ],

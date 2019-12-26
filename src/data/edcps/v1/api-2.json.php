@@ -540,6 +540,7 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'aliasIpId' => [ 'type' => 'string', 'locationName' => 'aliasIpId', ],
+                'aliasIp' => [ 'type' => 'string', 'locationName' => 'aliasIp', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
             ],
         ],
@@ -805,6 +806,14 @@ return [
                 'aliasIpId' => [ 'type' => 'string', 'locationName' => 'aliasIpId', ],
             ],
         ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'DeleteAliasIpResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -827,6 +836,7 @@ return [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -941,14 +951,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'Filter' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'ApplyElasticIpsResultShape' => [
@@ -1165,6 +1167,7 @@ return [
                 'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'enableInternet' => [ 'type' => 'string', 'locationName' => 'enableInternet', ],
+                'privateIp' => [ 'type' => 'string', 'locationName' => 'privateIp', ],
                 'keypairId' => [ 'type' => 'string', 'locationName' => 'keypairId', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -1201,7 +1204,7 @@ return [
         'DescribeAvailablePrivateIpResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'result' =>  [ 'shape' => 'DescribeAvailablePrivateIpResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -1216,6 +1219,7 @@ return [
         'DescribeAvailablePrivateIpResultShape' => [
             'type' => 'structure',
             'members' => [
+                'availablePrivateIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'RestartInstanceResponseShape' => [
@@ -1493,7 +1497,7 @@ return [
         'DescribeKeypairsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'servers' => [ 'type' => 'list', 'member' => [ 'shape' => 'Keypair', ], ],
+                'keypairs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Keypair', ], ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
@@ -1536,7 +1540,7 @@ return [
         'DescribeKeypairResultShape' => [
             'type' => 'structure',
             'members' => [
-                'server' =>  [ 'shape' => 'Keypair', ],
+                'keypair' =>  [ 'shape' => 'Keypair', ],
             ],
         ],
         'DeleteKeypairsResponseShape' => [

@@ -182,6 +182,24 @@ return [
             'input' => [ 'shape' => 'RollbackNodeGroupUpgradeRequestShape', ],
             'output' => [ 'shape' => 'RollbackNodeGroupUpgradeResponseShape', ],
         ],
+        'SetNodeGroupCA' => [
+            'name' => 'SetNodeGroupCA',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/nodeGroups/{nodeGroupId}:setNodeGroupCA',
+            ],
+            'input' => [ 'shape' => 'SetNodeGroupCARequestShape', ],
+            'output' => [ 'shape' => 'SetNodeGroupCAResponseShape', ],
+        ],
+        'DeleteNodeInstances' => [
+            'name' => 'DeleteNodeInstances',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/nodeGroups/{nodeGroupId}:deleteNodeInstances',
+            ],
+            'input' => [ 'shape' => 'DeleteNodeInstancesRequestShape', ],
+            'output' => [ 'shape' => 'DeleteNodeInstancesResponseShape', ],
+        ],
         'DescribeQuotas' => [
             'name' => 'DescribeQuotas',
             'http' => [
@@ -250,6 +268,22 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+            ],
+        ],
+        'CAConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'enable' => [ 'type' => 'boolean', 'locationName' => 'enable', ],
+                'maxNode' => [ 'type' => 'integer', 'locationName' => 'maxNode', ],
+                'minNode' => [ 'type' => 'integer', 'locationName' => 'minNode', ],
+            ],
+        ],
+        'CAConfigSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'enable' => [ 'type' => 'boolean', 'locationName' => 'enable', ],
+                'maxNode' => [ 'type' => 'integer', 'locationName' => 'maxNode', ],
+                'minNode' => [ 'type' => 'integer', 'locationName' => 'minNode', ],
             ],
         ],
         'LabelSpec' => [
@@ -339,6 +373,7 @@ return [
                 'stateMessage' => [ 'type' => 'string', 'locationName' => 'stateMessage', ],
                 'autoRepair' => [ 'type' => 'boolean', 'locationName' => 'autoRepair', ],
                 'progress' =>  [ 'shape' => 'NodeGroupProgress', ],
+                'caConfig' =>  [ 'shape' => 'CAConfig', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
             ],
         ],
@@ -394,6 +429,7 @@ return [
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'nodeCidr' => [ 'type' => 'string', 'locationName' => 'nodeCidr', ],
                 'autoRepair' => [ 'type' => 'boolean', 'locationName' => 'autoRepair', ],
+                'caConfig' =>  [ 'shape' => 'CAConfigSpec', ],
             ],
         ],
         'NodeConfigSpec' => [
@@ -495,6 +531,7 @@ return [
                 'defaultNodeVersion' => [ 'type' => 'string', 'locationName' => 'defaultNodeVersion', ],
                 'versionStatus' => [ 'type' => 'string', 'locationName' => 'versionStatus', ],
                 'nodeVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeVersion', ], ],
+                'nodeOsTypes' => [ 'type' => 'string', 'locationName' => 'nodeOsTypes', ],
             ],
         ],
         'ValidNodeConfig' => [
@@ -829,6 +866,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DeleteNodeInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'ModifyNodeGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -861,6 +903,20 @@ return [
             'members' => [
             ],
         ],
+        'DeleteNodeInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+            ],
+        ],
+        'SetNodeGroupCAResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'SetNodeGroupSizeRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -874,6 +930,14 @@ return [
             'members' => [
                 'nodeGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeGroup', ], ],
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'SetNodeGroupCARequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'caConfig' =>  [ 'shape' => 'CAConfigSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
             ],
         ],
         'DescribeNodeGroupsRequestShape' => [
@@ -898,6 +962,17 @@ return [
             'members' => [
             ],
         ],
+        'SetNodeGroupCAResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteNodeInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CreateNodeGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -910,6 +985,7 @@ return [
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'nodeCidr' => [ 'type' => 'string', 'locationName' => 'nodeCidr', ],
                 'autoRepair' => [ 'type' => 'boolean', 'locationName' => 'autoRepair', ],
+                'caConfig' =>  [ 'shape' => 'CAConfigSpec', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
