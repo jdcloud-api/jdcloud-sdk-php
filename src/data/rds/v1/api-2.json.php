@@ -29,6 +29,15 @@ return [
             'input' => [ 'shape' => 'CreateAccountRequestShape', ],
             'output' => [ 'shape' => 'CreateAccountResponseShape', ],
         ],
+        'DescribeAccountPrivilege' => [
+            'name' => 'DescribeAccountPrivilege',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/accounts/{accountName}',
+            ],
+            'input' => [ 'shape' => 'DescribeAccountPrivilegeRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAccountPrivilegeResponseShape', ],
+        ],
         'DeleteAccount' => [
             'name' => 'DeleteAccount',
             'http' => [
@@ -73,6 +82,15 @@ return [
             ],
             'input' => [ 'shape' => 'CreateSuperAccountRequestShape', ],
             'output' => [ 'shape' => 'CreateSuperAccountResponseShape', ],
+        ],
+        'GrantAccountPrivilege' => [
+            'name' => 'GrantAccountPrivilege',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/accounts/{accountName}:grantAccountPrivilege',
+            ],
+            'input' => [ 'shape' => 'GrantAccountPrivilegeRequestShape', ],
+            'output' => [ 'shape' => 'GrantAccountPrivilegeResponseShape', ],
         ],
         'DescribeAudit' => [
             'name' => 'DescribeAudit',
@@ -280,6 +298,15 @@ return [
             ],
             'input' => [ 'shape' => 'AlterTableWithOnlineDDLRequestShape', ],
             'output' => [ 'shape' => 'AlterTableWithOnlineDDLResponseShape', ],
+        ],
+        'DescribePrivilege' => [
+            'name' => 'DescribePrivilege',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/common:describePrivilege',
+            ],
+            'input' => [ 'shape' => 'DescribePrivilegeRequestShape', ],
+            'output' => [ 'shape' => 'DescribePrivilegeResponseShape', ],
         ],
         'DescribeDatabases' => [
             'name' => 'DescribeDatabases',
@@ -560,6 +587,42 @@ return [
             'input' => [ 'shape' => 'ExchangeInstanceDnsRequestShape', ],
             'output' => [ 'shape' => 'ExchangeInstanceDnsResponseShape', ],
         ],
+        'ModifyInstanceAz' => [
+            'name' => 'ModifyInstanceAz',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:modifyInstanceAz',
+            ],
+            'input' => [ 'shape' => 'ModifyInstanceAzRequestShape', ],
+            'output' => [ 'shape' => 'ModifyInstanceAzResponseShape', ],
+        ],
+        'DescribeSSL' => [
+            'name' => 'DescribeSSL',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/ssl',
+            ],
+            'input' => [ 'shape' => 'DescribeSSLRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSSLResponseShape', ],
+        ],
+        'EnableSSL' => [
+            'name' => 'EnableSSL',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/ssl:enableSSL',
+            ],
+            'input' => [ 'shape' => 'EnableSSLRequestShape', ],
+            'output' => [ 'shape' => 'EnableSSLResponseShape', ],
+        ],
+        'RestoreInstanceByTime' => [
+            'name' => 'RestoreInstanceByTime',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:restoreInstanceByTime',
+            ],
+            'input' => [ 'shape' => 'RestoreInstanceByTimeRequestShape', ],
+            'output' => [ 'shape' => 'RestoreInstanceByTimeResponseShape', ],
+        ],
         'EnableIntercept' => [
             'name' => 'EnableIntercept',
             'http' => [
@@ -767,6 +830,24 @@ return [
             'input' => [ 'shape' => 'DescribeActiveQueryPerformanceRequestShape', ],
             'output' => [ 'shape' => 'DescribeActiveQueryPerformanceResponseShape', ],
         ],
+        'DescribeErrorLog' => [
+            'name' => 'DescribeErrorLog',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/performance:describeErrorLog',
+            ],
+            'input' => [ 'shape' => 'DescribeErrorLogRequestShape', ],
+            'output' => [ 'shape' => 'DescribeErrorLogResponseShape', ],
+        ],
+        'DescribeTables' => [
+            'name' => 'DescribeTables',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/databases/{dbName}/tables',
+            ],
+            'input' => [ 'shape' => 'DescribeTablesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeTablesResponseShape', ],
+        ],
         'DescribeTde' => [
             'name' => 'DescribeTde',
             'http' => [
@@ -817,6 +898,10 @@ return [
             'members' => [
                 'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
                 'accountStatus' => [ 'type' => 'string', 'locationName' => 'accountStatus', ],
+                'accountType' => [ 'type' => 'string', 'locationName' => 'accountType', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'notes' => [ 'type' => 'string', 'locationName' => 'notes', ],
                 'accountPrivileges' => [ 'type' => 'list', 'member' => [ 'shape' => 'AccountPrivilege', ], ],
             ],
         ],
@@ -917,6 +1002,7 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'instanceStorageType' => [ 'type' => 'string', 'locationName' => 'instanceStorageType', ],
                 'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
                 'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
                 'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
@@ -1068,6 +1154,21 @@ return [
                 'accessPrivilege' => [ 'type' => 'list', 'member' => [ 'shape' => 'DBAccessPrivilege', ], ],
             ],
         ],
+        'TablePrivilege' => [
+            'type' => 'structure',
+            'members' => [
+                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
+                'privileges' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DatabasePrivilege' => [
+            'type' => 'structure',
+            'members' => [
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'privileges' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'tablePrivileges' => [ 'type' => 'list', 'member' => [ 'shape' => 'TablePrivilege', ], ],
+            ],
+        ],
         'DigestData' => [
             'type' => 'structure',
             'members' => [
@@ -1087,6 +1188,16 @@ return [
                 'uploadTime' => [ 'type' => 'string', 'locationName' => 'uploadTime', ],
                 'publicURL' => [ 'type' => 'string', 'locationName' => 'publicURL', ],
                 'internalURL' => [ 'type' => 'string', 'locationName' => 'internalURL', ],
+            ],
+        ],
+        'ErrorLogDigest' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'dbNameAccount' => [ 'type' => 'string', 'locationName' => 'dbNameAccount', ],
+                'errorLogInformation' => [ 'type' => 'string', 'locationName' => 'errorLogInformation', ],
+                'errorSeverity' => [ 'type' => 'string', 'locationName' => 'errorSeverity', ],
             ],
         ],
         'File' => [
@@ -1172,6 +1283,8 @@ return [
             'members' => [
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'bind' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceInfo', ], ],
             ],
         ],
         'RestoredNewDBInstanceSpec' => [
@@ -1189,6 +1302,15 @@ return [
                 'instancePort' => [ 'type' => 'string', 'locationName' => 'instancePort', ],
                 'storageEncrypted' => [ 'type' => 'boolean', 'locationName' => 'storageEncrypted', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+            ],
+        ],
+        'Schema' => [
+            'type' => 'structure',
+            'members' => [
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'newDBName' => [ 'type' => 'string', 'locationName' => 'newDBName', ],
+                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
+                'newTableName' => [ 'type' => 'string', 'locationName' => 'newTableName', ],
             ],
         ],
         'SlowLogAttributes' => [
@@ -1217,6 +1339,14 @@ return [
                 'rowsReturned' =>  [ 'shape' => 'DigestData', ],
             ],
         ],
+        'SoldOut' => [
+            'type' => 'structure',
+            'members' => [
+                'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
+                'instanceStorageType' => [ 'type' => 'string', 'locationName' => 'instanceStorageType', ],
+                'azId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'WhiteList' => [
             'type' => 'structure',
             'members' => [
@@ -1243,6 +1373,7 @@ return [
             'members' => [
                 'accountName' => [ 'type' => '', 'locationName' => 'accountName', ],
                 'accountPassword' => [ 'type' => '', 'locationName' => 'accountPassword', ],
+                'notes' => [ 'type' => '', 'locationName' => 'notes', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -1253,6 +1384,64 @@ return [
             ],
         ],
         'DeleteAccountResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeAccountPrivilegeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'databasePrivileges' => [ 'type' => 'list', 'member' => [ 'shape' => 'DatabasePrivilege', ], ],
+                'globalPrivileges' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'GrantAccountPrivilegeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeAccountsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeAccountPrivilegeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+            ],
+        ],
+        'GrantPrivilegeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteAccountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'RevokePrivilegeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ResetPasswordRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'accountPassword' => [ 'type' => '', 'locationName' => 'accountPassword', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+            ],
+        ],
+        'GrantAccountPrivilegeResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -1280,21 +1469,17 @@ return [
             'members' => [
             ],
         ],
-        'ResetPasswordResultShape' => [
+        'GrantAccountPrivilegeRequestShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'DescribeAccountsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'databasePrivileges' => [ 'type' => '', 'locationName' => 'databasePrivileges', ],
+                'globalPrivileges' => [ 'type' => '', 'locationName' => 'globalPrivileges', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
             ],
         ],
-        'GrantPrivilegeResponseShape' => [
+        'ResetPasswordResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -1325,23 +1510,10 @@ return [
             'members' => [
             ],
         ],
-        'DeleteAccountResultShape' => [
+        'DescribeAccountPrivilegeResponseShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'RevokePrivilegeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'ResetPasswordRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'accountPassword' => [ 'type' => '', 'locationName' => 'accountPassword', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+                'result' =>  [ 'shape' => 'DescribeAccountPrivilegeResultShape', ],
             ],
         ],
         'CreateSuperAccountRequestShape' => [
@@ -1470,6 +1642,7 @@ return [
                 'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
                 'operation' => [ 'type' => 'string', 'locationName' => 'operation', ],
                 'threadId' => [ 'type' => 'string', 'locationName' => 'threadId', ],
+                'processId' => [ 'type' => 'string', 'locationName' => 'processId', ],
                 'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
                 'sql' => [ 'type' => 'string', 'locationName' => 'sql', ],
             ],
@@ -1841,6 +2014,27 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'DescribePrivilegeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'globalPrivileges' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'databasePrivileges' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'tablePrivileges' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribePrivilegeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribePrivilegeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribePrivilegeResultShape', ],
+            ],
+        ],
         'CreateDatabaseRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2064,6 +2258,12 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'DescribeSSLResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSSLResultShape', ],
+            ],
+        ],
         'DescribeInstanceAttributesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2093,6 +2293,14 @@ return [
         'RebootInstanceResponseShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ModifyInstanceAzRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'newAzId' => [ 'type' => '', 'locationName' => 'newAzId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'FailoverInstanceRequestShape' => [
@@ -2125,6 +2333,11 @@ return [
                 'storageEncrypted' => [ 'type' => 'boolean', 'locationName' => 'storageEncrypted', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'RestoreInstanceByTimeResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'CreateInstanceRequestShape' => [
@@ -2237,6 +2450,11 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'RestoreInstanceByTimeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DescribeInstanceAttributesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2246,6 +2464,13 @@ return [
         'ModifyParameterGroupResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeSSLRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'ExchangeInstanceDnsRequestShape' => [
@@ -2300,6 +2525,21 @@ return [
                 'result' =>  [ 'shape' => 'CreateInstanceFromBackupResultShape', ],
             ],
         ],
+        'DescribeSSLResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'available' => [ 'type' => 'boolean', 'locationName' => 'available', ],
+            ],
+        ],
+        'RestoreInstanceByTimeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'restoreTime' => [ 'type' => '', 'locationName' => 'restoreTime', ],
+                'restoreSchema' => [ 'type' => '', 'locationName' => 'restoreSchema', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'DeleteInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2351,6 +2591,11 @@ return [
             'members' => [
             ],
         ],
+        'ModifyInstanceAzResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DescribeInstancesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2386,6 +2631,18 @@ return [
             ],
         ],
         'ModifyConnectionModeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableSSLRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'EnableSSLResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -2433,6 +2690,11 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'ModifyInstanceAzResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'ModifyInstanceSpecResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2450,6 +2712,11 @@ return [
             ],
         ],
         'ModifyConnectionModeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableSSLResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -2838,6 +3105,103 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'DescribeErrorLogResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeErrorLogResultShape', ],
+            ],
+        ],
+        'IndexPerformanceResult' => [
+            'type' => 'structure',
+            'members' => [
+                'db' => [ 'type' => 'string', 'locationName' => 'db', ],
+                'table' => [ 'type' => 'string', 'locationName' => 'table', ],
+                'index' => [ 'type' => 'string', 'locationName' => 'index', ],
+                'sizeKB' => [ 'type' => 'integer', 'locationName' => 'sizeKB', ],
+                'userSeeks' => [ 'type' => 'integer', 'locationName' => 'userSeeks', ],
+                'userScans' => [ 'type' => 'integer', 'locationName' => 'userScans', ],
+                'userUpdates' => [ 'type' => 'integer', 'locationName' => 'userUpdates', ],
+                'lastUserSeek' => [ 'type' => 'string', 'locationName' => 'lastUserSeek', ],
+                'lastUserScan' => [ 'type' => 'string', 'locationName' => 'lastUserScan', ],
+                'lastUserUpdate' => [ 'type' => 'string', 'locationName' => 'lastUserUpdate', ],
+            ],
+        ],
+        'DescribeQueryPerformanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryType' => [ 'type' => 'string', 'locationName' => 'queryType', ],
+                'threshold' => [ 'type' => 'integer', 'locationName' => 'threshold', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeQueryPerformanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryPerformanceResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'QueryPerformanceResult', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'DescribeActiveQueryPerformanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'db' => [ 'type' => 'string', 'locationName' => 'db', ],
+                'threshold' => [ 'type' => 'integer', 'locationName' => 'threshold', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ActiveQueryPerformanceResult' => [
+            'type' => 'structure',
+            'members' => [
+                'sql' => [ 'type' => 'string', 'locationName' => 'sql', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'elapsedTime' => [ 'type' => 'integer', 'locationName' => 'elapsedTime', ],
+                'db' => [ 'type' => 'string', 'locationName' => 'db', ],
+                'sessionId' => [ 'type' => 'string', 'locationName' => 'sessionId', ],
+                'user' => [ 'type' => 'string', 'locationName' => 'user', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'DescribeIndexPerformanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'missingIndexResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'MissingIndexResult', ], ],
+                'indexPerformanceResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'IndexPerformanceResult', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'DescribeActiveQueryPerformanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'activeQueryPerformanceResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'ActiveQueryPerformanceResult', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'DescribeSlowLogAttributesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'slowLogsAttributes' => [ 'type' => 'list', 'member' => [ 'shape' => 'SlowLogAttributes', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeErrorLogResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'errorLogs' => [ 'type' => 'list', 'member' => [ 'shape' => 'ErrorLogDigest', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
         'MissingIndexResult' => [
             'type' => 'structure',
             'members' => [
@@ -2883,68 +3247,10 @@ return [
                 'result' =>  [ 'shape' => 'DescribeSlowLogAttributesResultShape', ],
             ],
         ],
-        'IndexPerformanceResult' => [
-            'type' => 'structure',
-            'members' => [
-                'db' => [ 'type' => 'string', 'locationName' => 'db', ],
-                'table' => [ 'type' => 'string', 'locationName' => 'table', ],
-                'index' => [ 'type' => 'string', 'locationName' => 'index', ],
-                'sizeKB' => [ 'type' => 'integer', 'locationName' => 'sizeKB', ],
-                'userSeeks' => [ 'type' => 'integer', 'locationName' => 'userSeeks', ],
-                'userScans' => [ 'type' => 'integer', 'locationName' => 'userScans', ],
-                'userUpdates' => [ 'type' => 'integer', 'locationName' => 'userUpdates', ],
-                'lastUserSeek' => [ 'type' => 'string', 'locationName' => 'lastUserSeek', ],
-                'lastUserScan' => [ 'type' => 'string', 'locationName' => 'lastUserScan', ],
-                'lastUserUpdate' => [ 'type' => 'string', 'locationName' => 'lastUserUpdate', ],
-            ],
-        ],
-        'DescribeQueryPerformanceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'queryType' => [ 'type' => 'string', 'locationName' => 'queryType', ],
-                'threshold' => [ 'type' => 'integer', 'locationName' => 'threshold', ],
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DescribeQueryPerformanceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'queryPerformanceResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'QueryPerformanceResult', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-            ],
-        ],
         'DescribeSlowLogsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeSlowLogsResultShape', ],
-            ],
-        ],
-        'DescribeActiveQueryPerformanceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'db' => [ 'type' => 'string', 'locationName' => 'db', ],
-                'threshold' => [ 'type' => 'integer', 'locationName' => 'threshold', ],
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'ActiveQueryPerformanceResult' => [
-            'type' => 'structure',
-            'members' => [
-                'sql' => [ 'type' => 'string', 'locationName' => 'sql', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'elapsedTime' => [ 'type' => 'integer', 'locationName' => 'elapsedTime', ],
-                'db' => [ 'type' => 'string', 'locationName' => 'db', ],
-                'sessionId' => [ 'type' => 'string', 'locationName' => 'sessionId', ],
-                'user' => [ 'type' => 'string', 'locationName' => 'user', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
         'DescribeSlowLogAttributesRequestShape' => [
@@ -2965,30 +3271,11 @@ return [
                 'result' =>  [ 'shape' => 'DescribeQueryPerformanceResultShape', ],
             ],
         ],
-        'DescribeIndexPerformanceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'missingIndexResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'MissingIndexResult', ], ],
-                'indexPerformanceResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'IndexPerformanceResult', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-            ],
-        ],
         'DescribeSlowLogsResultShape' => [
             'type' => 'structure',
             'members' => [
                 'slowLogs' => [ 'type' => 'list', 'member' => [ 'shape' => 'SlowLogDigest', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'DescribeActiveQueryPerformanceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'activeQueryPerformanceResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'ActiveQueryPerformanceResult', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
         ],
         'DescribeSlowLogsRequestShape' => [
@@ -3003,10 +3290,38 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'DescribeSlowLogAttributesResultShape' => [
+        'DescribeErrorLogRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'slowLogsAttributes' => [ 'type' => 'list', 'member' => [ 'shape' => 'SlowLogAttributes', ], ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeTablesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+            ],
+        ],
+        'DescribeTablesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeTablesResultShape', ],
+            ],
+        ],
+        'DescribeTablesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'tables' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],

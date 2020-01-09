@@ -20,6 +20,12 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with jdccs.
  *
+ * @method \Jdcloud\Result describeAlarms(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeAlarmsAsync(array $args = [])
+ * @method \Jdcloud\Result describeAlarm(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeAlarmAsync(array $args = [])
+ * @method \Jdcloud\Result describeAlarmHistory(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeAlarmHistoryAsync(array $args = [])
  * @method \Jdcloud\Result describeMetrics(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeMetricsAsync(array $args = [])
  * @method \Jdcloud\Result describeMetricData(array $args = [])
@@ -36,6 +42,22 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeRoomsAsync(array $args = [])
  * @method \Jdcloud\Result describeCabinets(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeCabinetsAsync(array $args = [])
+ * @method \Jdcloud\Result describeCabinet(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeCabinetAsync(array $args = [])
+ * @method \Jdcloud\Result describeDevices(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeDevicesAsync(array $args = [])
+ * @method \Jdcloud\Result describeDevice(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeDeviceAsync(array $args = [])
+ * @method \Jdcloud\Result describeIps(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeIpsAsync(array $args = [])
+ * @method \Jdcloud\Result describeBandwidths(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeBandwidthsAsync(array $args = [])
+ * @method \Jdcloud\Result describeBandwidth(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeBandwidthAsync(array $args = [])
+ * @method \Jdcloud\Result describeTickets(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeTicketsAsync(array $args = [])
+ * @method \Jdcloud\Result describeTicket(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeTicketAsync(array $args = [])
  */
 class JdccsClient extends JdCloudClient
 {

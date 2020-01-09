@@ -9,6 +9,10 @@ return [
         'namespace' => 'Kubernetes',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'vqd' => [
+        'namespace' => 'Vqd',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'streamcomputer' => [
         'namespace' => 'Streamcomputer',
         'versions' => [ 'latest' => 'v1', ],

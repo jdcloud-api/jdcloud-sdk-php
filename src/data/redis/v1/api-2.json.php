@@ -198,6 +198,30 @@ return [
                 'slave' => [ 'type' => 'string', 'locationName' => 'slave', ],
             ],
         ],
+        'BaseProductRegionVo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'regionAzVos' => [ 'type' => 'list', 'member' => [ 'shape' => 'RegionAzVo', ], ],
+            ],
+        ],
+        'RegionAzVo' => [
+            'type' => 'structure',
+            'members' => [
+                'alias' => [ 'type' => 'string', 'locationName' => 'alias', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'visible' => [ 'type' => 'integer', 'locationName' => 'visible', ],
+                'azStatusList' => [ 'type' => 'list', 'member' => [ 'shape' => 'AzSaleStatusVo', ], ],
+            ],
+        ],
+        'AzSaleStatusVo' => [
+            'type' => 'structure',
+            'members' => [
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'canSale' => [ 'type' => 'integer', 'locationName' => 'canSale', ],
+                'visible' => [ 'type' => 'integer', 'locationName' => 'visible', ],
+            ],
+        ],
         'Backup' => [
             'type' => 'structure',
             'members' => [
@@ -320,6 +344,27 @@ return [
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
             ],
         ],
+        'InternalInstance' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'instanceStatus' => [ 'type' => 'string', 'locationName' => 'instanceStatus', ],
+                'instanceVersion' => [ 'type' => 'string', 'locationName' => 'instanceVersion', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'connectionDomain' => [ 'type' => 'string', 'locationName' => 'connectionDomain', ],
+                'connectionPort' => [ 'type' => 'integer', 'locationName' => 'connectionPort', ],
+                'auth' => [ 'type' => 'boolean', 'locationName' => 'auth', ],
+                'frontAppIp' => [ 'type' => 'string', 'locationName' => 'frontAppIp', ],
+                'ips' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'hostIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'OrderStatus' => [
             'type' => 'structure',
             'members' => [
@@ -343,6 +388,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'orderNum' => [ 'type' => 'string', 'locationName' => 'orderNum', ],
+                'buyId' => [ 'type' => 'string', 'locationName' => 'buyId', ],
             ],
         ],
         'DescribeInstanceConfigResponseShape' => [
@@ -451,6 +497,7 @@ return [
             'members' => [
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
                 'orderNum' => [ 'type' => 'string', 'locationName' => 'orderNum', ],
+                'buyId' => [ 'type' => 'string', 'locationName' => 'buyId', ],
             ],
         ],
         'DescribeSlowLogResultShape' => [

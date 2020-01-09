@@ -110,14 +110,14 @@ return [
             'input' => [ 'shape' => 'DescribeMetricsRequestShape', ],
             'output' => [ 'shape' => 'DescribeMetricsResponseShape', ],
         ],
-        'LastDownsample' => [
-            'name' => 'LastDownsample',
+        'DescribeOneDataPoint' => [
+            'name' => 'DescribeOneDataPoint',
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/v2/regions/{regionId}/metrics/{metric}/lastDownsample',
             ],
-            'input' => [ 'shape' => 'LastDownsampleRequestShape', ],
-            'output' => [ 'shape' => 'LastDownsampleResponseShape', ],
+            'input' => [ 'shape' => 'DescribeOneDataPointRequestShape', ],
+            'output' => [ 'shape' => 'DescribeOneDataPointResponseShape', ],
         ],
         'DescribeMetricData' => [
             'name' => 'DescribeMetricData',
@@ -145,6 +145,15 @@ return [
             ],
             'input' => [ 'shape' => 'PutMetricDataRequestShape', ],
             'output' => [ 'shape' => 'PutMetricDataResponseShape', ],
+        ],
+        'PutCustomMetricData' => [
+            'name' => 'PutCustomMetricData',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/customMetrics',
+            ],
+            'input' => [ 'shape' => 'PutCustomMetricDataRequestShape', ],
+            'output' => [ 'shape' => 'PutCustomMetricDataResponseShape', ],
         ],
     ],
     'shapes' => [
@@ -200,6 +209,33 @@ return [
                 'levels' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'double', ], ],
             ],
         ],
+        'AlertResource' => [
+            'type' => 'structure',
+            'members' => [
+                'alertCount' => [ 'type' => 'long', 'locationName' => 'alertCount', ],
+                'product' => [ 'type' => 'string', 'locationName' => 'product', ],
+                'productName' => [ 'type' => 'string', 'locationName' => 'productName', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+            ],
+        ],
+        'Annotation' => [
+            'type' => 'structure',
+            'members' => [
+                'custom' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'endTime' => [ 'type' => 'long', 'locationName' => 'endTime', ],
+                'notes' => [ 'type' => 'string', 'locationName' => 'notes', ],
+                'startTime' => [ 'type' => 'long', 'locationName' => 'startTime', ],
+                'tsuid' => [ 'type' => 'string', 'locationName' => 'tsuid', ],
+            ],
+        ],
+        'Attrs' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'BaseRule' => [
             'type' => 'structure',
             'members' => [
@@ -236,6 +272,33 @@ return [
                 'tags' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
                 'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
                 'times' => [ 'type' => 'long', 'locationName' => 'times', ],
+            ],
+        ],
+        'BasicCustomRule' => [
+            'type' => 'structure',
+            'members' => [
+                'calculation' => [ 'type' => 'string', 'locationName' => 'calculation', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'noticeLevel' =>  [ 'shape' => 'NoticeLevel', ],
+                'operation' => [ 'type' => 'string', 'locationName' => 'operation', ],
+                'period' => [ 'type' => 'long', 'locationName' => 'period', ],
+                'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
+                'times' => [ 'type' => 'long', 'locationName' => 'times', ],
+            ],
+        ],
+        'BasicDatasource' => [
+            'type' => 'structure',
+            'members' => [
+                'opentsdbExtend' =>  [ 'shape' => 'OpentsdbExtend', ],
+                'pluginType' => [ 'type' => 'string', 'locationName' => 'pluginType', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+            ],
+        ],
+        'OpentsdbExtend' => [
+            'type' => 'structure',
+            'members' => [
+                'jdcloudDatasourceType' => [ 'type' => 'string', 'locationName' => 'jdcloudDatasourceType', ],
+                'jdcloudTsdbToken' => [ 'type' => 'string', 'locationName' => 'jdcloudTsdbToken', ],
             ],
         ],
         'BasicRule' => [
@@ -377,6 +440,27 @@ return [
                 'tags' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
             ],
         ],
+        'CloudMonitorAccessList' => [
+            'type' => 'structure',
+            'members' => [
+                'allowedAll' => [ 'type' => 'boolean', 'locationName' => 'allowedAll', ],
+                'serviceCodes' => [ 'type' => 'list', 'member' => [ 'shape' => 'CloudMonitorServiceCodeItem', ], ],
+            ],
+        ],
+        'CloudMonitorServiceCodeItem' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+            ],
+        ],
+        'CloudMonitorOption' => [
+            'type' => 'structure',
+            'members' => [
+                'controllerType' => [ 'type' => 'long', 'locationName' => 'controllerType', ],
+                'serviceCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'CmAlarm' => [
             'type' => 'structure',
             'members' => [
@@ -440,6 +524,13 @@ return [
                 'value' => [ 'type' => 'double', 'locationName' => 'value', ],
             ],
         ],
+        'Contact' => [
+            'type' => 'structure',
+            'members' => [
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+            ],
+        ],
         'WebHookOption' => [
             'type' => 'structure',
             'members' => [
@@ -452,6 +543,7 @@ return [
         'CreateAlarmSpec' => [
             'type' => 'structure',
             'members' => [
+                'autoScalingPolicyId' => [ 'type' => 'string', 'locationName' => 'autoScalingPolicyId', ],
                 'baseContact' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseContact', ], ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
                 'dimension' => [ 'type' => 'string', 'locationName' => 'dimension', ],
@@ -536,17 +628,84 @@ return [
                 'times' => [ 'type' => 'long', 'locationName' => 'times', ],
             ],
         ],
+        'DimensionsParam' => [
+            'type' => 'structure',
+            'members' => [
+                'groupBy' => [ 'type' => 'boolean', 'locationName' => 'groupBy', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'CreateCustomAlarmParam' => [
+            'type' => 'structure',
+            'members' => [
+                'aggrType' => [ 'type' => 'string', 'locationName' => 'aggrType', ],
+                'baseContact' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseContact', ], ],
+                'dimensions' => [ 'type' => 'list', 'member' => [ 'shape' => 'DimensionsParam', ], ],
+                'enabled' => [ 'type' => 'long', 'locationName' => 'enabled', ],
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
+                'noticeOption' => [ 'type' => 'list', 'member' => [ 'shape' => 'NoticeOption', ], ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
+                'ruleOption' => [ 'type' => 'list', 'member' => [ 'shape' => 'BasicCustomRule', ], ],
+                'webHookOption' =>  [ 'shape' => 'WebHookOption', ],
+            ],
+        ],
         'CreateCmAlarmSpec' => [
             'type' => 'structure',
             'members' => [
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'createCmAlarmSpec' =>  [ 'shape' => 'CreateCmAlarmParam', ],
+                'createCmAlarmSpec' =>  [ 'shape' => 'CreateCustomAlarmParam', ],
+            ],
+        ],
+        'QueryOptionCreate' => [
+            'type' => 'structure',
+            'members' => [
+                'aggrType' => [ 'type' => 'string', 'locationName' => 'aggrType', ],
+                'dimensions' => [ 'type' => 'list', 'member' => [ 'shape' => 'DimensionsParam', ], ],
+                'downSampleType' => [ 'type' => 'string', 'locationName' => 'downSampleType', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+            ],
+        ],
+        'CreateCustomQuerySpec' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
+                'queryOption' =>  [ 'shape' => 'QueryOptionCreate', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'CreateDashboardSpec' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'CreateDynamicSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'dynamicDetailCN' => [ 'type' => 'string', 'locationName' => 'dynamicDetailCN', ],
+                'dynamicDetailEN' => [ 'type' => 'string', 'locationName' => 'dynamicDetailEN', ],
+                'dynamicType' => [ 'type' => 'long', 'locationName' => 'dynamicType', ],
+                'dynamicUrl' => [ 'type' => 'string', 'locationName' => 'dynamicUrl', ],
+            ],
+        ],
+        'CreateGrafanaDashboardSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'folderId' => [ 'type' => 'long', 'locationName' => 'folderId', ],
+                'params' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+            ],
+        ],
+        'CreateGrafanaFolderReq' => [
+            'type' => 'structure',
+            'members' => [
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
             ],
         ],
         'CreateTemplateRequestV2' => [
@@ -595,6 +754,76 @@ return [
                 'widgetId' => [ 'type' => 'string', 'locationName' => 'widgetId', ],
             ],
         ],
+        'CustomMetricStatus' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'long', 'locationName' => 'count', ],
+                'namespaceCount' => [ 'type' => 'long', 'locationName' => 'namespaceCount', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'DescribeQueryOption' => [
+            'type' => 'structure',
+            'members' => [
+                'aggrType' => [ 'type' => 'string', 'locationName' => 'aggrType', ],
+                'dimensions' => [ 'type' => 'list', 'member' => [ 'shape' => 'DimensionParamDetail', ], ],
+                'downSampleType' => [ 'type' => 'string', 'locationName' => 'downSampleType', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'metricName' => [ 'type' => 'string', 'locationName' => 'metricName', ],
+            ],
+        ],
+        'CustomQuery' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
+                'namespaceName' => [ 'type' => 'string', 'locationName' => 'namespaceName', ],
+                'query' =>  [ 'shape' => 'DescribeQueryOption', ],
+                'queryUuid' => [ 'type' => 'string', 'locationName' => 'queryUuid', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+            ],
+        ],
+        'DimensionParamDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'groupBy' => [ 'type' => 'boolean', 'locationName' => 'groupBy', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'CustomReportDetailsInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'metricCount' => [ 'type' => 'long', 'locationName' => 'metricCount', ],
+                'namespaceName' => [ 'type' => 'string', 'locationName' => 'namespaceName', ],
+                'namespaceUid' => [ 'type' => 'string', 'locationName' => 'namespaceUid', ],
+                'objectCount' => [ 'type' => 'long', 'locationName' => 'objectCount', ],
+                'reportInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'NsReportInfo', ], ],
+            ],
+        ],
+        'NsReportInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'dimensions' => [ 'type' => 'object', 'locationName' => 'dimensions', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+            ],
+        ],
+        'CustomRuleDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'calculateUnit' => [ 'type' => 'string', 'locationName' => 'calculateUnit', ],
+                'calculation' => [ 'type' => 'string', 'locationName' => 'calculation', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'metricName' => [ 'type' => 'string', 'locationName' => 'metricName', ],
+                'noticeLevel' =>  [ 'shape' => 'NoticeLevel', ],
+                'operation' => [ 'type' => 'string', 'locationName' => 'operation', ],
+                'period' => [ 'type' => 'long', 'locationName' => 'period', ],
+                'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
+                'times' => [ 'type' => 'long', 'locationName' => 'times', ],
+            ],
+        ],
         'Dashboard' => [
             'type' => 'structure',
             'members' => [
@@ -607,7 +836,42 @@ return [
                 'widgetCount' => [ 'type' => 'long', 'locationName' => 'widgetCount', ],
             ],
         ],
+        'DashboardInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'timezone' => [ 'type' => 'string', 'locationName' => 'timezone', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'uid' => [ 'type' => 'string', 'locationName' => 'uid', ],
+                'version' => [ 'type' => 'long', 'locationName' => 'version', ],
+            ],
+        ],
+        'DataInfoB' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'DataMappingB' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'instanceStatus' => [ 'type' => 'string', 'locationName' => 'instanceStatus', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+            ],
+        ],
         'DataPoint' => [
+            'type' => 'structure',
+            'members' => [
+                'timestamp' => [ 'type' => 'long', 'locationName' => 'timestamp', ],
+                'value' => [ 'type' => 'object', 'locationName' => 'value', ],
+            ],
+        ],
+        'DataPointByTag' => [
             'type' => 'structure',
             'members' => [
                 'timestamp' => [ 'type' => 'long', 'locationName' => 'timestamp', ],
@@ -631,6 +895,48 @@ return [
                 'tagValue' => [ 'type' => 'string', 'locationName' => 'tagValue', ],
             ],
         ],
+        'Datasource' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'opentsdbExtend' =>  [ 'shape' => 'OpentsdbExtend', ],
+                'pluginType' => [ 'type' => 'string', 'locationName' => 'pluginType', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+            ],
+        ],
+        'DatasourceDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'datasourceId' => [ 'type' => 'uint64', 'locationName' => 'datasourceId', ],
+                'isDefault' => [ 'type' => 'boolean', 'locationName' => 'isDefault', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'opentsdbExtend' =>  [ 'shape' => 'OpentsdbExtend', ],
+                'orgId' => [ 'type' => 'uint64', 'locationName' => 'orgId', ],
+                'pluginType' => [ 'type' => 'string', 'locationName' => 'pluginType', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+            ],
+        ],
+        'DatasourceToken' => [
+            'type' => 'structure',
+            'members' => [
+                'arkNode' => [ 'type' => 'string', 'locationName' => 'arkNode', ],
+                'cloudMonitorOption' =>  [ 'shape' => 'CloudMonitorOption', ],
+                'datasourceType' => [ 'type' => 'string', 'locationName' => 'datasourceType', ],
+                'orgId' => [ 'type' => 'uint64', 'locationName' => 'orgId', ],
+            ],
+        ],
+        'DateAlertCount' => [
+            'type' => 'structure',
+            'members' => [
+                'alertCount' => [ 'type' => 'long', 'locationName' => 'alertCount', ],
+                'date' => [ 'type' => 'string', 'locationName' => 'date', ],
+            ],
+        ],
+        'DeepLogOption' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DeleteAlarmsSpec' => [
             'type' => 'structure',
             'members' => [
@@ -644,10 +950,40 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'DeleteDashboardsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'DeleteDataBackSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DeleteGrafanaDashboardsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'DeleteGrafanaTemplatesSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
         'DeleteTemplateResponseEnd' => [
             'type' => 'structure',
             'members' => [
                 'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'DeleteTemplateSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
             ],
         ],
         'NoticeReceiver' => [
@@ -658,6 +994,24 @@ return [
                 'personId' => [ 'type' => 'long', 'locationName' => 'personId', ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+            ],
+        ],
+        'DescribeAlarmHistoryDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
+                'dimension' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'durationTimes' => [ 'type' => 'long', 'locationName' => 'durationTimes', ],
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
+                'namespaceName' => [ 'type' => 'string', 'locationName' => 'namespaceName', ],
+                'noticeDurationTime' => [ 'type' => 'long', 'locationName' => 'noticeDurationTime', ],
+                'noticeLevelTriggered' => [ 'type' => 'string', 'locationName' => 'noticeLevelTriggered', ],
+                'noticeTime' => [ 'type' => 'string', 'locationName' => 'noticeTime', ],
+                'receivers' => [ 'type' => 'list', 'member' => [ 'shape' => 'NoticeReceiver', ], ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'rule' =>  [ 'shape' => 'CustomRuleDetail', ],
+                'status' => [ 'type' => 'long', 'locationName' => 'status', ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
             ],
         ],
         'DescribeAlarmHistoryResponseEnd' => [
@@ -678,9 +1032,11 @@ return [
                 'noticeLevel' => [ 'type' => 'string', 'locationName' => 'noticeLevel', ],
                 'noticeLevelTriggered' => [ 'type' => 'string', 'locationName' => 'noticeLevelTriggered', ],
                 'noticeTime' => [ 'type' => 'string', 'locationName' => 'noticeTime', ],
+                'noticeTimeUnix' => [ 'type' => 'long', 'locationName' => 'noticeTimeUnix', ],
                 'product' => [ 'type' => 'string', 'locationName' => 'product', ],
                 'productName' => [ 'type' => 'string', 'locationName' => 'productName', ],
                 'receivers' => [ 'type' => 'list', 'member' => [ 'shape' => 'NoticeReceiver', ], ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'rule' =>  [ 'shape' => 'BasicRuleDetail', ],
                 'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
@@ -697,6 +1053,85 @@ return [
                 'metricUID' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
+            ],
+        ],
+        'DescribeCustomAlarmDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'aggrType' => [ 'type' => 'string', 'locationName' => 'aggrType', ],
+                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
+                'alarmStatus' => [ 'type' => 'long', 'locationName' => 'alarmStatus', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'dimensions' => [ 'type' => 'list', 'member' => [ 'shape' => 'DimensionParamDetail', ], ],
+                'dimensionsText' => [ 'type' => 'string', 'locationName' => 'dimensionsText', ],
+                'enabled' => [ 'type' => 'long', 'locationName' => 'enabled', ],
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
+                'namespaceName' => [ 'type' => 'string', 'locationName' => 'namespaceName', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
+                'ruleOption' => [ 'type' => 'list', 'member' => [ 'shape' => 'CustomRuleDetail', ], ],
+                'ruleVersion' => [ 'type' => 'string', 'locationName' => 'ruleVersion', ],
+            ],
+        ],
+        'DescribeCustomMetricDataSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'query' =>  [ 'shape' => 'QueryOption', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
+            ],
+        ],
+        'QueryOption' => [
+            'type' => 'structure',
+            'members' => [
+                'aggrType' => [ 'type' => 'string', 'locationName' => 'aggrType', ],
+                'dimensions' => [ 'type' => 'list', 'member' => [ 'shape' => 'DimensionsParam', ], ],
+                'downSampleType' => [ 'type' => 'string', 'locationName' => 'downSampleType', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+            ],
+        ],
+        'DescribeDashboardsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'DescribeDatasourceEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'datasourceId' => [ 'type' => 'uint64', 'locationName' => 'datasourceId', ],
+                'isDefault' => [ 'type' => 'boolean', 'locationName' => 'isDefault', ],
+                'jsonData' => [ 'type' => 'object', 'locationName' => 'jsonData', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'orgId' => [ 'type' => 'uint64', 'locationName' => 'orgId', ],
+                'pluginType' => [ 'type' => 'string', 'locationName' => 'pluginType', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+            ],
+        ],
+        'DescribeDatasourcesEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'datasources' => [ 'type' => 'list', 'member' => [ 'shape' => 'DescribeDatasourceEnd', ], ],
+            ],
+        ],
+        'DescribeGrafanaDashboardsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'DescribeGrafanaTemplatesSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'templateType' => [ 'type' => 'long', 'locationName' => 'templateType', ],
             ],
         ],
         'RuleOptionDetail' => [
@@ -742,6 +1177,12 @@ return [
                 'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
             ],
         ],
+        'DescribeMetricsByNameSpaceSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+            ],
+        ],
         'DescribeMetricsForCreateAlarmEnd' => [
             'type' => 'structure',
             'members' => [
@@ -766,9 +1207,66 @@ return [
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
             ],
         ],
+        'DescribeMonitorNamespacesSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
+            ],
+        ],
+        'DescribeOrgsEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'orgs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Org', ], ],
+            ],
+        ],
+        'Org' => [
+            'type' => 'structure',
+            'members' => [
+                'arkName' => [ 'type' => 'string', 'locationName' => 'arkName', ],
+                'orgId' => [ 'type' => 'uint64', 'locationName' => 'orgId', ],
+                'orgName' => [ 'type' => 'string', 'locationName' => 'orgName', ],
+            ],
+        ],
+        'DescribeResourceMonitorStatusOut' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceMonitorStatus' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceMonitorStatus', ], ],
+            ],
+        ],
+        'ResourceMonitorStatus' => [
+            'type' => 'structure',
+            'members' => [
+                'product' => [ 'type' => 'string', 'locationName' => 'product', ],
+                'productName' => [ 'type' => 'string', 'locationName' => 'productName', ],
+                'resourceCount' => [ 'type' => 'long', 'locationName' => 'resourceCount', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'DescribeTagKeysByMetricSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'dimensionKey' => [ 'type' => 'string', 'locationName' => 'dimensionKey', ],
+            ],
+        ],
+        'DescribeTagValuesByTagKeySpec' => [
+            'type' => 'structure',
+            'members' => [
+                'dimensionValue' => [ 'type' => 'string', 'locationName' => 'dimensionValue', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+            ],
+        ],
         'DescribeTemplateByIDSpec' => [
             'type' => 'structure',
             'members' => [
+                'templateType' => [ 'type' => 'long', 'locationName' => 'templateType', ],
+            ],
+        ],
+        'DescribeTemplateSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
                 'templateType' => [ 'type' => 'long', 'locationName' => 'templateType', ],
             ],
         ],
@@ -805,6 +1303,28 @@ return [
                 'templateList' => [ 'type' => 'list', 'member' => [ 'shape' => 'TemplateVo', ], ],
             ],
         ],
+        'DescribeTokenEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'accessToken' => [ 'type' => 'string', 'locationName' => 'accessToken', ],
+                'ark' => [ 'type' => 'string', 'locationName' => 'ark', ],
+                'cloudMonitorOption' =>  [ 'shape' => 'CloudMonitorOption', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'datasourceType' => [ 'type' => 'string', 'locationName' => 'datasourceType', ],
+                'orgId' => [ 'type' => 'long', 'locationName' => 'orgId', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'DescribeTokensEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
+                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'tokens' => [ 'type' => 'list', 'member' => [ 'shape' => 'DescribeTokenEnd', ], ],
+            ],
+        ],
         'DescribeTopNSlowSqlSpec' => [
             'type' => 'structure',
             'members' => [
@@ -814,6 +1334,21 @@ return [
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
                 'topN' => [ 'type' => 'long', 'locationName' => 'topN', ],
+            ],
+        ],
+        'OrgUser' => [
+            'type' => 'structure',
+            'members' => [
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'login' => [ 'type' => 'string', 'locationName' => 'login', ],
+                'orgId' => [ 'type' => 'uint64', 'locationName' => 'orgId', ],
+                'role' => [ 'type' => 'string', 'locationName' => 'role', ],
+            ],
+        ],
+        'DescribeUsersEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'users' => [ 'type' => 'list', 'member' => [ 'shape' => 'OrgUser', ], ],
             ],
         ],
         'DescribedAlarm' => [
@@ -852,6 +1387,14 @@ return [
                 'referenceType' => [ 'type' => 'long', 'locationName' => 'referenceType', ],
             ],
         ],
+        'DetailAPIB' => [
+            'type' => 'structure',
+            'members' => [
+                'api' => [ 'type' => 'string', 'locationName' => 'api', ],
+                'query' => [ 'type' => 'object', 'locationName' => 'query', ],
+                'root' => [ 'type' => 'string', 'locationName' => 'root', ],
+            ],
+        ],
         'Dimension' => [
             'type' => 'structure',
             'members' => [
@@ -860,6 +1403,20 @@ return [
                 'isNode' => [ 'type' => 'boolean', 'locationName' => 'isNode', ],
                 'tagServiceCode' => [ 'type' => 'string', 'locationName' => 'tagServiceCode', ],
                 'tags' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+            ],
+        ],
+        'Dynamic' => [
+            'type' => 'structure',
+            'members' => [
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'dynamicDetail' => [ 'type' => 'string', 'locationName' => 'dynamicDetail', ],
+                'dynamicDetailCN' => [ 'type' => 'string', 'locationName' => 'dynamicDetailCN', ],
+                'dynamicDetailEN' => [ 'type' => 'string', 'locationName' => 'dynamicDetailEN', ],
+                'dynamicStatus' => [ 'type' => 'long', 'locationName' => 'dynamicStatus', ],
+                'dynamicType' => [ 'type' => 'long', 'locationName' => 'dynamicType', ],
+                'dynamicUrl' => [ 'type' => 'string', 'locationName' => 'dynamicUrl', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'uuid' => [ 'type' => 'string', 'locationName' => 'uuid', ],
             ],
         ],
         'EnableAlarmsSpec' => [
@@ -882,6 +1439,13 @@ return [
             'members' => [
                 'errMetricData' => [ 'type' => 'string', 'locationName' => 'errMetricData', ],
                 'errDetail' => [ 'type' => 'string', 'locationName' => 'errDetail', ],
+            ],
+        ],
+        'FolderInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
             ],
         ],
         'GetWidgetDataPointsSpec' => [
@@ -984,6 +1548,18 @@ return [
                 'prefixMetric' => [ 'type' => 'string', 'locationName' => 'prefixMetric', ],
             ],
         ],
+        'KeyInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
+            ],
+        ],
+        'HawkeyeOption' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'KeyValue' => [
             'type' => 'structure',
             'members' => [
@@ -997,6 +1573,7 @@ return [
                 'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'tags' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
                 'value' => [ 'type' => 'object', 'locationName' => 'value', ],
             ],
         ],
@@ -1007,11 +1584,27 @@ return [
                 'linkPolicyUuid' => [ 'type' => 'string', 'locationName' => 'linkPolicyUuid', ],
             ],
         ],
+        'ListAPIB' => [
+            'type' => 'structure',
+            'members' => [
+                'api' => [ 'type' => 'string', 'locationName' => 'api', ],
+                'query' => [ 'type' => 'object', 'locationName' => 'query', ],
+                'root' => [ 'type' => 'string', 'locationName' => 'root', ],
+                'totalCount' => [ 'type' => 'string', 'locationName' => 'totalCount', ],
+            ],
+        ],
         'Location' => [
             'type' => 'structure',
             'members' => [
                 'sloc' => [ 'type' => 'string', 'locationName' => 'sloc', ],
                 'slocName' => [ 'type' => 'string', 'locationName' => 'slocName', ],
+            ],
+        ],
+        'LvInfoB' => [
+            'type' => 'structure',
+            'members' => [
+                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'MaintainAuxiliaryTags' => [
@@ -1037,6 +1630,18 @@ return [
             ],
         ],
         'MetricCm' => [
+            'type' => 'structure',
+            'members' => [
+                'aggrType' => [ 'type' => 'string', 'locationName' => 'aggrType', ],
+                'calculateUnit' => [ 'type' => 'string', 'locationName' => 'calculateUnit', ],
+                'dimensions' => [ 'type' => 'object', 'locationName' => 'dimensions', ],
+                'downSamplePeriod' => [ 'type' => 'string', 'locationName' => 'downSamplePeriod', ],
+                'downSampleType' => [ 'type' => 'string', 'locationName' => 'downSampleType', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'metricName' => [ 'type' => 'string', 'locationName' => 'metricName', ],
+            ],
+        ],
+        'MetricCmByTag' => [
             'type' => 'structure',
             'members' => [
                 'aggrPeriod' => [ 'type' => 'string', 'locationName' => 'aggrPeriod', ],
@@ -1083,21 +1688,26 @@ return [
                 'metric' =>  [ 'shape' => 'MetricCm', ],
             ],
         ],
+        'MetricDataItemCmByTag' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataPointByTag', ], ],
+                'metric' =>  [ 'shape' => 'MetricCmByTag', ],
+            ],
+        ],
         'MetricInfo' => [
             'type' => 'structure',
             'members' => [
                 'calculateUnit' => [ 'type' => 'string', 'locationName' => 'calculateUnit', ],
                 'metricName' => [ 'type' => 'string', 'locationName' => 'metricName', ],
-                'metricUid' => [ 'type' => 'string', 'locationName' => 'metricUid', ],
+                'metricUID' => [ 'type' => 'string', 'locationName' => 'metricUID', ],
             ],
         ],
         'NsInfo' => [
             'type' => 'structure',
             'members' => [
-                'metricCount' => [ 'type' => 'long', 'locationName' => 'metricCount', ],
-                'nsName' => [ 'type' => 'string', 'locationName' => 'nsName', ],
-                'nsUid' => [ 'type' => 'string', 'locationName' => 'nsUid', ],
-                'objCount' => [ 'type' => 'long', 'locationName' => 'objCount', ],
+                'namespaceName' => [ 'type' => 'string', 'locationName' => 'namespaceName', ],
+                'namespaceUuid' => [ 'type' => 'string', 'locationName' => 'namespaceUuid', ],
             ],
         ],
         'ObjInfo' => [
@@ -1106,6 +1716,42 @@ return [
                 'metrics' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'objName' => [ 'type' => 'string', 'locationName' => 'objName', ],
                 'objUid' => [ 'type' => 'string', 'locationName' => 'objUid', ],
+            ],
+        ],
+        'OnlineDynamicSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'online' => [ 'type' => 'long', 'locationName' => 'online', ],
+            ],
+        ],
+        'OptionsB' => [
+            'type' => 'structure',
+            'members' => [
+                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
+                'map' => [ 'type' => 'string', 'locationName' => 'map', ],
+                'optionType' => [ 'type' => 'object', 'locationName' => 'optionType', ],
+                'unix' => [ 'type' => 'boolean', 'locationName' => 'unix', ],
+            ],
+        ],
+        'Pagination' => [
+            'type' => 'structure',
+            'members' => [
+                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
+                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'ParamInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'isMulti' => [ 'type' => 'boolean', 'locationName' => 'isMulti', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'optional' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'paramType' => [ 'type' => 'string', 'locationName' => 'paramType', ],
+                'required' => [ 'type' => 'boolean', 'locationName' => 'required', ],
+                'valueType' => [ 'type' => 'string', 'locationName' => 'valueType', ],
             ],
         ],
         'Product' => [
@@ -1119,6 +1765,115 @@ return [
                 'tags' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
             ],
         ],
+        'ProductAlertStatistics' => [
+            'type' => 'structure',
+            'members' => [
+                'alertCount' => [ 'type' => 'long', 'locationName' => 'alertCount', ],
+                'product' => [ 'type' => 'string', 'locationName' => 'product', ],
+                'productName' => [ 'type' => 'string', 'locationName' => 'productName', ],
+            ],
+        ],
+        'ProductB' => [
+            'type' => 'structure',
+            'members' => [
+                'attrs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Attrs', ], ],
+                'detailApi' =>  [ 'shape' => 'DetailAPIB', ],
+                'detailLink' => [ 'type' => 'string', 'locationName' => 'detailLink', ],
+                'enableSwitchAggregates' => [ 'type' => 'boolean', 'locationName' => 'enableSwitchAggregates', ],
+                'listFilter' => [ 'type' => 'object', 'locationName' => 'listFilter', ],
+                'productCode' => [ 'type' => 'string', 'locationName' => 'productCode', ],
+                'productName' => [ 'type' => 'string', 'locationName' => 'productName', ],
+                'productNameCn' => [ 'type' => 'string', 'locationName' => 'productNameCn', ],
+                'productNameEn' => [ 'type' => 'string', 'locationName' => 'productNameEn', ],
+                'specialRequirements' => [ 'type' => 'boolean', 'locationName' => 'specialRequirements', ],
+            ],
+        ],
+        'ProductLine' => [
+            'type' => 'structure',
+            'members' => [
+                'productLineCode' => [ 'type' => 'string', 'locationName' => 'productLineCode', ],
+                'productLineName' => [ 'type' => 'string', 'locationName' => 'productLineName', ],
+                'productLineNameCn' => [ 'type' => 'string', 'locationName' => 'productLineNameCn', ],
+                'productLineNameEn' => [ 'type' => 'string', 'locationName' => 'productLineNameEn', ],
+                'serviceCodes' => [ 'type' => 'list', 'member' => [ 'shape' => 'ServiceInfoB', ], ],
+            ],
+        ],
+        'ServiceInfoB' => [
+            'type' => 'structure',
+            'members' => [
+                'dataMapping' =>  [ 'shape' => 'DataMappingB', ],
+                'filters' => [ 'type' => 'object', 'locationName' => 'filters', ],
+                'ipv4Regions' => [ 'type' => 'list', 'member' => [ 'shape' => 'LvInfoB', ], ],
+                'ipv6Regions' => [ 'type' => 'list', 'member' => [ 'shape' => 'LvInfoB', ], ],
+                'listApi' =>  [ 'shape' => 'ListAPIB', ],
+                'products' => [ 'type' => 'list', 'member' => [ 'shape' => 'ProductB', ], ],
+                'search' => [ 'type' => 'list', 'member' => [ 'shape' => 'SearchB', ], ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'serviceNameCn' => [ 'type' => 'string', 'locationName' => 'serviceNameCn', ],
+                'serviceNameEn' => [ 'type' => 'string', 'locationName' => 'serviceNameEn', ],
+                'status' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatusB', ], ],
+                'tableColumns' => [ 'type' => 'list', 'member' => [ 'shape' => 'TableColumnB', ], ],
+            ],
+        ],
+        'StatusB' => [
+            'type' => 'structure',
+            'members' => [
+                'color' => [ 'type' => 'string', 'locationName' => 'color', ],
+                'immediate' => [ 'type' => 'boolean', 'locationName' => 'immediate', ],
+                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'SearchB' => [
+            'type' => 'structure',
+            'members' => [
+                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
+                'placeholder' => [ 'type' => 'string', 'locationName' => 'placeholder', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'TableColumnB' => [
+            'type' => 'structure',
+            'members' => [
+                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
+                'link' => [ 'type' => 'boolean', 'locationName' => 'link', ],
+                'options' => [ 'type' => 'list', 'member' => [ 'shape' => 'OptionsB', ], ],
+                'prop' => [ 'type' => 'string', 'locationName' => 'prop', ],
+            ],
+        ],
+        'ProductLineSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'productLineCode' => [ 'type' => 'string', 'locationName' => 'productLineCode', ],
+                'productLineNameCn' => [ 'type' => 'string', 'locationName' => 'productLineNameCn', ],
+                'productLineNameEn' => [ 'type' => 'string', 'locationName' => 'productLineNameEn', ],
+                'serviceCodes' => [ 'type' => 'list', 'member' => [ 'shape' => 'ServiceInfoCreateB', ], ],
+            ],
+        ],
+        'ServiceInfoCreateB' => [
+            'type' => 'structure',
+            'members' => [
+                'dataMapping' =>  [ 'shape' => 'DataMappingB', ],
+                'filters' => [ 'type' => 'object', 'locationName' => 'filters', ],
+                'ipv4Regions' => [ 'type' => 'list', 'member' => [ 'shape' => 'LvInfoB', ], ],
+                'ipv6Regions' => [ 'type' => 'list', 'member' => [ 'shape' => 'LvInfoB', ], ],
+                'listApi' =>  [ 'shape' => 'ListAPIB', ],
+                'products' => [ 'type' => 'list', 'member' => [ 'shape' => 'ProductB', ], ],
+                'search' => [ 'type' => 'list', 'member' => [ 'shape' => 'SearchB', ], ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'serviceNameCn' => [ 'type' => 'string', 'locationName' => 'serviceNameCn', ],
+                'serviceNameEn' => [ 'type' => 'string', 'locationName' => 'serviceNameEn', ],
+                'status' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatusB', ], ],
+                'tableColumns' => [ 'type' => 'list', 'member' => [ 'shape' => 'TableColumnB', ], ],
+            ],
+        ],
+        'PrometheusExtend' => [
+            'type' => 'structure',
+            'members' => [
+                'jdcloudTsdbToken' => [ 'type' => 'string', 'locationName' => 'jdcloudTsdbToken', ],
+            ],
+        ],
         'PutBody' => [
             'type' => 'structure',
             'members' => [
@@ -1127,6 +1882,12 @@ return [
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'dataPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataPointX', ], ],
+            ],
+        ],
+        'PutDataBackSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'dataInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataInfoB', ], ],
             ],
         ],
         'SqlDataPoint' => [
@@ -1149,12 +1910,31 @@ return [
                 'sqlstr' => [ 'type' => 'string', 'locationName' => 'sqlstr', ],
             ],
         ],
+        'QueryResponseItem' => [
+            'type' => 'structure',
+            'members' => [
+                'aggregateTags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'annotations' => [ 'type' => 'list', 'member' => [ 'shape' => 'Annotation', ], ],
+                'dps' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'globalAnnotations' => [ 'type' => 'list', 'member' => [ 'shape' => 'Annotation', ], ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'tags' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+            ],
+        ],
         'Resource' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+            ],
+        ],
+        'RuleCount' => [
+            'type' => 'structure',
+            'members' => [
+                'alarmRuleCount' => [ 'type' => 'long', 'locationName' => 'alarmRuleCount', ],
+                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
+                'unknownRuleCount' => [ 'type' => 'long', 'locationName' => 'unknownRuleCount', ],
             ],
         ],
         'RuleCounting' => [
@@ -1209,6 +1989,22 @@ return [
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'ruleCount' => [ 'type' => 'long', 'locationName' => 'ruleCount', ],
                 'state' => [ 'type' => 'long', 'locationName' => 'state', ],
+            ],
+        ],
+        'SendEmailSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'contacts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Contact', ], ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+            ],
+        ],
+        'SendSmsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'contacts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Contact', ], ],
+                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+                'templateParam' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'ServiceInfo' => [
@@ -1269,6 +2065,39 @@ return [
                 'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
                 'metricName' => [ 'type' => 'string', 'locationName' => 'metricName', ],
                 'tags' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+            ],
+        ],
+        'SwitchCustomAlarmsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'alarmIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'state' => [ 'type' => 'long', 'locationName' => 'state', ],
+            ],
+        ],
+        'TemplateInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'deleted' => [ 'type' => 'long', 'locationName' => 'deleted', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'params' => [ 'type' => 'list', 'member' => [ 'shape' => 'ParamInfo', ], ],
+                'templateAddr' => [ 'type' => 'string', 'locationName' => 'templateAddr', ],
+                'templateType' => [ 'type' => 'long', 'locationName' => 'templateType', ],
+                'templateUid' => [ 'type' => 'string', 'locationName' => 'templateUid', ],
+                'thumbnailAddr' => [ 'type' => 'string', 'locationName' => 'thumbnailAddr', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'TemplateParam' => [
+            'type' => 'structure',
+            'members' => [
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'params' => [ 'type' => 'list', 'member' => [ 'shape' => 'ParamInfo', ], ],
+                'tags' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'templateAddr' => [ 'type' => 'string', 'locationName' => 'templateAddr', ],
+                'thumbnailAddr' => [ 'type' => 'string', 'locationName' => 'thumbnailAddr', ],
             ],
         ],
         'TemplateRulesVo' => [
@@ -1356,6 +2185,7 @@ return [
         'UpdateAlarmSpec' => [
             'type' => 'structure',
             'members' => [
+                'autoScalingPolicyId' => [ 'type' => 'string', 'locationName' => 'autoScalingPolicyId', ],
                 'baseContact' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseContact', ], ],
                 'dimension' => [ 'type' => 'string', 'locationName' => 'dimension', ],
                 'enabled' => [ 'type' => 'long', 'locationName' => 'enabled', ],
@@ -1372,18 +2202,25 @@ return [
         'UpdateCmAlarmSpec' => [
             'type' => 'structure',
             'members' => [
-                'calculation' => [ 'type' => 'string', 'locationName' => 'calculation', ],
-                'contactGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'contactPersons' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'downSample' => [ 'type' => 'string', 'locationName' => 'downSample', ],
-                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
-                'noticePeriod' => [ 'type' => 'long', 'locationName' => 'noticePeriod', ],
-                'operation' => [ 'type' => 'string', 'locationName' => 'operation', ],
-                'period' => [ 'type' => 'long', 'locationName' => 'period', ],
+                'aggrType' => [ 'type' => 'string', 'locationName' => 'aggrType', ],
+                'baseContact' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseContact', ], ],
+                'dimensions' => [ 'type' => 'list', 'member' => [ 'shape' => 'DimensionsParam', ], ],
+                'enabled' => [ 'type' => 'long', 'locationName' => 'enabled', ],
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
+                'noticeOption' => [ 'type' => 'list', 'member' => [ 'shape' => 'NoticeOption', ], ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
-                'times' => [ 'type' => 'long', 'locationName' => 'times', ],
+                'ruleOption' => [ 'type' => 'list', 'member' => [ 'shape' => 'BasicCustomRule', ], ],
+                'webHookOption' =>  [ 'shape' => 'WebHookOption', ],
+            ],
+        ],
+        'UpdateCustomQuerySpec' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
+                'queryOption' =>  [ 'shape' => 'QueryOption', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'UpdateDashboardSpec' => [
@@ -1392,6 +2229,36 @@ return [
                 'dashboardId' => [ 'type' => 'string', 'locationName' => 'dashboardId', ],
                 'focused' => [ 'type' => 'string', 'locationName' => 'focused', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'UpdateDataBackSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'dataInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataInfoB', ], ],
+            ],
+        ],
+        'UpdateDynamicSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'dynamicDetailCN' => [ 'type' => 'string', 'locationName' => 'dynamicDetailCN', ],
+                'dynamicDetailEN' => [ 'type' => 'string', 'locationName' => 'dynamicDetailEN', ],
+                'dynamicType' => [ 'type' => 'long', 'locationName' => 'dynamicType', ],
+                'dynamicUrl' => [ 'type' => 'string', 'locationName' => 'dynamicUrl', ],
+            ],
+        ],
+        'UpdateGrafanaDashboardSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+            ],
+        ],
+        'UpdateProductLineSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'productLineNameCn' => [ 'type' => 'string', 'locationName' => 'productLineNameCn', ],
+                'productLineNameEn' => [ 'type' => 'string', 'locationName' => 'productLineNameEn', ],
+                'serviceCodes' => [ 'type' => 'list', 'member' => [ 'shape' => 'ServiceInfoCreateB', ], ],
             ],
         ],
         'UpdateTemplateRequestV2' => [
@@ -1473,6 +2340,27 @@ return [
                 'widgetId' => [ 'type' => 'string', 'locationName' => 'widgetId', ],
             ],
         ],
+        'User' => [
+            'type' => 'structure',
+            'members' => [
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'login' => [ 'type' => 'string', 'locationName' => 'login', ],
+                'role' => [ 'type' => 'string', 'locationName' => 'role', ],
+            ],
+        ],
+        'UserRole' => [
+            'type' => 'structure',
+            'members' => [
+                'login' => [ 'type' => 'string', 'locationName' => 'login', ],
+                'role' => [ 'type' => 'string', 'locationName' => 'role', ],
+            ],
+        ],
+        'Users' => [
+            'type' => 'structure',
+            'members' => [
+                'users' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserRole', ], ],
+            ],
+        ],
         'WidgetDataPointItem' => [
             'type' => 'structure',
             'members' => [
@@ -1518,6 +2406,7 @@ return [
         'CreateAlarmRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'autoScalingPolicyId' => [ 'type' => 'string', 'locationName' => 'autoScalingPolicyId', ],
                 'baseContact' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseContact', ], ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
                 'dimension' => [ 'type' => 'string', 'locationName' => 'dimension', ],
@@ -1548,6 +2437,7 @@ return [
         'UpdateAlarmRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'autoScalingPolicyId' => [ 'type' => 'string', 'locationName' => 'autoScalingPolicyId', ],
                 'baseContact' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseContact', ], ],
                 'dimension' => [ 'type' => 'string', 'locationName' => 'dimension', ],
                 'enabled' => [ 'type' => 'long', 'locationName' => 'enabled', ],
@@ -1676,6 +2566,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
+                'ruleIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
         'DescribeAlarmContactsResponseShape' => [
@@ -1722,6 +2613,7 @@ return [
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'product' => [ 'type' => 'string', 'locationName' => 'product', ],
                 'dimension' => [ 'type' => 'string', 'locationName' => 'dimension', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'isAlarming' => [ 'type' => 'long', 'locationName' => 'isAlarming', ],
                 'status' => [ 'type' => 'long', 'locationName' => 'status', ],
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
@@ -1735,6 +2627,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
+                'ruleIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
             ],
         ],
@@ -1755,20 +2648,11 @@ return [
                 'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
             ],
         ],
-        'LastDownsampleRequestShape' => [
+        'DescribeOneDataPointResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'dimension' => [ 'type' => 'string', 'locationName' => 'dimension', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
-                'aggrType' => [ 'type' => 'string', 'locationName' => 'aggrType', ],
-                'downAggrType' => [ 'type' => 'string', 'locationName' => 'downAggrType', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeOneDataPointResultShape', ],
             ],
         ],
         'DescribeMetricDataResultShape' => [
@@ -1777,24 +2661,11 @@ return [
                 'metricDatas' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricData', ], ],
             ],
         ],
-        'LastDownsampleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'LastDownsampleRespItem', ], ],
-            ],
-        ],
         'DescribeMetricDataResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'DescribeMetricDataResultShape', ],
-            ],
-        ],
-        'LastDownsampleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'LastDownsampleResultShape', ],
             ],
         ],
         'DescribeServicesResultShape' => [
@@ -1814,6 +2685,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'dimension' => [ 'type' => 'string', 'locationName' => 'dimension', ],
                 'type' => [ 'type' => 'long', 'locationName' => 'type', ],
             ],
         ],
@@ -1855,11 +2727,48 @@ return [
                 'metrics' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricDetail', ], ],
             ],
         ],
+        'DescribeOneDataPointResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'LastDownsampleRespItem', ], ],
+            ],
+        ],
+        'DescribeOneDataPointRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'dimension' => [ 'type' => 'string', 'locationName' => 'dimension', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
+                'aggrType' => [ 'type' => 'string', 'locationName' => 'aggrType', ],
+                'downAggrType' => [ 'type' => 'string', 'locationName' => 'downAggrType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+            ],
+        ],
+        'PutCustomMetricDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'errMetricDataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricDataList', ], ],
+            ],
+        ],
         'PutMetricDataResultShape' => [
             'type' => 'structure',
             'members' => [
                 'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
                 'errMetricDataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricDataList', ], ],
+            ],
+        ],
+        'PutCustomMetricDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'error' =>  [ 'shape' => 'PutCustomMetricDataResultShape', ],
+                'result' =>  [ 'shape' => 'PutCustomMetricDataResultShape', ],
             ],
         ],
         'PutMetricDataResponseShape' => [
@@ -1871,6 +2780,12 @@ return [
             ],
         ],
         'PutMetricDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'metricDataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricDataCm', ], ],
+            ],
+        ],
+        'PutCustomMetricDataRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'metricDataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricDataCm', ], ],

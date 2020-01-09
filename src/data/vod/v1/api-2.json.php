@@ -782,6 +782,7 @@ return [
             'members' => [
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
                 'uploadUrl' => [ 'type' => 'string', 'locationName' => 'uploadUrl', ],
+                'authToken' => [ 'type' => 'string', 'locationName' => 'authToken', ],
             ],
         ],
         'CreateVideoUploadTaskRequestObject' => [
@@ -1897,6 +1898,7 @@ return [
             'members' => [
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
                 'uploadUrl' => [ 'type' => 'string', 'locationName' => 'uploadUrl', ],
+                'authToken' => [ 'type' => 'string', 'locationName' => 'authToken', ],
             ],
         ],
         'CreateVideoUploadTaskResultShape' => [
@@ -1904,6 +1906,7 @@ return [
             'members' => [
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
                 'uploadUrl' => [ 'type' => 'string', 'locationName' => 'uploadUrl', ],
+                'authToken' => [ 'type' => 'string', 'locationName' => 'authToken', ],
             ],
         ],
         'BatchSubmitQualityDetectionJobsRequestShape' => [

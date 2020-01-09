@@ -451,6 +451,7 @@ return [
                 'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'tags' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
                 'value' => [ 'type' => 'object', 'locationName' => 'value', ],
             ],
         ],
@@ -837,6 +838,10 @@ return [
             'members' => [
                 'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
                 'accountStatus' => [ 'type' => 'string', 'locationName' => 'accountStatus', ],
+                'accountType' => [ 'type' => 'string', 'locationName' => 'accountType', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'notes' => [ 'type' => 'string', 'locationName' => 'notes', ],
                 'accountPrivileges' => [ 'type' => 'list', 'member' => [ 'shape' => 'AccountPrivilege', ], ],
             ],
         ],
