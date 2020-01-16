@@ -164,60 +164,6 @@ return [
             'input' => [ 'shape' => 'UpdateLogtopicRequestShape', ],
             'output' => [ 'shape' => 'UpdateLogtopicResponseShape', ],
         ],
-        'TestMetricTask' => [
-            'name' => 'TestMetricTask',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictaskTest',
-            ],
-            'input' => [ 'shape' => 'TestMetricTaskRequestShape', ],
-            'output' => [ 'shape' => 'TestMetricTaskResponseShape', ],
-        ],
-        'DescribeMetricTasks' => [
-            'name' => 'DescribeMetricTasks',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictasks',
-            ],
-            'input' => [ 'shape' => 'DescribeMetricTasksRequestShape', ],
-            'output' => [ 'shape' => 'DescribeMetricTasksResponseShape', ],
-        ],
-        'CreateMetricTask' => [
-            'name' => 'CreateMetricTask',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictasks',
-            ],
-            'input' => [ 'shape' => 'CreateMetricTaskRequestShape', ],
-            'output' => [ 'shape' => 'CreateMetricTaskResponseShape', ],
-        ],
-        'DescribeMetricTask' => [
-            'name' => 'DescribeMetricTask',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictasks/{logmetrictaskUID}',
-            ],
-            'input' => [ 'shape' => 'DescribeMetricTaskRequestShape', ],
-            'output' => [ 'shape' => 'DescribeMetricTaskResponseShape', ],
-        ],
-        'UpdateMetricTask' => [
-            'name' => 'UpdateMetricTask',
-            'http' => [
-                'method' => 'PUT',
-                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictasks/{logmetrictaskUID}',
-            ],
-            'input' => [ 'shape' => 'UpdateMetricTaskRequestShape', ],
-            'output' => [ 'shape' => 'UpdateMetricTaskResponseShape', ],
-        ],
-        'DeleteMetricTask' => [
-            'name' => 'DeleteMetricTask',
-            'http' => [
-                'method' => 'DELETE',
-                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictasks/{logmetrictaskUID}',
-            ],
-            'input' => [ 'shape' => 'DeleteMetricTaskRequestShape', ],
-            'output' => [ 'shape' => 'DeleteMetricTaskResponseShape', ],
-        ],
         'Put' => [
             'name' => 'Put',
             'http' => [
@@ -465,6 +411,14 @@ return [
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
             ],
         ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'LogsetEnd' => [
             'type' => 'structure',
             'members' => [
@@ -531,6 +485,7 @@ return [
             'members' => [
                 'anchor' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
                 'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'lineSize' => [ 'type' => 'long', 'locationName' => 'lineSize', ],
                 'time' => [ 'type' => 'long', 'locationName' => 'time', ],
@@ -1099,170 +1054,12 @@ return [
                 'result' =>  [ 'shape' => 'DescribeLogtopicResultShape', ],
             ],
         ],
-        'TestMetricTaskResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'TestMetricTaskResultShape', ],
-            ],
-        ],
-        'DescribeMetricTasksResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeMetricTasksResultShape', ],
-            ],
-        ],
-        'CreateMetricTaskRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'aggregate' => [ 'type' => 'string', 'locationName' => 'aggregate', ],
-                'customUnit' => [ 'type' => 'string', 'locationName' => 'customUnit', ],
-                'dataField' => [ 'type' => 'string', 'locationName' => 'dataField', ],
-                'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
-                'filterOpen' => [ 'type' => 'string', 'locationName' => 'filterOpen', ],
-                'filterType' => [ 'type' => 'string', 'locationName' => 'filterType', ],
-                'interval' => [ 'type' => 'long', 'locationName' => 'interval', ],
-                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
-                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
-            ],
-        ],
-        'DescribeMetricTasksResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetrictaskDetailEnd', ], ],
-                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
-                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-            ],
-        ],
-        'DescribeMetricTaskResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeMetricTaskResultShape', ],
-            ],
-        ],
-        'DeleteMetricTaskResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'suc' => [ 'type' => 'string', 'locationName' => 'suc', ],
-            ],
-        ],
-        'DescribeMetricTaskRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
-                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
-                'logmetrictaskUID' => [ 'type' => 'string', 'locationName' => 'logmetrictaskUID', ],
-            ],
-        ],
-        'DescribeMetricTasksRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
-                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
-            ],
-        ],
-        'UpdateMetricTaskResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'UpdateMetricTaskResultShape', ],
-            ],
-        ],
-        'CreateMetricTaskResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'CreateMetricTaskResultShape', ],
-            ],
-        ],
-        'DeleteMetricTaskResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DeleteMetricTaskResultShape', ],
-            ],
-        ],
-        'DescribeMetricTaskResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' =>  [ 'shape' => 'MetrictaskDetailEnd', ],
-            ],
-        ],
-        'DeleteMetricTaskRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
-                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
-                'logmetrictaskUID' => [ 'type' => 'string', 'locationName' => 'logmetrictaskUID', ],
-            ],
-        ],
-        'UpdateMetricTaskRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'customUnit' => [ 'type' => 'string', 'locationName' => 'customUnit', ],
-                'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
-                'filterOpen' => [ 'type' => 'string', 'locationName' => 'filterOpen', ],
-                'filterType' => [ 'type' => 'string', 'locationName' => 'filterType', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
-                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
-                'logmetrictaskUID' => [ 'type' => 'string', 'locationName' => 'logmetrictaskUID', ],
-            ],
-        ],
-        'UpdateMetricTaskResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'suc' => [ 'type' => 'string', 'locationName' => 'suc', ],
-            ],
-        ],
-        'TestMetricTaskRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'aggregate' => [ 'type' => 'string', 'locationName' => 'aggregate', ],
-                'content' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'dataField' => [ 'type' => 'string', 'locationName' => 'dataField', ],
-                'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
-                'filterOpen' => [ 'type' => 'string', 'locationName' => 'filterOpen', ],
-                'filterType' => [ 'type' => 'string', 'locationName' => 'filterType', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
-                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
-            ],
-        ],
-        'TestMetricTaskResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'lines' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
-            ],
-        ],
-        'CreateMetricTaskResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'suc' => [ 'type' => 'string', 'locationName' => 'suc', ],
-            ],
-        ],
         'PutRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'stream' => [ 'type' => 'string', 'locationName' => 'stream', ],
                 'timestamp' => [ 'type' => 'string', 'locationName' => 'timestamp', ],
+                'tags' => [ 'type' => 'object', 'locationName' => 'tags', ],
                 'entries' => [ 'type' => 'list', 'member' => [ 'shape' => 'Entry', ], ],
                 'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
             ],
@@ -1304,6 +1101,7 @@ return [
             'members' => [
                 'anchor' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
                 'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'lineSize' => [ 'type' => 'long', 'locationName' => 'lineSize', ],
                 'time' => [ 'type' => 'long', 'locationName' => 'time', ],
@@ -1329,6 +1127,8 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'sort' => [ 'type' => 'string', 'locationName' => 'sort', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
                 'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],

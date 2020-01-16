@@ -184,6 +184,13 @@ return [
         ],
     ],
     'shapes' => [
+        'Switchboard' => [
+            'type' => 'structure',
+            'members' => [
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'port' => [ 'type' => 'string', 'locationName' => 'port', ],
+            ],
+        ],
         'Alarm' => [
             'type' => 'structure',
             'members' => [
@@ -203,7 +210,7 @@ return [
                 'times' => [ 'type' => 'integer', 'locationName' => 'times', ],
                 'noticePeriod' => [ 'type' => 'integer', 'locationName' => 'noticePeriod', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'switchboard' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+                'switchboard' => [ 'type' => 'list', 'member' => [ 'shape' => 'Switchboard', ], ],
             ],
         ],
         'AlarmHistory' => [
@@ -225,7 +232,8 @@ return [
                 'times' => [ 'type' => 'integer', 'locationName' => 'times', ],
                 'noticePeriod' => [ 'type' => 'integer', 'locationName' => 'noticePeriod', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'switchboard' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+                'managementIp' => [ 'type' => 'string', 'locationName' => 'managementIp', ],
+                'ifName' => [ 'type' => 'string', 'locationName' => 'ifName', ],
                 'alarmStatus' => [ 'type' => 'string', 'locationName' => 'alarmStatus', ],
                 'value' => [ 'type' => 'double', 'locationName' => 'value', ],
                 'noticeTime' => [ 'type' => 'string', 'locationName' => 'noticeTime', ],
@@ -239,10 +247,17 @@ return [
                 'bandwidthId' => [ 'type' => 'string', 'locationName' => 'bandwidthId', ],
                 'bandwidthName' => [ 'type' => 'string', 'locationName' => 'bandwidthName', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'lineType' => [ 'type' => 'integer', 'locationName' => 'lineType', ],
+                'lineType' => [ 'type' => 'string', 'locationName' => 'lineType', ],
                 'bandwidth' => [ 'type' => 'integer', 'locationName' => 'bandwidth', ],
-                'relatedIp' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
-                'switchboard' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+                'relatedIp' => [ 'type' => 'list', 'member' => [ 'shape' => 'RelatedIp', ], ],
+                'switchboard' => [ 'type' => 'list', 'member' => [ 'shape' => 'Switchboard', ], ],
+            ],
+        ],
+        'RelatedIp' => [
+            'type' => 'structure',
+            'members' => [
+                'cidrAddr' => [ 'type' => 'string', 'locationName' => 'cidrAddr', ],
+                'lineType' => [ 'type' => 'string', 'locationName' => 'lineType', ],
             ],
         ],
         'BandwidthTraffic' => [
@@ -256,8 +271,18 @@ return [
                 'totalTrafficOut' => [ 'type' => 'double', 'locationName' => 'totalTrafficOut', ],
                 'bandwidth' => [ 'type' => 'integer', 'locationName' => 'bandwidth', ],
                 'lineType' => [ 'type' => 'string', 'locationName' => 'lineType', ],
-                'relatedIp' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
-                'switchboard' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+                'relatedIp' => [ 'type' => 'list', 'member' => [ 'shape' => 'RelatedIp', ], ],
+                'switchboard' => [ 'type' => 'list', 'member' => [ 'shape' => 'DescribeSwitchboard', ], ],
+            ],
+        ],
+        'DescribeSwitchboard' => [
+            'type' => 'structure',
+            'members' => [
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'port' => [ 'type' => 'string', 'locationName' => 'port', ],
+                'trafficIn' => [ 'type' => 'double', 'locationName' => 'trafficIn', ],
+                'trafficOut' => [ 'type' => 'double', 'locationName' => 'trafficOut', ],
+                'alarmStatus' => [ 'type' => 'string', 'locationName' => 'alarmStatus', ],
             ],
         ],
         'Cabinet' => [
@@ -308,7 +333,6 @@ return [
                 'times' => [ 'type' => 'integer', 'locationName' => 'times', ],
                 'noticePeriod' => [ 'type' => 'integer', 'locationName' => 'noticePeriod', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'switchboard' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
             ],
         ],
         'DescribeBandwidth' => [
@@ -319,9 +343,9 @@ return [
                 'bandwidthId' => [ 'type' => 'string', 'locationName' => 'bandwidthId', ],
                 'bandwidthName' => [ 'type' => 'string', 'locationName' => 'bandwidthName', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'lineType' => [ 'type' => 'integer', 'locationName' => 'lineType', ],
+                'lineType' => [ 'type' => 'string', 'locationName' => 'lineType', ],
                 'bandwidth' => [ 'type' => 'integer', 'locationName' => 'bandwidth', ],
-                'relatedIp' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+                'relatedIp' => [ 'type' => 'list', 'member' => [ 'shape' => 'RelatedIp', ], ],
             ],
         ],
         'DescribeBandwidthTraffic' => [
@@ -410,8 +434,8 @@ return [
                 'ipId' => [ 'type' => 'string', 'locationName' => 'ipId', ],
                 'cidrAddr' => [ 'type' => 'string', 'locationName' => 'cidrAddr', ],
                 'networkAddr' => [ 'type' => 'string', 'locationName' => 'networkAddr', ],
-                'gatewayAddr' => [ 'type' => 'integer', 'locationName' => 'gatewayAddr', ],
-                'broadcastAddr' => [ 'type' => 'integer', 'locationName' => 'broadcastAddr', ],
+                'gatewayAddr' => [ 'type' => 'string', 'locationName' => 'gatewayAddr', ],
+                'broadcastAddr' => [ 'type' => 'string', 'locationName' => 'broadcastAddr', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
@@ -471,33 +495,6 @@ return [
                 'idcName' => [ 'type' => 'string', 'locationName' => 'idcName', ],
             ],
         ],
-        'DescribeAlarmHistoryResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeAlarmHistoryResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeAlarmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarm' =>  [ 'shape' => 'Alarm', ],
-            ],
-        ],
-        'DescribeAlarmsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeAlarmsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeAlarmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeAlarmResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeAlarmHistoryResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -537,6 +534,33 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+            ],
+        ],
+        'DescribeAlarmHistoryResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAlarmHistoryResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAlarmResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'alarm' =>  [ 'shape' => 'Alarm', ],
+            ],
+        ],
+        'DescribeAlarmsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAlarmsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAlarmResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAlarmResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'LastDownsampleResultShape' => [

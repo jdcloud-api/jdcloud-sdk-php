@@ -27,7 +27,18 @@ return [
             'members' => [
                 'roleJrn' => [ 'type' => 'string', 'locationName' => 'roleJrn', ],
                 'roleSessionName' => [ 'type' => 'string', 'locationName' => 'roleSessionName', ],
+                'policy' => [ 'type' => 'string', 'locationName' => 'policy', ],
                 'durationSeconds' => [ 'type' => 'integer', 'locationName' => 'durationSeconds', ],
+            ],
+        ],
+        'AssumeRoleWithSAMLInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'roleJrn' => [ 'type' => 'string', 'locationName' => 'roleJrn', ],
+                'samlProviderJrn' => [ 'type' => 'string', 'locationName' => 'samlProviderJrn', ],
+                'policy' => [ 'type' => 'string', 'locationName' => 'policy', ],
+                'durationSeconds' => [ 'type' => 'integer', 'locationName' => 'durationSeconds', ],
+                'samlAssertion' => [ 'type' => 'string', 'locationName' => 'samlAssertion', ],
             ],
         ],
         'AssumeServiceRoleInfo' => [
@@ -58,6 +69,15 @@ return [
                 'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
                 'sessionToken' => [ 'type' => 'string', 'locationName' => 'sessionToken', ],
                 'expiration' => [ 'type' => 'string', 'locationName' => 'expiration', ],
+            ],
+        ],
+        'SamlAssertionInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'subjectType' => [ 'type' => 'string', 'locationName' => 'subjectType', ],
+                'subject' => [ 'type' => 'string', 'locationName' => 'subject', ],
+                'recipient' => [ 'type' => 'string', 'locationName' => 'recipient', ],
+                'issuer' => [ 'type' => 'string', 'locationName' => 'issuer', ],
             ],
         ],
         'AssumeRoleResultShape' => [
