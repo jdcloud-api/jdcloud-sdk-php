@@ -34,6 +34,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeLiveRestartAuthKeyAsync(array $args = [])
  * @method \Jdcloud\Result setLiveRestartAuthKey(array $args = [])
  * @method \GuzzleHttp\Promise\Promise setLiveRestartAuthKeyAsync(array $args = [])
+ * @method \Jdcloud\Result describeLiveBillData(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeLiveBillDataAsync(array $args = [])
  * @method \Jdcloud\Result describeLiveDomainCertificate(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeLiveDomainCertificateAsync(array $args = [])
  * @method \Jdcloud\Result setLiveDomainCertificate(array $args = [])

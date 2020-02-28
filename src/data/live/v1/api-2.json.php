@@ -74,6 +74,15 @@ return [
             'input' => [ 'shape' => 'SetLiveRestartAuthKeyRequestShape', ],
             'output' => [ 'shape' => 'SetLiveRestartAuthKeyResponseShape', ],
         ],
+        'DescribeLiveBillData' => [
+            'name' => 'DescribeLiveBillData',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/liveBillDatas',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveBillDataRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveBillDataResponseShape', ],
+        ],
         'DescribeLiveDomainCertificate' => [
             'name' => 'DescribeLiveDomainCertificate',
             'http' => [
@@ -1048,6 +1057,25 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
+        'BillDataResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'BillDataObject', ], ],
+            ],
+        ],
+        'BillDataObject' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'integer', 'locationName' => 'appId', ],
+                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
+                'billType' => [ 'type' => 'integer', 'locationName' => 'billType', ],
+                'productId' => [ 'type' => 'string', 'locationName' => 'productId', ],
+                'amount' => [ 'type' => 'double', 'locationName' => 'amount', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
         'UserBucket' => [
             'type' => 'structure',
             'members' => [
@@ -1733,6 +1761,25 @@ return [
         'SetLivePlayAuthKeyResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeLiveBillDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'BillDataObject', ], ],
+            ],
+        ],
+        'DescribeLiveBillDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'DescribeLiveBillDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveBillDataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeLiveDomainCertificateResponseShape' => [

@@ -128,6 +128,15 @@ return [
             'input' => [ 'shape' => 'ImportImageRequestShape', ],
             'output' => [ 'shape' => 'ImportImageResponseShape', ],
         ],
+        'ExportImage' => [
+            'name' => 'ExportImage',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/images/{imageId}:exportImage',
+            ],
+            'input' => [ 'shape' => 'ExportImageRequestShape', ],
+            'output' => [ 'shape' => 'ExportImageResponseShape', ],
+        ],
         'ImageTasks' => [
             'name' => 'ImageTasks',
             'http' => [
@@ -901,6 +910,7 @@ return [
                 'state' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceTypeState', ], ],
                 'gpu' =>  [ 'shape' => 'Gpu', ],
                 'localDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'LocalDisk', ], ],
+                'generation' => [ 'type' => 'integer', 'locationName' => 'generation', ],
             ],
         ],
         'InstanceTypeState' => [
@@ -952,6 +962,7 @@ return [
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'systemType' => [ 'type' => 'string', 'locationName' => 'systemType', ],
                 'systemDiskSize' => [ 'type' => 'integer', 'locationName' => 'systemDiskSize', ],
+                'flavors' => [ 'type' => 'string', 'locationName' => 'flavors', ],
             ],
         ],
         'CopyImagesRequestShape' => [
@@ -984,6 +995,13 @@ return [
         'DeleteImageResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ExportImageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ExportImageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'UnShareImageResponseShape' => [
@@ -1176,6 +1194,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ExportImageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'exportTaskId' => [ 'type' => 'integer', 'locationName' => 'exportTaskId', ],
+            ],
+        ],
         'DescribeImageConstraintsBatchRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1245,6 +1269,17 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ExportImageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+                'ossUrl' => [ 'type' => 'string', 'locationName' => 'ossUrl', ],
+                'ossPrefix' => [ 'type' => 'string', 'locationName' => 'ossPrefix', ],
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
             ],
         ],
         'AttachNetworkInterfaceResultShape' => [
@@ -1684,6 +1719,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],

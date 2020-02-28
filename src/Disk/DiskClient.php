@@ -38,6 +38,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeSnapshotsAsync(array $args = [])
  * @method \Jdcloud\Result createSnapshot(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createSnapshotAsync(array $args = [])
+ * @method \Jdcloud\Result deleteSnapshots(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteSnapshotsAsync(array $args = [])
  * @method \Jdcloud\Result describeSnapshot(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeSnapshotAsync(array $args = [])
  * @method \Jdcloud\Result modifySnapshotAttribute(array $args = [])

@@ -1371,9 +1371,9 @@ return [
         'CreateAccountRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'accountName' => [ 'type' => '', 'locationName' => 'accountName', ],
-                'accountPassword' => [ 'type' => '', 'locationName' => 'accountPassword', ],
-                'notes' => [ 'type' => '', 'locationName' => 'notes', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+                'accountPassword' => [ 'type' => 'string', 'locationName' => 'accountPassword', ],
+                'notes' => [ 'type' => 'string', 'locationName' => 'notes', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -1435,7 +1435,7 @@ return [
         'ResetPasswordRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'accountPassword' => [ 'type' => '', 'locationName' => 'accountPassword', ],
+                'accountPassword' => [ 'type' => 'string', 'locationName' => 'accountPassword', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
@@ -1472,8 +1472,8 @@ return [
         'GrantAccountPrivilegeRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'databasePrivileges' => [ 'type' => '', 'locationName' => 'databasePrivileges', ],
-                'globalPrivileges' => [ 'type' => '', 'locationName' => 'globalPrivileges', ],
+                'databasePrivileges' => [ 'type' => 'list', 'member' => [ 'shape' => 'DatabasePrivilege', ], ],
+                'globalPrivileges' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
@@ -1519,8 +1519,8 @@ return [
         'CreateSuperAccountRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'accountName' => [ 'type' => '', 'locationName' => 'accountName', ],
-                'accountPassword' => [ 'type' => '', 'locationName' => 'accountPassword', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+                'accountPassword' => [ 'type' => 'string', 'locationName' => 'accountPassword', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -1541,7 +1541,7 @@ return [
         'CreateAuditRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'enabled' => [ 'type' => '', 'locationName' => 'enabled', ],
+                'enabled' => [ 'type' => 'string', 'locationName' => 'enabled', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -1700,8 +1700,8 @@ return [
         'ModifyAuditRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'add' => [ 'type' => '', 'locationName' => 'add', ],
-                'drop' => [ 'type' => '', 'locationName' => 'drop', ],
+                'add' => [ 'type' => 'string', 'locationName' => 'add', ],
+                'drop' => [ 'type' => 'string', 'locationName' => 'drop', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -1888,8 +1888,8 @@ return [
         'CreateBackupSynchronicityRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'instanceId' => [ 'type' => '', 'locationName' => 'instanceId', ],
-                'destRegion' => [ 'type' => '', 'locationName' => 'destRegion', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'destRegion' => [ 'type' => 'string', 'locationName' => 'destRegion', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -2007,9 +2007,9 @@ return [
         'AlterTableWithOnlineDDLRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'database' => [ 'type' => '', 'locationName' => 'database', ],
-                'table' => [ 'type' => '', 'locationName' => 'table', ],
-                'command' => [ 'type' => '', 'locationName' => 'command', ],
+                'database' => [ 'type' => 'string', 'locationName' => 'database', ],
+                'table' => [ 'type' => 'string', 'locationName' => 'table', ],
+                'command' => [ 'type' => 'string', 'locationName' => 'command', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2038,8 +2038,8 @@ return [
         'CreateDatabaseRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'dbName' => [ 'type' => '', 'locationName' => 'dbName', ],
-                'characterSetName' => [ 'type' => '', 'locationName' => 'characterSetName', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'characterSetName' => [ 'type' => 'string', 'locationName' => 'characterSetName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2052,8 +2052,8 @@ return [
         'RestoreDatabaseFromFileRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'sharedFileGid' => [ 'type' => '', 'locationName' => 'sharedFileGid', ],
-                'fileName' => [ 'type' => '', 'locationName' => 'fileName', ],
+                'sharedFileGid' => [ 'type' => 'string', 'locationName' => 'sharedFileGid', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
@@ -2115,8 +2115,8 @@ return [
         'RestoreDatabaseFromBackupRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'backupId' => [ 'type' => '', 'locationName' => 'backupId', ],
-                'backupFileName' => [ 'type' => '', 'locationName' => 'backupFileName', ],
+                'backupId' => [ 'type' => 'string', 'locationName' => 'backupId', ],
+                'backupFileName' => [ 'type' => 'string', 'locationName' => 'backupFileName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
@@ -2143,7 +2143,7 @@ return [
         'RestoreDatabaseFromOSSRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'ossURL' => [ 'type' => '', 'locationName' => 'ossURL', ],
+                'ossURL' => [ 'type' => 'string', 'locationName' => 'ossURL', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
@@ -2203,7 +2203,7 @@ return [
         'DeleteImportFileRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'sharedFileGid' => [ 'type' => '', 'locationName' => 'sharedFileGid', ],
+                'sharedFileGid' => [ 'type' => 'string', 'locationName' => 'sharedFileGid', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
@@ -2223,7 +2223,7 @@ return [
         'SetImportFileSharedRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'shared' => [ 'type' => '', 'locationName' => 'shared', ],
+                'shared' => [ 'type' => 'string', 'locationName' => 'shared', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
@@ -2298,7 +2298,7 @@ return [
         'ModifyInstanceAzRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'newAzId' => [ 'type' => '', 'locationName' => 'newAzId', ],
+                'newAzId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2414,7 +2414,7 @@ return [
         'ModifyInstanceNameRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'instanceName' => [ 'type' => '', 'locationName' => 'instanceName', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2445,7 +2445,7 @@ return [
         'RestoreInstanceRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'backupId' => [ 'type' => '', 'locationName' => 'backupId', ],
+                'backupId' => [ 'type' => 'string', 'locationName' => 'backupId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2476,7 +2476,7 @@ return [
         'ExchangeInstanceDnsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'targetInstanceId' => [ 'type' => '', 'locationName' => 'targetInstanceId', ],
+                'targetInstanceId' => [ 'type' => 'string', 'locationName' => 'targetInstanceId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2484,8 +2484,8 @@ return [
         'RebootInstanceRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'rebootMaster' => [ 'type' => '', 'locationName' => 'rebootMaster', ],
-                'rebootSlave' => [ 'type' => '', 'locationName' => 'rebootSlave', ],
+                'rebootMaster' => [ 'type' => 'boolean', 'locationName' => 'rebootMaster', ],
+                'rebootSlave' => [ 'type' => 'boolean', 'locationName' => 'rebootSlave', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2509,7 +2509,7 @@ return [
         'ModifyParameterGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'parameterGroupId' => [ 'type' => '', 'locationName' => 'parameterGroupId', ],
+                'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2534,8 +2534,8 @@ return [
         'RestoreInstanceByTimeRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'restoreTime' => [ 'type' => '', 'locationName' => 'restoreTime', ],
-                'restoreSchema' => [ 'type' => '', 'locationName' => 'restoreSchema', ],
+                'restoreTime' => [ 'type' => 'string', 'locationName' => 'restoreTime', ],
+                'restoreSchema' => [ 'type' => 'list', 'member' => [ 'shape' => 'Schema', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2662,7 +2662,7 @@ return [
         'ModifyBackupPolicyRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'startWindow' => [ 'type' => '', 'locationName' => 'startWindow', ],
+                'startWindow' => [ 'type' => 'string', 'locationName' => 'startWindow', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2859,7 +2859,7 @@ return [
         'UpdateLogDownloadURLInternalRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'seconds' => [ 'type' => '', 'locationName' => 'seconds', ],
+                'seconds' => [ 'type' => 'integer', 'locationName' => 'seconds', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'logId' => [ 'type' => 'string', 'locationName' => 'logId', ],
@@ -2868,7 +2868,7 @@ return [
         'DescribeLogDownloadURLRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'seconds' => [ 'type' => '', 'locationName' => 'seconds', ],
+                'seconds' => [ 'type' => 'integer', 'locationName' => 'seconds', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'logId' => [ 'type' => 'string', 'locationName' => 'logId', ],
@@ -2931,8 +2931,8 @@ return [
         'ModifyParameterGroupAttributeRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'parameterGroupName' => [ 'type' => '', 'locationName' => 'parameterGroupName', ],
-                'description' => [ 'type' => '', 'locationName' => 'description', ],
+                'parameterGroupName' => [ 'type' => 'string', 'locationName' => 'parameterGroupName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
             ],
@@ -2951,10 +2951,10 @@ return [
         'CreateParameterGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'engine' => [ 'type' => '', 'locationName' => 'engine', ],
-                'engineVersion' => [ 'type' => '', 'locationName' => 'engineVersion', ],
-                'parameterGroupName' => [ 'type' => '', 'locationName' => 'parameterGroupName', ],
-                'description' => [ 'type' => '', 'locationName' => 'description', ],
+                'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
+                'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
+                'parameterGroupName' => [ 'type' => 'string', 'locationName' => 'parameterGroupName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -3026,9 +3026,9 @@ return [
         'CopyParameterGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'parameterGroupId' => [ 'type' => '', 'locationName' => 'parameterGroupId', ],
-                'parameterGroupName' => [ 'type' => '', 'locationName' => 'parameterGroupName', ],
-                'description' => [ 'type' => '', 'locationName' => 'description', ],
+                'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
+                'parameterGroupName' => [ 'type' => 'string', 'locationName' => 'parameterGroupName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -3048,7 +3048,7 @@ return [
         'ModifyParameterGroupParametersRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'parameters' => [ 'type' => '', 'locationName' => 'parameters', ],
+                'parameters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Parameter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
             ],

@@ -92,6 +92,15 @@ return [
             'input' => [ 'shape' => 'CreateSnapshotRequestShape', ],
             'output' => [ 'shape' => 'CreateSnapshotResponseShape', ],
         ],
+        'DeleteSnapshots' => [
+            'name' => 'DeleteSnapshots',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/snapshots',
+            ],
+            'input' => [ 'shape' => 'DeleteSnapshotsRequestShape', ],
+            'output' => [ 'shape' => 'DeleteSnapshotsResponseShape', ],
+        ],
         'DescribeSnapshot' => [
             'name' => 'DescribeSnapshot',
             'http' => [
@@ -125,6 +134,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+            ],
+        ],
+        'DelSnapshot' => [
+            'type' => 'structure',
+            'members' => [
+                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
         'Tag' => [
@@ -210,6 +227,7 @@ return [
                 'maxSizeGB' => [ 'type' => 'integer', 'locationName' => 'maxSizeGB', ],
                 'stepSizeGB' => [ 'type' => 'integer', 'locationName' => 'stepSizeGB', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'diskTypeName' => [ 'type' => 'string', 'locationName' => 'diskTypeName', ],
                 'defaultIOPS' => [ 'type' => 'integer', 'locationName' => 'defaultIOPS', ],
                 'stepIOPS' => [ 'type' => 'float', 'locationName' => 'stepIOPS', ],
                 'maxIOPS' => [ 'type' => 'integer', 'locationName' => 'maxIOPS', ],
@@ -225,6 +243,7 @@ return [
             'members' => [
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'bind' => [ 'type' => 'list', 'member' => [ 'shape' => 'Bind', ], ],
             ],
         ],
@@ -377,6 +396,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'diskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'tagmsg' => [ 'type' => 'string', 'locationName' => 'tagmsg', ],
             ],
         ],
         'DescribeDiskRequestShape' => [
@@ -424,6 +444,7 @@ return [
             'members' => [
                 'diskSpec' =>  [ 'shape' => 'DiskSpec', ],
                 'maxCount' => [ 'type' => 'integer', 'locationName' => 'maxCount', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
@@ -498,6 +519,13 @@ return [
                 'snapshot' =>  [ 'shape' => 'Snapshot', ],
             ],
         ],
+        'DeleteSnapshotsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteSnapshotsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeSnapshotsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -518,6 +546,21 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'CreateSnapshotResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteSnapshotsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'snapshotIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteSnapshotsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'snapshots' => [ 'type' => 'list', 'member' => [ 'shape' => 'DelSnapshot', ], ],
+                'successCount' => [ 'type' => 'integer', 'locationName' => 'successCount', ],
+                'failedCount' => [ 'type' => 'integer', 'locationName' => 'failedCount', ],
             ],
         ],
         'ModifySnapshotAttributeRequestShape' => [

@@ -710,8 +710,8 @@ return [
         'CreateRdsAccountRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'accountName' => [ 'type' => '', 'locationName' => 'accountName', ],
-                'accountPassword' => [ 'type' => '', 'locationName' => 'accountPassword', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+                'accountPassword' => [ 'type' => 'string', 'locationName' => 'accountPassword', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -719,8 +719,8 @@ return [
         'CreateRdsDatabaseRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'dbName' => [ 'type' => '', 'locationName' => 'dbName', ],
-                'characterSetName' => [ 'type' => '', 'locationName' => 'characterSetName', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'characterSetName' => [ 'type' => 'string', 'locationName' => 'characterSetName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -950,6 +950,7 @@ return [
                 'state' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceTypeState', ], ],
                 'gpu' =>  [ 'shape' => 'Gpu', ],
                 'localDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'LocalDisk', ], ],
+                'generation' => [ 'type' => 'integer', 'locationName' => 'generation', ],
             ],
         ],
         'Gpu' => [

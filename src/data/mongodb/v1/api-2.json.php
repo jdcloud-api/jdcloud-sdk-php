@@ -337,7 +337,7 @@ return [
         'ResetPasswordRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'accountPassword' => [ 'type' => '', 'locationName' => 'accountPassword', ],
+                'accountPassword' => [ 'type' => 'string', 'locationName' => 'accountPassword', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -345,8 +345,8 @@ return [
         'ModifyInstanceSpecRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'instanceClass' => [ 'type' => '', 'locationName' => 'instanceClass', ],
-                'instanceStorageGB' => [ 'type' => '', 'locationName' => 'instanceStorageGB', ],
+                'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
+                'instanceStorageGB' => [ 'type' => 'integer', 'locationName' => 'instanceStorageGB', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -450,7 +450,7 @@ return [
         'ModifyBackupPolicyRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'preferredBackupTime' => [ 'type' => '', 'locationName' => 'preferredBackupTime', ],
+                'preferredBackupTime' => [ 'type' => 'string', 'locationName' => 'preferredBackupTime', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -525,7 +525,7 @@ return [
         'ModifyInstanceNameRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'instanceName' => [ 'type' => '', 'locationName' => 'instanceName', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -576,7 +576,7 @@ return [
         'RestoreInstanceRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'backupId' => [ 'type' => '', 'locationName' => 'backupId', ],
+                'backupId' => [ 'type' => 'string', 'locationName' => 'backupId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -584,8 +584,8 @@ return [
         'CreateBackupRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'instanceId' => [ 'type' => '', 'locationName' => 'instanceId', ],
-                'backupName' => [ 'type' => '', 'locationName' => 'backupName', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'backupName' => [ 'type' => 'string', 'locationName' => 'backupName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -686,8 +686,8 @@ return [
         'ModifySecurityIpsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'modifyMode' => [ 'type' => '', 'locationName' => 'modifyMode', ],
-                'securityIps' => [ 'type' => '', 'locationName' => 'securityIps', ],
+                'modifyMode' => [ 'type' => 'string', 'locationName' => 'modifyMode', ],
+                'securityIps' => [ 'type' => 'string', 'locationName' => 'securityIps', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],

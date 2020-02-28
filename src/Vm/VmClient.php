@@ -46,6 +46,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise modifyImageAttributeAsync(array $args = [])
  * @method \Jdcloud\Result importImage(array $args = [])
  * @method \GuzzleHttp\Promise\Promise importImageAsync(array $args = [])
+ * @method \Jdcloud\Result exportImage(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise exportImageAsync(array $args = [])
  * @method \Jdcloud\Result imageTasks(array $args = [])
  * @method \GuzzleHttp\Promise\Promise imageTasksAsync(array $args = [])
  * @method \Jdcloud\Result describeInstances(array $args = [])

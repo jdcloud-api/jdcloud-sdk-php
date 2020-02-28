@@ -237,6 +237,8 @@ return [
                 'alarmStatus' => [ 'type' => 'string', 'locationName' => 'alarmStatus', ],
                 'value' => [ 'type' => 'double', 'locationName' => 'value', ],
                 'noticeTime' => [ 'type' => 'string', 'locationName' => 'noticeTime', ],
+                'condition' => [ 'type' => 'string', 'locationName' => 'condition', ],
+                'strategyId' => [ 'type' => 'integer', 'locationName' => 'strategyId', ],
             ],
         ],
         'Bandwidth' => [
@@ -525,6 +527,8 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
+                'startTime' => [ 'type' => 'integer', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'integer', 'locationName' => 'endTime', ],
             ],
         ],
         'DescribeAlarmsRequestShape' => [

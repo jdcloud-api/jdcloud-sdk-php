@@ -173,8 +173,8 @@ return [
         'OperateKeyRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'action' => [ 'type' => '', 'locationName' => 'action', ],
-                'key' => [ 'type' => '', 'locationName' => 'key', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],

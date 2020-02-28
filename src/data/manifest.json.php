@@ -101,6 +101,14 @@ return [
         'namespace' => 'Cdn',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'hufu' => [
+        'namespace' => 'Hufu',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'es' => [
+        'namespace' => 'Es',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'streambus' => [
         'namespace' => 'Streambus',
         'versions' => [ 'latest' => 'v1', ],
@@ -193,6 +201,10 @@ return [
         'namespace' => 'Iam',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'cloudsign' => [
+        'namespace' => 'Cloudsign',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'iothub' => [
         'namespace' => 'Iothub',
         'versions' => [ 'latest' => 'v2', ],
@@ -271,6 +283,10 @@ return [
     ],
     'partner' => [
         'namespace' => 'Partner',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'lb' => [
+        'namespace' => 'Lb',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'iotcard' => [

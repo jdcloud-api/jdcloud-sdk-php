@@ -478,8 +478,8 @@ return [
         'StartJobRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'category' => [ 'type' => '', 'locationName' => 'category', ],
-                'branch' => [ 'type' => '', 'locationName' => 'branch', ],
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
+                'branch' => [ 'type' => 'string', 'locationName' => 'branch', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],

@@ -11,6 +11,24 @@ return [
 //        'serviceId' => 'mps',
     ],
     'operations' => [
+        'SubmitTranscodeJob' => [
+            'name' => 'SubmitTranscodeJob',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/transcodeJobs:submit',
+            ],
+            'input' => [ 'shape' => 'SubmitTranscodeJobRequestShape', ],
+            'output' => [ 'shape' => 'SubmitTranscodeJobResponseShape', ],
+        ],
+        'ListTranscodeJobs' => [
+            'name' => 'ListTranscodeJobs',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/transcodeJobs',
+            ],
+            'input' => [ 'shape' => 'ListTranscodeJobsRequestShape', ],
+            'output' => [ 'shape' => 'ListTranscodeJobsResponseShape', ],
+        ],
         'GetStyleDelimiter' => [
             'name' => 'GetStyleDelimiter',
             'http' => [
@@ -37,6 +55,60 @@ return [
             ],
             'input' => [ 'shape' => 'DeleteStyleDelimiterRequestShape', ],
             'output' => [ 'shape' => 'DeleteStyleDelimiterResponseShape', ],
+        ],
+        'ListImageStyle' => [
+            'name' => 'ListImageStyle',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/buckets/{bucketName}/imageStyles',
+            ],
+            'input' => [ 'shape' => 'ListImageStyleRequestShape', ],
+            'output' => [ 'shape' => 'ListImageStyleResponseShape', ],
+        ],
+        'CreateImageStyle' => [
+            'name' => 'CreateImageStyle',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/buckets/{bucketName}/imageStyles',
+            ],
+            'input' => [ 'shape' => 'CreateImageStyleRequestShape', ],
+            'output' => [ 'shape' => 'CreateImageStyleResponseShape', ],
+        ],
+        'GetImageStyle' => [
+            'name' => 'GetImageStyle',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/buckets/{bucketName}/imageStyles/{id}',
+            ],
+            'input' => [ 'shape' => 'GetImageStyleRequestShape', ],
+            'output' => [ 'shape' => 'GetImageStyleResponseShape', ],
+        ],
+        'UpdateImageStyle' => [
+            'name' => 'UpdateImageStyle',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/buckets/{bucketName}/imageStyles/{id}',
+            ],
+            'input' => [ 'shape' => 'UpdateImageStyleRequestShape', ],
+            'output' => [ 'shape' => 'UpdateImageStyleResponseShape', ],
+        ],
+        'DeleteImageStyle' => [
+            'name' => 'DeleteImageStyle',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/buckets/{bucketName}/imageStyles/{id}',
+            ],
+            'input' => [ 'shape' => 'DeleteImageStyleRequestShape', ],
+            'output' => [ 'shape' => 'DeleteImageStyleResponseShape', ],
+        ],
+        'CountImageStyle' => [
+            'name' => 'CountImageStyle',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/buckets/{bucketName}/imageStyles/count',
+            ],
+            'input' => [ 'shape' => 'CountImageStyleRequestShape', ],
+            'output' => [ 'shape' => 'CountImageStyleResponseShape', ],
         ],
         'ListThumbnailTask' => [
             'name' => 'ListThumbnailTask',
@@ -85,6 +157,144 @@ return [
         ],
     ],
     'shapes' => [
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'Sort' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+            ],
+        ],
+        'TranscodeJob' => [
+            'type' => 'structure',
+            'members' => [
+                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeTask', ], ],
+            ],
+        ],
+        'SubmitTranscodeJobRequestInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
+                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
+                'objectKey' => [ 'type' => 'string', 'locationName' => 'objectKey', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'outputConfig' =>  [ 'shape' => 'TranscodeOutputConfig', ],
+            ],
+        ],
+        'TranscodeOutputConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
+                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
+                'outputList' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeOutputObject', ], ],
+            ],
+        ],
+        'SubmitTranscodeJobResultInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
+                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ListTranscodeJobsResultInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeJob', ], ],
+            ],
+        ],
+        'TranscodeOutputObject' => [
+            'type' => 'structure',
+            'members' => [
+                'objectKey' => [ 'type' => 'string', 'locationName' => 'objectKey', ],
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+            ],
+        ],
+        'TranscodeTask' => [
+            'type' => 'structure',
+            'members' => [
+                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'fileUrl' => [ 'type' => 'string', 'locationName' => 'fileUrl', ],
+                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
+                'width' => [ 'type' => 'string', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'string', 'locationName' => 'height', ],
+                'bitrate' => [ 'type' => 'string', 'locationName' => 'bitrate', ],
+                'framerate' => [ 'type' => 'string', 'locationName' => 'framerate', ],
+                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'finishTime' => [ 'type' => 'string', 'locationName' => 'finishTime', ],
+            ],
+        ],
+        'SubmitTranscodeJobRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
+                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
+                'objectKey' => [ 'type' => 'string', 'locationName' => 'objectKey', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'outputConfig' =>  [ 'shape' => 'TranscodeOutputConfig', ],
+            ],
+        ],
+        'SubmitTranscodeJobResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
+                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ListTranscodeJobsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListTranscodeJobsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListTranscodeJobsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeJob', ], ],
+            ],
+        ],
+        'ListTranscodeJobsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'SubmitTranscodeJobResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SubmitTranscodeJobResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'SetStyleDelimiterResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -148,16 +358,25 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'ImageStyleCount' => [
+        'DeleteImageStyleRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'styleCount' => [ 'type' => 'integer', 'locationName' => 'styleCount', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
             ],
         ],
         'ImageStyleID' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+            ],
+        ],
+        'CountImageStyleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CountImageStyleResultShape', ],
             ],
         ],
         'ImageStyleQueryResult' => [
@@ -167,6 +386,42 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'imageStyleList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageStyle', ], ],
+            ],
+        ],
+        'GetImageStyleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'styleName' => [ 'type' => 'string', 'locationName' => 'styleName', ],
+                'params' => [ 'type' => 'string', 'locationName' => 'params', ],
+                'paramAlias' => [ 'type' => 'string', 'locationName' => 'paramAlias', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'status' => [ 'type' => 'byte', 'locationName' => 'status', ],
+                'modifyTime' => [ 'type' => 'date', 'locationName' => 'modifyTime', ],
+                'createdTime' => [ 'type' => 'date', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'UpdateImageStyleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'styleName' => [ 'type' => 'string', 'locationName' => 'styleName', ],
+                'params' => [ 'type' => 'string', 'locationName' => 'params', ],
+                'paramAlias' => [ 'type' => 'string', 'locationName' => 'paramAlias', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'status' => [ 'type' => 'byte', 'locationName' => 'status', ],
+                'modifyTime' => [ 'type' => 'date', 'locationName' => 'modifyTime', ],
+                'createdTime' => [ 'type' => 'date', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'CountImageStyleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'styleCount' => [ 'type' => 'integer', 'locationName' => 'styleCount', ],
             ],
         ],
         'ImageStyle' => [
@@ -182,6 +437,111 @@ return [
                 'status' => [ 'type' => 'byte', 'locationName' => 'status', ],
                 'modifyTime' => [ 'type' => 'date', 'locationName' => 'modifyTime', ],
                 'createdTime' => [ 'type' => 'date', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'ListImageStyleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'ListImageStyleResultShape', ],
+            ],
+        ],
+        'CreateImageStyleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'styleName' => [ 'type' => 'string', 'locationName' => 'styleName', ],
+                'params' => [ 'type' => 'string', 'locationName' => 'params', ],
+                'paramAlias' => [ 'type' => 'string', 'locationName' => 'paramAlias', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'status' => [ 'type' => 'byte', 'locationName' => 'status', ],
+                'modifyTime' => [ 'type' => 'date', 'locationName' => 'modifyTime', ],
+                'createdTime' => [ 'type' => 'date', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'DeleteImageStyleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ListImageStyleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'styleName' => [ 'type' => 'string', 'locationName' => 'styleName', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'imageStyleList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageStyle', ], ],
+            ],
+        ],
+        'UpdateImageStyleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ImageStyleCount' => [
+            'type' => 'structure',
+            'members' => [
+                'styleCount' => [ 'type' => 'integer', 'locationName' => 'styleCount', ],
+            ],
+        ],
+        'GetImageStyleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+            ],
+        ],
+        'CreateImageStyleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateImageStyleResultShape', ],
+            ],
+        ],
+        'DeleteImageStyleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetImageStyleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetImageStyleResultShape', ],
+            ],
+        ],
+        'CreateImageStyleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+            ],
+        ],
+        'ListImageStyleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'styleName' => [ 'type' => 'string', 'locationName' => 'styleName', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+            ],
+        ],
+        'UpdateImageStyleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CountImageStyleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'styleName' => [ 'type' => 'string', 'locationName' => 'styleName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
             ],
         ],
         'GetThumbnailTaskRequestShape' => [

@@ -615,7 +615,7 @@ return [
         'SignRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'plaintext' => [ 'type' => '', 'locationName' => 'plaintext', ],
+                'plaintext' => [ 'type' => 'string', 'locationName' => 'plaintext', ],
                 'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
             ],
         ],
@@ -679,8 +679,8 @@ return [
         'ValidateRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'plaintext' => [ 'type' => '', 'locationName' => 'plaintext', ],
-                'signature' => [ 'type' => '', 'locationName' => 'signature', ],
+                'plaintext' => [ 'type' => 'string', 'locationName' => 'plaintext', ],
+                'signature' => [ 'type' => 'string', 'locationName' => 'signature', ],
                 'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
             ],
         ],
@@ -705,7 +705,7 @@ return [
         'EncryptRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'plaintext' => [ 'type' => '', 'locationName' => 'plaintext', ],
+                'plaintext' => [ 'type' => 'string', 'locationName' => 'plaintext', ],
                 'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
             ],
         ],
@@ -811,14 +811,14 @@ return [
         'DecryptRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'ciphertextBlob' => [ 'type' => '', 'locationName' => 'ciphertextBlob', ],
+                'ciphertextBlob' => [ 'type' => 'string', 'locationName' => 'ciphertextBlob', ],
                 'keyId' => [ 'type' => 'string', 'locationName' => 'keyId', ],
             ],
         ],
         'ImportSecretRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'secretPackage' => [ 'type' => '', 'locationName' => 'secretPackage', ],
+                'secretPackage' => [ 'type' => 'string', 'locationName' => 'secretPackage', ],
             ],
         ],
         'CreateSecretRequestShape' => [
