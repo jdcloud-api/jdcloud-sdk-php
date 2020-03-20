@@ -116,7 +116,8 @@ $vm = new VmClient([
      'scheme' => 'https',
      'http'    => [
         'verify' => 'C:/ca-bundle.crt', //指定本地证书文件
-        'connect_timeout' => 20,   //指定连接超时         
+        'connect_timeout' => 20,   //指定连接超时  
+	'proxy' => 'http://192.168.16.1:10', //指定代理
          'timeout' => 5   //指定请求超时 
     ]
 ]);
