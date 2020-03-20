@@ -85,6 +85,10 @@ return [
         'namespace' => 'Order',
         'versions' => [ 'latest' => 'v2', ],
     ],
+    'iotedge' => [
+        'namespace' => 'Iotedge',
+        'versions' => [ 'latest' => 'v2', ],
+    ],
     'clouddnsservice' => [
         'namespace' => 'Clouddnsservice',
         'versions' => [ 'latest' => 'v1', ],
@@ -143,6 +147,10 @@ return [
     ],
     'nativecontainer' => [
         'namespace' => 'Nativecontainer',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'cloudauth' => [
+        'namespace' => 'Cloudauth',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'pod' => [
@@ -291,6 +299,10 @@ return [
     ],
     'iotcard' => [
         'namespace' => 'Iotcard',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'censor' => [
+        'namespace' => 'Censor',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'iotcloudgateway' => [

@@ -83,6 +83,15 @@ return [
             'input' => [ 'shape' => 'DescribeBandwidthTrafficRequestShape', ],
             'output' => [ 'shape' => 'DescribeBandwidthTrafficResponseShape', ],
         ],
+        'DescribeTrafficSampling' => [
+            'name' => 'DescribeTrafficSampling',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/trafficSampling',
+            ],
+            'input' => [ 'shape' => 'DescribeTrafficSamplingRequestShape', ],
+            'output' => [ 'shape' => 'DescribeTrafficSamplingResponseShape', ],
+        ],
         'DescribeIdcs' => [
             'name' => 'DescribeIdcs',
             'http' => [
@@ -497,6 +506,20 @@ return [
                 'idcName' => [ 'type' => 'string', 'locationName' => 'idcName', ],
             ],
         ],
+        'TrafficSamplingData' => [
+            'type' => 'structure',
+            'members' => [
+                'srcIp' => [ 'type' => 'string', 'locationName' => 'srcIp', ],
+                'dstIp' => [ 'type' => 'string', 'locationName' => 'dstIp', ],
+                'srcPort' => [ 'type' => 'integer', 'locationName' => 'srcPort', ],
+                'dstPort' => [ 'type' => 'integer', 'locationName' => 'dstPort', ],
+                'sampleDataLength' => [ 'type' => 'integer', 'locationName' => 'sampleDataLength', ],
+                'samplingInterval' => [ 'type' => 'integer', 'locationName' => 'samplingInterval', ],
+                'protocolName' => [ 'type' => 'string', 'locationName' => 'protocolName', ],
+                'timestamp' => [ 'type' => 'integer', 'locationName' => 'timestamp', ],
+                'operatorType' => [ 'type' => 'string', 'locationName' => 'operatorType', ],
+            ],
+        ],
         'DescribeAlarmHistoryResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -567,6 +590,65 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeBandwidthTrafficRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
+                'bandwidthId' => [ 'type' => 'string', 'locationName' => 'bandwidthId', ],
+            ],
+        ],
+        'DescribeMetricsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeBandwidthTrafficResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthTraffic' =>  [ 'shape' => 'BandwidthTraffic', ],
+            ],
+        ],
+        'DescribeBandwidthTrafficResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBandwidthTrafficResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeTrafficSamplingResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'TrafficSamplingData', ], ],
+            ],
+        ],
+        'DescribeMetricsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'metrics' => [ 'type' => 'list', 'member' => [ 'shape' => 'Metric', ], ],
+            ],
+        ],
+        'DescribeTrafficSamplingResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeTrafficSamplingResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeTrafficSamplingRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'startTime' => [ 'type' => 'integer', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'integer', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribeMetricsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeMetricsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'LastDownsampleResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -589,18 +671,6 @@ return [
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
             ],
         ],
-        'DescribeBandwidthTrafficRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
-                'bandwidthId' => [ 'type' => 'string', 'locationName' => 'bandwidthId', ],
-            ],
-        ],
-        'DescribeMetricsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DescribeBandwidthTrafficsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -608,12 +678,6 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'DescribeBandwidthTrafficResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'bandwidthTraffic' =>  [ 'shape' => 'BandwidthTraffic', ],
             ],
         ],
         'DescribeMetricDataRequestShape' => [
@@ -629,24 +693,11 @@ return [
                 'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
             ],
         ],
-        'DescribeBandwidthTrafficResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeBandwidthTrafficResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeMetricDataResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeMetricDataResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeMetricsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'metrics' => [ 'type' => 'list', 'member' => [ 'shape' => 'Metric', ], ],
             ],
         ],
         'DescribeMetricDataResultShape' => [
@@ -666,13 +717,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'LastDownsampleResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeMetricsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeMetricsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],

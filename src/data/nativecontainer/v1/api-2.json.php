@@ -210,12 +210,51 @@ return [
                 'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
             ],
         ],
+        'InstanceLocalDisk' => [
+            'type' => 'structure',
+            'members' => [
+                'diskSize' => [ 'type' => 'integer', 'locationName' => 'diskSize', ],
+            ],
+        ],
         'NetworkInterfacePrivateIp' => [
             'type' => 'structure',
             'members' => [
                 'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
                 'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
+            ],
+        ],
+        'InstanceCloudDisk' => [
+            'type' => 'structure',
+            'members' => [
+                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
+                'diskSize' => [ 'type' => 'integer', 'locationName' => 'diskSize', ],
+                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'VolumeMount' => [
+            'type' => 'structure',
+            'members' => [
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
+                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+                'readOnly' => [ 'type' => 'boolean', 'locationName' => 'readOnly', ],
+                'cloudDisk' =>  [ 'shape' => 'InstanceCloudDisk', ],
+                'localDisk' =>  [ 'shape' => 'InstanceLocalDisk', ],
+                'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
+            ],
+        ],
+        'Tag' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'Container' => [
@@ -259,20 +298,6 @@ return [
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
-        'InstanceCloudDisk' => [
-            'type' => 'structure',
-            'members' => [
-                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
-                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
-                'diskSize' => [ 'type' => 'integer', 'locationName' => 'diskSize', ],
-                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-            ],
-        ],
         'InstanceNetworkInterface' => [
             'type' => 'structure',
             'members' => [
@@ -292,17 +317,6 @@ return [
             'members' => [
                 'hostnames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
-            ],
-        ],
-        'VolumeMount' => [
-            'type' => 'structure',
-            'members' => [
-                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
-                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
-                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
-                'readOnly' => [ 'type' => 'boolean', 'locationName' => 'readOnly', ],
-                'cloudDisk' =>  [ 'shape' => 'InstanceCloudDisk', ],
-                'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
             ],
         ],
         'Charge' => [
@@ -336,13 +350,6 @@ return [
             'members' => [
                 'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
                 'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
-            ],
-        ],
-        'Tag' => [
-            'type' => 'structure',
-            'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'ContainerNetworkInterfaceAttachmentSpec' => [
@@ -479,6 +486,12 @@ return [
                 'nicLimit' => [ 'type' => 'integer', 'locationName' => 'nicLimit', ],
                 'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
                 'state' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceTypeState', ], ],
+            ],
+        ],
+        'LocalDiskSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'diskSize' => [ 'type' => 'integer', 'locationName' => 'diskSize', ],
             ],
         ],
         'LogOption' => [

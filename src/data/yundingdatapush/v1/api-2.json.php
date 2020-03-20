@@ -47,8 +47,31 @@ return [
             'input' => [ 'shape' => 'DescribeRdsInstancesRequestShape', ],
             'output' => [ 'shape' => 'DescribeRdsInstancesResponseShape', ],
         ],
+        'CreateOrderSync' => [
+            'name' => 'CreateOrderSync',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/createOrderSync',
+            ],
+            'input' => [ 'shape' => 'CreateOrderSyncRequestShape', ],
+            'output' => [ 'shape' => 'CreateOrderSyncResponseShape', ],
+        ],
     ],
     'shapes' => [
+        'OrderSyncSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
+                'venderId' => [ 'type' => 'string', 'locationName' => 'venderId', ],
+                'days' => [ 'type' => 'integer', 'locationName' => 'days', ],
+            ],
+        ],
+        'OrderSync' => [
+            'type' => 'structure',
+            'members' => [
+                'syncId' => [ 'type' => 'string', 'locationName' => 'syncId', ],
+            ],
+        ],
         'RdsInstance' => [
             'type' => 'structure',
             'members' => [
@@ -98,6 +121,12 @@ return [
                 'venderName' => [ 'type' => 'string', 'locationName' => 'venderName', ],
             ],
         ],
+        'CreateOrderSyncResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'orderSync' =>  [ 'shape' => 'OrderSync', ],
+            ],
+        ],
         'DeleteDatapushVenderResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -116,6 +145,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'datapushVender' =>  [ 'shape' => 'Vender', ],
+            ],
+        ],
+        'CreateOrderSyncResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateOrderSyncResultShape', ],
             ],
         ],
         'DescribeRdsInstancesResponseShape' => [
@@ -155,6 +191,12 @@ return [
                 'appkey' => [ 'type' => 'string', 'locationName' => 'appkey', ],
                 'ydRdsInstanceId' => [ 'type' => 'string', 'locationName' => 'ydRdsInstanceId', ],
                 'venderId' => [ 'type' => 'string', 'locationName' => 'venderId', ],
+            ],
+        ],
+        'CreateOrderSyncRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'orderSyncSpec' =>  [ 'shape' => 'OrderSyncSpec', ],
             ],
         ],
         'DeleteDatapushVenderResultShape' => [

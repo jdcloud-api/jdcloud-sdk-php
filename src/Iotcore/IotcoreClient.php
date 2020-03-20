@@ -28,6 +28,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise updateThingShadowAsync(array $args = [])
  * @method \Jdcloud\Result invokeThingService(array $args = [])
  * @method \GuzzleHttp\Promise\Promise invokeThingServiceAsync(array $args = [])
+ * @method \Jdcloud\Result addDeviceLinks(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise addDeviceLinksAsync(array $args = [])
  * @method \Jdcloud\Result queryDevicePage(array $args = [])
  * @method \GuzzleHttp\Promise\Promise queryDevicePageAsync(array $args = [])
  * @method \Jdcloud\Result updateDevice(array $args = [])
@@ -54,8 +56,12 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise importThingModelAsync(array $args = [])
  * @method \Jdcloud\Result exportThingModel(array $args = [])
  * @method \GuzzleHttp\Promise\Promise exportThingModelAsync(array $args = [])
+ * @method \Jdcloud\Result describeProductTopics(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeProductTopicsAsync(array $args = [])
  * @method \Jdcloud\Result createProductTopic(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createProductTopicAsync(array $args = [])
+ * @method \Jdcloud\Result describeProductTopic(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeProductTopicAsync(array $args = [])
  */
 class IotcoreClient extends JdCloudClient
 {

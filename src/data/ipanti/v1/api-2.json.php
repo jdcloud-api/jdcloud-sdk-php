@@ -443,6 +443,15 @@ return [
             'input' => [ 'shape' => 'DeleteWebRuleRequestShape', ],
             'output' => [ 'shape' => 'DeleteWebRuleResponseShape', ],
         ],
+        'BindCert' => [
+            'name' => 'BindCert',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/webRules/{webRuleId}:bindCert',
+            ],
+            'input' => [ 'shape' => 'BindCertRequestShape', ],
+            'output' => [ 'shape' => 'BindCertResponseShape', ],
+        ],
         'SwitchWebRuleProtect' => [
             'name' => 'SwitchWebRuleProtect',
             'http' => [
@@ -794,6 +803,15 @@ return [
             'input' => [ 'shape' => 'DescribeWebRuleWhiteListGeoAreasRequestShape', ],
             'output' => [ 'shape' => 'DescribeWebRuleWhiteListGeoAreasResponseShape', ],
         ],
+        'DescribeWebRuleRSGeoAreas' => [
+            'name' => 'DescribeWebRuleRSGeoAreas',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/describeWebRuleRSGeoAreas',
+            ],
+            'input' => [ 'shape' => 'DescribeWebRuleRSGeoAreasRequestShape', ],
+            'output' => [ 'shape' => 'DescribeWebRuleRSGeoAreasResponseShape', ],
+        ],
     ],
     'shapes' => [
         'AlarmConfig' => [
@@ -1003,6 +1021,9 @@ return [
                 'buyType' => [ 'type' => 'integer', 'locationName' => 'buyType', ],
                 'carrier' => [ 'type' => 'integer', 'locationName' => 'carrier', ],
                 'ipType' => [ 'type' => 'integer', 'locationName' => 'ipType', ],
+                'ipCount' => [ 'type' => 'integer', 'locationName' => 'ipCount', ],
+                'portCount' => [ 'type' => 'integer', 'locationName' => 'portCount', ],
+                'domainCount' => [ 'type' => 'integer', 'locationName' => 'domainCount', ],
                 'bp' => [ 'type' => 'integer', 'locationName' => 'bp', ],
                 'ep' => [ 'type' => 'integer', 'locationName' => 'ep', ],
                 'bw' => [ 'type' => 'integer', 'locationName' => 'bw', ],
@@ -1095,6 +1116,7 @@ return [
                 'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
                 'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
                 'originType' => [ 'type' => 'string', 'locationName' => 'originType', ],
+                'serviceIp' => [ 'type' => 'string', 'locationName' => 'serviceIp', ],
                 'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
                 'algorithm' => [ 'type' => 'string', 'locationName' => 'algorithm', ],
                 'originAddr' => [ 'type' => 'list', 'member' => [ 'shape' => 'OriginAddrItem', ], ],
@@ -1108,6 +1130,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'serviceIp' => [ 'type' => 'string', 'locationName' => 'serviceIp', ],
                 'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
                 'algorithm' => [ 'type' => 'string', 'locationName' => 'algorithm', ],
                 'originType' => [ 'type' => 'string', 'locationName' => 'originType', ],
@@ -1115,6 +1138,13 @@ return [
                 'onlineAddr' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'originDomain' => [ 'type' => 'string', 'locationName' => 'originDomain', ],
                 'originPort' => [ 'type' => 'integer', 'locationName' => 'originPort', ],
+            ],
+        ],
+        'FailedPort' => [
+            'type' => 'structure',
+            'members' => [
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'ForwardWhiteListRule' => [
@@ -1126,6 +1156,19 @@ return [
                 'ip' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'GeoRsRoute' => [
+            'type' => 'structure',
+            'members' => [
+                'geo' => [ 'type' => 'string', 'locationName' => 'geo', ],
+                'rsAddr' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ServiceIp' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceIp' => [ 'type' => 'string', 'locationName' => 'serviceIp', ],
+            ],
+        ],
         'Instance' => [
             'type' => 'structure',
             'members' => [
@@ -1133,6 +1176,9 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'carrier' => [ 'type' => 'integer', 'locationName' => 'carrier', ],
                 'ipType' => [ 'type' => 'integer', 'locationName' => 'ipType', ],
+                'ipCount' => [ 'type' => 'integer', 'locationName' => 'ipCount', ],
+                'portCount' => [ 'type' => 'integer', 'locationName' => 'portCount', ],
+                'domainCount' => [ 'type' => 'integer', 'locationName' => 'domainCount', ],
                 'elasticTriggerCount' => [ 'type' => 'integer', 'locationName' => 'elasticTriggerCount', ],
                 'abovePeakCount' => [ 'type' => 'integer', 'locationName' => 'abovePeakCount', ],
                 'inBitslimit' => [ 'type' => 'integer', 'locationName' => 'inBitslimit', ],
@@ -1164,6 +1210,31 @@ return [
                 'ipHostUrlQps' => [ 'type' => 'integer', 'locationName' => 'ipHostUrlQps', ],
             ],
         ],
+        'IpSet' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'InstanceAcl' => [
+            'type' => 'structure',
+            'members' => [
+                'blackListIds' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpSet', ], ],
+                'whiteListIds' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpSet', ], ],
+                'geoBlack' => [ 'type' => 'list', 'member' => [ 'shape' => 'Geo', ], ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'canRecover' => [ 'type' => 'boolean', 'locationName' => 'canRecover', ],
+            ],
+        ],
+        'InstanceAclSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'blackListIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'whiteListIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'geoBlack' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'InstanceIdName' => [
             'type' => 'structure',
             'members' => [
@@ -1176,14 +1247,6 @@ return [
             'members' => [
                 'ipList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'tryFlag' => [ 'type' => 'boolean', 'locationName' => 'tryFlag', ],
-            ],
-        ],
-        'IpSet' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'ip' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'IpSetSpec' => [
@@ -1312,6 +1375,7 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
                 'cnameStatus' => [ 'type' => 'integer', 'locationName' => 'cnameStatus', ],
+                'serviceIp' => [ 'type' => 'string', 'locationName' => 'serviceIp', ],
                 'protocol' =>  [ 'shape' => 'WebRuleProtocol', ],
                 'customPortStatus' => [ 'type' => 'integer', 'locationName' => 'customPortStatus', ],
                 'port' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
@@ -1333,11 +1397,13 @@ return [
                 'webSocketStatus' => [ 'type' => 'integer', 'locationName' => 'webSocketStatus', ],
                 'blackListEnable' => [ 'type' => 'integer', 'locationName' => 'blackListEnable', ],
                 'whiteListEnable' => [ 'type' => 'integer', 'locationName' => 'whiteListEnable', ],
+                'geoRsRoute' => [ 'type' => 'list', 'member' => [ 'shape' => 'GeoRsRoute', ], ],
             ],
         ],
         'WebRuleSpec' => [
             'type' => 'structure',
             'members' => [
+                'serviceIp' => [ 'type' => 'string', 'locationName' => 'serviceIp', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'protocol' =>  [ 'shape' => 'WebRuleProtocol', ],
                 'port' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
@@ -1351,9 +1417,14 @@ return [
                 'customPortStatus' => [ 'type' => 'integer', 'locationName' => 'customPortStatus', ],
                 'httpOrigin' => [ 'type' => 'integer', 'locationName' => 'httpOrigin', ],
                 'webSocketStatus' => [ 'type' => 'integer', 'locationName' => 'webSocketStatus', ],
-                'httpsCertContent' => [ 'type' => 'string', 'locationName' => 'httpsCertContent', ],
-                'httpsRsaKey' => [ 'type' => 'string', 'locationName' => 'httpsRsaKey', ],
-                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
+                'geoRsRoute' => [ 'type' => 'list', 'member' => [ 'shape' => 'GeoRsRoute', ], ],
+            ],
+        ],
+        'FailedDomain' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'WebWhiteListRule' => [
@@ -2020,14 +2091,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeAlarmConfigResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeAlarmConfigResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeAlarmConfigResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeProtectionStatisticsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2040,14 +2103,6 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeProtectionStatisticsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeProtectionStatisticsResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeProtectionStatisticsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ModifyInstanceNameResultShape' => [
@@ -2119,6 +2174,82 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ModifyInstanceNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'renameInstanceSpec' =>  [ 'shape' => 'RenameInstanceSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeVpcIpListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeVpcIpListResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeVpcIpListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeCpsIpListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ModifyAlarmConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyAlarmConfigResultShape', ],
+                'error' =>  [ 'shape' => 'ModifyAlarmConfigResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'createInstanceSpec' =>  [ 'shape' => 'CreateInstanceSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeAlarmConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeAlarmConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAlarmConfigResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeAlarmConfigResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeProtectionStatisticsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeProtectionStatisticsResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeProtectionStatisticsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeCpsIpListResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2162,49 +2293,11 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DescribeInstanceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'ModifyInstanceNameRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'renameInstanceSpec' =>  [ 'shape' => 'RenameInstanceSpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
         'CheckNameRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeVpcIpListResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeVpcIpListResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeVpcIpListResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeCpsIpListRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'CreateInstanceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'DescribeInstanceResponseShape' => [
@@ -2229,34 +2322,12 @@ return [
                 'data' =>  [ 'shape' => 'AlarmConfig', ],
             ],
         ],
-        'ModifyAlarmConfigResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ModifyAlarmConfigResultShape', ],
-                'error' =>  [ 'shape' => 'ModifyAlarmConfigResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateInstanceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'createInstanceSpec' =>  [ 'shape' => 'CreateInstanceSpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'DescribeNameListResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeNameListResultShape', ],
                 'error' =>  [ 'shape' => 'DescribeNameListResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeAlarmConfigRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'DescribeInstancesRequestShape' => [
@@ -2636,6 +2707,15 @@ return [
                 'ccProtectionRuleId' => [ 'type' => 'string', 'locationName' => 'ccProtectionRuleId', ],
             ],
         ],
+        'BindCertRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
         'CreateCCProtectionRuleOfWebRuleResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -2715,6 +2795,14 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
+        'DescribeWebRuleRSGeoAreasResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeWebRuleRSGeoAreasResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeWebRuleRSGeoAreasResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeCCProtectionRulesOfWebRuleRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2792,12 +2880,25 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'BindCertResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
         'DeleteWhiteListRuleOfWebRuleResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DeleteWhiteListRuleOfWebRuleResultShape', ],
                 'error' =>  [ 'shape' => 'DeleteWhiteListRuleOfWebRuleResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeWebRuleRSGeoAreasRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DescribeWebRuleWhiteListUsageRequestShape' => [
@@ -2883,6 +2984,12 @@ return [
                 'result' =>  [ 'shape' => 'ModifyBlackListRuleOfWebRuleResultShape', ],
                 'error' =>  [ 'shape' => 'ModifyBlackListRuleOfWebRuleResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeWebRuleRSGeoAreasResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Country', ], ],
             ],
         ],
         'EnableBlackListRuleOfWebRuleResponseShape' => [
@@ -3078,6 +3185,14 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
+        'BindCertResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'BindCertResultShape', ],
+                'error' =>  [ 'shape' => 'BindCertResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeWhiteListRulesOfWebRuleRequestShape' => [

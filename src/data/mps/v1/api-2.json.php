@@ -29,6 +29,69 @@ return [
             'input' => [ 'shape' => 'ListTranscodeJobsRequestShape', ],
             'output' => [ 'shape' => 'ListTranscodeJobsResponseShape', ],
         ],
+        'GetTranscodeJob' => [
+            'name' => 'GetTranscodeJob',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/transcodeJobs/{jobId}',
+            ],
+            'input' => [ 'shape' => 'GetTranscodeJobRequestShape', ],
+            'output' => [ 'shape' => 'GetTranscodeJobResponseShape', ],
+        ],
+        'ListTranscodeTemplates' => [
+            'name' => 'ListTranscodeTemplates',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/transcodeTemplates',
+            ],
+            'input' => [ 'shape' => 'ListTranscodeTemplatesRequestShape', ],
+            'output' => [ 'shape' => 'ListTranscodeTemplatesResponseShape', ],
+        ],
+        'CreateTranscodeTemplate' => [
+            'name' => 'CreateTranscodeTemplate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/transcodeTemplates',
+            ],
+            'input' => [ 'shape' => 'CreateTranscodeTemplateRequestShape', ],
+            'output' => [ 'shape' => 'CreateTranscodeTemplateResponseShape', ],
+        ],
+        'GetTranscodeTemplate' => [
+            'name' => 'GetTranscodeTemplate',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/transcodeTemplates/{templateId}',
+            ],
+            'input' => [ 'shape' => 'GetTranscodeTemplateRequestShape', ],
+            'output' => [ 'shape' => 'GetTranscodeTemplateResponseShape', ],
+        ],
+        'UpdateTranscodeTemplate' => [
+            'name' => 'UpdateTranscodeTemplate',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/transcodeTemplates/{templateId}',
+            ],
+            'input' => [ 'shape' => 'UpdateTranscodeTemplateRequestShape', ],
+            'output' => [ 'shape' => 'UpdateTranscodeTemplateResponseShape', ],
+        ],
+        'ModifyTranscodeTemplate' => [
+            'name' => 'ModifyTranscodeTemplate',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/transcodeTemplates/{templateId}',
+            ],
+            'input' => [ 'shape' => 'ModifyTranscodeTemplateRequestShape', ],
+            'output' => [ 'shape' => 'ModifyTranscodeTemplateResponseShape', ],
+        ],
+        'DeleteTranscodeTemplate' => [
+            'name' => 'DeleteTranscodeTemplate',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/transcodeTemplates/{templateId}',
+            ],
+            'input' => [ 'shape' => 'DeleteTranscodeTemplateRequestShape', ],
+            'output' => [ 'shape' => 'DeleteTranscodeTemplateResponseShape', ],
+        ],
         'GetStyleDelimiter' => [
             'name' => 'GetStyleDelimiter',
             'http' => [
@@ -172,14 +235,6 @@ return [
                 'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
             ],
         ],
-        'TranscodeJob' => [
-            'type' => 'structure',
-            'members' => [
-                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
-                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
-                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeTask', ], ],
-            ],
-        ],
         'SubmitTranscodeJobRequestInfo' => [
             'type' => 'structure',
             'members' => [
@@ -210,6 +265,14 @@ return [
                 'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'TranscodeJobInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeTaskInfo', ], ],
+            ],
+        ],
         'ListTranscodeJobsResultInfo' => [
             'type' => 'structure',
             'members' => [
@@ -217,7 +280,7 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
                 'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
-                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeJob', ], ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeJobInfo', ], ],
             ],
         ],
         'TranscodeOutputObject' => [
@@ -227,12 +290,12 @@ return [
                 'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
             ],
         ],
-        'TranscodeTask' => [
+        'TranscodeTaskInfo' => [
             'type' => 'structure',
             'members' => [
                 'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
                 'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
-                'fileUrl' => [ 'type' => 'string', 'locationName' => 'fileUrl', ],
+                'objectKey' => [ 'type' => 'string', 'locationName' => 'objectKey', ],
                 'format' => [ 'type' => 'string', 'locationName' => 'format', ],
                 'width' => [ 'type' => 'string', 'locationName' => 'width', ],
                 'height' => [ 'type' => 'string', 'locationName' => 'height', ],
@@ -241,6 +304,90 @@ return [
                 'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'finishTime' => [ 'type' => 'string', 'locationName' => 'finishTime', ],
+            ],
+        ],
+        'CreateTranscodeTemplateRequestInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'video' =>  [ 'shape' => 'VideoStreamSettings', ],
+                'audio' =>  [ 'shape' => 'AudioStreamSettings', ],
+                'container' =>  [ 'shape' => 'ContainerSettings', ],
+                'encryption' =>  [ 'shape' => 'EncryptionSettings', ],
+                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
+                'transcodeType' => [ 'type' => 'string', 'locationName' => 'transcodeType', ],
+            ],
+        ],
+        'UpdateTranscodeTemplateRequestInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'video' =>  [ 'shape' => 'VideoStreamSettings', ],
+                'audio' =>  [ 'shape' => 'AudioStreamSettings', ],
+                'container' =>  [ 'shape' => 'ContainerSettings', ],
+                'encryption' =>  [ 'shape' => 'EncryptionSettings', ],
+                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
+                'transcodeType' => [ 'type' => 'string', 'locationName' => 'transcodeType', ],
+            ],
+        ],
+        'AudioStreamSettings' => [
+            'type' => 'structure',
+            'members' => [
+                'codec' => [ 'type' => 'string', 'locationName' => 'codec', ],
+                'bitrate' => [ 'type' => 'integer', 'locationName' => 'bitrate', ],
+                'sampleRate' => [ 'type' => 'integer', 'locationName' => 'sampleRate', ],
+                'channels' => [ 'type' => 'integer', 'locationName' => 'channels', ],
+                'comfortable' => [ 'type' => 'boolean', 'locationName' => 'comfortable', ],
+            ],
+        ],
+        'EncryptionSettings' => [
+            'type' => 'structure',
+            'members' => [
+                'hlsKey' => [ 'type' => 'string', 'locationName' => 'hlsKey', ],
+                'hlsKeyUrl' => [ 'type' => 'string', 'locationName' => 'hlsKeyUrl', ],
+            ],
+        ],
+        'ListTranscodeTemplatesResultInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeTemplateInfo', ], ],
+            ],
+        ],
+        'VideoStreamSettings' => [
+            'type' => 'structure',
+            'members' => [
+                'codec' => [ 'type' => 'string', 'locationName' => 'codec', ],
+                'rcmode' => [ 'type' => 'string', 'locationName' => 'rcmode', ],
+                'rateFactor' => [ 'type' => 'string', 'locationName' => 'rateFactor', ],
+                'bitrate' => [ 'type' => 'integer', 'locationName' => 'bitrate', ],
+                'frameRate' => [ 'type' => 'integer', 'locationName' => 'frameRate', ],
+                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+            ],
+        ],
+        'TranscodeTemplateInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'video' =>  [ 'shape' => 'VideoStreamSettings', ],
+                'audio' =>  [ 'shape' => 'AudioStreamSettings', ],
+                'container' =>  [ 'shape' => 'ContainerSettings', ],
+                'encryption' =>  [ 'shape' => 'EncryptionSettings', ],
+                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
+                'transcodeType' => [ 'type' => 'string', 'locationName' => 'transcodeType', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'ContainerSettings' => [
+            'type' => 'structure',
+            'members' => [
+                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
             ],
         ],
         'SubmitTranscodeJobRequestShape' => [
@@ -256,11 +403,26 @@ return [
                 'outputConfig' =>  [ 'shape' => 'TranscodeOutputConfig', ],
             ],
         ],
+        'GetTranscodeJobResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeTaskInfo', ], ],
+            ],
+        ],
         'SubmitTranscodeJobResultShape' => [
             'type' => 'structure',
             'members' => [
                 'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
                 'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'GetTranscodeJobResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetTranscodeJobResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ListTranscodeJobsResponseShape' => [
@@ -270,6 +432,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'GetTranscodeJobRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
+            ],
+        ],
         'ListTranscodeJobsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -277,7 +445,7 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
                 'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
-                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeJob', ], ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeJobInfo', ], ],
             ],
         ],
         'ListTranscodeJobsRequestShape' => [
@@ -293,6 +461,180 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'SubmitTranscodeJobResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateTranscodeTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'video' =>  [ 'shape' => 'VideoStreamSettings', ],
+                'audio' =>  [ 'shape' => 'AudioStreamSettings', ],
+                'container' =>  [ 'shape' => 'ContainerSettings', ],
+                'encryption' =>  [ 'shape' => 'EncryptionSettings', ],
+                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
+                'transcodeType' => [ 'type' => 'string', 'locationName' => 'transcodeType', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'UpdateTranscodeTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'video' =>  [ 'shape' => 'VideoStreamSettings', ],
+                'audio' =>  [ 'shape' => 'AudioStreamSettings', ],
+                'container' =>  [ 'shape' => 'ContainerSettings', ],
+                'encryption' =>  [ 'shape' => 'EncryptionSettings', ],
+                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
+                'transcodeType' => [ 'type' => 'string', 'locationName' => 'transcodeType', ],
+                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+            ],
+        ],
+        'ModifyTranscodeTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyTranscodeTemplateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetTranscodeTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+            ],
+        ],
+        'DeleteTranscodeTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateTranscodeTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateTranscodeTemplateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListTranscodeTemplatesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'DeleteTranscodeTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListTranscodeTemplatesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListTranscodeTemplatesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateTranscodeTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateTranscodeTemplateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetTranscodeTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetTranscodeTemplateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteTranscodeTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+            ],
+        ],
+        'ModifyTranscodeTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'video' =>  [ 'shape' => 'VideoStreamSettings', ],
+                'audio' =>  [ 'shape' => 'AudioStreamSettings', ],
+                'container' =>  [ 'shape' => 'ContainerSettings', ],
+                'encryption' =>  [ 'shape' => 'EncryptionSettings', ],
+                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
+                'transcodeType' => [ 'type' => 'string', 'locationName' => 'transcodeType', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'GetTranscodeTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'video' =>  [ 'shape' => 'VideoStreamSettings', ],
+                'audio' =>  [ 'shape' => 'AudioStreamSettings', ],
+                'container' =>  [ 'shape' => 'ContainerSettings', ],
+                'encryption' =>  [ 'shape' => 'EncryptionSettings', ],
+                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
+                'transcodeType' => [ 'type' => 'string', 'locationName' => 'transcodeType', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'ModifyTranscodeTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'video' =>  [ 'shape' => 'VideoStreamSettings', ],
+                'audio' =>  [ 'shape' => 'AudioStreamSettings', ],
+                'container' =>  [ 'shape' => 'ContainerSettings', ],
+                'encryption' =>  [ 'shape' => 'EncryptionSettings', ],
+                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
+                'transcodeType' => [ 'type' => 'string', 'locationName' => 'transcodeType', ],
+                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+            ],
+        ],
+        'UpdateTranscodeTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'video' =>  [ 'shape' => 'VideoStreamSettings', ],
+                'audio' =>  [ 'shape' => 'AudioStreamSettings', ],
+                'container' =>  [ 'shape' => 'ContainerSettings', ],
+                'encryption' =>  [ 'shape' => 'EncryptionSettings', ],
+                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
+                'transcodeType' => [ 'type' => 'string', 'locationName' => 'transcodeType', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'ListTranscodeTemplatesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeTemplateInfo', ], ],
+            ],
+        ],
+        'CreateTranscodeTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'video' =>  [ 'shape' => 'VideoStreamSettings', ],
+                'audio' =>  [ 'shape' => 'AudioStreamSettings', ],
+                'container' =>  [ 'shape' => 'ContainerSettings', ],
+                'encryption' =>  [ 'shape' => 'EncryptionSettings', ],
+                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
+                'transcodeType' => [ 'type' => 'string', 'locationName' => 'transcodeType', ],
             ],
         ],
         'SetStyleDelimiterResponseShape' => [

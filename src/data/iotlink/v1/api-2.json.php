@@ -83,6 +83,24 @@ return [
             'input' => [ 'shape' => 'CloseIotFlowRequestShape', ],
             'output' => [ 'shape' => 'CloseIotFlowResponseShape', ],
         ],
+        'Search' => [
+            'name' => 'Search',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/search',
+            ],
+            'input' => [ 'shape' => 'SearchRequestShape', ],
+            'output' => [ 'shape' => 'SearchResponseShape', ],
+        ],
+        'Operate' => [
+            'name' => 'Operate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/operate',
+            ],
+            'input' => [ 'shape' => 'OperateRequestShape', ],
+            'output' => [ 'shape' => 'OperateResponseShape', ],
+        ],
     ],
     'shapes' => [
         'LifeStatusResp' => [
@@ -179,12 +197,28 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'OperateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+            ],
+        ],
         'OnOffStatusResultShape' => [
             'type' => 'structure',
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'result' =>  [ 'shape' => 'OnOffStatusResp', ],
+            ],
+        ],
+        'SearchRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestType' => [ 'type' => 'string', 'locationName' => 'requestType', ],
+                'requestParam' => [ 'type' => 'string', 'locationName' => 'requestParam', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'OpenIotCardResponseShape' => [
@@ -206,6 +240,13 @@ return [
             'members' => [
                 'iccids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'SearchResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SearchResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'OpenIotCardResultShape' => [
@@ -245,6 +286,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'OperateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'OperateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'LifeStatusResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -279,6 +327,22 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'LifeStatusResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SearchResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+            ],
+        ],
+        'OperateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestType' => [ 'type' => 'string', 'locationName' => 'requestType', ],
+                'requestParam' => [ 'type' => 'string', 'locationName' => 'requestParam', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'OnOffStatusRequestShape' => [

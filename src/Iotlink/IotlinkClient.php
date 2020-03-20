@@ -36,6 +36,10 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise openIotFlowAsync(array $args = [])
  * @method \Jdcloud\Result closeIotFlow(array $args = [])
  * @method \GuzzleHttp\Promise\Promise closeIotFlowAsync(array $args = [])
+ * @method \Jdcloud\Result search(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise searchAsync(array $args = [])
+ * @method \Jdcloud\Result operate(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise operateAsync(array $args = [])
  */
 class IotlinkClient extends JdCloudClient
 {

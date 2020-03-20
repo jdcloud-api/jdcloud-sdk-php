@@ -36,6 +36,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeBandwidthTrafficsAsync(array $args = [])
  * @method \Jdcloud\Result describeBandwidthTraffic(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeBandwidthTrafficAsync(array $args = [])
+ * @method \Jdcloud\Result describeTrafficSampling(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeTrafficSamplingAsync(array $args = [])
  * @method \Jdcloud\Result describeIdcs(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeIdcsAsync(array $args = [])
  * @method \Jdcloud\Result describeRooms(array $args = [])

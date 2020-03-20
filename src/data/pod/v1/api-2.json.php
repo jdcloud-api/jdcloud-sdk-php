@@ -249,6 +249,7 @@ return [
         'CloudDisk' => [
             'type' => 'structure',
             'members' => [
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
                 'volumeId' => [ 'type' => 'string', 'locationName' => 'volumeId', ],
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
                 'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
@@ -261,6 +262,7 @@ return [
         'CloudDiskSpec' => [
             'type' => 'structure',
             'members' => [
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
                 'volumeId' => [ 'type' => 'string', 'locationName' => 'volumeId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],

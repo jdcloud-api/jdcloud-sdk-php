@@ -28,6 +28,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise deleteDatapushVenderAsync(array $args = [])
  * @method \Jdcloud\Result describeRdsInstances(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeRdsInstancesAsync(array $args = [])
+ * @method \Jdcloud\Result createOrderSync(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createOrderSyncAsync(array $args = [])
  */
 class YundingdatapushClient extends JdCloudClient
 {

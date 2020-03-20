@@ -47,6 +47,15 @@ return [
             'input' => [ 'shape' => 'InvokeThingServiceRequestShape', ],
             'output' => [ 'shape' => 'InvokeThingServiceResponseShape', ],
         ],
+        'AddDeviceLinks' => [
+            'name' => 'AddDeviceLinks',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/instances/{instanceId}/devices:addLinks',
+            ],
+            'input' => [ 'shape' => 'AddDeviceLinksRequestShape', ],
+            'output' => [ 'shape' => 'AddDeviceLinksResponseShape', ],
+        ],
         'QueryDevicePage' => [
             'name' => 'QueryDevicePage',
             'http' => [
@@ -164,6 +173,15 @@ return [
             'input' => [ 'shape' => 'ExportThingModelRequestShape', ],
             'output' => [ 'shape' => 'ExportThingModelResponseShape', ],
         ],
+        'DescribeProductTopics' => [
+            'name' => 'DescribeProductTopics',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/instances/{instanceId}/products/{productKey}/topics',
+            ],
+            'input' => [ 'shape' => 'DescribeProductTopicsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeProductTopicsResponseShape', ],
+        ],
         'CreateProductTopic' => [
             'name' => 'CreateProductTopic',
             'http' => [
@@ -172,6 +190,15 @@ return [
             ],
             'input' => [ 'shape' => 'CreateProductTopicRequestShape', ],
             'output' => [ 'shape' => 'CreateProductTopicResponseShape', ],
+        ],
+        'DescribeProductTopic' => [
+            'name' => 'DescribeProductTopic',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/instances/{instanceId}/products/{productKey}/topics/{topicId}',
+            ],
+            'input' => [ 'shape' => 'DescribeProductTopicRequestShape', ],
+            'output' => [ 'shape' => 'DescribeProductTopicResponseShape', ],
         ],
     ],
     'shapes' => [
@@ -371,6 +398,64 @@ return [
                 'lastOnlineTime' => [ 'type' => 'string', 'locationName' => 'lastOnlineTime', ],
             ],
         ],
+        'Firmware' => [
+            'type' => 'structure',
+            'members' => [
+                'firmwareId' => [ 'type' => 'string', 'locationName' => 'firmwareId', ],
+                'firmwareName' => [ 'type' => 'string', 'locationName' => 'firmwareName', ],
+                'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
+                'productName' => [ 'type' => 'string', 'locationName' => 'productName', ],
+                'firmwareFileName' => [ 'type' => 'string', 'locationName' => 'firmwareFileName', ],
+                'firmwareUrl' => [ 'type' => 'string', 'locationName' => 'firmwareUrl', ],
+                'firmwareSize' => [ 'type' => 'long', 'locationName' => 'firmwareSize', ],
+                'firmwareVersion' => [ 'type' => 'string', 'locationName' => 'firmwareVersion', ],
+                'firmwareDescription' => [ 'type' => 'string', 'locationName' => 'firmwareDescription', ],
+                'firmwareSign' => [ 'type' => 'string', 'locationName' => 'firmwareSign', ],
+                'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'BatchDevice' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceName' => [ 'type' => 'string', 'locationName' => 'deviceName', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+                'deviceState' => [ 'type' => 'string', 'locationName' => 'deviceState', ],
+                'endTime' => [ 'type' => 'long', 'locationName' => 'endTime', ],
+                'currentVersion' => [ 'type' => 'string', 'locationName' => 'currentVersion', ],
+                'updatedState' => [ 'type' => 'string', 'locationName' => 'updatedState', ],
+                'progress' => [ 'type' => 'integer', 'locationName' => 'progress', ],
+                'retriedTimes' => [ 'type' => 'integer', 'locationName' => 'retriedTimes', ],
+                'retryTimes' => [ 'type' => 'integer', 'locationName' => 'retryTimes', ],
+                'erroCode' => [ 'type' => 'integer', 'locationName' => 'erroCode', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'beginedTime' => [ 'type' => 'long', 'locationName' => 'beginedTime', ],
+            ],
+        ],
+        'Batch' => [
+            'type' => 'structure',
+            'members' => [
+                'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
+                'batchId' => [ 'type' => 'string', 'locationName' => 'batchId', ],
+                'beginedTime' => [ 'type' => 'long', 'locationName' => 'beginedTime', ],
+                'endTime' => [ 'type' => 'long', 'locationName' => 'endTime', ],
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+                'successes' => [ 'type' => 'long', 'locationName' => 'successes', ],
+                'failures' => [ 'type' => 'long', 'locationName' => 'failures', ],
+                'batchState' => [ 'type' => 'string', 'locationName' => 'batchState', ],
+                'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'Device' => [
+            'type' => 'structure',
+            'members' => [
+                'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
+                'deviceName' => [ 'type' => 'string', 'locationName' => 'deviceName', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+                'firmwareVersion' => [ 'type' => 'string', 'locationName' => 'firmwareVersion', ],
+                'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
+                'updatedTime' => [ 'type' => 'long', 'locationName' => 'updatedTime', ],
+            ],
+        ],
         'ModulePageVo' => [
             'type' => 'structure',
             'members' => [
@@ -426,6 +511,16 @@ return [
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
             ],
         ],
+        'CustomizedTemplateProduct' => [
+            'type' => 'structure',
+            'members' => [
+                'productName' => [ 'type' => 'string', 'locationName' => 'productName', ],
+                'productType' => [ 'type' => 'integer', 'locationName' => 'productType', ],
+                'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
+                'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
+                'deviceCount' => [ 'type' => 'integer', 'locationName' => 'deviceCount', ],
+            ],
+        ],
         'ProductService' => [
             'type' => 'structure',
             'members' => [
@@ -435,6 +530,17 @@ return [
                 'output' => [ 'type' => 'list', 'member' => [ 'shape' => 'ProductProperty', ], ],
                 'customized' => [ 'type' => 'boolean', 'locationName' => 'customized', ],
                 'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'ProductTopic' => [
+            'type' => 'structure',
+            'members' => [
+                'topicId' => [ 'type' => 'string', 'locationName' => 'topicId', ],
+                'topicShortName' => [ 'type' => 'string', 'locationName' => 'topicShortName', ],
+                'topicOperation' => [ 'type' => 'string', 'locationName' => 'topicOperation', ],
+                'topicDescription' => [ 'type' => 'string', 'locationName' => 'topicDescription', ],
+                'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
+                'udpatedTime' => [ 'type' => 'long', 'locationName' => 'udpatedTime', ],
             ],
         ],
         'ProductProperty' => [
@@ -485,6 +591,18 @@ return [
                 'ossPath' => [ 'type' => 'string', 'locationName' => 'ossPath', ],
             ],
         ],
+        'CustomizedThingModelTemplate' => [
+            'type' => 'structure',
+            'members' => [
+                'thingModelTemplateId' => [ 'type' => 'string', 'locationName' => 'thingModelTemplateId', ],
+                'thingModelTemplateName' => [ 'type' => 'string', 'locationName' => 'thingModelTemplateName', ],
+                'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
+                'updatedTime' => [ 'type' => 'long', 'locationName' => 'updatedTime', ],
+                'productCount' => [ 'type' => 'integer', 'locationName' => 'productCount', ],
+                'ossPath' => [ 'type' => 'string', 'locationName' => 'ossPath', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+            ],
+        ],
         'SharedUserPage' => [
             'type' => 'structure',
             'members' => [
@@ -514,6 +632,8 @@ return [
                 'maxMessage' => [ 'type' => 'integer', 'locationName' => 'maxMessage', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'edgeStatus' => [ 'type' => 'string', 'locationName' => 'edgeStatus', ],
+                'edgeOpenTime' => [ 'type' => 'string', 'locationName' => 'edgeOpenTime', ],
             ],
         ],
         'InstanceInfoAsAdminVO' => [
@@ -707,6 +827,12 @@ return [
                 'result' =>  [ 'shape' => 'InvokeThingServiceResultShape', ],
             ],
         ],
+        'AddDeviceLinksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'QueryDevicePageRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -730,6 +856,21 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
+            ],
+        ],
+        'AddDeviceLinksRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'parentId' => [ 'type' => 'string', 'locationName' => 'parentId', ],
+                'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
+                'children' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'AddDeviceLinksResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'InvokeThingTopicResultShape' => [
@@ -1059,11 +1200,52 @@ return [
             'members' => [
             ],
         ],
+        'DescribeProductTopicsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeProductTopicsResultShape', ],
+            ],
+        ],
         'CreateProductTopicResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'CreateProductTopicResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeProductTopicRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
+                'topicId' => [ 'type' => 'string', 'locationName' => 'topicId', ],
+            ],
+        ],
+        'DescribeProductTopicResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeProductTopicResultShape', ],
+            ],
+        ],
+        'DescribeProductTopicsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
+            ],
+        ],
+        'DescribeProductTopicsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'page' =>  [ 'shape' => 'PageinfoVO', ],
+                'productTopics' => [ 'type' => 'list', 'member' => [ 'shape' => 'ProductTopic', ], ],
             ],
         ],
         'CreateProductTopicResultShape' => [
@@ -1081,6 +1263,16 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
+            ],
+        ],
+        'DescribeProductTopicResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'topicShortName' => [ 'type' => 'string', 'locationName' => 'topicShortName', ],
+                'topicOperation' => [ 'type' => 'string', 'locationName' => 'topicOperation', ],
+                'topicDescription' => [ 'type' => 'string', 'locationName' => 'topicDescription', ],
+                'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
+                'udpatedTime' => [ 'type' => 'long', 'locationName' => 'udpatedTime', ],
             ],
         ],
     ],

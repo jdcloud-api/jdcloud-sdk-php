@@ -116,6 +116,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise modifyWebRuleAsync(array $args = [])
  * @method \Jdcloud\Result deleteWebRule(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteWebRuleAsync(array $args = [])
+ * @method \Jdcloud\Result bindCert(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise bindCertAsync(array $args = [])
  * @method \Jdcloud\Result switchWebRuleProtect(array $args = [])
  * @method \GuzzleHttp\Promise\Promise switchWebRuleProtectAsync(array $args = [])
  * @method \Jdcloud\Result switchWebRuleOrigin(array $args = [])
@@ -194,6 +196,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeWebRuleBlackListGeoAreasAsync(array $args = [])
  * @method \Jdcloud\Result describeWebRuleWhiteListGeoAreas(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeWebRuleWhiteListGeoAreasAsync(array $args = [])
+ * @method \Jdcloud\Result describeWebRuleRSGeoAreas(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeWebRuleRSGeoAreasAsync(array $args = [])
  */
 class IpantiClient extends JdCloudClient
 {

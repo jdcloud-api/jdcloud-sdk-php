@@ -67,6 +67,25 @@ return [
         ],
     ],
     'shapes' => [
+        'Assets' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'instanceVersion' => [ 'type' => 'string', 'locationName' => 'instanceVersion', ],
+                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
+                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
+                'isAuth' => [ 'type' => 'boolean', 'locationName' => 'isAuth', ],
+            ],
+        ],
+        'Resource' => [
+            'type' => 'structure',
+            'members' => [
+                'resName' => [ 'type' => 'string', 'locationName' => 'resName', ],
+                'hostIp' => [ 'type' => 'string', 'locationName' => 'hostIp', ],
+                'ipPort' => [ 'type' => 'string', 'locationName' => 'ipPort', ],
+            ],
+        ],
         'AuthConfig' => [
             'type' => 'structure',
             'members' => [
@@ -113,6 +132,12 @@ return [
                 'maxStorageGB' => [ 'type' => 'integer', 'locationName' => 'maxStorageGB', ],
                 'defaultStorageGB' => [ 'type' => 'integer', 'locationName' => 'defaultStorageGB', ],
                 'stepStorageGB' => [ 'type' => 'integer', 'locationName' => 'stepStorageGB', ],
+            ],
+        ],
+        'Features' => [
+            'type' => 'structure',
+            'members' => [
+                'auth' => [ 'type' => 'boolean', 'locationName' => 'auth', ],
             ],
         ],
         'IndexTemplateCronConf' => [
