@@ -434,6 +434,9 @@ return [
                 'cpu' => [ 'type' => 'integer', 'locationName' => 'cpu', ],
                 'memoryGB' => [ 'type' => 'integer', 'locationName' => 'memoryGB', ],
                 'diskGB' => [ 'type' => 'integer', 'locationName' => 'diskGB', ],
+                'maxConnection' => [ 'type' => 'integer', 'locationName' => 'maxConnection', ],
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'shardNumberList' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
             ],
         ],
         'TypeInfo' => [
@@ -456,6 +459,7 @@ return [
                 'defaultShardNumber' => [ 'type' => 'integer', 'locationName' => 'defaultShardNumber', ],
                 'defaultShardClass' => [ 'type' => 'string', 'locationName' => 'defaultShardClass', ],
                 'shardNumberList' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'ipNumberList' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
             ],
         ],
         'InstanceSpec' => [
@@ -474,6 +478,7 @@ return [
                 'diskGB' => [ 'type' => 'integer', 'locationName' => 'diskGB', ],
                 'maxConntion' => [ 'type' => 'integer', 'locationName' => 'maxConntion', ],
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'ipNumber' => [ 'type' => 'integer', 'locationName' => 'ipNumber', ],
                 'shard' =>  [ 'shape' => 'ShardInfo', ],
                 'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],

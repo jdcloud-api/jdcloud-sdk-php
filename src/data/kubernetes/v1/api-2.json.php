@@ -303,24 +303,15 @@ return [
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
             ],
         ],
-        'NodeNetwork' => [
+        'ClusterNetwork' => [
             'type' => 'structure',
             'members' => [
-                'podSubnetId' => [ 'type' => 'string', 'locationName' => 'podSubnetId', ],
-                'nodeSubnetId' => [ 'type' => 'string', 'locationName' => 'nodeSubnetId', ],
-                'serviceSubnetId' => [ 'type' => 'string', 'locationName' => 'serviceSubnetId', ],
-                'servicePublicSubnetId' => [ 'type' => 'string', 'locationName' => 'servicePublicSubnetId', ],
-                'nodeNetworkCidr' => [ 'type' => 'string', 'locationName' => 'nodeNetworkCidr', ],
+                'publicApiServer' => [ 'type' => 'boolean', 'locationName' => 'publicApiServer', ],
+                'masterCidr' => [ 'type' => 'string', 'locationName' => 'masterCidr', ],
+                'serviceCidr' => [ 'type' => 'string', 'locationName' => 'serviceCidr', ],
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
-            ],
-        ],
-        'NodeGroupProgress' => [
-            'type' => 'structure',
-            'members' => [
-                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
-                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'updatedCount' => [ 'type' => 'integer', 'locationName' => 'updatedCount', ],
+                'clusterSubnets' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterNetworkSubnet', ], ],
+                'natGateway' => [ 'type' => 'list', 'member' => [ 'shape' => 'NatGateway', ], ],
             ],
         ],
         'Cluster' => [
@@ -350,6 +341,8 @@ return [
                 'maintenanceWindow' =>  [ 'shape' => 'MaintenanceWindow', ],
                 'upgradePlan' =>  [ 'shape' => 'UpgradePlan', ],
                 'masterProgress' =>  [ 'shape' => 'MaintenanceWindow', ],
+                'clusterNetwork' =>  [ 'shape' => 'ClusterNetwork', ],
+                'networkMode' => [ 'type' => 'string', 'locationName' => 'networkMode', ],
             ],
         ],
         'NodeGroup' => [
@@ -377,15 +370,6 @@ return [
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
             ],
         ],
-        'MaintenanceWindow' => [
-            'type' => 'structure',
-            'members' => [
-                'periodType' => [ 'type' => 'string', 'locationName' => 'periodType', ],
-                'startDay' => [ 'type' => 'integer', 'locationName' => 'startDay', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
-            ],
-        ],
         'UpgradePlan' => [
             'type' => 'structure',
             'members' => [
@@ -405,6 +389,50 @@ return [
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
+        'ClusterNetworkSubnet' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'subnetType' => [ 'type' => 'string', 'locationName' => 'subnetType', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+            ],
+        ],
+        'NodeNetwork' => [
+            'type' => 'structure',
+            'members' => [
+                'podSubnetId' => [ 'type' => 'string', 'locationName' => 'podSubnetId', ],
+                'nodeSubnetId' => [ 'type' => 'string', 'locationName' => 'nodeSubnetId', ],
+                'serviceSubnetId' => [ 'type' => 'string', 'locationName' => 'serviceSubnetId', ],
+                'servicePublicSubnetId' => [ 'type' => 'string', 'locationName' => 'servicePublicSubnetId', ],
+                'nodeNetworkCidr' => [ 'type' => 'string', 'locationName' => 'nodeNetworkCidr', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+            ],
+        ],
+        'NodeGroupProgress' => [
+            'type' => 'structure',
+            'members' => [
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'updatedCount' => [ 'type' => 'integer', 'locationName' => 'updatedCount', ],
+            ],
+        ],
+        'NatGateway' => [
+            'type' => 'structure',
+            'members' => [
+                'natType' => [ 'type' => 'string', 'locationName' => 'natType', ],
+                'natId' => [ 'type' => 'string', 'locationName' => 'natId', ],
+            ],
+        ],
+        'MaintenanceWindow' => [
+            'type' => 'structure',
+            'members' => [
+                'periodType' => [ 'type' => 'string', 'locationName' => 'periodType', ],
+                'startDay' => [ 'type' => 'integer', 'locationName' => 'startDay', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
+            ],
+        ],
         'NodeConfig' => [
             'type' => 'structure',
             'members' => [
@@ -416,6 +444,37 @@ return [
                 'systemDiskType' => [ 'type' => 'string', 'locationName' => 'systemDiskType', ],
                 'systemDiskIops' => [ 'type' => 'integer', 'locationName' => 'systemDiskIops', ],
                 'labels' => [ 'type' => 'list', 'member' => [ 'shape' => 'LabelSpec', ], ],
+            ],
+        ],
+        'NatGatewaySpec' => [
+            'type' => 'structure',
+            'members' => [
+                'natType' => [ 'type' => 'string', 'locationName' => 'natType', ],
+                'natId' => [ 'type' => 'string', 'locationName' => 'natId', ],
+            ],
+        ],
+        'ClusterNetworkSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'publicApiServer' => [ 'type' => 'boolean', 'locationName' => 'publicApiServer', ],
+                'masterCidr' => [ 'type' => 'string', 'locationName' => 'masterCidr', ],
+                'serviceCidr' => [ 'type' => 'string', 'locationName' => 'serviceCidr', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'podSubnetId' => [ 'type' => 'string', 'locationName' => 'podSubnetId', ],
+                'lbSubnetId' => [ 'type' => 'string', 'locationName' => 'lbSubnetId', ],
+                'nodeSubnetId' => [ 'type' => 'string', 'locationName' => 'nodeSubnetId', ],
+                'natGateway' =>  [ 'shape' => 'NatGatewaySpec', ],
+            ],
+        ],
+        'ClusterSubnet' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'subnetType' => [ 'type' => 'string', 'locationName' => 'subnetType', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
+                'availableIpNum' => [ 'type' => 'integer', 'locationName' => 'availableIpNum', ],
+                'subnetName' => [ 'type' => 'string', 'locationName' => 'subnetName', ],
             ],
         ],
         'NodeGroupSpec' => [
@@ -465,6 +524,18 @@ return [
                 'masterCIDR' => [ 'type' => 'string', 'locationName' => 'masterCIDR', ],
                 'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
                 'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
+            ],
+        ],
+        'CustomizedNodeGroupSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'nodeConfig' =>  [ 'shape' => 'NodeConfigSpec', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'initialNodeCount' => [ 'type' => 'integer', 'locationName' => 'initialNodeCount', ],
+                'autoRepair' => [ 'type' => 'boolean', 'locationName' => 'autoRepair', ],
+                'caConfig' =>  [ 'shape' => 'CAConfigSpec', ],
             ],
         ],
         'Label' => [
@@ -532,6 +603,12 @@ return [
                 'versionStatus' => [ 'type' => 'string', 'locationName' => 'versionStatus', ],
                 'nodeVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeVersion', ], ],
                 'nodeOsTypes' => [ 'type' => 'string', 'locationName' => 'nodeOsTypes', ],
+            ],
+        ],
+        'NodeGroupNetworkSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
             ],
         ],
         'ValidNodeConfig' => [
@@ -986,6 +1063,7 @@ return [
                 'nodeCidr' => [ 'type' => 'string', 'locationName' => 'nodeCidr', ],
                 'autoRepair' => [ 'type' => 'boolean', 'locationName' => 'autoRepair', ],
                 'caConfig' =>  [ 'shape' => 'CAConfigSpec', ],
+                'nodeGroupNetwork' =>  [ 'shape' => 'NodeGroupNetworkSpec', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],

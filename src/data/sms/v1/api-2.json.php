@@ -40,6 +40,24 @@ return [
         ],
     ],
     'shapes' => [
+        'CreateInstanceResp' => [
+            'type' => 'structure',
+            'members' => [
+                'buyId' => [ 'type' => 'string', 'locationName' => 'buyId', ],
+                'submit' => [ 'type' => 'boolean', 'locationName' => 'submit', ],
+                'addAndSubmitBuyMessage' => [ 'type' => 'string', 'locationName' => 'addAndSubmitBuyMessage', ],
+                'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
+                'autoPay' => [ 'type' => 'boolean', 'locationName' => 'autoPay', ],
+                'submitOrderMessage' => [ 'type' => 'string', 'locationName' => 'submitOrderMessage', ],
+            ],
+        ],
+        'CreateInstanceNotPayResp' => [
+            'type' => 'structure',
+            'members' => [
+                'buyId' => [ 'type' => 'string', 'locationName' => 'buyId', ],
+                'forwardUrl' => [ 'type' => 'string', 'locationName' => 'forwardUrl', ],
+            ],
+        ],
         'MtSms' => [
             'type' => 'structure',
             'members' => [
@@ -118,7 +136,7 @@ return [
             'members' => [
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatusReportResp', ], ],
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'code' => [ 'type' => 'long', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
@@ -127,7 +145,7 @@ return [
             'members' => [
                 'data' =>  [ 'shape' => 'BatchSendResp', ],
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'code' => [ 'type' => 'long', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
@@ -167,7 +185,7 @@ return [
             'members' => [
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ReplyResp', ], ],
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'code' => [ 'type' => 'long', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],

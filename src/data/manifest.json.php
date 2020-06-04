@@ -145,6 +145,10 @@ return [
         'namespace' => 'Vm',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'kafka' => [
+        'namespace' => 'Kafka',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'nativecontainer' => [
         'namespace' => 'Nativecontainer',
         'versions' => [ 'latest' => 'v1', ],
@@ -315,6 +319,10 @@ return [
     ],
     'jdw' => [
         'namespace' => 'Jdw',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'user' => [
+        'namespace' => 'User',
         'versions' => [ 'latest' => 'v1', ],
     ],
 

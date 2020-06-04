@@ -398,6 +398,15 @@ return [
             'input' => [ 'shape' => 'DisassociateRouteTableRequestShape', ],
             'output' => [ 'shape' => 'DisassociateRouteTableResponseShape', ],
         ],
+        'DescribeEdgeIpProviders' => [
+            'name' => 'DescribeEdgeIpProviders',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/edgeIpProviders/',
+            ],
+            'input' => [ 'shape' => 'DescribeEdgeIpProvidersRequestShape', ],
+            'output' => [ 'shape' => 'DescribeEdgeIpProvidersResponseShape', ],
+        ],
         'DescribeSubnets' => [
             'name' => 'DescribeSubnets',
             'http' => [
@@ -684,6 +693,7 @@ return [
                 'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
                 'elasticIpSpec' =>  [ 'shape' => 'ElasticIpSpec', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
             ],
         ],
         'CreateVpcPeeringSpec' => [
@@ -714,6 +724,16 @@ return [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
             ],
         ],
+        'EdgeIpProvider' => [
+            'type' => 'structure',
+            'members' => [
+                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+                'pointOfAccess' => [ 'type' => 'string', 'locationName' => 'pointOfAccess', ],
+                'associationScope' => [ 'type' => 'string', 'locationName' => 'associationScope', ],
+                'serviceType' => [ 'type' => 'string', 'locationName' => 'serviceType', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+            ],
+        ],
         'ElasticIp' => [
             'type' => 'structure',
             'members' => [
@@ -729,6 +749,7 @@ return [
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
             ],
         ],
         'ModifyElasticIpSpec' => [
@@ -1144,6 +1165,8 @@ return [
                 'startIp' => [ 'type' => 'string', 'locationName' => 'startIp', ],
                 'endIp' => [ 'type' => 'string', 'locationName' => 'endIp', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'subnetType' => [ 'type' => 'string', 'locationName' => 'subnetType', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
             ],
         ],
         'SubnetSpec' => [
@@ -1154,6 +1177,8 @@ return [
                 'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
                 'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'subnetType' => [ 'type' => 'string', 'locationName' => 'subnetType', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
             ],
         ],
         'TagFilter' => [
@@ -1269,6 +1294,7 @@ return [
                 'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
                 'elasticIpSpec' =>  [ 'shape' => 'ElasticIpSpec', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -2090,6 +2116,29 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeEdgeIpProvidersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'edgeIpProviders' => [ 'type' => 'list', 'member' => [ 'shape' => 'EdgeIpProvider', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeEdgeIpProvidersRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeEdgeIpProvidersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeEdgeIpProvidersResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CreateSubnetResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -2131,6 +2180,8 @@ return [
                 'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
                 'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'subnetType' => [ 'type' => 'string', 'locationName' => 'subnetType', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],

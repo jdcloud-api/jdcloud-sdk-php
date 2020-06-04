@@ -110,6 +110,42 @@ return [
             'input' => [ 'shape' => 'DescribeAvailableZonesRequestShape', ],
             'output' => [ 'shape' => 'DescribeAvailableZonesResponseShape', ],
         ],
+        'RestartInstance' => [
+            'name' => 'RestartInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:restartInstance',
+            ],
+            'input' => [ 'shape' => 'RestartInstanceRequestShape', ],
+            'output' => [ 'shape' => 'RestartInstanceResponseShape', ],
+        ],
+        'CreateShardingInstance' => [
+            'name' => 'CreateShardingInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/shardingInstances',
+            ],
+            'input' => [ 'shape' => 'CreateShardingInstanceRequestShape', ],
+            'output' => [ 'shape' => 'CreateShardingInstanceResponseShape', ],
+        ],
+        'ModifyNodeSpec' => [
+            'name' => 'ModifyNodeSpec',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/nodes/{nodeId}:modifyNodeSpec',
+            ],
+            'input' => [ 'shape' => 'ModifyNodeSpecRequestShape', ],
+            'output' => [ 'shape' => 'ModifyNodeSpecResponseShape', ],
+        ],
+        'RestartNode' => [
+            'name' => 'RestartNode',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/nodes/{nodeId}:restartNode',
+            ],
+            'input' => [ 'shape' => 'RestartNodeRequestShape', ],
+            'output' => [ 'shape' => 'RestartNodeResponseShape', ],
+        ],
         'DescribeBackups' => [
             'name' => 'DescribeBackups',
             'http' => [
@@ -145,6 +181,33 @@ return [
             ],
             'input' => [ 'shape' => 'BackupDownloadURLRequestShape', ],
             'output' => [ 'shape' => 'BackupDownloadURLResponseShape', ],
+        ],
+        'DescribeBackupSynchronicities' => [
+            'name' => 'DescribeBackupSynchronicities',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/backupSynchronicities',
+            ],
+            'input' => [ 'shape' => 'DescribeBackupSynchronicitiesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBackupSynchronicitiesResponseShape', ],
+        ],
+        'CreateBackupSynchronicity' => [
+            'name' => 'CreateBackupSynchronicity',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/backupSynchronicities',
+            ],
+            'input' => [ 'shape' => 'CreateBackupSynchronicityRequestShape', ],
+            'output' => [ 'shape' => 'CreateBackupSynchronicityResponseShape', ],
+        ],
+        'DeleteBackupSynchronicities' => [
+            'name' => 'DeleteBackupSynchronicities',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/backupSynchronicities/{serviceId}',
+            ],
+            'input' => [ 'shape' => 'DeleteBackupSynchronicitiesRequestShape', ],
+            'output' => [ 'shape' => 'DeleteBackupSynchronicitiesResponseShape', ],
         ],
         'DescribeSecurityIps' => [
             'name' => 'DescribeSecurityIps',
@@ -183,6 +246,7 @@ return [
                 'backupStartTime' => [ 'type' => 'string', 'locationName' => 'backupStartTime', ],
                 'backupEndTime' => [ 'type' => 'string', 'locationName' => 'backupEndTime', ],
                 'backupMode' => [ 'type' => 'string', 'locationName' => 'backupMode', ],
+                'backupMethod' => [ 'type' => 'string', 'locationName' => 'backupMethod', ],
                 'backupSizeByte' => [ 'type' => 'integer', 'locationName' => 'backupSizeByte', ],
             ],
         ],
@@ -210,6 +274,18 @@ return [
                 'newestDataTime' => [ 'type' => 'string', 'locationName' => 'newestDataTime', ],
             ],
         ],
+        'Configserver' => [
+            'type' => 'structure',
+            'members' => [
+                'configserverNodeId' => [ 'type' => 'string', 'locationName' => 'configserverNodeId', ],
+                'configserverNodeStatus' => [ 'type' => 'string', 'locationName' => 'configserverNodeStatus', ],
+                'configserverNodeName' => [ 'type' => 'string', 'locationName' => 'configserverNodeName', ],
+                'configserverNodeType' => [ 'type' => 'string', 'locationName' => 'configserverNodeType', ],
+                'configserverNodeAzId' => [ 'type' => 'string', 'locationName' => 'configserverNodeAzId', ],
+                'configserverNodeCPU' => [ 'type' => 'integer', 'locationName' => 'configserverNodeCPU', ],
+                'configserverNodeMemoryGB' => [ 'type' => 'integer', 'locationName' => 'configserverNodeMemoryGB', ],
+            ],
+        ],
         'Tag' => [
             'type' => 'structure',
             'members' => [
@@ -227,13 +303,43 @@ return [
                 'chargeRetireTime' => [ 'type' => 'string', 'locationName' => 'chargeRetireTime', ],
             ],
         ],
+        'Mongos' => [
+            'type' => 'structure',
+            'members' => [
+                'mongosNodeId' => [ 'type' => 'string', 'locationName' => 'mongosNodeId', ],
+                'mongosNodeStatus' => [ 'type' => 'string', 'locationName' => 'mongosNodeStatus', ],
+                'mongosNodeName' => [ 'type' => 'string', 'locationName' => 'mongosNodeName', ],
+                'mongosNodeType' => [ 'type' => 'string', 'locationName' => 'mongosNodeType', ],
+                'mongosNodeDomain' => [ 'type' => 'string', 'locationName' => 'mongosNodeDomain', ],
+                'mongosNodePort' => [ 'type' => 'string', 'locationName' => 'mongosNodePort', ],
+                'mongosNodeAzId' => [ 'type' => 'string', 'locationName' => 'mongosNodeAzId', ],
+                'mongosNodeCPU' => [ 'type' => 'integer', 'locationName' => 'mongosNodeCPU', ],
+                'mongosNodeMemoryGB' => [ 'type' => 'integer', 'locationName' => 'mongosNodeMemoryGB', ],
+            ],
+        ],
+        'Shard' => [
+            'type' => 'structure',
+            'members' => [
+                'shardNodeId' => [ 'type' => 'string', 'locationName' => 'shardNodeId', ],
+                'shardNodeStatus' => [ 'type' => 'string', 'locationName' => 'shardNodeStatus', ],
+                'shardNodeName' => [ 'type' => 'string', 'locationName' => 'shardNodeName', ],
+                'shardNodeType' => [ 'type' => 'string', 'locationName' => 'shardNodeType', ],
+                'shardNodeStorageGB' => [ 'type' => 'integer', 'locationName' => 'shardNodeStorageGB', ],
+                'shardNodeAzId' => [ 'type' => 'string', 'locationName' => 'shardNodeAzId', ],
+                'shardNodeCPU' => [ 'type' => 'integer', 'locationName' => 'shardNodeCPU', ],
+                'shardNodeMemoryGB' => [ 'type' => 'integer', 'locationName' => 'shardNodeMemoryGB', ],
+            ],
+        ],
         'DBInstance' => [
             'type' => 'structure',
             'members' => [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
                 'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
+                'instanceStorageType' => [ 'type' => 'string', 'locationName' => 'instanceStorageType', ],
+                'storageEncrypted' => [ 'type' => 'boolean', 'locationName' => 'storageEncrypted', ],
                 'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
                 'instanceStorageGB' => [ 'type' => 'integer', 'locationName' => 'instanceStorageGB', ],
                 'instanceCPU' => [ 'type' => 'integer', 'locationName' => 'instanceCPU', ],
@@ -254,6 +360,17 @@ return [
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'isSetSecurityIps' => [ 'type' => 'boolean', 'locationName' => 'isSetSecurityIps', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'mongos' => [ 'type' => 'list', 'member' => [ 'shape' => 'Mongos', ], ],
+                'configserver' => [ 'type' => 'list', 'member' => [ 'shape' => 'Configserver', ], ],
+                'shard' => [ 'type' => 'list', 'member' => [ 'shape' => 'Shard', ], ],
+            ],
+        ],
+        'DBInstanceInternal' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'instanceStatus' => [ 'type' => 'string', 'locationName' => 'instanceStatus', ],
             ],
         ],
         'DBInstanceSpec' => [
@@ -272,11 +389,17 @@ return [
                 'backupId' => [ 'type' => 'string', 'locationName' => 'backupId', ],
                 'originDBInstanceId' => [ 'type' => 'string', 'locationName' => 'originDBInstanceId', ],
                 'restoreTime' => [ 'type' => 'string', 'locationName' => 'restoreTime', ],
+                'instanceStorageType' => [ 'type' => 'string', 'locationName' => 'instanceStorageType', ],
+                'storageEncrypted' => [ 'type' => 'boolean', 'locationName' => 'storageEncrypted', ],
             ],
         ],
         'Flavor' => [
             'type' => 'structure',
             'members' => [
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
+                'nodeRole' => [ 'type' => 'string', 'locationName' => 'nodeRole', ],
+                'nodeType' => [ 'type' => 'string', 'locationName' => 'nodeType', ],
                 'cpu' => [ 'type' => 'integer', 'locationName' => 'cpu', ],
                 'memory' => [ 'type' => 'integer', 'locationName' => 'memory', ],
                 'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
@@ -284,6 +407,7 @@ return [
                 'maxDisk' => [ 'type' => 'integer', 'locationName' => 'maxDisk', ],
                 'minDisk' => [ 'type' => 'integer', 'locationName' => 'minDisk', ],
                 'diskStep' => [ 'type' => 'integer', 'locationName' => 'diskStep', ],
+                'instanceStorageType' => [ 'type' => 'string', 'locationName' => 'instanceStorageType', ],
             ],
         ],
         'MongodbInfos' => [
@@ -300,6 +424,31 @@ return [
                 'use' => [ 'type' => 'integer', 'locationName' => 'use', ],
             ],
         ],
+        'ShardingDBInstanceSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
+                'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
+                'mongosNodeType' => [ 'type' => 'string', 'locationName' => 'mongosNodeType', ],
+                'mongosNodeNumber' => [ 'type' => 'integer', 'locationName' => 'mongosNodeNumber', ],
+                'configserverNodeType' => [ 'type' => 'string', 'locationName' => 'configserverNodeType', ],
+                'shardNodeType' => [ 'type' => 'string', 'locationName' => 'shardNodeType', ],
+                'shardNodeStorageGB' => [ 'type' => 'integer', 'locationName' => 'shardNodeStorageGB', ],
+                'shardNodeNumber' => [ 'type' => 'integer', 'locationName' => 'shardNodeNumber', ],
+                'multiAZ' => [ 'type' => 'boolean', 'locationName' => 'multiAZ', ],
+                'mongosAzId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'shardAzId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'originDBInstanceId' => [ 'type' => 'string', 'locationName' => 'originDBInstanceId', ],
+                'restoreTime' => [ 'type' => 'string', 'locationName' => 'restoreTime', ],
+                'instanceStorageType' => [ 'type' => 'string', 'locationName' => 'instanceStorageType', ],
+                'storageEncrypted' => [ 'type' => 'boolean', 'locationName' => 'storageEncrypted', ],
+                'serviceId' => [ 'type' => 'string', 'locationName' => 'serviceId', ],
+            ],
+        ],
         'SpaceId' => [
             'type' => 'structure',
             'members' => [
@@ -313,6 +462,7 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
                 'port' => [ 'type' => 'string', 'locationName' => 'port', ],
+                'floatingIp' => [ 'type' => 'string', 'locationName' => 'floatingIp', ],
             ],
         ],
         'Topology' => [
@@ -329,26 +479,15 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ModifyNodeSpecResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyNodeSpecResultShape', ],
+            ],
+        ],
         'DeleteInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'ResetPasswordRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'accountPassword' => [ 'type' => 'string', 'locationName' => 'accountPassword', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'ModifyInstanceSpecRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
-                'instanceStorageGB' => [ 'type' => 'integer', 'locationName' => 'instanceStorageGB', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'ModifyInstanceSpecResponseShape' => [
@@ -358,10 +497,10 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeFlavorsRequestShape' => [
+        'RestartNodeResultShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'nodeId' => [ 'type' => 'string', 'locationName' => 'nodeId', ],
             ],
         ],
         'DeleteInstanceResponseShape' => [
@@ -383,19 +522,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'ModifyInstanceNameResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'ModifyBackupPolicyResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'preferredBackupPeriod' => [ 'type' => 'string', 'locationName' => 'preferredBackupPeriod', ],
-                'preferredBackupWindow' => [ 'type' => 'string', 'locationName' => 'preferredBackupWindow', ],
-                'backupRetentionPeriod' => [ 'type' => 'string', 'locationName' => 'backupRetentionPeriod', ],
-            ],
-        ],
         'RestoreInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -406,31 +532,6 @@ return [
             'members' => [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
-            ],
-        ],
-        'ModifyBackupPolicyResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ModifyBackupPolicyResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeInstancesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
-                'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'TagFilter' => [
-            'type' => 'structure',
-            'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeInstancesResultShape' => [
@@ -462,23 +563,23 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'DescribeBackupPolicyRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
         'DescribeAvailableZonesRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DescribeFlavorsResponseShape' => [
+        'CreateShardingInstanceResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeFlavorsResultShape', ],
+                'result' =>  [ 'shape' => 'CreateShardingInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RestartNodeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RestartNodeResultShape', ],
             ],
         ],
         'CreateInstanceRequestShape' => [
@@ -487,11 +588,6 @@ return [
                 'instanceSpec' =>  [ 'shape' => 'DBInstanceSpec', ],
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'ResetPasswordResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'Filter' => [
@@ -508,18 +604,20 @@ return [
                 'flavors' => [ 'type' => 'list', 'member' => [ 'shape' => 'Flavor', ], ],
             ],
         ],
-        'Sort' => [
+        'ModifyNodeSpecRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+                'nodeType' => [ 'type' => 'string', 'locationName' => 'nodeType', ],
+                'nodeStorageGB' => [ 'type' => 'integer', 'locationName' => 'nodeStorageGB', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'nodeId' => [ 'type' => 'string', 'locationName' => 'nodeId', ],
             ],
         ],
-        'ModifyInstanceSpecResultShape' => [
+        'ModifyNodeSpecResultShape' => [
             'type' => 'structure',
             'members' => [
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
+                'nodeId' => [ 'type' => 'string', 'locationName' => 'nodeId', ],
             ],
         ],
         'ModifyInstanceNameRequestShape' => [
@@ -528,12 +626,6 @@ return [
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DescribeAvailableZonesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'availableZones' => [ 'type' => 'list', 'member' => [ 'shape' => 'AvailableZones', ], ],
             ],
         ],
         'ChargeSpec' => [
@@ -546,17 +638,11 @@ return [
                 'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
             ],
         ],
-        'CreateInstanceResponseShape' => [
+        'CreateShardingInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'CreateInstanceResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeAvailableZonesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeAvailableZonesResultShape', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
             ],
         ],
         'DescribeBackupPolicyResultShape' => [
@@ -581,11 +667,160 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'ResetPasswordRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'accountPassword' => [ 'type' => 'string', 'locationName' => 'accountPassword', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ModifyInstanceSpecRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
+                'instanceStorageGB' => [ 'type' => 'integer', 'locationName' => 'instanceStorageGB', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeFlavorsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'RestartInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ModifyInstanceNameResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyBackupPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'preferredBackupPeriod' => [ 'type' => 'string', 'locationName' => 'preferredBackupPeriod', ],
+                'preferredBackupWindow' => [ 'type' => 'string', 'locationName' => 'preferredBackupWindow', ],
+                'backupRetentionPeriod' => [ 'type' => 'string', 'locationName' => 'backupRetentionPeriod', ],
+            ],
+        ],
+        'ModifyBackupPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyBackupPolicyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateShardingInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'shardingInstanceSpec' =>  [ 'shape' => 'ShardingDBInstanceSpec', ],
+                'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'TagFilter' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeBackupPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeFlavorsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeFlavorsResultShape', ],
+            ],
+        ],
+        'RestartInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RestartInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ResetPasswordResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'Sort' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+            ],
+        ],
+        'ModifyInstanceSpecResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
+            ],
+        ],
+        'DescribeAvailableZonesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'availableZones' => [ 'type' => 'list', 'member' => [ 'shape' => 'AvailableZones', ], ],
+            ],
+        ],
+        'RestartNodeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'nodeId' => [ 'type' => 'string', 'locationName' => 'nodeId', ],
+            ],
+        ],
+        'CreateInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAvailableZonesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAvailableZonesResultShape', ],
+            ],
+        ],
+        'RestartInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'CreateBackupRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'backupName' => [ 'type' => 'string', 'locationName' => 'backupName', ],
+                'backupMethod' => [ 'type' => 'string', 'locationName' => 'backupMethod', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -661,6 +896,72 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'CreateBackupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteBackupSynchronicitiesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteBackupSynchronicitiesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeBackupSynchronicitiesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateBackupSynchronicityRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'srcRegion' => [ 'type' => 'string', 'locationName' => 'srcRegion', ],
+                'dstRegion' => [ 'type' => 'string', 'locationName' => 'dstRegion', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateBackupSynchronicityResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateBackupSynchronicityResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeBackupSynchronicitiesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'backupSynchronicities' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackupSynchronicity', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+            ],
+        ],
+        'DeleteBackupSynchronicitiesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'serviceId' => [ 'type' => 'string', 'locationName' => 'serviceId', ],
+            ],
+        ],
+        'CreateBackupSynchronicityResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceId' => [ 'type' => 'string', 'locationName' => 'serviceId', ],
+            ],
+        ],
+        'DeleteBackupSynchronicitiesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceId' => [ 'type' => 'string', 'locationName' => 'serviceId', ],
+            ],
+        ],
+        'DescribeBackupSynchronicitiesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBackupSynchronicitiesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],

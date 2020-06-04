@@ -159,7 +159,7 @@ return [
                 'cause' => [ 'type' => 'integer', 'locationName' => 'cause', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'blackHole' => [ 'type' => 'boolean', 'locationName' => 'blackHole', ],
-                'peak' => [ 'type' => 'float64', 'locationName' => 'peak', ],
+                'peak' => [ 'type' => 'double', 'locationName' => 'peak', ],
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
                 'attackType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
@@ -176,6 +176,24 @@ return [
             'members' => [
                 'cleanThresholdBps' => [ 'type' => 'long', 'locationName' => 'cleanThresholdBps', ],
                 'cleanThresholdPps' => [ 'type' => 'long', 'locationName' => 'cleanThresholdPps', ],
+            ],
+        ],
+        'ModifyIpBaseInfoSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'resourceType' => [ 'type' => 'integer', 'locationName' => 'resourceType', ],
+                'bandwidth' => [ 'type' => 'long', 'locationName' => 'bandwidth', ],
+                'cleanThresholdBps' => [ 'type' => 'long', 'locationName' => 'cleanThresholdBps', ],
+                'cleanThresholdPps' => [ 'type' => 'long', 'locationName' => 'cleanThresholdPps', ],
+                'blackHoleThresholdBps' => [ 'type' => 'long', 'locationName' => 'blackHoleThresholdBps', ],
+            ],
+        ],
+        'DeleteIpBaseInfoSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'resourceType' => [ 'type' => 'integer', 'locationName' => 'resourceType', ],
             ],
         ],
         'IpCleanThresholdRange' => [
@@ -251,6 +269,14 @@ return [
                 'cleanThresholdPps' => [ 'type' => 'long', 'locationName' => 'cleanThresholdPps', ],
             ],
         ],
+        'IpStatus' => [
+            'type' => 'structure',
+            'members' => [
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'attackStatus' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'protectStatus' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'DescribeIpMonitorFlowRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -311,7 +337,7 @@ return [
             'members' => [
                 'attackCount' => [ 'type' => 'integer', 'locationName' => 'attackCount', ],
                 'blackHoleCount' => [ 'type' => 'integer', 'locationName' => 'blackHoleCount', ],
-                'peak' => [ 'type' => 'float64', 'locationName' => 'peak', ],
+                'peak' => [ 'type' => 'double', 'locationName' => 'peak', ],
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
             ],
         ],
