@@ -854,6 +854,16 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'UserConfigure' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'localDiskSize' => [ 'type' => 'integer', 'locationName' => 'localDiskSize', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+            ],
+        ],
         'AttachResultShape' => [
             'type' => 'structure',
             'members' => [

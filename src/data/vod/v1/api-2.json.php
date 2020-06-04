@@ -227,6 +227,15 @@ return [
             'input' => [ 'shape' => 'GetHttpSslRequestShape', ],
             'output' => [ 'shape' => 'GetHttpSslResponseShape', ],
         ],
+        'CreateLiveToVodTask' => [
+            'name' => 'CreateLiveToVodTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/createLiveToVodTask',
+            ],
+            'input' => [ 'shape' => 'CreateLiveToVodTaskRequestShape', ],
+            'output' => [ 'shape' => 'CreateLiveToVodTaskResponseShape', ],
+        ],
         'CreateVideoUploadTask' => [
             'name' => 'CreateVideoUploadTask',
             'http' => [
@@ -451,6 +460,15 @@ return [
             ],
             'input' => [ 'shape' => 'DeleteVideoStreamsRequestShape', ],
             'output' => [ 'shape' => 'DeleteVideoStreamsResponseShape', ],
+        ],
+        'VideoAudit' => [
+            'name' => 'VideoAudit',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/videos/{videoId}:audit',
+            ],
+            'input' => [ 'shape' => 'VideoAuditRequestShape', ],
+            'output' => [ 'shape' => 'VideoAuditResponseShape', ],
         ],
         'ListWatermarks' => [
             'name' => 'ListWatermarks',
@@ -777,6 +795,34 @@ return [
                 'mid' => [ 'type' => 'string', 'locationName' => 'mid', ],
             ],
         ],
+        'RecordTime' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'CreateLiveToVodTaskRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'fileSize' => [ 'type' => 'long', 'locationName' => 'fileSize', ],
+                'coverUrl' => [ 'type' => 'string', 'locationName' => 'coverUrl', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'transcodeTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'recordTimes' => [ 'type' => 'list', 'member' => [ 'shape' => 'RecordTime', ], ],
+                'recordFileType' => [ 'type' => 'string', 'locationName' => 'recordFileType', ],
+                'taskExternalId' => [ 'type' => 'string', 'locationName' => 'taskExternalId', ],
+                'priority' => [ 'type' => 'string', 'locationName' => 'priority', ],
+            ],
+        ],
         'VideoUploadTaskObject' => [
             'type' => 'structure',
             'members' => [
@@ -798,6 +844,7 @@ return [
                 'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'transcodeTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'userData' => [ 'type' => 'string', 'locationName' => 'userData', ],
             ],
         ],
         'CreateImageUploadTaskRequestObject' => [
@@ -1165,6 +1212,12 @@ return [
                 'okTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'notFoundTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'failedTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+            ],
+        ],
+        'AuditVideoRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'auditResult' => [ 'type' => 'string', 'locationName' => 'auditResult', ],
             ],
         ],
         'ListVideosResultObject' => [
@@ -1836,6 +1889,40 @@ return [
             'members' => [
             ],
         ],
+        'CreateLiveToVodTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'fileSize' => [ 'type' => 'long', 'locationName' => 'fileSize', ],
+                'coverUrl' => [ 'type' => 'string', 'locationName' => 'coverUrl', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'transcodeTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'recordTimes' => [ 'type' => 'list', 'member' => [ 'shape' => 'RecordTime', ], ],
+                'recordFileType' => [ 'type' => 'string', 'locationName' => 'recordFileType', ],
+                'taskExternalId' => [ 'type' => 'string', 'locationName' => 'taskExternalId', ],
+                'priority' => [ 'type' => 'string', 'locationName' => 'priority', ],
+            ],
+        ],
+        'CreateLiveToVodTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'flowId' => [ 'type' => 'string', 'locationName' => 'flowId', ],
+            ],
+        ],
+        'CreateLiveToVodTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateLiveToVodTaskResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CreateImageUploadTaskResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1869,6 +1956,7 @@ return [
                 'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'transcodeTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'userData' => [ 'type' => 'string', 'locationName' => 'userData', ],
             ],
         ],
         'RefreshVideoUploadTaskResponseShape' => [
@@ -2238,6 +2326,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'VideoAuditResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'GetVideoPlayInfoResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -2253,11 +2346,24 @@ return [
                 'failedVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'VideoAuditResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'GetVideoPlayInfoResultShape' => [
             'type' => 'structure',
             'members' => [
                 'baseInfo' =>  [ 'shape' => 'VideoBaseInfo', ],
                 'playInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'VideoPlayInfo', ], ],
+            ],
+        ],
+        'VideoAuditRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'auditResult' => [ 'type' => 'string', 'locationName' => 'auditResult', ],
+                'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
             ],
         ],
         'GetVideoResponseShape' => [

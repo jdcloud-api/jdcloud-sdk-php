@@ -1548,16 +1548,16 @@ return [
                 'prefixMetric' => [ 'type' => 'string', 'locationName' => 'prefixMetric', ],
             ],
         ],
+        'HawkeyeOption' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'KeyInfo' => [
             'type' => 'structure',
             'members' => [
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
-            ],
-        ],
-        'HawkeyeOption' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'KeyValue' => [

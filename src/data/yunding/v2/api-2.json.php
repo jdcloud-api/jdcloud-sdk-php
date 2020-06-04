@@ -443,6 +443,8 @@ return [
                 'startIp' => [ 'type' => 'string', 'locationName' => 'startIp', ],
                 'endIp' => [ 'type' => 'string', 'locationName' => 'endIp', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'subnetType' => [ 'type' => 'string', 'locationName' => 'subnetType', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
             ],
         ],
         'LastDownsampleRespItem' => [
@@ -936,6 +938,7 @@ return [
                 'noKeyNames' => [ 'type' => 'boolean', 'locationName' => 'noKeyNames', ],
                 'noElasticIp' => [ 'type' => 'boolean', 'locationName' => 'noElasticIp', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'chargeOnStopped' => [ 'type' => 'string', 'locationName' => 'chargeOnStopped', ],
             ],
         ],
         'InstanceType' => [
@@ -965,6 +968,7 @@ return [
             'members' => [
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'inStock' => [ 'type' => 'boolean', 'locationName' => 'inStock', ],
+                'availableCount' => [ 'type' => 'integer', 'locationName' => 'availableCount', ],
             ],
         ],
         'Quota' => [

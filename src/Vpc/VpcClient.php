@@ -106,6 +106,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise associateRouteTableAsync(array $args = [])
  * @method \Jdcloud\Result disassociateRouteTable(array $args = [])
  * @method \GuzzleHttp\Promise\Promise disassociateRouteTableAsync(array $args = [])
+ * @method \Jdcloud\Result describeEdgeIpProviders(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeEdgeIpProvidersAsync(array $args = [])
  * @method \Jdcloud\Result describeSubnets(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeSubnetsAsync(array $args = [])
  * @method \Jdcloud\Result createSubnet(array $args = [])
