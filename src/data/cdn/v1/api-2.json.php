@@ -1950,7 +1950,7 @@ return [
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
                 'rank' => [ 'type' => 'integer', 'locationName' => 'rank', ],
                 'value' => [ 'type' => 'integer', 'locationName' => 'value', ],
-                'fullValue' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'fullValue' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'object', ], ],
             ],
         ],
         'StatisticsData' => [
@@ -1990,7 +1990,7 @@ return [
             'members' => [
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'data' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'data' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'object', ], ],
             ],
         ],
         'DirRegionData' => [
@@ -2006,7 +2006,7 @@ return [
                 'url' => [ 'type' => 'string', 'locationName' => 'url', ],
                 'rank' => [ 'type' => 'integer', 'locationName' => 'rank', ],
                 'value' => [ 'type' => 'integer', 'locationName' => 'value', ],
-                'fullValue' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'fullValue' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'object', ], ],
             ],
         ],
         'StatisticsGroupSumDataItem' => [
@@ -2014,7 +2014,7 @@ return [
             'members' => [
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'data' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'data' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'object', ], ],
             ],
         ],
         'StreamHistoryInfoForYY' => [
@@ -2583,7 +2583,7 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'cycle' => [ 'type' => 'integer', 'locationName' => 'cycle', ],
                 'monitorPath' => [ 'type' => 'string', 'locationName' => 'monitorPath', ],
-                'httpRequestHeader' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'httpRequestHeader' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
             ],
         ],
         'SetHttpTypeResultShape' => [
@@ -2691,7 +2691,7 @@ return [
             'members' => [
                 'cycle' => [ 'type' => 'integer', 'locationName' => 'cycle', ],
                 'monitorPath' => [ 'type' => 'string', 'locationName' => 'monitorPath', ],
-                'httpRequestHeader' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'httpRequestHeader' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
