@@ -80,6 +80,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise addLooDeviceAsync(array $args = [])
  * @method \Jdcloud\Result loongrayQueryPage(array $args = [])
  * @method \GuzzleHttp\Promise\Promise loongrayQueryPageAsync(array $args = [])
+ * @method \Jdcloud\Result queryAdminStatistics(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryAdminStatisticsAsync(array $args = [])
  * @method \Jdcloud\Result removeLoongrayDevice(array $args = [])
  * @method \GuzzleHttp\Promise\Promise removeLoongrayDeviceAsync(array $args = [])
  * @method \Jdcloud\Result describeProductWithAdmin(array $args = [])

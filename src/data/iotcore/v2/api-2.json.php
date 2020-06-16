@@ -281,6 +281,15 @@ return [
             'input' => [ 'shape' => 'LoongrayQueryPageRequestShape', ],
             'output' => [ 'shape' => 'LoongrayQueryPageResponseShape', ],
         ],
+        'QueryAdminStatistics' => [
+            'name' => 'QueryAdminStatistics',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/instances/{instanceId}/device:queryAdminStatistics',
+            ],
+            'input' => [ 'shape' => 'QueryAdminStatisticsRequestShape', ],
+            'output' => [ 'shape' => 'QueryAdminStatisticsResponseShape', ],
+        ],
         'RemoveLoongrayDevice' => [
             'name' => 'RemoveLoongrayDevice',
             'http' => [
@@ -1984,6 +1993,24 @@ return [
                 'result' =>  [ 'shape' => 'AddLooDeviceResultShape', ],
             ],
         ],
+        'QueryAdminStatisticsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'devices' => [ 'type' => 'integer', 'locationName' => 'devices', ],
+                'activatedDevices' => [ 'type' => 'integer', 'locationName' => 'activatedDevices', ],
+                'onlineDevices' => [ 'type' => 'integer', 'locationName' => 'onlineDevices', ],
+                'monthMessages' => [ 'type' => 'long', 'locationName' => 'monthMessages', ],
+                'monthDuration' => [ 'type' => 'long', 'locationName' => 'monthDuration', ],
+                'products' => [ 'type' => 'long', 'locationName' => 'products', ],
+            ],
+        ],
+        'QueryAdminStatisticsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryAdminStatisticsResultShape', ],
+            ],
+        ],
         'LoongrayQueryPageResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1992,6 +2019,16 @@ return [
                 'totalSize' => [ 'type' => 'integer', 'locationName' => 'totalSize', ],
                 'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'DeviceVO', ], ],
+            ],
+        ],
+        'QueryAdminStatisticsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
+                'parentId' => [ 'type' => 'string', 'locationName' => 'parentId', ],
+                'deviceCollectorType' => [ 'type' => 'string', 'locationName' => 'deviceCollectorType', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'AddLooDeviceRequestShape' => [
