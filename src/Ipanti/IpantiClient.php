@@ -86,6 +86,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeAlarmConfigAsync(array $args = [])
  * @method \Jdcloud\Result modifyAlarmConfig(array $args = [])
  * @method \GuzzleHttp\Promise\Promise modifyAlarmConfigAsync(array $args = [])
+ * @method \Jdcloud\Result describeServiceIpList(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeServiceIpListAsync(array $args = [])
  * @method \Jdcloud\Result describeNameList(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeNameListAsync(array $args = [])
  * @method \Jdcloud\Result describeProtectionStatistics(array $args = [])
