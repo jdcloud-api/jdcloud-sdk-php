@@ -11,23 +11,23 @@ return [
 //        'serviceId' => 'hufu',
     ],
     'operations' => [
-        'QueryApis' => [
-            'name' => 'QueryApis',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/scenes/{sceneId}/revisions/{revision}/apis',
-            ],
-            'input' => [ 'shape' => 'QueryApisRequestShape', ],
-            'output' => [ 'shape' => 'QueryApisResponseShape', ],
-        ],
-        'ModifyRouterByLower' => [
-            'name' => 'ModifyRouterByLower',
+        'Deploy' => [
+            'name' => 'Deploy',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/accesses/{accessId}:update',
+                'requestUri' => '/v1/scenes/{sceneId}/deployments',
             ],
-            'input' => [ 'shape' => 'ModifyRouterByLowerRequestShape', ],
-            'output' => [ 'shape' => 'ModifyRouterByLowerResponseShape', ],
+            'input' => [ 'shape' => 'DeployRequestShape', ],
+            'output' => [ 'shape' => 'DeployResponseShape', ],
+        ],
+        'DescribeDeployment' => [
+            'name' => 'DescribeDeployment',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/scenes/{sceneId}/deployments/{deploymentId}',
+            ],
+            'input' => [ 'shape' => 'DescribeDeploymentRequestShape', ],
+            'output' => [ 'shape' => 'DescribeDeploymentResponseShape', ],
         ],
         'Encrypt' => [
             'name' => 'Encrypt',
@@ -38,8 +38,33 @@ return [
             'input' => [ 'shape' => 'EncryptRequestShape', ],
             'output' => [ 'shape' => 'EncryptResponseShape', ],
         ],
+        'IsEncryptData' => [
+            'name' => 'IsEncryptData',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/isEncryptData',
+            ],
+            'input' => [ 'shape' => 'IsEncryptDataRequestShape', ],
+            'output' => [ 'shape' => 'IsEncryptDataResponseShape', ],
+        ],
+        'QueryAccessLog' => [
+            'name' => 'QueryAccessLog',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/access',
+            ],
+            'input' => [ 'shape' => 'QueryAccessLogRequestShape', ],
+            'output' => [ 'shape' => 'QueryAccessLogResponseShape', ],
+        ],
     ],
     'shapes' => [
+        'AccessLog' => [
+            'type' => 'structure',
+            'members' => [
+                'time' => [ 'type' => 'long', 'locationName' => 'time', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+            ],
+        ],
         'Api' => [
             'type' => 'structure',
             'members' => [
@@ -48,6 +73,7 @@ return [
                 'apiName' => [ 'type' => 'string', 'locationName' => 'apiName', ],
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'matchType' => [ 'type' => 'string', 'locationName' => 'matchType', ],
                 'backServiceType' => [ 'type' => 'string', 'locationName' => 'backServiceType', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'reqParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'Parameter', ], ],
@@ -60,6 +86,9 @@ return [
                 'deploymentEnvironment' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'editableReqBodyType' => [ 'type' => 'string', 'locationName' => 'editableReqBodyType', ],
                 'editableResBodyType' => [ 'type' => 'string', 'locationName' => 'editableResBodyType', ],
+                'wafStatus' => [ 'type' => 'string', 'locationName' => 'wafStatus', ],
+                'reqBodyFormatType' => [ 'type' => 'integer', 'locationName' => 'reqBodyFormatType', ],
+                'resBodyFormatType' => [ 'type' => 'integer', 'locationName' => 'resBodyFormatType', ],
             ],
         ],
         'DebugReturnMessage' => [
@@ -102,9 +131,11 @@ return [
         'CreateApi' => [
             'type' => 'structure',
             'members' => [
+                'apiGroupId' => [ 'type' => 'string', 'locationName' => 'apiGroupId', ],
                 'apiName' => [ 'type' => 'string', 'locationName' => 'apiName', ],
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'matchType' => [ 'type' => 'string', 'locationName' => 'matchType', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'reqParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'Parameter', ], ],
                 'reqBody' => [ 'type' => 'string', 'locationName' => 'reqBody', ],
@@ -122,6 +153,8 @@ return [
                 'hufuAppTypeId' => [ 'type' => 'integer', 'locationName' => 'hufuAppTypeId', ],
                 'editableReqBodyType' => [ 'type' => 'string', 'locationName' => 'editableReqBodyType', ],
                 'editableResBodyType' => [ 'type' => 'string', 'locationName' => 'editableResBodyType', ],
+                'reqBodyFormatType' => [ 'type' => 'integer', 'locationName' => 'reqBodyFormatType', ],
+                'resBodyFormatType' => [ 'type' => 'integer', 'locationName' => 'resBodyFormatType', ],
             ],
         ],
         'BackendParameter' => [
@@ -162,6 +195,19 @@ return [
                 'hufuAppTypeId' => [ 'type' => 'integer', 'locationName' => 'hufuAppTypeId', ],
             ],
         ],
+        'Deploy' => [
+            'type' => 'structure',
+            'members' => [
+                'revision' => [ 'type' => 'string', 'locationName' => 'revision', ],
+                'environment' => [ 'type' => 'string', 'locationName' => 'environment', ],
+                'backendServiceType' => [ 'type' => 'string', 'locationName' => 'backendServiceType', ],
+                'backendUrl' => [ 'type' => 'string', 'locationName' => 'backendUrl', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'jdsfName' => [ 'type' => 'string', 'locationName' => 'jdsfName', ],
+                'jdsfRegistryName' => [ 'type' => 'string', 'locationName' => 'jdsfRegistryName', ],
+                'jdsfId' => [ 'type' => 'string', 'locationName' => 'jdsfId', ],
+            ],
+        ],
         'Deployment' => [
             'type' => 'structure',
             'members' => [
@@ -176,6 +222,12 @@ return [
                 'jdsfName' => [ 'type' => 'string', 'locationName' => 'jdsfName', ],
                 'jdsfRegistryName' => [ 'type' => 'string', 'locationName' => 'jdsfRegistryName', ],
                 'jdsfId' => [ 'type' => 'string', 'locationName' => 'jdsfId', ],
+            ],
+        ],
+        'IsEncryptDataInput' => [
+            'type' => 'structure',
+            'members' => [
+                'cipher' => [ 'type' => 'string', 'locationName' => 'cipher', ],
             ],
         ],
         'EncryptInput' => [
@@ -217,20 +269,6 @@ return [
                 'language' => [ 'type' => 'string', 'locationName' => 'language', ],
             ],
         ],
-        'QueryApisResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'QueryApisResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'QueryApisResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'apis' => [ 'type' => 'list', 'member' => [ 'shape' => 'Api', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-            ],
-        ],
         'Filter' => [
             'type' => 'structure',
             'members' => [
@@ -239,35 +277,59 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
-        'QueryApisRequestShape' => [
+        'DescribeDeploymentResultShape' => [
             'type' => 'structure',
             'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'sceneId' => [ 'type' => 'integer', 'locationName' => 'sceneId', ],
+                'deploymentId' => [ 'type' => 'string', 'locationName' => 'deploymentId', ],
                 'revision' => [ 'type' => 'string', 'locationName' => 'revision', ],
-            ],
-        ],
-        'ModifyRouterByLowerRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'customerId' => [ 'type' => 'string', 'locationName' => 'customerId', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'environment' => [ 'type' => 'string', 'locationName' => 'environment', ],
+                'backendServiceType' => [ 'type' => 'string', 'locationName' => 'backendServiceType', ],
                 'backendUrl' => [ 'type' => 'string', 'locationName' => 'backendUrl', ],
-                'accessId' => [ 'type' => 'double', 'locationName' => 'accessId', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
+                'jdsfName' => [ 'type' => 'string', 'locationName' => 'jdsfName', ],
+                'jdsfRegistryName' => [ 'type' => 'string', 'locationName' => 'jdsfRegistryName', ],
+                'jdsfId' => [ 'type' => 'string', 'locationName' => 'jdsfId', ],
             ],
         ],
-        'ModifyRouterByLowerResponseShape' => [
+        'DeployResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'ModifyRouterByLowerResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'ModifyRouterByLowerResultShape' => [
+        'DescribeDeploymentResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'result' =>  [ 'shape' => 'DescribeDeploymentResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeDeploymentRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'sceneId' => [ 'type' => 'integer', 'locationName' => 'sceneId', ],
+                'deploymentId' => [ 'type' => 'string', 'locationName' => 'deploymentId', ],
+            ],
+        ],
+        'DeployResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeployRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'revision' => [ 'type' => 'string', 'locationName' => 'revision', ],
+                'environment' => [ 'type' => 'string', 'locationName' => 'environment', ],
+                'backendServiceType' => [ 'type' => 'string', 'locationName' => 'backendServiceType', ],
+                'backendUrl' => [ 'type' => 'string', 'locationName' => 'backendUrl', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'jdsfName' => [ 'type' => 'string', 'locationName' => 'jdsfName', ],
+                'jdsfRegistryName' => [ 'type' => 'string', 'locationName' => 'jdsfRegistryName', ],
+                'jdsfId' => [ 'type' => 'string', 'locationName' => 'jdsfId', ],
+                'sceneId' => [ 'type' => 'integer', 'locationName' => 'sceneId', ],
             ],
         ],
         'EncryptRequestShape' => [
@@ -282,10 +344,57 @@ return [
                 'ciphertext' => [ 'type' => 'string', 'locationName' => 'ciphertext', ],
             ],
         ],
+        'IsEncryptDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'IsEncryptDataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'IsEncryptDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cipher' => [ 'type' => 'string', 'locationName' => 'cipher', ],
+            ],
+        ],
+        'IsEncryptDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'encryptData' => [ 'type' => 'boolean', 'locationName' => 'encryptData', ],
+            ],
+        ],
         'EncryptResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'EncryptResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryAccessLogResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'AccessLog', ], ],
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+            ],
+        ],
+        'QueryAccessLogRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'call_pin' => [ 'type' => 'string', 'locationName' => 'call_pin', ],
+                'response_status' => [ 'type' => 'string', 'locationName' => 'response_status', ],
+                'api_name' => [ 'type' => 'string', 'locationName' => 'api_name', ],
+                'access_key' => [ 'type' => 'string', 'locationName' => 'access_key', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'QueryAccessLogResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryAccessLogResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],

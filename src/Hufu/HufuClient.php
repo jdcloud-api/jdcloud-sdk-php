@@ -20,12 +20,16 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with hufu.
  *
- * @method \Jdcloud\Result queryApis(array $args = [])
- * @method \GuzzleHttp\Promise\Promise queryApisAsync(array $args = [])
- * @method \Jdcloud\Result modifyRouterByLower(array $args = [])
- * @method \GuzzleHttp\Promise\Promise modifyRouterByLowerAsync(array $args = [])
+ * @method \Jdcloud\Result deploy(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deployAsync(array $args = [])
+ * @method \Jdcloud\Result describeDeployment(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeDeploymentAsync(array $args = [])
  * @method \Jdcloud\Result encrypt(array $args = [])
  * @method \GuzzleHttp\Promise\Promise encryptAsync(array $args = [])
+ * @method \Jdcloud\Result isEncryptData(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise isEncryptDataAsync(array $args = [])
+ * @method \Jdcloud\Result queryAccessLog(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryAccessLogAsync(array $args = [])
  */
 class HufuClient extends JdCloudClient
 {
