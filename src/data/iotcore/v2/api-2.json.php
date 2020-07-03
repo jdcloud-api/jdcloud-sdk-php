@@ -11,59 +11,23 @@ return [
 //        'serviceId' => 'iotcore',
     ],
     'operations' => [
-        'DeviceQuery' => [
-            'name' => 'DeviceQuery',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/device:query',
-            ],
-            'input' => [ 'shape' => 'DeviceQueryRequestShape', ],
-            'output' => [ 'shape' => 'DeviceQueryResponseShape', ],
-        ],
-        'ThingTypeList' => [
-            'name' => 'ThingTypeList',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/thingType:list',
-            ],
-            'input' => [ 'shape' => 'ThingTypeListRequestShape', ],
-            'output' => [ 'shape' => 'ThingTypeListResponseShape', ],
-        ],
-        'ThingTypeDescribe' => [
-            'name' => 'ThingTypeDescribe',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/thingType:thingTypeDescribe',
-            ],
-            'input' => [ 'shape' => 'ThingTypeDescribeRequestShape', ],
-            'output' => [ 'shape' => 'ThingTypeDescribeResponseShape', ],
-        ],
-        'DescribeThingModel' => [
-            'name' => 'DescribeThingModel',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/thingModel:describeThingModel',
-            ],
-            'input' => [ 'shape' => 'DescribeThingModelRequestShape', ],
-            'output' => [ 'shape' => 'DescribeThingModelResponseShape', ],
-        ],
-        'DeviceRegister' => [
-            'name' => 'DeviceRegister',
+        'RegisterDevice' => [
+            'name' => 'RegisterDevice',
             'http' => [
                 'method' => 'POST',
                 'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/device:register',
             ],
-            'input' => [ 'shape' => 'DeviceRegisterRequestShape', ],
-            'output' => [ 'shape' => 'DeviceRegisterResponseShape', ],
+            'input' => [ 'shape' => 'RegisterDeviceRequestShape', ],
+            'output' => [ 'shape' => 'RegisterDeviceResponseShape', ],
         ],
-        'DownloadCertificate' => [
-            'name' => 'DownloadCertificate',
+        'DownloadDeviceCertificate' => [
+            'name' => 'DownloadDeviceCertificate',
             'http' => [
                 'method' => 'GET',
                 'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/device:downloadCertificate',
             ],
-            'input' => [ 'shape' => 'DownloadCertificateRequestShape', ],
-            'output' => [ 'shape' => 'DownloadCertificateResponseShape', ],
+            'input' => [ 'shape' => 'DownloadDeviceCertificateRequestShape', ],
+            'output' => [ 'shape' => 'DownloadDeviceCertificateResponseShape', ],
         ],
         'DeleteDevice' => [
             'name' => 'DeleteDevice',
@@ -74,14 +38,50 @@ return [
             'input' => [ 'shape' => 'DeleteDeviceRequestShape', ],
             'output' => [ 'shape' => 'DeleteDeviceResponseShape', ],
         ],
-        'DevicePropertySet' => [
-            'name' => 'DevicePropertySet',
+        'DescribeDevice' => [
+            'name' => 'DescribeDevice',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/device:describe',
+            ],
+            'input' => [ 'shape' => 'DescribeDeviceRequestShape', ],
+            'output' => [ 'shape' => 'DescribeDeviceResponseShape', ],
+        ],
+        'DescribeThingTypeList' => [
+            'name' => 'DescribeThingTypeList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/thingType:list',
+            ],
+            'input' => [ 'shape' => 'DescribeThingTypeListRequestShape', ],
+            'output' => [ 'shape' => 'DescribeThingTypeListResponseShape', ],
+        ],
+        'DescribeThingType' => [
+            'name' => 'DescribeThingType',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/thingType:describe',
+            ],
+            'input' => [ 'shape' => 'DescribeThingTypeRequestShape', ],
+            'output' => [ 'shape' => 'DescribeThingTypeResponseShape', ],
+        ],
+        'DescribeThingModel' => [
+            'name' => 'DescribeThingModel',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/thingModel:describe',
+            ],
+            'input' => [ 'shape' => 'DescribeThingModelRequestShape', ],
+            'output' => [ 'shape' => 'DescribeThingModelResponseShape', ],
+        ],
+        'SetDeviceProperty' => [
+            'name' => 'SetDeviceProperty',
             'http' => [
                 'method' => 'POST',
                 'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/deviceProperty:set',
             ],
-            'input' => [ 'shape' => 'DevicePropertySetRequestShape', ],
-            'output' => [ 'shape' => 'DevicePropertySetResponseShape', ],
+            'input' => [ 'shape' => 'SetDevicePropertyRequestShape', ],
+            'output' => [ 'shape' => 'SetDevicePropertyResponseShape', ],
         ],
         'InvokeFunction' => [
             'name' => 'InvokeFunction',
@@ -92,41 +92,77 @@ return [
             'input' => [ 'shape' => 'InvokeFunctionRequestShape', ],
             'output' => [ 'shape' => 'InvokeFunctionResponseShape', ],
         ],
-        'EventList' => [
-            'name' => 'EventList',
+        'DescribeEventList' => [
+            'name' => 'DescribeEventList',
             'http' => [
                 'method' => 'POST',
                 'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/event:list',
             ],
-            'input' => [ 'shape' => 'EventListRequestShape', ],
-            'output' => [ 'shape' => 'EventListResponseShape', ],
+            'input' => [ 'shape' => 'DescribeEventListRequestShape', ],
+            'output' => [ 'shape' => 'DescribeEventListResponseShape', ],
         ],
-        'FunctionList' => [
-            'name' => 'FunctionList',
+        'DescribeFunctionList' => [
+            'name' => 'DescribeFunctionList',
             'http' => [
                 'method' => 'POST',
                 'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/function:list',
             ],
-            'input' => [ 'shape' => 'FunctionListRequestShape', ],
-            'output' => [ 'shape' => 'FunctionListResponseShape', ],
+            'input' => [ 'shape' => 'DescribeFunctionListRequestShape', ],
+            'output' => [ 'shape' => 'DescribeFunctionListResponseShape', ],
         ],
-        'PropertyAcquire' => [
-            'name' => 'PropertyAcquire',
+        'DescribeProperty' => [
+            'name' => 'DescribeProperty',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/property:acquire',
+                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/property:describe',
             ],
-            'input' => [ 'shape' => 'PropertyAcquireRequestShape', ],
-            'output' => [ 'shape' => 'PropertyAcquireResponseShape', ],
+            'input' => [ 'shape' => 'DescribePropertyRequestShape', ],
+            'output' => [ 'shape' => 'DescribePropertyResponseShape', ],
         ],
-        'GetPropertySnapshot' => [
-            'name' => 'GetPropertySnapshot',
+        'DescribePropertySnapshot' => [
+            'name' => 'DescribePropertySnapshot',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/property:getSnapshot',
+                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/property:describeSnapshot',
             ],
-            'input' => [ 'shape' => 'GetPropertySnapshotRequestShape', ],
-            'output' => [ 'shape' => 'GetPropertySnapshotResponseShape', ],
+            'input' => [ 'shape' => 'DescribePropertySnapshotRequestShape', ],
+            'output' => [ 'shape' => 'DescribePropertySnapshotResponseShape', ],
+        ],
+        'CreateDeviceTopo' => [
+            'name' => 'CreateDeviceTopo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/deviceTopo:create',
+            ],
+            'input' => [ 'shape' => 'CreateDeviceTopoRequestShape', ],
+            'output' => [ 'shape' => 'CreateDeviceTopoResponseShape', ],
+        ],
+        'DescribeDeviceTopo' => [
+            'name' => 'DescribeDeviceTopo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/deviceTopo:describe',
+            ],
+            'input' => [ 'shape' => 'DescribeDeviceTopoRequestShape', ],
+            'output' => [ 'shape' => 'DescribeDeviceTopoResponseShape', ],
+        ],
+        'UpdateDeviceTopo' => [
+            'name' => 'UpdateDeviceTopo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/deviceTopo:update',
+            ],
+            'input' => [ 'shape' => 'UpdateDeviceTopoRequestShape', ],
+            'output' => [ 'shape' => 'UpdateDeviceTopoResponseShape', ],
+        ],
+        'DeleteDeviceTopo' => [
+            'name' => 'DeleteDeviceTopo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/coreinstances/{instanceId}/deviceTopo:delete',
+            ],
+            'input' => [ 'shape' => 'DeleteDeviceTopoRequestShape', ],
+            'output' => [ 'shape' => 'DeleteDeviceTopoResponseShape', ],
         ],
         'InvokeThingTopic' => [
             'name' => 'InvokeThingTopic',
@@ -473,8 +509,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'functionKey' => [ 'type' => 'string', 'locationName' => 'functionKey', ],
                 'inParams' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
-                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
+                'outParams' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
             ],
         ],
         'ThingModelRespTO' => [
@@ -516,6 +553,22 @@ return [
                 'thingTypeName' => [ 'type' => 'string', 'locationName' => 'thingTypeName', ],
             ],
         ],
+        'DeviceTopoRecordVO' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'uniqueId' => [ 'type' => 'string', 'locationName' => 'uniqueId', ],
+                'online' => [ 'type' => 'boolean', 'locationName' => 'online', ],
+            ],
+        ],
+        'DeviceTopoErrorMap' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'errInfo' => [ 'type' => 'string', 'locationName' => 'errInfo', ],
+            ],
+        ],
         'FunctionCallRecordVo' => [
             'type' => 'structure',
             'members' => [
@@ -531,12 +584,22 @@ return [
                 'respTimestamp' => [ 'type' => 'long', 'locationName' => 'respTimestamp', ],
             ],
         ],
+        'SubDeviceInfoVO' => [
+            'type' => 'structure',
+            'members' => [
+                'subDeviceId' => [ 'type' => 'string', 'locationName' => 'subDeviceId', ],
+                'subDeviceName' => [ 'type' => 'string', 'locationName' => 'subDeviceName', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'protocolSpec' => [ 'type' => 'string', 'locationName' => 'protocolSpec', ],
+            ],
+        ],
         'ThingTypeInfoVO' => [
             'type' => 'structure',
             'members' => [
                 'authType' => [ 'type' => 'integer', 'locationName' => 'authType', ],
                 'connectType' => [ 'type' => 'string', 'locationName' => 'connectType', ],
                 'createdTime' => [ 'type' => 'data-time', 'locationName' => 'createdTime', ],
+                'updateTime' => [ 'type' => 'data-time', 'locationName' => 'updateTime', ],
                 'customProfiles' => [ 'type' => 'list', 'member' => [ 'shape' => 'CustomProfileVO', ], ],
                 'deviceTypeCode' => [ 'type' => 'string', 'locationName' => 'deviceTypeCode', ],
                 'deviceTypeName' => [ 'type' => 'string', 'locationName' => 'deviceTypeName', ],
@@ -545,7 +608,7 @@ return [
                 'manufacturerName' => [ 'type' => 'string', 'locationName' => 'manufacturerName', ],
                 'nodeType' => [ 'type' => 'integer', 'locationName' => 'nodeType', ],
                 'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'updateTime' => [ 'type' => 'data-time', 'locationName' => 'updateTime', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
         'DeviceInfoVO' => [
@@ -593,6 +656,18 @@ return [
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'DeviceTopoPageBO' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'subDeviceId' => [ 'type' => 'string', 'locationName' => 'subDeviceId', ],
+                'subDeviceName' => [ 'type' => 'string', 'locationName' => 'subDeviceName', ],
+                'order' => [ 'type' => 'string', 'locationName' => 'order', ],
+                'orders' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'pageNo' => [ 'type' => 'integer', 'locationName' => 'pageNo', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
         ],
         'EventReportVo' => [
@@ -648,6 +723,15 @@ return [
                 'orders' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
                 'pageNo' => [ 'type' => 'integer', 'locationName' => 'pageNo', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'DeviceTopoInfoVO' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'deviceName' => [ 'type' => 'string', 'locationName' => 'deviceName', ],
+                'thingTypeName' => [ 'type' => 'string', 'locationName' => 'thingTypeName', ],
+                'subDevices' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubDeviceInfoVO', ], ],
             ],
         ],
         'Event' => [
@@ -743,6 +827,15 @@ return [
                 'topic' => [ 'type' => 'string', 'locationName' => 'topic', ],
                 'authority' => [ 'type' => 'string', 'locationName' => 'authority', ],
                 'descripton' => [ 'type' => 'string', 'locationName' => 'descripton', ],
+            ],
+        ],
+        'DeviceOfflineRecord' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceName' => [ 'type' => 'string', 'locationName' => 'deviceName', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+                'productName' => [ 'type' => 'string', 'locationName' => 'productName', ],
+                'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
             ],
         ],
         'DeviceCommandVO' => [
@@ -993,6 +1086,25 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'DeviceOnlineInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'device_id' => [ 'type' => 'string', 'locationName' => 'device_id', ],
+                'online_time' => [ 'type' => 'integer', 'locationName' => 'online_time', ],
+                'count_time' => [ 'type' => 'integer', 'locationName' => 'count_time', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'collDeviceType' => [ 'type' => 'string', 'locationName' => 'collDeviceType', ],
+            ],
+        ],
+        'DeviceOnlineCount' => [
+            'type' => 'structure',
+            'members' => [
+                'save_time' => [ 'type' => 'long', 'locationName' => 'save_time', ],
+                'online_time' => [ 'type' => 'integer', 'locationName' => 'online_time', ],
+                'count_time' => [ 'type' => 'integer', 'locationName' => 'count_time', ],
+            ],
+        ],
         'PreOrders' => [
             'type' => 'structure',
             'members' => [
@@ -1016,6 +1128,7 @@ return [
                 'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
                 'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
+                'collDeviceType' => [ 'type' => 'string', 'locationName' => 'collDeviceType', ],
             ],
         ],
         'CustomizedTemplateProduct' => [
@@ -1281,18 +1394,35 @@ return [
         'InvokeFunctionResultShape' => [
             'type' => 'structure',
             'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'returnValues' =>  [ 'shape' => 'DeviceFunctionVO', ],
             ],
         ],
-        'GetPropertySnapshotResponseShape' => [
+        'CreateDeviceTopoResultShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+                'deviceTopoResult' =>  [ 'shape' => 'DeviceTopoResult', ],
+            ],
+        ],
+        'UpdateDeviceTopoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceTopoResult' =>  [ 'shape' => 'DeviceTopoResult', ],
             ],
         ],
         'DeleteDeviceResultShape' => [
             'type' => 'structure',
             'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'DescribeFunctionListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeFunctionListResultShape', ],
             ],
         ],
         'DescribeThingModelResponseShape' => [
@@ -1302,36 +1432,32 @@ return [
                 'result' =>  [ 'shape' => 'DescribeThingModelResultShape', ],
             ],
         ],
-        'DevicePropertySetResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'ThingTypeDescribeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'thingTypeInfoVO' =>  [ 'shape' => 'ThingTypeInfoVO', ],
-            ],
-        ],
-        'DeviceRegisterResponseShape' => [
+        'DescribeDeviceTopoResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DeviceRegisterResultShape', ],
+                'result' =>  [ 'shape' => 'DescribeDeviceTopoResultShape', ],
             ],
         ],
-        'ThingTypeDescribeResponseShape' => [
+        'DeleteDeviceTopoRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'ThingTypeDescribeResultShape', ],
+                'deviceTopoInfoVO' =>  [ 'shape' => 'DeviceTopoInfoVO', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'DeleteDeviceResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+                'result' =>  [ 'shape' => 'DeleteDeviceResultShape', ],
+            ],
+        ],
+        'DescribePropertySnapshotResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'snapShot' => [ 'type' => 'string', 'locationName' => 'snapShot', ],
             ],
         ],
         'DescribeThingModelResultShape' => [
@@ -1340,44 +1466,44 @@ return [
                 'thingModelRespTO' =>  [ 'shape' => 'ThingModelRespTO', ],
             ],
         ],
+        'SetDevicePropertyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SetDevicePropertyResultShape', ],
+            ],
+        ],
+        'RegisterDeviceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'RegisterDeviceResultShape', ],
+            ],
+        ],
         'InvokeFunctionResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+                'result' =>  [ 'shape' => 'InvokeFunctionResultShape', ],
             ],
         ],
-        'EventListRequestShape' => [
+        'DescribeDeviceTopoRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'eventReportPageBo' =>  [ 'shape' => 'EventReportPageBo', ],
+                'deviceTopoPageBO' =>  [ 'shape' => 'DeviceTopoPageBO', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'ThingTypeListResponseShape' => [
+        'SetDevicePropertyRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'ThingTypeListResultShape', ],
-            ],
-        ],
-        'GetPropertySnapshotRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'deviceSnapshotRequestVO' =>  [ 'shape' => 'DeviceSnapshotRequestVO', ],
+                'devicePropertyVO' =>  [ 'shape' => 'DevicePropertyVO', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'EventListResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'EventListResultShape', ],
-            ],
-        ],
-        'PropertyAcquireRequestShape' => [
+        'DescribePropertyRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
@@ -1385,14 +1511,93 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'DeviceQueryResponseShape' => [
+        'DownloadDeviceCertificateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'deviceCertUrl' => [ 'type' => 'string', 'locationName' => 'deviceCertUrl', ],
+            ],
+        ],
+        'DescribePropertyResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DeviceQueryResultShape', ],
+                'result' =>  [ 'shape' => 'DescribePropertyResultShape', ],
             ],
         ],
-        'ThingTypeListRequestShape' => [
+        'DescribeDeviceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceInfoVO' =>  [ 'shape' => 'DeviceInfoVO', ],
+            ],
+        ],
+        'CreateDeviceTopoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceTopoInfoVO' =>  [ 'shape' => 'DeviceTopoInfoVO', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeDeviceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeDeviceResultShape', ],
+            ],
+        ],
+        'DescribeThingTypeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeThingTypeResultShape', ],
+            ],
+        ],
+        'DescribeDeviceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeThingTypeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'thingTypeInfoVO' =>  [ 'shape' => 'ThingTypeInfoVO', ],
+            ],
+        ],
+        'RegisterDeviceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceInfoVO' =>  [ 'shape' => 'DeviceInfoVO', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeThingTypeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceMetaId' => [ 'type' => 'string', 'locationName' => 'deviceMetaId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DeleteDeviceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'RegisterDeviceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+            ],
+        ],
+        'DescribeThingTypeListRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'deviceMetaId' => [ 'type' => 'string', 'locationName' => 'deviceMetaId', ],
@@ -1404,103 +1609,101 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'FunctionListResultShape' => [
+        'DownloadDeviceCertificateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeEventListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeEventListResultShape', ],
+            ],
+        ],
+        'UpdateDeviceTopoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceTopoInfoVO' =>  [ 'shape' => 'DeviceTopoInfoVO', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'SetDevicePropertyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'DescribeEventListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'eventReportPageBo' =>  [ 'shape' => 'EventReportPageBo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeFunctionListResultShape' => [
             'type' => 'structure',
             'members' => [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'currentPage' => [ 'type' => 'integer', 'locationName' => 'currentPage', ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'FunctionCallRecordVo', ], ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'FunctionCallRecordVo', ], ],
             ],
         ],
-        'DeviceQueryResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'deviceInfoVO' =>  [ 'shape' => 'DeviceInfoVO', ],
-            ],
-        ],
-        'DownloadCertificateResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DownloadCertificateResultShape', ],
-            ],
-        ],
-        'FunctionListResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'FunctionListResultShape', ],
-            ],
-        ],
-        'DeleteDeviceRequestShape' => [
+        'DeviceTopoResult' => [
             'type' => 'structure',
             'members' => [
                 'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'success' => [ 'type' => 'integer', 'locationName' => 'success', ],
+                'errorDevicesList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DeviceTopoErrorMap', ], ],
             ],
         ],
-        'DevicePropertySetRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'devicePropertyVO' =>  [ 'shape' => 'DevicePropertyVO', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DevicePropertySetResponseShape' => [
+        'CreateDeviceTopoResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+                'result' =>  [ 'shape' => 'CreateDeviceTopoResultShape', ],
             ],
         ],
-        'DownloadCertificateRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'ThingTypeDescribeRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'deviceMetaId' => [ 'type' => 'string', 'locationName' => 'deviceMetaId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'PropertyAcquireResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'propertyAcquireVo' =>  [ 'shape' => 'PropertyAcquireVo', ],
-            ],
-        ],
-        'ThingTypeListResultShape' => [
+        'DescribeEventListResultShape' => [
             'type' => 'structure',
             'members' => [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'currentPage' => [ 'type' => 'integer', 'locationName' => 'currentPage', ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ThingTypeInfoVO', ], ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'EventReportVo', ], ],
             ],
         ],
-        'GetPropertySnapshotResultShape' => [
+        'DescribePropertySnapshotResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribePropertySnapshotResultShape', ],
             ],
         ],
-        'DeviceQueryRequestShape' => [
+        'DownloadDeviceCertificateResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DownloadDeviceCertificateResultShape', ],
             ],
         ],
-        'FunctionListRequestShape' => [
+        'DescribeDeviceTopoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'currentPage' => [ 'type' => 'integer', 'locationName' => 'currentPage', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'DeviceTopoRecordVO', ], ],
+            ],
+        ],
+        'DescribeFunctionListRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'functionCallPageBo' =>  [ 'shape' => 'FunctionCallPageBo', ],
@@ -1508,10 +1711,12 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'DeviceRegisterResultShape' => [
+        'DescribePropertySnapshotRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'deviceInfoVO' =>  [ 'shape' => 'DeviceInfoVO', ],
+                'deviceSnapshotRequestVO' =>  [ 'shape' => 'DeviceSnapshotRequestVO', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'InvokeFunctionRequestShape' => [
@@ -1525,41 +1730,52 @@ return [
         'DescribeThingModelRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'thingModelId' => [ 'type' => 'string', 'locationName' => 'thingModelId', ],
+                'thingTypeCode' => [ 'type' => 'string', 'locationName' => 'thingTypeCode', ],
                 'thingModelVersion' => [ 'type' => 'string', 'locationName' => 'thingModelVersion', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'DeviceRegisterRequestShape' => [
+        'DescribeThingTypeListResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'deviceInfoVO' =>  [ 'shape' => 'DeviceInfoVO', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeThingTypeListResultShape', ],
             ],
         ],
-        'EventListResultShape' => [
+        'DeleteDeviceTopoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DeleteDeviceTopoResultShape', ],
+            ],
+        ],
+        'DescribeThingTypeListResultShape' => [
             'type' => 'structure',
             'members' => [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'currentPage' => [ 'type' => 'integer', 'locationName' => 'currentPage', ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'EventReportVo', ], ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'ThingTypeInfoVO', ], ],
             ],
         ],
-        'PropertyAcquireResponseShape' => [
+        'UpdateDeviceTopoResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'PropertyAcquireResultShape', ],
+                'result' =>  [ 'shape' => 'UpdateDeviceTopoResultShape', ],
             ],
         ],
-        'DownloadCertificateResultShape' => [
+        'DescribePropertyResultShape' => [
             'type' => 'structure',
             'members' => [
-                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
-                'deviceCertUrl' => [ 'type' => 'string', 'locationName' => 'deviceCertUrl', ],
+                'propertyAcquireVo' =>  [ 'shape' => 'PropertyAcquireVo', ],
+            ],
+        ],
+        'DeleteDeviceTopoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceTopoResult' =>  [ 'shape' => 'DeviceTopoResult', ],
             ],
         ],
         'DescribeThingShadowRequestShape' => [
@@ -1957,6 +2173,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'deviceName' => [ 'type' => 'string', 'locationName' => 'deviceName', ],
+                'manufacturer' => [ 'type' => 'string', 'locationName' => 'manufacturer', ],
+                'model' => [ 'type' => 'string', 'locationName' => 'model', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
                 'deviceType' => [ 'type' => 'integer', 'locationName' => 'deviceType', ],
@@ -1980,7 +2198,6 @@ return [
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
                 'deviceName' => [ 'type' => 'string', 'locationName' => 'deviceName', ],
-                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
@@ -2041,7 +2258,6 @@ return [
                 'manufacturer' => [ 'type' => 'string', 'locationName' => 'manufacturer', ],
                 'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'preOrderId' => [ 'type' => 'string', 'locationName' => 'preOrderId', ],
@@ -2080,6 +2296,7 @@ return [
                 'productDescription' => [ 'type' => 'string', 'locationName' => 'productDescription', ],
                 'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
                 'internalTags' => [ 'type' => 'object', 'locationName' => 'internalTags', ],
+                'collDeviceType' => [ 'type' => 'string', 'locationName' => 'collDeviceType', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
