@@ -321,6 +321,10 @@ return [
         'namespace' => 'Jdw',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'asset' => [
+        'namespace' => 'Asset',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'user' => [
         'namespace' => 'User',
         'versions' => [ 'latest' => 'v1', ],
