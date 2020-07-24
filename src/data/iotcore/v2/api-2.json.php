@@ -254,6 +254,33 @@ return [
             'input' => [ 'shape' => 'RemoveDeviceRequestShape', ],
             'output' => [ 'shape' => 'RemoveDeviceResponseShape', ],
         ],
+        'GetDeviceGroup' => [
+            'name' => 'GetDeviceGroup',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/instances/{instanceId}/devicegroup:get',
+            ],
+            'input' => [ 'shape' => 'GetDeviceGroupRequestShape', ],
+            'output' => [ 'shape' => 'GetDeviceGroupResponseShape', ],
+        ],
+        'GetDeviceGroupList' => [
+            'name' => 'GetDeviceGroupList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/instances/{instanceId}/devicegrouplist',
+            ],
+            'input' => [ 'shape' => 'GetDeviceGroupListRequestShape', ],
+            'output' => [ 'shape' => 'GetDeviceGroupListResponseShape', ],
+        ],
+        'FindDeviceGroupLinkPage' => [
+            'name' => 'FindDeviceGroupLinkPage',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/instances/{instanceId}/devicegrouplink:get',
+            ],
+            'input' => [ 'shape' => 'FindDeviceGroupLinkPageRequestShape', ],
+            'output' => [ 'shape' => 'FindDeviceGroupLinkPageResponseShape', ],
+        ],
         'ElevatorOperatingStatus' => [
             'name' => 'ElevatorOperatingStatus',
             'http' => [
@@ -881,6 +908,41 @@ return [
                 'lastConnectTime' => [ 'type' => 'string', 'locationName' => 'lastConnectTime', ],
             ],
         ],
+        'DeviceGroupResp' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'tag' => [ 'type' => 'string', 'locationName' => 'tag', ],
+                'ascriptionUser' => [ 'type' => 'string', 'locationName' => 'ascriptionUser', ],
+                'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'long', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'DeviceGroupInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceGroupId' => [ 'type' => 'string', 'locationName' => 'deviceGroupId', ],
+                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'parentId' => [ 'type' => 'string', 'locationName' => 'parentId', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'activeTime' => [ 'type' => 'long', 'locationName' => 'activeTime', ],
+                'lastConnectTime' => [ 'type' => 'long', 'locationName' => 'lastConnectTime', ],
+                'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'long', 'locationName' => 'updateTime', ],
+                'productName' => [ 'type' => 'string', 'locationName' => 'productName', ],
+                'model' => [ 'type' => 'string', 'locationName' => 'model', ],
+                'manufacturer' => [ 'type' => 'string', 'locationName' => 'manufacturer', ],
+                'deviceCollectorType' => [ 'type' => 'string', 'locationName' => 'deviceCollectorType', ],
+                'lastDisconnectTime' => [ 'type' => 'long', 'locationName' => 'lastDisconnectTime', ],
+                'orderId' => [ 'type' => 'long', 'locationName' => 'orderId', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'groupTag' => [ 'type' => 'string', 'locationName' => 'groupTag', ],
+            ],
+        ],
         'EdgeInfoVO' => [
             'type' => 'structure',
             'members' => [
@@ -1040,6 +1102,22 @@ return [
                 'instanceStatus' => [ 'type' => 'string', 'locationName' => 'instanceStatus', ],
                 'userStatus' => [ 'type' => 'string', 'locationName' => 'userStatus', ],
                 'isAdmin' => [ 'type' => 'string', 'locationName' => 'isAdmin', ],
+            ],
+        ],
+        'Forward' => [
+            'type' => 'structure',
+            'members' => [
+                'forwardId' => [ 'type' => 'string', 'locationName' => 'forwardId', ],
+                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'deviceCollectorType' => [ 'type' => 'string', 'locationName' => 'deviceCollectorType', ],
+                'frequency' => [ 'type' => 'integer', 'locationName' => 'frequency', ],
+                'endPoint' => [ 'type' => 'string', 'locationName' => 'endPoint', ],
+                'queueUrl' => [ 'type' => 'string', 'locationName' => 'queueUrl', ],
+                'ak' => [ 'type' => 'string', 'locationName' => 'ak', ],
+                'sk' => [ 'type' => 'string', 'locationName' => 'sk', ],
+                'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
+                'updatedTime' => [ 'type' => 'long', 'locationName' => 'updatedTime', ],
             ],
         ],
         'ModulePageVo' => [
@@ -1376,6 +1454,22 @@ return [
                 'userPhone' => [ 'type' => 'string', 'locationName' => 'userPhone', ],
                 'company' => [ 'type' => 'string', 'locationName' => 'company', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'ServiceUserLink' => [
+            'type' => 'structure',
+            'members' => [
+                'uuid' => [ 'type' => 'string', 'locationName' => 'uuid', ],
+                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'userPhone' => [ 'type' => 'string', 'locationName' => 'userPhone', ],
+                'company' => [ 'type' => 'string', 'locationName' => 'company', ],
+                'address' => [ 'type' => 'string', 'locationName' => 'address', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'userLevel' => [ 'type' => 'integer', 'locationName' => 'userLevel', ],
+                'userMaster' => [ 'type' => 'string', 'locationName' => 'userMaster', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
             ],
         ],
         'ServiceUser' => [
@@ -2048,6 +2142,95 @@ return [
                 'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
             ],
         ],
+        'GetDeviceGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'queryUserPin' => [ 'type' => 'string', 'locationName' => 'queryUserPin', ],
+                'tag' => [ 'type' => 'string', 'locationName' => 'tag', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetDeviceGroupListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetDeviceGroupListResultShape', ],
+            ],
+        ],
+        'FindDeviceGroupLinkPageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
+                'deviceName' => [ 'type' => 'string', 'locationName' => 'deviceName', ],
+                'deviceCollectorType' => [ 'type' => 'string', 'locationName' => 'deviceCollectorType', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
+                'tag' => [ 'type' => 'string', 'locationName' => 'tag', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'manufacturer' => [ 'type' => 'string', 'locationName' => 'manufacturer', ],
+                'model' => [ 'type' => 'string', 'locationName' => 'model', ],
+                'orderId' => [ 'type' => 'long', 'locationName' => 'orderId', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'order' => [ 'type' => 'string', 'locationName' => 'order', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetDeviceGroupListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'DeviceGroupResp', ], ],
+            ],
+        ],
+        'FindDeviceGroupLinkPageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'FindDeviceGroupLinkPageResultShape', ],
+            ],
+        ],
+        'GetDeviceGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetDeviceGroupResultShape', ],
+            ],
+        ],
+        'GetDeviceGroupListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryUserPin' => [ 'type' => 'string', 'locationName' => 'queryUserPin', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'FindDeviceGroupLinkPageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'nowPage' => [ 'type' => 'integer', 'locationName' => 'nowPage', ],
+                'totalSize' => [ 'type' => 'integer', 'locationName' => 'totalSize', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'DeviceGroupInfo', ], ],
+            ],
+        ],
+        'GetDeviceGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'nowPage' => [ 'type' => 'integer', 'locationName' => 'nowPage', ],
+                'totalSize' => [ 'type' => 'integer', 'locationName' => 'totalSize', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'DeviceGroupResp', ], ],
+            ],
+        ],
         'ReadHoldingRegistersRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2185,6 +2368,7 @@ return [
                 'parentId' => [ 'type' => 'string', 'locationName' => 'parentId', ],
                 'orderId' => [ 'type' => 'integer', 'locationName' => 'orderId', ],
                 'deviceCollectorType' => [ 'type' => 'string', 'locationName' => 'deviceCollectorType', ],
+                'queryUserPin' => [ 'type' => 'string', 'locationName' => 'queryUserPin', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
@@ -2244,6 +2428,7 @@ return [
                 'productKey' => [ 'type' => 'string', 'locationName' => 'productKey', ],
                 'parentId' => [ 'type' => 'string', 'locationName' => 'parentId', ],
                 'deviceCollectorType' => [ 'type' => 'string', 'locationName' => 'deviceCollectorType', ],
+                'queryUserPin' => [ 'type' => 'string', 'locationName' => 'queryUserPin', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
