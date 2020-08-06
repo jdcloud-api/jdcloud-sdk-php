@@ -92,6 +92,33 @@ return [
             'input' => [ 'shape' => 'GrantAccountPrivilegeRequestShape', ],
             'output' => [ 'shape' => 'GrantAccountPrivilegeResponseShape', ],
         ],
+        'DescribeAccountsForOps' => [
+            'name' => 'DescribeAccountsForOps',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/accountsForOps',
+            ],
+            'input' => [ 'shape' => 'DescribeAccountsForOpsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAccountsForOpsResponseShape', ],
+        ],
+        'CreateAccountForOps' => [
+            'name' => 'CreateAccountForOps',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/accountsForOps',
+            ],
+            'input' => [ 'shape' => 'CreateAccountForOpsRequestShape', ],
+            'output' => [ 'shape' => 'CreateAccountForOpsResponseShape', ],
+        ],
+        'ModifyAccountForOps' => [
+            'name' => 'ModifyAccountForOps',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/accountsForOps',
+            ],
+            'input' => [ 'shape' => 'ModifyAccountForOpsRequestShape', ],
+            'output' => [ 'shape' => 'ModifyAccountForOpsResponseShape', ],
+        ],
         'DescribeAudit' => [
             'name' => 'DescribeAudit',
             'http' => [
@@ -614,6 +641,15 @@ return [
             'input' => [ 'shape' => 'EnableSSLRequestShape', ],
             'output' => [ 'shape' => 'EnableSSLResponseShape', ],
         ],
+        'DisableSSL' => [
+            'name' => 'DisableSSL',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/ssl:disableSSL',
+            ],
+            'input' => [ 'shape' => 'DisableSSLRequestShape', ],
+            'output' => [ 'shape' => 'DisableSSLResponseShape', ],
+        ],
         'RestoreInstanceByTime' => [
             'name' => 'RestoreInstanceByTime',
             'http' => [
@@ -622,6 +658,15 @@ return [
             ],
             'input' => [ 'shape' => 'RestoreInstanceByTimeRequestShape', ],
             'output' => [ 'shape' => 'RestoreInstanceByTimeResponseShape', ],
+        ],
+        'ModifyActiveDirectory' => [
+            'name' => 'ModifyActiveDirectory',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:modifyActiveDirectory',
+            ],
+            'input' => [ 'shape' => 'ModifyActiveDirectoryRequestShape', ],
+            'output' => [ 'shape' => 'ModifyActiveDirectoryResponseShape', ],
         ],
         'EnableIntercept' => [
             'name' => 'EnableIntercept',
@@ -839,6 +884,60 @@ return [
             'input' => [ 'shape' => 'DescribeErrorLogRequestShape', ],
             'output' => [ 'shape' => 'DescribeErrorLogResponseShape', ],
         ],
+        'CreateReadWriteProxy' => [
+            'name' => 'CreateReadWriteProxy',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/readWriteProxy',
+            ],
+            'input' => [ 'shape' => 'CreateReadWriteProxyRequestShape', ],
+            'output' => [ 'shape' => 'CreateReadWriteProxyResponseShape', ],
+        ],
+        'DescribeReadWriteProxyAttribute' => [
+            'name' => 'DescribeReadWriteProxyAttribute',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/readWriteProxy/{readWriteProxyId}',
+            ],
+            'input' => [ 'shape' => 'DescribeReadWriteProxyAttributeRequestShape', ],
+            'output' => [ 'shape' => 'DescribeReadWriteProxyAttributeResponseShape', ],
+        ],
+        'DeleteReadWriteProxy' => [
+            'name' => 'DeleteReadWriteProxy',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/readWriteProxy/{readWriteProxyId}',
+            ],
+            'input' => [ 'shape' => 'DeleteReadWriteProxyRequestShape', ],
+            'output' => [ 'shape' => 'DeleteReadWriteProxyResponseShape', ],
+        ],
+        'EnableReadWriteProxyInternetAccess' => [
+            'name' => 'EnableReadWriteProxyInternetAccess',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/readWriteProxy/{readWriteProxyId}:enableReadWriteProxyInternetAccess',
+            ],
+            'input' => [ 'shape' => 'EnableReadWriteProxyInternetAccessRequestShape', ],
+            'output' => [ 'shape' => 'EnableReadWriteProxyInternetAccessResponseShape', ],
+        ],
+        'DisableReadWriteProxyInternetAccess' => [
+            'name' => 'DisableReadWriteProxyInternetAccess',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/readWriteProxy/{readWriteProxyId}:disableReadWriteProxyInternetAccess',
+            ],
+            'input' => [ 'shape' => 'DisableReadWriteProxyInternetAccessRequestShape', ],
+            'output' => [ 'shape' => 'DisableReadWriteProxyInternetAccessResponseShape', ],
+        ],
+        'ModifyReadWriteProxy' => [
+            'name' => 'ModifyReadWriteProxy',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/readWriteProxy/{readWriteProxyId}:modifyReadWriteProxy',
+            ],
+            'input' => [ 'shape' => 'ModifyReadWriteProxyRequestShape', ],
+            'output' => [ 'shape' => 'ModifyReadWriteProxyResponseShape', ],
+        ],
         'DescribeTables' => [
             'name' => 'DescribeTables',
             'http' => [
@@ -866,6 +965,24 @@ return [
             'input' => [ 'shape' => 'EnableTdeRequestShape', ],
             'output' => [ 'shape' => 'EnableTdeResponseShape', ],
         ],
+        'UpgradeInstance' => [
+            'name' => 'UpgradeInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/upgradeInstance',
+            ],
+            'input' => [ 'shape' => 'UpgradeInstanceRequestShape', ],
+            'output' => [ 'shape' => 'UpgradeInstanceResponseShape', ],
+        ],
+        'DescribeInstanceVersionInternal' => [
+            'name' => 'DescribeInstanceVersionInternal',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/instanceVersionsInternal',
+            ],
+            'input' => [ 'shape' => 'DescribeInstanceVersionInternalRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInstanceVersionInternalResponseShape', ],
+        ],
         'DescribeWhiteList' => [
             'name' => 'DescribeWhiteList',
             'http' => [
@@ -886,6 +1003,13 @@ return [
         ],
     ],
     'shapes' => [
+        'ADService' => [
+            'type' => 'structure',
+            'members' => [
+                'adResourceId' => [ 'type' => 'string', 'locationName' => 'adResourceId', ],
+                'adStatus' => [ 'type' => 'string', 'locationName' => 'adStatus', ],
+            ],
+        ],
         'AccountPrivilege' => [
             'type' => 'structure',
             'members' => [
@@ -1003,6 +1127,7 @@ return [
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'instanceStorageType' => [ 'type' => 'string', 'locationName' => 'instanceStorageType', ],
+                'storageEncrypted' => [ 'type' => 'boolean', 'locationName' => 'storageEncrypted', ],
                 'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
                 'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
                 'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
@@ -1021,6 +1146,7 @@ return [
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'sourceInstanceId' => [ 'type' => 'string', 'locationName' => 'sourceInstanceId', ],
+                'instancePort' => [ 'type' => 'string', 'locationName' => 'instancePort', ],
             ],
         ],
         'Charge' => [
@@ -1031,6 +1157,14 @@ return [
                 'chargeStartTime' => [ 'type' => 'string', 'locationName' => 'chargeStartTime', ],
                 'chargeExpiredTime' => [ 'type' => 'string', 'locationName' => 'chargeExpiredTime', ],
                 'chargeRetireTime' => [ 'type' => 'string', 'locationName' => 'chargeRetireTime', ],
+            ],
+        ],
+        'DBInstanceAccountForOps' => [
+            'type' => 'structure',
+            'members' => [
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'expiredTime' => [ 'type' => 'string', 'locationName' => 'expiredTime', ],
             ],
         ],
         'DBInstanceNode' => [
@@ -1075,6 +1209,9 @@ return [
                 'primaryNode' =>  [ 'shape' => 'DBInstanceNode', ],
                 'secondaryNode' =>  [ 'shape' => 'DBInstanceNode', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'activeDirectory' =>  [ 'shape' => 'ADService', ],
+                'roInstanceProxyID' => [ 'type' => 'string', 'locationName' => 'roInstanceProxyID', ],
+                'readWriteProxyId' => [ 'type' => 'string', 'locationName' => 'readWriteProxyId', ],
             ],
         ],
         'DBInstanceInternal' => [
@@ -1214,6 +1351,22 @@ return [
                 'internalURL' => [ 'type' => 'string', 'locationName' => 'internalURL', ],
             ],
         ],
+        'HealthCheck' => [
+            'type' => 'structure',
+            'members' => [
+                'monitorInterval' => [ 'type' => 'integer', 'locationName' => 'monitorInterval', ],
+                'backendConnectTimeout' => [ 'type' => 'integer', 'locationName' => 'backendConnectTimeout', ],
+                'backendConnectAttempts' => [ 'type' => 'integer', 'locationName' => 'backendConnectAttempts', ],
+            ],
+        ],
+        'HealthCheckSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'monitorInterval' => [ 'type' => 'integer', 'locationName' => 'monitorInterval', ],
+                'backendConnectTimeout' => [ 'type' => 'integer', 'locationName' => 'backendConnectTimeout', ],
+                'backendConnectAttempts' => [ 'type' => 'integer', 'locationName' => 'backendConnectAttempts', ],
+            ],
+        ],
         'ImportFile' => [
             'type' => 'structure',
             'members' => [
@@ -1276,6 +1429,32 @@ return [
                 'preModify' => [ 'type' => 'string', 'locationName' => 'preModify', ],
                 'postModify' => [ 'type' => 'string', 'locationName' => 'postModify', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'ROInstanceProxyAttribute' => [
+            'type' => 'structure',
+            'members' => [
+                'roInstanceProxyID' => [ 'type' => 'string', 'locationName' => 'roInstanceProxyID', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'publicDomainName' => [ 'type' => 'string', 'locationName' => 'publicDomainName', ],
+                'internalDomainName' => [ 'type' => 'string', 'locationName' => 'internalDomainName', ],
+                'port' => [ 'type' => 'string', 'locationName' => 'port', ],
+                'strategy' => [ 'type' => 'string', 'locationName' => 'strategy', ],
+                'roInstanceId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ReadWriteProxy' => [
+            'type' => 'structure',
+            'members' => [
+                'readWriteProxyId' => [ 'type' => 'string', 'locationName' => 'readWriteProxyId', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'publicDomainName' => [ 'type' => 'string', 'locationName' => 'publicDomainName', ],
+                'internalDomainName' => [ 'type' => 'string', 'locationName' => 'internalDomainName', ],
+                'port' => [ 'type' => 'string', 'locationName' => 'port', ],
+                'delayThreshold' => [ 'type' => 'integer', 'locationName' => 'delayThreshold', ],
+                'loadBalancerPolicy' => [ 'type' => 'string', 'locationName' => 'loadBalancerPolicy', ],
+                'healthCheck' =>  [ 'shape' => 'HealthCheck', ],
             ],
         ],
         'ResourceInfo' => [
@@ -1395,6 +1574,11 @@ return [
                 'globalPrivileges' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'CreateAccountForOpsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'GrantAccountPrivilegeResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1422,6 +1606,11 @@ return [
             'members' => [
             ],
         ],
+        'CreateAccountForOpsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DeleteAccountResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1430,6 +1619,12 @@ return [
         'RevokePrivilegeResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeAccountsForOpsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAccountsForOpsResultShape', ],
             ],
         ],
         'ResetPasswordRequestShape' => [
@@ -1464,6 +1659,14 @@ return [
             'members' => [
             ],
         ],
+        'ModifyAccountForOpsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'expiredTime' => [ 'type' => 'string', 'locationName' => 'expiredTime', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'CreateAccountResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1480,6 +1683,19 @@ return [
             ],
         ],
         'ResetPasswordResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateAccountForOpsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'expiredTime' => [ 'type' => 'string', 'locationName' => 'expiredTime', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ModifyAccountForOpsResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -1514,6 +1730,25 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeAccountPrivilegeResultShape', ],
+            ],
+        ],
+        'DescribeAccountsForOpsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'accounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'DBInstanceAccountForOps', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeAccountsForOpsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ModifyAccountForOpsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'CreateSuperAccountRequestShape' => [
@@ -1864,6 +2099,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
             ],
         ],
         'DescribeBackupSynchronicitiesResultShape' => [
@@ -2026,6 +2262,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -2387,6 +2624,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
             ],
         ],
         'FailoverInstanceResponseShape' => [
@@ -2499,6 +2737,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
             ],
         ],
         'DeleteInstanceResponseShape' => [
@@ -2515,6 +2754,11 @@ return [
             ],
         ],
         'EnableInternetAccessResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyActiveDirectoryResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -2536,6 +2780,18 @@ return [
             'members' => [
                 'restoreTime' => [ 'type' => 'string', 'locationName' => 'restoreTime', ],
                 'restoreSchema' => [ 'type' => 'list', 'member' => [ 'shape' => 'Schema', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ModifyActiveDirectoryResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DisableSSLRequestShape' => [
+            'type' => 'structure',
+            'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2576,6 +2832,8 @@ return [
             'members' => [
                 'startWindow' => [ 'type' => 'string', 'locationName' => 'startWindow', ],
                 'retentionPeriod' => [ 'type' => 'integer', 'locationName' => 'retentionPeriod', ],
+                'binlogRetentionPeriod' => [ 'type' => 'integer', 'locationName' => 'binlogRetentionPeriod', ],
+                'binlogUsageLimit' => [ 'type' => 'integer', 'locationName' => 'binlogUsageLimit', ],
                 'cycleMode' => [ 'type' => 'integer', 'locationName' => 'cycleMode', ],
                 'backupBinlog' => [ 'type' => 'string', 'locationName' => 'backupBinlog', ],
             ],
@@ -2626,11 +2884,17 @@ return [
                 'parameterGroup' => [ 'type' => 'string', 'locationName' => 'parameterGroup', ],
                 'storageEncrypted' => [ 'type' => 'boolean', 'locationName' => 'storageEncrypted', ],
                 'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'roInstanceProxy' => [ 'type' => 'string', 'locationName' => 'roInstanceProxy', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'ModifyConnectionModeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DisableSSLResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -2663,6 +2927,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'startWindow' => [ 'type' => 'string', 'locationName' => 'startWindow', ],
+                'binlogRetentionPeriod' => [ 'type' => 'integer', 'locationName' => 'binlogRetentionPeriod', ],
+                'binlogUsageLimit' => [ 'type' => 'integer', 'locationName' => 'binlogUsageLimit', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2676,6 +2942,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
+            ],
+        ],
+        'DisableSSLResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DisableInternetAccessResultShape' => [
@@ -2719,6 +2991,15 @@ return [
         'EnableSSLResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ModifyActiveDirectoryRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'adResourceId' => [ 'type' => 'string', 'locationName' => 'adResourceId', ],
+                'forceRestart' => [ 'type' => 'string', 'locationName' => 'forceRestart', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'DisableInterceptResultShape' => [
@@ -3302,6 +3583,118 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'DescribeReadWriteProxyAttributeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'readWriteProxy' =>  [ 'shape' => 'ReadWriteProxy', ],
+            ],
+        ],
+        'DeleteReadWriteProxyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'readWriteProxyId' => [ 'type' => 'string', 'locationName' => 'readWriteProxyId', ],
+            ],
+        ],
+        'CreateReadWriteProxyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateReadWriteProxyResultShape', ],
+            ],
+        ],
+        'ModifyReadWriteProxyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'delayThreshold' => [ 'type' => 'integer', 'locationName' => 'delayThreshold', ],
+                'loadBalancerPolicy' => [ 'type' => 'string', 'locationName' => 'loadBalancerPolicy', ],
+                'healthCheckSpec' =>  [ 'shape' => 'HealthCheckSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'readWriteProxyId' => [ 'type' => 'string', 'locationName' => 'readWriteProxyId', ],
+            ],
+        ],
+        'EnableReadWriteProxyInternetAccessResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteReadWriteProxyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DisableReadWriteProxyInternetAccessResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateReadWriteProxyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'readWriteProxyId' => [ 'type' => 'string', 'locationName' => 'readWriteProxyId', ],
+            ],
+        ],
+        'DisableReadWriteProxyInternetAccessRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'readWriteProxyId' => [ 'type' => 'string', 'locationName' => 'readWriteProxyId', ],
+            ],
+        ],
+        'DescribeReadWriteProxyAttributeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'readWriteProxyId' => [ 'type' => 'string', 'locationName' => 'readWriteProxyId', ],
+            ],
+        ],
+        'ModifyReadWriteProxyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeReadWriteProxyAttributeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeReadWriteProxyAttributeResultShape', ],
+            ],
+        ],
+        'DeleteReadWriteProxyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateReadWriteProxyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'delayThreshold' => [ 'type' => 'integer', 'locationName' => 'delayThreshold', ],
+                'loadBalancerPolicy' => [ 'type' => 'string', 'locationName' => 'loadBalancerPolicy', ],
+                'healthCheckSpec' =>  [ 'shape' => 'HealthCheckSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ModifyReadWriteProxyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DisableReadWriteProxyInternetAccessResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableReadWriteProxyInternetAccessRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'readWriteProxyId' => [ 'type' => 'string', 'locationName' => 'readWriteProxyId', ],
+            ],
+        ],
+        'EnableReadWriteProxyInternetAccessResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DescribeTablesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3357,6 +3750,44 @@ return [
         'EnableTdeRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeInstanceVersionInternalResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceVersion' => [ 'type' => 'string', 'locationName' => 'instanceVersion', ],
+                'totalAvailableVersion' => [ 'type' => 'integer', 'locationName' => 'totalAvailableVersion', ],
+            ],
+        ],
+        'UpgradeInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeInstanceVersionInternalRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'UpgradeInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeInstanceVersionInternalResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceVersionInternalResultShape', ],
+            ],
+        ],
+        'UpgradeInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'upgradeTime' => [ 'type' => 'string', 'locationName' => 'upgradeTime', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
