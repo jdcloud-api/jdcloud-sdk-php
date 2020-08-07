@@ -234,6 +234,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise operatePurgeTaskAsync(array $args = [])
  * @method \Jdcloud\Result queryPurgeTask(array $args = [])
  * @method \GuzzleHttp\Promise\Promise queryPurgeTaskAsync(array $args = [])
+ * @method \Jdcloud\Result queryCdnUserQuota(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryCdnUserQuotaAsync(array $args = [])
  * @method \Jdcloud\Result queryRefreshTaskByIds(array $args = [])
  * @method \GuzzleHttp\Promise\Promise queryRefreshTaskByIdsAsync(array $args = [])
  * @method \Jdcloud\Result queryRefreshTaskById(array $args = [])
