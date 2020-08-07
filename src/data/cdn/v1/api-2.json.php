@@ -974,6 +974,15 @@ return [
             'input' => [ 'shape' => 'QueryPurgeTaskRequestShape', ],
             'output' => [ 'shape' => 'QueryPurgeTaskResponseShape', ],
         ],
+        'QueryCdnUserQuota' => [
+            'name' => 'QueryCdnUserQuota',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/user:quota',
+            ],
+            'input' => [ 'shape' => 'QueryCdnUserQuotaRequestShape', ],
+            'output' => [ 'shape' => 'QueryCdnUserQuotaResponseShape', ],
+        ],
         'QueryRefreshTaskByIds' => [
             'name' => 'QueryRefreshTaskByIds',
             'http' => [
@@ -2689,6 +2698,18 @@ return [
                 'logMD5' => [ 'type' => 'string', 'locationName' => 'logMD5', ],
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'UserModel' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'typeList' => [ 'type' => 'integer', 'locationName' => 'typeList', ],
+                'typeDescList' => [ 'type' => 'string', 'locationName' => 'typeDescList', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'statusDesc' => [ 'type' => 'string', 'locationName' => 'statusDesc', ],
+                'settlementMethod' => [ 'type' => 'integer', 'locationName' => 'settlementMethod', ],
+                'settlementMethodDesc' => [ 'type' => 'string', 'locationName' => 'settlementMethodDesc', ],
             ],
         ],
         'WafBlackRuleModel' => [
@@ -5158,17 +5179,9 @@ return [
                 'task' =>  [ 'shape' => 'RefreshTask', ],
             ],
         ],
-        'QueryRefreshTaskByIdResponseShape' => [
+        'QueryCdnUserQuotaRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryRefreshTaskByIdResultShape', ],
-            ],
-        ],
-        'QueryRefreshTaskByIdsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'RefreshTask', ], ],
             ],
         ],
         'CreateRefreshTaskForCallbackResultShape' => [
@@ -5178,24 +5191,25 @@ return [
                 'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
             ],
         ],
-        'QueryRefreshTaskRequestShape' => [
+        'QueryCdnUserQuotaResultShape' => [
             'type' => 'structure',
             'members' => [
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
-                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
-                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
-                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-            ],
-        ],
-        'QueryRefreshTaskResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
-                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'RefreshTask', ], ],
+                'dirAllCount' => [ 'type' => 'integer', 'locationName' => 'dirAllCount', ],
+                'dirUsedCount' => [ 'type' => 'integer', 'locationName' => 'dirUsedCount', ],
+                'dirRemainedCount' => [ 'type' => 'integer', 'locationName' => 'dirRemainedCount', ],
+                'forbiddenUrlRemainedCount' => [ 'type' => 'integer', 'locationName' => 'forbiddenUrlRemainedCount', ],
+                'forbiddenUrlUsedCount' => [ 'type' => 'integer', 'locationName' => 'forbiddenUrlUsedCount', ],
+                'forbiddenUrlAllCount' => [ 'type' => 'integer', 'locationName' => 'forbiddenUrlAllCount', ],
+                'hasForbiddenDomainCount' => [ 'type' => 'integer', 'locationName' => 'hasForbiddenDomainCount', ],
+                'prefetchRemainedCount' => [ 'type' => 'integer', 'locationName' => 'prefetchRemainedCount', ],
+                'prefetchAllCount' => [ 'type' => 'integer', 'locationName' => 'prefetchAllCount', ],
+                'prefetchUsedCount' => [ 'type' => 'integer', 'locationName' => 'prefetchUsedCount', ],
+                'refreshAllCount' => [ 'type' => 'integer', 'locationName' => 'refreshAllCount', ],
+                'refreshRemainedCount' => [ 'type' => 'integer', 'locationName' => 'refreshRemainedCount', ],
+                'refreshUsedCount' => [ 'type' => 'integer', 'locationName' => 'refreshUsedCount', ],
+                'totalUserDomainQuota' => [ 'type' => 'integer', 'locationName' => 'totalUserDomainQuota', ],
+                'usedUserDomainQuota' => [ 'type' => 'integer', 'locationName' => 'usedUserDomainQuota', ],
+                'remainUserDomainQuota' => [ 'type' => 'integer', 'locationName' => 'remainUserDomainQuota', ],
             ],
         ],
         'CreateRefreshTaskForCallbackV2RequestShape' => [
@@ -5219,6 +5233,67 @@ return [
                 'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
             ],
         ],
+        'QueryRefreshTaskByIdsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
+            ],
+        ],
+        'QueryCdnUserQuotaResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryCdnUserQuotaResultShape', ],
+            ],
+        ],
+        'QueryRefreshTaskByIdsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryRefreshTaskByIdsResultShape', ],
+            ],
+        ],
+        'QueryRefreshTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryRefreshTaskResultShape', ],
+            ],
+        ],
+        'QueryRefreshTaskByIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryRefreshTaskByIdResultShape', ],
+            ],
+        ],
+        'QueryRefreshTaskByIdsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'RefreshTask', ], ],
+            ],
+        ],
+        'QueryRefreshTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'QueryRefreshTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'RefreshTask', ], ],
+            ],
+        ],
         'CreateRefreshTaskForCallbackRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -5231,13 +5306,6 @@ return [
             'members' => [
                 'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
                 'urls' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'QueryRefreshTaskByIdsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
             ],
         ],
         'CreateRefreshTaskForCallbackV2ResultShape' => [
@@ -5254,25 +5322,11 @@ return [
                 'result' =>  [ 'shape' => 'CreateRefreshTaskForCallbackV2ResultShape', ],
             ],
         ],
-        'QueryRefreshTaskByIdsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryRefreshTaskByIdsResultShape', ],
-            ],
-        ],
         'CreateRefreshTaskForCallbackResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'CreateRefreshTaskForCallbackResultShape', ],
-            ],
-        ],
-        'QueryRefreshTaskResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryRefreshTaskResultShape', ],
             ],
         ],
         'QueryNetProtectionRulesRequestShape' => [
