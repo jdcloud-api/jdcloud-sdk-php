@@ -47,6 +47,42 @@ return [
             'input' => [ 'shape' => 'DeleteBackSourceConfigurationRequestShape', ],
             'output' => [ 'shape' => 'DeleteBackSourceConfigurationResponseShape', ],
         ],
+        'GetHistoricalReplicatTask' => [
+            'name' => 'GetHistoricalReplicatTask',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/buckets/{bucketName}/historical_replicat_task/{taskId}',
+            ],
+            'input' => [ 'shape' => 'GetHistoricalReplicatTaskRequestShape', ],
+            'output' => [ 'shape' => 'GetHistoricalReplicatTaskResponseShape', ],
+        ],
+        'AbortHistoricalReplicatTask' => [
+            'name' => 'AbortHistoricalReplicatTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/buckets/{bucketName}/historical_replicat_task/{taskId}/abort',
+            ],
+            'input' => [ 'shape' => 'AbortHistoricalReplicatTaskRequestShape', ],
+            'output' => [ 'shape' => 'AbortHistoricalReplicatTaskResponseShape', ],
+        ],
+        'ListHistoricalReplicatTasks' => [
+            'name' => 'ListHistoricalReplicatTasks',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/buckets/{bucketName}/historical_replicat_task/',
+            ],
+            'input' => [ 'shape' => 'ListHistoricalReplicatTasksRequestShape', ],
+            'output' => [ 'shape' => 'ListHistoricalReplicatTasksResponseShape', ],
+        ],
+        'CreateHistoricalReplicatTask' => [
+            'name' => 'CreateHistoricalReplicatTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/buckets/{bucketName}/historical_replicat_task/',
+            ],
+            'input' => [ 'shape' => 'CreateHistoricalReplicatTaskRequestShape', ],
+            'output' => [ 'shape' => 'CreateHistoricalReplicatTaskResponseShape', ],
+        ],
     ],
     'shapes' => [
         'BucketCapacityStatistic' => [
@@ -137,6 +173,29 @@ return [
             'members' => [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'queryList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BucketMonitorStatistic', ], ],
+            ],
+        ],
+        'GetBucketsTaggingInfoResult' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketTaggingInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BucketTaggingInfo', ], ],
+            ],
+        ],
+        'BucketInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketId' => [ 'type' => 'long', 'locationName' => 'bucketId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+            ],
+        ],
+        'BucketTaggingInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketId' => [ 'type' => 'long', 'locationName' => 'bucketId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'allowTagging' => [ 'type' => 'boolean', 'locationName' => 'allowTagging', ],
             ],
         ],
         'BackSourceAddress' => [
@@ -267,6 +326,146 @@ return [
                 'protoType' => [ 'type' => 'integer', 'locationName' => 'protoType', ],
                 'endPoint' => [ 'type' => 'string', 'locationName' => 'endPoint', ],
                 'internal' => [ 'type' => 'string', 'locationName' => 'internal', ],
+            ],
+        ],
+        'ListHistoricalReplicatTasksResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'historyReplicationTaskInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'HistoryReplicationTaskInfo', ], ],
+                'nextMarker' => [ 'type' => 'string', 'locationName' => 'nextMarker', ],
+            ],
+        ],
+        'AbortHistoricalReplicatTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ListHistoricalReplicatTasksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'ListHistoricalReplicatTasksResultShape', ],
+            ],
+        ],
+        'ListResult' => [
+            'type' => 'structure',
+            'members' => [
+                'historyReplicationTaskInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'HistoryReplicationTaskInfo', ], ],
+                'nextMarker' => [ 'type' => 'string', 'locationName' => 'nextMarker', ],
+            ],
+        ],
+        'GetHistoricalReplicatTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetHistoricalReplicatTaskResultShape', ],
+            ],
+        ],
+        'CreateHistoricalReplicatTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'long', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'AbortHistoricalReplicatTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateReplicationTaskCondition' => [
+            'type' => 'structure',
+            'members' => [
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'bucketRegion' => [ 'type' => 'string', 'locationName' => 'bucketRegion', ],
+                'targetBucketName' => [ 'type' => 'string', 'locationName' => 'targetBucketName', ],
+                'targetBucketRegion' => [ 'type' => 'string', 'locationName' => 'targetBucketRegion', ],
+                'storageClass' => [ 'type' => 'string', 'locationName' => 'storageClass', ],
+                'prefixSet' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'HistoryReplicationTask' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'long', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'GetHistoricalReplicatTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'GetHistoricalReplicatTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'long', 'locationName' => 'taskId', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'bucketRegion' => [ 'type' => 'string', 'locationName' => 'bucketRegion', ],
+                'targetBucketName' => [ 'type' => 'string', 'locationName' => 'targetBucketName', ],
+                'targetBucketRegion' => [ 'type' => 'string', 'locationName' => 'targetBucketRegion', ],
+                'storageClass' => [ 'type' => 'string', 'locationName' => 'storageClass', ],
+                'prefixSet' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'progress' => [ 'type' => 'double', 'locationName' => 'progress', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'CreateHistoricalReplicatTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateHistoricalReplicatTaskResultShape', ],
+            ],
+        ],
+        'AbortHistoricalReplicatTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'ListHistoricalReplicatTasksRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'marker' => [ 'type' => 'string', 'locationName' => 'marker', ],
+                'limit' => [ 'type' => 'integer', 'locationName' => 'limit', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+            ],
+        ],
+        'HistoryReplicationTaskInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'long', 'locationName' => 'taskId', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'bucketRegion' => [ 'type' => 'string', 'locationName' => 'bucketRegion', ],
+                'targetBucketName' => [ 'type' => 'string', 'locationName' => 'targetBucketName', ],
+                'targetBucketRegion' => [ 'type' => 'string', 'locationName' => 'targetBucketRegion', ],
+                'storageClass' => [ 'type' => 'string', 'locationName' => 'storageClass', ],
+                'prefixSet' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'progress' => [ 'type' => 'double', 'locationName' => 'progress', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'CreateHistoricalReplicatTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'bucketRegion' => [ 'type' => 'string', 'locationName' => 'bucketRegion', ],
+                'targetBucketName' => [ 'type' => 'string', 'locationName' => 'targetBucketName', ],
+                'targetBucketRegion' => [ 'type' => 'string', 'locationName' => 'targetBucketRegion', ],
+                'storageClass' => [ 'type' => 'string', 'locationName' => 'storageClass', ],
+                'prefixSet' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'ICP' => [

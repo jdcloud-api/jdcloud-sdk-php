@@ -20,6 +20,15 @@ return [
             'input' => [ 'shape' => 'DescribeAlarmsRequestShape', ],
             'output' => [ 'shape' => 'DescribeAlarmsResponseShape', ],
         ],
+        'CreateAlarm' => [
+            'name' => 'CreateAlarm',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/alarms',
+            ],
+            'input' => [ 'shape' => 'CreateAlarmRequestShape', ],
+            'output' => [ 'shape' => 'CreateAlarmResponseShape', ],
+        ],
         'DescribeAlarm' => [
             'name' => 'DescribeAlarm',
             'http' => [
@@ -29,6 +38,15 @@ return [
             'input' => [ 'shape' => 'DescribeAlarmRequestShape', ],
             'output' => [ 'shape' => 'DescribeAlarmResponseShape', ],
         ],
+        'DeleteAlarm' => [
+            'name' => 'DeleteAlarm',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/alarms/{alarmId}',
+            ],
+            'input' => [ 'shape' => 'DeleteAlarmRequestShape', ],
+            'output' => [ 'shape' => 'DeleteAlarmResponseShape', ],
+        ],
         'DescribeAlarmHistory' => [
             'name' => 'DescribeAlarmHistory',
             'http' => [
@@ -37,6 +55,15 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeAlarmHistoryRequestShape', ],
             'output' => [ 'shape' => 'DescribeAlarmHistoryResponseShape', ],
+        ],
+        'SwitchAlarm' => [
+            'name' => 'SwitchAlarm',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/alarms/{alarmId}:switch',
+            ],
+            'input' => [ 'shape' => 'SwitchAlarmRequestShape', ],
+            'output' => [ 'shape' => 'SwitchAlarmResponseShape', ],
         ],
         'DescribeMetrics' => [
             'name' => 'DescribeMetrics',
@@ -173,6 +200,15 @@ return [
             'input' => [ 'shape' => 'DescribeBandwidthRequestShape', ],
             'output' => [ 'shape' => 'DescribeBandwidthResponseShape', ],
         ],
+        'DescribeIdcOverview' => [
+            'name' => 'DescribeIdcOverview',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/idcs/{idc}/overview',
+            ],
+            'input' => [ 'shape' => 'DescribeIdcOverviewRequestShape', ],
+            'output' => [ 'shape' => 'DescribeIdcOverviewResponseShape', ],
+        ],
         'DescribeTickets' => [
             'name' => 'DescribeTickets',
             'http' => [
@@ -190,6 +226,15 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeTicketRequestShape', ],
             'output' => [ 'shape' => 'DescribeTicketResponseShape', ],
+        ],
+        'CreateGeneralServicesTicket' => [
+            'name' => 'CreateGeneralServicesTicket',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/generalServicesTicket',
+            ],
+            'input' => [ 'shape' => 'CreateGeneralServicesTicketRequestShape', ],
+            'output' => [ 'shape' => 'CreateGeneralServicesTicketResponseShape', ],
         ],
     ],
     'shapes' => [
@@ -250,6 +295,13 @@ return [
                 'strategyId' => [ 'type' => 'integer', 'locationName' => 'strategyId', ],
             ],
         ],
+        'Attach' => [
+            'type' => 'structure',
+            'members' => [
+                'attachName' => [ 'type' => 'string', 'locationName' => 'attachName', ],
+                'attachPath' => [ 'type' => 'string', 'locationName' => 'attachPath', ],
+            ],
+        ],
         'Bandwidth' => [
             'type' => 'structure',
             'members' => [
@@ -270,6 +322,17 @@ return [
             'members' => [
                 'cidrAddr' => [ 'type' => 'string', 'locationName' => 'cidrAddr', ],
                 'lineType' => [ 'type' => 'string', 'locationName' => 'lineType', ],
+            ],
+        ],
+        'BandwidthOverview' => [
+            'type' => 'structure',
+            'members' => [
+                'sum' => [ 'type' => 'integer', 'locationName' => 'sum', ],
+                'dynamicBGP' => [ 'type' => 'integer', 'locationName' => 'dynamicBGP', ],
+                'thirdLineBGP' => [ 'type' => 'integer', 'locationName' => 'thirdLineBGP', ],
+                'telecom' => [ 'type' => 'integer', 'locationName' => 'telecom', ],
+                'unicom' => [ 'type' => 'integer', 'locationName' => 'unicom', ],
+                'mobile' => [ 'type' => 'integer', 'locationName' => 'mobile', ],
             ],
         ],
         'BandwidthTraffic' => [
@@ -319,6 +382,57 @@ return [
                 'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
             ],
         ],
+        'CabinetOverview' => [
+            'type' => 'structure',
+            'members' => [
+                'sum' => [ 'type' => 'integer', 'locationName' => 'sum', ],
+                'enabled' => [ 'type' => 'integer', 'locationName' => 'enabled', ],
+                'disabled' => [ 'type' => 'integer', 'locationName' => 'disabled', ],
+                'enabling' => [ 'type' => 'integer', 'locationName' => 'enabling', ],
+                'disabling' => [ 'type' => 'integer', 'locationName' => 'disabling', ],
+            ],
+        ],
+        'SwitchAlarmSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'CreateAlarmSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'period' => [ 'type' => 'integer', 'locationName' => 'period', ],
+                'statisticMethod' => [ 'type' => 'string', 'locationName' => 'statisticMethod', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
+                'times' => [ 'type' => 'integer', 'locationName' => 'times', ],
+                'noticePeriod' => [ 'type' => 'integer', 'locationName' => 'noticePeriod', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'noticeMethod' => [ 'type' => 'string', 'locationName' => 'noticeMethod', ],
+                'noticeObj' => [ 'type' => 'string', 'locationName' => 'noticeObj', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+            ],
+        ],
+        'CreateGeneralServicesTicket' => [
+            'type' => 'structure',
+            'members' => [
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
+                'isExternalIdc' => [ 'type' => 'boolean', 'locationName' => 'isExternalIdc', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'externalIdcAddress' => [ 'type' => 'string', 'locationName' => 'externalIdcAddress', ],
+                'externalIdcContactPerson' => [ 'type' => 'string', 'locationName' => 'externalIdcContactPerson', ],
+                'externalIdcContactPhone' => [ 'type' => 'string', 'locationName' => 'externalIdcContactPhone', ],
+                'remarks' => [ 'type' => 'string', 'locationName' => 'remarks', ],
+                'attach' => [ 'type' => 'list', 'member' => [ 'shape' => 'Attach', ], ],
+            ],
+        ],
         'DataPoint' => [
             'type' => 'structure',
             'members' => [
@@ -359,6 +473,7 @@ return [
                 'chargeType' => [ 'type' => 'string', 'locationName' => 'chargeType', ],
                 'bandwidth' => [ 'type' => 'integer', 'locationName' => 'bandwidth', ],
                 'relatedIp' => [ 'type' => 'list', 'member' => [ 'shape' => 'RelatedIp', ], ],
+                'switchboard' => [ 'type' => 'list', 'member' => [ 'shape' => 'Switchboard', ], ],
             ],
         ],
         'DescribeBandwidthTraffic' => [
@@ -397,6 +512,7 @@ return [
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
                 'idcName' => [ 'type' => 'string', 'locationName' => 'idcName', ],
                 'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'deviceNo' => [ 'type' => 'string', 'locationName' => 'deviceNo', ],
                 'snNo' => [ 'type' => 'string', 'locationName' => 'snNo', ],
                 'cabinetNo' => [ 'type' => 'string', 'locationName' => 'cabinetNo', ],
                 'rackUIndex' => [ 'type' => 'string', 'locationName' => 'rackUIndex', ],
@@ -415,6 +531,7 @@ return [
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
                 'idcName' => [ 'type' => 'string', 'locationName' => 'idcName', ],
                 'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'deviceNo' => [ 'type' => 'string', 'locationName' => 'deviceNo', ],
                 'snNo' => [ 'type' => 'string', 'locationName' => 'snNo', ],
                 'cabinetNo' => [ 'type' => 'string', 'locationName' => 'cabinetNo', ],
                 'rackUIndex' => [ 'type' => 'string', 'locationName' => 'rackUIndex', ],
@@ -432,11 +549,22 @@ return [
                 'disk' => [ 'type' => 'string', 'locationName' => 'disk', ],
             ],
         ],
+        'DeviceOverview' => [
+            'type' => 'structure',
+            'members' => [
+                'sum' => [ 'type' => 'integer', 'locationName' => 'sum', ],
+                'server' => [ 'type' => 'integer', 'locationName' => 'server', ],
+                'network' => [ 'type' => 'integer', 'locationName' => 'network', ],
+                'storage' => [ 'type' => 'integer', 'locationName' => 'storage', ],
+                'other' => [ 'type' => 'integer', 'locationName' => 'other', ],
+            ],
+        ],
         'Idc' => [
             'type' => 'structure',
             'members' => [
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
                 'idcName' => [ 'type' => 'string', 'locationName' => 'idcName', ],
+                'isExternalIdc' => [ 'type' => 'boolean', 'locationName' => 'isExternalIdc', ],
             ],
         ],
         'Ip' => [
@@ -453,6 +581,14 @@ return [
                 'broadcastAddr' => [ 'type' => 'string', 'locationName' => 'broadcastAddr', ],
                 'lineType' => [ 'type' => 'string', 'locationName' => 'lineType', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'IpOverview' => [
+            'type' => 'structure',
+            'members' => [
+                'sum' => [ 'type' => 'integer', 'locationName' => 'sum', ],
+                'normal' => [ 'type' => 'integer', 'locationName' => 'normal', ],
+                'abnormal' => [ 'type' => 'integer', 'locationName' => 'abnormal', ],
             ],
         ],
         'LastDownsampleRespItem' => [
@@ -509,6 +645,11 @@ return [
                 'email' => [ 'type' => 'string', 'locationName' => 'email', ],
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
                 'idcName' => [ 'type' => 'string', 'locationName' => 'idcName', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'isExternalIdc' => [ 'type' => 'boolean', 'locationName' => 'isExternalIdc', ],
+                'externalIdcAddress' => [ 'type' => 'string', 'locationName' => 'externalIdcAddress', ],
+                'externalIdcContactPerson' => [ 'type' => 'string', 'locationName' => 'externalIdcContactPerson', ],
+                'externalIdcContactPhone' => [ 'type' => 'string', 'locationName' => 'externalIdcContactPhone', ],
             ],
         ],
         'TrafficSamplingData' => [
@@ -524,6 +665,32 @@ return [
                 'timestamp' => [ 'type' => 'integer', 'locationName' => 'timestamp', ],
                 'uniqueId' => [ 'type' => 'string', 'locationName' => 'uniqueId', ],
                 'operatorType' => [ 'type' => 'string', 'locationName' => 'operatorType', ],
+            ],
+        ],
+        'DeleteAlarmResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteAlarmResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteAlarmRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
+            ],
+        ],
+        'CreateAlarmResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'CreateAlarmResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateAlarmResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeAlarmHistoryResultShape' => [
@@ -542,6 +709,12 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DeleteAlarmResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
             ],
         ],
         'DescribeAlarmRequestShape' => [
@@ -567,6 +740,20 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'SwitchAlarmResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'SwitchAlarmResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SwitchAlarmResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeAlarmHistoryResponseShape' => [
@@ -587,6 +774,33 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeAlarmsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SwitchAlarmRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
+            ],
+        ],
+        'CreateAlarmRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'period' => [ 'type' => 'integer', 'locationName' => 'period', ],
+                'statisticMethod' => [ 'type' => 'string', 'locationName' => 'statisticMethod', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
+                'times' => [ 'type' => 'integer', 'locationName' => 'times', ],
+                'noticePeriod' => [ 'type' => 'integer', 'locationName' => 'noticePeriod', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'noticeMethod' => [ 'type' => 'string', 'locationName' => 'noticeMethod', ],
+                'noticeObj' => [ 'type' => 'string', 'locationName' => 'noticeObj', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
             ],
         ],
         'DescribeAlarmResponseShape' => [
@@ -732,6 +946,22 @@ return [
                 'cabinet' =>  [ 'shape' => 'Cabinet', ],
             ],
         ],
+        'DescribeIdcOverviewResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cabinet' =>  [ 'shape' => 'CabinetOverview', ],
+                'device' =>  [ 'shape' => 'DeviceOverview', ],
+                'ip' =>  [ 'shape' => 'IpOverview', ],
+                'bandwidth' =>  [ 'shape' => 'BandwidthOverview', ],
+            ],
+        ],
+        'DescribeIdcOverviewResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeIdcOverviewResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeIpsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -748,6 +978,7 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'cabinetId' => [ 'type' => 'string', 'locationName' => 'cabinetId', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
             ],
         ],
@@ -757,6 +988,7 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'lineType' => [ 'type' => 'string', 'locationName' => 'lineType', ],
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
             ],
         ],
@@ -855,6 +1087,7 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
             ],
         ],
@@ -874,6 +1107,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeIdcOverviewRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
+            ],
+        ],
         'DescribeRoomsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -889,6 +1128,7 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'cabinetOpenStatus' => [ 'type' => 'string', 'locationName' => 'cabinetOpenStatus', ],
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
             ],
         ],
@@ -934,6 +1174,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'includeExternalIdc' => [ 'type' => 'string', 'locationName' => 'includeExternalIdc', ],
             ],
         ],
         'DescribeDeviceRequestShape' => [
@@ -941,6 +1182,13 @@ return [
             'members' => [
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
                 'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+            ],
+        ],
+        'CreateGeneralServicesTicketResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateGeneralServicesTicketResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeTicketResponseShape' => [
@@ -969,12 +1217,33 @@ return [
                 'ticket' =>  [ 'shape' => 'Ticket', ],
             ],
         ],
+        'CreateGeneralServicesTicketRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
+                'isExternalIdc' => [ 'type' => 'boolean', 'locationName' => 'isExternalIdc', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'externalIdcAddress' => [ 'type' => 'string', 'locationName' => 'externalIdcAddress', ],
+                'externalIdcContactPerson' => [ 'type' => 'string', 'locationName' => 'externalIdcContactPerson', ],
+                'externalIdcContactPhone' => [ 'type' => 'string', 'locationName' => 'externalIdcContactPhone', ],
+                'remarks' => [ 'type' => 'string', 'locationName' => 'remarks', ],
+                'attach' => [ 'type' => 'list', 'member' => [ 'shape' => 'Attach', ], ],
+            ],
+        ],
         'DescribeTicketsRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+            ],
+        ],
+        'CreateGeneralServicesTicketResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ticketNo' => [ 'type' => 'string', 'locationName' => 'ticketNo', ],
             ],
         ],
         'DescribeTicketsResultShape' => [

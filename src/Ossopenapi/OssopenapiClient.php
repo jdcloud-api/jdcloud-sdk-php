@@ -28,6 +28,14 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise putBackSourceConfigurationAsync(array $args = [])
  * @method \Jdcloud\Result deleteBackSourceConfiguration(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteBackSourceConfigurationAsync(array $args = [])
+ * @method \Jdcloud\Result getHistoricalReplicatTask(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getHistoricalReplicatTaskAsync(array $args = [])
+ * @method \Jdcloud\Result abortHistoricalReplicatTask(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise abortHistoricalReplicatTaskAsync(array $args = [])
+ * @method \Jdcloud\Result listHistoricalReplicatTasks(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise listHistoricalReplicatTasksAsync(array $args = [])
+ * @method \Jdcloud\Result createHistoricalReplicatTask(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createHistoricalReplicatTaskAsync(array $args = [])
  */
 class OssopenapiClient extends JdCloudClient
 {

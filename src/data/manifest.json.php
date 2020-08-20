@@ -245,6 +245,10 @@ return [
         'namespace' => 'Mongodb',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'waf' => [
+        'namespace' => 'Waf',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'live' => [
         'namespace' => 'Live',
         'versions' => [ 'latest' => 'v1', ],

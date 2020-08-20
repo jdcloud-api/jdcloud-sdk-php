@@ -22,10 +22,16 @@ use Jdcloud\PresignUrlMiddleware;
  *
  * @method \Jdcloud\Result describeAlarms(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeAlarmsAsync(array $args = [])
+ * @method \Jdcloud\Result createAlarm(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createAlarmAsync(array $args = [])
  * @method \Jdcloud\Result describeAlarm(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeAlarmAsync(array $args = [])
+ * @method \Jdcloud\Result deleteAlarm(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteAlarmAsync(array $args = [])
  * @method \Jdcloud\Result describeAlarmHistory(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeAlarmHistoryAsync(array $args = [])
+ * @method \Jdcloud\Result switchAlarm(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise switchAlarmAsync(array $args = [])
  * @method \Jdcloud\Result describeMetrics(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeMetricsAsync(array $args = [])
  * @method \Jdcloud\Result describeMetricData(array $args = [])
@@ -56,10 +62,14 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeBandwidthsAsync(array $args = [])
  * @method \Jdcloud\Result describeBandwidth(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeBandwidthAsync(array $args = [])
+ * @method \Jdcloud\Result describeIdcOverview(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeIdcOverviewAsync(array $args = [])
  * @method \Jdcloud\Result describeTickets(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeTicketsAsync(array $args = [])
  * @method \Jdcloud\Result describeTicket(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeTicketAsync(array $args = [])
+ * @method \Jdcloud\Result createGeneralServicesTicket(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createGeneralServicesTicketAsync(array $args = [])
  */
 class JdccsClient extends JdCloudClient
 {

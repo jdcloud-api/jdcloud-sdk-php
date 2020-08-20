@@ -110,6 +110,33 @@ return [
             'input' => [ 'shape' => 'DeleteListenerRequestShape', ],
             'output' => [ 'shape' => 'DeleteListenerResponseShape', ],
         ],
+        'AddListenerCertificates' => [
+            'name' => 'AddListenerCertificates',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/listeners/{listenerId}:addListenerCertificates',
+            ],
+            'input' => [ 'shape' => 'AddListenerCertificatesRequestShape', ],
+            'output' => [ 'shape' => 'AddListenerCertificatesResponseShape', ],
+        ],
+        'UpdateListenerCertificates' => [
+            'name' => 'UpdateListenerCertificates',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/listeners/{listenerId}:updateListenerCertificates',
+            ],
+            'input' => [ 'shape' => 'UpdateListenerCertificatesRequestShape', ],
+            'output' => [ 'shape' => 'UpdateListenerCertificatesResponseShape', ],
+        ],
+        'DeleteListenerCertificates' => [
+            'name' => 'DeleteListenerCertificates',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/listeners/{listenerId}:deleteListenerCertificates',
+            ],
+            'input' => [ 'shape' => 'DeleteListenerCertificatesRequestShape', ],
+            'output' => [ 'shape' => 'DeleteListenerCertificatesResponseShape', ],
+        ],
         'DescribeLoadBalancers' => [
             'name' => 'DescribeLoadBalancers',
             'http' => [
@@ -346,6 +373,19 @@ return [
         ],
     ],
     'shapes' => [
+        'ExtCertificateSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'certificateId' => [ 'type' => 'string', 'locationName' => 'certificateId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'AddListenerCertificatesSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'certificates' => [ 'type' => 'list', 'member' => [ 'shape' => 'ExtCertificateSpec', ], ],
+            ],
+        ],
         'RuleSpec' => [
             'type' => 'structure',
             'members' => [
@@ -353,6 +393,18 @@ return [
                 'path' => [ 'type' => 'string', 'locationName' => 'path', ],
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
+                'redirectActionSpec' =>  [ 'shape' => 'RedirectActionSpec', ],
+            ],
+        ],
+        'RedirectActionSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'query' => [ 'type' => 'string', 'locationName' => 'query', ],
+                'statusCode' => [ 'type' => 'string', 'locationName' => 'statusCode', ],
             ],
         ],
         'AddRulesSpec' => [
@@ -404,6 +456,14 @@ return [
             'members' => [
                 'certificateId' => [ 'type' => 'string', 'locationName' => 'certificateId', ],
                 'isDefault' => [ 'type' => 'boolean', 'locationName' => 'isDefault', ],
+            ],
+        ],
+        'ChargeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
+                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
             ],
         ],
         'HealthCheckSpec' => [
@@ -458,14 +518,11 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
         ],
-        'ChargeSpec' => [
+        'Tag' => [
             'type' => 'structure',
             'members' => [
-                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
-                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
-                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
-                'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
-                'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'ElasticIpSpec' => [
@@ -488,6 +545,7 @@ return [
                 'securityGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'deleteProtection' => [ 'type' => 'boolean', 'locationName' => 'deleteProtection', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
         ],
         'CreateTargetGroupSpec' => [
@@ -496,6 +554,7 @@ return [
                 'targetGroupName' => [ 'type' => 'string', 'locationName' => 'targetGroupName', ],
                 'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
             ],
         ],
         'CreateUrlMapSpec' => [
@@ -506,10 +565,24 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
         ],
+        'DeleteListenerCertificatesSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'certificateBindIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'DeleteRulesSpec' => [
             'type' => 'structure',
             'members' => [
                 'ruleIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ExtensionCertificateSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'certificateId' => [ 'type' => 'string', 'locationName' => 'certificateId', ],
+                'certificateBindId' => [ 'type' => 'string', 'locationName' => 'certificateBindId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
         'HealthCheck' => [
@@ -543,6 +616,7 @@ return [
                 'certificateSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'CertificateSpec', ], ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'extensionCertificateSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'ExtensionCertificateSpec', ], ],
             ],
         ],
         'LoadBalancerState' => [
@@ -573,6 +647,7 @@ return [
                 'securityGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'privateIp' =>  [ 'shape' => 'PrivateIpAddress', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'deleteProtection' => [ 'type' => 'boolean', 'locationName' => 'deleteProtection', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
@@ -606,14 +681,26 @@ return [
                 'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
             ],
         ],
+        'RedirectAction' => [
+            'type' => 'structure',
+            'members' => [
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'query' => [ 'type' => 'string', 'locationName' => 'query', ],
+                'statusCode' => [ 'type' => 'string', 'locationName' => 'statusCode', ],
+            ],
+        ],
         'Rule' => [
             'type' => 'structure',
             'members' => [
                 'ruleId' => [ 'type' => 'string', 'locationName' => 'ruleId', ],
-                'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
                 'host' => [ 'type' => 'string', 'locationName' => 'host', ],
                 'path' => [ 'type' => 'string', 'locationName' => 'path', ],
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
+                'redirectAction' =>  [ 'shape' => 'RedirectAction', ],
             ],
         ],
         'RuleUpdateSpec' => [
@@ -624,6 +711,14 @@ return [
                 'path' => [ 'type' => 'string', 'locationName' => 'path', ],
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
+                'redirectActionSpec' =>  [ 'shape' => 'RedirectActionSpec', ],
+            ],
+        ],
+        'TagFilter' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'Target' => [
@@ -636,6 +731,7 @@ return [
                 'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
                 'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
                 'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
+                'ipAddress' => [ 'type' => 'string', 'locationName' => 'ipAddress', ],
             ],
         ],
         'TargetGroup' => [
@@ -649,6 +745,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'targets' => [ 'type' => 'list', 'member' => [ 'shape' => 'Target', ], ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
             ],
         ],
         'TargetHealth' => [
@@ -661,6 +758,7 @@ return [
                 'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
                 'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'ipAddress' => [ 'type' => 'string', 'locationName' => 'ipAddress', ],
             ],
         ],
         'TargetSpec' => [
@@ -670,6 +768,7 @@ return [
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
                 'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
+                'ipAddress' => [ 'type' => 'string', 'locationName' => 'ipAddress', ],
             ],
         ],
         'TargetUpdateSpec' => [
@@ -699,6 +798,20 @@ return [
                 'httpForwardedHost' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedHost', ],
                 'httpForwardedVip' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedVip', ],
                 'closeHealthCheck' => [ 'type' => 'boolean', 'locationName' => 'closeHealthCheck', ],
+            ],
+        ],
+        'ExtCertificateUpdateSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'certificateBindId' => [ 'type' => 'string', 'locationName' => 'certificateBindId', ],
+                'certificateId' => [ 'type' => 'string', 'locationName' => 'certificateId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'UpdateListenerCertificatesSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'certificates' => [ 'type' => 'list', 'member' => [ 'shape' => 'ExtCertificateUpdateSpec', ], ],
             ],
         ],
         'UpdateListenerSpec' => [
@@ -924,6 +1037,71 @@ return [
             'members' => [
             ],
         ],
+        'AddListenerCertificatesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeListenersRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeListenerResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'listener' =>  [ 'shape' => 'Listener', ],
+            ],
+        ],
+        'DeleteListenerCertificatesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeListenerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeListenerResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteListenerCertificatesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateListenerCertificatesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddListenerCertificatesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certificates' => [ 'type' => 'list', 'member' => [ 'shape' => 'ExtCertificateSpec', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'listenerId' => [ 'type' => 'string', 'locationName' => 'listenerId', ],
+            ],
+        ],
+        'DescribeListenerRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'listenerId' => [ 'type' => 'string', 'locationName' => 'listenerId', ],
+            ],
+        ],
+        'DeleteListenerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CreateListenerResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -960,13 +1138,17 @@ return [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
-        'DescribeListenersRequestShape' => [
+        'UpdateListenerCertificatesResultShape' => [
             'type' => 'structure',
             'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'UpdateListenerCertificatesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certificates' => [ 'type' => 'list', 'member' => [ 'shape' => 'ExtCertificateUpdateSpec', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'listenerId' => [ 'type' => 'string', 'locationName' => 'listenerId', ],
             ],
         ],
         'UpdateListenerResponseShape' => [
@@ -982,16 +1164,9 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeListenerResultShape' => [
+        'AddListenerCertificatesResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'listener' =>  [ 'shape' => 'Listener', ],
-            ],
-        ],
-        'DescribeListenerResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeListenerResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -1016,17 +1191,12 @@ return [
                 'listenerId' => [ 'type' => 'string', 'locationName' => 'listenerId', ],
             ],
         ],
-        'DescribeListenerRequestShape' => [
+        'DeleteListenerCertificatesRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'certificateBindIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'listenerId' => [ 'type' => 'string', 'locationName' => 'listenerId', ],
-            ],
-        ],
-        'DeleteListenerResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeLoadBalancersResultShape' => [
@@ -1048,6 +1218,7 @@ return [
                 'securityGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'deleteProtection' => [ 'type' => 'boolean', 'locationName' => 'deleteProtection', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1127,6 +1298,7 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1343,6 +1515,7 @@ return [
                 'targetGroupName' => [ 'type' => 'string', 'locationName' => 'targetGroupName', ],
                 'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
