@@ -101,6 +101,10 @@ return [
         'namespace' => 'Cps',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'dbaudit' => [
+        'namespace' => 'Dbaudit',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'cdn' => [
         'namespace' => 'Cdn',
         'versions' => [ 'latest' => 'v1', ],
@@ -139,6 +143,10 @@ return [
     ],
     'nc' => [
         'namespace' => 'Nc',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'ydsms' => [
+        'namespace' => 'Ydsms',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'vm' => [

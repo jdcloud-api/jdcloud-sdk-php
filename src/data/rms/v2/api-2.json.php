@@ -11,6 +11,42 @@ return [
 //        'serviceId' => 'rms',
     ],
     'operations' => [
+        'AddCredit' => [
+            'name' => 'AddCredit',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/addCredit',
+            ],
+            'input' => [ 'shape' => 'AddCreditRequestShape', ],
+            'output' => [ 'shape' => 'AddCreditResponseShape', ],
+        ],
+        'EditCredit' => [
+            'name' => 'EditCredit',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/editCredit',
+            ],
+            'input' => [ 'shape' => 'EditCreditRequestShape', ],
+            'output' => [ 'shape' => 'EditCreditResponseShape', ],
+        ],
+        'DeleteCredit' => [
+            'name' => 'DeleteCredit',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/deleteCredit',
+            ],
+            'input' => [ 'shape' => 'DeleteCreditRequestShape', ],
+            'output' => [ 'shape' => 'DeleteCreditResponseShape', ],
+        ],
+        'QueryCreditList' => [
+            'name' => 'QueryCreditList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/queryCreditList',
+            ],
+            'input' => [ 'shape' => 'QueryCreditListRequestShape', ],
+            'output' => [ 'shape' => 'QueryCreditListResponseShape', ],
+        ],
         'QueryPackageRemainder' => [
             'name' => 'QueryPackageRemainder',
             'http' => [
@@ -47,6 +83,24 @@ return [
             'input' => [ 'shape' => 'AddTemplateRequestShape', ],
             'output' => [ 'shape' => 'AddTemplateResponseShape', ],
         ],
+        'EditTemplate' => [
+            'name' => 'EditTemplate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/editTemplate',
+            ],
+            'input' => [ 'shape' => 'EditTemplateRequestShape', ],
+            'output' => [ 'shape' => 'EditTemplateResponseShape', ],
+        ],
+        'DeleteTemplate' => [
+            'name' => 'DeleteTemplate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/deleteTemplate',
+            ],
+            'input' => [ 'shape' => 'DeleteTemplateRequestShape', ],
+            'output' => [ 'shape' => 'DeleteTemplateResponseShape', ],
+        ],
         'QueryTemplateById' => [
             'name' => 'QueryTemplateById',
             'http' => [
@@ -67,6 +121,20 @@ return [
         ],
     ],
     'shapes' => [
+        'RespCreditData' => [
+            'type' => 'structure',
+            'members' => [
+                'creditId' => [ 'type' => 'string', 'locationName' => 'creditId', ],
+            ],
+        ],
+        'RespQueryCreditListData' => [
+            'type' => 'structure',
+            'members' => [
+                'creditId' => [ 'type' => 'string', 'locationName' => 'creditId', ],
+                'creditName' => [ 'type' => 'string', 'locationName' => 'creditName', ],
+                'creditDesc' => [ 'type' => 'string', 'locationName' => 'creditDesc', ],
+            ],
+        ],
         'RespQueryTemplateListData' => [
             'type' => 'structure',
             'members' => [
@@ -116,6 +184,136 @@ return [
             'members' => [
                 'fileType' => [ 'type' => 'string', 'locationName' => 'fileType', ],
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'QueryCreditListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'EditCreditRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'signId' => [ 'type' => 'string', 'locationName' => 'signId', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'businessLicense' => [ 'type' => 'string', 'locationName' => 'businessLicense', ],
+                'businessLicenseName' => [ 'type' => 'string', 'locationName' => 'businessLicenseName', ],
+                'signedAuthorization' => [ 'type' => 'string', 'locationName' => 'signedAuthorization', ],
+                'signedAuthorizationName' => [ 'type' => 'string', 'locationName' => 'signedAuthorizationName', ],
+                'informationSecurity' => [ 'type' => 'string', 'locationName' => 'informationSecurity', ],
+                'informationSecurityName' => [ 'type' => 'string', 'locationName' => 'informationSecurityName', ],
+                'membershipCertificate' => [ 'type' => 'string', 'locationName' => 'membershipCertificate', ],
+                'membershipCertificateName' => [ 'type' => 'string', 'locationName' => 'membershipCertificateName', ],
+                'otherCertificate' => [ 'type' => 'string', 'locationName' => 'otherCertificate', ],
+                'otherCertificateName' => [ 'type' => 'string', 'locationName' => 'otherCertificateName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteCreditResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteCreditResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryCreditListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryCreditListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddCreditResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'RespCreditData', ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'EditCreditResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EditCreditResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteCreditRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'signId' => [ 'type' => 'string', 'locationName' => 'signId', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'EditCreditResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'RespCreditData', ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'QueryCreditListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'RespCreditPageResult', ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'AddCreditResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AddCreditResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddCreditRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'businessLicense' => [ 'type' => 'string', 'locationName' => 'businessLicense', ],
+                'businessLicenseName' => [ 'type' => 'string', 'locationName' => 'businessLicenseName', ],
+                'signedAuthorization' => [ 'type' => 'string', 'locationName' => 'signedAuthorization', ],
+                'signedAuthorizationName' => [ 'type' => 'string', 'locationName' => 'signedAuthorizationName', ],
+                'informationSecurity' => [ 'type' => 'string', 'locationName' => 'informationSecurity', ],
+                'informationSecurityName' => [ 'type' => 'string', 'locationName' => 'informationSecurityName', ],
+                'membershipCertificate' => [ 'type' => 'string', 'locationName' => 'membershipCertificate', ],
+                'membershipCertificateName' => [ 'type' => 'string', 'locationName' => 'membershipCertificateName', ],
+                'otherCertificate' => [ 'type' => 'string', 'locationName' => 'otherCertificate', ],
+                'otherCertificateName' => [ 'type' => 'string', 'locationName' => 'otherCertificateName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteCreditResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'RespCreditData', ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'RespCreditPageResult' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'long', 'locationName' => 'count', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageCount' => [ 'type' => 'integer', 'locationName' => 'pageCount', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'RespQueryCreditListData', ], ],
             ],
         ],
         'QueryPackageRemainderRequestShape' => [
@@ -197,7 +395,24 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
+        'DeleteTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'AddTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'RespTemplateData', ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DeleteTemplateResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'RespTemplateData', ],
@@ -226,6 +441,13 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'EditTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EditTemplateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'RespTemplatePageResult' => [
             'type' => 'structure',
             'members' => [
@@ -236,10 +458,26 @@ return [
                 'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'RespQueryTemplateListData', ], ],
             ],
         ],
+        'DeleteTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteTemplateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'QueryTemplateByIdResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'RespQueryTemplateListData', ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'EditTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'RespTemplateData', ],
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
                 'code' => [ 'type' => 'string', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
@@ -256,13 +494,10 @@ return [
             'type' => 'structure',
             'members' => [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-                'signType' => [ 'type' => 'string', 'locationName' => 'signType', ],
-                'purpose' => [ 'type' => 'string', 'locationName' => 'purpose', ],
-                'signCardType' => [ 'type' => 'string', 'locationName' => 'signCardType', ],
-                'aptitudes' => [ 'type' => 'string', 'locationName' => 'aptitudes', ],
+                'aptitudesId' => [ 'type' => 'string', 'locationName' => 'aptitudesId', ],
                 'title' => [ 'type' => 'string', 'locationName' => 'title', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'unsubscribe' => [ 'type' => 'string', 'locationName' => 'unsubscribe', ],
+                'signContent' => [ 'type' => 'string', 'locationName' => 'signContent', ],
                 'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TemplateContent', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
@@ -279,6 +514,19 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'QueryTemplateListResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EditTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'aptitudesId' => [ 'type' => 'string', 'locationName' => 'aptitudesId', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'signContent' => [ 'type' => 'string', 'locationName' => 'signContent', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TemplateContent', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'QueryTemplateListResultShape' => [
