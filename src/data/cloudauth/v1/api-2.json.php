@@ -128,14 +128,13 @@ return [
                 'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
                 'code' => [ 'type' => 'string', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'detail' =>  [ 'shape' => 'AuthDetail', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
         'AccountInfo' => [
             'type' => 'structure',
             'members' => [
                 'orgName' => [ 'type' => 'string', 'locationName' => 'orgName', ],
-                'idCard' => [ 'type' => 'string', 'locationName' => 'idCard', ],
                 'bankCardNum' => [ 'type' => 'string', 'locationName' => 'bankCardNum', ],
                 'bankName' => [ 'type' => 'string', 'locationName' => 'bankName', ],
                 'branchBankName' => [ 'type' => 'string', 'locationName' => 'branchBankName', ],
@@ -186,7 +185,7 @@ return [
         'CheckInfo' => [
             'type' => 'structure',
             'members' => [
-                'paymentAmount' => [ 'type' => 'float', 'locationName' => 'paymentAmount', ],
+                'paymentAmount' => [ 'type' => 'string', 'locationName' => 'paymentAmount', ],
                 'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
             ],
         ],
@@ -245,7 +244,11 @@ return [
         'PersonalAuthResultShape' => [
             'type' => 'structure',
             'members' => [
-                'authInfo' =>  [ 'shape' => 'AuthInfo', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
         'CheckCompanyInfoRequestShape' => [
@@ -257,7 +260,11 @@ return [
         'CheckCompanyInfoResultShape' => [
             'type' => 'structure',
             'members' => [
-                'authInfo' =>  [ 'shape' => 'AuthInfo', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
         'CheckAgentRequestShape' => [
@@ -276,7 +283,11 @@ return [
         'CompanyTransferResultShape' => [
             'type' => 'structure',
             'members' => [
-                'authInfo' =>  [ 'shape' => 'AuthInfo', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
         'CheckLegalPersonAndAgentRequestShape' => [
@@ -367,7 +378,11 @@ return [
         'CheckLegalPersonResultShape' => [
             'type' => 'structure',
             'members' => [
-                'authInfo' =>  [ 'shape' => 'AuthInfo', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
         'QueryCityListResultShape' => [
@@ -393,7 +408,11 @@ return [
         'CheckCompanyTransferResultShape' => [
             'type' => 'structure',
             'members' => [
-                'authInfo' =>  [ 'shape' => 'AuthInfo', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
         'QueryProvinceListResponseShape' => [
@@ -419,7 +438,11 @@ return [
         'CheckLegalPersonAndAgentResultShape' => [
             'type' => 'structure',
             'members' => [
-                'authInfo' =>  [ 'shape' => 'AuthInfo', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
         'CheckLegalPersonRequestShape' => [
@@ -431,7 +454,11 @@ return [
         'CheckAgentResultShape' => [
             'type' => 'structure',
             'members' => [
-                'authInfo' =>  [ 'shape' => 'AuthInfo', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
         'QueryBankListResponseShape' => [
