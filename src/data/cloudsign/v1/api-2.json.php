@@ -155,6 +155,15 @@ return [
             'input' => [ 'shape' => 'DownloadTemplatesRequestShape', ],
             'output' => [ 'shape' => 'DownloadTemplatesResponseShape', ],
         ],
+        'PaddingTemplate' => [
+            'name' => 'PaddingTemplate',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/template/{templateId}',
+            ],
+            'input' => [ 'shape' => 'PaddingTemplateRequestShape', ],
+            'output' => [ 'shape' => 'PaddingTemplateResponseShape', ],
+        ],
         'DeleteTemplate' => [
             'name' => 'DeleteTemplate',
             'http' => [
@@ -293,6 +302,14 @@ return [
                 'signStatistic' => [ 'type' => 'list', 'member' => [ 'shape' => 'SignItem', ], ],
             ],
         ],
+        'PaddingInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+                'page' => [ 'type' => 'integer', 'locationName' => 'page', ],
+            ],
+        ],
         'TemplateInfo' => [
             'type' => 'structure',
             'members' => [
@@ -302,7 +319,15 @@ return [
                 'templateFileName' => [ 'type' => 'string', 'locationName' => 'templateFileName', ],
                 'templateContent' => [ 'type' => 'string', 'locationName' => 'templateContent', ],
                 'templateDigest' => [ 'type' => 'string', 'locationName' => 'templateDigest', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
+                'paddingInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'PaddingInfo', ], ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'PaddingSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'paddingInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'PaddingInfo', ], ],
             ],
         ],
         'TemplateSpec' => [
@@ -311,6 +336,8 @@ return [
                 'templateContent' => [ 'type' => 'string', 'locationName' => 'templateContent', ],
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
                 'templateTitle' => [ 'type' => 'string', 'locationName' => 'templateTitle', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
+                'holdingKeys' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DeleteContractResponseShape' => [
@@ -575,6 +602,13 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'templateNameOrTitle' => [ 'type' => 'string', 'locationName' => 'templateNameOrTitle', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
+            ],
+        ],
+        'PaddingTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
             ],
         ],
         'UploadTemplateResultShape' => [
@@ -588,6 +622,13 @@ return [
             'members' => [
             ],
         ],
+        'PaddingTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'paddingSpec' =>  [ 'shape' => 'PaddingSpec', ],
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+            ],
+        ],
         'DownloadTemplatesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -599,6 +640,13 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DownloadTemplatesResultShape', ], ],
+            ],
+        ],
+        'PaddingTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'PaddingTemplateResultShape', ],
             ],
         ],
         'UploadTemplateRequestShape' => [

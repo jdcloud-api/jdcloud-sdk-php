@@ -997,7 +997,11 @@ return [
         'DescribeSecretVersionInfoResultShape' => [
             'type' => 'structure',
             'members' => [
-                'secretVersionItem' =>  [ 'shape' => 'SecretVersionItem', ],
+                'secretVersion' => [ 'type' => 'string', 'locationName' => 'secretVersion', ],
+                'secretStatus' => [ 'type' => 'integer', 'locationName' => 'secretStatus', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'expireTime' => [ 'type' => 'string', 'locationName' => 'expireTime', ],
+                'secretData' => [ 'type' => 'string', 'locationName' => 'secretData', ],
             ],
         ],
         'DeleteSecretVersionResultShape' => [

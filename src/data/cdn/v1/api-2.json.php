@@ -47,6 +47,24 @@ return [
             'input' => [ 'shape' => 'SetOnlineBillingTypeRequestShape', ],
             'output' => [ 'shape' => 'SetOnlineBillingTypeResponseShape', ],
         ],
+        'SetAuthConfig' => [
+            'name' => 'SetAuthConfig',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/domain/{domain}/setAuthConfig',
+            ],
+            'input' => [ 'shape' => 'SetAuthConfigRequestShape', ],
+            'output' => [ 'shape' => 'SetAuthConfigResponseShape', ],
+        ],
+        'SetSourceAuthConfig' => [
+            'name' => 'SetSourceAuthConfig',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/domain/{domain}/setSourceAuthConfig',
+            ],
+            'input' => [ 'shape' => 'SetSourceAuthConfigRequestShape', ],
+            'output' => [ 'shape' => 'SetSourceAuthConfigResponseShape', ],
+        ],
         'QueryBand' => [
             'name' => 'QueryBand',
             'http' => [
@@ -766,15 +784,6 @@ return [
             ],
             'input' => [ 'shape' => 'CheckWhetherIpBelongToJCloudRequestShape', ],
             'output' => [ 'shape' => 'CheckWhetherIpBelongToJCloudResponseShape', ],
-        ],
-        'CheckWhetherIpBelongToJCloudV2' => [
-            'name' => 'CheckWhetherIpBelongToJCloudV2',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/ip:whetherBelongToJCloudV2',
-            ],
-            'input' => [ 'shape' => 'CheckWhetherIpBelongToJCloudV2RequestShape', ],
-            'output' => [ 'shape' => 'CheckWhetherIpBelongToJCloudV2ResponseShape', ],
         ],
         'QueryServiceIp' => [
             'name' => 'QueryServiceIp',
@@ -2399,6 +2408,18 @@ return [
                 'ipList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'WhetherBelongToJCloudV2Item' => [
+            'type' => 'structure',
+            'members' => [
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'belongToJCloud' => [ 'type' => 'boolean', 'locationName' => 'belongToJCloud', ],
+                'country' => [ 'type' => 'string', 'locationName' => 'country', ],
+                'province' => [ 'type' => 'string', 'locationName' => 'province', ],
+                'city' => [ 'type' => 'string', 'locationName' => 'city', ],
+                'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
+                'from' => [ 'type' => 'string', 'locationName' => 'from', ],
+            ],
+        ],
         'QueryLivePrefetchItem' => [
             'type' => 'structure',
             'members' => [
@@ -2480,6 +2501,32 @@ return [
             'members' => [
                 'attackCount' => [ 'type' => 'long', 'locationName' => 'attackCount', ],
                 'attackType' => [ 'type' => 'string', 'locationName' => 'attackType', ],
+            ],
+        ],
+        'HdrCtrl' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'OSSAuthInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'objectName' => [ 'type' => 'string', 'locationName' => 'objectName', ],
+            ],
+        ],
+        'TOSAuthInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
+                'authVersion' => [ 'type' => 'string', 'locationName' => 'authVersion', ],
+                'authHeaders' => [ 'type' => 'list', 'member' => [ 'shape' => 'HdrCtrl', ], ],
+                'expireTime' => [ 'type' => 'string', 'locationName' => 'expireTime', ],
             ],
         ],
         'SslCertModel' => [
@@ -2704,12 +2751,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'typeList' => [ 'type' => 'integer', 'locationName' => 'typeList', ],
+                'typeList' => [ 'type' => 'string', 'locationName' => 'typeList', ],
                 'typeDescList' => [ 'type' => 'string', 'locationName' => 'typeDescList', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'statusDesc' => [ 'type' => 'string', 'locationName' => 'statusDesc', ],
                 'settlementMethod' => [ 'type' => 'integer', 'locationName' => 'settlementMethod', ],
                 'settlementMethodDesc' => [ 'type' => 'string', 'locationName' => 'settlementMethodDesc', ],
+                'billSourceid' => [ 'type' => 'string', 'locationName' => 'billSourceid', ],
             ],
         ],
         'WafBlackRuleModel' => [
@@ -2874,6 +2922,56 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'SetOnlineBillingTypeResultShape', ],
+            ],
+        ],
+        'SetAuthConfigResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'SetAuthConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SetAuthConfigResultShape', ],
+            ],
+        ],
+        'SetSourceAuthConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'enable' => [ 'type' => 'string', 'locationName' => 'enable', ],
+                'originRole' => [ 'type' => 'string', 'locationName' => 'originRole', ],
+                'authType' => [ 'type' => 'string', 'locationName' => 'authType', ],
+                'tosAuthInfo' =>  [ 'shape' => 'TOSAuthInfo', ],
+                'ossAuthInfo' =>  [ 'shape' => 'OSSAuthInfo', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'SetAuthConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'enableUrlAuth' => [ 'type' => 'string', 'locationName' => 'enableUrlAuth', ],
+                'authKey' => [ 'type' => 'string', 'locationName' => 'authKey', ],
+                'age' => [ 'type' => 'integer', 'locationName' => 'age', ],
+                'encAlgorithm' => [ 'type' => 'string', 'locationName' => 'encAlgorithm', ],
+                'timeFormat' => [ 'type' => 'string', 'locationName' => 'timeFormat', ],
+                'uriType' => [ 'type' => 'string', 'locationName' => 'uriType', ],
+                'rule' => [ 'type' => 'string', 'locationName' => 'rule', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'SetSourceAuthConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SetSourceAuthConfigResultShape', ],
+            ],
+        ],
+        'SetSourceAuthConfigResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
             ],
         ],
         'QueryBandWithAreaResponseShape' => [
@@ -4270,6 +4368,7 @@ return [
                 'domainSource' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainSourceInfo', ], ],
                 'ossSource' => [ 'type' => 'string', 'locationName' => 'ossSource', ],
                 'accelerateRegion' => [ 'type' => 'string', 'locationName' => 'accelerateRegion', ],
+                'tempInstId' => [ 'type' => 'long', 'locationName' => 'tempInstId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
@@ -4317,6 +4416,7 @@ return [
                 'domainSource' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainSourceInfo', ], ],
                 'ossSource' => [ 'type' => 'string', 'locationName' => 'ossSource', ],
                 'accelerateRegion' => [ 'type' => 'string', 'locationName' => 'accelerateRegion', ],
+                'tempInstId' => [ 'type' => 'long', 'locationName' => 'tempInstId', ],
             ],
         ],
         'CreateDomainResultShape' => [
@@ -4602,35 +4702,16 @@ return [
                 'instProInfoMap' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
             ],
         ],
-        'CheckWhetherIpBelongToJCloudV2ResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'CheckWhetherIpBelongToJCloudV2ResultShape', ],
-            ],
-        ],
         'CheckWhetherIpBelongToJCloudResultShape' => [
             'type' => 'structure',
             'members' => [
                 'ipList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CheckWhetherIpBelongToJCloudItem', ], ],
             ],
         ],
-        'CheckWhetherIpBelongToJCloudV2RequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ips' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
         'CheckWhetherIpBelongToJCloudRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'ips' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'CheckWhetherIpBelongToJCloudV2ResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ipList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CheckWhetherIpBelongToJCloudItem', ], ],
             ],
         ],
         'QueryServiceIpResponseShape' => [
@@ -6039,15 +6120,15 @@ return [
         'QueryJDBoxStatisticsDataRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'startTime' => [ 'type' => 'long', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'long', 'locationName' => 'endTime', ],
                 'fields' => [ 'type' => 'string', 'locationName' => 'fields', ],
                 'area' => [ 'type' => 'string', 'locationName' => 'area', ],
                 'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
                 'period' => [ 'type' => 'string', 'locationName' => 'period', ],
-                'groupBy' => [ 'type' => 'string', 'locationName' => 'groupBy', ],
                 'category' => [ 'type' => 'string', 'locationName' => 'category', ],
                 'macAddr' => [ 'type' => 'string', 'locationName' => 'macAddr', ],
+                'pluginPin' => [ 'type' => 'string', 'locationName' => 'pluginPin', ],
             ],
         ],
         'QueryAvgBandwidthForPCdnRequestShape' => [

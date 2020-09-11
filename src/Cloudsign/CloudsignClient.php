@@ -52,6 +52,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise uploadTemplateAsync(array $args = [])
  * @method \Jdcloud\Result downloadTemplates(array $args = [])
  * @method \GuzzleHttp\Promise\Promise downloadTemplatesAsync(array $args = [])
+ * @method \Jdcloud\Result paddingTemplate(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise paddingTemplateAsync(array $args = [])
  * @method \Jdcloud\Result deleteTemplate(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteTemplateAsync(array $args = [])
  */
