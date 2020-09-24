@@ -38,6 +38,87 @@ return [
             'input' => [ 'shape' => 'DeleteAliasIpRequestShape', ],
             'output' => [ 'shape' => 'DeleteAliasIpResponseShape', ],
         ],
+        'DescribeBandwidthPackages' => [
+            'name' => 'DescribeBandwidthPackages',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages',
+            ],
+            'input' => [ 'shape' => 'DescribeBandwidthPackagesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBandwidthPackagesResponseShape', ],
+        ],
+        'ApplyBandwidthPackages' => [
+            'name' => 'ApplyBandwidthPackages',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages',
+            ],
+            'input' => [ 'shape' => 'ApplyBandwidthPackagesRequestShape', ],
+            'output' => [ 'shape' => 'ApplyBandwidthPackagesResponseShape', ],
+        ],
+        'DescribeBandwidthPackage' => [
+            'name' => 'DescribeBandwidthPackage',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages/{bandwidthPackageId}',
+            ],
+            'input' => [ 'shape' => 'DescribeBandwidthPackageRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBandwidthPackageResponseShape', ],
+        ],
+        'ModifyBandwidthPackage' => [
+            'name' => 'ModifyBandwidthPackage',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages/{bandwidthPackageId}',
+            ],
+            'input' => [ 'shape' => 'ModifyBandwidthPackageRequestShape', ],
+            'output' => [ 'shape' => 'ModifyBandwidthPackageResponseShape', ],
+        ],
+        'DeleteBandwidthPackage' => [
+            'name' => 'DeleteBandwidthPackage',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages/{bandwidthPackageId}',
+            ],
+            'input' => [ 'shape' => 'DeleteBandwidthPackageRequestShape', ],
+            'output' => [ 'shape' => 'DeleteBandwidthPackageResponseShape', ],
+        ],
+        'ModifyBandwidthPackageBandwidth' => [
+            'name' => 'ModifyBandwidthPackageBandwidth',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages/{bandwidthPackageId}:modifyBandwidthPackageBandwidth',
+            ],
+            'input' => [ 'shape' => 'ModifyBandwidthPackageBandwidthRequestShape', ],
+            'output' => [ 'shape' => 'ModifyBandwidthPackageBandwidthResponseShape', ],
+        ],
+        'AddBandwidthPackageIp' => [
+            'name' => 'AddBandwidthPackageIp',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages/{bandwidthPackageId}:addBandwidthPackageIp',
+            ],
+            'input' => [ 'shape' => 'AddBandwidthPackageIpRequestShape', ],
+            'output' => [ 'shape' => 'AddBandwidthPackageIpResponseShape', ],
+        ],
+        'RemoveBandwidthPackageIp' => [
+            'name' => 'RemoveBandwidthPackageIp',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages/{bandwidthPackageId}:removeBandwidthPackageIp',
+            ],
+            'input' => [ 'shape' => 'RemoveBandwidthPackageIpRequestShape', ],
+            'output' => [ 'shape' => 'RemoveBandwidthPackageIpResponseShape', ],
+        ],
+        'DescribeBandwidthPackageStock' => [
+            'name' => 'DescribeBandwidthPackageStock',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackageStock',
+            ],
+            'input' => [ 'shape' => 'DescribeBandwidthPackageStockRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBandwidthPackageStockResponseShape', ],
+        ],
         'DescribeElasticIps' => [
             'name' => 'DescribeElasticIps',
             'http' => [
@@ -465,13 +546,14 @@ return [
         'AliasIp' => [
             'type' => 'structure',
             'members' => [
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'secondaryCidrId' => [ 'type' => 'string', 'locationName' => 'secondaryCidrId', ],
                 'aliasIpId' => [ 'type' => 'string', 'locationName' => 'aliasIpId', ],
                 'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
+                'isBondEip' => [ 'type' => 'boolean', 'locationName' => 'isBondEip', ],
             ],
         ],
         'AliasIpErrorInfo' => [
@@ -500,6 +582,50 @@ return [
             'members' => [
                 'aliasIpId' => [ 'type' => 'string', 'locationName' => 'aliasIpId', ],
                 'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
+            ],
+        ],
+        'Charge' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeStatus' => [ 'type' => 'string', 'locationName' => 'chargeStatus', ],
+                'chargeStartTime' => [ 'type' => 'string', 'locationName' => 'chargeStartTime', ],
+                'chargeExpiredTime' => [ 'type' => 'string', 'locationName' => 'chargeExpiredTime', ],
+                'chargeRetireTime' => [ 'type' => 'string', 'locationName' => 'chargeRetireTime', ],
+            ],
+        ],
+        'BandwidthPackage' => [
+            'type' => 'structure',
+            'members' => [
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+                'bandwidth' => [ 'type' => 'integer', 'locationName' => 'bandwidth', ],
+                'extraUplinkBandwidth' => [ 'type' => 'integer', 'locationName' => 'extraUplinkBandwidth', ],
+                'lineType' => [ 'type' => 'string', 'locationName' => 'lineType', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'charge' =>  [ 'shape' => 'Charge', ],
+            ],
+        ],
+        'BandwidthPackageSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'bandwidth' => [ 'type' => 'integer', 'locationName' => 'bandwidth', ],
+                'extraUplinkBandwidth' => [ 'type' => 'integer', 'locationName' => 'extraUplinkBandwidth', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'charge' =>  [ 'shape' => 'ChargeSpec', ],
+            ],
+        ],
+        'ChargeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
+                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
+                'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
+                'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
             ],
         ],
         'DeviceType' => [
@@ -539,29 +665,9 @@ return [
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'aliasIpId' => [ 'type' => 'string', 'locationName' => 'aliasIpId', ],
-                'aliasIp' => [ 'type' => 'string', 'locationName' => 'aliasIp', ],
+                'targetIp' => [ 'type' => 'string', 'locationName' => 'targetIp', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
-            ],
-        ],
-        'Charge' => [
-            'type' => 'structure',
-            'members' => [
-                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
-                'chargeStatus' => [ 'type' => 'string', 'locationName' => 'chargeStatus', ],
-                'chargeStartTime' => [ 'type' => 'string', 'locationName' => 'chargeStartTime', ],
-                'chargeExpiredTime' => [ 'type' => 'string', 'locationName' => 'chargeExpiredTime', ],
-                'chargeRetireTime' => [ 'type' => 'string', 'locationName' => 'chargeRetireTime', ],
-            ],
-        ],
-        'ChargeSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
-                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
-                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
-                'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
-                'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
             ],
         ],
         'ElasticIpSpec' => [
@@ -569,6 +675,7 @@ return [
             'members' => [
                 'bandwidth' => [ 'type' => 'integer', 'locationName' => 'bandwidth', ],
                 'extraUplinkBandwidth' => [ 'type' => 'integer', 'locationName' => 'extraUplinkBandwidth', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
                 'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
             ],
@@ -607,7 +714,20 @@ return [
                 'publicIp' => [ 'type' => 'string', 'locationName' => 'publicIp', ],
                 'publicIpv6' => [ 'type' => 'string', 'locationName' => 'publicIpv6', ],
                 'keypairId' => [ 'type' => 'string', 'locationName' => 'keypairId', ],
+                'interfaceMode' => [ 'type' => 'string', 'locationName' => 'interfaceMode', ],
+                'extensionVpcId' => [ 'type' => 'string', 'locationName' => 'extensionVpcId', ],
+                'extensionVpcName' => [ 'type' => 'string', 'locationName' => 'extensionVpcName', ],
+                'extensionSubnetId' => [ 'type' => 'string', 'locationName' => 'extensionSubnetId', ],
+                'extensionSubnetName' => [ 'type' => 'string', 'locationName' => 'extensionSubnetName', ],
+                'extensionPrivateIp' => [ 'type' => 'string', 'locationName' => 'extensionPrivateIp', ],
+                'extensionEnableInternet' => [ 'type' => 'string', 'locationName' => 'extensionEnableInternet', ],
+                'extensionElasticIpId' => [ 'type' => 'string', 'locationName' => 'extensionElasticIpId', ],
+                'extensionPublicIp' => [ 'type' => 'string', 'locationName' => 'extensionPublicIp', ],
+                'extensionBandwidth' => [ 'type' => 'integer', 'locationName' => 'extensionBandwidth', ],
+                'extensionExtraUplinkBandwidth' => [ 'type' => 'integer', 'locationName' => 'extensionExtraUplinkBandwidth', ],
                 'agentStatus' => [ 'type' => 'string', 'locationName' => 'agentStatus', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
             ],
         ],
@@ -623,9 +743,12 @@ return [
                 'dataRaidTypeId' => [ 'type' => 'string', 'locationName' => 'dataRaidTypeId', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'enableInternet' => [ 'type' => 'string', 'locationName' => 'enableInternet', ],
+                'internetChargeMode' => [ 'type' => 'string', 'locationName' => 'internetChargeMode', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
                 'networkType' => [ 'type' => 'string', 'locationName' => 'networkType', ],
                 'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
                 'privateIp' => [ 'type' => 'string', 'locationName' => 'privateIp', ],
+                'aliasIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'AliasIpInfo', ], ],
                 'lineType' => [ 'type' => 'string', 'locationName' => 'lineType', ],
                 'bandwidth' => [ 'type' => 'integer', 'locationName' => 'bandwidth', ],
                 'extraUplinkBandwidth' => [ 'type' => 'integer', 'locationName' => 'extraUplinkBandwidth', ],
@@ -636,7 +759,24 @@ return [
                 'userData' => [ 'type' => 'string', 'locationName' => 'userData', ],
                 'keypairId' => [ 'type' => 'string', 'locationName' => 'keypairId', ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
-                'aliasIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'AliasIpInfo', ], ],
+                'interfaceMode' => [ 'type' => 'string', 'locationName' => 'interfaceMode', ],
+                'extensionSubnetId' => [ 'type' => 'string', 'locationName' => 'extensionSubnetId', ],
+                'extensionPrivateIp' => [ 'type' => 'string', 'locationName' => 'extensionPrivateIp', ],
+                'extensionAliasIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'AliasIpInfo', ], ],
+                'extensionEnableInternet' => [ 'type' => 'string', 'locationName' => 'extensionEnableInternet', ],
+                'extensionLineType' => [ 'type' => 'string', 'locationName' => 'extensionLineType', ],
+                'extensionBandwidth' => [ 'type' => 'integer', 'locationName' => 'extensionBandwidth', ],
+                'extensionExtraUplinkBandwidth' => [ 'type' => 'integer', 'locationName' => 'extensionExtraUplinkBandwidth', ],
+                'extensionInternetChargeMode' => [ 'type' => 'string', 'locationName' => 'extensionInternetChargeMode', ],
+                'extensionBandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'extensionBandwidthPackageId', ],
+                'resourceTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+            ],
+        ],
+        'Tag' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'Keypair' => [
@@ -869,12 +1009,214 @@ return [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
+        'AddBandwidthPackageIpRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'elasticIpIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+            ],
+        ],
+        'DescribeBandwidthPackagesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackages' => [ 'type' => 'list', 'member' => [ 'shape' => 'BandwidthPackage', ], ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'AddBandwidthPackageIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'ModifyBandwidthPackageBandwidthResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyBandwidthPackageBandwidthResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddBandwidthPackageIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AddBandwidthPackageIpResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyBandwidthPackageBandwidthResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'DescribeBandwidthPackageStockResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBandwidthPackageStockResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyBandwidthPackageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+            ],
+        ],
+        'RemoveBandwidthPackageIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'RemoveBandwidthPackageIpRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+            ],
+        ],
+        'ApplyBandwidthPackagesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ApplyBandwidthPackagesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeBandwidthPackageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+            ],
+        ],
+        'ModifyBandwidthPackageBandwidthRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'bandwidth' => [ 'type' => 'integer', 'locationName' => 'bandwidth', ],
+                'extraUplinkBandwidth' => [ 'type' => 'integer', 'locationName' => 'extraUplinkBandwidth', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+            ],
+        ],
+        'DescribeBandwidthPackageStockResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'availableBandwidth' => [ 'type' => 'integer', 'locationName' => 'availableBandwidth', ],
+                'availableExtraUplinkBandwidth' => [ 'type' => 'integer', 'locationName' => 'availableExtraUplinkBandwidth', ],
+            ],
+        ],
+        'DeleteBandwidthPackageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+            ],
+        ],
+        'DescribeBandwidthPackageStockRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeBandwidthPackagesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBandwidthPackagesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeBandwidthPackageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBandwidthPackageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyBandwidthPackageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackage' =>  [ 'shape' => 'BandwidthPackage', ],
+            ],
+        ],
+        'DeleteBandwidthPackageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteBandwidthPackageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RemoveBandwidthPackageIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RemoveBandwidthPackageIpResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyBandwidthPackageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyBandwidthPackageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteBandwidthPackageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'ApplyBandwidthPackagesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'bandwidthPackageSpec' =>  [ 'shape' => 'BandwidthPackageSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeBandwidthPackagesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeBandwidthPackageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackage' =>  [ 'shape' => 'BandwidthPackage', ],
+            ],
+        ],
+        'ApplyBandwidthPackagesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackageIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'DescribeElasticIpsRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'hasJoinBandwidthPackage' => [ 'type' => 'string', 'locationName' => 'hasJoinBandwidthPackage', ],
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
@@ -1052,6 +1394,7 @@ return [
         'DescribeAvailablePrivateIpRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -1111,6 +1454,7 @@ return [
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
                 'targetIp' => [ 'type' => 'string', 'locationName' => 'targetIp', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -1168,7 +1512,9 @@ return [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'enableInternet' => [ 'type' => 'string', 'locationName' => 'enableInternet', ],
                 'privateIp' => [ 'type' => 'string', 'locationName' => 'privateIp', ],
+                'extensionPrivateIp' => [ 'type' => 'string', 'locationName' => 'extensionPrivateIp', ],
                 'keypairId' => [ 'type' => 'string', 'locationName' => 'keypairId', ],
+                'interfaceMode' => [ 'type' => 'string', 'locationName' => 'interfaceMode', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
@@ -1565,7 +1911,7 @@ return [
         'DescribeLineTypesResultShape' => [
             'type' => 'structure',
             'members' => [
-                'lineTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'LineType', ], ],
+                'lineType' =>  [ 'shape' => 'LineType', ],
             ],
         ],
         'DescribeLineTypesRequestShape' => [

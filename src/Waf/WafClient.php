@@ -20,6 +20,8 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with waf.
  *
+ * @method \Jdcloud\Result describeLbOutIp(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeLbOutIpAsync(array $args = [])
  * @method \Jdcloud\Result createInstance(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createInstanceAsync(array $args = [])
  * @method \Jdcloud\Result getAvailableCertForDomain(array $args = [])
@@ -46,10 +48,6 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise listMainCfgAsync(array $args = [])
  * @method \Jdcloud\Result disableRules(array $args = [])
  * @method \GuzzleHttp\Promise\Promise disableRulesAsync(array $args = [])
- * @method \Jdcloud\Result describeIpDomainInfo(array $args = [])
- * @method \GuzzleHttp\Promise\Promise describeIpDomainInfoAsync(array $args = [])
- * @method \Jdcloud\Result isWafVip(array $args = [])
- * @method \GuzzleHttp\Promise\Promise isWafVipAsync(array $args = [])
  * @method \Jdcloud\Result enableWaf(array $args = [])
  * @method \GuzzleHttp\Promise\Promise enableWafAsync(array $args = [])
  * @method \Jdcloud\Result antiModeWaf(array $args = [])

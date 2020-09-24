@@ -41,6 +41,10 @@ return [
         'namespace' => 'Domainservice',
         'versions' => [ 'latest' => 'v2', ],
     ],
+    'jmr' => [
+        'namespace' => 'Jmr',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'billing' => [
         'namespace' => 'Billing',
         'versions' => [ 'latest' => 'v1', ],
@@ -59,6 +63,10 @@ return [
     ],
     'function' => [
         'namespace' => 'Function',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'bri' => [
+        'namespace' => 'Bri',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'rms' => [
@@ -103,6 +111,10 @@ return [
     ],
     'dbaudit' => [
         'namespace' => 'Dbaudit',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'instancevoucher' => [
+        'namespace' => 'Instancevoucher',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'cdn' => [
