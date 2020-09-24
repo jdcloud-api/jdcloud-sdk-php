@@ -11,6 +11,15 @@ return [
 //        'serviceId' => 'waf',
     ],
     'operations' => [
+        'DescribeLbOutIp' => [
+            'name' => 'DescribeLbOutIp',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/admin:lboutIp',
+            ],
+            'input' => [ 'shape' => 'DescribeLbOutIpRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLbOutIpResponseShape', ],
+        ],
         'CreateInstance' => [
             'name' => 'CreateInstance',
             'http' => [
@@ -127,24 +136,6 @@ return [
             ],
             'input' => [ 'shape' => 'DisableRulesRequestShape', ],
             'output' => [ 'shape' => 'DisableRulesResponseShape', ],
-        ],
-        'DescribeIpDomainInfo' => [
-            'name' => 'DescribeIpDomainInfo',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/ip:domainInfo',
-            ],
-            'input' => [ 'shape' => 'DescribeIpDomainInfoRequestShape', ],
-            'output' => [ 'shape' => 'DescribeIpDomainInfoResponseShape', ],
-        ],
-        'IsWafVip' => [
-            'name' => 'IsWafVip',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/ip:isWafVip',
-            ],
-            'input' => [ 'shape' => 'IsWafVipRequestShape', ],
-            'output' => [ 'shape' => 'IsWafVipResponseShape', ],
         ],
         'EnableWaf' => [
             'name' => 'EnableWaf',
@@ -680,6 +671,7 @@ return [
             'members' => [
                 'accessTime' => [ 'type' => 'integer', 'locationName' => 'accessTime', ],
                 'remoteAddr' => [ 'type' => 'string', 'locationName' => 'remoteAddr', ],
+                'remotePort' => [ 'type' => 'string', 'locationName' => 'remotePort', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'area' => [ 'type' => 'string', 'locationName' => 'area', ],
                 'method' => [ 'type' => 'string', 'locationName' => 'method', ],
@@ -690,6 +682,30 @@ return [
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'upstreamErr' => [ 'type' => 'string', 'locationName' => 'upstreamErr', ],
+                'timeLocal' => [ 'type' => 'string', 'locationName' => 'timeLocal', ],
+                'hostname' => [ 'type' => 'string', 'locationName' => 'hostname', ],
+                'bytesSent' => [ 'type' => 'string', 'locationName' => 'bytesSent', ],
+                'requestLength' => [ 'type' => 'string', 'locationName' => 'requestLength', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
+                'serverAddr' => [ 'type' => 'string', 'locationName' => 'serverAddr', ],
+                'serverPort' => [ 'type' => 'string', 'locationName' => 'serverPort', ],
+                'upstreamHttpName' => [ 'type' => 'string', 'locationName' => 'upstreamHttpName', ],
+                'upstreamAddr' => [ 'type' => 'string', 'locationName' => 'upstreamAddr', ],
+                'upstreamHttpPort' => [ 'type' => 'string', 'locationName' => 'upstreamHttpPort', ],
+                'upstreamConnectTime' => [ 'type' => 'string', 'locationName' => 'upstreamConnectTime', ],
+                'upstreamHeaderTime' => [ 'type' => 'string', 'locationName' => 'upstreamHeaderTime', ],
+                'upstreamResponseTime' => [ 'type' => 'string', 'locationName' => 'upstreamResponseTime', ],
+                'requestTime' => [ 'type' => 'string', 'locationName' => 'requestTime', ],
+                'httpUserAgent' => [ 'type' => 'string', 'locationName' => 'httpUserAgent', ],
+                'antiReason' => [ 'type' => 'string', 'locationName' => 'antiReason', ],
+                'httpReferer' => [ 'type' => 'string', 'locationName' => 'httpReferer', ],
+                'scheme' => [ 'type' => 'string', 'locationName' => 'scheme', ],
+                'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
+                'sentHttpContentRange' => [ 'type' => 'string', 'locationName' => 'sentHttpContentRange', ],
+                'antiRemoteAddr' => [ 'type' => 'string', 'locationName' => 'antiRemoteAddr', ],
+                'antiStatus' => [ 'type' => 'string', 'locationName' => 'antiStatus', ],
+                'antiReqRaw' => [ 'type' => 'string', 'locationName' => 'antiReqRaw', ],
+                'antiRespRaw' => [ 'type' => 'string', 'locationName' => 'antiRespRaw', ],
             ],
         ],
         'WebUserdefConf' => [
@@ -730,6 +746,8 @@ return [
                 'enableKeepalive' => [ 'type' => 'integer', 'locationName' => 'enableKeepalive', ],
                 'suiteLevel' => [ 'type' => 'integer', 'locationName' => 'suiteLevel', ],
                 'enableUnderscores' => [ 'type' => 'integer', 'locationName' => 'enableUnderscores', ],
+                'disableHealthCheck' => [ 'type' => 'integer', 'locationName' => 'disableHealthCheck', ],
+                'proxyConnectTimeout' => [ 'type' => 'integer', 'locationName' => 'proxyConnectTimeout', ],
             ],
         ],
         'AttackInfo' => [
@@ -782,6 +800,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'rsAddr' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'weight' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
                 'httpRsPort' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'httpsRsPort' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'rsType' => [ 'type' => 'integer', 'locationName' => 'rsType', ],
@@ -973,6 +992,8 @@ return [
                 'suiteLevel' => [ 'type' => 'integer', 'locationName' => 'suiteLevel', ],
                 'enableUnderscores' => [ 'type' => 'integer', 'locationName' => 'enableUnderscores', ],
                 'maxBodySize' => [ 'type' => 'string', 'locationName' => 'maxBodySize', ],
+                'disableHealthCheck' => [ 'type' => 'integer', 'locationName' => 'disableHealthCheck', ],
+                'proxyConnectTimeout' => [ 'type' => 'integer', 'locationName' => 'proxyConnectTimeout', ],
             ],
         ],
         'DisableRulesReq' => [
@@ -1031,6 +1052,7 @@ return [
         'DomainInfo' => [
             'type' => 'structure',
             'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'rsAddr' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'dnsType' => [ 'type' => 'string', 'locationName' => 'dnsType', ],
@@ -1304,7 +1326,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
                 'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
                 'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
                 'val' => [ 'type' => 'string', 'locationName' => 'val', ],
@@ -1707,15 +1729,6 @@ return [
                 'action' =>  [ 'shape' => 'DenyActionCfg', ],
             ],
         ],
-        'EnableWebcacheReq' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-            ],
-        ],
         'SetUserAntiCfgReq' => [
             'type' => 'structure',
             'members' => [
@@ -2003,6 +2016,16 @@ return [
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
             ],
         ],
+        'FuncList' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
+                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
         'ReNickNameReq' => [
             'type' => 'structure',
             'members' => [
@@ -2118,6 +2141,25 @@ return [
                 'phoneNumber' => [ 'type' => 'string', 'locationName' => 'phoneNumber', ],
                 'email' => [ 'type' => 'string', 'locationName' => 'email', ],
                 'selected' => [ 'type' => 'integer', 'locationName' => 'selected', ],
+            ],
+        ],
+        'DescribeLbOutIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLbOutIpResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLbOutIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'list' => [ 'type' => 'object', 'locationName' => 'list', ],
+            ],
+        ],
+        'DescribeLbOutIpRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'CreateInstanceResponseShape' => [
@@ -2421,46 +2463,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'ListDomainsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'IsWafVipRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'IsWafVipResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpVipInfo', ], ],
-            ],
-        ],
-        'DescribeIpDomainInfoRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeIpDomainInfoResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpDomainInfo', ], ],
-            ],
-        ],
-        'DescribeIpDomainInfoResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeIpDomainInfoResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'IsWafVipResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'IsWafVipResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],

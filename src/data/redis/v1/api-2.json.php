@@ -137,6 +137,24 @@ return [
             'input' => [ 'shape' => 'DescribeCacheAnalysisResultRequestShape', ],
             'output' => [ 'shape' => 'DescribeCacheAnalysisResultResponseShape', ],
         ],
+        'DescribeClientList' => [
+            'name' => 'DescribeClientList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/cacheInstance/{cacheInstanceId}/clientList',
+            ],
+            'input' => [ 'shape' => 'DescribeClientListRequestShape', ],
+            'output' => [ 'shape' => 'DescribeClientListResponseShape', ],
+        ],
+        'DescribeClientIpDetail' => [
+            'name' => 'DescribeClientIpDetail',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/cacheInstance/{cacheInstanceId}/clientIpDetail',
+            ],
+            'input' => [ 'shape' => 'DescribeClientIpDetailRequestShape', ],
+            'output' => [ 'shape' => 'DescribeClientIpDetailResponseShape', ],
+        ],
         'DescribeBackups' => [
             'name' => 'DescribeBackups',
             'http' => [
@@ -374,11 +392,29 @@ return [
                 'shardNumber' => [ 'type' => 'integer', 'locationName' => 'shardNumber', ],
             ],
         ],
+        'Details' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'port' => [ 'type' => 'string', 'locationName' => 'port', ],
+                'age' => [ 'type' => 'string', 'locationName' => 'age', ],
+                'idle' => [ 'type' => 'string', 'locationName' => 'idle', ],
+                'db' => [ 'type' => 'string', 'locationName' => 'db', ],
+                'lastCmd' => [ 'type' => 'string', 'locationName' => 'lastCmd', ],
+            ],
+        ],
+        'Ips' => [
+            'type' => 'structure',
+            'members' => [
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'clientCount' => [ 'type' => 'integer', 'locationName' => 'clientCount', ],
+            ],
+        ],
         'ClusterInfo' => [
             'type' => 'structure',
             'members' => [
-                'proxies' =>  [ 'shape' => 'Proxy', ],
-                'shards' =>  [ 'shape' => 'Shard', ],
+                'proxies' => [ 'type' => 'list', 'member' => [ 'shape' => 'Proxy', ], ],
+                'shards' => [ 'type' => 'list', 'member' => [ 'shape' => 'Shard', ], ],
             ],
         ],
         'Shard' => [
@@ -483,6 +519,28 @@ return [
                 'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'Node' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+            ],
+        ],
+        'RedisShard' => [
+            'type' => 'structure',
+            'members' => [
+                'master' =>  [ 'shape' => 'Node', ],
+                'slave' => [ 'type' => 'list', 'member' => [ 'shape' => 'Node', ], ],
+            ],
+        ],
+        'InstanceVpcIp' => [
+            'type' => 'structure',
+            'members' => [
+                'proxy' => [ 'type' => 'list', 'member' => [ 'shape' => 'Node', ], ],
+                'shards' => [ 'type' => 'list', 'member' => [ 'shape' => 'RedisShard', ], ],
+            ],
+        ],
         'InternalInstance' => [
             'type' => 'structure',
             'members' => [
@@ -502,6 +560,32 @@ return [
                 'frontAppIp' => [ 'type' => 'string', 'locationName' => 'frontAppIp', ],
                 'ips' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'hostIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'NodeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'cpuCores' => [ 'type' => 'integer', 'locationName' => 'cpuCores', ],
+                'memoryGBs' => [ 'type' => 'integer', 'locationName' => 'memoryGBs', ],
+                'totalDiskGBs' => [ 'type' => 'integer', 'locationName' => 'totalDiskGBs', ],
+                'localDiskGBs' => [ 'type' => 'integer', 'locationName' => 'localDiskGBs', ],
+                'cloudDiskGBs' => [ 'type' => 'integer', 'locationName' => 'cloudDiskGBs', ],
+            ],
+        ],
+        'InstanceInternalSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceMemoryGB' => [ 'type' => 'integer', 'locationName' => 'instanceMemoryGB', ],
+                'nodeRoles' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeRole', ], ],
+            ],
+        ],
+        'NodeRole' => [
+            'type' => 'structure',
+            'members' => [
+                'kind' => [ 'type' => 'string', 'locationName' => 'kind', ],
+                'num' => [ 'type' => 'integer', 'locationName' => 'num', ],
+                'nodeSpec' =>  [ 'shape' => 'NodeSpec', ],
             ],
         ],
         'OrderStatus' => [
@@ -549,11 +633,11 @@ return [
                 'shardId' => [ 'type' => 'string', 'locationName' => 'shardId', ],
             ],
         ],
-        'DescribeAnalysisTimeRequestShape' => [
+        'DescribeClientIpDetailResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+                'result' =>  [ 'shape' => 'DescribeClientIpDetailResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ModifyCacheInstanceClassResultShape' => [
@@ -561,20 +645,6 @@ return [
             'members' => [
                 'orderNum' => [ 'type' => 'string', 'locationName' => 'orderNum', ],
                 'buyId' => [ 'type' => 'string', 'locationName' => 'buyId', ],
-            ],
-        ],
-        'DescribeInstanceConfigResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeInstanceConfigResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeBackupsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeBackupsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ModifyCacheInstanceAttributeResultShape' => [
@@ -598,6 +668,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeCacheInstancesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeClientListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeClientListResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -627,13 +704,6 @@ return [
                 'time' => [ 'type' => 'string', 'locationName' => 'time', ],
             ],
         ],
-        'DescribeCacheAnalysisResultResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeCacheAnalysisResultResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeAnalysisTimeResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -641,37 +711,9 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeCacheInstancesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
-                'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'RestoreInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'DescribeCacheAnalysisResultRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
-                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
-            ],
-        ],
-        'ModifyBackupPolicyRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'backupTime' => [ 'type' => 'string', 'locationName' => 'backupTime', ],
-                'backupPeriod' => [ 'type' => 'string', 'locationName' => 'backupPeriod', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
         ],
         'DescribeCacheAnalysisListRequestShape' => [
@@ -680,12 +722,6 @@ return [
                 'date' => [ 'type' => 'string', 'locationName' => 'date', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
-            ],
-        ],
-        'DescribeDownloadUrlResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'downloadUrls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DownloadUrl', ], ],
             ],
         ],
         'DeleteCacheInstanceRequestShape' => [
@@ -752,12 +788,205 @@ return [
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
         ],
+        'DescribeIpWhiteListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ipWhiteList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeIpWhiteListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
+        'DescribeSlowLogResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSlowLogResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ResetCacheInstancePasswordResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeCacheInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cacheInstances' => [ 'type' => 'list', 'member' => [ 'shape' => 'CacheInstance', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'CreateBackupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'backupType' => [ 'type' => 'integer', 'locationName' => 'backupType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
+        'ModifyBackupPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeInstanceConfigResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceConfig' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigItem', ], ],
+            ],
+        ],
+        'DeleteCacheInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeClusterInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeClusterInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyAnalysisTimeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RestoreInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyCacheInstanceClassResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyCacheInstanceClassResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateCacheAnalysisRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
+        'ModifyCacheInstanceAttributeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cacheInstanceName' => [ 'type' => 'string', 'locationName' => 'cacheInstanceName', ],
+                'cacheInstanceDescription' => [ 'type' => 'string', 'locationName' => 'cacheInstanceDescription', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
+        'ModifyIpWhiteListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'TagFilter' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'CreateCacheAnalysisResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeAnalysisTimeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
+        'DescribeInstanceConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceConfigResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeBackupsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBackupsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeClientListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
+        'DescribeCacheAnalysisResultResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeCacheAnalysisResultResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeCacheInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
+                'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeCacheAnalysisResultRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'ModifyBackupPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'backupTime' => [ 'type' => 'string', 'locationName' => 'backupTime', ],
+                'backupPeriod' => [ 'type' => 'string', 'locationName' => 'backupPeriod', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
+        'DescribeDownloadUrlResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'downloadUrls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DownloadUrl', ], ],
+            ],
+        ],
         'DescribeBackupPolicyResultShape' => [
             'type' => 'structure',
             'members' => [
                 'backupPeriod' => [ 'type' => 'string', 'locationName' => 'backupPeriod', ],
                 'backupTime' => [ 'type' => 'string', 'locationName' => 'backupTime', ],
                 'nextBackupTime' => [ 'type' => 'string', 'locationName' => 'nextBackupTime', ],
+            ],
+        ],
+        'DescribeClientIpDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
         ],
         'ModifyInstanceConfigResultShape' => [
@@ -773,12 +1002,6 @@ return [
                 'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
                 'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
                 'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
-            ],
-        ],
-        'DescribeIpWhiteListResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ipWhiteList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeCacheInstanceResponseShape' => [
@@ -803,11 +1026,10 @@ return [
                 'keySizeDistribution' => [ 'type' => 'object', 'locationName' => 'keySizeDistribution', ],
             ],
         ],
-        'DescribeIpWhiteListRequestShape' => [
+        'DescribeClientIpDetailResultShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+                'details' => [ 'type' => 'list', 'member' => [ 'shape' => 'Details', ], ],
             ],
         ],
         'ModifyIpWhiteListRequestShape' => [
@@ -824,38 +1046,16 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeSlowLogResponseShape' => [
+        'DescribeClientListResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeSlowLogResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'ips' => [ 'type' => 'list', 'member' => [ 'shape' => 'Ips', ], ],
             ],
         ],
         'CreateBackupResultShape' => [
             'type' => 'structure',
             'members' => [
                 'baseId' => [ 'type' => 'string', 'locationName' => 'baseId', ],
-            ],
-        ],
-        'ResetCacheInstancePasswordResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DescribeCacheInstancesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'cacheInstances' => [ 'type' => 'list', 'member' => [ 'shape' => 'CacheInstance', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'CreateBackupRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
-                'backupType' => [ 'type' => 'integer', 'locationName' => 'backupType', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
         ],
         'CreateCacheInstanceRequestShape' => [
@@ -880,17 +1080,6 @@ return [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
-        'ModifyBackupPolicyResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DescribeInstanceConfigResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'instanceConfig' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigItem', ], ],
-            ],
-        ],
         'DescribeCacheAnalysisListResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -905,21 +1094,9 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteCacheInstanceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'ModifyBackupPolicyResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeClusterInfoResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeClusterInfoResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -949,18 +1126,6 @@ return [
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
         ],
-        'ModifyAnalysisTimeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'RestoreInstanceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'RestoreInstanceRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -983,29 +1148,6 @@ return [
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
         ],
-        'ModifyCacheInstanceClassResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ModifyCacheInstanceClassResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateCacheAnalysisRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
-            ],
-        ],
-        'ModifyCacheInstanceAttributeRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'cacheInstanceName' => [ 'type' => 'string', 'locationName' => 'cacheInstanceName', ],
-                'cacheInstanceDescription' => [ 'type' => 'string', 'locationName' => 'cacheInstanceDescription', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
-            ],
-        ],
         'ResetCacheInstancePasswordRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1019,18 +1161,6 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'CreateBackupResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModifyIpWhiteListResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'TagFilter' => [
-            'type' => 'structure',
-            'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeClusterInfoResultShape' => [
@@ -1054,11 +1184,6 @@ return [
             ],
         ],
         'ModifyAnalysisTimeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'CreateCacheAnalysisResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
