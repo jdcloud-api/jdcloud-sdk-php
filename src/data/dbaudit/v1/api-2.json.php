@@ -594,6 +594,7 @@ return [
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'ipAddr' => [ 'type' => 'string', 'locationName' => 'ipAddr', ],
+                'ipv6Addr' => [ 'type' => 'string', 'locationName' => 'ipv6Addr', ],
                 'insType' => [ 'type' => 'string', 'locationName' => 'insType', ],
                 'state' => [ 'type' => 'integer', 'locationName' => 'state', ],
                 'expireTime' => [ 'type' => 'string', 'locationName' => 'expireTime', ],

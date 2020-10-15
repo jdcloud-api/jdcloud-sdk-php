@@ -1001,6 +1001,24 @@ return [
             'input' => [ 'shape' => 'QueryRefreshTaskByIdsRequestShape', ],
             'output' => [ 'shape' => 'QueryRefreshTaskByIdsResponseShape', ],
         ],
+        'SetRefreshLimit' => [
+            'name' => 'SetRefreshLimit',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/task:configLimit',
+            ],
+            'input' => [ 'shape' => 'SetRefreshLimitRequestShape', ],
+            'output' => [ 'shape' => 'SetRefreshLimitResponseShape', ],
+        ],
+        'QueryRefreshLimit' => [
+            'name' => 'QueryRefreshLimit',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/task:queryLimit',
+            ],
+            'input' => [ 'shape' => 'QueryRefreshLimitRequestShape', ],
+            'output' => [ 'shape' => 'QueryRefreshLimitResponseShape', ],
+        ],
         'QueryRefreshTaskById' => [
             'name' => 'QueryRefreshTaskById',
             'http' => [
@@ -2022,6 +2040,7 @@ return [
                 'noticeCC' => [ 'type' => 'string', 'locationName' => 'noticeCC', ],
                 'noticeContent' => [ 'type' => 'string', 'locationName' => 'noticeContent', ],
                 'noticePeriod' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'noticeStatus' => [ 'type' => 'string', 'locationName' => 'noticeStatus', ],
             ],
         ],
         'TopNData4Report' => [
@@ -2277,6 +2296,15 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
+            ],
+        ],
+        'SubUserRefreshLimit' => [
+            'type' => 'structure',
+            'members' => [
+                'user' => [ 'type' => 'string', 'locationName' => 'user', ],
+                'refreshCount' => [ 'type' => 'long', 'locationName' => 'refreshCount', ],
+                'dirCount' => [ 'type' => 'long', 'locationName' => 'dirCount', ],
+                'prefetchCount' => [ 'type' => 'long', 'locationName' => 'prefetchCount', ],
             ],
         ],
         'ForbiddenStream' => [
@@ -4326,6 +4354,7 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'accelerateRegion' => [ 'type' => 'string', 'locationName' => 'accelerateRegion', ],
+                'filterBy' => [ 'type' => 'integer', 'locationName' => 'filterBy', ],
                 'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
             ],
         ],
@@ -4592,6 +4621,7 @@ return [
                 'sslCertStartTime' => [ 'type' => 'string', 'locationName' => 'sslCertStartTime', ],
                 'sslCertEndTime' => [ 'type' => 'string', 'locationName' => 'sslCertEndTime', ],
                 'accelerateRegion' => [ 'type' => 'string', 'locationName' => 'accelerateRegion', ],
+                'txt' => [ 'type' => 'string', 'locationName' => 'txt', ],
             ],
         ],
         'BatchCreateResultShape' => [
@@ -5293,6 +5323,15 @@ return [
                 'remainUserDomainQuota' => [ 'type' => 'integer', 'locationName' => 'remainUserDomainQuota', ],
             ],
         ],
+        'SetRefreshLimitRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUsers' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'refreshCount' => [ 'type' => 'long', 'locationName' => 'refreshCount', ],
+                'prefetchCount' => [ 'type' => 'long', 'locationName' => 'prefetchCount', ],
+                'dirCount' => [ 'type' => 'long', 'locationName' => 'dirCount', ],
+            ],
+        ],
         'CreateRefreshTaskForCallbackV2RequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -5335,11 +5374,33 @@ return [
                 'result' =>  [ 'shape' => 'QueryRefreshTaskByIdsResultShape', ],
             ],
         ],
+        'QueryRefreshLimitResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryRefreshLimitResultShape', ],
+            ],
+        ],
         'QueryRefreshTaskResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'QueryRefreshTaskResultShape', ],
+            ],
+        ],
+        'QueryRefreshLimitRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUsers' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'SetRefreshLimitResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SetRefreshLimitResultShape', ],
             ],
         ],
         'QueryRefreshTaskByIdResponseShape' => [
@@ -5396,6 +5457,19 @@ return [
                 'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
             ],
         ],
+        'QueryRefreshLimitResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'user' => [ 'type' => 'string', 'locationName' => 'user', ],
+                'refreshCount' => [ 'type' => 'long', 'locationName' => 'refreshCount', ],
+                'dirCount' => [ 'type' => 'long', 'locationName' => 'dirCount', ],
+                'prefetchCount' => [ 'type' => 'long', 'locationName' => 'prefetchCount', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'subUserQuota' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubUserRefreshLimit', ], ],
+            ],
+        ],
         'CreateRefreshTaskForCallbackV2ResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -5408,6 +5482,11 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'CreateRefreshTaskForCallbackResultShape', ],
+            ],
+        ],
+        'SetRefreshLimitResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'QueryNetProtectionRulesRequestShape' => [
@@ -5618,6 +5697,7 @@ return [
                 'noticeCC' => [ 'type' => 'string', 'locationName' => 'noticeCC', ],
                 'noticeContent' => [ 'type' => 'string', 'locationName' => 'noticeContent', ],
                 'noticePeriod' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'noticeStatus' => [ 'type' => 'string', 'locationName' => 'noticeStatus', ],
             ],
         ],
         'QueryServiceNoticeResponseShape' => [
@@ -5915,6 +5995,7 @@ return [
                 'period' => [ 'type' => 'string', 'locationName' => 'period', ],
                 'groupBy' => [ 'type' => 'string', 'locationName' => 'groupBy', ],
                 'scheme' => [ 'type' => 'string', 'locationName' => 'scheme', ],
+                'abroad' => [ 'type' => 'boolean', 'locationName' => 'abroad', ],
             ],
         ],
         'QueryMixTrafficGroupSumResponseShape' => [
@@ -5983,6 +6064,7 @@ return [
                 'origin' => [ 'type' => 'string', 'locationName' => 'origin', ],
                 'period' => [ 'type' => 'string', 'locationName' => 'period', ],
                 'groupBy' => [ 'type' => 'string', 'locationName' => 'groupBy', ],
+                'abroad' => [ 'type' => 'boolean', 'locationName' => 'abroad', ],
             ],
         ],
         'QueryDirBandwidthResultShape' => [
@@ -6046,6 +6128,7 @@ return [
                 'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
                 'origin' => [ 'type' => 'string', 'locationName' => 'origin', ],
                 'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+                'abroad' => [ 'type' => 'boolean', 'locationName' => 'abroad', ],
             ],
         ],
         'QueryStatisticsTopUrlRequestShape' => [

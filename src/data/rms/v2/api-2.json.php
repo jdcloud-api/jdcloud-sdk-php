@@ -74,14 +74,14 @@ return [
             'input' => [ 'shape' => 'QuerySendStatusRequestShape', ],
             'output' => [ 'shape' => 'QuerySendStatusResponseShape', ],
         ],
-        'AddTemplate' => [
-            'name' => 'AddTemplate',
+        'AddTemplateNew' => [
+            'name' => 'AddTemplateNew',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v2/regions/{regionId}/addTemplate',
+                'requestUri' => '/v2/regions/{regionId}/addTemplateNew',
             ],
-            'input' => [ 'shape' => 'AddTemplateRequestShape', ],
-            'output' => [ 'shape' => 'AddTemplateResponseShape', ],
+            'input' => [ 'shape' => 'AddTemplateNewRequestShape', ],
+            'output' => [ 'shape' => 'AddTemplateNewResponseShape', ],
         ],
         'EditTemplate' => [
             'name' => 'EditTemplate',
@@ -403,13 +403,16 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'AddTemplateResultShape' => [
+        'AddTemplateNewRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'RespTemplateData', ],
-                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'aptitudesId' => [ 'type' => 'string', 'locationName' => 'aptitudesId', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'signContent' => [ 'type' => 'string', 'locationName' => 'signContent', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TemplateContent', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DeleteTemplateResultShape' => [
@@ -439,6 +442,15 @@ return [
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'AddTemplateNewResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'RespTemplateData', ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'EditTemplateResponseShape' => [
@@ -490,22 +502,10 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'AddTemplateRequestShape' => [
+        'AddTemplateNewResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-                'aptitudesId' => [ 'type' => 'string', 'locationName' => 'aptitudesId', ],
-                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'signContent' => [ 'type' => 'string', 'locationName' => 'signContent', ],
-                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TemplateContent', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'AddTemplateResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'AddTemplateResultShape', ],
+                'result' =>  [ 'shape' => 'AddTemplateNewResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
