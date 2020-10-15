@@ -20,14 +20,30 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with censor.
  *
+ * @method \Jdcloud\Result asyncAudioScan(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise asyncAudioScanAsync(array $args = [])
+ * @method \Jdcloud\Result audioResults(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise audioResultsAsync(array $args = [])
+ * @method \Jdcloud\Result deleteCensorLib(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteCensorLibAsync(array $args = [])
+ * @method \Jdcloud\Result deleteCensorLibItems(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteCensorLibItemsAsync(array $args = [])
  * @method \Jdcloud\Result imageScan(array $args = [])
  * @method \GuzzleHttp\Promise\Promise imageScanAsync(array $args = [])
  * @method \Jdcloud\Result asyncImageScan(array $args = [])
  * @method \GuzzleHttp\Promise\Promise asyncImageScanAsync(array $args = [])
  * @method \Jdcloud\Result imageResults(array $args = [])
  * @method \GuzzleHttp\Promise\Promise imageResultsAsync(array $args = [])
+ * @method \Jdcloud\Result deleteLimit(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteLimitAsync(array $args = [])
  * @method \Jdcloud\Result textScan(array $args = [])
  * @method \GuzzleHttp\Promise\Promise textScanAsync(array $args = [])
+ * @method \Jdcloud\Result innerTextScan(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise innerTextScanAsync(array $args = [])
+ * @method \Jdcloud\Result asyncVideoScan(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise asyncVideoScanAsync(array $args = [])
+ * @method \Jdcloud\Result videoResults(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise videoResultsAsync(array $args = [])
  */
 class CensorClient extends JdCloudClient
 {
