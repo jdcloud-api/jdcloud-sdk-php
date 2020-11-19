@@ -887,6 +887,13 @@ return [
                 'encrypt' => [ 'type' => 'boolean', 'locationName' => 'encrypt', ],
             ],
         ],
+        'Metadata' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'InstanceNetworkInterfaceAttachmentSpec' => [
             'type' => 'structure',
             'members' => [
@@ -925,6 +932,7 @@ return [
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'hostname' => [ 'type' => 'string', 'locationName' => 'hostname', ],
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
                 'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'elasticIp' =>  [ 'shape' => 'ElasticIpSpec', ],
@@ -932,6 +940,7 @@ return [
                 'systemDisk' =>  [ 'shape' => 'InstanceDiskAttachmentSpec', ],
                 'dataDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceDiskAttachmentSpec', ], ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
+                'metadata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Metadata', ], ],
                 'userdata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Userdata', ], ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'noPassword' => [ 'type' => 'boolean', 'locationName' => 'noPassword', ],
@@ -939,6 +948,9 @@ return [
                 'noElasticIp' => [ 'type' => 'boolean', 'locationName' => 'noElasticIp', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'chargeOnStopped' => [ 'type' => 'string', 'locationName' => 'chargeOnStopped', ],
+                'autoImagePolicyId' => [ 'type' => 'string', 'locationName' => 'autoImagePolicyId', ],
+                'passwordAuth' => [ 'type' => 'string', 'locationName' => 'passwordAuth', ],
+                'imageInherit' => [ 'type' => 'string', 'locationName' => 'imageInherit', ],
             ],
         ],
         'InstanceType' => [

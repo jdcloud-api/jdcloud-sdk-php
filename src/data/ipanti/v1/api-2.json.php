@@ -101,6 +101,15 @@ return [
             'input' => [ 'shape' => 'CreateForwardRuleRequestShape', ],
             'output' => [ 'shape' => 'CreateForwardRuleResponseShape', ],
         ],
+        'CreateForwardRules' => [
+            'name' => 'CreateForwardRules',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:createForwardRules',
+            ],
+            'input' => [ 'shape' => 'CreateForwardRulesRequestShape', ],
+            'output' => [ 'shape' => 'CreateForwardRulesResponseShape', ],
+        ],
         'DescribeForwardRule' => [
             'name' => 'DescribeForwardRule',
             'http' => [
@@ -425,6 +434,15 @@ return [
             'input' => [ 'shape' => 'CreateWebRuleRequestShape', ],
             'output' => [ 'shape' => 'CreateWebRuleResponseShape', ],
         ],
+        'CreateWebRules' => [
+            'name' => 'CreateWebRules',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:createWebRules',
+            ],
+            'input' => [ 'shape' => 'CreateWebRulesRequestShape', ],
+            'output' => [ 'shape' => 'CreateWebRulesResponseShape', ],
+        ],
         'DescribeWebRule' => [
             'name' => 'DescribeWebRule',
             'http' => [
@@ -515,6 +533,87 @@ return [
             'input' => [ 'shape' => 'DisableWebRuleCCObserverModeRequestShape', ],
             'output' => [ 'shape' => 'DisableWebRuleCCObserverModeResponseShape', ],
         ],
+        'DescribeJsPagesOfWebRule' => [
+            'name' => 'DescribeJsPagesOfWebRule',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/webRules/{webRuleId}/jsPages',
+            ],
+            'input' => [ 'shape' => 'DescribeJsPagesOfWebRuleRequestShape', ],
+            'output' => [ 'shape' => 'DescribeJsPagesOfWebRuleResponseShape', ],
+        ],
+        'CreateJsPageOfWebRule' => [
+            'name' => 'CreateJsPageOfWebRule',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/webRules/{webRuleId}/jsPages',
+            ],
+            'input' => [ 'shape' => 'CreateJsPageOfWebRuleRequestShape', ],
+            'output' => [ 'shape' => 'CreateJsPageOfWebRuleResponseShape', ],
+        ],
+        'CreateJsPagesOfWebRule' => [
+            'name' => 'CreateJsPagesOfWebRule',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/webRules/{webRuleId}:createJsPagesOfWebRule',
+            ],
+            'input' => [ 'shape' => 'CreateJsPagesOfWebRuleRequestShape', ],
+            'output' => [ 'shape' => 'CreateJsPagesOfWebRuleResponseShape', ],
+        ],
+        'ModifyJsPageOfWebRule' => [
+            'name' => 'ModifyJsPageOfWebRule',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/webRules/{webRuleId}/jsPages/{jsPageId}',
+            ],
+            'input' => [ 'shape' => 'ModifyJsPageOfWebRuleRequestShape', ],
+            'output' => [ 'shape' => 'ModifyJsPageOfWebRuleResponseShape', ],
+        ],
+        'DeleteJsPageOfWebRule' => [
+            'name' => 'DeleteJsPageOfWebRule',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/webRules/{webRuleId}/jsPages/{jsPageId}',
+            ],
+            'input' => [ 'shape' => 'DeleteJsPageOfWebRuleRequestShape', ],
+            'output' => [ 'shape' => 'DeleteJsPageOfWebRuleResponseShape', ],
+        ],
+        'DisableWebRuleJsPage' => [
+            'name' => 'DisableWebRuleJsPage',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/webRules/{webRuleId}:disableWebRuleJsPage',
+            ],
+            'input' => [ 'shape' => 'DisableWebRuleJsPageRequestShape', ],
+            'output' => [ 'shape' => 'DisableWebRuleJsPageResponseShape', ],
+        ],
+        'EnableWebRuleJsPage' => [
+            'name' => 'EnableWebRuleJsPage',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/webRules/{webRuleId}:enableWebRuleJsPage',
+            ],
+            'input' => [ 'shape' => 'EnableWebRuleJsPageRequestShape', ],
+            'output' => [ 'shape' => 'EnableWebRuleJsPageResponseShape', ],
+        ],
+        'ModifyWebRuleJsPageToAll' => [
+            'name' => 'ModifyWebRuleJsPageToAll',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/webRules/{webRuleId}:modifyWebRuleJsPageToAll',
+            ],
+            'input' => [ 'shape' => 'ModifyWebRuleJsPageToAllRequestShape', ],
+            'output' => [ 'shape' => 'ModifyWebRuleJsPageToAllResponseShape', ],
+        ],
+        'ModifyWebRuleJsPageToCustom' => [
+            'name' => 'ModifyWebRuleJsPageToCustom',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/webRules/{webRuleId}:modifyWebRuleJsPageToCustom',
+            ],
+            'input' => [ 'shape' => 'ModifyWebRuleJsPageToCustomRequestShape', ],
+            'output' => [ 'shape' => 'ModifyWebRuleJsPageToCustomResponseShape', ],
+        ],
         'DescribeCCProtectionRulesOfWebRule' => [
             'name' => 'DescribeCCProtectionRulesOfWebRule',
             'http' => [
@@ -577,6 +676,24 @@ return [
             ],
             'input' => [ 'shape' => 'DisableCCProtectionRuleOfWebRuleRequestShape', ],
             'output' => [ 'shape' => 'DisableCCProtectionRuleOfWebRuleResponseShape', ],
+        ],
+        'EnableWebRuleCCProtectionRule' => [
+            'name' => 'EnableWebRuleCCProtectionRule',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/webRules/{webRuleId}:enableWebRuleCCProtectionRule',
+            ],
+            'input' => [ 'shape' => 'EnableWebRuleCCProtectionRuleRequestShape', ],
+            'output' => [ 'shape' => 'EnableWebRuleCCProtectionRuleResponseShape', ],
+        ],
+        'DisableWebRuleCCProtectionRule' => [
+            'name' => 'DisableWebRuleCCProtectionRule',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/webRules/{webRuleId}:disableWebRuleCCProtectionRule',
+            ],
+            'input' => [ 'shape' => 'DisableWebRuleCCProtectionRuleRequestShape', ],
+            'output' => [ 'shape' => 'DisableWebRuleCCProtectionRuleResponseShape', ],
         ],
         'DescribeCCProtectionConfigOfWebRule' => [
             'name' => 'DescribeCCProtectionConfigOfWebRule',
@@ -970,6 +1087,7 @@ return [
                 'blockType' => [ 'type' => 'integer', 'locationName' => 'blockType', ],
                 'blockTime' => [ 'type' => 'long', 'locationName' => 'blockTime', ],
                 'pageId' => [ 'type' => 'string', 'locationName' => 'pageId', ],
+                'pageName' => [ 'type' => 'string', 'locationName' => 'pageName', ],
             ],
         ],
         'CcsIpResource' => [
@@ -1259,6 +1377,28 @@ return [
                 'serviceIp' => [ 'type' => 'string', 'locationName' => 'serviceIp', ],
             ],
         ],
+        'InstanceName' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'InstanceTagEnable' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'tagEnable' => [ 'type' => 'boolean', 'locationName' => 'tagEnable', ],
+            ],
+        ],
+        'InstanceBillingId' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'billingIdBP' => [ 'type' => 'string', 'locationName' => 'billingIdBP', ],
+                'billingIdEP' => [ 'type' => 'string', 'locationName' => 'billingIdEP', ],
+            ],
+        ],
         'Instance' => [
             'type' => 'structure',
             'members' => [
@@ -1301,6 +1441,8 @@ return [
                 'ipHostUrlQps' => [ 'type' => 'integer', 'locationName' => 'ipHostUrlQps', ],
                 'pageId' => [ 'type' => 'string', 'locationName' => 'pageId', ],
                 'pageName' => [ 'type' => 'string', 'locationName' => 'pageName', ],
+                'pageStatus' => [ 'type' => 'integer', 'locationName' => 'pageStatus', ],
+                'webRulePortLimit' => [ 'type' => 'integer', 'locationName' => 'webRulePortLimit', ],
             ],
         ],
         'IpSet' => [
@@ -1347,6 +1489,27 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'ip' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'JsPageSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
+            ],
+        ],
+        'JsPage' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'JsPagesSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'uris' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'ModifyBlackListRuleOfForwardRuleSpec' => [
@@ -1445,6 +1608,8 @@ return [
                 'actionValue' => [ 'type' => 'string', 'locationName' => 'actionValue', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'geoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Geo', ], ],
+                'pageId' => [ 'type' => 'string', 'locationName' => 'pageId', ],
+                'pageName' => [ 'type' => 'string', 'locationName' => 'pageName', ],
             ],
         ],
         'WebBlackListRuleSpec' => [
@@ -1458,6 +1623,7 @@ return [
                 'action' => [ 'type' => 'integer', 'locationName' => 'action', ],
                 'actionValue' => [ 'type' => 'string', 'locationName' => 'actionValue', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'pageId' => [ 'type' => 'string', 'locationName' => 'pageId', ],
             ],
         ],
         'WebRule' => [
@@ -1491,6 +1657,16 @@ return [
                 'blackListEnable' => [ 'type' => 'integer', 'locationName' => 'blackListEnable', ],
                 'whiteListEnable' => [ 'type' => 'integer', 'locationName' => 'whiteListEnable', ],
                 'geoRsRoute' => [ 'type' => 'list', 'member' => [ 'shape' => 'GeoRsRoute', ], ],
+                'enableKeepalive' => [ 'type' => 'string', 'locationName' => 'enableKeepalive', ],
+                'httpVersion' => [ 'type' => 'string', 'locationName' => 'httpVersion', ],
+                'sslProtocols' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'suiteLevel' => [ 'type' => 'string', 'locationName' => 'suiteLevel', ],
+                'jsFingerprintEnable' => [ 'type' => 'integer', 'locationName' => 'jsFingerprintEnable', ],
+                'jsFingerprintScope' => [ 'type' => 'integer', 'locationName' => 'jsFingerprintScope', ],
+                'ccCustomStatus' => [ 'type' => 'integer', 'locationName' => 'ccCustomStatus', ],
+                'enableHealthCheck' => [ 'type' => 'integer', 'locationName' => 'enableHealthCheck', ],
+                'proxyConnectTimeout' => [ 'type' => 'integer', 'locationName' => 'proxyConnectTimeout', ],
+                'enableUnderscores' => [ 'type' => 'integer', 'locationName' => 'enableUnderscores', ],
             ],
         ],
         'WebRuleSpec' => [
@@ -1511,6 +1687,13 @@ return [
                 'httpOrigin' => [ 'type' => 'integer', 'locationName' => 'httpOrigin', ],
                 'webSocketStatus' => [ 'type' => 'integer', 'locationName' => 'webSocketStatus', ],
                 'geoRsRoute' => [ 'type' => 'list', 'member' => [ 'shape' => 'GeoRsRoute', ], ],
+                'enableKeepalive' => [ 'type' => 'string', 'locationName' => 'enableKeepalive', ],
+                'httpVersion' => [ 'type' => 'string', 'locationName' => 'httpVersion', ],
+                'sslProtocols' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'suiteLevel' => [ 'type' => 'string', 'locationName' => 'suiteLevel', ],
+                'enableHealthCheck' => [ 'type' => 'integer', 'locationName' => 'enableHealthCheck', ],
+                'proxyConnectTimeout' => [ 'type' => 'integer', 'locationName' => 'proxyConnectTimeout', ],
+                'enableUnderscores' => [ 'type' => 'integer', 'locationName' => 'enableUnderscores', ],
             ],
         ],
         'FailedDomain' => [
@@ -1768,12 +1951,27 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'CreateForwardRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'forwardRuleSpecList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ForwardRuleSpec', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'SwitchForwardRuleProtectRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'forwardRuleId' => [ 'type' => 'string', 'locationName' => 'forwardRuleId', ],
+            ],
+        ],
+        'CreateForwardRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'forwardRuleIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'failedPorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'FailedPort', ], ],
             ],
         ],
         'DisableBlackListRuleOfForwardRuleRequestShape' => [
@@ -1983,6 +2181,13 @@ return [
                 'forwardRuleId' => [ 'type' => 'string', 'locationName' => 'forwardRuleId', ],
             ],
         ],
+        'Sort' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+            ],
+        ],
         'DescribeForwardRuleRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2030,6 +2235,7 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'searchType' => [ 'type' => 'string', 'locationName' => 'searchType', ],
                 'searchValue' => [ 'type' => 'string', 'locationName' => 'searchValue', ],
+                'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2129,6 +2335,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateForwardRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateForwardRulesResultShape', ],
+                'error' =>  [ 'shape' => 'CreateForwardRulesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeForwardRuleResultShape' => [
@@ -2644,22 +2858,6 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DisableWebRuleCCResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DisableWebRuleCCResultShape', ],
-                'error' =>  [ 'shape' => 'DisableWebRuleCCResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeWebRuleBlackListUsageResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeWebRuleBlackListUsageResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeWebRuleBlackListUsageResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'CreateBlackListRuleOfWebRuleResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2667,17 +2865,11 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
-        'DisableBlackListRuleOfWebRuleResultShape' => [
+        'EnableWebRuleJsPageResultShape' => [
             'type' => 'structure',
             'members' => [
                 'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
-        'DescribeWebRuleWhiteListGeoAreasRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DescribeWebRuleResponseShape' => [
@@ -2704,46 +2896,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeWebRuleWhiteListUsageResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeWebRuleWhiteListUsageResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeWebRuleWhiteListUsageResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'CreateWebRuleResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'CreateWebRuleResultShape', ],
                 'error' =>  [ 'shape' => 'CreateWebRuleResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModifyBlackListRuleOfWebRuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'webBlackListRuleSpec' =>  [ 'shape' => 'WebBlackListRuleSpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-                'webBlackListRuleId' => [ 'type' => 'string', 'locationName' => 'webBlackListRuleId', ],
-            ],
-        ],
-        'DisableCCProtectionRuleOfWebRuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-                'ccProtectionRuleId' => [ 'type' => 'string', 'locationName' => 'ccProtectionRuleId', ],
-            ],
-        ],
-        'ModifyBlackListRuleOfWebRuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'ModifyWhiteListRuleOfWebRuleResponseShape' => [
@@ -2754,60 +2912,18 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeWhiteListRuleOfWebRuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-                'webWhiteListRuleId' => [ 'type' => 'string', 'locationName' => 'webWhiteListRuleId', ],
-            ],
-        ],
-        'DescribeWebRuleBlackListUsageResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'allocatedNum' => [ 'type' => 'integer', 'locationName' => 'allocatedNum', ],
-                'activeNum' => [ 'type' => 'integer', 'locationName' => 'activeNum', ],
-                'surplusAllocateNum' => [ 'type' => 'integer', 'locationName' => 'surplusAllocateNum', ],
-                'maxAllocateNum' => [ 'type' => 'integer', 'locationName' => 'maxAllocateNum', ],
-            ],
-        ],
-        'DeleteWebRuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
-        'DeleteWebRuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DeleteWebRuleResultShape', ],
-                'error' =>  [ 'shape' => 'DeleteWebRuleResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateWebRuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'webRuleSpec' =>  [ 'shape' => 'WebRuleSpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DescribeCCProtectionRuleOfWebRuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-                'ccProtectionRuleId' => [ 'type' => 'string', 'locationName' => 'ccProtectionRuleId', ],
-            ],
-        ],
         'DescribeWebRuleBlackListGeoAreasResultShape' => [
             'type' => 'structure',
             'members' => [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Country', ], ],
+            ],
+        ],
+        'ModifyWebRuleJsPageToCustomRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
             ],
         ],
         'DescribeCCProtectionRuleOfWebRuleResponseShape' => [
@@ -2818,13 +2934,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteCCProtectionRuleOfWebRuleRequestShape' => [
+        'DisableWebRuleCCProtectionRuleResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-                'ccProtectionRuleId' => [ 'type' => 'string', 'locationName' => 'ccProtectionRuleId', ],
+                'result' =>  [ 'shape' => 'DisableWebRuleCCProtectionRuleResultShape', ],
+                'error' =>  [ 'shape' => 'DisableWebRuleCCProtectionRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'BindCertRequestShape' => [
@@ -2862,35 +2977,11 @@ return [
                 'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
             ],
         ],
-        'ModifyCCProtectionConfigOfWebRuleRequestShape' => [
+        'ModifyJsPageOfWebRuleResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'ccProtectionConfigSpec' =>  [ 'shape' => 'CCProtectionConfigSpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-            ],
-        ],
-        'DescribeCCProtectionConfigOfWebRuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-            ],
-        ],
-        'DeleteWhiteListRuleOfWebRuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
-        'DisableWebRuleCCObserverModeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DisableWebRuleCCObserverModeResultShape', ],
-                'error' =>  [ 'shape' => 'DisableWebRuleCCObserverModeResultShape', ],
+                'result' =>  [ 'shape' => 'ModifyJsPageOfWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'ModifyJsPageOfWebRuleResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -2901,18 +2992,12 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
-        'ModifyCCProtectionConfigOfWebRuleResultShape' => [
+        'DisableWebRuleJsPageRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
-        'EnableWhiteListRuleOfWebRuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
             ],
         ],
         'DescribeWebRuleRSGeoAreasResponseShape' => [
@@ -2965,24 +3050,12 @@ return [
                 'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
             ],
         ],
-        'DescribeWebRuleWhiteListGeoAreasResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Country', ], ],
-            ],
-        ],
         'EnableWebRuleCCObserverModeRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-            ],
-        ],
-        'DescribeCCProtectionDefaultConfigOfWebRuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' =>  [ 'shape' => 'CCProtectionDefaultConfig', ],
             ],
         ],
         'DisableWebRuleWhiteListResultShape' => [
@@ -2992,56 +3065,10 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
-        'DescribeWhiteListRulesOfWebRuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeWhiteListRulesOfWebRuleResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeWhiteListRulesOfWebRuleResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'BindCertResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
-        'DeleteWhiteListRuleOfWebRuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DeleteWhiteListRuleOfWebRuleResultShape', ],
-                'error' =>  [ 'shape' => 'DeleteWhiteListRuleOfWebRuleResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeWebRuleRSGeoAreasRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeWebRuleWhiteListUsageRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-            ],
-        ],
-        'DescribeCCProtectionRulesOfWebRuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CCProtectionRule', ], ],
-                'currentCount' => [ 'type' => 'long', 'locationName' => 'currentCount', ],
-                'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
-                'totalPage' => [ 'type' => 'long', 'locationName' => 'totalPage', ],
-            ],
-        ],
-        'DescribeCCProtectionConfigOfWebRuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' =>  [ 'shape' => 'CCProtectionConfig', ],
             ],
         ],
         'DisableWebRuleCCRequestShape' => [
@@ -3052,13 +3079,6 @@ return [
                 'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
             ],
         ],
-        'EnableWebRuleBlackListResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
         'DescribeWebRuleRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3067,27 +3087,21 @@ return [
                 'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
             ],
         ],
-        'DisableWebRuleWhiteListRequestShape' => [
+        'CreateWebRulesRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'webRuleSpecList' => [ 'type' => 'list', 'member' => [ 'shape' => 'WebRuleSpec', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'CreateJsPageOfWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jsPageSpec' =>  [ 'shape' => 'JsPageSpec', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-            ],
-        ],
-        'DescribeWebRuleBlackListGeoAreasResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeWebRuleBlackListGeoAreasResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeWebRuleBlackListGeoAreasResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'SwitchWebRuleOriginResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'CreateBlackListRuleOfWebRuleResponseShape' => [
@@ -3098,49 +3112,16 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'ModifyBlackListRuleOfWebRuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ModifyBlackListRuleOfWebRuleResultShape', ],
-                'error' =>  [ 'shape' => 'ModifyBlackListRuleOfWebRuleResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeWebRuleRSGeoAreasResultShape' => [
             'type' => 'structure',
             'members' => [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Country', ], ],
             ],
         ],
-        'EnableBlackListRuleOfWebRuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'EnableBlackListRuleOfWebRuleResultShape', ],
-                'error' =>  [ 'shape' => 'EnableBlackListRuleOfWebRuleResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeBlackListRuleOfWebRuleResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'WebBlackListRule', ],
-            ],
-        ],
-        'EnableWhiteListRuleOfWebRuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-                'webWhiteListRuleId' => [ 'type' => 'string', 'locationName' => 'webWhiteListRuleId', ],
-            ],
-        ],
-        'DescribeCCProtectionRulesOfWebRuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeCCProtectionRulesOfWebRuleResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeCCProtectionRulesOfWebRuleResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DisableBlackListRuleOfWebRuleResponseShape' => [
@@ -3169,33 +3150,12 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'ModifyCertInfoResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
         'DisableWebRuleBlackListRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-            ],
-        ],
-        'DisableWebRuleBlackListResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DisableWebRuleBlackListResultShape', ],
-                'error' =>  [ 'shape' => 'DisableWebRuleBlackListResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeWhiteListRuleOfWebRuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' =>  [ 'shape' => 'WebWhiteListRule', ],
             ],
         ],
         'SwitchWebRuleProtectResultShape' => [
@@ -3205,11 +3165,11 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
-        'DescribeWebRulesResponseShape' => [
+        'DisableWebRuleJsPageResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeWebRulesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'DisableWebRuleCCObserverModeResultShape' => [
@@ -3252,27 +3212,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteCCProtectionRuleOfWebRuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DeleteCCProtectionRuleOfWebRuleResultShape', ],
-                'error' =>  [ 'shape' => 'DeleteCCProtectionRuleOfWebRuleResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'CreateWebRuleResultShape' => [
             'type' => 'structure',
             'members' => [
                 'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
-        'SwitchWebRuleOriginRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
             ],
         ],
         'SwitchWebRuleProtectRequestShape' => [
@@ -3283,18 +3227,19 @@ return [
                 'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
             ],
         ],
-        'DisableWebRuleBlackListResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
         'ModifyCCProtectionRuleOfWebRuleResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'ModifyCCProtectionRuleOfWebRuleResultShape', ],
                 'error' =>  [ 'shape' => 'ModifyCCProtectionRuleOfWebRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyWebRuleJsPageToAllResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyWebRuleJsPageToAllResultShape', ],
+                'error' =>  [ 'shape' => 'ModifyWebRuleJsPageToAllResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -3312,6 +3257,659 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'BindCertResultShape', ],
                 'error' =>  [ 'shape' => 'BindCertResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EnableWebRuleBlackListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EnableWebRuleBlackListResultShape', ],
+                'error' =>  [ 'shape' => 'EnableWebRuleBlackListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeCCProtectionDefaultConfigOfWebRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeCCProtectionDefaultConfigOfWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeCCProtectionDefaultConfigOfWebRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EnableCCProtectionRuleOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DescribeJsPagesOfWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
+        'DescribeWebRuleWhiteListUsageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'allocatedNum' => [ 'type' => 'integer', 'locationName' => 'allocatedNum', ],
+                'activeNum' => [ 'type' => 'integer', 'locationName' => 'activeNum', ],
+                'surplusAllocateNum' => [ 'type' => 'integer', 'locationName' => 'surplusAllocateNum', ],
+                'maxAllocateNum' => [ 'type' => 'integer', 'locationName' => 'maxAllocateNum', ],
+            ],
+        ],
+        'DescribeWebRuleWhiteListGeoAreasResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeWebRuleWhiteListGeoAreasResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeWebRuleWhiteListGeoAreasResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyWebRuleJsPageToCustomResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ModifyWhiteListRuleOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DescribeWhiteListRulesOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'WebWhiteListRule', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+            ],
+        ],
+        'DisableWhiteListRuleOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'EnableWebRuleCCResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EnableWebRuleCCResultShape', ],
+                'error' =>  [ 'shape' => 'EnableWebRuleCCResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EnableWebRuleCCProtectionRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EnableWebRuleCCProtectionRuleResultShape', ],
+                'error' =>  [ 'shape' => 'EnableWebRuleCCProtectionRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateWebRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateWebRulesResultShape', ],
+                'error' =>  [ 'shape' => 'CreateWebRulesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeWebRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'WebRule', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+            ],
+        ],
+        'DescribeWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'WebRule', ],
+            ],
+        ],
+        'DeleteWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
+        'EnableWebRuleJsPageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EnableWebRuleJsPageResultShape', ],
+                'error' =>  [ 'shape' => 'EnableWebRuleJsPageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateBlackListRuleOfWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'webBlackListRuleSpec' =>  [ 'shape' => 'WebBlackListRuleSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
+        'CreateJsPagesOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DisableWhiteListRuleOfWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+                'webWhiteListRuleId' => [ 'type' => 'string', 'locationName' => 'webWhiteListRuleId', ],
+            ],
+        ],
+        'DeleteWhiteListRuleOfWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+                'webWhiteListRuleId' => [ 'type' => 'string', 'locationName' => 'webWhiteListRuleId', ],
+            ],
+        ],
+        'DisableWebRuleCCProtectionRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
+        'EnableWebRuleCCRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
+        'ModifyCertInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyCertInfoResultShape', ],
+                'error' =>  [ 'shape' => 'ModifyCertInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisableWebRuleJsPageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DisableWebRuleJsPageResultShape', ],
+                'error' =>  [ 'shape' => 'DisableWebRuleJsPageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeBlackListRulesOfWebRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBlackListRulesOfWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeBlackListRulesOfWebRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteBlackListRuleOfWebRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteBlackListRuleOfWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'DeleteBlackListRuleOfWebRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EnableWhiteListRuleOfWebRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EnableWhiteListRuleOfWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'EnableWhiteListRuleOfWebRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisableWebRuleCCResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DisableWebRuleCCResultShape', ],
+                'error' =>  [ 'shape' => 'DisableWebRuleCCResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeWebRuleBlackListUsageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeWebRuleBlackListUsageResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeWebRuleBlackListUsageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisableBlackListRuleOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DescribeWebRuleWhiteListGeoAreasRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateJsPagesOfWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jsPagesSpec' =>  [ 'shape' => 'JsPagesSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
+        'DescribeWebRuleWhiteListUsageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeWebRuleWhiteListUsageResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeWebRuleWhiteListUsageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyJsPageOfWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jsPageSpec' =>  [ 'shape' => 'JsPageSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+                'jsPageId' => [ 'type' => 'string', 'locationName' => 'jsPageId', ],
+            ],
+        ],
+        'ModifyBlackListRuleOfWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'webBlackListRuleSpec' =>  [ 'shape' => 'WebBlackListRuleSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+                'webBlackListRuleId' => [ 'type' => 'string', 'locationName' => 'webBlackListRuleId', ],
+            ],
+        ],
+        'DisableCCProtectionRuleOfWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+                'ccProtectionRuleId' => [ 'type' => 'string', 'locationName' => 'ccProtectionRuleId', ],
+            ],
+        ],
+        'ModifyBlackListRuleOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DescribeWhiteListRuleOfWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+                'webWhiteListRuleId' => [ 'type' => 'string', 'locationName' => 'webWhiteListRuleId', ],
+            ],
+        ],
+        'DescribeWebRuleBlackListUsageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'allocatedNum' => [ 'type' => 'integer', 'locationName' => 'allocatedNum', ],
+                'activeNum' => [ 'type' => 'integer', 'locationName' => 'activeNum', ],
+                'surplusAllocateNum' => [ 'type' => 'integer', 'locationName' => 'surplusAllocateNum', ],
+                'maxAllocateNum' => [ 'type' => 'integer', 'locationName' => 'maxAllocateNum', ],
+            ],
+        ],
+        'DeleteWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DeleteWebRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'DeleteWebRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'webRuleSpec' =>  [ 'shape' => 'WebRuleSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeCCProtectionRuleOfWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+                'ccProtectionRuleId' => [ 'type' => 'string', 'locationName' => 'ccProtectionRuleId', ],
+            ],
+        ],
+        'DeleteCCProtectionRuleOfWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+                'ccProtectionRuleId' => [ 'type' => 'string', 'locationName' => 'ccProtectionRuleId', ],
+            ],
+        ],
+        'ModifyCCProtectionConfigOfWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ccProtectionConfigSpec' =>  [ 'shape' => 'CCProtectionConfigSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
+        'ModifyWebRuleJsPageToAllRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
+        'DescribeCCProtectionConfigOfWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
+        'DeleteWhiteListRuleOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DisableWebRuleCCObserverModeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DisableWebRuleCCObserverModeResultShape', ],
+                'error' =>  [ 'shape' => 'DisableWebRuleCCObserverModeResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyCCProtectionConfigOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'EnableWhiteListRuleOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'EnableWebRuleJsPageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
+        'CreateWebRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'webRuleIdIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'failedDomains' => [ 'type' => 'list', 'member' => [ 'shape' => 'FailedDomain', ], ],
+            ],
+        ],
+        'DeleteJsPageOfWebRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteJsPageOfWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'DeleteJsPageOfWebRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeWebRuleWhiteListGeoAreasResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Country', ], ],
+            ],
+        ],
+        'DescribeCCProtectionDefaultConfigOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'CCProtectionDefaultConfig', ],
+            ],
+        ],
+        'DescribeWhiteListRulesOfWebRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeWhiteListRulesOfWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeWhiteListRulesOfWebRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'BindCertResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DeleteWhiteListRuleOfWebRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteWhiteListRuleOfWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'DeleteWhiteListRuleOfWebRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeWebRuleWhiteListUsageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
+        'DescribeCCProtectionRulesOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CCProtectionRule', ], ],
+                'currentCount' => [ 'type' => 'long', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'long', 'locationName' => 'totalPage', ],
+            ],
+        ],
+        'DescribeCCProtectionConfigOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'CCProtectionConfig', ],
+            ],
+        ],
+        'EnableWebRuleBlackListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ModifyWebRuleJsPageToCustomResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyWebRuleJsPageToCustomResultShape', ],
+                'error' =>  [ 'shape' => 'ModifyWebRuleJsPageToCustomResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisableWebRuleWhiteListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
+        'DescribeWebRuleBlackListGeoAreasResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeWebRuleBlackListGeoAreasResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeWebRuleBlackListGeoAreasResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SwitchWebRuleOriginResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ModifyBlackListRuleOfWebRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyBlackListRuleOfWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'ModifyBlackListRuleOfWebRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EnableBlackListRuleOfWebRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EnableBlackListRuleOfWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'EnableBlackListRuleOfWebRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EnableWhiteListRuleOfWebRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+                'webWhiteListRuleId' => [ 'type' => 'string', 'locationName' => 'webWhiteListRuleId', ],
+            ],
+        ],
+        'DisableWebRuleCCProtectionRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DescribeCCProtectionRulesOfWebRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeCCProtectionRulesOfWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeCCProtectionRulesOfWebRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeJsPagesOfWebRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeJsPagesOfWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeJsPagesOfWebRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyCertInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DisableWebRuleBlackListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DisableWebRuleBlackListResultShape', ],
+                'error' =>  [ 'shape' => 'DisableWebRuleBlackListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeWhiteListRuleOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'WebWhiteListRule', ],
+            ],
+        ],
+        'DescribeWebRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeWebRulesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateJsPageOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DeleteCCProtectionRuleOfWebRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteCCProtectionRuleOfWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'DeleteCCProtectionRuleOfWebRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SwitchWebRuleOriginRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
+        'DisableWebRuleBlackListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'CreateJsPagesOfWebRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateJsPagesOfWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'CreateJsPagesOfWebRuleResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -3340,14 +3938,6 @@ return [
                 'webBlackListRuleId' => [ 'type' => 'string', 'locationName' => 'webBlackListRuleId', ],
             ],
         ],
-        'EnableWebRuleBlackListResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'EnableWebRuleBlackListResultShape', ],
-                'error' =>  [ 'shape' => 'EnableWebRuleBlackListResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'EnableWebRuleBlackListRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3356,27 +3946,12 @@ return [
                 'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
             ],
         ],
-        'DescribeCCProtectionDefaultConfigOfWebRuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeCCProtectionDefaultConfigOfWebRuleResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeCCProtectionDefaultConfigOfWebRuleResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DisableCCProtectionRuleOfWebRuleResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DisableCCProtectionRuleOfWebRuleResultShape', ],
                 'error' =>  [ 'shape' => 'DisableCCProtectionRuleOfWebRuleResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'EnableCCProtectionRuleOfWebRuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'EnableBlackListRuleOfWebRuleRequestShape' => [
@@ -3403,30 +3978,6 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
-        'DescribeWebRuleWhiteListUsageResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'allocatedNum' => [ 'type' => 'integer', 'locationName' => 'allocatedNum', ],
-                'activeNum' => [ 'type' => 'integer', 'locationName' => 'activeNum', ],
-                'surplusAllocateNum' => [ 'type' => 'integer', 'locationName' => 'surplusAllocateNum', ],
-                'maxAllocateNum' => [ 'type' => 'integer', 'locationName' => 'maxAllocateNum', ],
-            ],
-        ],
-        'DescribeWebRuleWhiteListGeoAreasResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeWebRuleWhiteListGeoAreasResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeWebRuleWhiteListGeoAreasResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModifyWhiteListRuleOfWebRuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
         'EnableWebRuleCCResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -3442,15 +3993,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeWhiteListRulesOfWebRuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'WebWhiteListRule', ], ],
-                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
-            ],
-        ],
         'CreateWhiteListRuleOfWebRuleResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -3459,13 +4001,6 @@ return [
             ],
         ],
         'DisableCCProtectionRuleOfWebRuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
-        'DisableWhiteListRuleOfWebRuleResultShape' => [
             'type' => 'structure',
             'members' => [
                 'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
@@ -3488,14 +4023,6 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
-        'EnableWebRuleCCResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'EnableWebRuleCCResultShape', ],
-                'error' =>  [ 'shape' => 'EnableWebRuleCCResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeBlackListRulesOfWebRuleRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3511,15 +4038,6 @@ return [
             'members' => [
                 'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
-        'DescribeWebRulesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'WebRule', ], ],
-                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
         'CreateWhiteListRuleOfWebRuleResponseShape' => [
@@ -3546,30 +4064,21 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeWebRuleResultShape' => [
+        'ModifyWebRuleJsPageToAllResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'WebRule', ],
-            ],
-        ],
-        'DeleteWebRuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-            ],
-        ],
-        'CreateBlackListRuleOfWebRuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'webBlackListRuleSpec' =>  [ 'shape' => 'WebBlackListRuleSpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'DeleteBlackListRuleOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'EnableWebRuleCCProtectionRuleResultShape' => [
             'type' => 'structure',
             'members' => [
                 'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
@@ -3595,7 +4104,38 @@ return [
                 'webWhiteListRuleId' => [ 'type' => 'string', 'locationName' => 'webWhiteListRuleId', ],
             ],
         ],
+        'DescribeJsPagesOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'JsPage', ], ],
+                'currentCount' => [ 'type' => 'long', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'long', 'locationName' => 'totalPage', ],
+            ],
+        ],
         'CreateCCProtectionRuleOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'EnableWebRuleCCProtectionRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+            ],
+        ],
+        'ModifyJsPageOfWebRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DeleteJsPageOfWebRuleResultShape' => [
             'type' => 'structure',
             'members' => [
                 'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
@@ -3616,33 +4156,7 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
-        'DisableWhiteListRuleOfWebRuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-                'webWhiteListRuleId' => [ 'type' => 'string', 'locationName' => 'webWhiteListRuleId', ],
-            ],
-        ],
-        'DeleteWhiteListRuleOfWebRuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-                'webWhiteListRuleId' => [ 'type' => 'string', 'locationName' => 'webWhiteListRuleId', ],
-            ],
-        ],
         'DescribeCCProtectionDefaultConfigOfWebRuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
-            ],
-        ],
-        'EnableWebRuleCCRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -3659,19 +4173,11 @@ return [
                 'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
             ],
         ],
-        'ModifyCertInfoResponseShape' => [
+        'CreateJsPageOfWebRuleResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'ModifyCertInfoResultShape', ],
-                'error' =>  [ 'shape' => 'ModifyCertInfoResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeBlackListRulesOfWebRuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeBlackListRulesOfWebRuleResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeBlackListRulesOfWebRuleResultShape', ],
+                'result' =>  [ 'shape' => 'CreateJsPageOfWebRuleResultShape', ],
+                'error' =>  [ 'shape' => 'CreateJsPageOfWebRuleResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -3683,20 +4189,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteBlackListRuleOfWebRuleResponseShape' => [
+        'DeleteJsPageOfWebRuleRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DeleteBlackListRuleOfWebRuleResultShape', ],
-                'error' =>  [ 'shape' => 'DeleteBlackListRuleOfWebRuleResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'EnableWhiteListRuleOfWebRuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'EnableWhiteListRuleOfWebRuleResultShape', ],
-                'error' =>  [ 'shape' => 'EnableWhiteListRuleOfWebRuleResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'webRuleId' => [ 'type' => 'string', 'locationName' => 'webRuleId', ],
+                'jsPageId' => [ 'type' => 'string', 'locationName' => 'jsPageId', ],
             ],
         ],
         'DescribeBlackListRulesOfWebRuleResultShape' => [

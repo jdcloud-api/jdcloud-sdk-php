@@ -142,6 +142,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise deleteVideoStreamsAsync(array $args = [])
  * @method \Jdcloud\Result videoAudit(array $args = [])
  * @method \GuzzleHttp\Promise\Promise videoAuditAsync(array $args = [])
+ * @method \Jdcloud\Result getVideoSourceInfo(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getVideoSourceInfoAsync(array $args = [])
  * @method \Jdcloud\Result listWatermarks(array $args = [])
  * @method \GuzzleHttp\Promise\Promise listWatermarksAsync(array $args = [])
  * @method \Jdcloud\Result createWatermark(array $args = [])
