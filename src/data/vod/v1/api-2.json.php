@@ -560,6 +560,15 @@ return [
             'input' => [ 'shape' => 'VideoAuditRequestShape', ],
             'output' => [ 'shape' => 'VideoAuditResponseShape', ],
         ],
+        'GetVideoSourceInfo' => [
+            'name' => 'GetVideoSourceInfo',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/videos/{videoId}:getSourceInfo',
+            ],
+            'input' => [ 'shape' => 'GetVideoSourceInfoRequestShape', ],
+            'output' => [ 'shape' => 'GetVideoSourceInfoResponseShape', ],
+        ],
         'ListWatermarks' => [
             'name' => 'ListWatermarks',
             'http' => [
@@ -1393,6 +1402,15 @@ return [
             'members' => [
                 'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
                 'videoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'VideoSourceInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'fileUrl' => [ 'type' => 'string', 'locationName' => 'fileUrl', ],
+                'md5' => [ 'type' => 'string', 'locationName' => 'md5', ],
             ],
         ],
         'BatchUpdateVideosBulkItem' => [
@@ -2753,32 +2771,17 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'BatchDeleteVideosResultShape' => [
+        'GetVideoSourceInfoResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'okVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'notFoundVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'failedVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'result' =>  [ 'shape' => 'GetVideoSourceInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'VideoAuditResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetVideoPlayInfoResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'baseInfo' =>  [ 'shape' => 'VideoBaseInfo', ],
-                'playInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'VideoPlayInfo', ], ],
-            ],
-        ],
-        'VideoAuditRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'auditResult' => [ 'type' => 'string', 'locationName' => 'auditResult', ],
-                'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
             ],
         ],
         'GetVideoResponseShape' => [
@@ -2807,6 +2810,87 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
+        'UpdateVideoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateVideoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'BatchDeleteVideosRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'videoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DeleteVideoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetVideoPlayInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
+            ],
+        ],
+        'BatchDeleteVideosResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'BatchDeleteVideosResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListVideosRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
+            ],
+        ],
+        'DeleteVideoStreamsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteVideoStreamsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetVideoSourceInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
+            ],
+        ],
+        'DeleteVideoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'BatchDeleteVideosResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'okVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'notFoundVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'failedVideoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'GetVideoPlayInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'baseInfo' =>  [ 'shape' => 'VideoBaseInfo', ],
+                'playInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'VideoPlayInfo', ], ],
+            ],
+        ],
+        'VideoAuditRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'auditResult' => [ 'type' => 'string', 'locationName' => 'auditResult', ],
+                'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
+            ],
+        ],
         'DeleteVideoStreamsRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2833,13 +2917,6 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
-        'UpdateVideoResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'UpdateVideoResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'BatchUpdateVideosResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2856,12 +2933,6 @@ return [
                 'failedTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
-        'BatchDeleteVideosRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'videoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
         'GetVideoRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2872,25 +2943,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
-            ],
-        ],
-        'DeleteVideoResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetVideoPlayInfoRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
-            ],
-        ],
-        'BatchDeleteVideosResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'BatchDeleteVideosResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'BatchUpdateVideosRequestShape' => [
@@ -2917,15 +2969,6 @@ return [
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
             ],
         ],
-        'ListVideosRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
-            ],
-        ],
         'ListVideosResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -2933,11 +2976,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteVideoStreamsResponseShape' => [
+        'GetVideoSourceInfoResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DeleteVideoStreamsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'baseInfo' =>  [ 'shape' => 'VideoBaseInfo', ],
+                'playInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'VideoPlayInfo', ], ],
             ],
         ],
         'ListVideosResultShape' => [
@@ -2948,11 +2991,6 @@ return [
                 'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
                 'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
                 'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'VideoObject', ], ],
-            ],
-        ],
-        'DeleteVideoResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'CreateWatermarkRequestShape' => [

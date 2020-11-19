@@ -124,13 +124,13 @@ return [
         'RespCreditData' => [
             'type' => 'structure',
             'members' => [
-                'creditId' => [ 'type' => 'string', 'locationName' => 'creditId', ],
+                'signId' => [ 'type' => 'string', 'locationName' => 'signId', ],
             ],
         ],
         'RespQueryCreditListData' => [
             'type' => 'structure',
             'members' => [
-                'creditId' => [ 'type' => 'string', 'locationName' => 'creditId', ],
+                'signId' => [ 'type' => 'string', 'locationName' => 'signId', ],
                 'creditName' => [ 'type' => 'string', 'locationName' => 'creditName', ],
                 'creditDesc' => [ 'type' => 'string', 'locationName' => 'creditDesc', ],
             ],

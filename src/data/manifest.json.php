@@ -169,6 +169,10 @@ return [
         'namespace' => 'Kafka',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'domain' => [
+        'namespace' => 'Domain',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'nativecontainer' => [
         'namespace' => 'Nativecontainer',
         'versions' => [ 'latest' => 'v1', ],

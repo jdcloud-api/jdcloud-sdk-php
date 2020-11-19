@@ -167,7 +167,7 @@ return [
         'DescribeBriefInstances' => [
             'name' => 'DescribeBriefInstances',
             'http' => [
-                'method' => 'POST',
+                'method' => 'GET',
                 'requestUri' => '/v1/regions/{regionId}/instances:describeBriefInstances',
             ],
             'input' => [ 'shape' => 'DescribeBriefInstancesRequestShape', ],
@@ -362,6 +362,15 @@ return [
             'input' => [ 'shape' => 'RebuildInstanceRequestShape', ],
             'output' => [ 'shape' => 'RebuildInstanceResponseShape', ],
         ],
+        'DescribeInstancesCustomData' => [
+            'name' => 'DescribeInstancesCustomData',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instancesCustomData',
+            ],
+            'input' => [ 'shape' => 'DescribeInstancesCustomDataRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInstancesCustomDataResponseShape', ],
+        ],
         'DescribeInstanceTemplates' => [
             'name' => 'DescribeInstanceTemplates',
             'http' => [
@@ -416,6 +425,15 @@ return [
             'input' => [ 'shape' => 'VerifyInstanceTemplateRequestShape', ],
             'output' => [ 'shape' => 'VerifyInstanceTemplateResponseShape', ],
         ],
+        'DescribeInstanceTemplatesCustomdata' => [
+            'name' => 'DescribeInstanceTemplatesCustomdata',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instanceTemplatesCustomData',
+            ],
+            'input' => [ 'shape' => 'DescribeInstanceTemplatesCustomdataRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInstanceTemplatesCustomdataResponseShape', ],
+        ],
         'DescribeInstanceTypes' => [
             'name' => 'DescribeInstanceTypes',
             'http' => [
@@ -461,6 +479,24 @@ return [
             'input' => [ 'shape' => 'DeleteKeypairRequestShape', ],
             'output' => [ 'shape' => 'DeleteKeypairResponseShape', ],
         ],
+        'AttachKeypair' => [
+            'name' => 'AttachKeypair',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/keypairs/{keyName}:attach',
+            ],
+            'input' => [ 'shape' => 'AttachKeypairRequestShape', ],
+            'output' => [ 'shape' => 'AttachKeypairResponseShape', ],
+        ],
+        'DetachKeypair' => [
+            'name' => 'DetachKeypair',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/keypairs/{keyName}:detach',
+            ],
+            'input' => [ 'shape' => 'DetachKeypairRequestShape', ],
+            'output' => [ 'shape' => 'DetachKeypairResponseShape', ],
+        ],
         'DescribeQuotas' => [
             'name' => 'DescribeQuotas',
             'http' => [
@@ -477,6 +513,14 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'LightCloudDiskInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
+                'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
+                'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
             ],
         ],
         'BriefInstanceNetworkInterfaceAttachment' => [
@@ -499,6 +543,7 @@ return [
                 'diskCategory' => [ 'type' => 'string', 'locationName' => 'diskCategory', ],
                 'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
                 'localDisk' =>  [ 'shape' => 'LocalDisk', ],
+                'cloudDisk' =>  [ 'shape' => 'LightCloudDiskInfo', ],
                 'deviceName' => [ 'type' => 'string', 'locationName' => 'deviceName', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
@@ -540,6 +585,28 @@ return [
             'members' => [
                 'destinationImageId' => [ 'type' => 'string', 'locationName' => 'destinationImageId', ],
                 'sourceImageId' => [ 'type' => 'string', 'locationName' => 'sourceImageId', ],
+            ],
+        ],
+        'CustomData' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'metadata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Metadata', ], ],
+                'userdata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Userdata', ], ],
+            ],
+        ],
+        'Userdata' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'Metadata' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'Gpu' => [
@@ -650,19 +717,19 @@ return [
                 'imageInstanceTypeConstraint' =>  [ 'shape' => 'ImageInstanceTypeConstraint', ],
             ],
         ],
+        'SecurityGroupSimple' => [
+            'type' => 'structure',
+            'members' => [
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+            ],
+        ],
         'NetworkInterfacePrivateIp' => [
             'type' => 'structure',
             'members' => [
                 'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
                 'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
-            ],
-        ],
-        'SecurityGroupSimple' => [
-            'type' => 'structure',
-            'members' => [
-                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
-                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
             ],
         ],
         'InstanceNetworkInterface' => [
@@ -691,6 +758,7 @@ return [
             'members' => [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'hostname' => [ 'type' => 'string', 'locationName' => 'hostname', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
@@ -712,6 +780,14 @@ return [
                 'faultDomain' => [ 'type' => 'string', 'locationName' => 'faultDomain', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'chargeOnStopped' => [ 'type' => 'string', 'locationName' => 'chargeOnStopped', ],
+                'policies' => [ 'type' => 'list', 'member' => [ 'shape' => 'Policy', ], ],
+            ],
+        ],
+        'Policy' => [
+            'type' => 'structure',
+            'members' => [
+                'policyId' => [ 'type' => 'string', 'locationName' => 'policyId', ],
+                'policyType' => [ 'type' => 'string', 'locationName' => 'policyType', ],
             ],
         ],
         'ChargeSpec' => [
@@ -800,6 +876,7 @@ return [
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'hostname' => [ 'type' => 'string', 'locationName' => 'hostname', ],
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
                 'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'elasticIp' =>  [ 'shape' => 'ElasticIpSpec', ],
@@ -807,6 +884,7 @@ return [
                 'systemDisk' =>  [ 'shape' => 'InstanceDiskAttachmentSpec', ],
                 'dataDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceDiskAttachmentSpec', ], ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
+                'metadata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Metadata', ], ],
                 'userdata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Userdata', ], ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'noPassword' => [ 'type' => 'boolean', 'locationName' => 'noPassword', ],
@@ -814,6 +892,9 @@ return [
                 'noElasticIp' => [ 'type' => 'boolean', 'locationName' => 'noElasticIp', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'chargeOnStopped' => [ 'type' => 'string', 'locationName' => 'chargeOnStopped', ],
+                'autoImagePolicyId' => [ 'type' => 'string', 'locationName' => 'autoImagePolicyId', ],
+                'passwordAuth' => [ 'type' => 'string', 'locationName' => 'passwordAuth', ],
+                'imageInherit' => [ 'type' => 'string', 'locationName' => 'imageInherit', ],
             ],
         ],
         'ElasticIpSpec' => [
@@ -822,13 +903,6 @@ return [
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
                 'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
-            ],
-        ],
-        'Userdata' => [
-            'type' => 'structure',
-            'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'InstanceStatus' => [
@@ -877,6 +951,9 @@ return [
                 'elasticIp' =>  [ 'shape' => 'InstanceTemplateElasticIp', ],
                 'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'chargeOnStopped' => [ 'type' => 'string', 'locationName' => 'chargeOnStopped', ],
+                'autoImagePolicyId' => [ 'type' => 'string', 'locationName' => 'autoImagePolicyId', ],
+                'passwordAuth' => [ 'type' => 'string', 'locationName' => 'passwordAuth', ],
+                'imageInherit' => [ 'type' => 'string', 'locationName' => 'imageInherit', ],
             ],
         ],
         'InstanceTemplate' => [
@@ -896,6 +973,7 @@ return [
                 'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
                 'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+                'policyId' => [ 'type' => 'string', 'locationName' => 'policyId', ],
                 'encrypt' => [ 'type' => 'boolean', 'locationName' => 'encrypt', ],
                 'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
             ],
@@ -908,12 +986,21 @@ return [
                 'networkInterface' =>  [ 'shape' => 'InstanceTemplateNetworkInterface', ],
             ],
         ],
+        'InstanceTemplateCustomData' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'metadata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Metadata', ], ],
+                'userdata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Userdata', ], ],
+            ],
+        ],
         'InstanceTemplateDiskSpec' => [
             'type' => 'structure',
             'members' => [
                 'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
                 'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+                'policyId' => [ 'type' => 'string', 'locationName' => 'policyId', ],
                 'encrypt' => [ 'type' => 'boolean', 'locationName' => 'encrypt', ],
                 'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
             ],
@@ -959,11 +1046,16 @@ return [
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
                 'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'metadata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Metadata', ], ],
+                'userdata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Userdata', ], ],
                 'elasticIp' =>  [ 'shape' => 'InstanceTemplateElasticIpSpec', ],
                 'primaryNetworkInterface' =>  [ 'shape' => 'InstanceTemplateNetworkInterfaceAttachmentSpec', ],
                 'systemDisk' =>  [ 'shape' => 'InstanceTemplateDiskAttachmentSpec', ],
                 'dataDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceTemplateDiskAttachmentSpec', ], ],
                 'chargeOnStopped' => [ 'type' => 'string', 'locationName' => 'chargeOnStopped', ],
+                'autoImagePolicyId' => [ 'type' => 'string', 'locationName' => 'autoImagePolicyId', ],
+                'passWordAuth' => [ 'type' => 'string', 'locationName' => 'passWordAuth', ],
+                'imageInherit' => [ 'type' => 'string', 'locationName' => 'imageInherit', ],
             ],
         ],
         'InstanceType' => [
@@ -1013,6 +1105,7 @@ return [
                 'dedicatedPoolId' => [ 'type' => 'string', 'locationName' => 'dedicatedPoolId', ],
                 'dedicatedHostId' => [ 'type' => 'string', 'locationName' => 'dedicatedHostId', ],
                 'hostIp' => [ 'type' => 'string', 'locationName' => 'hostIp', ],
+                'rack' => [ 'type' => 'string', 'locationName' => 'rack', ],
             ],
         ],
         'Keypair' => [
@@ -1021,6 +1114,7 @@ return [
                 'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
                 'keyFingerprint' => [ 'type' => 'string', 'locationName' => 'keyFingerprint', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'Quota' => [
@@ -1107,6 +1201,7 @@ return [
         'DeleteImageRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'deleteSnapshot' => [ 'type' => 'boolean', 'locationName' => 'deleteSnapshot', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
             ],
@@ -1360,6 +1455,7 @@ return [
                 'offline' => [ 'type' => 'boolean', 'locationName' => 'offline', ],
                 'platform' => [ 'type' => 'string', 'locationName' => 'platform', ],
                 'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'imageName' => [ 'type' => 'string', 'locationName' => 'imageName', ],
                 'rootDeviceType' => [ 'type' => 'string', 'locationName' => 'rootDeviceType', ],
                 'launchPermission' => [ 'type' => 'string', 'locationName' => 'launchPermission', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
@@ -1394,6 +1490,15 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'CreateInstancesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeInstancesCustomDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DisassociateElasticIpRequestShape' => [
@@ -1565,6 +1670,13 @@ return [
             'members' => [
             ],
         ],
+        'DescribeInstancesCustomDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstancesCustomDataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DisassociateElasticIpResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1667,6 +1779,13 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'DescribeInstancesCustomDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'customData' => [ 'type' => 'list', 'member' => [ 'shape' => 'CustomData', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
         'RebuildInstanceResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1758,6 +1877,9 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'hostname' => [ 'type' => 'string', 'locationName' => 'hostname', ],
+                'metadata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Metadata', ], ],
+                'userdata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Userdata', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -1811,6 +1933,9 @@ return [
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
                 'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'hostname' => [ 'type' => 'string', 'locationName' => 'hostname', ],
+                'metadata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Metadata', ], ],
+                'userdata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Userdata', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -1883,9 +2008,23 @@ return [
                 'instanceTemplateId' => [ 'type' => 'string', 'locationName' => 'instanceTemplateId', ],
             ],
         ],
+        'DescribeInstanceTemplatesCustomdataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'DeleteInstanceTemplateResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeInstanceTemplatesCustomdataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceTemplatesCustomData' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceTemplateCustomData', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
             ],
         ],
         'DescribeInstanceTemplatesRequestShape' => [
@@ -1902,6 +2041,13 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceTemplateId' => [ 'type' => 'string', 'locationName' => 'instanceTemplateId', ],
+            ],
+        ],
+        'DescribeInstanceTemplatesCustomdataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceTemplatesCustomdataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeInstanceTemplatesResultShape' => [
@@ -1999,6 +2145,23 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DetachKeypairRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
+            ],
+        ],
+        'AttachKeypairRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'passWordAuth' => [ 'type' => 'string', 'locationName' => 'passWordAuth', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
+            ],
+        ],
         'CreateKeypairResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -2023,6 +2186,20 @@ return [
                 'keyFingerprint' => [ 'type' => 'string', 'locationName' => 'keyFingerprint', ],
             ],
         ],
+        'AttachKeypairResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AttachKeypairResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AttachKeypairResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'successInstanceId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'failInstanceId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'DescribeKeypairsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2033,6 +2210,13 @@ return [
         'DeleteKeypairResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DetachKeypairResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DetachKeypairResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ImportKeypairResponseShape' => [
@@ -2081,6 +2265,13 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeKeypairsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DetachKeypairResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'successInstanceId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'failInstanceId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeQuotasResponseShape' => [
