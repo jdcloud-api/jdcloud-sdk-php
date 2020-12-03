@@ -389,15 +389,6 @@ return [
             'input' => [ 'shape' => 'RestoreDatabaseFromOSSRequestShape', ],
             'output' => [ 'shape' => 'RestoreDatabaseFromOSSResponseShape', ],
         ],
-        'DescribeDisasterSyncAttribute' => [
-            'name' => 'DescribeDisasterSyncAttribute',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/disasterInstance:describeDisasterSyncAttribute',
-            ],
-            'input' => [ 'shape' => 'DescribeDisasterSyncAttributeRequestShape', ],
-            'output' => [ 'shape' => 'DescribeDisasterSyncAttributeResponseShape', ],
-        ],
         'DescribeErrorLogs' => [
             'name' => 'DescribeErrorLogs',
             'http' => [
@@ -623,24 +614,6 @@ return [
             'input' => [ 'shape' => 'ModifyConnectionModeRequestShape', ],
             'output' => [ 'shape' => 'ModifyConnectionModeResponseShape', ],
         ],
-        'AttachNetwork' => [
-            'name' => 'AttachNetwork',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:attachNetwork',
-            ],
-            'input' => [ 'shape' => 'AttachNetworkRequestShape', ],
-            'output' => [ 'shape' => 'AttachNetworkResponseShape', ],
-        ],
-        'DetachNetwork' => [
-            'name' => 'DetachNetwork',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:detachNetwork',
-            ],
-            'input' => [ 'shape' => 'DetachNetworkRequestShape', ],
-            'output' => [ 'shape' => 'DetachNetworkResponseShape', ],
-        ],
         'DescribeLatestRestoreTime' => [
             'name' => 'DescribeLatestRestoreTime',
             'http' => [
@@ -676,15 +649,6 @@ return [
             ],
             'input' => [ 'shape' => 'ModifyInstanceAzRequestShape', ],
             'output' => [ 'shape' => 'ModifyInstanceAzResponseShape', ],
-        ],
-        'DescribeInstancesInternal' => [
-            'name' => 'DescribeInstancesInternal',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/instances:describeInstancesInternal',
-            ],
-            'input' => [ 'shape' => 'DescribeInstancesInternalRequestShape', ],
-            'output' => [ 'shape' => 'DescribeInstancesInternalResponseShape', ],
         ],
         'DescribeSSL' => [
             'name' => 'DescribeSSL',
@@ -730,15 +694,6 @@ return [
             ],
             'input' => [ 'shape' => 'ModifyActiveDirectoryRequestShape', ],
             'output' => [ 'shape' => 'ModifyActiveDirectoryResponseShape', ],
-        ],
-        'ChangeToMaster' => [
-            'name' => 'ChangeToMaster',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:changeToMaster',
-            ],
-            'input' => [ 'shape' => 'ChangeToMasterRequestShape', ],
-            'output' => [ 'shape' => 'ChangeToMasterResponseShape', ],
         ],
         'EnableIntercept' => [
             'name' => 'EnableIntercept',
@@ -1126,6 +1081,7 @@ return [
                 'backupEndTime' => [ 'type' => 'string', 'locationName' => 'backupEndTime', ],
                 'backupType' => [ 'type' => 'string', 'locationName' => 'backupType', ],
                 'backupMode' => [ 'type' => 'string', 'locationName' => 'backupMode', ],
+                'backupMethod' => [ 'type' => 'string', 'locationName' => 'backupMethod', ],
                 'backupUnit' => [ 'type' => 'string', 'locationName' => 'backupUnit', ],
                 'backupFiles' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'backupSizeByte' => [ 'type' => 'long', 'locationName' => 'backupSizeByte', ],
@@ -2475,25 +2431,6 @@ return [
             'members' => [
             ],
         ],
-        'DescribeDisasterSyncAttributeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'syncTaskIdStatus' => [ 'type' => 'string', 'locationName' => 'syncTaskIdStatus', ],
-            ],
-        ],
-        'DescribeDisasterSyncAttributeRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DescribeDisasterSyncAttributeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeDisasterSyncAttributeResultShape', ],
-            ],
-        ],
         'DescribeErrorLogsRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2596,11 +2533,6 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'ChangeToMasterResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DeleteInstanceRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2633,19 +2565,7 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'DetachNetworkRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
         'RestoreInstanceByTimeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DetachNetworkResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -2661,13 +2581,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeInstanceAttributesResultShape', ],
-            ],
-        ],
-        'ChangeToMasterRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'CreateInstanceFromBackupResultShape' => [
@@ -2760,11 +2673,6 @@ return [
                 'restoreSchema' => [ 'type' => 'list', 'member' => [ 'shape' => 'Schema', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'ChangeToMasterResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'DeleteInstanceResultShape' => [
@@ -2928,11 +2836,6 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'AttachNetworkResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DescribeBackupChargeRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2946,11 +2849,6 @@ return [
             ],
         ],
         'DisableInternetAccessResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DetachNetworkResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -2989,13 +2887,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeBackupSpaceResultShape', ],
-            ],
-        ],
-        'AttachNetworkRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'DescribeInstancesResultShape' => [
@@ -3049,12 +2940,6 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'DescribeInstancesInternalResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeInstancesInternalResultShape', ],
-            ],
-        ],
         'ModifyActiveDirectoryResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3098,13 +2983,6 @@ return [
                 'connectionMode' => [ 'type' => 'string', 'locationName' => 'connectionMode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DescribeInstancesInternalResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dbInstances' => [ 'type' => 'list', 'member' => [ 'shape' => 'DBInstanceInternal', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
         'DescribeBackupSpaceResultShape' => [
@@ -3195,23 +3073,9 @@ return [
                 'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
             ],
         ],
-        'AttachNetworkResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DisableInternetAccessResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'DescribeInstancesInternalRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'ModifyInstanceAzResultShape' => [
@@ -3787,6 +3651,7 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -3812,6 +3677,7 @@ return [
                 'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],

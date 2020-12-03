@@ -23,7 +23,7 @@ return [
         'GetSoftwareInfo' => [
             'name' => 'GetSoftwareInfo',
             'http' => [
-                'method' => 'POST',
+                'method' => 'GET',
                 'requestUri' => '/v1/regions/{regionId}/softwareInfo',
             ],
             'input' => [ 'shape' => 'GetSoftwareInfoRequestShape', ],
@@ -37,6 +37,15 @@ return [
             ],
             'input' => [ 'shape' => 'GetJmrVersionListRequestShape', ],
             'output' => [ 'shape' => 'GetJmrVersionListResponseShape', ],
+        ],
+        'MonitorLabelList' => [
+            'name' => 'MonitorLabelList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/monitorLabelList/{clusterId}',
+            ],
+            'input' => [ 'shape' => 'MonitorLabelListRequestShape', ],
+            'output' => [ 'shape' => 'MonitorLabelListResponseShape', ],
         ],
         'DescribeCluster' => [
             'name' => 'DescribeCluster',
@@ -73,6 +82,15 @@ return [
             ],
             'input' => [ 'shape' => 'ClusterExpansionRequestShape', ],
             'output' => [ 'shape' => 'ClusterExpansionResponseShape', ],
+        ],
+        'ClusterReduction' => [
+            'name' => 'ClusterReduction',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/cluster:reduction',
+            ],
+            'input' => [ 'shape' => 'ClusterReductionRequestShape', ],
+            'output' => [ 'shape' => 'ClusterReductionResponseShape', ],
         ],
         'CreateCluster' => [
             'name' => 'CreateCluster',
@@ -167,6 +185,14 @@ return [
                 'clusterNodeDiskSize' => [ 'type' => 'integer', 'locationName' => 'clusterNodeDiskSize', ],
             ],
         ],
+        'ClusterReduction' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'reserveNum' => [ 'type' => 'string', 'locationName' => 'reserveNum', ],
+                'nodeType' => [ 'type' => 'string', 'locationName' => 'nodeType', ],
+            ],
+        ],
         'ClusterSpec' => [
             'type' => 'structure',
             'members' => [
@@ -200,6 +226,38 @@ return [
                 'createOuterIpFlag' => [ 'type' => 'boolean', 'locationName' => 'createOuterIpFlag', ],
                 'createSecurityGroupFlag' => [ 'type' => 'boolean', 'locationName' => 'createSecurityGroupFlag', ],
                 'securityGroupId' => [ 'type' => 'string', 'locationName' => 'securityGroupId', ],
+            ],
+        ],
+        'MonitorLabelDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'nodes' => [ 'type' => 'list', 'member' => [ 'shape' => 'MonitorLabelNodeDetail', ], ],
+            ],
+        ],
+        'MonitorLabelNodeDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'MonitorLabelListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'MonitorLabelListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ClusterReductionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
             ],
         ],
         'DescribeClustersResultShape' => [
@@ -246,6 +304,13 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
+        'ClusterReductionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ClusterReductionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'IdataClusterResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -253,11 +318,26 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'MonitorLabelListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
         'DescribeClusterResultShape' => [
             'type' => 'structure',
             'members' => [
                 'cluster' =>  [ 'shape' => 'Cluster', ],
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+            ],
+        ],
+        'ClusterReductionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterReduction' =>  [ 'shape' => 'ClusterReduction', ],
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'GetJmrVersionListRequestShape' => [
@@ -317,7 +397,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
         'ClusterExpansionRequestShape' => [
@@ -370,11 +449,18 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'MonitorLabelListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'MonitorLabelDetail', ], ],
+                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
+            ],
+        ],
         'GetSoftwareInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'ver' => [ 'type' => 'string', 'locationName' => 'ver', ],
             ],
         ],
     ],

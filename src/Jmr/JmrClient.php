@@ -26,6 +26,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise getSoftwareInfoAsync(array $args = [])
  * @method \Jdcloud\Result getJmrVersionList(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getJmrVersionListAsync(array $args = [])
+ * @method \Jdcloud\Result monitorLabelList(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise monitorLabelListAsync(array $args = [])
  * @method \Jdcloud\Result describeCluster(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeClusterAsync(array $args = [])
  * @method \Jdcloud\Result describeClusters(array $args = [])
@@ -34,6 +36,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise releaseClusterAsync(array $args = [])
  * @method \Jdcloud\Result clusterExpansion(array $args = [])
  * @method \GuzzleHttp\Promise\Promise clusterExpansionAsync(array $args = [])
+ * @method \Jdcloud\Result clusterReduction(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise clusterReductionAsync(array $args = [])
  * @method \Jdcloud\Result createCluster(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createClusterAsync(array $args = [])
  */
