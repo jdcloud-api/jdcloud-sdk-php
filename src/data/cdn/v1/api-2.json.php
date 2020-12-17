@@ -101,6 +101,15 @@ return [
             'input' => [ 'shape' => 'QueryAreaIspListRequestShape', ],
             'output' => [ 'shape' => 'QueryAreaIspListResponseShape', ],
         ],
+        'QueryAreaIspListV2' => [
+            'name' => 'QueryAreaIspListV2',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/console:areaIspListV2',
+            ],
+            'input' => [ 'shape' => 'QueryAreaIspListV2RequestShape', ],
+            'output' => [ 'shape' => 'QueryAreaIspListV2ResponseShape', ],
+        ],
         'QueryForbiddenInfoList' => [
             'name' => 'QueryForbiddenInfoList',
             'http' => [
@@ -1307,6 +1316,15 @@ return [
             'input' => [ 'shape' => 'QueryDirStatsDataRequestShape', ],
             'output' => [ 'shape' => 'QueryDirStatsDataResponseShape', ],
         ],
+        'QueryCustomizedDirBandWidth' => [
+            'name' => 'QueryCustomizedDirBandWidth',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/statistics:queryCustomizedDirBandWidth',
+            ],
+            'input' => [ 'shape' => 'QueryCustomizedDirBandWidthRequestShape', ],
+            'output' => [ 'shape' => 'QueryCustomizedDirBandWidthResponseShape', ],
+        ],
         'QueryAvgBandwidthForPCdn' => [
             'name' => 'QueryAvgBandwidthForPCdn',
             'http' => [
@@ -1333,6 +1351,15 @@ return [
             ],
             'input' => [ 'shape' => 'QueryJDBoxStatisticsDataRequestShape', ],
             'output' => [ 'shape' => 'QueryJDBoxStatisticsDataResponseShape', ],
+        ],
+        'QueryJBoxAvgBandwidth' => [
+            'name' => 'QueryJBoxAvgBandwidth',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/jdbox:queryAvgBandwidth',
+            ],
+            'input' => [ 'shape' => 'QueryJBoxAvgBandwidthRequestShape', ],
+            'output' => [ 'shape' => 'QueryJBoxAvgBandwidthResponseShape', ],
         ],
         'QueryWafSwitch' => [
             'name' => 'QueryWafSwitch',
@@ -2667,6 +2694,15 @@ return [
                 'regions' => [ 'type' => 'list', 'member' => [ 'shape' => 'DirRegionData', ], ],
             ],
         ],
+        'FlowItem' => [
+            'type' => 'structure',
+            'members' => [
+                'time' => [ 'type' => 'string', 'locationName' => 'time', ],
+                'flow' => [ 'type' => 'double', 'locationName' => 'flow', ],
+                'dir' => [ 'type' => 'string', 'locationName' => 'dir', ],
+                'pv' => [ 'type' => 'long', 'locationName' => 'pv', ],
+            ],
+        ],
         'StatisticsWithAreaGroupDetail' => [
             'type' => 'structure',
             'members' => [
@@ -3069,6 +3105,13 @@ return [
                 'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
             ],
         ],
+        'QueryAreaIspListV2ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryAreaIspListV2ResultShape', ],
+            ],
+        ],
         'QueryAreaIspListRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3079,6 +3122,26 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'QueryAreaIspListResultShape', ],
+            ],
+        ],
+        'QueryAreaIspListV2ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'mainLand' => [ 'type' => 'list', 'member' => [ 'shape' => 'AreaIspItem', ], ],
+                'overseas' => [ 'type' => 'list', 'member' => [ 'shape' => 'AreaIspItem', ], ],
+                'isp' => [ 'type' => 'list', 'member' => [ 'shape' => 'AreaIspItem', ], ],
+                'africa' => [ 'type' => 'list', 'member' => [ 'shape' => 'AreaIspItem', ], ],
+                'oceania' => [ 'type' => 'list', 'member' => [ 'shape' => 'AreaIspItem', ], ],
+                'southAmerica' => [ 'type' => 'list', 'member' => [ 'shape' => 'AreaIspItem', ], ],
+                'northAmerica' => [ 'type' => 'list', 'member' => [ 'shape' => 'AreaIspItem', ], ],
+                'asia' => [ 'type' => 'list', 'member' => [ 'shape' => 'AreaIspItem', ], ],
+                'europe' => [ 'type' => 'list', 'member' => [ 'shape' => 'AreaIspItem', ], ],
+                'midEast' => [ 'type' => 'list', 'member' => [ 'shape' => 'AreaIspItem', ], ],
+            ],
+        ],
+        'QueryAreaIspListV2RequestShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'QueryAreaIspListResultShape' => [
@@ -5427,6 +5490,8 @@ return [
                 'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'accountType' => [ 'type' => 'string', 'locationName' => 'accountType', ],
+                'subUsers' => [ 'type' => 'string', 'locationName' => 'subUsers', ],
             ],
         ],
         'QueryRefreshTaskResultShape' => [
@@ -5936,6 +6001,15 @@ return [
                 'result' =>  [ 'shape' => 'QueryMixStatisticsDataResultShape', ],
             ],
         ],
+        'QueryCustomizedDirBandWidthRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'dir' => [ 'type' => 'string', 'locationName' => 'dir', ],
+            ],
+        ],
         'QueryMixTrafficGroupSumRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -6031,6 +6105,13 @@ return [
                 'cacheLevel' => [ 'type' => 'string', 'locationName' => 'cacheLevel', ],
             ],
         ],
+        'QueryCustomizedDirBandWidthResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'FlowItem', ], ],
+            ],
+        ],
         'QueryMixStatisticsDataRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -6081,6 +6162,13 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'statistics' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsWithAreaGroupDetail', ], ],
+            ],
+        ],
+        'QueryCustomizedDirBandWidthResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryCustomizedDirBandWidthResultShape', ],
             ],
         ],
         'QueryLiveStatisticsAreaDataGroupByRequestShape' => [
@@ -6200,6 +6288,17 @@ return [
                 'statistics' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsDataItem', ], ],
             ],
         ],
+        'QueryJBoxAvgBandwidthRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'starttime' => [ 'type' => 'string', 'locationName' => 'starttime', ],
+                'stoptime' => [ 'type' => 'string', 'locationName' => 'stoptime', ],
+                'pluginPin' => [ 'type' => 'string', 'locationName' => 'pluginPin', ],
+                'clientid' => [ 'type' => 'string', 'locationName' => 'clientid', ],
+                'page' => [ 'type' => 'integer', 'locationName' => 'page', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+            ],
+        ],
         'QueryJDBoxStatisticsDataRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -6243,6 +6342,20 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'QueryDeviceStatusForPCdnResultShape', ],
+            ],
+        ],
+        'QueryJBoxAvgBandwidthResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'page' =>  [ 'shape' => 'Page', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'QueryAvgBandwidthGroup', ], ],
+            ],
+        ],
+        'QueryJBoxAvgBandwidthResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryJBoxAvgBandwidthResultShape', ],
             ],
         ],
         'QueryAvgBandwidthForPCdnResponseShape' => [
