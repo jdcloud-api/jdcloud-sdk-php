@@ -61,6 +61,10 @@ return [
         'namespace' => 'Sop',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'captcha' => [
+        'namespace' => 'Captcha',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'function' => [
         'namespace' => 'Function',
         'versions' => [ 'latest' => 'v1', ],
