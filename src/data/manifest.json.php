@@ -329,6 +329,10 @@ return [
         'namespace' => 'Partner',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'openjrtc' => [
+        'namespace' => 'Openjrtc',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'lb' => [
         'namespace' => 'Lb',
         'versions' => [ 'latest' => 'v1', ],

@@ -607,6 +607,7 @@ return [
                 'sanityCheck' => [ 'type' => 'boolean', 'locationName' => 'sanityCheck', ],
                 'primaryIp' =>  [ 'shape' => 'NetworkInterfacePrivateIp', ],
                 'secondaryIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterfacePrivateIp', ], ],
+                'ipv6Addresses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'NetworkInterfacePrivateIp' => [
@@ -805,6 +806,7 @@ return [
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
                 'elasticIp' =>  [ 'shape' => 'ElasticIpSpec', ],
                 'primaryNetworkInterface' =>  [ 'shape' => 'NetworkInterfaceAttachmentSpec', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
         ],
         'VolumeSpec' => [
@@ -991,6 +993,14 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'DescribeInstanceTypesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1011,14 +1021,6 @@ return [
             'members' => [
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'Filter' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribePodRequestShape' => [
