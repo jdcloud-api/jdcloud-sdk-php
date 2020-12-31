@@ -85,6 +85,27 @@ return [
                 'detailList' => [ 'type' => 'list', 'member' => [ 'shape' => 'MtSms', ], ],
             ],
         ],
+        'RespQuerySignListData' => [
+            'type' => 'structure',
+            'members' => [
+                'signId' => [ 'type' => 'string', 'locationName' => 'signId', ],
+                'signName' => [ 'type' => 'string', 'locationName' => 'signName', ],
+                'signStatus' => [ 'type' => 'string', 'locationName' => 'signStatus', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'RespQueryTemplateListData' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+                'templateDescription' => [ 'type' => 'string', 'locationName' => 'templateDescription', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
+                'templateStatus' => [ 'type' => 'string', 'locationName' => 'templateStatus', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
         'SendBatchSms' => [
             'type' => 'structure',
             'members' => [
@@ -194,6 +215,34 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'StatusReportResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ContentRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'fileType' => [ 'type' => 'string', 'locationName' => 'fileType', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+            ],
+        ],
+        'RespSignPageResult' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'long', 'locationName' => 'count', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageCount' => [ 'type' => 'integer', 'locationName' => 'pageCount', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'RespQuerySignListData', ], ],
+            ],
+        ],
+        'RespTemplatePageResult' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'long', 'locationName' => 'count', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageCount' => [ 'type' => 'integer', 'locationName' => 'pageCount', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'RespQueryTemplateListData', ], ],
             ],
         ],
     ],

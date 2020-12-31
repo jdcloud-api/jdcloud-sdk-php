@@ -61,6 +61,10 @@ return [
         'namespace' => 'Sop',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'captcha' => [
+        'namespace' => 'Captcha',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'function' => [
         'namespace' => 'Function',
         'versions' => [ 'latest' => 'v1', ],
@@ -323,6 +327,10 @@ return [
     ],
     'partner' => [
         'namespace' => 'Partner',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'openjrtc' => [
+        'namespace' => 'Openjrtc',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'lb' => [

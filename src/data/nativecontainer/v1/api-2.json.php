@@ -426,6 +426,7 @@ return [
                 'logConfiguration' =>  [ 'shape' => 'LogConfiguration', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
         ],
         'DiskSpec' => [
