@@ -20,8 +20,22 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with openjrtc.
  *
+ * @method \Jdcloud\Result describeApps(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeAppsAsync(array $args = [])
+ * @method \Jdcloud\Result describeApp(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeAppAsync(array $args = [])
+ * @method \Jdcloud\Result describeAppKey(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeAppKeyAsync(array $args = [])
  * @method \Jdcloud\Result createRoom(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createRoomAsync(array $args = [])
+ * @method \Jdcloud\Result describeRoomInfo(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeRoomInfoAsync(array $args = [])
+ * @method \Jdcloud\Result updateRoom(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise updateRoomAsync(array $args = [])
+ * @method \Jdcloud\Result deleteRoom(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteRoomAsync(array $args = [])
+ * @method \Jdcloud\Result describeRooms(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeRoomsAsync(array $args = [])
  * @method \Jdcloud\Result describeRoomOnlineUserNum(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeRoomOnlineUserNumAsync(array $args = [])
  * @method \Jdcloud\Result createUser(array $args = [])

@@ -11,6 +11,33 @@ return [
 //        'serviceId' => 'yunding',
     ],
     'operations' => [
+        'DescribeTasks' => [
+            'name' => 'DescribeTasks',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/agentTasks/{instanceId}',
+            ],
+            'input' => [ 'shape' => 'DescribeTasksRequestShape', ],
+            'output' => [ 'shape' => 'DescribeTasksResponseShape', ],
+        ],
+        'Put' => [
+            'name' => 'Put',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/put',
+            ],
+            'input' => [ 'shape' => 'PutRequestShape', ],
+            'output' => [ 'shape' => 'PutResponseShape', ],
+        ],
+        'PutProductMetricData' => [
+            'name' => 'PutProductMetricData',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/put',
+            ],
+            'input' => [ 'shape' => 'PutProductMetricDataRequestShape', ],
+            'output' => [ 'shape' => 'PutProductMetricDataResponseShape', ],
+        ],
         'AssignSecondaryIps' => [
             'name' => 'AssignSecondaryIps',
             'http' => [
@@ -28,6 +55,15 @@ return [
             ],
             'input' => [ 'shape' => 'UnassignSecondaryIpsRequestShape', ],
             'output' => [ 'shape' => 'UnassignSecondaryIpsResponseShape', ],
+        ],
+        'DescribeNetworkInterface' => [
+            'name' => 'DescribeNetworkInterface',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/ydNetworkInterfaces/{networkInterfaceId}',
+            ],
+            'input' => [ 'shape' => 'DescribeNetworkInterfaceRequestShape', ],
+            'output' => [ 'shape' => 'DescribeNetworkInterfaceResponseShape', ],
         ],
         'DescribeRdsInstances' => [
             'name' => 'DescribeRdsInstances',
@@ -110,6 +146,15 @@ return [
             'input' => [ 'shape' => 'GrantRdsPrivilegeRequestShape', ],
             'output' => [ 'shape' => 'GrantRdsPrivilegeResponseShape', ],
         ],
+        'RevokePrivilege' => [
+            'name' => 'RevokePrivilege',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/ydRdsInstances/{instanceId}/accounts/{accountName}:revokePrivilege',
+            ],
+            'input' => [ 'shape' => 'RevokePrivilegeRequestShape', ],
+            'output' => [ 'shape' => 'RevokePrivilegeResponseShape', ],
+        ],
         'DescribeRdsDatabases' => [
             'name' => 'DescribeRdsDatabases',
             'http' => [
@@ -148,6 +193,18 @@ return [
         ],
     ],
     'shapes' => [
+        'Application' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'typeId' => [ 'type' => 'integer', 'locationName' => 'typeId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'jdcloudPin' => [ 'type' => 'string', 'locationName' => 'jdcloudPin', ],
+            ],
+        ],
         'Cluster' => [
             'type' => 'structure',
             'members' => [
@@ -275,6 +332,14 @@ return [
                 'instanceStatus' => [ 'type' => 'string', 'locationName' => 'instanceStatus', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'sourceInstanceId' => [ 'type' => 'string', 'locationName' => 'sourceInstanceId', ],
+            ],
+        ],
+        'UrlApp' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'jdcloudPin' => [ 'type' => 'string', 'locationName' => 'jdcloudPin', ],
             ],
         ],
         'VmImageOverview' => [
@@ -447,6 +512,42 @@ return [
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
             ],
         ],
+        'YdUser' => [
+            'type' => 'structure',
+            'members' => [
+                'ydPin' => [ 'type' => 'string', 'locationName' => 'ydPin', ],
+                'jdcloudPin' => [ 'type' => 'string', 'locationName' => 'jdcloudPin', ],
+            ],
+        ],
+        'DescribeTasksResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TasksInfo', ], ],
+            ],
+        ],
+        'DescribeTasksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeTasksResultShape', ],
+            ],
+        ],
+        'TasksInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'confType' => [ 'type' => 'string', 'locationName' => 'confType', ],
+                'confUID' => [ 'type' => 'string', 'locationName' => 'confUID', ],
+                'content' => [ 'type' => 'object', 'locationName' => 'content', ],
+                'interval' => [ 'type' => 'long', 'locationName' => 'interval', ],
+                'meta' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+            ],
+        ],
+        'DescribeTasksRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'LastDownsampleRespItem' => [
             'type' => 'structure',
             'members' => [
@@ -457,21 +558,80 @@ return [
                 'value' => [ 'type' => 'object', 'locationName' => 'value', ],
             ],
         ],
+        'PutProductMetricDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'PutProductMetricDataResultShape', ],
+            ],
+        ],
+        'PutBody' => [
+            'type' => 'structure',
+            'members' => [
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'dataPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataPointX', ], ],
+            ],
+        ],
+        'DataPointX' => [
+            'type' => 'structure',
+            'members' => [
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'tags' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'timestamp' => [ 'type' => 'long', 'locationName' => 'timestamp', ],
+                'value' => [ 'type' => 'object', 'locationName' => 'value', ],
+            ],
+        ],
+        'PutResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'failed' => [ 'type' => 'integer', 'locationName' => 'failed', ],
+                'success' => [ 'type' => 'integer', 'locationName' => 'success', ],
+            ],
+        ],
+        'PutRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'dataPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataPointX', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'PutProductMetricDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'dataPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataPointX', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'PutResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'PutResultShape', ],
+            ],
+        ],
+        'PutProductMetricDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'failed' => [ 'type' => 'integer', 'locationName' => 'failed', ],
+                'success' => [ 'type' => 'integer', 'locationName' => 'success', ],
+            ],
+        ],
         'TagFilter' => [
             'type' => 'structure',
             'members' => [
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'AssignSecondaryIpsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
-                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'secondaryIpCount' => [ 'type' => 'double', 'locationName' => 'secondaryIpCount', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
             ],
         ],
         'UnassignSecondaryIpsRequestShape' => [
@@ -488,16 +648,40 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeNetworkInterfaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterface' =>  [ 'shape' => 'NetworkInterface', ],
+            ],
+        ],
+        'NetworkInterface' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterfaceName' => [ 'type' => 'string', 'locationName' => 'networkInterfaceName', ],
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'role' => [ 'type' => 'string', 'locationName' => 'role', ],
+                'macAddress' => [ 'type' => 'string', 'locationName' => 'macAddress', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'networkSecurityGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
+                'primaryIp' =>  [ 'shape' => 'NetworkInterfacePrivateIp', ],
+                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterfacePrivateIp', ], ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceOwnerId' => [ 'type' => 'string', 'locationName' => 'instanceOwnerId', ],
+                'deviceIndex' => [ 'type' => 'integer', 'locationName' => 'deviceIndex', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'attachmentStatus' => [ 'type' => 'string', 'locationName' => 'attachmentStatus', ],
+                'networkInterfaceStatus' => [ 'type' => 'string', 'locationName' => 'networkInterfaceStatus', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+            ],
+        ],
         'UnassignSecondaryIpsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UnassignSecondaryIpsSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'AssignSecondaryIpsResultShape' => [
@@ -516,6 +700,36 @@ return [
         'UnassignSecondaryIpsResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'AssignSecondaryIpsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
+                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'secondaryIpCount' => [ 'type' => 'double', 'locationName' => 'secondaryIpCount', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+            ],
+        ],
+        'UnassignSecondaryIpsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeNetworkInterfaceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+            ],
+        ],
+        'DescribeNetworkInterfaceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeNetworkInterfaceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'SecurityGroupRule' => [
@@ -702,6 +916,15 @@ return [
             'members' => [
             ],
         ],
+        'RevokePrivilegeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dbNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+            ],
+        ],
         'DescribeRdsInstancesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -747,6 +970,11 @@ return [
             ],
         ],
         'DeleteRdsDatabaseResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'RevokePrivilegeResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -820,6 +1048,11 @@ return [
             ],
         ],
         'CreateRdsAccountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'RevokePrivilegeResultShape' => [
             'type' => 'structure',
             'members' => [
             ],

@@ -20,6 +20,15 @@ return [
             'input' => [ 'shape' => 'DescribeDDoSAttackLogsRequestShape', ],
             'output' => [ 'shape' => 'DescribeDDoSAttackLogsResponseShape', ],
         ],
+        'DescribeDDoSIpAttackLogs' => [
+            'name' => 'DescribeDDoSIpAttackLogs',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/attacklog:describeDDoSIpAttackLogs',
+            ],
+            'input' => [ 'shape' => 'DescribeDDoSIpAttackLogsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeDDoSIpAttackLogsResponseShape', ],
+        ],
         'DescribeCCAttackLogs' => [
             'name' => 'DescribeCCAttackLogs',
             'http' => [
@@ -74,6 +83,15 @@ return [
             'input' => [ 'shape' => 'DescribeFwdGraphRequestShape', ],
             'output' => [ 'shape' => 'DescribeFwdGraphResponseShape', ],
         ],
+        'DescribeBusinessGraph' => [
+            'name' => 'DescribeBusinessGraph',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/charts:businessGraph',
+            ],
+            'input' => [ 'shape' => 'DescribeBusinessGraphRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBusinessGraphResponseShape', ],
+        ],
         'DescribeCCGraph' => [
             'name' => 'DescribeCCGraph',
             'http' => [
@@ -82,6 +100,15 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeCCGraphRequestShape', ],
             'output' => [ 'shape' => 'DescribeCCGraphResponseShape', ],
+        ],
+        'DescribeConnStatGraph' => [
+            'name' => 'DescribeConnStatGraph',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/charts:connStatGraph',
+            ],
+            'input' => [ 'shape' => 'DescribeConnStatGraphRequestShape', ],
+            'output' => [ 'shape' => 'DescribeConnStatGraphResponseShape', ],
         ],
         'DescribeForwardRules' => [
             'name' => 'DescribeForwardRules',
@@ -254,6 +281,105 @@ return [
             'input' => [ 'shape' => 'DisableWhiteListRuleOfForwardRuleRequestShape', ],
             'output' => [ 'shape' => 'DisableWhiteListRuleOfForwardRuleResponseShape', ],
         ],
+        'DescribeInstanceAcl' => [
+            'name' => 'DescribeInstanceAcl',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:describeInstanceAcl',
+            ],
+            'input' => [ 'shape' => 'DescribeInstanceAclRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInstanceAclResponseShape', ],
+        ],
+        'ModifyInstanceAcl' => [
+            'name' => 'ModifyInstanceAcl',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:modifyInstanceAcl',
+            ],
+            'input' => [ 'shape' => 'ModifyInstanceAclRequestShape', ],
+            'output' => [ 'shape' => 'ModifyInstanceAclResponseShape', ],
+        ],
+        'RecoverInstanceAcl' => [
+            'name' => 'RecoverInstanceAcl',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:recoverInstanceAcl',
+            ],
+            'input' => [ 'shape' => 'RecoverInstanceAclRequestShape', ],
+            'output' => [ 'shape' => 'RecoverInstanceAclResponseShape', ],
+        ],
+        'DescribeCustomPages' => [
+            'name' => 'DescribeCustomPages',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/customPages',
+            ],
+            'input' => [ 'shape' => 'DescribeCustomPagesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeCustomPagesResponseShape', ],
+        ],
+        'CreateCustomPage' => [
+            'name' => 'CreateCustomPage',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/customPages',
+            ],
+            'input' => [ 'shape' => 'CreateCustomPageRequestShape', ],
+            'output' => [ 'shape' => 'CreateCustomPageResponseShape', ],
+        ],
+        'ModifyCustomPage' => [
+            'name' => 'ModifyCustomPage',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/customPages/{pageId}',
+            ],
+            'input' => [ 'shape' => 'ModifyCustomPageRequestShape', ],
+            'output' => [ 'shape' => 'ModifyCustomPageResponseShape', ],
+        ],
+        'DeleteCustomPage' => [
+            'name' => 'DeleteCustomPage',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/customPages/{pageId}',
+            ],
+            'input' => [ 'shape' => 'DeleteCustomPageRequestShape', ],
+            'output' => [ 'shape' => 'DeleteCustomPageResponseShape', ],
+        ],
+        'ModifyInstanceCustomPage' => [
+            'name' => 'ModifyInstanceCustomPage',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/customPages/{pageId}:modifyInstanceCustomPage',
+            ],
+            'input' => [ 'shape' => 'ModifyInstanceCustomPageRequestShape', ],
+            'output' => [ 'shape' => 'ModifyInstanceCustomPageResponseShape', ],
+        ],
+        'ModifyInstanceCustomPageDefault' => [
+            'name' => 'ModifyInstanceCustomPageDefault',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:modifyInstanceCustomPageDefault',
+            ],
+            'input' => [ 'shape' => 'ModifyInstanceCustomPageDefaultRequestShape', ],
+            'output' => [ 'shape' => 'ModifyInstanceCustomPageDefaultResponseShape', ],
+        ],
+        'EnableInstanceCustomPage' => [
+            'name' => 'EnableInstanceCustomPage',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:enableInstanceCustomPage',
+            ],
+            'input' => [ 'shape' => 'EnableInstanceCustomPageRequestShape', ],
+            'output' => [ 'shape' => 'EnableInstanceCustomPageResponseShape', ],
+        ],
+        'DisableInstanceCustomPage' => [
+            'name' => 'DisableInstanceCustomPage',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:disableInstanceCustomPage',
+            ],
+            'input' => [ 'shape' => 'DisableInstanceCustomPageRequestShape', ],
+            'output' => [ 'shape' => 'DisableInstanceCustomPageResponseShape', ],
+        ],
         'DescribeInstances' => [
             'name' => 'DescribeInstances',
             'http' => [
@@ -370,6 +496,15 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeCpsIpListRequestShape', ],
             'output' => [ 'shape' => 'DescribeCpsIpListResponseShape', ],
+        ],
+        'DescribeCcsIpList' => [
+            'name' => 'DescribeCcsIpList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/ccsIpResources',
+            ],
+            'input' => [ 'shape' => 'DescribeCcsIpListRequestShape', ],
+            'output' => [ 'shape' => 'DescribeCcsIpListResponseShape', ],
         ],
         'DescribeIpSets' => [
             'name' => 'DescribeIpSets',
@@ -1200,6 +1335,19 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
+        'DDoSIpAttackLog' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceIp' => [ 'type' => 'string', 'locationName' => 'serviceIp', ],
+                'attackTraffic' => [ 'type' => 'double', 'locationName' => 'attackTraffic', ],
+                'blackHole' => [ 'type' => 'integer', 'locationName' => 'blackHole', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
         'DDoSAttackLog' => [
             'type' => 'structure',
             'members' => [
@@ -1391,6 +1539,13 @@ return [
                 'tagEnable' => [ 'type' => 'boolean', 'locationName' => 'tagEnable', ],
             ],
         ],
+        'Tag' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'InstanceBillingId' => [
             'type' => 'structure',
             'members' => [
@@ -1443,6 +1598,7 @@ return [
                 'pageName' => [ 'type' => 'string', 'locationName' => 'pageName', ],
                 'pageStatus' => [ 'type' => 'integer', 'locationName' => 'pageStatus', ],
                 'webRulePortLimit' => [ 'type' => 'integer', 'locationName' => 'webRulePortLimit', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
         ],
         'IpSet' => [
@@ -1737,6 +1893,25 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeDDoSIpAttackLogsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'instanceId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeDDoSIpAttackLogsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeDDoSIpAttackLogsResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeDDoSIpAttackLogsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeDDoSAttackLogsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1789,6 +1964,15 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'instanceId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeDDoSIpAttackLogsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DDoSIpAttackLog', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
         'DescribeAttackTypeCountResultShape' => [
@@ -1873,6 +2057,15 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeBusinessGraphRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'instanceId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'DescribeDDoSGraphResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1881,13 +2074,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeCCGraphResultShape' => [
+        'DescribeBusinessGraphResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'postProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
-                'preProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
-                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
+                'result' =>  [ 'shape' => 'DescribeBusinessGraphResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeBusinessGraphResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeDDoSGraphResultShape' => [
@@ -1895,6 +2087,59 @@ return [
             'members' => [
                 'preProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
                 'postProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
+            ],
+        ],
+        'DescribeBusinessGraphResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'inTraffic' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'outTraffic' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
+            ],
+        ],
+        'DescribeConnStatGraphResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeConnStatGraphResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeConnStatGraphResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeCCGraphRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'instanceId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'subDomain' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeFwdGraphResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeFwdGraphResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeFwdGraphResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeConnStatGraphResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'newConn' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'activeConn' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'inactiveConn' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeCCGraphResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'postProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'preProtect' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'time' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
             ],
@@ -1916,6 +2161,15 @@ return [
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
             ],
         ],
+        'DescribeConnStatGraphRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'instanceId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'DescribeDDoSGraphRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1930,24 +2184,6 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeCCGraphResultShape', ],
                 'error' =>  [ 'shape' => 'DescribeCCGraphResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeCCGraphRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'instanceId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'subDomain' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeFwdGraphResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeFwdGraphResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeFwdGraphResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -2404,6 +2640,13 @@ return [
                 'data' =>  [ 'shape' => 'ProtectionStatistics', ],
             ],
         ],
+        'DeleteCustomPageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
         'DescribeVpcIpListRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2412,11 +2655,12 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'ModifyInstanceNameResultShape' => [
+        'DeleteCustomPageRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'pageId' => [ 'type' => 'string', 'locationName' => 'pageId', ],
             ],
         ],
         'CheckNameResultShape' => [
@@ -2424,15 +2668,6 @@ return [
             'members' => [
                 'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
-        'DescribeInstancesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Instance', ], ],
-                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
         'DescribeInstancesResponseShape' => [
@@ -2443,6 +2678,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'CreateCustomPageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
         'ModifyEPBResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -2451,17 +2693,20 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'ModifyEPBResultShape' => [
+        'DescribeCustomPagesResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'DescribeCustomPagesResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeCustomPagesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeInstanceResultShape' => [
+        'ModifyInstanceCustomPageResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'Instance', ],
+                'result' =>  [ 'shape' => 'ModifyInstanceCustomPageResultShape', ],
+                'error' =>  [ 'shape' => 'ModifyInstanceCustomPageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeVpcIpListResultShape' => [
@@ -2490,11 +2735,18 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'DescribeInstanceRequestShape' => [
+        'ModifyInstanceAclResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'result' =>  [ 'shape' => 'ModifyInstanceAclResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeInstanceAclResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceAclResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ModifyInstanceNameRequestShape' => [
@@ -2505,14 +2757,6 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'DescribeVpcIpListResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeVpcIpListResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeVpcIpListResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeCpsIpListRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2521,20 +2765,12 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'CreateInstanceResultShape' => [
+        'ModifyInstanceCustomPageDefaultResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
-        'DescribeServiceIpListResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ServiceIp', ], ],
-                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+                'result' =>  [ 'shape' => 'ModifyInstanceCustomPageDefaultResultShape', ],
+                'error' =>  [ 'shape' => 'ModifyInstanceCustomPageDefaultResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ModifyAlarmConfigResponseShape' => [
@@ -2542,29 +2778,6 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'ModifyAlarmConfigResultShape', ],
                 'error' =>  [ 'shape' => 'ModifyAlarmConfigResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateInstanceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'createInstanceSpec' =>  [ 'shape' => 'CreateInstanceSpec', ],
-                'autoRenewalSpec' =>  [ 'shape' => 'AutoRenewalSpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeAlarmConfigRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DescribeAlarmConfigResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeAlarmConfigResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeAlarmConfigResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -2582,6 +2795,21 @@ return [
                 'result' =>  [ 'shape' => 'DescribeProtectionStatisticsResultShape', ],
                 'error' =>  [ 'shape' => 'DescribeProtectionStatisticsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyInstanceCustomPageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ModifyInstanceCustomPageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'pageId' => [ 'type' => 'string', 'locationName' => 'pageId', ],
             ],
         ],
         'DescribeCpsIpListResultShape' => [
@@ -2617,6 +2845,13 @@ return [
                 'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
+        'DisableInstanceCustomPageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'DescribeNameListRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2627,25 +2862,10 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'CheckNameRequestShape' => [
+        'DescribeCustomPagesRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeInstanceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeInstanceResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeInstanceResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModifyAlarmConfigRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarmConfigSpec' =>  [ 'shape' => 'AlarmConfigSpec', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2654,6 +2874,21 @@ return [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'AlarmConfig', ],
+            ],
+        ],
+        'DisableInstanceCustomPageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DisableInstanceCustomPageResultShape', ],
+                'error' =>  [ 'shape' => 'DisableInstanceCustomPageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EnableInstanceCustomPageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'DescribeNameListResponseShape' => [
@@ -2689,18 +2924,287 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'DescribeProtectionStatisticsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ModifyInstanceCustomPageDefaultRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeCcsIpListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeCcsIpListResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeCcsIpListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RecoverInstanceAclRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'CreateCustomPageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateCustomPageResultShape', ],
+                'error' =>  [ 'shape' => 'CreateCustomPageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyInstanceNameResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DescribeInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Instance', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+            ],
+        ],
+        'ModifyInstanceAclRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceAclSpec' =>  [ 'shape' => 'InstanceAclSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ModifyEPBResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ModifyCustomPageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyCustomPageResultShape', ],
+                'error' =>  [ 'shape' => 'ModifyCustomPageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'Instance', ],
+            ],
+        ],
+        'DescribeCcsIpListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeCcsIpListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CcsIpResource', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+            ],
+        ],
+        'DisableInstanceCustomPageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'RecoverInstanceAclResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RecoverInstanceAclResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EnableInstanceCustomPageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ModifyCustomPageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'customPageSpec' =>  [ 'shape' => 'CustomPageSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'pageId' => [ 'type' => 'string', 'locationName' => 'pageId', ],
+            ],
+        ],
+        'EnableInstanceCustomPageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EnableInstanceCustomPageResultShape', ],
+                'error' =>  [ 'shape' => 'EnableInstanceCustomPageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyInstanceCustomPageDefaultResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DescribeInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeVpcIpListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeVpcIpListResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeVpcIpListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DescribeServiceIpListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ServiceIp', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+            ],
+        ],
+        'CreateInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'createInstanceSpec' =>  [ 'shape' => 'CreateInstanceSpec', ],
+                'autoRenewalSpec' =>  [ 'shape' => 'AutoRenewalSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeAlarmConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeAlarmConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAlarmConfigResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeAlarmConfigResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeInstanceAclRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeCustomPagesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CustomPage', ], ],
+            ],
+        ],
+        'ModifyCustomPageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ModifyInstanceAclResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'canRecover' => [ 'type' => 'boolean', 'locationName' => 'canRecover', ],
+            ],
+        ],
+        'CheckNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyAlarmConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'alarmConfigSpec' =>  [ 'shape' => 'AlarmConfigSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DeleteCustomPageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteCustomPageResultShape', ],
+                'error' =>  [ 'shape' => 'DeleteCustomPageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RecoverInstanceAclResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'CreateCustomPageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'customPageSpec' =>  [ 'shape' => 'CustomPageSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeInstanceAclResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'InstanceAcl', ],
+            ],
+        ],
         'DescribeCpsIpListResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeCpsIpListResultShape', ],
                 'error' =>  [ 'shape' => 'DescribeCpsIpListResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeProtectionStatisticsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'CreateIpSetResponseShape' => [
