@@ -56,14 +56,14 @@ return [
             'input' => [ 'shape' => 'QuerySecretKeyUsingGETRequestShape', ],
             'output' => [ 'shape' => 'QuerySecretKeyUsingGETResponseShape', ],
         ],
-        'ModifyStatusUsingPOST' => [
-            'name' => 'ModifyStatusUsingPOST',
+        'ModifyStatusUsingGET' => [
+            'name' => 'ModifyStatusUsingGET',
             'http' => [
-                'method' => 'POST',
+                'method' => 'GET',
                 'requestUri' => '/v1/smsApps/{appId}:modifyStatus',
             ],
-            'input' => [ 'shape' => 'ModifyStatusUsingPOSTRequestShape', ],
-            'output' => [ 'shape' => 'ModifyStatusUsingPOSTResponseShape', ],
+            'input' => [ 'shape' => 'ModifyStatusUsingGETRequestShape', ],
+            'output' => [ 'shape' => 'ModifyStatusUsingGETResponseShape', ],
         ],
         'ListSmsSendOverviewUsingGET' => [
             'name' => 'ListSmsSendOverviewUsingGET',
@@ -113,7 +113,7 @@ return [
         'ModifyAppGeneralSettingById' => [
             'name' => 'ModifyAppGeneralSettingById',
             'http' => [
-                'method' => 'POST',
+                'method' => 'GET',
                 'requestUri' => '/v1/smsAppGeneralSettings/{id}:modify',
             ],
             'input' => [ 'shape' => 'ModifyAppGeneralSettingByIdRequestShape', ],
@@ -254,6 +254,24 @@ return [
             'input' => [ 'shape' => 'GetSmsTaskIdUsingGETRequestShape', ],
             'output' => [ 'shape' => 'GetSmsTaskIdUsingGETResponseShape', ],
         ],
+        'ModifySmsTaskUsingPOST' => [
+            'name' => 'ModifySmsTaskUsingPOST',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/smsTasks/{taskId}',
+            ],
+            'input' => [ 'shape' => 'ModifySmsTaskUsingPOSTRequestShape', ],
+            'output' => [ 'shape' => 'ModifySmsTaskUsingPOSTResponseShape', ],
+        ],
+        'TaskDeleteUsingDelete' => [
+            'name' => 'TaskDeleteUsingDelete',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/smsTasks/{taskId}',
+            ],
+            'input' => [ 'shape' => 'TaskDeleteUsingDeleteRequestShape', ],
+            'output' => [ 'shape' => 'TaskDeleteUsingDeleteResponseShape', ],
+        ],
         'TaskStartUsingGET' => [
             'name' => 'TaskStartUsingGET',
             'http' => [
@@ -262,6 +280,15 @@ return [
             ],
             'input' => [ 'shape' => 'TaskStartUsingGETRequestShape', ],
             'output' => [ 'shape' => 'TaskStartUsingGETResponseShape', ],
+        ],
+        'GetSmsTaskContentUsingGET' => [
+            'name' => 'GetSmsTaskContentUsingGET',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/smsTasks:getSmsTaskContent',
+            ],
+            'input' => [ 'shape' => 'GetSmsTaskContentUsingGETRequestShape', ],
+            'output' => [ 'shape' => 'GetSmsTaskContentUsingGETResponseShape', ],
         ],
         'ListSmsTemplatesUsingGET' => [
             'name' => 'ListSmsTemplatesUsingGET',
@@ -360,6 +387,7 @@ return [
                 'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
                 'taskType' => [ 'type' => 'integer', 'locationName' => 'taskType', ],
                 'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'phoneCount' => [ 'type' => 'integer', 'locationName' => 'phoneCount', ],
             ],
         ],
         'SendOverviewVO' => [
@@ -405,6 +433,8 @@ return [
             'members' => [
                 'sendNumber' => [ 'type' => 'string', 'locationName' => 'sendNumber', ],
                 'smsContent' => [ 'type' => 'string', 'locationName' => 'smsContent', ],
+                'contentLength' => [ 'type' => 'integer', 'locationName' => 'contentLength', ],
+                'chargeCount' => [ 'type' => 'integer', 'locationName' => 'chargeCount', ],
                 'packageType' => [ 'type' => 'integer', 'locationName' => 'packageType', ],
                 'sendTime' => [ 'type' => 'string', 'locationName' => 'sendTime', ],
                 'sendStatus' => [ 'type' => 'string', 'locationName' => 'sendStatus', ],
@@ -523,23 +553,25 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
-        'ModifyStatusUsingPOSTRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
-                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-            ],
-        ],
         'CreateSmsAppUsingPOSTResultShape' => [
             'type' => 'structure',
             'members' => [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
             ],
         ],
+        'ModifyStatusUsingGETRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
         'QueryReceiptRecordUsingGETResultShape' => [
             'type' => 'structure',
             'members' => [
-                'queryReceiptRecordRes' =>  [ 'shape' => 'QueryReceiptRecordRes', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'receiptRecords' => [ 'type' => 'list', 'member' => [ 'shape' => 'ReceiptRecord', ], ],
             ],
         ],
         'CreateSmsAppUsingPOSTResponseShape' => [
@@ -562,17 +594,18 @@ return [
                 'result' =>  [ 'shape' => 'ListSmsSendOverviewUsingGETResultShape', ],
             ],
         ],
-        'ModifyStatusUsingPOSTResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-            ],
-        ],
         'QuerySendRecordUsingGETResultShape' => [
             'type' => 'structure',
             'members' => [
-                'smsApps' => [ 'type' => 'list', 'member' => [ 'shape' => 'SendRecord', ], ],
+                'sendRecords' => [ 'type' => 'list', 'member' => [ 'shape' => 'SendRecord', ], ],
                 'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'ModifyStatusUsingGETResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'ModifyStatusUsingGETResultShape', ],
             ],
         ],
         'ModifySmsAppUsingPOSTRequestShape' => [
@@ -593,7 +626,7 @@ return [
         'QueryReplyRecordUsingGETResultShape' => [
             'type' => 'structure',
             'members' => [
-                'smsApps' => [ 'type' => 'list', 'member' => [ 'shape' => 'ReplyRecord', ], ],
+                'replyRecords' => [ 'type' => 'list', 'member' => [ 'shape' => 'ReplyRecord', ], ],
                 'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
             ],
         ],
@@ -619,6 +652,12 @@ return [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
+        'ModifyStatusUsingGETResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
         'ModifySmsAppUsingPOSTResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -636,14 +675,9 @@ return [
         'ListSmsSendOverviewUsingGETResultShape' => [
             'type' => 'structure',
             'members' => [
-                'listSmsSendOverviewVO' =>  [ 'shape' => 'ListSmsSendOverviewVO', ],
-            ],
-        ],
-        'ModifyStatusUsingPOSTResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'ModifyStatusUsingPOSTResultShape', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'sendOverviewVOList' => [ 'type' => 'list', 'member' => [ 'shape' => 'SendOverviewVO', ], ],
             ],
         ],
         'CreateSmsAppUsingPOSTRequestShape' => [
@@ -1028,12 +1062,33 @@ return [
                 'signId' => [ 'type' => 'string', 'locationName' => 'signId', ],
                 'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
                 'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'taskType' => [ 'type' => 'integer', 'locationName' => 'taskType', ],
             ],
         ],
         'GetSmsTaskIdUsingGETRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'GetSmsTaskContentUsingGETRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'signId' => [ 'type' => 'string', 'locationName' => 'signId', ],
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+            ],
+        ],
+        'ModifySmsTaskUsingPOSTResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'ModifySmsTaskUsingPOSTResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'ModifySmsTaskUsingPOSTResultShape', ],
             ],
         ],
         'GetSmsTaskIdUsingGETResultShape' => [
@@ -1064,6 +1119,12 @@ return [
                 'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
             ],
         ],
+        'TaskDeleteUsingDeleteResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
         'GetSmsTaskIdUsingGETResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1071,11 +1132,24 @@ return [
                 'result' =>  [ 'shape' => 'GetSmsTaskIdUsingGETResultShape', ],
             ],
         ],
+        'TaskDeleteUsingDeleteRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
         'TaskStartUsingGETResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'TaskStartUsingGETResultShape', ],
+            ],
+        ],
+        'GetSmsTaskContentUsingGETResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetSmsTaskContentUsingGETResultShape', ],
             ],
         ],
         'CreateSmsTaskUsingPOSTResultShape' => [
@@ -1091,10 +1165,29 @@ return [
                 'result' =>  [ 'shape' => 'ListSmsTasksUsingGETResultShape', ],
             ],
         ],
+        'TaskDeleteUsingDeleteResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'TaskDeleteUsingDeleteResultShape', ],
+            ],
+        ],
         'TaskStartUsingGETResultShape' => [
             'type' => 'structure',
             'members' => [
                 'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'ModifySmsTaskUsingPOSTRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'sendNumberUrl' => [ 'type' => 'string', 'locationName' => 'sendNumberUrl', ],
+                'sendTime' => [ 'type' => 'string', 'locationName' => 'sendTime', ],
+                'signId' => [ 'type' => 'string', 'locationName' => 'signId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
             ],
         ],
         'CreateSmsTaskUsingPOSTResponseShape' => [
@@ -1102,6 +1195,13 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'CreateSmsTaskUsingPOSTResultShape', ],
+            ],
+        ],
+        'GetSmsTaskContentUsingGETResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'chargeCount' => [ 'type' => 'integer', 'locationName' => 'chargeCount', ],
             ],
         ],
         'CreateSmsTemplateUsingPOSTResponseShape' => [
@@ -1178,6 +1278,7 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'templateTypes' => [ 'type' => 'string', 'locationName' => 'templateTypes', ],
             ],
         ],
         'ListSmsTemplatesUsingGETResultShape' => [

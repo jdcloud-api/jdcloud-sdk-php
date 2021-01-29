@@ -569,6 +569,24 @@ return [
             'input' => [ 'shape' => 'DescribeUrlRankingRequestShape', ],
             'output' => [ 'shape' => 'DescribeUrlRankingResponseShape', ],
         ],
+        'DescribeLiveStreamPublishInfoByPage' => [
+            'name' => 'DescribeLiveStreamPublishInfoByPage',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLiveStreamPublishInfoByPage',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveStreamPublishInfoByPageRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveStreamPublishInfoByPageResponseShape', ],
+        ],
+        'DescribeLiveStreamPlayInfoByPage' => [
+            'name' => 'DescribeLiveStreamPlayInfoByPage',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLiveStreamPlayInfoByPage',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveStreamPlayInfoByPageRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveStreamPlayInfoByPageResponseShape', ],
+        ],
         'DescribeLiveTranscodingDurationData' => [
             'name' => 'DescribeLiveTranscodingDurationData',
             'http' => [
@@ -1407,16 +1425,6 @@ return [
                 'audioCodec' => [ 'type' => 'long', 'locationName' => 'audioCodec', ],
             ],
         ],
-        'RankingUrlResultData' => [
-            'type' => 'structure',
-            'members' => [
-                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
-                'rank' => [ 'type' => 'integer', 'locationName' => 'rank', ],
-                'md5' => [ 'type' => 'string', 'locationName' => 'md5', ],
-                'value' => [ 'type' => 'long', 'locationName' => 'value', ],
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'RankingUrlResultRankData', ], ],
-            ],
-        ],
         'PublishStreamInfoData' => [
             'type' => 'structure',
             'members' => [
@@ -1442,6 +1450,41 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
             ],
         ],
+        'LiveStreamUserNumResultData' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'long', 'locationName' => 'count', ],
+            ],
+        ],
+        'RankingUrlResultData' => [
+            'type' => 'structure',
+            'members' => [
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'rank' => [ 'type' => 'integer', 'locationName' => 'rank', ],
+                'md5' => [ 'type' => 'string', 'locationName' => 'md5', ],
+                'value' => [ 'type' => 'long', 'locationName' => 'value', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'RankingUrlResultRankData', ], ],
+            ],
+        ],
+        'LiveStreamPublishInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'bitrate' => [ 'type' => 'double', 'locationName' => 'bitrate', ],
+                'framerate' => [ 'type' => 'double', 'locationName' => 'framerate', ],
+            ],
+        ],
+        'LiveStreamPlayInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'playerCount' => [ 'type' => 'long', 'locationName' => 'playerCount', ],
+            ],
+        ],
         'RankingUrlResultRankData' => [
             'type' => 'structure',
             'members' => [
@@ -1449,12 +1492,6 @@ return [
                 'bandwidth' => [ 'type' => 'long', 'locationName' => 'bandwidth', ],
                 'pv' => [ 'type' => 'long', 'locationName' => 'pv', ],
                 'flow' => [ 'type' => 'long', 'locationName' => 'flow', ],
-            ],
-        ],
-        'LiveStreamUserNumResultData' => [
-            'type' => 'structure',
-            'members' => [
-                'count' => [ 'type' => 'long', 'locationName' => 'count', ],
             ],
         ],
         'SnapshotTemplate' => [
@@ -1511,16 +1548,6 @@ return [
                 'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
                 'publishTime' => [ 'type' => 'string', 'locationName' => 'publishTime', ],
                 'publishUrl' => [ 'type' => 'string', 'locationName' => 'publishUrl', ],
-            ],
-        ],
-        'LiveStreamPublishInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
-                'publishUpTime' => [ 'type' => 'string', 'locationName' => 'publishUpTime', ],
-                'publishDownTime' => [ 'type' => 'string', 'locationName' => 'publishDownTime', ],
             ],
         ],
         'ManageQueryStreamInfo' => [
@@ -2697,16 +2724,6 @@ return [
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveStatisticGroupByAreaResultData', ], ],
             ],
         ],
-        'DescribeLiveStreamPlayerRankingDataRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-                'protocolType' => [ 'type' => 'string', 'locationName' => 'protocolType', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-            ],
-        ],
         'DescribeUrlRankingRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2750,43 +2767,11 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
             ],
         ],
-        'DescribePublishStreamInfoDataRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-            ],
-        ],
         'DescribePublishStreamInfoDataResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribePublishStreamInfoDataResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeDomainsLogResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainsLogResult', ], ],
-            ],
-        ],
-        'DomainsLogResult' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'logList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainsLogResultData', ], ],
-            ],
-        ],
-        'DescribeDomainsLogRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domains' => [ 'type' => 'string', 'locationName' => 'domains', ],
-                'interval' => [ 'type' => 'string', 'locationName' => 'interval', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
             ],
         ],
         'BandwidthStatisticResult' => [
@@ -2810,21 +2795,6 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
             ],
         ],
-        'PublishStreamInfoResult' => [
-            'type' => 'structure',
-            'members' => [
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'data' =>  [ 'shape' => 'PublishStreamInfoData', ],
-            ],
-        ],
-        'DescribeDomainOnlineStreamResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'streamList' => [ 'type' => 'list', 'member' => [ 'shape' => 'PublishOnlineStreamResultData', ], ],
-                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
-            ],
-        ],
         'DescribeLivePublishStreamNumResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2841,27 +2811,6 @@ return [
                 'playerCount' => [ 'type' => 'long', 'locationName' => 'playerCount', ],
             ],
         ],
-        'DescribeLiveStreamHistoryUserNumResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveStreamUserNumResult', ], ],
-            ],
-        ],
-        'DescribeDomainsLogResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeDomainsLogResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeLiveTranscodeStreamListRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
-            ],
-        ],
         'DescribeLiveTranscodeStreamPlayerUserNumResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2875,18 +2824,10 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'LiveStreamUserNumResult' => [
+        'DescribeLiveStreamPlayInfoByPageResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'data' =>  [ 'shape' => 'LiveStreamUserNumResultData', ],
-            ],
-        ],
-        'DescribeLiveStreamHistoryUserNumResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeLiveStreamHistoryUserNumResultShape', ],
+                'result' =>  [ 'shape' => 'DescribeLiveStreamPlayInfoByPageResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -2897,30 +2838,13 @@ return [
                 'streamCount' => [ 'type' => 'integer', 'locationName' => 'streamCount', ],
             ],
         ],
-        'DescribeLiveTranscodeStreamListResponseShape' => [
+        'DescribeLiveStreamPlayInfoByPageResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeLiveTranscodeStreamListResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeLiveStreamPlayerRankingDataResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveStreamPlayerRankingResult', ], ],
-            ],
-        ],
-        'DescribeLiveTranscodeStreamBandwidthRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-                'ispName' => [ 'type' => 'string', 'locationName' => 'ispName', ],
-                'locationName' => [ 'type' => 'string', 'locationName' => 'locationName', ],
-                'protocolType' => [ 'type' => 'string', 'locationName' => 'protocolType', ],
-                'period' => [ 'type' => 'string', 'locationName' => 'period', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'playInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveStreamPlayInfo', ], ],
             ],
         ],
         'DescribeLiveTranscodeStreamNumRequestShape' => [
@@ -2929,23 +2853,10 @@ return [
                 'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
             ],
         ],
-        'DescribeLiveTranscodeStreamBandwidthResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeLiveTranscodeStreamBandwidthResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeLiveTranscodeStreamBandwidthResultShape' => [
             'type' => 'structure',
             'members' => [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BandwidthStatisticResult', ], ],
-            ],
-        ],
-        'DescribePublishStreamInfoDataResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'PublishStreamInfoResult', ], ],
             ],
         ],
         'LiveTranscodeStreamResult' => [
@@ -2955,13 +2866,6 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
-        'DescribeLivePublishStreamNumResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeLivePublishStreamNumResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeLiveTranscodeStreamNumResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -2969,11 +2873,16 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeUrlRankingResponseShape' => [
+        'DescribeLiveStreamPublishInfoByPageRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeUrlRankingResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
         ],
         'RankingUrlResult' => [
@@ -3012,6 +2921,180 @@ return [
             'type' => 'structure',
             'members' => [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveTranscodeStreamResult', ], ],
+            ],
+        ],
+        'DescribeLiveStreamPlayerRankingDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'protocolType' => [ 'type' => 'string', 'locationName' => 'protocolType', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribeLiveStreamPlayInfoByPageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'DescribePublishStreamInfoDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribeDomainsLogResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainsLogResult', ], ],
+            ],
+        ],
+        'DomainsLogResult' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'logList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainsLogResultData', ], ],
+            ],
+        ],
+        'DescribeDomainsLogRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domains' => [ 'type' => 'string', 'locationName' => 'domains', ],
+                'interval' => [ 'type' => 'string', 'locationName' => 'interval', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'PublishStreamInfoResult' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'data' =>  [ 'shape' => 'PublishStreamInfoData', ],
+            ],
+        ],
+        'DescribeDomainOnlineStreamResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'streamList' => [ 'type' => 'list', 'member' => [ 'shape' => 'PublishOnlineStreamResultData', ], ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+            ],
+        ],
+        'DescribeLiveStreamHistoryUserNumResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveStreamUserNumResult', ], ],
+            ],
+        ],
+        'DescribeDomainsLogResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeDomainsLogResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+            ],
+        ],
+        'DescribeLiveStreamPublishInfoByPageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'publishInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveStreamPublishInfo', ], ],
+            ],
+        ],
+        'LiveStreamUserNumResult' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'data' =>  [ 'shape' => 'LiveStreamUserNumResultData', ],
+            ],
+        ],
+        'DescribeLiveStreamHistoryUserNumResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveStreamHistoryUserNumResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveTranscodeStreamListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveStreamPlayerRankingDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveStreamPlayerRankingResult', ], ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamBandwidthRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainName' => [ 'type' => 'string', 'locationName' => 'domainName', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'ispName' => [ 'type' => 'string', 'locationName' => 'ispName', ],
+                'locationName' => [ 'type' => 'string', 'locationName' => 'locationName', ],
+                'protocolType' => [ 'type' => 'string', 'locationName' => 'protocolType', ],
+                'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribeLiveStreamPublishInfoByPageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveStreamPublishInfoByPageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveTranscodeStreamBandwidthResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveTranscodeStreamBandwidthResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribePublishStreamInfoDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'PublishStreamInfoResult', ], ],
+            ],
+        ],
+        'DescribeLivePublishStreamNumResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLivePublishStreamNumResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeUrlRankingResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeUrlRankingResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeLivePornDataRequestShape' => [
@@ -3076,6 +3159,7 @@ return [
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'shotMode' => [ 'type' => 'integer', 'locationName' => 'shotMode', ],
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
             ],

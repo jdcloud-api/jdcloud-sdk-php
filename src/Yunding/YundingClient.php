@@ -20,10 +20,18 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with yunding.
  *
+ * @method \Jdcloud\Result describeTasks(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeTasksAsync(array $args = [])
+ * @method \Jdcloud\Result put(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise putAsync(array $args = [])
+ * @method \Jdcloud\Result putProductMetricData(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise putProductMetricDataAsync(array $args = [])
  * @method \Jdcloud\Result assignSecondaryIps(array $args = [])
  * @method \GuzzleHttp\Promise\Promise assignSecondaryIpsAsync(array $args = [])
  * @method \Jdcloud\Result unassignSecondaryIps(array $args = [])
  * @method \GuzzleHttp\Promise\Promise unassignSecondaryIpsAsync(array $args = [])
+ * @method \Jdcloud\Result describeNetworkInterface(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeNetworkInterfaceAsync(array $args = [])
  * @method \Jdcloud\Result describeRdsInstances(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeRdsInstancesAsync(array $args = [])
  * @method \Jdcloud\Result describeRdsInstance(array $args = [])
@@ -42,6 +50,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise deleteRdsAccountAsync(array $args = [])
  * @method \Jdcloud\Result grantRdsPrivilege(array $args = [])
  * @method \GuzzleHttp\Promise\Promise grantRdsPrivilegeAsync(array $args = [])
+ * @method \Jdcloud\Result revokePrivilege(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise revokePrivilegeAsync(array $args = [])
  * @method \Jdcloud\Result describeRdsDatabases(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeRdsDatabasesAsync(array $args = [])
  * @method \Jdcloud\Result createRdsDatabase(array $args = [])

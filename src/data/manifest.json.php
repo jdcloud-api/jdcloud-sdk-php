@@ -69,6 +69,10 @@ return [
         'namespace' => 'Function',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'quota' => [
+        'namespace' => 'Quota',
+        'versions' => [ 'latest' => 'v2', ],
+    ],
     'bri' => [
         'namespace' => 'Bri',
         'versions' => [ 'latest' => 'v1', ],
@@ -127,6 +131,10 @@ return [
     ],
     'hufu' => [
         'namespace' => 'Hufu',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'iv' => [
+        'namespace' => 'Iv',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'es' => [
