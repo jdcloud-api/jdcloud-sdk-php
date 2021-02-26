@@ -38,8 +38,16 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeRoomsAsync(array $args = [])
  * @method \Jdcloud\Result describeRoomOnlineUserNum(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeRoomOnlineUserNumAsync(array $args = [])
+ * @method \Jdcloud\Result removeRoomUser(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise removeRoomUserAsync(array $args = [])
+ * @method \Jdcloud\Result removeAllRoomUsers(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise removeAllRoomUsersAsync(array $args = [])
  * @method \Jdcloud\Result createUser(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createUserAsync(array $args = [])
+ * @method \Jdcloud\Result sendMessageToUser(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise sendMessageToUserAsync(array $args = [])
+ * @method \Jdcloud\Result sendMessageToRoom(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise sendMessageToRoomAsync(array $args = [])
  */
 class OpenjrtcClient extends JdCloudClient
 {
