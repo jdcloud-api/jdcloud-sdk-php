@@ -479,6 +479,60 @@ return [
             'input' => [ 'shape' => 'DeleteTranscodeTemplateRequestShape', ],
             'output' => [ 'shape' => 'DeleteTranscodeTemplateResponseShape', ],
         ],
+        'ListTranscodeTemplateGroups' => [
+            'name' => 'ListTranscodeTemplateGroups',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/transcodeTemplateGroups',
+            ],
+            'input' => [ 'shape' => 'ListTranscodeTemplateGroupsRequestShape', ],
+            'output' => [ 'shape' => 'ListTranscodeTemplateGroupsResponseShape', ],
+        ],
+        'CreateTranscodeTemplateGroup' => [
+            'name' => 'CreateTranscodeTemplateGroup',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/transcodeTemplateGroups',
+            ],
+            'input' => [ 'shape' => 'CreateTranscodeTemplateGroupRequestShape', ],
+            'output' => [ 'shape' => 'CreateTranscodeTemplateGroupResponseShape', ],
+        ],
+        'GetTranscodeTemplateGroup' => [
+            'name' => 'GetTranscodeTemplateGroup',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/transcodeTemplateGroups/{groupId}',
+            ],
+            'input' => [ 'shape' => 'GetTranscodeTemplateGroupRequestShape', ],
+            'output' => [ 'shape' => 'GetTranscodeTemplateGroupResponseShape', ],
+        ],
+        'UpdateTranscodeTemplateGroup' => [
+            'name' => 'UpdateTranscodeTemplateGroup',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/transcodeTemplateGroups/{groupId}',
+            ],
+            'input' => [ 'shape' => 'UpdateTranscodeTemplateGroupRequestShape', ],
+            'output' => [ 'shape' => 'UpdateTranscodeTemplateGroupResponseShape', ],
+        ],
+        'DeleteTranscodeTemplateGroup' => [
+            'name' => 'DeleteTranscodeTemplateGroup',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/transcodeTemplateGroups/{groupId}',
+            ],
+            'input' => [ 'shape' => 'DeleteTranscodeTemplateGroupRequestShape', ],
+            'output' => [ 'shape' => 'DeleteTranscodeTemplateGroupResponseShape', ],
+        ],
+        'DeleteGroupedTranscodeTemplates' => [
+            'name' => 'DeleteGroupedTranscodeTemplates',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/transcodeTemplateGroups:deleteGroupedTranscodeTemplates',
+            ],
+            'input' => [ 'shape' => 'DeleteGroupedTranscodeTemplatesRequestShape', ],
+            'output' => [ 'shape' => 'DeleteGroupedTranscodeTemplatesResponseShape', ],
+        ],
         'ListVideos' => [
             'name' => 'ListVideos',
             'http' => [
@@ -911,6 +965,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'transcodeTemplateGroupId' => [ 'type' => 'string', 'locationName' => 'transcodeTemplateGroupId', ],
                 'transcodeTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
@@ -941,6 +996,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'transcodeTemplateGroupId' => [ 'type' => 'string', 'locationName' => 'transcodeTemplateGroupId', ],
                 'transcodeTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'userData' => [ 'type' => 'string', 'locationName' => 'userData', ],
@@ -1113,6 +1169,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
+                'templateGroupId' => [ 'type' => 'string', 'locationName' => 'templateGroupId', ],
                 'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
@@ -1121,7 +1178,10 @@ return [
             'type' => 'structure',
             'members' => [
                 'taskId' => [ 'type' => 'long', 'locationName' => 'taskId', ],
+                'packageType' => [ 'type' => 'string', 'locationName' => 'packageType', ],
                 'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+                'templateGroupId' => [ 'type' => 'string', 'locationName' => 'templateGroupId', ],
+                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'format' => [ 'type' => 'string', 'locationName' => 'format', ],
                 'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
@@ -1170,7 +1230,10 @@ return [
             'members' => [
                 'taskId' => [ 'type' => 'long', 'locationName' => 'taskId', ],
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
+                'packageType' => [ 'type' => 'string', 'locationName' => 'packageType', ],
                 'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+                'templateGroupId' => [ 'type' => 'string', 'locationName' => 'templateGroupId', ],
+                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
@@ -1180,7 +1243,10 @@ return [
                 'taskId' => [ 'type' => 'long', 'locationName' => 'taskId', ],
                 'jobId' => [ 'type' => 'long', 'locationName' => 'jobId', ],
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
+                'packageType' => [ 'type' => 'string', 'locationName' => 'packageType', ],
                 'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+                'templateGroupId' => [ 'type' => 'string', 'locationName' => 'templateGroupId', ],
+                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'format' => [ 'type' => 'string', 'locationName' => 'format', ],
                 'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
@@ -1197,6 +1263,7 @@ return [
                 'jobId' => [ 'type' => 'long', 'locationName' => 'jobId', ],
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
                 'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'templateGroupId' => [ 'type' => 'string', 'locationName' => 'templateGroupId', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'completeTime' => [ 'type' => 'string', 'locationName' => 'completeTime', ],
                 'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TransTask', ], ],
@@ -1302,6 +1369,62 @@ return [
                 'outFile' =>  [ 'shape' => 'OutFile', ],
                 'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
                 'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
+            ],
+        ],
+        'TranscodeTemplateSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+                'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
+                'video' =>  [ 'shape' => 'Video', ],
+                'audio' =>  [ 'shape' => 'Audio', ],
+                'container' =>  [ 'shape' => 'Container', ],
+                'definition' => [ 'type' => 'string', 'locationName' => 'definition', ],
+                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
+                'packageType' => [ 'type' => 'string', 'locationName' => 'packageType', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'TranscodeTemplateGroupPageSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeTemplateGroupSpec', ], ],
+            ],
+        ],
+        'TranscodeTemplateGroupSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'templates' =>  [ 'shape' => 'TranscodeTemplateSpec', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'Container' => [
+            'type' => 'structure',
+            'members' => [
+                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
+            ],
+        ],
+        'DeleteGroupedTranscodeTemplatesRequestSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'templateIds' => [ 'type' => 'long', 'locationName' => 'templateIds', ],
+            ],
+        ],
+        'DeleteGroupedTranscodeTemplatesResultSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'groupId' => [ 'type' => 'long', 'locationName' => 'groupId', ],
+                'okTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'notExistTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
         'UploadCallbackReq' => [
@@ -2149,6 +2272,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'transcodeTemplateGroupId' => [ 'type' => 'string', 'locationName' => 'transcodeTemplateGroupId', ],
                 'transcodeTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
@@ -2204,6 +2328,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'categoryId' => [ 'type' => 'long', 'locationName' => 'categoryId', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'transcodeTemplateGroupId' => [ 'type' => 'string', 'locationName' => 'transcodeTemplateGroupId', ],
                 'transcodeTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'userData' => [ 'type' => 'string', 'locationName' => 'userData', ],
@@ -2554,6 +2679,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
+                'templateGroupId' => [ 'type' => 'string', 'locationName' => 'templateGroupId', ],
                 'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'watermarkIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
@@ -2757,6 +2883,147 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'UpdateTranscodeTemplateResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListTranscodeTemplateGroupsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListTranscodeTemplateGroupsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListTranscodeTemplateGroupsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranscodeTemplateGroupSpec', ], ],
+            ],
+        ],
+        'DeleteGroupedTranscodeTemplatesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteGroupedTranscodeTemplatesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateTranscodeTemplateGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'templates' =>  [ 'shape' => 'TranscodeTemplateSpec', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'ListTranscodeTemplateGroupsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'CreateTranscodeTemplateGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'templates' =>  [ 'shape' => 'TranscodeTemplateSpec', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'UpdateTranscodeTemplateGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'templates' =>  [ 'shape' => 'TranscodeTemplateSpec', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'GetTranscodeTemplateGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetTranscodeTemplateGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteGroupedTranscodeTemplatesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'groupId' => [ 'type' => 'long', 'locationName' => 'groupId', ],
+                'okTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'notExistTemplateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+            ],
+        ],
+        'GetTranscodeTemplateGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'templates' =>  [ 'shape' => 'TranscodeTemplateSpec', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'UpdateTranscodeTemplateGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateTranscodeTemplateGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteTranscodeTemplateGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteGroupedTranscodeTemplatesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'templateIds' => [ 'type' => 'long', 'locationName' => 'templateIds', ],
+            ],
+        ],
+        'CreateTranscodeTemplateGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateTranscodeTemplateGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetTranscodeTemplateGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+            ],
+        ],
+        'DeleteTranscodeTemplateGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+            ],
+        ],
+        'UpdateTranscodeTemplateGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'templates' =>  [ 'shape' => 'TranscodeTemplateSpec', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'DeleteTranscodeTemplateGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'VideoAuditResultShape' => [

@@ -312,6 +312,7 @@ return [
                 'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
                 'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+                'policyId' => [ 'type' => 'string', 'locationName' => 'policyId', ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
                 'multiAttachable' => [ 'type' => 'boolean', 'locationName' => 'multiAttachable', ],
                 'encrypt' => [ 'type' => 'boolean', 'locationName' => 'encrypt', ],

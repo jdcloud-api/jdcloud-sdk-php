@@ -74,6 +74,24 @@ return [
             'input' => [ 'shape' => 'ExtendDiskRequestShape', ],
             'output' => [ 'shape' => 'ExtendDiskResponseShape', ],
         ],
+        'DescribeVolumesIgnoreServiceCode' => [
+            'name' => 'DescribeVolumesIgnoreServiceCode',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/disks:ignoreServiceCode',
+            ],
+            'input' => [ 'shape' => 'DescribeVolumesIgnoreServiceCodeRequestShape', ],
+            'output' => [ 'shape' => 'DescribeVolumesIgnoreServiceCodeResponseShape', ],
+        ],
+        'DescribeQuota' => [
+            'name' => 'DescribeQuota',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/quotas',
+            ],
+            'input' => [ 'shape' => 'DescribeQuotaRequestShape', ],
+            'output' => [ 'shape' => 'DescribeQuotaResponseShape', ],
+        ],
         'DescribeSnapshots' => [
             'name' => 'DescribeSnapshots',
             'http' => [
@@ -128,6 +146,87 @@ return [
             'input' => [ 'shape' => 'DeleteSnapshotRequestShape', ],
             'output' => [ 'shape' => 'DeleteSnapshotResponseShape', ],
         ],
+        'DescribeSnapshotsCapacity' => [
+            'name' => 'DescribeSnapshotsCapacity',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/snapshots:capacity',
+            ],
+            'input' => [ 'shape' => 'DescribeSnapshotsCapacityRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSnapshotsCapacityResponseShape', ],
+        ],
+        'DescribeSnapshotChain' => [
+            'name' => 'DescribeSnapshotChain',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/snapshots:chain',
+            ],
+            'input' => [ 'shape' => 'DescribeSnapshotChainRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSnapshotChainResponseShape', ],
+        ],
+        'CreateSnapshotPolicy' => [
+            'name' => 'CreateSnapshotPolicy',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/snapshotPolicy',
+            ],
+            'input' => [ 'shape' => 'CreateSnapshotPolicyRequestShape', ],
+            'output' => [ 'shape' => 'CreateSnapshotPolicyResponseShape', ],
+        ],
+        'UpdateSnapshotPolicy' => [
+            'name' => 'UpdateSnapshotPolicy',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/snapshotPolicy/{policyId}',
+            ],
+            'input' => [ 'shape' => 'UpdateSnapshotPolicyRequestShape', ],
+            'output' => [ 'shape' => 'UpdateSnapshotPolicyResponseShape', ],
+        ],
+        'DeleteSnapshotPolicy' => [
+            'name' => 'DeleteSnapshotPolicy',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/snapshotPolicy/{policyId}',
+            ],
+            'input' => [ 'shape' => 'DeleteSnapshotPolicyRequestShape', ],
+            'output' => [ 'shape' => 'DeleteSnapshotPolicyResponseShape', ],
+        ],
+        'DescribeSnapshotPolicies' => [
+            'name' => 'DescribeSnapshotPolicies',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/snapshotPolicies:describe',
+            ],
+            'input' => [ 'shape' => 'DescribeSnapshotPoliciesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSnapshotPoliciesResponseShape', ],
+        ],
+        'DescribeSnapPolices' => [
+            'name' => 'DescribeSnapPolices',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/snapPolicies:describe',
+            ],
+            'input' => [ 'shape' => 'DescribeSnapPolicesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSnapPolicesResponseShape', ],
+        ],
+        'ApplySnapshotPolicies' => [
+            'name' => 'ApplySnapshotPolicies',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/snapshotPolicies:apply',
+            ],
+            'input' => [ 'shape' => 'ApplySnapshotPoliciesRequestShape', ],
+            'output' => [ 'shape' => 'ApplySnapshotPoliciesResponseShape', ],
+        ],
+        'DescribeSnapshotPolicyDiskRelations' => [
+            'name' => 'DescribeSnapshotPolicyDiskRelations',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/snapshotPolicyDiskRelations:describe',
+            ],
+            'input' => [ 'shape' => 'DescribeSnapshotPolicyDiskRelationsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSnapshotPolicyDiskRelationsResponseShape', ],
+        ],
     ],
     'shapes' => [
         'Bind' => [
@@ -136,12 +235,48 @@ return [
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
             ],
         ],
+        'ContactInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'sms' => [ 'type' => 'integer', 'locationName' => 'sms', ],
+                'email' => [ 'type' => 'integer', 'locationName' => 'email', ],
+                'personIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'groupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+            ],
+        ],
         'DelSnapshot' => [
             'type' => 'structure',
             'members' => [
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
                 'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
                 'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
+        'DescSnapshotRelationsData' => [
+            'type' => 'structure',
+            'members' => [
+                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
+                'diskRegion' => [ 'type' => 'string', 'locationName' => 'diskRegion', ],
+                'policyId' => [ 'type' => 'string', 'locationName' => 'policyId', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'SnapshotPolicy' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'interval' => [ 'type' => 'integer', 'locationName' => 'interval', ],
+                'effectiveTime' => [ 'type' => 'string', 'locationName' => 'effectiveTime', ],
+                'lastTriggerTime' => [ 'type' => 'string', 'locationName' => 'lastTriggerTime', ],
+                'nextTriggerTime' => [ 'type' => 'string', 'locationName' => 'nextTriggerTime', ],
+                'snapshotLifecycle' => [ 'type' => 'integer', 'locationName' => 'snapshotLifecycle', ],
+                'contactInfo' =>  [ 'shape' => 'ContactInfo', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'diskCount' => [ 'type' => 'integer', 'locationName' => 'diskCount', ],
             ],
         ],
         'Tag' => [
@@ -192,6 +327,7 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'snapshotPolicies' => [ 'type' => 'list', 'member' => [ 'shape' => 'SnapshotPolicy', ], ],
             ],
         ],
         'ChargeSpec' => [
@@ -214,6 +350,7 @@ return [
                 'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
                 'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+                'policyId' => [ 'type' => 'string', 'locationName' => 'policyId', ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
                 'multiAttachable' => [ 'type' => 'boolean', 'locationName' => 'multiAttachable', ],
                 'encrypt' => [ 'type' => 'boolean', 'locationName' => 'encrypt', ],
@@ -238,6 +375,20 @@ return [
                 'maxStepIOPS' => [ 'type' => 'integer', 'locationName' => 'maxStepIOPS', ],
             ],
         ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'FilterGroups' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
         'Data' => [
             'type' => 'structure',
             'members' => [
@@ -245,6 +396,28 @@ return [
                 'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'bind' => [ 'type' => 'list', 'member' => [ 'shape' => 'Bind', ], ],
+            ],
+        ],
+        'OrderItem' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'direction' => [ 'type' => 'integer', 'locationName' => 'direction', ],
+            ],
+        ],
+        'PolicyDiskRelationOp' => [
+            'type' => 'structure',
+            'members' => [
+                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
+                'diskRegion' => [ 'type' => 'string', 'locationName' => 'diskRegion', ],
+                'policyId' => [ 'type' => 'string', 'locationName' => 'policyId', ],
+                'op' => [ 'type' => 'integer', 'locationName' => 'op', ],
+            ],
+        ],
+        'PolicyDiskRelationOps' => [
+            'type' => 'structure',
+            'members' => [
+                'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'PolicyDiskRelationOp', ], ],
             ],
         ],
         'Quota' => [
@@ -273,8 +446,26 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'expireTime' => [ 'type' => 'string', 'locationName' => 'expireTime', ],
                 'sharInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'ShareInfo', ], ],
+                'shareInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'ShareInfo', ], ],
                 'encrypted' => [ 'type' => 'boolean', 'locationName' => 'encrypted', ],
+            ],
+        ],
+        'SnapshotCapacity' => [
+            'type' => 'structure',
+            'members' => [
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'snapshotCount' => [ 'type' => 'integer', 'locationName' => 'snapshotCount', ],
+                'totalSize' => [ 'type' => 'integer', 'locationName' => 'totalSize', ],
+            ],
+        ],
+        'SnapshotChain' => [
+            'type' => 'structure',
+            'members' => [
+                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
+                'snapshotTotalCount' => [ 'type' => 'integer', 'locationName' => 'snapshotTotalCount', ],
+                'snapshotChainSize' => [ 'type' => 'integer', 'locationName' => 'snapshotChainSize', ],
             ],
         ],
         'SnapshotSpec' => [
@@ -321,6 +512,34 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeVolumesIgnoreServiceCodeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'filterGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'FilterGroups', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeVolumesIgnoreServiceCodeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'disks' => [ 'type' => 'list', 'member' => [ 'shape' => 'Disk', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'PolicyDiskRelationOpResult' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
+                'diskRegion' => [ 'type' => 'string', 'locationName' => 'diskRegion', ],
+                'policyId' => [ 'type' => 'string', 'locationName' => 'policyId', ],
+                'op' => [ 'type' => 'integer', 'locationName' => 'op', ],
+            ],
+        ],
         'ExtendDiskResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -336,18 +555,17 @@ return [
             'members' => [
             ],
         ],
-        'Filter' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
         'CreateDisksResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'CreateDisksResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeVolumesIgnoreServiceCodeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeVolumesIgnoreServiceCodeResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -395,6 +613,7 @@ return [
         'CreateDisksResultShape' => [
             'type' => 'structure',
             'members' => [
+                'policyRelations' => [ 'type' => 'list', 'member' => [ 'shape' => 'PolicyDiskRelationOpResult', ], ],
                 'diskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'tagmsg' => [ 'type' => 'string', 'locationName' => 'tagmsg', ],
             ],
@@ -449,23 +668,24 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'ModifySnapshotAttributeResponseShape' => [
+        'DescribeQuotaRequestShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'DescribeSnapshotRequestShape' => [
-            'type' => 'structure',
-            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
             ],
         ],
-        'DescribeSnapshotResponseShape' => [
+        'DescribeQuotaResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeSnapshotResultShape', ],
+                'result' =>  [ 'shape' => 'DescribeQuotaResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeQuotaResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'quota' =>  [ 'shape' => 'Quota', ],
             ],
         ],
         'DeleteSnapshotRequestShape' => [
@@ -490,6 +710,69 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'DescribeSnapshotsCapacityRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeSnapshotChainResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'snapshotChain' => [ 'type' => 'object', 'locationName' => 'snapshotChain', ],
+            ],
+        ],
+        'DescribeSnapshotsCapacityResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSnapshotsCapacityResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteSnapshotResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteSnapshotsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteSnapshotsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSnapshotsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'snapshots' => [ 'type' => 'list', 'member' => [ 'shape' => 'Snapshot', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'ModifySnapshotAttributeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeSnapshotsCapacityResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'capacities' => [ 'type' => 'list', 'member' => [ 'shape' => 'SnapshotCapacity', ], ],
+            ],
+        ],
+        'DescribeSnapshotRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+            ],
+        ],
+        'DescribeSnapshotResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSnapshotResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CreateSnapshotResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -508,29 +791,18 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteSnapshotResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DescribeSnapshotResultShape' => [
             'type' => 'structure',
             'members' => [
                 'snapshot' =>  [ 'shape' => 'Snapshot', ],
             ],
         ],
-        'DeleteSnapshotsResponseShape' => [
+        'DescribeSnapshotChainRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DeleteSnapshotsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeSnapshotsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'snapshots' => [ 'type' => 'list', 'member' => [ 'shape' => 'Snapshot', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
+                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'CreateSnapshotRequestShape' => [
@@ -555,6 +827,13 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'DescribeSnapshotChainResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSnapshotChainResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DeleteSnapshotsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -568,8 +847,196 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'expireTime' => [ 'type' => 'string', 'locationName' => 'expireTime', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+            ],
+        ],
+        'DescribeSnapshotPolicyDiskRelationsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'diskId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'diskRegion' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'policyId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteSnapshotPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'policyId' => [ 'type' => 'string', 'locationName' => 'policyId', ],
+            ],
+        ],
+        'DescribeSnapshotPolicyDiskRelationsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'relationResults' => [ 'type' => 'list', 'member' => [ 'shape' => 'DescSnapshotRelationsData', ], ],
+            ],
+        ],
+        'UpdateSnapshotPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateSnapshotPolicyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ApplySnapshotPoliciesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'opResults' => [ 'type' => 'list', 'member' => [ 'shape' => 'PolicyDiskRelationOpResult', ], ],
+            ],
+        ],
+        'DescribeSnapshotPoliciesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSnapshotPoliciesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSnapPolicesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSnapPolicesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSnapPolicesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filterGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'FilterGroups', ], ],
+                'order' =>  [ 'shape' => 'OrderItem', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateSnapshotPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateSnapshotPolicyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteSnapshotPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeSnapshotPoliciesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policies' => [ 'type' => 'list', 'member' => [ 'shape' => 'SnapshotPolicy', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeSnapshotPoliciesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'policyId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'status' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'order' =>  [ 'shape' => 'OrderItem', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeSnapshotPolicyDiskRelationsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSnapshotPolicyDiskRelationsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ApplySnapshotPoliciesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'relations' => [ 'type' => 'list', 'member' => [ 'shape' => 'PolicyDiskRelationOp', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'UpdateSnapshotPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'interval' => [ 'type' => 'integer', 'locationName' => 'interval', ],
+                'effectiveTime' => [ 'type' => 'string', 'locationName' => 'effectiveTime', ],
+                'snapshotLifecycle' => [ 'type' => 'integer', 'locationName' => 'snapshotLifecycle', ],
+                'contactInfo' =>  [ 'shape' => 'ContactInfo', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'policyId' => [ 'type' => 'string', 'locationName' => 'policyId', ],
+            ],
+        ],
+        'DescribeSnapPolicesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policies' => [ 'type' => 'list', 'member' => [ 'shape' => 'SnapshotPolicy', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'ApplySnapshotPoliciesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ApplySnapshotPoliciesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateSnapshotPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'interval' => [ 'type' => 'integer', 'locationName' => 'interval', ],
+                'effectiveTime' => [ 'type' => 'string', 'locationName' => 'effectiveTime', ],
+                'lastTriggerTime' => [ 'type' => 'string', 'locationName' => 'lastTriggerTime', ],
+                'nextTriggerTime' => [ 'type' => 'string', 'locationName' => 'nextTriggerTime', ],
+                'snapshotLifecycle' => [ 'type' => 'integer', 'locationName' => 'snapshotLifecycle', ],
+                'contactInfo' =>  [ 'shape' => 'ContactInfo', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'diskCount' => [ 'type' => 'integer', 'locationName' => 'diskCount', ],
+            ],
+        ],
+        'UpdateSnapshotPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'interval' => [ 'type' => 'integer', 'locationName' => 'interval', ],
+                'effectiveTime' => [ 'type' => 'string', 'locationName' => 'effectiveTime', ],
+                'lastTriggerTime' => [ 'type' => 'string', 'locationName' => 'lastTriggerTime', ],
+                'nextTriggerTime' => [ 'type' => 'string', 'locationName' => 'nextTriggerTime', ],
+                'snapshotLifecycle' => [ 'type' => 'integer', 'locationName' => 'snapshotLifecycle', ],
+                'contactInfo' =>  [ 'shape' => 'ContactInfo', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'diskCount' => [ 'type' => 'integer', 'locationName' => 'diskCount', ],
+            ],
+        ],
+        'DeleteSnapshotPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateSnapshotPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'interval' => [ 'type' => 'integer', 'locationName' => 'interval', ],
+                'effectiveTime' => [ 'type' => 'string', 'locationName' => 'effectiveTime', ],
+                'snapshotLifecycle' => [ 'type' => 'integer', 'locationName' => 'snapshotLifecycle', ],
+                'contactInfo' =>  [ 'shape' => 'ContactInfo', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
     ],
