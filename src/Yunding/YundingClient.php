@@ -32,6 +32,12 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise unassignSecondaryIpsAsync(array $args = [])
  * @method \Jdcloud\Result describeNetworkInterface(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeNetworkInterfaceAsync(array $args = [])
+ * @method \Jdcloud\Result deleteNetworkInterface(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteNetworkInterfaceAsync(array $args = [])
+ * @method \Jdcloud\Result describeNetworkInterfaces(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeNetworkInterfacesAsync(array $args = [])
+ * @method \Jdcloud\Result createNetworkInterface(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createNetworkInterfaceAsync(array $args = [])
  * @method \Jdcloud\Result describeRdsInstances(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeRdsInstancesAsync(array $args = [])
  * @method \Jdcloud\Result describeRdsInstance(array $args = [])
@@ -60,6 +66,14 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise deleteRdsDatabaseAsync(array $args = [])
  * @method \Jdcloud\Result describeYdRdsInstances(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeYdRdsInstancesAsync(array $args = [])
+ * @method \Jdcloud\Result describeSubnets(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeSubnetsAsync(array $args = [])
+ * @method \Jdcloud\Result createSubnet(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createSubnetAsync(array $args = [])
+ * @method \Jdcloud\Result describeSubnet(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeSubnetAsync(array $args = [])
+ * @method \Jdcloud\Result deleteSubnet(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteSubnetAsync(array $args = [])
  */
 class YundingClient extends JdCloudClient
 {
