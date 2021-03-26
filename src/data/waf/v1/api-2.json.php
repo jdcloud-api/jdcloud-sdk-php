@@ -65,6 +65,24 @@ return [
             'input' => [ 'shape' => 'GetQpsDataRequestShape', ],
             'output' => [ 'shape' => 'GetQpsDataResponseShape', ],
         ],
+        'GetEsLogDetail' => [
+            'name' => 'GetEsLogDetail',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/chart:getEsLog',
+            ],
+            'input' => [ 'shape' => 'GetEsLogDetailRequestShape', ],
+            'output' => [ 'shape' => 'GetEsLogDetailResponseShape', ],
+        ],
+        'GetAntiEvent' => [
+            'name' => 'GetAntiEvent',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/chart:getAntiEvent',
+            ],
+            'input' => [ 'shape' => 'GetAntiEventRequestShape', ],
+            'output' => [ 'shape' => 'GetAntiEventResponseShape', ],
+        ],
         'GetDomainLbConfig' => [
             'name' => 'GetDomainLbConfig',
             'http' => [
@@ -344,6 +362,33 @@ return [
             'input' => [ 'shape' => 'DelBotUsrRuleRequestShape', ],
             'output' => [ 'shape' => 'DelBotUsrRuleResponseShape', ],
         ],
+        'EnableBotThreatIp' => [
+            'name' => 'EnableBotThreatIp',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/bot:setThreatIpBot',
+            ],
+            'input' => [ 'shape' => 'EnableBotThreatIpRequestShape', ],
+            'output' => [ 'shape' => 'EnableBotThreatIpResponseShape', ],
+        ],
+        'SetBotThreatIpRule' => [
+            'name' => 'SetBotThreatIpRule',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/bot:setThreatRule',
+            ],
+            'input' => [ 'shape' => 'SetBotThreatIpRuleRequestShape', ],
+            'output' => [ 'shape' => 'SetBotThreatIpRuleResponseShape', ],
+        ],
+        'ListBotThreatIpRule' => [
+            'name' => 'ListBotThreatIpRule',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/bot:listThreatRule',
+            ],
+            'input' => [ 'shape' => 'ListBotThreatIpRuleRequestShape', ],
+            'output' => [ 'shape' => 'ListBotThreatIpRuleResponseShape', ],
+        ],
         'EnableRisk' => [
             'name' => 'EnableRisk',
             'http' => [
@@ -352,6 +397,24 @@ return [
             ],
             'input' => [ 'shape' => 'EnableRiskRequestShape', ],
             'output' => [ 'shape' => 'EnableRiskResponseShape', ],
+        ],
+        'EnableRiskAccount' => [
+            'name' => 'EnableRiskAccount',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:enableAccount',
+            ],
+            'input' => [ 'shape' => 'EnableRiskAccountRequestShape', ],
+            'output' => [ 'shape' => 'EnableRiskAccountResponseShape', ],
+        ],
+        'EnableRiskCtl' => [
+            'name' => 'EnableRiskCtl',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:enableRiskCtl',
+            ],
+            'input' => [ 'shape' => 'EnableRiskCtlRequestShape', ],
+            'output' => [ 'shape' => 'EnableRiskCtlResponseShape', ],
         ],
         'SetRiskRule' => [
             'name' => 'SetRiskRule',
@@ -434,6 +497,159 @@ return [
             'input' => [ 'shape' => 'DelJsPageRequestShape', ],
             'output' => [ 'shape' => 'DelJsPageResponseShape', ],
         ],
+        'ListRiskConfDefault' => [
+            'name' => 'ListRiskConfDefault',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:listRiskConfDefault',
+            ],
+            'input' => [ 'shape' => 'ListRiskConfDefaultRequestShape', ],
+            'output' => [ 'shape' => 'ListRiskConfDefaultResponseShape', ],
+        ],
+        'SetRiskEvent' => [
+            'name' => 'SetRiskEvent',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:setRiskEvent',
+            ],
+            'input' => [ 'shape' => 'SetRiskEventRequestShape', ],
+            'output' => [ 'shape' => 'SetRiskEventResponseShape', ],
+        ],
+        'ListRiskEvents' => [
+            'name' => 'ListRiskEvents',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:listRiskEvents',
+            ],
+            'input' => [ 'shape' => 'ListRiskEventsRequestShape', ],
+            'output' => [ 'shape' => 'ListRiskEventsResponseShape', ],
+        ],
+        'DelRiskEvents' => [
+            'name' => 'DelRiskEvents',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:delRiskEvents',
+            ],
+            'input' => [ 'shape' => 'DelRiskEventsRequestShape', ],
+            'output' => [ 'shape' => 'DelRiskEventsResponseShape', ],
+        ],
+        'SetRiskPolicy' => [
+            'name' => 'SetRiskPolicy',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:setRiskPolicy',
+            ],
+            'input' => [ 'shape' => 'SetRiskPolicyRequestShape', ],
+            'output' => [ 'shape' => 'SetRiskPolicyResponseShape', ],
+        ],
+        'ListRiskPolicys' => [
+            'name' => 'ListRiskPolicys',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:listRiskPolicys',
+            ],
+            'input' => [ 'shape' => 'ListRiskPolicysRequestShape', ],
+            'output' => [ 'shape' => 'ListRiskPolicysResponseShape', ],
+        ],
+        'DelRiskPolicys' => [
+            'name' => 'DelRiskPolicys',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:delRiskPolicys',
+            ],
+            'input' => [ 'shape' => 'DelRiskPolicysRequestShape', ],
+            'output' => [ 'shape' => 'DelRiskPolicysResponseShape', ],
+        ],
+        'SetRiskUsrList' => [
+            'name' => 'SetRiskUsrList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:setRiskUsrList',
+            ],
+            'input' => [ 'shape' => 'SetRiskUsrListRequestShape', ],
+            'output' => [ 'shape' => 'SetRiskUsrListResponseShape', ],
+        ],
+        'ListRiskUsrLists' => [
+            'name' => 'ListRiskUsrLists',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:listRiskUsrLists',
+            ],
+            'input' => [ 'shape' => 'ListRiskUsrListsRequestShape', ],
+            'output' => [ 'shape' => 'ListRiskUsrListsResponseShape', ],
+        ],
+        'DelRiskUsrLists' => [
+            'name' => 'DelRiskUsrLists',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:delRiskUsrLists',
+            ],
+            'input' => [ 'shape' => 'DelRiskUsrListsRequestShape', ],
+            'output' => [ 'shape' => 'DelRiskUsrListsResponseShape', ],
+        ],
+        'SetRiskVar' => [
+            'name' => 'SetRiskVar',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:setRiskVar',
+            ],
+            'input' => [ 'shape' => 'SetRiskVarRequestShape', ],
+            'output' => [ 'shape' => 'SetRiskVarResponseShape', ],
+        ],
+        'ListRiskVars' => [
+            'name' => 'ListRiskVars',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:listRiskVars',
+            ],
+            'input' => [ 'shape' => 'ListRiskVarsRequestShape', ],
+            'output' => [ 'shape' => 'ListRiskVarsResponseShape', ],
+        ],
+        'DelRiskVars' => [
+            'name' => 'DelRiskVars',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:delRiskVars',
+            ],
+            'input' => [ 'shape' => 'DelRiskVarsRequestShape', ],
+            'output' => [ 'shape' => 'DelRiskVarsResponseShape', ],
+        ],
+        'ListRiskEventVars' => [
+            'name' => 'ListRiskEventVars',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:listRiskEventVars',
+            ],
+            'input' => [ 'shape' => 'ListRiskEventVarsRequestShape', ],
+            'output' => [ 'shape' => 'ListRiskEventVarsResponseShape', ],
+        ],
+        'DelRiskEventVars' => [
+            'name' => 'DelRiskEventVars',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:delRiskEventVars',
+            ],
+            'input' => [ 'shape' => 'DelRiskEventVarsRequestShape', ],
+            'output' => [ 'shape' => 'DelRiskEventVarsResponseShape', ],
+        ],
+        'SetRiskEventVars' => [
+            'name' => 'SetRiskEventVars',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/risk:setRiskEventVars',
+            ],
+            'input' => [ 'shape' => 'SetRiskEventVarsRequestShape', ],
+            'output' => [ 'shape' => 'SetRiskEventVarsResponseShape', ],
+        ],
+        'GetWafInstance' => [
+            'name' => 'GetWafInstance',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/user:getWafInstance',
+            ],
+            'input' => [ 'shape' => 'GetWafInstanceRequestShape', ],
+            'output' => [ 'shape' => 'GetWafInstanceResponseShape', ],
+        ],
     ],
     'shapes' => [
         'GetPriceReq' => [
@@ -447,6 +663,8 @@ return [
                 'packageType' => [ 'type' => 'integer', 'locationName' => 'packageType', ],
                 'extraDomainsNum' => [ 'type' => 'integer', 'locationName' => 'extraDomainsNum', ],
                 'extraBitsLimit' => [ 'type' => 'integer', 'locationName' => 'extraBitsLimit', ],
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
             ],
         ],
         'OrderReq' => [
@@ -456,13 +674,15 @@ return [
                 'buyType' => [ 'type' => 'integer', 'locationName' => 'buyType', ],
                 'timeSpan' => [ 'type' => 'integer', 'locationName' => 'timeSpan', ],
                 'timeUnit' => [ 'type' => 'string', 'locationName' => 'timeUnit', ],
-                'startTime' => [ 'type' => 'integer', 'locationName' => 'startTime', ],
+                'startTime' => [ 'type' => 'long', 'locationName' => 'startTime', ],
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'packageType' => [ 'type' => 'integer', 'locationName' => 'packageType', ],
                 'extraDomainsNum' => [ 'type' => 'integer', 'locationName' => 'extraDomainsNum', ],
                 'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
                 'returnURL' => [ 'type' => 'string', 'locationName' => 'returnURL', ],
                 'extraBitsLimit' => [ 'type' => 'integer', 'locationName' => 'extraBitsLimit', ],
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
             ],
         ],
         'AssignCertReq' => [
@@ -510,64 +730,13 @@ return [
                 'pv' => [ 'type' => 'integer', 'locationName' => 'pv', ],
             ],
         ],
-        'GetChartReq' => [
+        'TopAntiValue' => [
             'type' => 'structure',
             'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
-                'end' => [ 'type' => 'integer', 'locationName' => 'end', ],
-                'isSum' => [ 'type' => 'boolean', 'locationName' => 'isSum', ],
-                'isWafRule' => [ 'type' => 'boolean', 'locationName' => 'isWafRule', ],
-                'isRs' => [ 'type' => 'boolean', 'locationName' => 'isRs', ],
-                'pieItem' => [ 'type' => 'string', 'locationName' => 'pieItem', ],
-            ],
-        ],
-        'GetAntiEventReq' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'antiType' => [ 'type' => 'string', 'locationName' => 'antiType', ],
-                'remoteAddr' => [ 'type' => 'string', 'locationName' => 'remoteAddr', ],
-                'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
-                'end' => [ 'type' => 'integer', 'locationName' => 'end', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-                'sortKey' => [ 'type' => 'string', 'locationName' => 'sortKey', ],
-                'sortDesc' => [ 'type' => 'string', 'locationName' => 'sortDesc', ],
-            ],
-        ],
-        'Bps' => [
-            'type' => 'structure',
-            'members' => [
-                'upBps' =>  [ 'shape' => 'ChartItemValue', ],
-                'downBps' =>  [ 'shape' => 'ChartItemValue', ],
-            ],
-        ],
-        'WafTopN' => [
-            'type' => 'structure',
-            'members' => [
-                'addr_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
-                'url_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
-                'area_top50' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
-                'waf_rule_sum' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
-            ],
-        ],
-        'GetEsLogReq' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'remoteAddr' => [ 'type' => 'string', 'locationName' => 'remoteAddr', ],
-                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'logType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'logId' => [ 'type' => 'string', 'locationName' => 'logId', ],
-                'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
-                'end' => [ 'type' => 'integer', 'locationName' => 'end', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'rank' => [ 'type' => 'integer', 'locationName' => 'rank', ],
+                'src' => [ 'type' => 'string', 'locationName' => 'src', ],
+                'pv' => [ 'type' => 'integer', 'locationName' => 'pv', ],
+                'count' => [ 'type' => 'list', 'member' => [ 'shape' => 'KVPair', ], ],
             ],
         ],
         'AclTopN' => [
@@ -577,11 +746,24 @@ return [
                 'rulename_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
             ],
         ],
-        'KVPair' => [
+        'StatusCodeData' => [
             'type' => 'structure',
             'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
+                'domainTop10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopCodeValue', ], ],
+                'urlTop10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopCodeValue', ], ],
+                'statusCodeTotal' =>  [ 'shape' => 'ChartItemValue', ],
+                'statusCodePie' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
+            ],
+        ],
+        'GetStatusCodeReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
+                'end' => [ 'type' => 'integer', 'locationName' => 'end', ],
+                'statusCode' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'isStaCode' => [ 'type' => 'boolean', 'locationName' => 'isStaCode', ],
             ],
         ],
         'CcTopN' => [
@@ -619,24 +801,6 @@ return [
                 'cacheTotal' =>  [ 'shape' => 'ChartItemValue', ],
             ],
         ],
-        'AntiEvent' => [
-            'type' => 'structure',
-            'members' => [
-                'remoteAddr' => [ 'type' => 'string', 'locationName' => 'remoteAddr', ],
-                'csaInfo' => [ 'type' => 'string', 'locationName' => 'csaInfo', ],
-                'area' => [ 'type' => 'string', 'locationName' => 'area', ],
-                'accessTime' => [ 'type' => 'integer', 'locationName' => 'accessTime', ],
-                'method' => [ 'type' => 'string', 'locationName' => 'method', ],
-                'attackType' => [ 'type' => 'string', 'locationName' => 'attackType', ],
-                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
-                'payLoad' => [ 'type' => 'string', 'locationName' => 'payLoad', ],
-                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
-                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
-                'logId' => [ 'type' => 'string', 'locationName' => 'logId', ],
-                'isReported' => [ 'type' => 'integer', 'locationName' => 'isReported', ],
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-            ],
-        ],
         'LogReportReq' => [
             'type' => 'structure',
             'members' => [
@@ -653,6 +817,8 @@ return [
                 'area_top10' =>  [ 'shape' => 'TopValue', ],
                 'url_top10' =>  [ 'shape' => 'TopValue', ],
                 'ua_top10' =>  [ 'shape' => 'TopValue', ],
+                'domain_anti_top10' =>  [ 'shape' => 'TopAntiValue', ],
+                'url_anti_top10' =>  [ 'shape' => 'TopAntiValue', ],
             ],
         ],
         'ListEsLogDownloadReq' => [
@@ -706,6 +872,117 @@ return [
                 'antiStatus' => [ 'type' => 'string', 'locationName' => 'antiStatus', ],
                 'antiReqRaw' => [ 'type' => 'string', 'locationName' => 'antiReqRaw', ],
                 'antiRespRaw' => [ 'type' => 'string', 'locationName' => 'antiRespRaw', ],
+                'antiGeo' => [ 'type' => 'string', 'locationName' => 'antiGeo', ],
+                'antiRiskFid' => [ 'type' => 'string', 'locationName' => 'antiRiskFid', ],
+                'antiRiskRaw' => [ 'type' => 'string', 'locationName' => 'antiRiskRaw', ],
+            ],
+        ],
+        'TopCodeValue' => [
+            'type' => 'structure',
+            'members' => [
+                'rank' => [ 'type' => 'integer', 'locationName' => 'rank', ],
+                'src' => [ 'type' => 'string', 'locationName' => 'src', ],
+                'pv' => [ 'type' => 'integer', 'locationName' => 'pv', ],
+                'status_code' => [ 'type' => 'list', 'member' => [ 'shape' => 'KVPair', ], ],
+            ],
+        ],
+        'GetChartReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
+                'end' => [ 'type' => 'integer', 'locationName' => 'end', ],
+                'isSum' => [ 'type' => 'boolean', 'locationName' => 'isSum', ],
+                'isWafRule' => [ 'type' => 'boolean', 'locationName' => 'isWafRule', ],
+                'isRs' => [ 'type' => 'boolean', 'locationName' => 'isRs', ],
+                'pieItem' => [ 'type' => 'string', 'locationName' => 'pieItem', ],
+                'statusCode' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'isStaCode' => [ 'type' => 'boolean', 'locationName' => 'isStaCode', ],
+            ],
+        ],
+        'GetAntiEventReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'antiType' => [ 'type' => 'string', 'locationName' => 'antiType', ],
+                'remoteAddr' => [ 'type' => 'string', 'locationName' => 'remoteAddr', ],
+                'antiStatus' => [ 'type' => 'string', 'locationName' => 'antiStatus', ],
+                'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
+                'end' => [ 'type' => 'integer', 'locationName' => 'end', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'sortKey' => [ 'type' => 'string', 'locationName' => 'sortKey', ],
+                'sortDesc' => [ 'type' => 'string', 'locationName' => 'sortDesc', ],
+            ],
+        ],
+        'Bps' => [
+            'type' => 'structure',
+            'members' => [
+                'upBps' =>  [ 'shape' => 'ChartItemValue', ],
+                'downBps' =>  [ 'shape' => 'ChartItemValue', ],
+            ],
+        ],
+        'WafTopN' => [
+            'type' => 'structure',
+            'members' => [
+                'addr_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
+                'url_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
+                'area_top50' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
+                'waf_rule_sum' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
+            ],
+        ],
+        'GetEsLogReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'remoteAddr' => [ 'type' => 'string', 'locationName' => 'remoteAddr', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'logType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'logId' => [ 'type' => 'string', 'locationName' => 'logId', ],
+                'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
+                'end' => [ 'type' => 'integer', 'locationName' => 'end', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+            ],
+        ],
+        'GetWafDataReq' => [
+            'type' => 'structure',
+            'members' => [
+                'userPin' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'startTime' => [ 'type' => 'long', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'long', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'KVPair' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
+            ],
+        ],
+        'AntiEvent' => [
+            'type' => 'structure',
+            'members' => [
+                'remoteAddr' => [ 'type' => 'string', 'locationName' => 'remoteAddr', ],
+                'csaInfo' => [ 'type' => 'string', 'locationName' => 'csaInfo', ],
+                'riskLevel' => [ 'type' => 'string', 'locationName' => 'riskLevel', ],
+                'area' => [ 'type' => 'string', 'locationName' => 'area', ],
+                'accessTime' => [ 'type' => 'integer', 'locationName' => 'accessTime', ],
+                'method' => [ 'type' => 'string', 'locationName' => 'method', ],
+                'attackType' => [ 'type' => 'string', 'locationName' => 'attackType', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'payLoad' => [ 'type' => 'string', 'locationName' => 'payLoad', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
+                'logId' => [ 'type' => 'string', 'locationName' => 'logId', ],
+                'isReported' => [ 'type' => 'integer', 'locationName' => 'isReported', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'antiStatus' => [ 'type' => 'string', 'locationName' => 'antiStatus', ],
+                'upstreamErr' => [ 'type' => 'string', 'locationName' => 'upstreamErr', ],
             ],
         ],
         'WebUserdefConf' => [
@@ -726,15 +1003,15 @@ return [
             'type' => 'structure',
             'members' => [
                 'acl' => [ 'type' => 'integer', 'locationName' => 'acl', ],
-                'cc' => [ 'type' => 'string', 'locationName' => 'cc', ],
-                'waf' => [ 'type' => 'string', 'locationName' => 'waf', ],
+                'cc' => [ 'type' => 'integer', 'locationName' => 'cc', ],
+                'waf' => [ 'type' => 'integer', 'locationName' => 'waf', ],
             ],
         ],
         'AddDomain' => [
             'type' => 'structure',
             'members' => [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'domain' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'protocols' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'sslProtocols' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'lbType' => [ 'type' => 'string', 'locationName' => 'lbType', ],
@@ -753,9 +1030,9 @@ return [
         'AttackInfo' => [
             'type' => 'structure',
             'members' => [
-                'aclAnti' => [ 'type' => 'integer', 'locationName' => 'aclAnti', ],
-                'ccAnti' => [ 'type' => 'string', 'locationName' => 'ccAnti', ],
-                'wafAnti' => [ 'type' => 'string', 'locationName' => 'wafAnti', ],
+                'aclAnti' => [ 'type' => 'long', 'locationName' => 'aclAnti', ],
+                'ccAnti' => [ 'type' => 'long', 'locationName' => 'ccAnti', ],
+                'wafAnti' => [ 'type' => 'long', 'locationName' => 'wafAnti', ],
             ],
         ],
         'DnsStatus' => [
@@ -811,6 +1088,13 @@ return [
             'members' => [
                 'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
                 'enableUserDefine' => [ 'type' => 'integer', 'locationName' => 'enableUserDefine', ],
+            ],
+        ],
+        'DenyActionCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'atOp' => [ 'type' => 'integer', 'locationName' => 'atOp', ],
+                'atVal' => [ 'type' => 'string', 'locationName' => 'atVal', ],
             ],
         ],
         'RegionVipInfo' => [
@@ -874,6 +1158,7 @@ return [
                 'qps' => [ 'type' => 'integer', 'locationName' => 'qps', ],
                 'enableUserDefine' => [ 'type' => 'integer', 'locationName' => 'enableUserDefine', ],
                 'rulesCount' => [ 'type' => 'integer', 'locationName' => 'rulesCount', ],
+                'action' =>  [ 'shape' => 'DenyActionCfg', ],
             ],
         ],
         'FilterSenseConf' => [
@@ -901,7 +1186,14 @@ return [
                 'dnsStatus' =>  [ 'shape' => 'DnsStatus', ],
                 'enableCname2Rs' => [ 'type' => 'integer', 'locationName' => 'enableCname2Rs', ],
                 'enableIpv6' => [ 'type' => 'integer', 'locationName' => 'enableIpv6', ],
-                'region' =>  [ 'shape' => 'RegionVipInfo', ],
+                'region' =>  [ 'shape' => 'DomainRegionInfo', ],
+            ],
+        ],
+        'RiskConf' => [
+            'type' => 'structure',
+            'members' => [
+                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
+                'enableAccount' => [ 'type' => 'integer', 'locationName' => 'enableAccount', ],
             ],
         ],
         'AclConf' => [
@@ -966,6 +1258,7 @@ return [
                 'threatinfoConf' =>  [ 'shape' => 'EnableConf', ],
                 'proxycacheConf' =>  [ 'shape' => 'EnableConf', ],
                 'botConf' =>  [ 'shape' => 'EnableConf', ],
+                'riskConf' =>  [ 'shape' => 'RiskConf', ],
             ],
         ],
         'DenyConf' => [
@@ -1056,8 +1349,7 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'rsAddr' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'dnsType' => [ 'type' => 'string', 'locationName' => 'dnsType', ],
-                'backupCname' => [ 'type' => 'string', 'locationName' => 'backupCname', ],
-                'enable2Dos' => [ 'type' => 'integer', 'locationName' => 'enable2Dos', ],
+                'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
             ],
         ],
         'IpVipInfo' => [
@@ -1107,13 +1399,14 @@ return [
                 'enableUserDef' => [ 'type' => 'integer', 'locationName' => 'enableUserDef', ],
             ],
         ],
-        'DelRulesReq' => [
+        'ListRiskConfDefaultReq' => [
             'type' => 'structure',
             'members' => [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
                 'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
         ],
         'IpListCfg' => [
@@ -1133,6 +1426,569 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+            ],
+        ],
+        'RiskConfDefaultCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'ListRiskRulesReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'sceneRef' => [ 'type' => 'string', 'locationName' => 'sceneRef', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'RiskEventVarsCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'event' =>  [ 'shape' => 'RiskEventCfg', ],
+                'vars' =>  [ 'shape' => 'RiskVarCfg', ],
+                'policys' => [ 'type' => 'list', 'member' => [ 'shape' => 'RiskPolicyCfg', ], ],
+            ],
+        ],
+        'GeoCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
+                'atCfg' =>  [ 'shape' => 'AtCfg', ],
+            ],
+        ],
+        'ConditionIdSet' => [
+            'type' => 'structure',
+            'members' => [
+                'conditionId' => [ 'type' => 'integer', 'locationName' => 'conditionId', ],
+                'opposite' => [ 'type' => 'string', 'locationName' => 'opposite', ],
+            ],
+        ],
+        'BotMatchItem' => [
+            'type' => 'structure',
+            'members' => [
+                'field' => [ 'type' => 'string', 'locationName' => 'field', ],
+                'logic' => [ 'type' => 'integer', 'locationName' => 'logic', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'SetProxycacheConfigReq' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
+                'itemCfg' => [ 'type' => 'list', 'member' => [ 'shape' => 'CacheItemCfg', ], ],
+            ],
+        ],
+        'RiskPolicyCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'eventCode' => [ 'type' => 'string', 'locationName' => 'eventCode', ],
+                'logic' => [ 'type' => 'string', 'locationName' => 'logic', ],
+                'rules' => [ 'type' => 'string', 'locationName' => 'rules', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'redirection' => [ 'type' => 'string', 'locationName' => 'redirection', ],
+            ],
+        ],
+        'AntiModeWafReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'wafMode' => [ 'type' => 'integer', 'locationName' => 'wafMode', ],
+            ],
+        ],
+        'KeyValCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
+                'atCfg' =>  [ 'shape' => 'AtCfg', ],
+            ],
+        ],
+        'RiskUsrListCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'rules' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ListBotStdRuleReq' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'botType' => [ 'type' => 'string', 'locationName' => 'botType', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+            ],
+        ],
+        'RiskVarRuleCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'left' => [ 'type' => 'string', 'locationName' => 'left', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'right' => [ 'type' => 'string', 'locationName' => 'right', ],
+                'resultOpt' => [ 'type' => 'string', 'locationName' => 'resultOpt', ],
+                'resultRight' => [ 'type' => 'string', 'locationName' => 'resultRight', ],
+            ],
+        ],
+        'FilterSenseinfoListCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'matchLogic' => [ 'type' => 'string', 'locationName' => 'matchLogic', ],
+                'matchType' => [ 'type' => 'string', 'locationName' => 'matchType', ],
+                'matchAction' => [ 'type' => 'string', 'locationName' => 'matchAction', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
+                'matchVal' => [ 'type' => 'string', 'locationName' => 'matchVal', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+            ],
+        ],
+        'SetRiskJsReq' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'matchOp' => [ 'type' => 'string', 'locationName' => 'matchOp', ],
+                'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
+            ],
+        ],
+        'SetProxycacheUrlReq' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
+                'proto' => [ 'type' => 'string', 'locationName' => 'proto', ],
+                'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
+            ],
+        ],
+        'Proxycacheitem' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'time' => [ 'type' => 'string', 'locationName' => 'time', ],
+            ],
+        ],
+        'SkipActionCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'passAll' => [ 'type' => 'integer', 'locationName' => 'passAll', ],
+                'cc' => [ 'type' => 'integer', 'locationName' => 'cc', ],
+                'waf' => [ 'type' => 'integer', 'locationName' => 'waf', ],
+                'deny' => [ 'type' => 'integer', 'locationName' => 'deny', ],
+                'rateLimit' => [ 'type' => 'integer', 'locationName' => 'rateLimit', ],
+                'bot' => [ 'type' => 'integer', 'locationName' => 'bot', ],
+                'risk' => [ 'type' => 'integer', 'locationName' => 'risk', ],
+            ],
+        ],
+        'ListRiskCommonReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'rulesFilter' => [ 'type' => 'string', 'locationName' => 'rulesFilter', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'ListWafFilterReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'conditionId' => [ 'type' => 'integer', 'locationName' => 'conditionId', ],
+            ],
+        ],
+        'CommonNameReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'ListRuleCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
+                'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
+                'atCfg' =>  [ 'shape' => 'AtCfg', ],
+            ],
+        ],
+        'FilterCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'partOfReq' => [ 'type' => 'string', 'locationName' => 'partOfReq', ],
+                'reqKey' => [ 'type' => 'string', 'locationName' => 'reqKey', ],
+                'matchLogic' => [ 'type' => 'string', 'locationName' => 'matchLogic', ],
+                'reqValue' => [ 'type' => 'string', 'locationName' => 'reqValue', ],
+                'decodeFunc' => [ 'type' => 'string', 'locationName' => 'decodeFunc', ],
+                'isBase64Decode' => [ 'type' => 'string', 'locationName' => 'isBase64Decode', ],
+            ],
+        ],
+        'SetCookieReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'iswhite' => [ 'type' => 'integer', 'locationName' => 'iswhite', ],
+                'cookies' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyValCfg', ], ],
+            ],
+        ],
+        'PageListCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'checkStatus' => [ 'type' => 'integer', 'locationName' => 'checkStatus', ],
+            ],
+        ],
+        'SetRewriteRulesReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'rewriteType' => [ 'type' => 'string', 'locationName' => 'rewriteType', ],
+                'rewriteRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'RewriteRuleCfg', ], ],
+            ],
+        ],
+        'StatusListCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'oriStatus' => [ 'type' => 'string', 'locationName' => 'oriStatus', ],
+                'setStatus' => [ 'type' => 'string', 'locationName' => 'setStatus', ],
+                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+            ],
+        ],
+        'SetFilterSenseinfoReq' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'matchLogic' => [ 'type' => 'string', 'locationName' => 'matchLogic', ],
+                'matchType' => [ 'type' => 'string', 'locationName' => 'matchType', ],
+                'matchAction' => [ 'type' => 'string', 'locationName' => 'matchAction', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
+                'matchVal' => [ 'type' => 'string', 'locationName' => 'matchVal', ],
+            ],
+        ],
+        'CommonDenySkipReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'iswhite' => [ 'type' => 'integer', 'locationName' => 'iswhite', ],
+            ],
+        ],
+        'SetRiskEventVarsReq' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'event' =>  [ 'shape' => 'RiskEventCfg', ],
+                'vars' => [ 'type' => 'list', 'member' => [ 'shape' => 'RiskVarCfg', ], ],
+                'policys' => [ 'type' => 'list', 'member' => [ 'shape' => 'RiskPolicyCfg', ], ],
+            ],
+        ],
+        'SetRatelimitRulesReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'RateLimitRuleCfg', ], ],
+            ],
+        ],
+        'ListWafRuleCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'conditions' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConditionNameSet', ], ],
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'matchAction' => [ 'type' => 'string', 'locationName' => 'matchAction', ],
+                'redirection' => [ 'type' => 'string', 'locationName' => 'redirection', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+            ],
+        ],
+        'ListRiskJsReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'matchOp' => [ 'type' => 'string', 'locationName' => 'matchOp', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'SetRiskVarReq' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+                'eventCode' => [ 'type' => 'string', 'locationName' => 'eventCode', ],
+                'varType' => [ 'type' => 'string', 'locationName' => 'varType', ],
+                'cost' => [ 'type' => 'string', 'locationName' => 'cost', ],
+                'output' => [ 'type' => 'string', 'locationName' => 'output', ],
+                'property' => [ 'type' => 'string', 'locationName' => 'property', ],
+                'dura' => [ 'type' => 'string', 'locationName' => 'dura', ],
+                'logic' => [ 'type' => 'string', 'locationName' => 'logic', ],
+                'rules' =>  [ 'shape' => 'RiskVarRuleCfg', ],
+                'pos' => [ 'type' => 'string', 'locationName' => 'pos', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+            ],
+        ],
+        'JsPage' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'matchOp' => [ 'type' => 'string', 'locationName' => 'matchOp', ],
+                'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
+            ],
+        ],
+        'ConditionNameSet' => [
+            'type' => 'structure',
+            'members' => [
+                'conditionName' => [ 'type' => 'string', 'locationName' => 'conditionName', ],
+                'opposite' => [ 'type' => 'string', 'locationName' => 'opposite', ],
+            ],
+        ],
+        'ListProxycacheUrl' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
+                'proto' => [ 'type' => 'string', 'locationName' => 'proto', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+                'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'ListWebcacheUrlCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'RiskPolicyRuleCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'leftType' => [ 'type' => 'string', 'locationName' => 'leftType', ],
+                'left' => [ 'type' => 'string', 'locationName' => 'left', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'rightType' => [ 'type' => 'string', 'locationName' => 'rightType', ],
+                'right' => [ 'type' => 'string', 'locationName' => 'right', ],
+            ],
+        ],
+        'ListWafConditionsReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'conditionName' => [ 'type' => 'string', 'locationName' => 'conditionName', ],
+                'conditionType' => [ 'type' => 'string', 'locationName' => 'conditionType', ],
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+            ],
+        ],
+        'ListRuleListCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
+                'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
+                'atCfg' =>  [ 'shape' => 'AtCfg', ],
+            ],
+        ],
+        'RiskRuleCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'methods' => [ 'type' => 'string', 'locationName' => 'methods', ],
+                'sceneRef' => [ 'type' => 'string', 'locationName' => 'sceneRef', ],
+                'event' => [ 'type' => 'string', 'locationName' => 'event', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'redirection' => [ 'type' => 'string', 'locationName' => 'redirection', ],
+            ],
+        ],
+        'EnableReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
+            ],
+        ],
+        'ListRewriteRulesReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'rewriteType' => [ 'type' => 'string', 'locationName' => 'rewriteType', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'SetBotThreatIpRuleReq' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'botType' => [ 'type' => 'string', 'locationName' => 'botType', ],
+                'action' =>  [ 'shape' => 'DenyActionCfg', ],
+                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
+            ],
+        ],
+        'SetIpReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'iswhite' => [ 'type' => 'integer', 'locationName' => 'iswhite', ],
+                'isEnable' => [ 'type' => 'integer', 'locationName' => 'isEnable', ],
+                'ips' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpCfg', ], ],
+            ],
+        ],
+        'ListPagesReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'checkStatus' => [ 'type' => 'integer', 'locationName' => 'checkStatus', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'AtCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'denyAction' =>  [ 'shape' => 'DenyActionCfg', ],
+                'skipAction' =>  [ 'shape' => 'SkipActionCfg', ],
+            ],
+        ],
+        'RateLimitRuleCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'host' =>  [ 'shape' => 'MatchOpValCfg', ],
+                'url' =>  [ 'shape' => 'MatchOpValCfg', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'rate' => [ 'type' => 'integer', 'locationName' => 'rate', ],
+                'matchAction' => [ 'type' => 'string', 'locationName' => 'matchAction', ],
+                'redirection' => [ 'type' => 'string', 'locationName' => 'redirection', ],
+            ],
+        ],
+        'GeoListCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+                'geo' => [ 'type' => 'string', 'locationName' => 'geo', ],
+                'atCfg' =>  [ 'shape' => 'AtCfg', ],
+            ],
+        ],
+        'ListFilterReqRespRulesReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'opObject' => [ 'type' => 'string', 'locationName' => 'opObject', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'IpCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
+                'atCfg' =>  [ 'shape' => 'AtCfg', ],
+            ],
+        ],
+        'ListWafConditionCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'conditionName' => [ 'type' => 'string', 'locationName' => 'conditionName', ],
+                'conditionType' => [ 'type' => 'string', 'locationName' => 'conditionType', ],
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'ruleNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'DelRulesReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
             ],
         ],
         'SetIntSemReq' => [
@@ -1168,12 +2024,16 @@ return [
                 'valType' => [ 'type' => 'string', 'locationName' => 'valType', ],
             ],
         ],
-        'GeoCfg' => [
+        'SetRiskEventReq' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
-                'atCfg' =>  [ 'shape' => 'AtCfg', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
             ],
         ],
         'SetRiskRuleReq' => [
@@ -1185,21 +2045,10 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
-            ],
-        ],
-        'ConditionIdSet' => [
-            'type' => 'structure',
-            'members' => [
-                'conditionId' => [ 'type' => 'integer', 'locationName' => 'conditionId', ],
-                'opposite' => [ 'type' => 'string', 'locationName' => 'opposite', ],
-            ],
-        ],
-        'BotMatchItem' => [
-            'type' => 'structure',
-            'members' => [
-                'field' => [ 'type' => 'string', 'locationName' => 'field', ],
-                'logic' => [ 'type' => 'integer', 'locationName' => 'logic', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+                'methods' => [ 'type' => 'string', 'locationName' => 'methods', ],
+                'sceneRef' => [ 'type' => 'string', 'locationName' => 'sceneRef', ],
+                'event' => [ 'type' => 'string', 'locationName' => 'event', ],
+                'redirection' => [ 'type' => 'string', 'locationName' => 'redirection', ],
             ],
         ],
         'RiskJsCfg' => [
@@ -1213,27 +2062,12 @@ return [
                 'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
             ],
         ],
-        'SetProxycacheConfigReq' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
-                'itemCfg' => [ 'type' => 'list', 'member' => [ 'shape' => 'CacheItemCfg', ], ],
-            ],
-        ],
         'AntiLevelWafReq' => [
             'type' => 'structure',
             'members' => [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'wafLevel' => [ 'type' => 'integer', 'locationName' => 'wafLevel', ],
-            ],
-        ],
-        'DenyActionCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'atOp' => [ 'type' => 'integer', 'locationName' => 'atOp', ],
-                'atVal' => [ 'type' => 'string', 'locationName' => 'atVal', ],
             ],
         ],
         'ListCcRuleCfg' => [
@@ -1251,6 +2085,8 @@ return [
                 'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
                 'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
                 'redirection' => [ 'type' => 'string', 'locationName' => 'redirection', ],
+                'dimension' => [ 'type' => 'string', 'locationName' => 'dimension', ],
+                'dmvalue' => [ 'type' => 'string', 'locationName' => 'dmvalue', ],
             ],
         ],
         'SetListRulesReq' => [
@@ -1272,14 +2108,6 @@ return [
                 'listType' => [ 'type' => 'string', 'locationName' => 'listType', ],
                 'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-            ],
-        ],
-        'AntiModeWafReq' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'wafMode' => [ 'type' => 'integer', 'locationName' => 'wafMode', ],
             ],
         ],
         'ListJsPageReq' => [
@@ -1320,6 +2148,12 @@ return [
                 'action' =>  [ 'shape' => 'DenyActionCfg', ],
                 'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
                 'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'ststhrst' => [ 'type' => 'integer', 'locationName' => 'ststhrst', ],
+                'ststhrstRatio' => [ 'type' => 'integer', 'locationName' => 'ststhrstRatio', ],
+                'statusDisable' => [ 'type' => 'integer', 'locationName' => 'statusDisable', ],
+                'dateDisable' => [ 'type' => 'integer', 'locationName' => 'dateDisable', ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
             ],
         ],
         'ValListCfg' => [
@@ -1362,66 +2196,12 @@ return [
                 'geos' => [ 'type' => 'list', 'member' => [ 'shape' => 'GeoCfg', ], ],
             ],
         ],
-        'KeyValCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
-                'atCfg' =>  [ 'shape' => 'AtCfg', ],
-            ],
-        ],
-        'ListBotStdRuleReq' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'botType' => [ 'type' => 'string', 'locationName' => 'botType', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-            ],
-        ],
         'SetPagesReq' => [
             'type' => 'structure',
             'members' => [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'pages' => [ 'type' => 'list', 'member' => [ 'shape' => 'PageCfg', ], ],
-            ],
-        ],
-        'FilterSenseinfoListCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'matchLogic' => [ 'type' => 'string', 'locationName' => 'matchLogic', ],
-                'matchType' => [ 'type' => 'string', 'locationName' => 'matchType', ],
-                'matchAction' => [ 'type' => 'string', 'locationName' => 'matchAction', ],
-                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
-                'matchVal' => [ 'type' => 'string', 'locationName' => 'matchVal', ],
-                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
-                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
-            ],
-        ],
-        'SetRiskJsReq' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'matchOp' => [ 'type' => 'string', 'locationName' => 'matchOp', ],
-                'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
-            ],
-        ],
-        'SetProxycacheUrlReq' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
-                'proto' => [ 'type' => 'string', 'locationName' => 'proto', ],
-                'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
             ],
         ],
         'KeyValListCfg' => [
@@ -1436,33 +2216,25 @@ return [
                 'atCfg' =>  [ 'shape' => 'AtCfg', ],
             ],
         ],
-        'Proxycacheitem' => [
+        'RiskVarCfg' => [
             'type' => 'structure',
             'members' => [
-                'code' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'time' => [ 'type' => 'string', 'locationName' => 'time', ],
-            ],
-        ],
-        'SkipActionCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'passAll' => [ 'type' => 'integer', 'locationName' => 'passAll', ],
-                'cc' => [ 'type' => 'integer', 'locationName' => 'cc', ],
-                'waf' => [ 'type' => 'integer', 'locationName' => 'waf', ],
-                'deny' => [ 'type' => 'integer', 'locationName' => 'deny', ],
-                'rateLimit' => [ 'type' => 'integer', 'locationName' => 'rateLimit', ],
-                'bot' => [ 'type' => 'integer', 'locationName' => 'bot', ],
-                'risk' => [ 'type' => 'integer', 'locationName' => 'risk', ],
-            ],
-        ],
-        'ListWafFilterReq' => [
-            'type' => 'structure',
-            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'conditionId' => [ 'type' => 'integer', 'locationName' => 'conditionId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+                'eventCode' => [ 'type' => 'string', 'locationName' => 'eventCode', ],
+                'varType' => [ 'type' => 'string', 'locationName' => 'varType', ],
+                'cost' => [ 'type' => 'string', 'locationName' => 'cost', ],
+                'output' => [ 'type' => 'string', 'locationName' => 'output', ],
+                'property' => [ 'type' => 'string', 'locationName' => 'property', ],
+                'dura' => [ 'type' => 'string', 'locationName' => 'dura', ],
+                'logic' => [ 'type' => 'string', 'locationName' => 'logic', ],
+                'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'RiskVarRuleCfg', ], ],
+                'pos' => [ 'type' => 'string', 'locationName' => 'pos', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
             ],
         ],
         'FilterReqRespRulesConfig' => [
@@ -1501,44 +2273,6 @@ return [
                 'content' => [ 'type' => 'string', 'locationName' => 'content', ],
             ],
         ],
-        'CommonNameReq' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-            ],
-        ],
-        'ListRuleCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
-                'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
-                'atCfg' =>  [ 'shape' => 'AtCfg', ],
-            ],
-        ],
-        'FilterCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'partOfReq' => [ 'type' => 'string', 'locationName' => 'partOfReq', ],
-                'reqKey' => [ 'type' => 'string', 'locationName' => 'reqKey', ],
-                'matchLogic' => [ 'type' => 'string', 'locationName' => 'matchLogic', ],
-                'reqValue' => [ 'type' => 'string', 'locationName' => 'reqValue', ],
-                'decodeFunc' => [ 'type' => 'string', 'locationName' => 'decodeFunc', ],
-                'isBase64Decode' => [ 'type' => 'string', 'locationName' => 'isBase64Decode', ],
-            ],
-        ],
-        'SetCookieReq' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'iswhite' => [ 'type' => 'integer', 'locationName' => 'iswhite', ],
-                'cookies' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyValCfg', ], ],
-            ],
-        ],
         'SetCcRuleReq' => [
             'type' => 'structure',
             'members' => [
@@ -1552,18 +2286,8 @@ return [
                 'blockType' => [ 'type' => 'integer', 'locationName' => 'blockType', ],
                 'blockTime' => [ 'type' => 'integer', 'locationName' => 'blockTime', ],
                 'redirection' => [ 'type' => 'string', 'locationName' => 'redirection', ],
-            ],
-        ],
-        'PageListCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
-                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
-                'checkStatus' => [ 'type' => 'integer', 'locationName' => 'checkStatus', ],
+                'dimension' => [ 'type' => 'string', 'locationName' => 'dimension', ],
+                'dmvalue' => [ 'type' => 'string', 'locationName' => 'dmvalue', ],
             ],
         ],
         'SetWafRuleReq' => [
@@ -1578,13 +2302,29 @@ return [
                 'conditions' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConditionIdSet', ], ],
             ],
         ],
-        'SetRewriteRulesReq' => [
+        'ThreatIpBotRules' => [
             'type' => 'structure',
             'members' => [
+                'botType' => [ 'type' => 'string', 'locationName' => 'botType', ],
+                'botTypeZh' => [ 'type' => 'string', 'locationName' => 'botTypeZh', ],
+                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
+                'action' =>  [ 'shape' => 'DenyActionCfg', ],
+            ],
+        ],
+        'SetRiskPolicyReq' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'rewriteType' => [ 'type' => 'string', 'locationName' => 'rewriteType', ],
-                'rewriteRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'RewriteRuleCfg', ], ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'eventCode' => [ 'type' => 'string', 'locationName' => 'eventCode', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+                'logic' => [ 'type' => 'string', 'locationName' => 'logic', ],
+                'rules' =>  [ 'shape' => 'RiskPolicyRuleCfg', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'redirection' => [ 'type' => 'string', 'locationName' => 'redirection', ],
             ],
         ],
         'SetWafConditionReq' => [
@@ -1598,56 +2338,15 @@ return [
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'FilterCfg', ], ],
             ],
         ],
-        'StatusListCfg' => [
+        'ListRiskEventVarsReq' => [
             'type' => 'structure',
             'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'oriStatus' => [ 'type' => 'string', 'locationName' => 'oriStatus', ],
-                'setStatus' => [ 'type' => 'string', 'locationName' => 'setStatus', ],
-                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
-                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
-                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
-            ],
-        ],
-        'SetFilterSenseinfoReq' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'matchLogic' => [ 'type' => 'string', 'locationName' => 'matchLogic', ],
-                'matchType' => [ 'type' => 'string', 'locationName' => 'matchType', ],
-                'matchAction' => [ 'type' => 'string', 'locationName' => 'matchAction', ],
-                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
-                'matchVal' => [ 'type' => 'string', 'locationName' => 'matchVal', ],
-            ],
-        ],
-        'CommonDenySkipReq' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'iswhite' => [ 'type' => 'integer', 'locationName' => 'iswhite', ],
-            ],
-        ],
-        'SetRatelimitRulesReq' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'RateLimitRuleCfg', ], ],
-            ],
-        ],
-        'ListWafRuleCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'conditions' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConditionNameSet', ], ],
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'matchAction' => [ 'type' => 'string', 'locationName' => 'matchAction', ],
-                'redirection' => [ 'type' => 'string', 'locationName' => 'redirection', ],
-                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
-                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
-                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
         ],
         'ListWafFilterCfg' => [
@@ -1669,46 +2368,6 @@ return [
                 'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
                 'oriVal' => [ 'type' => 'string', 'locationName' => 'oriVal', ],
                 'setVal' => [ 'type' => 'string', 'locationName' => 'setVal', ],
-            ],
-        ],
-        'ListRiskJsReq' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'matchOp' => [ 'type' => 'string', 'locationName' => 'matchOp', ],
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-            ],
-        ],
-        'JsPage' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'matchOp' => [ 'type' => 'string', 'locationName' => 'matchOp', ],
-                'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
-                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
-                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
-            ],
-        ],
-        'ConditionNameSet' => [
-            'type' => 'structure',
-            'members' => [
-                'conditionName' => [ 'type' => 'string', 'locationName' => 'conditionName', ],
-                'opposite' => [ 'type' => 'string', 'locationName' => 'opposite', ],
-            ],
-        ],
-        'ListProxycacheUrl' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
-                'proto' => [ 'type' => 'string', 'locationName' => 'proto', ],
-                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
-                'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
-                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
             ],
         ],
         'SetBotStdRuleReq' => [
@@ -1745,17 +2404,6 @@ return [
                 'uriRewriteEnable' => [ 'type' => 'string', 'locationName' => 'uriRewriteEnable', ],
             ],
         ],
-        'ListWebcacheUrlCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
-                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
-                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
-            ],
-        ],
         'ValCfg' => [
             'type' => 'structure',
             'members' => [
@@ -1763,18 +2411,6 @@ return [
                 'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
                 'val' => [ 'type' => 'string', 'locationName' => 'val', ],
                 'atCfg' =>  [ 'shape' => 'AtCfg', ],
-            ],
-        ],
-        'ListWafConditionsReq' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'conditionName' => [ 'type' => 'string', 'locationName' => 'conditionName', ],
-                'conditionType' => [ 'type' => 'string', 'locationName' => 'conditionType', ],
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
             ],
         ],
         'CacheItemCfg' => [
@@ -1792,15 +2428,27 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
-        'ListRuleListCfg' => [
+        'ListBotThreatIpRuleReq' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+            ],
+        ],
+        'RiskEventCfg' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'policyCount' => [ 'type' => 'integer', 'locationName' => 'policyCount', ],
                 'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
-                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
-                'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
-                'atCfg' =>  [ 'shape' => 'AtCfg', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
             ],
         ],
         'SetBotUsrRuleReq' => [
@@ -1814,19 +2462,12 @@ return [
                 'matchItems' => [ 'type' => 'list', 'member' => [ 'shape' => 'BotMatchItem', ], ],
                 'action' =>  [ 'shape' => 'DenyActionCfg', ],
                 'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
-            ],
-        ],
-        'RiskRuleCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'uri' => [ 'type' => 'string', 'locationName' => 'uri', ],
-                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
-                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
-                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'ststhrst' => [ 'type' => 'integer', 'locationName' => 'ststhrst', ],
+                'ststhrstRatio' => [ 'type' => 'integer', 'locationName' => 'ststhrstRatio', ],
+                'statusDisable' => [ 'type' => 'integer', 'locationName' => 'statusDisable', ],
+                'dateDisable' => [ 'type' => 'integer', 'locationName' => 'dateDisable', ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
             ],
         ],
         'MatchOpValCfg' => [
@@ -1836,30 +2477,12 @@ return [
                 'val' => [ 'type' => 'integer', 'locationName' => 'val', ],
             ],
         ],
-        'EnableReq' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
-            ],
-        ],
         'SetStatusReq' => [
             'type' => 'structure',
             'members' => [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'status' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatusCfg', ], ],
-            ],
-        ],
-        'ListRewriteRulesReq' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'rewriteType' => [ 'type' => 'string', 'locationName' => 'rewriteType', ],
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
         ],
         'SetIpbanReq' => [
@@ -1872,15 +2495,6 @@ return [
                 'banTime' => [ 'type' => 'integer', 'locationName' => 'banTime', ],
             ],
         ],
-        'SetIpReq' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'iswhite' => [ 'type' => 'integer', 'locationName' => 'iswhite', ],
-                'ips' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpCfg', ], ],
-            ],
-        ],
         'SetUriReq' => [
             'type' => 'structure',
             'members' => [
@@ -1890,41 +2504,12 @@ return [
                 'uris' => [ 'type' => 'list', 'member' => [ 'shape' => 'ValCfg', ], ],
             ],
         ],
-        'ListPagesReq' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'checkStatus' => [ 'type' => 'integer', 'locationName' => 'checkStatus', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-            ],
-        ],
         'RewriteRuleCfg' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'oriVal' => [ 'type' => 'string', 'locationName' => 'oriVal', ],
                 'setVal' => [ 'type' => 'string', 'locationName' => 'setVal', ],
-            ],
-        ],
-        'AtCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'denyAction' =>  [ 'shape' => 'DenyActionCfg', ],
-                'skipAction' =>  [ 'shape' => 'SkipActionCfg', ],
-            ],
-        ],
-        'RateLimitRuleCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'host' =>  [ 'shape' => 'MatchOpValCfg', ],
-                'url' =>  [ 'shape' => 'MatchOpValCfg', ],
-                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
-                'rate' => [ 'type' => 'integer', 'locationName' => 'rate', ],
-                'matchAction' => [ 'type' => 'string', 'locationName' => 'matchAction', ],
-                'redirection' => [ 'type' => 'string', 'locationName' => 'redirection', ],
             ],
         ],
         'RateLimitRuleListCfg' => [
@@ -1942,16 +2527,6 @@ return [
                 'redirection' => [ 'type' => 'string', 'locationName' => 'redirection', ],
             ],
         ],
-        'GeoListCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
-                'geo' => [ 'type' => 'string', 'locationName' => 'geo', ],
-                'atCfg' =>  [ 'shape' => 'AtCfg', ],
-            ],
-        ],
         'SetJsPageReq' => [
             'type' => 'structure',
             'members' => [
@@ -1963,14 +2538,16 @@ return [
                 'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
             ],
         ],
-        'ListFilterReqRespRulesReq' => [
+        'SetRiskUsrListReq' => [
             'type' => 'structure',
             'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'opObject' => [ 'type' => 'string', 'locationName' => 'opObject', ],
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+                'rules' => [ 'type' => 'string', 'locationName' => 'rules', ],
             ],
         ],
         'AntiModeCcReq' => [
@@ -1980,24 +2557,7 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'ccMode' => [ 'type' => 'integer', 'locationName' => 'ccMode', ],
                 'qps' => [ 'type' => 'integer', 'locationName' => 'qps', ],
-            ],
-        ],
-        'IpCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
-                'atCfg' =>  [ 'shape' => 'AtCfg', ],
-            ],
-        ],
-        'ListWafConditionCfg' => [
-            'type' => 'structure',
-            'members' => [
-                'conditionName' => [ 'type' => 'string', 'locationName' => 'conditionName', ],
-                'conditionType' => [ 'type' => 'string', 'locationName' => 'conditionType', ],
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'ruleNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'action' =>  [ 'shape' => 'DenyActionCfg', ],
             ],
         ],
         'ListFilterSenseinfoReq' => [
@@ -2048,10 +2608,16 @@ return [
                 'sourceId' => [ 'type' => 'string', 'locationName' => 'sourceId', ],
                 'domainPackages' => [ 'type' => 'integer', 'locationName' => 'domainPackages', ],
                 'extraBitsLimit' => [ 'type' => 'integer', 'locationName' => 'extraBitsLimit', ],
-                'startTime' => [ 'type' => 'integer', 'locationName' => 'startTime', ],
-                'releaseingTime' => [ 'type' => 'integer', 'locationName' => 'releaseingTime', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'releaseingTime' => [ 'type' => 'string', 'locationName' => 'releaseingTime', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'valid' => [ 'type' => 'integer', 'locationName' => 'valid', ],
+            ],
+        ],
+        'HandlePackReq' => [
+            'type' => 'structure',
+            'members' => [
+                'operation' => [ 'type' => 'string', 'locationName' => 'operation', ],
             ],
         ],
         'ContactGroup' => [
@@ -2227,11 +2793,39 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
+        'GetEsLogDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'remote_addr' => [ 'type' => 'string', 'locationName' => 'remote_addr', ],
+                'document_uri' => [ 'type' => 'string', 'locationName' => 'document_uri', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'anti_geo' => [ 'type' => 'string', 'locationName' => 'anti_geo', ],
+                'request_method' => [ 'type' => 'string', 'locationName' => 'request_method', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'logType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'logId' => [ 'type' => 'string', 'locationName' => 'logId', ],
+                'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
+                'end' => [ 'type' => 'integer', 'locationName' => 'end', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'GetBpsDataRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'req' =>  [ 'shape' => 'GetChartReq', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetEsLogDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetEsLogDetailResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetBpsDataResponseShape' => [
@@ -2241,6 +2835,22 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'GetAntiEventRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'GetAntiEventReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetEsLogDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'events' => [ 'type' => 'list', 'member' => [ 'shape' => 'EsLogEvent', ], ],
+            ],
+        ],
         'GetBpsDataResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2248,11 +2858,27 @@ return [
                 'bps' =>  [ 'shape' => 'Bps', ],
             ],
         ],
+        'GetAntiEventResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetAntiEventResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'GetQpsDataResultShape' => [
             'type' => 'structure',
             'members' => [
                 'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
                 'qps' =>  [ 'shape' => 'Qps', ],
+            ],
+        ],
+        'GetAntiEventResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'events' => [ 'type' => 'list', 'member' => [ 'shape' => 'AntiEvent', ], ],
             ],
         ],
         'GetQpsDataResponseShape' => [
@@ -2442,7 +3068,7 @@ return [
                 'statusConf' =>  [ 'shape' => 'StatusConf', ],
                 'uriRewriteConf' =>  [ 'shape' => 'UriRewriteConf', ],
                 'proxycacheConf' =>  [ 'shape' => 'EnableConf', ],
-                'riskConf' =>  [ 'shape' => 'EnableConf', ],
+                'riskConf' =>  [ 'shape' => 'RiskConf', ],
             ],
         ],
         'DeleteDomainResponseShape' => [
@@ -2466,50 +3092,15 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'AddIpsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ListBotStdRulesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ListBotStdRulesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DelIpsResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'ListWafConditionsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'req' =>  [ 'shape' => 'ListWafConditionsReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-            ],
-        ],
-        'ListRiskRulesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'req' =>  [ 'shape' => 'ListRulesReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
         'ListWafFilterResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'ListWafFilterResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DelJsPageResponseShape' => [
-            'type' => 'structure',
-            'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -2521,14 +3112,6 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
-        'DelWafRuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'req' =>  [ 'shape' => 'DelRulesReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-            ],
-        ],
         'ListWafFilterResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2536,21 +3119,6 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'list' =>  [ 'shape' => 'ListWafFilterCfg', ],
-            ],
-        ],
-        'DelRiskRuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ListRiskJsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
-                'data' =>  [ 'shape' => 'RiskJsCfg', ],
             ],
         ],
         'EnableBotRequestShape' => [
@@ -2582,13 +3150,29 @@ return [
             'members' => [
             ],
         ],
-        'ListRiskRulesResultShape' => [
+        'EnableBotThreatIpResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
-                'data' =>  [ 'shape' => 'RiskRuleCfg', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetBotThreatIpRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableRiskAccountResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DelRiskVarsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'DelRulesReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
         'UpdateIpsRequestShape' => [
@@ -2599,12 +3183,6 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
-        'SetRiskRuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'ListRiskJsRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2613,29 +3191,10 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
-        'ListWafConditionsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ListWafConditionsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'EnableWafResponseShape' => [
+        'SetBotThreatIpRuleResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ListIpsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'iswhite' => [ 'type' => 'string', 'locationName' => 'iswhite', ],
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
-                'data' =>  [ 'shape' => 'IpListCfg', ],
             ],
         ],
         'ListBotStdRulesResultShape' => [
@@ -2647,12 +3206,30 @@ return [
                 'list' =>  [ 'shape' => 'StdBotRules', ],
             ],
         ],
-        'DelBotUsrRuleRequestShape' => [
+        'DelRiskVarsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'req' =>  [ 'shape' => 'DelRulesReq', ],
+            ],
+        ],
+        'SetRiskEventVarsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EnableRiskAccountRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'EnableReq', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'ListRiskPolicysResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListRiskPolicysResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DelRiskRuleResultShape' => [
@@ -2660,10 +3237,18 @@ return [
             'members' => [
             ],
         ],
-        'ListRiskJsResponseShape' => [
+        'ListRiskEventVarsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'ListRiskJsResultShape', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'data' =>  [ 'shape' => 'RiskEventVarsCfg', ],
+            ],
+        ],
+        'DelRiskUsrListsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -2680,9 +3265,13 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
-        'SetRiskJsResultShape' => [
+        'ListRiskConfDefaultResultShape' => [
             'type' => 'structure',
             'members' => [
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'data' =>  [ 'shape' => 'RiskConfDefaultCfg', ],
             ],
         ],
         'ListWafRulesResponseShape' => [
@@ -2701,23 +3290,7 @@ return [
                 'data' =>  [ 'shape' => 'JsPage', ],
             ],
         ],
-        'SetWafConditionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UpdateIpsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'EnableUsrBotResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DelWafRuleResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -2774,13 +3347,6 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
-        'ListRiskRulesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ListRiskRulesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'SetBotStdRulesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2794,22 +3360,15 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
-        'AntiLevelWafRequestShape' => [
+        'DelRiskJsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'req' =>  [ 'shape' => 'AntiLevelWafReq', ],
+                'req' =>  [ 'shape' => 'DelRulesReq', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
-        'ListBotUsrRulesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ListBotUsrRulesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DelRiskJsRequestShape' => [
+        'DelRiskEventVarsRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'req' =>  [ 'shape' => 'DelRulesReq', ],
@@ -2820,6 +3379,14 @@ return [
         'EnableWafResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'SetRiskPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'SetRiskPolicyReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
         'ListWafRulesResultShape' => [
@@ -2847,9 +3414,17 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
-        'EnableBotResultShape' => [
+        'DelRiskUsrListsResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DelRiskPolicysRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'DelRulesReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
         'EnableWafUserDefineRequestShape' => [
@@ -2860,21 +3435,19 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
-        'DelWafRuleResponseShape' => [
+        'ListRiskPolicysResultShape' => [
             'type' => 'structure',
             'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'data' =>  [ 'shape' => 'RiskPolicyCfg', ],
             ],
         ],
         'DelIpsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AddIpsResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'ListBotStdRulesRequestShape' => [
@@ -2885,14 +3458,26 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
-        'UpdateBotUsrRuleResultShape' => [
+        'DelRiskPolicysResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DelBotUsrRuleResultShape' => [
+        'SetBotThreatIpRuleRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'req' =>  [ 'shape' => 'SetBotThreatIpRuleReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'ListRiskUsrListsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ListRiskCommonReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
         'AntiModeWafResponseShape' => [
@@ -2921,19 +3506,9 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'SetRiskJsRequestShape' => [
+        'SetRiskUsrListResultShape' => [
             'type' => 'structure',
             'members' => [
-                'req' =>  [ 'shape' => 'SetRiskJsReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-            ],
-        ],
-        'ListIpsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ListIpsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'UpdateIpsResponseShape' => [
@@ -2942,15 +3517,10 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'EnableRiskResponseShape' => [
+        'SetRiskVarResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'SetRiskRuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'SetBotStdRulesRequestShape' => [
@@ -2990,23 +3560,16 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
-        'DescribeJsPagesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeJsPagesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'EnableWafUserDefineResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'ListWafFilterRequestShape' => [
+        'ListRiskPolicysRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'req' =>  [ 'shape' => 'ListWafFilterReq', ],
+                'req' =>  [ 'shape' => 'ListRiskCommonReq', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
@@ -3020,15 +3583,9 @@ return [
                 'list' =>  [ 'shape' => 'ListWafConditionCfg', ],
             ],
         ],
-        'SetWafRuleResultShape' => [
+        'EnableBotThreatIpResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'AntiLevelWafResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'EnableRiskResultShape' => [
@@ -3036,39 +3593,16 @@ return [
             'members' => [
             ],
         ],
-        'AntiModeWafResultShape' => [
+        'ListRiskConfDefaultResponseShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'AntiModeWafRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'req' =>  [ 'shape' => 'AntiModeWafReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-            ],
-        ],
-        'DelRiskJsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
+                'result' =>  [ 'shape' => 'ListRiskConfDefaultResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'EnableWafUserDefineResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'DelRiskJsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'EnableBotResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'SetJsPageRequestShape' => [
@@ -3093,10 +3627,541 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
+        'ListRiskUsrListsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'data' =>  [ 'shape' => 'RiskUsrListCfg', ],
+            ],
+        ],
+        'ListRiskVarsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'data' =>  [ 'shape' => 'RiskVarCfg', ],
+            ],
+        ],
+        'DelJsPageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ListBotThreatIpRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListBotThreatIpRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListWafRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ListRulesReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'AddIpsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListBotStdRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListBotStdRulesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListWafConditionsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ListWafConditionsReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'DelRiskUsrListsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'DelRulesReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'ListRiskRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ListRiskRulesReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'DelJsPageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListRiskEventVarsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ListRiskEventVarsReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'DelWafRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'DelRulesReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'DelRiskRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListRiskJsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'data' =>  [ 'shape' => 'RiskJsCfg', ],
+            ],
+        ],
+        'ListRiskRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'data' =>  [ 'shape' => 'RiskRuleCfg', ],
+            ],
+        ],
+        'ListBotThreatIpRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'list' =>  [ 'shape' => 'ThreatIpBotRules', ],
+            ],
+        ],
+        'ListRiskUsrListsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListRiskUsrListsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetRiskRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListWafConditionsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListWafConditionsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EnableWafResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListIpsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'iswhite' => [ 'type' => 'string', 'locationName' => 'iswhite', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'data' =>  [ 'shape' => 'IpListCfg', ],
+            ],
+        ],
+        'ListRiskEventsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'data' =>  [ 'shape' => 'RiskEventCfg', ],
+            ],
+        ],
+        'ListRiskEventVarsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListRiskEventVarsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DelBotUsrRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'DelRulesReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'ListRiskVarsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ListRiskCommonReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'ListRiskJsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListRiskJsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetRiskJsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetRiskEventResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DelRiskEventsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableRiskCtlResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetWafConditionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateIpsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DelRiskEventVarsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DelRiskPolicysResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DelWafRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableRiskCtlRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'EnableReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'DelRiskEventsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListRiskConfDefaultRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ListRulesReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'SetRiskPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetRiskPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ListRiskRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListRiskRulesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EnableRiskCtlResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AntiLevelWafRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'AntiLevelWafReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'ListRiskVarsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListRiskVarsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DelRiskEventVarsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListBotUsrRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListBotUsrRulesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetRiskEventRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'SetRiskEventReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'EnableBotResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DelWafRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddIpsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateBotUsrRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DelBotUsrRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableBotThreatIpRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'EnableReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'SetRiskJsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'SetRiskJsReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'ListIpsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListIpsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EnableRiskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetRiskRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableRiskAccountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetRiskUsrListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'SetRiskUsrListReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'DescribeJsPagesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeJsPagesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListWafFilterRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ListWafFilterReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'DelRiskVarsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DelRiskEventsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'DelRulesReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'SetWafRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AntiLevelWafResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetRiskVarResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetRiskEventVarsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AntiModeWafResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetRiskEventResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListRiskEventsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListRiskEventsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetRiskUsrListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AntiModeWafRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'AntiModeWafReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'DelRiskJsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListBotThreatIpRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ListBotThreatIpRuleReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'DelRiskJsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableBotResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListRiskEventsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ListRiskCommonReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
         'EnableRiskRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'req' =>  [ 'shape' => 'EnableReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'SetRiskVarRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'SetRiskVarReq', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
@@ -3107,9 +4172,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DelJsPageResultShape' => [
+        'SetRiskEventVarsRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'req' =>  [ 'shape' => 'SetRiskEventVarsReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
         'DelJsPageRequestShape' => [
@@ -3133,12 +4201,29 @@ return [
             'members' => [
             ],
         ],
-        'ListWafRulesRequestShape' => [
+        'GetWafInstanceResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'req' =>  [ 'shape' => 'ListRulesReq', ],
+                'result' =>  [ 'shape' => 'GetWafInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetWafInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'sourceIds' => [ 'type' => 'string', 'locationName' => 'sourceIds', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'GetWafInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'instanceIdCfg' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceIdCfg', ], ],
             ],
         ],
         'Filter' => [
