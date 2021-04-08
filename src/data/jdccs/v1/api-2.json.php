@@ -38,6 +38,15 @@ return [
             'input' => [ 'shape' => 'DescribeAlarmRequestShape', ],
             'output' => [ 'shape' => 'DescribeAlarmResponseShape', ],
         ],
+        'UpdateAlarm' => [
+            'name' => 'UpdateAlarm',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/alarms/{alarmId}',
+            ],
+            'input' => [ 'shape' => 'UpdateAlarmRequestShape', ],
+            'output' => [ 'shape' => 'UpdateAlarmResponseShape', ],
+        ],
         'DeleteAlarm' => [
             'name' => 'DeleteAlarm',
             'http' => [
@@ -118,6 +127,24 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeTrafficSamplingRequestShape', ],
             'output' => [ 'shape' => 'DescribeTrafficSamplingResponseShape', ],
+        ],
+        'DescribeOpenDevices' => [
+            'name' => 'DescribeOpenDevices',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/openDevices',
+            ],
+            'input' => [ 'shape' => 'DescribeOpenDevicesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeOpenDevicesResponseShape', ],
+        ],
+        'DescribeOpenDevicesData' => [
+            'name' => 'DescribeOpenDevicesData',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/openDevicesData',
+            ],
+            'input' => [ 'shape' => 'DescribeOpenDevicesDataRequestShape', ],
+            'output' => [ 'shape' => 'DescribeOpenDevicesDataResponseShape', ],
         ],
         'DescribeIdcs' => [
             'name' => 'DescribeIdcs',
@@ -264,7 +291,10 @@ return [
                 'times' => [ 'type' => 'integer', 'locationName' => 'times', ],
                 'noticePeriod' => [ 'type' => 'integer', 'locationName' => 'noticePeriod', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'noticeMethod' => [ 'type' => 'string', 'locationName' => 'noticeMethod', ],
                 'switchboard' => [ 'type' => 'list', 'member' => [ 'shape' => 'Switchboard', ], ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
             ],
         ],
         'AlarmHistory' => [
@@ -292,6 +322,8 @@ return [
                 'value' => [ 'type' => 'double', 'locationName' => 'value', ],
                 'noticeTime' => [ 'type' => 'string', 'locationName' => 'noticeTime', ],
                 'condition' => [ 'type' => 'string', 'locationName' => 'condition', ],
+                'conditionEn' => [ 'type' => 'string', 'locationName' => 'conditionEn', ],
+                'sendInfo' => [ 'type' => 'object', 'locationName' => 'sendInfo', ],
                 'strategyId' => [ 'type' => 'integer', 'locationName' => 'strategyId', ],
             ],
         ],
@@ -392,6 +424,23 @@ return [
                 'disabling' => [ 'type' => 'integer', 'locationName' => 'disabling', ],
             ],
         ],
+        'UpdateAlarmSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'period' => [ 'type' => 'integer', 'locationName' => 'period', ],
+                'statisticMethod' => [ 'type' => 'string', 'locationName' => 'statisticMethod', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
+                'times' => [ 'type' => 'integer', 'locationName' => 'times', ],
+                'noticePeriod' => [ 'type' => 'integer', 'locationName' => 'noticePeriod', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'noticeMethod' => [ 'type' => 'string', 'locationName' => 'noticeMethod', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+            ],
+        ],
         'SwitchAlarmSpec' => [
             'type' => 'structure',
             'members' => [
@@ -416,6 +465,7 @@ return [
                 'noticeMethod' => [ 'type' => 'string', 'locationName' => 'noticeMethod', ],
                 'noticeObj' => [ 'type' => 'string', 'locationName' => 'noticeObj', ],
                 'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
             ],
         ],
         'CreateGeneralServicesTicket' => [
@@ -459,6 +509,9 @@ return [
                 'times' => [ 'type' => 'integer', 'locationName' => 'times', ],
                 'noticePeriod' => [ 'type' => 'integer', 'locationName' => 'noticePeriod', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'switchboard' => [ 'type' => 'list', 'member' => [ 'shape' => 'Switchboard', ], ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
             ],
         ],
         'DescribeBandwidth' => [
@@ -504,6 +557,8 @@ return [
                 'expireTime' => [ 'type' => 'string', 'locationName' => 'expireTime', ],
                 'reserveStartTime' => [ 'type' => 'string', 'locationName' => 'reserveStartTime', ],
                 'reserveEndTime' => [ 'type' => 'string', 'locationName' => 'reserveEndTime', ],
+                'rackUOccupy' => [ 'type' => 'integer', 'locationName' => 'rackUOccupy', ],
+                'rackUFree' => [ 'type' => 'integer', 'locationName' => 'rackUFree', ],
             ],
         ],
         'DescribeDevice' => [
@@ -523,6 +578,28 @@ return [
                 'assetBelong' => [ 'type' => 'string', 'locationName' => 'assetBelong', ],
                 'assetStatus' => [ 'type' => 'string', 'locationName' => 'assetStatus', ],
                 'deviceOpenTime' => [ 'type' => 'string', 'locationName' => 'deviceOpenTime', ],
+            ],
+        ],
+        'DescribeDeviceInspection' => [
+            'type' => 'structure',
+            'members' => [
+                'inspectionTime' => [ 'type' => 'string', 'locationName' => 'inspectionTime', ],
+                'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
+                'idcName' => [ 'type' => 'string', 'locationName' => 'idcName', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'deviceNo' => [ 'type' => 'string', 'locationName' => 'deviceNo', ],
+                'snNo' => [ 'type' => 'string', 'locationName' => 'snNo', ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
+                'faultType' => [ 'type' => 'string', 'locationName' => 'faultType', ],
+            ],
+        ],
+        'DescribeIdcInspection' => [
+            'type' => 'structure',
+            'members' => [
+                'inspectionDate' => [ 'type' => 'string', 'locationName' => 'inspectionDate', ],
+                'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
+                'idcName' => [ 'type' => 'string', 'locationName' => 'idcName', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
         'Device' => [
@@ -557,6 +634,11 @@ return [
                 'network' => [ 'type' => 'integer', 'locationName' => 'network', ],
                 'storage' => [ 'type' => 'integer', 'locationName' => 'storage', ],
                 'other' => [ 'type' => 'integer', 'locationName' => 'other', ],
+                'opened' => [ 'type' => 'integer', 'locationName' => 'opened', ],
+                'launched' => [ 'type' => 'integer', 'locationName' => 'launched', ],
+                'operating' => [ 'type' => 'integer', 'locationName' => 'operating', ],
+                'modifying' => [ 'type' => 'integer', 'locationName' => 'modifying', ],
+                'canceling' => [ 'type' => 'integer', 'locationName' => 'canceling', ],
             ],
         ],
         'Idc' => [
@@ -565,6 +647,28 @@ return [
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
                 'idcName' => [ 'type' => 'string', 'locationName' => 'idcName', ],
                 'isExternalIdc' => [ 'type' => 'boolean', 'locationName' => 'isExternalIdc', ],
+                'address' => [ 'type' => 'string', 'locationName' => 'address', ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'managerPhone' => [ 'type' => 'string', 'locationName' => 'managerPhone', ],
+                'category' => [ 'type' => 'integer', 'locationName' => 'category', ],
+            ],
+        ],
+        'IdcInspection' => [
+            'type' => 'structure',
+            'members' => [
+                'inspectionTime' => [ 'type' => 'string', 'locationName' => 'inspectionTime', ],
+                'temperature' => [ 'type' => 'string', 'locationName' => 'temperature', ],
+                'humidity' => [ 'type' => 'string', 'locationName' => 'humidity', ],
+                'goodsPlacement' => [ 'type' => 'string', 'locationName' => 'goodsPlacement', ],
+                'leakWater' => [ 'type' => 'string', 'locationName' => 'leakWater', ],
+                'accessControl' => [ 'type' => 'string', 'locationName' => 'accessControl', ],
+                'monitor' => [ 'type' => 'string', 'locationName' => 'monitor', ],
+                'fire' => [ 'type' => 'string', 'locationName' => 'fire', ],
+                'thunder' => [ 'type' => 'string', 'locationName' => 'thunder', ],
+                'airConditioning' => [ 'type' => 'string', 'locationName' => 'airConditioning', ],
+                'ups' => [ 'type' => 'string', 'locationName' => 'ups', ],
+                'power' => [ 'type' => 'string', 'locationName' => 'power', ],
+                'physicalEnv' => [ 'type' => 'string', 'locationName' => 'physicalEnv', ],
             ],
         ],
         'Ip' => [
@@ -622,12 +726,42 @@ return [
                 'metric' =>  [ 'shape' => 'Metric', ],
             ],
         ],
+        'OpenDevices' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceCode' => [ 'type' => 'string', 'locationName' => 'deviceCode', ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
+                'deviceName' => [ 'type' => 'string', 'locationName' => 'deviceName', ],
+            ],
+        ],
+        'OpenDevicesData' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceCode' => [ 'type' => 'string', 'locationName' => 'deviceCode', ],
+                'points' => [ 'type' => 'list', 'member' => [ 'shape' => 'Point', ], ],
+            ],
+        ],
+        'Point' => [
+            'type' => 'structure',
+            'members' => [
+                'pointName' => [ 'type' => 'string', 'locationName' => 'pointName', ],
+                'pointData' => [ 'type' => 'double', 'locationName' => 'pointData', ],
+                'pointTag' => [ 'type' => 'string', 'locationName' => 'pointTag', ],
+            ],
+        ],
         'Room' => [
             'type' => 'structure',
             'members' => [
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
                 'idcName' => [ 'type' => 'string', 'locationName' => 'idcName', ],
                 'roomNo' => [ 'type' => 'string', 'locationName' => 'roomNo', ],
+            ],
+        ],
+        'Resource' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
             ],
         ],
         'Ticket' => [
@@ -639,6 +773,13 @@ return [
                 'ticketTypeName' => [ 'type' => 'string', 'locationName' => 'ticketTypeName', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'currentTaskNodeId' => [ 'type' => 'string', 'locationName' => 'currentTaskNodeId', ],
+                'ticketTypeId' => [ 'type' => 'integer', 'locationName' => 'ticketTypeId', ],
+                'ticketTemplateId' => [ 'type' => 'integer', 'locationName' => 'ticketTemplateId', ],
+                'ownerPin' => [ 'type' => 'string', 'locationName' => 'ownerPin', ],
+                'subUserPin' => [ 'type' => 'string', 'locationName' => 'subUserPin', ],
+                'submitAccount' => [ 'type' => 'string', 'locationName' => 'submitAccount', ],
+                'userOperation' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'closedTime' => [ 'type' => 'string', 'locationName' => 'closedTime', ],
                 'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
@@ -667,13 +808,6 @@ return [
                 'operatorType' => [ 'type' => 'string', 'locationName' => 'operatorType', ],
             ],
         ],
-        'DeleteAlarmResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DeleteAlarmResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DeleteAlarmRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -681,6 +815,12 @@ return [
             ],
         ],
         'CreateAlarmResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'UpdateAlarmResultShape' => [
             'type' => 'structure',
             'members' => [
                 'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
@@ -702,6 +842,74 @@ return [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
+        'DescribeAlarmRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
+            ],
+        ],
+        'DescribeAlarmHistoryRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
+                'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
+                'startTime' => [ 'type' => 'integer', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'integer', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribeAlarmsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'all' => [ 'type' => 'integer', 'locationName' => 'all', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'DescribeAlarmResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'alarm' =>  [ 'shape' => 'Alarm', ],
+            ],
+        ],
+        'DescribeAlarmsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAlarmsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteAlarmResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteAlarmResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateAlarmRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'period' => [ 'type' => 'integer', 'locationName' => 'period', ],
+                'statisticMethod' => [ 'type' => 'string', 'locationName' => 'statisticMethod', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'threshold' => [ 'type' => 'double', 'locationName' => 'threshold', ],
+                'times' => [ 'type' => 'integer', 'locationName' => 'times', ],
+                'noticePeriod' => [ 'type' => 'integer', 'locationName' => 'noticePeriod', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'noticeMethod' => [ 'type' => 'string', 'locationName' => 'noticeMethod', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
+            ],
+        ],
         'DescribeAlarmsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -715,32 +923,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-            ],
-        ],
-        'DescribeAlarmRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
-            ],
-        ],
-        'DescribeAlarmHistoryRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
-                'startTime' => [ 'type' => 'integer', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'integer', 'locationName' => 'endTime', ],
-            ],
-        ],
-        'DescribeAlarmsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
         'SwitchAlarmResultShape' => [
@@ -763,24 +945,18 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeAlarmResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'alarm' =>  [ 'shape' => 'Alarm', ],
-            ],
-        ],
-        'DescribeAlarmsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeAlarmsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'SwitchAlarmRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'alarmId' => [ 'type' => 'string', 'locationName' => 'alarmId', ],
+            ],
+        ],
+        'UpdateAlarmResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateAlarmResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateAlarmRequestShape' => [
@@ -801,6 +977,7 @@ return [
                 'noticeMethod' => [ 'type' => 'string', 'locationName' => 'noticeMethod', ],
                 'noticeObj' => [ 'type' => 'string', 'locationName' => 'noticeObj', ],
                 'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
             ],
         ],
         'DescribeAlarmResponseShape' => [
@@ -808,6 +985,14 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeAlarmResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeBandwidthTrafficRequestShape' => [
@@ -862,6 +1047,27 @@ return [
                 'endTime' => [ 'type' => 'integer', 'locationName' => 'endTime', ],
             ],
         ],
+        'DescribeOpenDevicesDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'deviceCodes' => [ 'type' => 'string', 'locationName' => 'deviceCodes', ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
+            ],
+        ],
+        'DescribeOpenDevicesDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeOpenDevicesDataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeOpenDevicesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeOpenDevicesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeMetricsResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -888,7 +1094,20 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'all' => [ 'type' => 'integer', 'locationName' => 'all', ],
+                'bandwidthName' => [ 'type' => 'string', 'locationName' => 'bandwidthName', ],
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
+            ],
+        ],
+        'DescribeOpenDevicesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeOpenDevicesDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'OpenDevicesData', ], ],
             ],
         ],
         'DescribeBandwidthTrafficsResultShape' => [
@@ -918,6 +1137,12 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeMetricDataResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeOpenDevicesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'openDevices' => [ 'type' => 'list', 'member' => [ 'shape' => 'OpenDevices', ], ],
             ],
         ],
         'DescribeMetricDataResultShape' => [
@@ -976,9 +1201,17 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'all' => [ 'type' => 'integer', 'locationName' => 'all', ],
                 'cabinetId' => [ 'type' => 'string', 'locationName' => 'cabinetId', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
+                'assetStatus' => [ 'type' => 'string', 'locationName' => 'assetStatus', ],
+                'assetBelong' => [ 'type' => 'string', 'locationName' => 'assetBelong', ],
+                'deviceNo' => [ 'type' => 'string', 'locationName' => 'deviceNo', ],
+                'snNo' => [ 'type' => 'string', 'locationName' => 'snNo', ],
+                'cabinetNo' => [ 'type' => 'string', 'locationName' => 'cabinetNo', ],
+                'ticketTemplateCode' => [ 'type' => 'string', 'locationName' => 'ticketTemplateCode', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
             ],
         ],
@@ -987,8 +1220,13 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'all' => [ 'type' => 'integer', 'locationName' => 'all', ],
                 'lineType' => [ 'type' => 'string', 'locationName' => 'lineType', ],
+                'chargeType' => [ 'type' => 'string', 'locationName' => 'chargeType', ],
+                'bandwidthName' => [ 'type' => 'string', 'locationName' => 'bandwidthName', ],
+                'relatedIp' => [ 'type' => 'string', 'locationName' => 'relatedIp', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
             ],
         ],
@@ -1050,6 +1288,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'all' => [ 'type' => 'integer', 'locationName' => 'all', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
             ],
@@ -1086,9 +1325,20 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'all' => [ 'type' => 'integer', 'locationName' => 'all', ],
+                'lineType' => [ 'type' => 'string', 'locationName' => 'lineType', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'cidrAddr' => [ 'type' => 'string', 'locationName' => 'cidrAddr', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
+            ],
+        ],
+        'Sort' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
             ],
         ],
         'DescribeIdcsResultShape' => [
@@ -1127,8 +1377,13 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'all' => [ 'type' => 'integer', 'locationName' => 'all', ],
+                'cabinetType' => [ 'type' => 'string', 'locationName' => 'cabinetType', ],
                 'cabinetOpenStatus' => [ 'type' => 'string', 'locationName' => 'cabinetOpenStatus', ],
+                'cabinetNo' => [ 'type' => 'string', 'locationName' => 'cabinetNo', ],
+                'deviceMustBeEmpty' => [ 'type' => 'string', 'locationName' => 'deviceMustBeEmpty', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
             ],
         ],
@@ -1155,14 +1410,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'Filter' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
         'DescribeBandwidthResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1174,6 +1421,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'all' => [ 'type' => 'integer', 'locationName' => 'all', ],
                 'includeExternalIdc' => [ 'type' => 'string', 'locationName' => 'includeExternalIdc', ],
             ],
         ],
@@ -1184,17 +1432,43 @@ return [
                 'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
             ],
         ],
-        'CreateGeneralServicesTicketResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateGeneralServicesTicketResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeTicketResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeTicketResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeTicketsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'all' => [ 'type' => 'integer', 'locationName' => 'all', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'ticketTypeName' => [ 'type' => 'string', 'locationName' => 'ticketTypeName', ],
+                'ticketTypeId' => [ 'type' => 'integer', 'locationName' => 'ticketTypeId', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'ticketNo' => [ 'type' => 'string', 'locationName' => 'ticketNo', ],
+                'ticketTemplateName' => [ 'type' => 'string', 'locationName' => 'ticketTemplateName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'submitAccount' => [ 'type' => 'string', 'locationName' => 'submitAccount', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
+            ],
+        ],
+        'CreateGeneralServicesTicketResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ticketNo' => [ 'type' => 'string', 'locationName' => 'ticketNo', ],
+            ],
+        ],
+        'CreateGeneralServicesTicketResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateGeneralServicesTicketResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -1230,20 +1504,6 @@ return [
                 'externalIdcContactPhone' => [ 'type' => 'string', 'locationName' => 'externalIdcContactPhone', ],
                 'remarks' => [ 'type' => 'string', 'locationName' => 'remarks', ],
                 'attach' => [ 'type' => 'list', 'member' => [ 'shape' => 'Attach', ], ],
-            ],
-        ],
-        'DescribeTicketsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
-            ],
-        ],
-        'CreateGeneralServicesTicketResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ticketNo' => [ 'type' => 'string', 'locationName' => 'ticketNo', ],
             ],
         ],
         'DescribeTicketsResultShape' => [

@@ -29,6 +29,24 @@ return [
             'input' => [ 'shape' => 'DescribeTagsRequestShape', ],
             'output' => [ 'shape' => 'DescribeTagsResponseShape', ],
         ],
+        'DescribeKeys' => [
+            'name' => 'DescribeKeys',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/tags:describeKeys',
+            ],
+            'input' => [ 'shape' => 'DescribeKeysRequestShape', ],
+            'output' => [ 'shape' => 'DescribeKeysResponseShape', ],
+        ],
+        'DescribeValues' => [
+            'name' => 'DescribeValues',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/tags:describeValues',
+            ],
+            'input' => [ 'shape' => 'DescribeValuesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeValuesResponseShape', ],
+        ],
         'TagResources' => [
             'name' => 'TagResources',
             'http' => [
@@ -58,6 +76,28 @@ return [
         ],
     ],
     'shapes' => [
+        'Tag' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'CheckTagsLegalityReqVo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'sysTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+            ],
+        ],
+        'CheckTagsLegalityResVo' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
+            ],
+        ],
         'CostAttrTagKeyInfo' => [
             'type' => 'structure',
             'members' => [
@@ -79,6 +119,7 @@ return [
                 'serviceCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'showTagStatus' => [ 'type' => 'integer', 'locationName' => 'showTagStatus', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'currentPage' => [ 'type' => 'integer', 'locationName' => 'currentPage', ],
             ],
@@ -89,13 +130,6 @@ return [
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-            ],
-        ],
-        'Tag' => [
-            'type' => 'structure',
-            'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'PageInfo' => [
@@ -115,6 +149,7 @@ return [
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'detailUrl' => [ 'type' => 'string', 'locationName' => 'detailUrl', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
             ],
         ],
@@ -125,7 +160,7 @@ return [
                 'tagValue' => [ 'type' => 'string', 'locationName' => 'tagValue', ],
                 'vmResourceCount' => [ 'type' => 'long', 'locationName' => 'vmResourceCount', ],
                 'diskResourceCount' => [ 'type' => 'long', 'locationName' => 'diskResourceCount', ],
-                'sqlServerResourceCount' => [ 'type' => 'long', 'locationName' => 'sqlServerResourceCount', ],
+                'sqlserverResourceCount' => [ 'type' => 'long', 'locationName' => 'sqlserverResourceCount', ],
                 'mongodbResourceCount' => [ 'type' => 'long', 'locationName' => 'mongodbResourceCount', ],
                 'ipResourceCount' => [ 'type' => 'long', 'locationName' => 'ipResourceCount', ],
                 'esResourceCount' => [ 'type' => 'long', 'locationName' => 'esResourceCount', ],
@@ -145,6 +180,30 @@ return [
                 'jqsResourceCount' => [ 'type' => 'long', 'locationName' => 'jqsResourceCount', ],
                 'zfsResourceCount' => [ 'type' => 'long', 'locationName' => 'zfsResourceCount', ],
                 'kubernetesNodegroupResourceCount' => [ 'type' => 'long', 'locationName' => 'kubernetesNodegroupResourceCount', ],
+                'apigatewayResourceCount' => [ 'type' => 'long', 'locationName' => 'apigatewayResourceCount', ],
+                'storageResourceCount' => [ 'type' => 'long', 'locationName' => 'storageResourceCount', ],
+                'tsdsResourceCount' => [ 'type' => 'long', 'locationName' => 'tsdsResourceCount', ],
+                'jdwResourceCount' => [ 'type' => 'long', 'locationName' => 'jdwResourceCount', ],
+                'antiproResourceCount' => [ 'type' => 'long', 'locationName' => 'antiproResourceCount', ],
+                'dtsResourceCount' => [ 'type' => 'long', 'locationName' => 'dtsResourceCount', ],
+                'cpsResourceCount' => [ 'type' => 'long', 'locationName' => 'cpsResourceCount', ],
+                'edcpsResourceCount' => [ 'type' => 'long', 'locationName' => 'edcpsResourceCount', ],
+                'sgwResourceCount' => [ 'type' => 'long', 'locationName' => 'sgwResourceCount', ],
+                'wafResourceCount' => [ 'type' => 'long', 'locationName' => 'wafResourceCount', ],
+                'kafkaResourceCount' => [ 'type' => 'long', 'locationName' => 'kafkaResourceCount', ],
+                'zkResourceCount' => [ 'type' => 'long', 'locationName' => 'zkResourceCount', ],
+                'balanceResourceCount' => [ 'type' => 'long', 'locationName' => 'balanceResourceCount', ],
+                'nlbResourceCount' => [ 'type' => 'long', 'locationName' => 'nlbResourceCount', ],
+                'dnlbResourceCount' => [ 'type' => 'long', 'locationName' => 'dnlbResourceCount', ],
+                'threatscannerResourceCount' => [ 'type' => 'long', 'locationName' => 'threatscannerResourceCount', ],
+                'jnsResourceCount' => [ 'type' => 'long', 'locationName' => 'jnsResourceCount', ],
+                'rabbitmqResourceCount' => [ 'type' => 'long', 'locationName' => 'rabbitmqResourceCount', ],
+                'natgatewayResourceCount' => [ 'type' => 'long', 'locationName' => 'natgatewayResourceCount', ],
+                'clickHouseResourceCount' => [ 'type' => 'long', 'locationName' => 'clickHouseResourceCount', ],
+                'tidbResourceCount' => [ 'type' => 'long', 'locationName' => 'tidbResourceCount', ],
+                'dbsResourceCount' => [ 'type' => 'long', 'locationName' => 'dbsResourceCount', ],
+                'jdccsResourceCount' => [ 'type' => 'long', 'locationName' => 'jdccsResourceCount', ],
+                'epcsResourceCount' => [ 'type' => 'long', 'locationName' => 'epcsResourceCount', ],
             ],
         ],
         'FrontTagsResourcesInfo' => [
@@ -154,6 +213,48 @@ return [
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'tagsResourcesInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagsResourcesInfo', ], ],
                 'pageInfo' =>  [ 'shape' => 'PageInfo', ],
+            ],
+        ],
+        'OperateTagResourceRelationsInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
+            ],
+        ],
+        'ResourceInfosMap' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'OperateTagResourceRelationsReqVo' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceInfosMap', ], ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'sysTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'operate' => [ 'type' => 'integer', 'locationName' => 'operate', ],
+            ],
+        ],
+        'OperateTagResourceRelationsResVo' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'relationInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'OperateTagResourceRelationsInfo', ], ],
+            ],
+        ],
+        'ProductLineAccessInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'feName' => [ 'type' => 'string', 'locationName' => 'feName', ],
+                'feNameCn' => [ 'type' => 'string', 'locationName' => 'feNameCn', ],
+                'standardAccess' => [ 'type' => 'boolean', 'locationName' => 'standardAccess', ],
+                'distinguishRegion' => [ 'type' => 'boolean', 'locationName' => 'distinguishRegion', ],
             ],
         ],
         'QueryResourceReqVo' => [
@@ -200,6 +301,7 @@ return [
                 'serviceCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'showTagStatus' => [ 'type' => 'integer', 'locationName' => 'showTagStatus', ],
                 'orderCondition' => [ 'type' => 'string', 'locationName' => 'orderCondition', ],
                 'descOrAsc' => [ 'type' => 'string', 'locationName' => 'descOrAsc', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
@@ -256,6 +358,7 @@ return [
             'members' => [
                 'serviceCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'showTagStatus' => [ 'type' => 'integer', 'locationName' => 'showTagStatus', ],
             ],
         ],
         'TagKeysResVo' => [
@@ -302,6 +405,7 @@ return [
                 'serviceCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'kind' => [ 'type' => 'string', 'locationName' => 'kind', ],
                 'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'showTagStatus' => [ 'type' => 'integer', 'locationName' => 'showTagStatus', ],
             ],
         ],
         'TagsResVo' => [
@@ -328,30 +432,16 @@ return [
                 'successCount' => [ 'type' => 'integer', 'locationName' => 'successCount', ],
             ],
         ],
-        'UnTagResourcesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'UnTagResourcesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeResourcesResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'ResourceResVo', ],
             ],
         ],
-        'TagResourcesResponseShape' => [
+        'DescribeValuesResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'TagResourcesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'QueryResourceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'data' =>  [ 'shape' => 'TagValuesResVo', ],
             ],
         ],
         'TagResourcesResultShape' => [
@@ -367,30 +457,10 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'QueryResourceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'QueryResourceResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'TagResourcesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'tagResources' =>  [ 'shape' => 'TagResourcesReqVo', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'UnTagResourcesResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'UnTagResourcesResVo', ],
-            ],
-        ],
-        'DescribeTagsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' =>  [ 'shape' => 'TagsResVo', ],
             ],
         ],
         'DescribeTagsResponseShape' => [
@@ -412,6 +482,80 @@ return [
             'members' => [
                 'queryResource' =>  [ 'shape' => 'QueryResourceReqVo', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeKeysRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'tagKeysVo' =>  [ 'shape' => 'TagKeysReqVo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeKeysResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'TagKeysResVo', ],
+            ],
+        ],
+        'UnTagResourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UnTagResourcesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'TagResourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'TagResourcesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeValuesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeValuesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryResourceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeValuesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'tagValuesVo' =>  [ 'shape' => 'TagValuesReqVo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'QueryResourceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryResourceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'TagResourcesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'tagResources' =>  [ 'shape' => 'TagResourcesReqVo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeTagsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'TagsResVo', ],
+            ],
+        ],
+        'DescribeKeysResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeKeysResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeResourcesRequestShape' => [

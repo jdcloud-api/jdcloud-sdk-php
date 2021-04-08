@@ -983,6 +983,8 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'antiStatus' => [ 'type' => 'string', 'locationName' => 'antiStatus', ],
                 'upstreamErr' => [ 'type' => 'string', 'locationName' => 'upstreamErr', ],
+                'skipExist' => [ 'type' => 'integer', 'locationName' => 'skipExist', ],
+                'denyExist' => [ 'type' => 'integer', 'locationName' => 'denyExist', ],
             ],
         ],
         'WebUserdefConf' => [
@@ -1011,7 +1013,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'domain' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'domains' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'protocols' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'sslProtocols' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'lbType' => [ 'type' => 'string', 'locationName' => 'lbType', ],
@@ -1088,6 +1091,7 @@ return [
             'members' => [
                 'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
                 'enableUserDefine' => [ 'type' => 'integer', 'locationName' => 'enableUserDefine', ],
+                'enableThreatIp' => [ 'type' => 'integer', 'locationName' => 'enableThreatIp', ],
             ],
         ],
         'DenyActionCfg' => [
@@ -2854,7 +2858,7 @@ return [
         'GetBpsDataResultShape' => [
             'type' => 'structure',
             'members' => [
-                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'bps' =>  [ 'shape' => 'Bps', ],
             ],
         ],
@@ -2868,7 +2872,7 @@ return [
         'GetQpsDataResultShape' => [
             'type' => 'structure',
             'members' => [
-                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
                 'qps' =>  [ 'shape' => 'Qps', ],
             ],
         ],
@@ -3069,6 +3073,7 @@ return [
                 'uriRewriteConf' =>  [ 'shape' => 'UriRewriteConf', ],
                 'proxycacheConf' =>  [ 'shape' => 'EnableConf', ],
                 'riskConf' =>  [ 'shape' => 'RiskConf', ],
+                'botConf' =>  [ 'shape' => 'BotConf', ],
             ],
         ],
         'DeleteDomainResponseShape' => [
