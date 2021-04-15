@@ -189,6 +189,10 @@ return [
         'namespace' => 'Nativecontainer',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'dcap' => [
+        'namespace' => 'Dcap',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'cloudauth' => [
         'namespace' => 'Cloudauth',
         'versions' => [ 'latest' => 'v1', ],

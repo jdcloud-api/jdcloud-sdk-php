@@ -110,6 +110,69 @@ return [
             'input' => [ 'shape' => 'DescribeConnStatGraphRequestShape', ],
             'output' => [ 'shape' => 'DescribeConnStatGraphResponseShape', ],
         ],
+        'DescribeDispatchRules' => [
+            'name' => 'DescribeDispatchRules',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/dispatchRules',
+            ],
+            'input' => [ 'shape' => 'DescribeDispatchRulesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeDispatchRulesResponseShape', ],
+        ],
+        'CreateDispatchRule' => [
+            'name' => 'CreateDispatchRule',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/dispatchRules',
+            ],
+            'input' => [ 'shape' => 'CreateDispatchRuleRequestShape', ],
+            'output' => [ 'shape' => 'CreateDispatchRuleResponseShape', ],
+        ],
+        'CreateDispatchRules' => [
+            'name' => 'CreateDispatchRules',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:createDispatchRules',
+            ],
+            'input' => [ 'shape' => 'CreateDispatchRulesRequestShape', ],
+            'output' => [ 'shape' => 'CreateDispatchRulesResponseShape', ],
+        ],
+        'ModifyDispatchRule' => [
+            'name' => 'ModifyDispatchRule',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/dispatchRules/{dispatchRuleId}',
+            ],
+            'input' => [ 'shape' => 'ModifyDispatchRuleRequestShape', ],
+            'output' => [ 'shape' => 'ModifyDispatchRuleResponseShape', ],
+        ],
+        'DeleteDispatchRule' => [
+            'name' => 'DeleteDispatchRule',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/dispatchRules/{dispatchRuleId}',
+            ],
+            'input' => [ 'shape' => 'DeleteDispatchRuleRequestShape', ],
+            'output' => [ 'shape' => 'DeleteDispatchRuleResponseShape', ],
+        ],
+        'SwitchDispatchRuleProtect' => [
+            'name' => 'SwitchDispatchRuleProtect',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/dispatchRules/{dispatchRuleId}:protect',
+            ],
+            'input' => [ 'shape' => 'SwitchDispatchRuleProtectRequestShape', ],
+            'output' => [ 'shape' => 'SwitchDispatchRuleProtectResponseShape', ],
+        ],
+        'SwitchDispatchRuleOrigin' => [
+            'name' => 'SwitchDispatchRuleOrigin',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/dispatchRules/{dispatchRuleId}:origin',
+            ],
+            'input' => [ 'shape' => 'SwitchDispatchRuleOriginRequestShape', ],
+            'output' => [ 'shape' => 'SwitchDispatchRuleOriginResponseShape', ],
+        ],
         'DescribeForwardRules' => [
             'name' => 'DescribeForwardRules',
             'http' => [
@@ -443,6 +506,15 @@ return [
             'input' => [ 'shape' => 'ModifyAlarmConfigRequestShape', ],
             'output' => [ 'shape' => 'ModifyAlarmConfigResponseShape', ],
         ],
+        'DescribeOriginWhiteIpList' => [
+            'name' => 'DescribeOriginWhiteIpList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:describeOriginWhiteIpList',
+            ],
+            'input' => [ 'shape' => 'DescribeOriginWhiteIpListRequestShape', ],
+            'output' => [ 'shape' => 'DescribeOriginWhiteIpListResponseShape', ],
+        ],
         'DescribeServiceIpList' => [
             'name' => 'DescribeServiceIpList',
             'http' => [
@@ -469,6 +541,15 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeProtectionStatisticsRequestShape', ],
             'output' => [ 'shape' => 'DescribeProtectionStatisticsResponseShape', ],
+        ],
+        'DescribeProtectionOutline' => [
+            'name' => 'DescribeProtectionOutline',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/describeProtectionOutline',
+            ],
+            'input' => [ 'shape' => 'DescribeProtectionOutlineRequestShape', ],
+            'output' => [ 'shape' => 'DescribeProtectionOutlineResponseShape', ],
         ],
         'CheckName' => [
             'name' => 'CheckName',
@@ -1360,6 +1441,13 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
+        'DispatchedInnerIp' => [
+            'type' => 'structure',
+            'members' => [
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'DispatchRule' => [
             'type' => 'structure',
             'members' => [
@@ -2187,6 +2275,174 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'CreateDispatchRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dispatchRuleSpecList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CreateDispatchRuleSpec', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeDispatchRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'innerIp' => [ 'type' => 'string', 'locationName' => 'innerIp', ],
+                'serviceIp' => [ 'type' => 'string', 'locationName' => 'serviceIp', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DeleteDispatchRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteDispatchRuleResultShape', ],
+                'error' =>  [ 'shape' => 'DeleteDispatchRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateDispatchRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ModifyDispatchRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'modifyDispatchRuleSpec' =>  [ 'shape' => 'ModifyDispatchRuleSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'dispatchRuleId' => [ 'type' => 'string', 'locationName' => 'dispatchRuleId', ],
+            ],
+        ],
+        'DeleteDispatchRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'dispatchRuleId' => [ 'type' => 'string', 'locationName' => 'dispatchRuleId', ],
+            ],
+        ],
+        'SwitchDispatchRuleOriginResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SwitchDispatchRuleOriginResultShape', ],
+                'error' =>  [ 'shape' => 'SwitchDispatchRuleOriginResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SwitchDispatchRuleProtectResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SwitchDispatchRuleProtectResultShape', ],
+                'error' =>  [ 'shape' => 'SwitchDispatchRuleProtectResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateDispatchRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateDispatchRulesResultShape', ],
+                'error' =>  [ 'shape' => 'CreateDispatchRulesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SwitchDispatchRuleProtectRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'dispatchRuleId' => [ 'type' => 'string', 'locationName' => 'dispatchRuleId', ],
+            ],
+        ],
+        'DescribeDispatchRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DispatchRule', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+            ],
+        ],
+        'SwitchDispatchRuleProtectResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DescribeDispatchRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeDispatchRulesResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeDispatchRulesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateDispatchRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'createDispatchRuleSpec' =>  [ 'shape' => 'CreateDispatchRuleSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'CreateDispatchRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateDispatchRuleResultShape', ],
+                'error' =>  [ 'shape' => 'CreateDispatchRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyDispatchRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'DeleteDispatchRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'SwitchDispatchRuleOriginResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ModifyDispatchRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyDispatchRuleResultShape', ],
+                'error' =>  [ 'shape' => 'ModifyDispatchRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateDispatchRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dispatchRuleIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'failRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'FailedRule', ], ],
+            ],
+        ],
+        'SwitchDispatchRuleOriginRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'dispatchRuleId' => [ 'type' => 'string', 'locationName' => 'dispatchRuleId', ],
+            ],
+        ],
         'CreateForwardRulesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2663,6 +2919,12 @@ return [
                 'pageId' => [ 'type' => 'string', 'locationName' => 'pageId', ],
             ],
         ],
+        'DescribeProtectionOutlineRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'CheckNameResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2742,6 +3004,21 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeProtectionOutlineResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeProtectionOutlineResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeProtectionOutlineResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeOriginWhiteIpListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'DescribeInstanceAclResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -2779,6 +3056,12 @@ return [
                 'result' =>  [ 'shape' => 'ModifyAlarmConfigResultShape', ],
                 'error' =>  [ 'shape' => 'ModifyAlarmConfigResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeOriginWhiteIpListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeServiceIpListResponseShape' => [
@@ -3089,6 +3372,14 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
+        'DescribeOriginWhiteIpListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeOriginWhiteIpListResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeOriginWhiteIpListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeServiceIpListResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -3146,6 +3437,12 @@ return [
             'members' => [
                 'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
                 'canRecover' => [ 'type' => 'boolean', 'locationName' => 'canRecover', ],
+            ],
+        ],
+        'DescribeProtectionOutlineResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'ProtectionOutline', ],
             ],
         ],
         'CheckNameRequestShape' => [
