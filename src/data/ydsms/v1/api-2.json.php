@@ -182,6 +182,24 @@ return [
             'input' => [ 'shape' => 'SendMessagesUsingPOSTRequestShape', ],
             'output' => [ 'shape' => 'SendMessagesUsingPOSTResponseShape', ],
         ],
+        'SendMessagesByOrderIdUsingPOST' => [
+            'name' => 'SendMessagesByOrderIdUsingPOST',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/sendMessagesByOrderId',
+            ],
+            'input' => [ 'shape' => 'SendMessagesByOrderIdUsingPOSTRequestShape', ],
+            'output' => [ 'shape' => 'SendMessagesByOrderIdUsingPOSTResponseShape', ],
+        ],
+        'SendMessagesByPinUsingPOST' => [
+            'name' => 'SendMessagesByPinUsingPOST',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/sendMessagesByPin',
+            ],
+            'input' => [ 'shape' => 'SendMessagesByPinUsingPOSTRequestShape', ],
+            'output' => [ 'shape' => 'SendMessagesByPinUsingPOSTResponseShape', ],
+        ],
         'ListSmsSignsUsingGET' => [
             'name' => 'ListSmsSignsUsingGET',
             'http' => [
@@ -917,6 +935,12 @@ return [
                 'packageId' => [ 'type' => 'string', 'locationName' => 'packageId', ],
             ],
         ],
+        'SendMessagesByPinUsingPOSTResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'mtResVO' =>  [ 'shape' => 'MtResVO', ],
+            ],
+        ],
         'SendMessagesUsingPOSTRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -925,6 +949,27 @@ return [
                 'phoneList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'signId' => [ 'type' => 'string', 'locationName' => 'signId', ],
                 'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+            ],
+        ],
+        'SendMessagesByOrderIdUsingPOSTRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'signId' => [ 'type' => 'string', 'locationName' => 'signId', ],
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'venderId' => [ 'type' => 'long', 'locationName' => 'venderId', ],
+                'orderId' => [ 'type' => 'long', 'locationName' => 'orderId', ],
+                'params' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'SendMessagesByPinUsingPOSTRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'signId' => [ 'type' => 'string', 'locationName' => 'signId', ],
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'params' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'SendMessagesUsingPOSTResponseShape' => [
@@ -938,6 +983,26 @@ return [
             'type' => 'structure',
             'members' => [
                 'mtResVO' =>  [ 'shape' => 'MtResVO', ],
+            ],
+        ],
+        'SendMessagesByOrderIdUsingPOSTResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'mtResVO' =>  [ 'shape' => 'MtResVO', ],
+            ],
+        ],
+        'SendMessagesByOrderIdUsingPOSTResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SendMessagesByOrderIdUsingPOSTResultShape', ],
+            ],
+        ],
+        'SendMessagesByPinUsingPOSTResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SendMessagesByPinUsingPOSTResultShape', ],
             ],
         ],
         'ListSmsSignsUsingGETRequestShape' => [
