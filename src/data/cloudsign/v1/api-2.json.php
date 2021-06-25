@@ -209,6 +209,7 @@ return [
         'ComStamp' => [
             'type' => 'structure',
             'members' => [
+                'stampMax' => [ 'type' => 'integer', 'locationName' => 'stampMax', ],
                 'signPositionType' => [ 'type' => 'integer', 'locationName' => 'signPositionType', ],
                 'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
                 'positionX' => [ 'type' => 'integer', 'locationName' => 'positionX', ],
@@ -244,6 +245,7 @@ return [
         'PerStamp' => [
             'type' => 'structure',
             'members' => [
+                'stampMax' => [ 'type' => 'integer', 'locationName' => 'stampMax', ],
                 'signPositionType' => [ 'type' => 'integer', 'locationName' => 'signPositionType', ],
                 'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
                 'positionX' => [ 'type' => 'integer', 'locationName' => 'positionX', ],
@@ -350,7 +352,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DownloadContractsResultShape', ], ],
+                'result' =>  [ 'shape' => 'DownloadContractsResultShape', ],
             ],
         ],
         'DeleteContractRequestShape' => [
@@ -446,6 +448,8 @@ return [
         'DownloadContractsResultShape' => [
             'type' => 'structure',
             'members' => [
+                'contractList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ContractInfo', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
         'SetKmsKeyIdResponseShape' => [
