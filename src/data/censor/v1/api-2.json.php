@@ -29,6 +29,33 @@ return [
             'input' => [ 'shape' => 'AudioResultsRequestShape', ],
             'output' => [ 'shape' => 'AudioResultsResponseShape', ],
         ],
+        'AsyncAudioScanV2' => [
+            'name' => 'AsyncAudioScanV2',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/audio:asyncscanv2',
+            ],
+            'input' => [ 'shape' => 'AsyncAudioScanV2RequestShape', ],
+            'output' => [ 'shape' => 'AsyncAudioScanV2ResponseShape', ],
+        ],
+        'AudioCallbackV2' => [
+            'name' => 'AudioCallbackV2',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/audio:callbackv2',
+            ],
+            'input' => [ 'shape' => 'AudioCallbackV2RequestShape', ],
+            'output' => [ 'shape' => 'AudioCallbackV2ResponseShape', ],
+        ],
+        'AudioResultsV2' => [
+            'name' => 'AudioResultsV2',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/audio:resultsv2',
+            ],
+            'input' => [ 'shape' => 'AudioResultsV2RequestShape', ],
+            'output' => [ 'shape' => 'AudioResultsV2ResponseShape', ],
+        ],
         'DeleteCensorLib' => [
             'name' => 'DeleteCensorLib',
             'http' => [
@@ -74,6 +101,15 @@ return [
             'input' => [ 'shape' => 'ImageResultsRequestShape', ],
             'output' => [ 'shape' => 'ImageResultsResponseShape', ],
         ],
+        'ImageScanV2' => [
+            'name' => 'ImageScanV2',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/image:scanv2',
+            ],
+            'input' => [ 'shape' => 'ImageScanV2RequestShape', ],
+            'output' => [ 'shape' => 'ImageScanV2ResponseShape', ],
+        ],
         'DeleteLimit' => [
             'name' => 'DeleteLimit',
             'http' => [
@@ -101,6 +137,24 @@ return [
             'input' => [ 'shape' => 'InnerTextScanRequestShape', ],
             'output' => [ 'shape' => 'InnerTextScanResponseShape', ],
         ],
+        'TextScanV2' => [
+            'name' => 'TextScanV2',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/text:scanv2',
+            ],
+            'input' => [ 'shape' => 'TextScanV2RequestShape', ],
+            'output' => [ 'shape' => 'TextScanV2ResponseShape', ],
+        ],
+        'TextResultsV2' => [
+            'name' => 'TextResultsV2',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/text:resultsv2',
+            ],
+            'input' => [ 'shape' => 'TextResultsV2RequestShape', ],
+            'output' => [ 'shape' => 'TextResultsV2ResponseShape', ],
+        ],
         'AsyncVideoScan' => [
             'name' => 'AsyncVideoScan',
             'http' => [
@@ -119,16 +173,42 @@ return [
             'input' => [ 'shape' => 'VideoResultsRequestShape', ],
             'output' => [ 'shape' => 'VideoResultsResponseShape', ],
         ],
+        'AsyncVideoScanV2' => [
+            'name' => 'AsyncVideoScanV2',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/video:asyncscanv2',
+            ],
+            'input' => [ 'shape' => 'AsyncVideoScanV2RequestShape', ],
+            'output' => [ 'shape' => 'AsyncVideoScanV2ResponseShape', ],
+        ],
+        'VideoCallbackV2' => [
+            'name' => 'VideoCallbackV2',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/video:callbackv2',
+            ],
+            'input' => [ 'shape' => 'VideoCallbackV2RequestShape', ],
+            'output' => [ 'shape' => 'VideoCallbackV2ResponseShape', ],
+        ],
+        'VideoResultsV2' => [
+            'name' => 'VideoResultsV2',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/video:resultsv2',
+            ],
+            'input' => [ 'shape' => 'VideoResultsV2RequestShape', ],
+            'output' => [ 'shape' => 'VideoResultsV2ResponseShape', ],
+        ],
     ],
     'shapes' => [
-        'AudioScanResultDetail' => [
+        'AudioLabelItem' => [
             'type' => 'structure',
             'members' => [
-                'startTime' => [ 'type' => 'integer', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'integer', 'locationName' => 'endTime', ],
-                'text' => [ 'type' => 'string', 'locationName' => 'text', ],
-                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
-                'hintWordsInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'HintWordsInfo', ], ],
+                'label' => [ 'type' => 'integer', 'locationName' => 'label', ],
+                'level' => [ 'type' => 'integer', 'locationName' => 'level', ],
+                'details' =>  [ 'shape' => 'AudioLabelItemDetail', ],
+                'subLabel' => [ 'type' => 'string', 'locationName' => 'subLabel', ],
             ],
         ],
         'AudioResultDetail' => [
@@ -141,6 +221,13 @@ return [
                 'details' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioScanResultDetail', ], ],
             ],
         ],
+        'AudioLanguageResultDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'segments' => [ 'type' => 'list', 'member' => [ 'shape' => 'SegmentsItem', ], ],
+            ],
+        ],
         'HintWordsInfo' => [
             'type' => 'structure',
             'members' => [
@@ -149,11 +236,120 @@ return [
                 'libCode' => [ 'type' => 'string', 'locationName' => 'libCode', ],
             ],
         ],
+        'AudioLabelItemDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'hitType' => [ 'type' => 'integer', 'locationName' => 'hitType', ],
+                'hint' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioHint', ], ],
+                'hitInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioHintInfo', ], ],
+            ],
+        ],
+        'AudioTaskData' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'dealingCount' => [ 'type' => 'integer', 'locationName' => 'dealingCount', ],
+            ],
+        ],
+        'AudioScanResultDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'integer', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'integer', 'locationName' => 'endTime', ],
+                'text' => [ 'type' => 'string', 'locationName' => 'text', ],
+                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
+                'hintWordsInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'HintWordsInfo', ], ],
+            ],
+        ],
+        'AudioHintInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'hitType' => [ 'type' => 'integer', 'locationName' => 'hitType', ],
+                'hitClues' => [ 'type' => 'string', 'locationName' => 'hitClues', ],
+            ],
+        ],
+        'AudioASRResultDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'integer', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'integer', 'locationName' => 'endTime', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+            ],
+        ],
+        'SegmentsItem' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'integer', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'integer', 'locationName' => 'endTime', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'label' => [ 'type' => 'integer', 'locationName' => 'label', ],
+                'level' => [ 'type' => 'integer', 'locationName' => 'level', ],
+                'hintList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'AudioTask' => [
             'type' => 'structure',
             'members' => [
                 'dataId' => [ 'type' => 'string', 'locationName' => 'dataId', ],
                 'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+            ],
+        ],
+        'AudioHint' => [
+            'type' => 'structure',
+            'members' => [
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+                'segments' => [ 'type' => 'list', 'member' => [ 'shape' => 'SegmentsItem', ], ],
+            ],
+        ],
+        'CensorLabelItem' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+            ],
+        ],
+        'BizTypeReq' => [
+            'type' => 'structure',
+            'members' => [
+                'bizTypeId' => [ 'type' => 'string', 'locationName' => 'bizTypeId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'industryInfo' => [ 'type' => 'string', 'locationName' => 'industryInfo', ],
+                'censorType' => [ 'type' => 'string', 'locationName' => 'censorType', ],
+                'textSetting' =>  [ 'shape' => 'BizTypeSetting', ],
+                'imageSetting' =>  [ 'shape' => 'BizTypeSetting', ],
+                'audioSetting' =>  [ 'shape' => 'BizTypeSetting', ],
+                'videoSetting' =>  [ 'shape' => 'BizTypeSetting', ],
+            ],
+        ],
+        'BizTypeSetting' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'antispam' =>  [ 'shape' => 'CategoryInfo', ],
+                'porn' =>  [ 'shape' => 'CategoryInfo', ],
+                'terrorism' =>  [ 'shape' => 'CategoryInfo', ],
+                'ad' =>  [ 'shape' => 'CategoryInfo', ],
+            ],
+        ],
+        'BizType' => [
+            'type' => 'structure',
+            'members' => [
+                'bizTypeId' => [ 'type' => 'string', 'locationName' => 'bizTypeId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'industryInfo' => [ 'type' => 'string', 'locationName' => 'industryInfo', ],
+                'censorType' => [ 'type' => 'string', 'locationName' => 'censorType', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'CategoryInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'categories' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'hintThreshold' => [ 'type' => 'integer', 'locationName' => 'hintThreshold', ],
+                'confirmThreshold' => [ 'type' => 'integer', 'locationName' => 'confirmThreshold', ],
             ],
         ],
         'Callback' => [
@@ -239,13 +435,34 @@ return [
                 'itemNumber' => [ 'type' => 'integer', 'locationName' => 'itemNumber', ],
             ],
         ],
-        'QrcodeData' => [
+        'FaceContentItem' => [
             'type' => 'structure',
             'members' => [
-                'x' => [ 'type' => 'double', 'locationName' => 'x', ],
-                'y' => [ 'type' => 'double', 'locationName' => 'y', ],
-                'w' => [ 'type' => 'double', 'locationName' => 'w', ],
-                'h' => [ 'type' => 'double', 'locationName' => 'h', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'gender' => [ 'type' => 'string', 'locationName' => 'gender', ],
+                'age' => [ 'type' => 'integer', 'locationName' => 'age', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
+                'x1' => [ 'type' => 'integer', 'locationName' => 'x1', ],
+                'y1' => [ 'type' => 'integer', 'locationName' => 'y1', ],
+                'x2' => [ 'type' => 'integer', 'locationName' => 'x2', ],
+                'y2' => [ 'type' => 'integer', 'locationName' => 'y2', ],
+            ],
+        ],
+        'OCRResultDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'lineContents' => [ 'type' => 'list', 'member' => [ 'shape' => 'LineContentItem', ], ],
+            ],
+        ],
+        'MetaInfoItem' => [
+            'type' => 'structure',
+            'members' => [
+                'byteSize' => [ 'type' => 'integer', 'locationName' => 'byteSize', ],
+                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
+                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
             ],
         ],
         'ImageTask' => [
@@ -264,6 +481,16 @@ return [
                 'h' => [ 'type' => 'double', 'locationName' => 'h', ],
             ],
         ],
+        'LogoResultDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'logoName' => [ 'type' => 'string', 'locationName' => 'logoName', ],
+                'x1' => [ 'type' => 'integer', 'locationName' => 'x1', ],
+                'y1' => [ 'type' => 'integer', 'locationName' => 'y1', ],
+                'x2' => [ 'type' => 'integer', 'locationName' => 'x2', ],
+                'y2' => [ 'type' => 'integer', 'locationName' => 'y2', ],
+            ],
+        ],
         'SFaceData' => [
             'type' => 'structure',
             'members' => [
@@ -274,14 +501,68 @@ return [
                 'faces' => [ 'type' => 'list', 'member' => [ 'shape' => 'Face', ], ],
             ],
         ],
-        'LogoData' => [
+        'ImageTagInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'tagName' => [ 'type' => 'string', 'locationName' => 'tagName', ],
+                'tagGroup' => [ 'type' => 'string', 'locationName' => 'tagGroup', ],
+            ],
+        ],
+        'Face' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'x' => [ 'type' => 'double', 'locationName' => 'x', ],
-                'y' => [ 'type' => 'double', 'locationName' => 'y', ],
-                'w' => [ 'type' => 'double', 'locationName' => 'w', ],
-                'h' => [ 'type' => 'double', 'locationName' => 'h', ],
+                'rate' => [ 'type' => 'float', 'locationName' => 'rate', ],
+            ],
+        ],
+        'BackgroundInfoItem' => [
+            'type' => 'structure',
+            'members' => [
+                'pureBackground' => [ 'type' => 'boolean', 'locationName' => 'pureBackground', ],
+            ],
+        ],
+        'AntispamLabelItemDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'hitInfos' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'anticheatInfo' => [ 'type' => 'string', 'locationName' => 'anticheatInfo', ],
+                'imageTagInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageTagInfo', ], ],
+                'imageListInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageListInfo', ], ],
+                'hitLocationInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'HitLocationInfos', ], ],
+            ],
+        ],
+        'BoarderInfoItem' => [
+            'type' => 'structure',
+            'members' => [
+                'hit' => [ 'type' => 'boolean', 'locationName' => 'hit', ],
+                'top' => [ 'type' => 'boolean', 'locationName' => 'top', ],
+                'right' => [ 'type' => 'boolean', 'locationName' => 'right', ],
+                'bottom' => [ 'type' => 'boolean', 'locationName' => 'bottom', ],
+                'left' => [ 'type' => 'boolean', 'locationName' => 'left', ],
+            ],
+        ],
+        'ImageTaskV2' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
+                'callbackUrl' => [ 'type' => 'string', 'locationName' => 'callbackUrl', ],
+            ],
+        ],
+        'FaceResultDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'faceNumber' => [ 'type' => 'integer', 'locationName' => 'faceNumber', ],
+                'faceContents' => [ 'type' => 'list', 'member' => [ 'shape' => 'FaceContentItem', ], ],
+            ],
+        ],
+        'AntispamSubLabelItem' => [
+            'type' => 'structure',
+            'members' => [
+                'subLabel' => [ 'type' => 'integer', 'locationName' => 'subLabel', ],
+                'rate' => [ 'type' => 'float', 'locationName' => 'rate', ],
+                'details' =>  [ 'shape' => 'AntispamLabelItemDetail', ],
             ],
         ],
         'ImageResultDetail' => [
@@ -295,11 +576,75 @@ return [
                 'sfaceData' => [ 'type' => 'list', 'member' => [ 'shape' => 'SFaceData', ], ],
             ],
         ],
-        'Face' => [
+        'AntispamLabelItem' => [
+            'type' => 'structure',
+            'members' => [
+                'label' => [ 'type' => 'integer', 'locationName' => 'label', ],
+                'subLabels' => [ 'type' => 'list', 'member' => [ 'shape' => 'AntispamSubLabelItem', ], ],
+                'level' => [ 'type' => 'integer', 'locationName' => 'level', ],
+                'rate' => [ 'type' => 'float', 'locationName' => 'rate', ],
+            ],
+        ],
+        'LogoData' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'rate' => [ 'type' => 'float', 'locationName' => 'rate', ],
+                'x' => [ 'type' => 'double', 'locationName' => 'x', ],
+                'y' => [ 'type' => 'double', 'locationName' => 'y', ],
+                'w' => [ 'type' => 'double', 'locationName' => 'w', ],
+                'h' => [ 'type' => 'double', 'locationName' => 'h', ],
+            ],
+        ],
+        'HitLocationInfos' => [
+            'type' => 'structure',
+            'members' => [
+                'hitInfo' => [ 'type' => 'string', 'locationName' => 'hitInfo', ],
+                'x1' => [ 'type' => 'float', 'locationName' => 'x1', ],
+                'y1' => [ 'type' => 'float', 'locationName' => 'y1', ],
+                'x2' => [ 'type' => 'float', 'locationName' => 'x2', ],
+                'y2' => [ 'type' => 'float', 'locationName' => 'y2', ],
+            ],
+        ],
+        'LineContentItem' => [
+            'type' => 'structure',
+            'members' => [
+                'lineContent' => [ 'type' => 'string', 'locationName' => 'lineContent', ],
+                'polygon' => [ 'type' => 'list', 'member' => [ 'type' => 'float', ], ],
+            ],
+        ],
+        'SceneResultDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'sceneName' => [ 'type' => 'string', 'locationName' => 'sceneName', ],
+                'rate' => [ 'type' => 'integer', 'locationName' => 'rate', ],
+            ],
+        ],
+        'QrcodeData' => [
+            'type' => 'structure',
+            'members' => [
+                'x' => [ 'type' => 'double', 'locationName' => 'x', ],
+                'y' => [ 'type' => 'double', 'locationName' => 'y', ],
+                'w' => [ 'type' => 'double', 'locationName' => 'w', ],
+                'h' => [ 'type' => 'double', 'locationName' => 'h', ],
+            ],
+        ],
+        'ImageListInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'hitCount' => [ 'type' => 'string', 'locationName' => 'hitCount', ],
+                'word' => [ 'type' => 'string', 'locationName' => 'word', ],
+            ],
+        ],
+        'QualityResultDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'metaInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetaInfoItem', ], ],
+                'aestheticsRate' => [ 'type' => 'float', 'locationName' => 'aestheticsRate', ],
+                'sharpnessRate' => [ 'type' => 'float', 'locationName' => 'sharpnessRate', ],
+                'boarderInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'BoarderInfoItem', ], ],
+                'backgroundInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackgroundInfoItem', ], ],
             ],
         ],
         'LimitInfo' => [
@@ -453,6 +798,17 @@ return [
                 'data' =>  [ 'shape' => 'DataConsumeData', ],
             ],
         ],
+        'AssetDataOverview' => [
+            'type' => 'structure',
+            'members' => [
+                'imageCount' => [ 'type' => 'long', 'locationName' => 'imageCount', ],
+                'imageBlockCount' => [ 'type' => 'long', 'locationName' => 'imageBlockCount', ],
+                'imageReviewCount' => [ 'type' => 'long', 'locationName' => 'imageReviewCount', ],
+                'textCount' => [ 'type' => 'long', 'locationName' => 'textCount', ],
+                'textBlockCount' => [ 'type' => 'long', 'locationName' => 'textBlockCount', ],
+                'textReviewCount' => [ 'type' => 'long', 'locationName' => 'textReviewCount', ],
+            ],
+        ],
         'Score' => [
             'type' => 'structure',
             'members' => [
@@ -487,6 +843,14 @@ return [
                 'ad' => [ 'type' => 'integer', 'locationName' => 'ad', ],
                 'politics_terrorism' => [ 'type' => 'integer', 'locationName' => 'politics_terrorism', ],
                 'videoDetail' =>  [ 'shape' => 'VideoDetail', ],
+            ],
+        ],
+        'AssetDataOverviewReq' => [
+            'type' => 'structure',
+            'members' => [
+                'start' => [ 'type' => 'long', 'locationName' => 'start', ],
+                'end' => [ 'type' => 'long', 'locationName' => 'end', ],
+                'pins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'VideoDetail' => [
@@ -641,10 +1005,57 @@ return [
                 'url' => [ 'type' => 'string', 'locationName' => 'url', ],
             ],
         ],
+        'LabelItemDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'hint' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'hitInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'HitInfo', ], ],
+            ],
+        ],
+        'TextTaskV2' => [
+            'type' => 'structure',
+            'members' => [
+                'dataId' => [ 'type' => 'string', 'locationName' => 'dataId', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'dataType' => [ 'type' => 'integer', 'locationName' => 'dataType', ],
+                'callback' => [ 'type' => 'string', 'locationName' => 'callback', ],
+                'publishTime' => [ 'type' => 'integer', 'locationName' => 'publishTime', ],
+                'callbackUrl' => [ 'type' => 'string', 'locationName' => 'callbackUrl', ],
+            ],
+        ],
+        'SubLabelItem' => [
+            'type' => 'structure',
+            'members' => [
+                'subLabel' => [ 'type' => 'string', 'locationName' => 'subLabel', ],
+            ],
+        ],
+        'TextResultV2' => [
+            'type' => 'structure',
+            'members' => [
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TextResultDetailV2', ], ],
+            ],
+        ],
+        'HitInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'hitType' => [ 'type' => 'integer', 'locationName' => 'hitType', ],
+                'hitMsg' => [ 'type' => 'string', 'locationName' => 'hitMsg', ],
+            ],
+        ],
         'TaskDatas' => [
             'type' => 'structure',
             'members' => [
                 'results' => [ 'type' => 'list', 'member' => [ 'shape' => 'HintWordsInfo', ], ],
+            ],
+        ],
+        'LabelItem' => [
+            'type' => 'structure',
+            'members' => [
+                'label' => [ 'type' => 'integer', 'locationName' => 'label', ],
+                'level' => [ 'type' => 'integer', 'locationName' => 'level', ],
+                'details' =>  [ 'shape' => 'LabelItemDetail', ],
+                'subLabels' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubLabelItem', ], ],
             ],
         ],
         'TextTask' => [
@@ -652,6 +1063,14 @@ return [
             'members' => [
                 'dataId' => [ 'type' => 'string', 'locationName' => 'dataId', ],
                 'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+            ],
+        ],
+        'TextResultDetailV2' => [
+            'type' => 'structure',
+            'members' => [
+                'antispam' =>  [ 'shape' => 'AntispamResult', ],
+                'emotionAnalysis' =>  [ 'shape' => 'EmotionAnalysisResult', ],
+                'anticheat' =>  [ 'shape' => 'AnticheatResult', ],
             ],
         ],
         'TextResultDetail' => [
@@ -684,6 +1103,14 @@ return [
                 'tracking' => [ 'type' => 'string', 'locationName' => 'tracking', ],
             ],
         ],
+        'AntispamVideoSubLabelItem' => [
+            'type' => 'structure',
+            'members' => [
+                'subLabel' => [ 'type' => 'integer', 'locationName' => 'subLabel', ],
+                'rate' => [ 'type' => 'float', 'locationName' => 'rate', ],
+                'details' =>  [ 'shape' => 'AntispamVideoLabelItemDetail', ],
+            ],
+        ],
         'VideoResultDetail' => [
             'type' => 'structure',
             'members' => [
@@ -694,6 +1121,56 @@ return [
                 'sfaceData' => [ 'type' => 'list', 'member' => [ 'shape' => 'SFaceData', ], ],
             ],
         ],
+        'BackPicsItem' => [
+            'type' => 'structure',
+            'members' => [
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+            ],
+        ],
+        'EvidenceItem' => [
+            'type' => 'structure',
+            'members' => [
+                'beginTime' => [ 'type' => 'integer', 'locationName' => 'beginTime', ],
+                'endTime' => [ 'type' => 'integer', 'locationName' => 'endTime', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'censorSource' => [ 'type' => 'integer', 'locationName' => 'censorSource', ],
+                'labels' => [ 'type' => 'list', 'member' => [ 'shape' => 'AntispamLabelItem', ], ],
+                'frontPics' => [ 'type' => 'list', 'member' => [ 'shape' => 'FrontPicsItem', ], ],
+                'backPics' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackPicsItem', ], ],
+            ],
+        ],
+        'AntispamVideoLabelItem' => [
+            'type' => 'structure',
+            'members' => [
+                'label' => [ 'type' => 'integer', 'locationName' => 'label', ],
+                'subLabels' => [ 'type' => 'list', 'member' => [ 'shape' => 'AntispamVideoSubLabelItem', ], ],
+                'level' => [ 'type' => 'integer', 'locationName' => 'level', ],
+                'rate' => [ 'type' => 'float', 'locationName' => 'rate', ],
+            ],
+        ],
+        'FrontPicsItem' => [
+            'type' => 'structure',
+            'members' => [
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+            ],
+        ],
+        'AntispamVideoLabelItemDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'hitInfos' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'imageTagInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageTagInfo', ], ],
+                'imageListInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageListInfo', ], ],
+                'hitLocationInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'HitLocationInfos', ], ],
+            ],
+        ],
+        'AdvancedFrequency' => [
+            'type' => 'structure',
+            'members' => [
+                'durationPoints' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'frequencies' => [ 'type' => 'list', 'member' => [ 'type' => 'float', ], ],
+            ],
+        ],
         'VideoTask' => [
             'type' => 'structure',
             'members' => [
@@ -701,6 +1178,26 @@ return [
                 'url' => [ 'type' => 'string', 'locationName' => 'url', ],
                 'interval' => [ 'type' => 'integer', 'locationName' => 'interval', ],
                 'maxFrames' => [ 'type' => 'integer', 'locationName' => 'maxFrames', ],
+            ],
+        ],
+        'VideoResultV2' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'callback' => [ 'type' => 'string', 'locationName' => 'callback', ],
+                'censorSource' => [ 'type' => 'integer', 'locationName' => 'censorSource', ],
+                'censorTime' => [ 'type' => 'long', 'locationName' => 'censorTime', ],
+                'level' => [ 'type' => 'integer', 'locationName' => 'level', ],
+                'evidences' => [ 'type' => 'list', 'member' => [ 'shape' => 'EvidenceItem', ], ],
+            ],
+        ],
+        'VideoTaskData' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'dealingCount' => [ 'type' => 'integer', 'locationName' => 'dealingCount', ],
             ],
         ],
         'SetWarningReq' => [
@@ -781,6 +1278,8 @@ return [
                 'logType' => [ 'type' => 'integer', 'locationName' => 'logType', ],
                 'riskTypes' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
                 'riskLevel' => [ 'type' => 'integer', 'locationName' => 'riskLevel', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'response' => [ 'type' => 'string', 'locationName' => 'response', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
             ],
@@ -854,6 +1353,81 @@ return [
                 'homePageInterval' => [ 'type' => 'string', 'locationName' => 'homePageInterval', ],
             ],
         ],
+        'AudioResultsV2ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioAntispamResult', ], ],
+            ],
+        ],
+        'AudioResultsV2RequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'AudioAntispamResult' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'asrStatus' => [ 'type' => 'integer', 'locationName' => 'asrStatus', ],
+                'asrResult' => [ 'type' => 'integer', 'locationName' => 'asrResult', ],
+                'action' => [ 'type' => 'integer', 'locationName' => 'action', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'censorSource' => [ 'type' => 'integer', 'locationName' => 'censorSource', ],
+                'censorTime' => [ 'type' => 'long', 'locationName' => 'censorTime', ],
+                'segments' => [ 'type' => 'list', 'member' => [ 'shape' => 'SegmentsItem', ], ],
+                'labels' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioLabelItem', ], ],
+                'censorLabels' => [ 'type' => 'list', 'member' => [ 'shape' => 'CensorLabelItem', ], ],
+            ],
+        ],
+        'AudioCallbackV2ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'antispam' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioAntispamResult', ], ],
+                'asr' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioASRResult', ], ],
+                'language' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioLanguageResult', ], ],
+                'voice' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioVoiceResult', ], ],
+            ],
+        ],
+        'AudioVoiceResult' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'mainGender' => [ 'type' => 'string', 'locationName' => 'mainGender', ],
+            ],
+        ],
+        'AudioLanguageResult' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'details' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioLanguageResultDetail', ], ],
+            ],
+        ],
+        'AsyncAudioScanResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AsyncAudioScanResultShape', ],
+            ],
+        ],
+        'AudioResult' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
+                'dataId' => [ 'type' => 'string', 'locationName' => 'dataId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'results' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioResultDetail', ], ],
+            ],
+        ],
+        'AsyncAudioScanV2ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AudioTaskData', ],
+            ],
+        ],
         'AudioResultsRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -869,22 +1443,57 @@ return [
                 'seed' => [ 'type' => 'string', 'locationName' => 'seed', ],
             ],
         ],
+        'AsyncAudioScanResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskData', ], ],
+            ],
+        ],
+        'AudioCallbackV2RequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+            ],
+        ],
+        'AsyncAudioScanV2RequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'deviceType' => [ 'type' => 'integer', 'locationName' => 'deviceType', ],
+                'callback' => [ 'type' => 'string', 'locationName' => 'callback', ],
+                'callbackUrl' => [ 'type' => 'string', 'locationName' => 'callbackUrl', ],
+            ],
+        ],
+        'AsyncAudioScanV2ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AsyncAudioScanV2ResultShape', ],
+            ],
+        ],
+        'AudioResultsV2ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AudioResultsV2ResultShape', ],
+            ],
+        ],
         'AudioResultsResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioResult', ], ],
             ],
         ],
-        'AsyncAudioScanResponseShape' => [
+        'AudioASRResult' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'AsyncAudioScanResultShape', ],
-            ],
-        ],
-        'AsyncAudioScanResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskData', ], ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'details' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioASRResultDetail', ], ],
             ],
         ],
         'AudioResultsResponseShape' => [
@@ -893,15 +1502,10 @@ return [
                 'result' =>  [ 'shape' => 'AudioResultsResultShape', ],
             ],
         ],
-        'AudioResult' => [
+        'AudioCallbackV2ResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
-                'dataId' => [ 'type' => 'string', 'locationName' => 'dataId', ],
-                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
-                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
-                'results' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioResultDetail', ], ],
+                'result' =>  [ 'shape' => 'AudioCallbackV2ResultShape', ],
             ],
         ],
         'DeleteCensorLibResponseShape' => [
@@ -945,17 +1549,26 @@ return [
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskData', ], ],
             ],
         ],
-        'ImageResultsResultShape' => [
+        'ImageAntispamResult' => [
             'type' => 'structure',
             'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageResult', ], ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'action' => [ 'type' => 'integer', 'locationName' => 'action', ],
+                'censorType' => [ 'type' => 'integer', 'locationName' => 'censorType', ],
+                'strategyVersion' => [ 'type' => 'string', 'locationName' => 'strategyVersion', ],
+                'labels' => [ 'type' => 'list', 'member' => [ 'shape' => 'AntispamLabelItem', ], ],
             ],
         ],
-        'ImageScanRequestShape' => [
+        'OCRResult' => [
             'type' => 'structure',
             'members' => [
-                'scenes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageTask', ], ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'details' => [ 'type' => 'list', 'member' => [ 'shape' => 'OCRResultDetail', ], ],
             ],
         ],
         'ImageResult' => [
@@ -969,6 +1582,14 @@ return [
                 'results' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageResultDetail', ], ],
             ],
         ],
+        'FaceResult' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'details' => [ 'type' => 'list', 'member' => [ 'shape' => 'FaceResultDetail', ], ],
+            ],
+        ],
         'AsyncImageScanRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -978,10 +1599,63 @@ return [
                 'seed' => [ 'type' => 'string', 'locationName' => 'seed', ],
             ],
         ],
+        'ImageScanV2ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'antispam' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageAntispamResult', ], ],
+                'ocr' => [ 'type' => 'list', 'member' => [ 'shape' => 'OCRResult', ], ],
+                'face' => [ 'type' => 'list', 'member' => [ 'shape' => 'FaceResult', ], ],
+                'quality' => [ 'type' => 'list', 'member' => [ 'shape' => 'QualityResult', ], ],
+                'logo' => [ 'type' => 'list', 'member' => [ 'shape' => 'LogoResult', ], ],
+                'scene' => [ 'type' => 'list', 'member' => [ 'shape' => 'SceneResult', ], ],
+            ],
+        ],
+        'ImageScanResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageResult', ], ],
+            ],
+        ],
+        'ImageResultsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ImageResultsResultShape', ],
+            ],
+        ],
+        'ImageResultsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageResult', ], ],
+            ],
+        ],
+        'ImageScanRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'scenes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageTask', ], ],
+            ],
+        ],
+        'SceneResult' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'details' => [ 'type' => 'list', 'member' => [ 'shape' => 'SceneResultDetail', ], ],
+            ],
+        ],
         'ImageResultsRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ImageScanV2RequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'images' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageTaskV2', ], ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
+                'checkLabels' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'ImageScanResponseShape' => [
@@ -996,16 +1670,26 @@ return [
                 'result' =>  [ 'shape' => 'AsyncImageScanResultShape', ],
             ],
         ],
-        'ImageScanResultShape' => [
+        'ImageScanV2ResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageResult', ], ],
+                'result' =>  [ 'shape' => 'ImageScanV2ResultShape', ],
             ],
         ],
-        'ImageResultsResponseShape' => [
+        'QualityResult' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'ImageResultsResultShape', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'details' => [ 'type' => 'list', 'member' => [ 'shape' => 'QualityResultDetail', ], ],
+            ],
+        ],
+        'LogoResult' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'details' => [ 'type' => 'list', 'member' => [ 'shape' => 'LogoResultDetail', ], ],
             ],
         ],
         'DeleteLimitResultShape' => [
@@ -1060,36 +1744,28 @@ return [
                 'fbSuggestion' => [ 'type' => 'string', 'locationName' => 'fbSuggestion', ],
             ],
         ],
-        'InnerTextScanResultShape' => [
+        'AnticheatResult' => [
             'type' => 'structure',
             'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'TextResult', ], ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'action' => [ 'type' => 'integer', 'locationName' => 'action', ],
+                'hitInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'HitInfo', ], ],
             ],
         ],
-        'InnerTextScanRequestShape' => [
+        'EmotionAnalysisResult' => [
             'type' => 'structure',
             'members' => [
-                'scenes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TextTask', ], ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'sentiment' => [ 'type' => 'string', 'locationName' => 'sentiment', ],
+                'positiveProb' => [ 'type' => 'float', 'locationName' => 'positiveProb', ],
+                'negativeProb' => [ 'type' => 'float', 'locationName' => 'negativeProb', ],
             ],
         ],
-        'InnerTextScanResponseShape' => [
+        'TextResultsV2RequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'InnerTextScanResultShape', ],
-            ],
-        ],
-        'TextScanRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'scenes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TextTask', ], ],
-            ],
-        ],
-        'TextScanResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'TextResult', ], ],
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
             ],
         ],
         'TextResult' => [
@@ -1110,6 +1786,90 @@ return [
                 'result' =>  [ 'shape' => 'TextScanResultShape', ],
             ],
         ],
+        'InnerTextScanResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'TextResult', ], ],
+            ],
+        ],
+        'TextResultsV2ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'TextResultsV2ResultShape', ],
+            ],
+        ],
+        'TextScanV2ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'TextScanV2ResultShape', ],
+            ],
+        ],
+        'TextScanRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'scenes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TextTask', ], ],
+            ],
+        ],
+        'TextScanResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'TextResult', ], ],
+            ],
+        ],
+        'AntispamResult' => [
+            'type' => 'structure',
+            'members' => [
+                'dataId' => [ 'type' => 'string', 'locationName' => 'dataId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'censonrType' => [ 'type' => 'integer', 'locationName' => 'censonrType', ],
+                'action' => [ 'type' => 'integer', 'locationName' => 'action', ],
+                'lang' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'isRelatedHit' => [ 'type' => 'boolean', 'locationName' => 'isRelatedHit', ],
+                'labels' => [ 'type' => 'list', 'member' => [ 'shape' => 'LabelItem', ], ],
+            ],
+        ],
+        'TextScanV2ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TextResultDetailV2', ], ],
+            ],
+        ],
+        'InnerTextScanRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'scenes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TextTask', ], ],
+            ],
+        ],
+        'InnerTextScanResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'InnerTextScanResultShape', ],
+            ],
+        ],
+        'TextScanV2RequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'checkLabels' => [ 'type' => 'string', 'locationName' => 'checkLabels', ],
+                'texts' => [ 'type' => 'list', 'member' => [ 'shape' => 'TextTaskV2', ], ],
+            ],
+        ],
+        'TextResultsV2ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TextResultDetailV2', ], ],
+            ],
+        ],
+        'VideoCallbackV2ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'VideoResultV2', ], ],
+            ],
+        ],
         'AsyncVideoScanResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1120,6 +1880,43 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'AsyncVideoScanResultShape', ],
+            ],
+        ],
+        'VideoResultsV2ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'VideoResultsV2ResultShape', ],
+            ],
+        ],
+        'AsyncVideoScanV2ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'VideoTaskData', ],
+            ],
+        ],
+        'VideoResultsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'VideoCallbackV2RequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+            ],
+        ],
+        'VideoCallbackV2ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'VideoCallbackV2ResultShape', ],
+            ],
+        ],
+        'VideoResultsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'VideoResult', ], ],
             ],
         ],
         'AsyncVideoScanRequestShape' => [
@@ -1145,10 +1942,19 @@ return [
                 'audioResults' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioResultDetail', ], ],
             ],
         ],
-        'VideoResultsRequestShape' => [
+        'AsyncVideoScanV2RequestShape' => [
             'type' => 'structure',
             'members' => [
-                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'dataId' => [ 'type' => 'string', 'locationName' => 'dataId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'callback' => [ 'type' => 'string', 'locationName' => 'callback', ],
+                'callbackUrl' => [ 'type' => 'string', 'locationName' => 'callbackUrl', ],
+                'uniqueKey' => [ 'type' => 'string', 'locationName' => 'uniqueKey', ],
+                'scFrequency' => [ 'type' => 'integer', 'locationName' => 'scFrequency', ],
+                'advancedFrequency' =>  [ 'shape' => 'AdvancedFrequency', ],
             ],
         ],
         'VideoResultsResponseShape' => [
@@ -1157,10 +1963,24 @@ return [
                 'result' =>  [ 'shape' => 'VideoResultsResultShape', ],
             ],
         ],
-        'VideoResultsResultShape' => [
+        'AsyncVideoScanV2ResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'VideoResult', ], ],
+                'result' =>  [ 'shape' => 'AsyncVideoScanV2ResultShape', ],
+            ],
+        ],
+        'VideoResultsV2RequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'VideoResultsV2ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'VideoResultV2', ], ],
             ],
         ],
     ],

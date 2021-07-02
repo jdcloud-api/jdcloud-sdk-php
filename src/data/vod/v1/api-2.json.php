@@ -1376,7 +1376,7 @@ return [
             'members' => [
                 'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
                 'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
-                'templates' =>  [ 'shape' => 'GroupedTranscodeTemplateData', ],
+                'templates' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupedTranscodeTemplateData', ], ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
@@ -1415,14 +1415,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
-                'templates' =>  [ 'shape' => 'GroupedTranscodeTemplateData', ],
+                'templates' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupedTranscodeTemplateData', ], ],
             ],
         ],
         'UpdateTranscodeTemplateGroupReqData' => [
             'type' => 'structure',
             'members' => [
                 'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
-                'templates' =>  [ 'shape' => 'GroupedTranscodeTemplateData', ],
+                'templates' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupedTranscodeTemplateData', ], ],
             ],
         ],
         'Container' => [
@@ -2928,7 +2928,7 @@ return [
             'members' => [
                 'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
                 'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
-                'templates' =>  [ 'shape' => 'GroupedTranscodeTemplateData', ],
+                'templates' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupedTranscodeTemplateData', ], ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
@@ -2945,14 +2945,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
-                'templates' =>  [ 'shape' => 'GroupedTranscodeTemplateData', ],
+                'templates' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupedTranscodeTemplateData', ], ],
             ],
         ],
         'UpdateTranscodeTemplateGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
-                'templates' =>  [ 'shape' => 'GroupedTranscodeTemplateData', ],
+                'templates' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupedTranscodeTemplateData', ], ],
                 'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
             ],
         ],
@@ -2976,7 +2976,7 @@ return [
             'members' => [
                 'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
                 'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
-                'templates' =>  [ 'shape' => 'GroupedTranscodeTemplateData', ],
+                'templates' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupedTranscodeTemplateData', ], ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
@@ -3025,7 +3025,7 @@ return [
             'members' => [
                 'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
                 'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
-                'templates' =>  [ 'shape' => 'GroupedTranscodeTemplateData', ],
+                'templates' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupedTranscodeTemplateData', ], ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
