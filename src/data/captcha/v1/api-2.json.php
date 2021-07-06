@@ -46,6 +46,25 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
+        'Trial' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'long', 'locationName' => 'appId', ],
+                'sceneId' => [ 'type' => 'long', 'locationName' => 'sceneId', ],
+                'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
+                'supports' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'captchaType' => [ 'type' => 'integer', 'locationName' => 'captchaType', ],
+                'captchaName' => [ 'type' => 'string', 'locationName' => 'captchaName', ],
+            ],
+        ],
+        'Sdk' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'long', 'locationName' => 'appId', ],
+                'sdkType' => [ 'type' => 'string', 'locationName' => 'sdkType', ],
+                'sdkVersion' => [ 'type' => 'string', 'locationName' => 'sdkVersion', ],
+            ],
+        ],
         'SessionDataResp' => [
             'type' => 'structure',
             'members' => [
@@ -220,6 +239,14 @@ return [
                 'abandonRiskConfig' =>  [ 'shape' => 'RiskConfig', ],
             ],
         ],
+        'TacticsItem' => [
+            'type' => 'structure',
+            'members' => [
+                'tacticsType' => [ 'type' => 'integer', 'locationName' => 'tacticsType', ],
+                'suspiciousRiskConfig' =>  [ 'shape' => 'RiskConfig', ],
+                'abandonRiskConfig' =>  [ 'shape' => 'RiskConfig', ],
+            ],
+        ],
         'Captcha' => [
             'type' => 'structure',
             'members' => [
@@ -242,6 +269,56 @@ return [
             'members' => [
                 'risk_labels' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'captcha_type' => [ 'type' => 'integer', 'locationName' => 'captcha_type', ],
+            ],
+        ],
+        'UserPkgDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'pkg' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+            ],
+        ],
+        'OrderDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'pkgname' => [ 'type' => 'string', 'locationName' => 'pkgname', ],
+                'balanceAmount' => [ 'type' => 'string', 'locationName' => 'balanceAmount', ],
+                'orderType' => [ 'type' => 'string', 'locationName' => 'orderType', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'orderState' => [ 'type' => 'string', 'locationName' => 'orderState', ],
+                'orderAmount' => [ 'type' => 'integer', 'locationName' => 'orderAmount', ],
+                'voucher' => [ 'type' => 'integer', 'locationName' => 'voucher', ],
+                'yue' => [ 'type' => 'integer', 'locationName' => 'yue', ],
+                'paymentAmount' => [ 'type' => 'integer', 'locationName' => 'paymentAmount', ],
+            ],
+        ],
+        'UserDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'userType' => [ 'type' => 'string', 'locationName' => 'userType', ],
+                'surplusAmount' => [ 'type' => 'double', 'locationName' => 'surplusAmount', ],
+                'usedAmount' => [ 'type' => 'double', 'locationName' => 'usedAmount', ],
+                'packagesAmount' => [ 'type' => 'integer', 'locationName' => 'packagesAmount', ],
+                'packagesNum' => [ 'type' => 'integer', 'locationName' => 'packagesNum', ],
+                'tracking' => [ 'type' => 'string', 'locationName' => 'tracking', ],
+            ],
+        ],
+        'ModifyReq' => [
+            'type' => 'structure',
+            'members' => [
+                'tracking' => [ 'type' => 'string', 'locationName' => 'tracking', ],
+            ],
+        ],
+        'AmountStatistics' => [
+            'type' => 'structure',
+            'members' => [
+                'free' => [ 'type' => 'integer', 'locationName' => 'free', ],
+                'charge' => [ 'type' => 'integer', 'locationName' => 'charge', ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
             ],
         ],
         'GetSessionIdResultShape' => [
@@ -269,9 +346,9 @@ return [
                 'sessionId' => [ 'type' => 'string', 'locationName' => 'sessionId', ],
                 'appId' => [ 'type' => 'long', 'locationName' => 'appId', ],
                 'sceneId' => [ 'type' => 'long', 'locationName' => 'sceneId', ],
+                'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
                 'userAgent' => [ 'type' => 'string', 'locationName' => 'userAgent', ],
-                'fingerPrint' => [ 'type' => 'string', 'locationName' => 'fingerPrint', ],
                 'clientType' => [ 'type' => 'string', 'locationName' => 'clientType', ],
                 'clientVersion' => [ 'type' => 'string', 'locationName' => 'clientVersion', ],
             ],
