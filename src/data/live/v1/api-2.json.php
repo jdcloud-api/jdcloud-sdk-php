@@ -1001,6 +1001,114 @@ return [
             'input' => [ 'shape' => 'DescribeTranscodeBindingRequestShape', ],
             'output' => [ 'shape' => 'DescribeTranscodeBindingResponseShape', ],
         ],
+        'AddLiveStreamDomainTranslate' => [
+            'name' => 'AddLiveStreamDomainTranslate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/translateDomains:config',
+            ],
+            'input' => [ 'shape' => 'AddLiveStreamDomainTranslateRequestShape', ],
+            'output' => [ 'shape' => 'AddLiveStreamDomainTranslateResponseShape', ],
+        ],
+        'AddLiveStreamAppTranslate' => [
+            'name' => 'AddLiveStreamAppTranslate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/translateApps:config',
+            ],
+            'input' => [ 'shape' => 'AddLiveStreamAppTranslateRequestShape', ],
+            'output' => [ 'shape' => 'AddLiveStreamAppTranslateResponseShape', ],
+        ],
+        'AddLiveStreamTranslate' => [
+            'name' => 'AddLiveStreamTranslate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/translateStream:config',
+            ],
+            'input' => [ 'shape' => 'AddLiveStreamTranslateRequestShape', ],
+            'output' => [ 'shape' => 'AddLiveStreamTranslateResponseShape', ],
+        ],
+        'DescribeSystemLiveStreamTranslateTemplates' => [
+            'name' => 'DescribeSystemLiveStreamTranslateTemplates',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/translateSystem',
+            ],
+            'input' => [ 'shape' => 'DescribeSystemLiveStreamTranslateTemplatesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSystemLiveStreamTranslateTemplatesResponseShape', ],
+        ],
+        'DescribeLiveStreamTranslateConfig' => [
+            'name' => 'DescribeLiveStreamTranslateConfig',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/translates:config',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveStreamTranslateConfigRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveStreamTranslateConfigResponseShape', ],
+        ],
+        'DescribeLiveDomainTranslateConfig' => [
+            'name' => 'DescribeLiveDomainTranslateConfig',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/translateTemplates:domain',
+            ],
+            'input' => [ 'shape' => 'DescribeLiveDomainTranslateConfigRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLiveDomainTranslateConfigResponseShape', ],
+        ],
+        'DeleteLiveStreamDomainTranslate' => [
+            'name' => 'DeleteLiveStreamDomainTranslate',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/translateDomains/{publishDomain}/templates/{template}:config',
+            ],
+            'input' => [ 'shape' => 'DeleteLiveStreamDomainTranslateRequestShape', ],
+            'output' => [ 'shape' => 'DeleteLiveStreamDomainTranslateResponseShape', ],
+        ],
+        'DeleteLiveStreamAppTranslate' => [
+            'name' => 'DeleteLiveStreamAppTranslate',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/translateApps/{publishDomain}/appNames/{appName}/templates/{template}',
+            ],
+            'input' => [ 'shape' => 'DeleteLiveStreamAppTranslateRequestShape', ],
+            'output' => [ 'shape' => 'DeleteLiveStreamAppTranslateResponseShape', ],
+        ],
+        'DeleteLiveStreamTranslate' => [
+            'name' => 'DeleteLiveStreamTranslate',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/translateStream/{publishDomain}/appNames/{appName}/streams/{streamName}/templates/{template}',
+            ],
+            'input' => [ 'shape' => 'DeleteLiveStreamTranslateRequestShape', ],
+            'output' => [ 'shape' => 'DeleteLiveStreamTranslateResponseShape', ],
+        ],
+        'DescribeTranslateBinding' => [
+            'name' => 'DescribeTranslateBinding',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/translateTemplates/{template}:binding',
+            ],
+            'input' => [ 'shape' => 'DescribeTranslateBindingRequestShape', ],
+            'output' => [ 'shape' => 'DescribeTranslateBindingResponseShape', ],
+        ],
+        'PauseLiveStreamTranslate' => [
+            'name' => 'PauseLiveStreamTranslate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/translate:pause',
+            ],
+            'input' => [ 'shape' => 'PauseLiveStreamTranslateRequestShape', ],
+            'output' => [ 'shape' => 'PauseLiveStreamTranslateResponseShape', ],
+        ],
+        'ResumeLiveStreamTranslate' => [
+            'name' => 'ResumeLiveStreamTranslate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/translate:resume',
+            ],
+            'input' => [ 'shape' => 'ResumeLiveStreamTranslateRequestShape', ],
+            'output' => [ 'shape' => 'ResumeLiveStreamTranslateResponseShape', ],
+        ],
         'AddCustomLiveStreamWatermarkTemplate' => [
             'name' => 'AddCustomLiveStreamWatermarkTemplate',
             'http' => [
@@ -1637,6 +1745,33 @@ return [
                 'audioCodeRate' => [ 'type' => 'integer', 'locationName' => 'audioCodeRate', ],
                 'jdchd' => [ 'type' => 'string', 'locationName' => 'jdchd', ],
                 'audioComfort' => [ 'type' => 'string', 'locationName' => 'audioComfort', ],
+            ],
+        ],
+        'TranslateTemplateConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'translateConfig' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DomainTranslateTemplateConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'templateCode' => [ 'type' => 'string', 'locationName' => 'templateCode', ],
+                'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
+                'translateMode' => [ 'type' => 'integer', 'locationName' => 'translateMode', ],
+            ],
+        ],
+        'TranslateInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
+                'templateCode' => [ 'type' => 'string', 'locationName' => 'templateCode', ],
+                'translateMode' => [ 'type' => 'integer', 'locationName' => 'translateMode', ],
             ],
         ],
         'WatermarkTemplate' => [
@@ -4127,6 +4262,244 @@ return [
             ],
         ],
         'DeleteCustomLiveStreamTranscodeTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteLiveStreamDomainTranslateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+            ],
+        ],
+        'DeleteLiveStreamTranslateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ResumeLiveStreamTranslateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+            ],
+        ],
+        'AddLiveStreamTranslateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+            ],
+        ],
+        'DescribeLiveStreamTranslateConfigResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'translateConfigs' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranslateTemplateConfig', ], ],
+            ],
+        ],
+        'DescribeTranslateBindingResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bindingList' => [ 'type' => 'list', 'member' => [ 'shape' => 'TemplateBinding', ], ],
+            ],
+        ],
+        'PauseLiveStreamTranslateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddLiveStreamDomainTranslateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeLiveStreamTranslateConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveStreamTranslateConfigResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddLiveStreamAppTranslateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+            ],
+        ],
+        'DeleteLiveStreamDomainTranslateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSystemLiveStreamTranslateTemplatesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'ResumeLiveStreamTranslateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'PauseLiveStreamTranslateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+            ],
+        ],
+        'DeleteLiveStreamTranslateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+            ],
+        ],
+        'DeleteLiveStreamAppTranslateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddLiveStreamAppTranslateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AddLiveStreamAppTranslateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSystemLiveStreamTranslateTemplatesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'translateTemplates' => [ 'type' => 'list', 'member' => [ 'shape' => 'TranslateInfo', ], ],
+            ],
+        ],
+        'AddLiveStreamTranslateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AddLiveStreamTranslateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ResumeLiveStreamTranslateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveDomainTranslateConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'DescribeTranslateBindingRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+            ],
+        ],
+        'DescribeLiveDomainTranslateConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLiveDomainTranslateConfigResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveStreamTranslateConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'PauseLiveStreamTranslateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeSystemLiveStreamTranslateTemplatesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSystemLiveStreamTranslateTemplatesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeLiveDomainTranslateConfigResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'templateList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainTranslateTemplateConfig', ], ],
+            ],
+        ],
+        'AddLiveStreamDomainTranslateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteLiveStreamDomainTranslateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AddLiveStreamDomainTranslateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+            ],
+        ],
+        'DeleteLiveStreamAppTranslateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publishDomain' => [ 'type' => 'string', 'locationName' => 'publishDomain', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'template' => [ 'type' => 'string', 'locationName' => 'template', ],
+            ],
+        ],
+        'DeleteLiveStreamTranslateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeTranslateBindingResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeTranslateBindingResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteLiveStreamAppTranslateResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
