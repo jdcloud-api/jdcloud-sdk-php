@@ -2323,6 +2323,7 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
+                'configId' => [ 'type' => 'string', 'locationName' => 'configId', ],
             ],
         ],
         'SubUserRefreshLimit' => [
@@ -2659,7 +2660,7 @@ return [
             'members' => [
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'data' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'shape' => 'string', ], ],
+                'data' => [ 'type' => 'map', 'key' => [ 'shape' => 'string', ], 'value' => [ 'type' => 'long', ], ],
             ],
         ],
         'StatisticsTopUrlItem' => [
