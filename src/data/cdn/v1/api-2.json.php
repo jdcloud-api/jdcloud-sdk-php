@@ -236,6 +236,15 @@ return [
             'input' => [ 'shape' => 'DeleteCacheRuleRequestShape', ],
             'output' => [ 'shape' => 'DeleteCacheRuleResponseShape', ],
         ],
+        'SetCacheRules' => [
+            'name' => 'SetCacheRules',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/domain/{domain}/cacheRules',
+            ],
+            'input' => [ 'shape' => 'SetCacheRulesRequestShape', ],
+            'output' => [ 'shape' => 'SetCacheRulesResponseShape', ],
+        ],
         'QueryHttpHeader' => [
             'name' => 'QueryHttpHeader',
             'http' => [
@@ -1325,6 +1334,15 @@ return [
             'input' => [ 'shape' => 'QueryCustomizedDirBandWidthRequestShape', ],
             'output' => [ 'shape' => 'QueryCustomizedDirBandWidthResponseShape', ],
         ],
+        'QueryStreamInfo' => [
+            'name' => 'QueryStreamInfo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/domain/{domain}/liveStatistics:streamInfo',
+            ],
+            'input' => [ 'shape' => 'QueryStreamInfoRequestShape', ],
+            'output' => [ 'shape' => 'QueryStreamInfoResponseShape', ],
+        ],
         'QueryAvgBandwidthForPCdn' => [
             'name' => 'QueryAvgBandwidthForPCdn',
             'http' => [
@@ -1351,6 +1369,15 @@ return [
             ],
             'input' => [ 'shape' => 'QueryJDBoxStatisticsDataRequestShape', ],
             'output' => [ 'shape' => 'QueryJDBoxStatisticsDataResponseShape', ],
+        ],
+        'QueryJDBoxStatisticsDataWithGroup' => [
+            'name' => 'QueryJDBoxStatisticsDataWithGroup',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/jdBoxStatisticsWithGroup',
+            ],
+            'input' => [ 'shape' => 'QueryJDBoxStatisticsDataWithGroupRequestShape', ],
+            'output' => [ 'shape' => 'QueryJDBoxStatisticsDataWithGroupResponseShape', ],
         ],
         'QueryJBoxAvgBandwidth' => [
             'name' => 'QueryJBoxAvgBandwidth',
@@ -2319,6 +2346,7 @@ return [
             'members' => [
                 'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
                 'ttl' => [ 'type' => 'long', 'locationName' => 'ttl', ],
+                'configId' => [ 'type' => 'long', 'locationName' => 'configId', ],
                 'contents' => [ 'type' => 'string', 'locationName' => 'contents', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
@@ -2355,11 +2383,30 @@ return [
                 'callbackUrl' => [ 'type' => 'string', 'locationName' => 'callbackUrl', ],
             ],
         ],
+        'CacheRuleVo' => [
+            'type' => 'structure',
+            'members' => [
+                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
+                'ttl' => [ 'type' => 'long', 'locationName' => 'ttl', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'cacheType' => [ 'type' => 'integer', 'locationName' => 'cacheType', ],
+            ],
+        ],
         'ProtocolConvert' => [
             'type' => 'structure',
             'members' => [
                 'sourceProtocol' => [ 'type' => 'string', 'locationName' => 'sourceProtocol', ],
                 'targetProtocol' => [ 'type' => 'string', 'locationName' => 'targetProtocol', ],
+            ],
+        ],
+        'CacheVo' => [
+            'type' => 'structure',
+            'members' => [
+                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
+                'ttl' => [ 'type' => 'integer', 'locationName' => 'ttl', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
             ],
         ],
         'SetSourceBody' => [
@@ -2686,6 +2733,17 @@ return [
                 'dirs' => [ 'type' => 'list', 'member' => [ 'shape' => 'DirData', ], ],
             ],
         ],
+        'StatisticsLiveStreamInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'avgupSpeed' => [ 'type' => 'double', 'locationName' => 'avgupSpeed', ],
+                'avgupframerate' => [ 'type' => 'double', 'locationName' => 'avgupframerate', ],
+                'playerCount' => [ 'type' => 'long', 'locationName' => 'playerCount', ],
+            ],
+        ],
         'DirData' => [
             'type' => 'structure',
             'members' => [
@@ -2801,6 +2859,7 @@ return [
         'UserLogInfoModel' => [
             'type' => 'structure',
             'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'logFileFullPath' => [ 'type' => 'string', 'locationName' => 'logFileFullPath', ],
                 'interval' => [ 'type' => 'string', 'locationName' => 'interval', ],
@@ -3605,6 +3664,13 @@ return [
                 'result' =>  [ 'shape' => 'ExecuteDomainCopyResultShape', ],
             ],
         ],
+        'SetCacheRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cacheRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'CacheRuleVo', ], ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
         'SetFollowSourceProtocolResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3676,6 +3742,13 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'gzipTypes' => [ 'type' => 'string', 'locationName' => 'gzipTypes', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'SetCacheRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SetCacheRulesResultShape', ],
             ],
         ],
         'QueryFilterArgsResponseShape' => [
@@ -3922,6 +3995,12 @@ return [
         'SetIpBlackListResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'SetCacheRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'CacheVo', ], ],
             ],
         ],
         'SetExtraCacheTimeResponseShape' => [
@@ -5897,6 +5976,7 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'dirs' => [ 'type' => 'string', 'locationName' => 'dirs', ],
                 'regions' => [ 'type' => 'string', 'locationName' => 'regions', ],
+                'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
             ],
         ],
         'QueryDirStatsDataRequestShape' => [
@@ -5906,6 +5986,7 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'dirs' => [ 'type' => 'string', 'locationName' => 'dirs', ],
+                'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
             ],
         ],
         'QueryStatisticsDataGroupByAreaResultShape' => [
@@ -5949,6 +6030,7 @@ return [
                 'scheme' => [ 'type' => 'string', 'locationName' => 'scheme', ],
                 'cacheLevel' => [ 'type' => 'string', 'locationName' => 'cacheLevel', ],
                 'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+                'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
             ],
         ],
         'QueryLiveStatisticsDataResponseShape' => [
@@ -5994,6 +6076,22 @@ return [
                 'statistics' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsWithAreaGroupDetail', ], ],
             ],
         ],
+        'QueryStreamInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'streamInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsLiveStreamInfo', ], ],
+            ],
+        ],
+        'QueryStreamInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryStreamInfoResultShape', ],
+            ],
+        ],
         'QueryMixStatisticsDataResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -6021,6 +6119,7 @@ return [
                 'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
                 'period' => [ 'type' => 'string', 'locationName' => 'period', ],
                 'groupBy' => [ 'type' => 'string', 'locationName' => 'groupBy', ],
+                'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
             ],
         ],
         'QueryStatisticsDataGroupByAreaResponseShape' => [
@@ -6065,11 +6164,12 @@ return [
                 'fields' => [ 'type' => 'string', 'locationName' => 'fields', ],
                 'area' => [ 'type' => 'string', 'locationName' => 'area', ],
                 'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
-                'origin' => [ 'type' => 'string', 'locationName' => 'origin', ],
+                'origin' => [ 'type' => 'boolean', 'locationName' => 'origin', ],
                 'period' => [ 'type' => 'string', 'locationName' => 'period', ],
                 'groupBy' => [ 'type' => 'string', 'locationName' => 'groupBy', ],
                 'scheme' => [ 'type' => 'string', 'locationName' => 'scheme', ],
                 'abroad' => [ 'type' => 'boolean', 'locationName' => 'abroad', ],
+                'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
             ],
         ],
         'QueryMixTrafficGroupSumResponseShape' => [
@@ -6103,6 +6203,7 @@ return [
                 'groupBy' => [ 'type' => 'string', 'locationName' => 'groupBy', ],
                 'reqMethod' => [ 'type' => 'string', 'locationName' => 'reqMethod', ],
                 'cacheLevel' => [ 'type' => 'string', 'locationName' => 'cacheLevel', ],
+                'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
             ],
         ],
         'QueryCustomizedDirBandWidthResultShape' => [
@@ -6123,6 +6224,7 @@ return [
                 'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
                 'period' => [ 'type' => 'string', 'locationName' => 'period', ],
                 'scheme' => [ 'type' => 'string', 'locationName' => 'scheme', ],
+                'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
             ],
         ],
         'QueryStatisticsTopUrlResponseShape' => [
@@ -6142,10 +6244,11 @@ return [
                 'fields' => [ 'type' => 'string', 'locationName' => 'fields', ],
                 'area' => [ 'type' => 'string', 'locationName' => 'area', ],
                 'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
-                'origin' => [ 'type' => 'string', 'locationName' => 'origin', ],
+                'origin' => [ 'type' => 'boolean', 'locationName' => 'origin', ],
                 'period' => [ 'type' => 'string', 'locationName' => 'period', ],
                 'groupBy' => [ 'type' => 'string', 'locationName' => 'groupBy', ],
                 'abroad' => [ 'type' => 'boolean', 'locationName' => 'abroad', ],
+                'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
             ],
         ],
         'QueryDirBandwidthResultShape' => [
@@ -6188,6 +6291,7 @@ return [
                 'scheme' => [ 'type' => 'string', 'locationName' => 'scheme', ],
                 'reqMethod' => [ 'type' => 'string', 'locationName' => 'reqMethod', ],
                 'cacheLevel' => [ 'type' => 'string', 'locationName' => 'cacheLevel', ],
+                'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
             ],
         ],
         'QueryStatisticsDataGroupSumResponseShape' => [
@@ -6214,9 +6318,10 @@ return [
                 'fields' => [ 'type' => 'string', 'locationName' => 'fields', ],
                 'area' => [ 'type' => 'string', 'locationName' => 'area', ],
                 'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
-                'origin' => [ 'type' => 'string', 'locationName' => 'origin', ],
+                'origin' => [ 'type' => 'boolean', 'locationName' => 'origin', ],
                 'period' => [ 'type' => 'string', 'locationName' => 'period', ],
                 'abroad' => [ 'type' => 'boolean', 'locationName' => 'abroad', ],
+                'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
             ],
         ],
         'QueryStatisticsTopUrlRequestShape' => [
@@ -6240,6 +6345,7 @@ return [
                 'area' => [ 'type' => 'string', 'locationName' => 'area', ],
                 'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
                 'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+                'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
             ],
         ],
         'QueryLiveTrafficGroupSumResponseShape' => [
@@ -6247,6 +6353,18 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'QueryLiveTrafficGroupSumResultShape', ],
+            ],
+        ],
+        'QueryStreamInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
         'QueryDirStatsDataResponseShape' => [
@@ -6274,6 +6392,14 @@ return [
                 'datas' => [ 'type' => 'list', 'member' => [ 'shape' => 'DirStatsItem', ], ],
             ],
         ],
+        'QueryJDBoxStatisticsDataWithGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'statistics' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatisticsDataItem', ], ],
+            ],
+        ],
         'QueryDeviceStatusForPCdnRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -6299,6 +6425,21 @@ return [
                 'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
             ],
         ],
+        'QueryJDBoxStatisticsDataWithGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'long', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'long', 'locationName' => 'endTime', ],
+                'groupBy' => [ 'type' => 'string', 'locationName' => 'groupBy', ],
+                'fields' => [ 'type' => 'string', 'locationName' => 'fields', ],
+                'area' => [ 'type' => 'string', 'locationName' => 'area', ],
+                'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
+                'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
+                'macAddr' => [ 'type' => 'string', 'locationName' => 'macAddr', ],
+                'pluginPin' => [ 'type' => 'string', 'locationName' => 'pluginPin', ],
+            ],
+        ],
         'QueryJDBoxStatisticsDataRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -6321,6 +6462,13 @@ return [
                 'clientid' => [ 'type' => 'string', 'locationName' => 'clientid', ],
                 'page' => [ 'type' => 'integer', 'locationName' => 'page', ],
                 'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+            ],
+        ],
+        'QueryJDBoxStatisticsDataWithGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryJDBoxStatisticsDataWithGroupResultShape', ],
             ],
         ],
         'QueryAvgBandwidthForPCdnResultShape' => [
