@@ -533,6 +533,69 @@ return [
             'input' => [ 'shape' => 'DeleteGroupedTranscodeTemplatesRequestShape', ],
             'output' => [ 'shape' => 'DeleteGroupedTranscodeTemplatesResponseShape', ],
         ],
+        'CreateVeditJob' => [
+            'name' => 'CreateVeditJob',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/veditJobs',
+            ],
+            'input' => [ 'shape' => 'CreateVeditJobRequestShape', ],
+            'output' => [ 'shape' => 'CreateVeditJobResponseShape', ],
+        ],
+        'SubmitVeditJob' => [
+            'name' => 'SubmitVeditJob',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/veditJobs:submit',
+            ],
+            'input' => [ 'shape' => 'SubmitVeditJobRequestShape', ],
+            'output' => [ 'shape' => 'SubmitVeditJobResponseShape', ],
+        ],
+        'ListVeditProjects' => [
+            'name' => 'ListVeditProjects',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/veditProjects',
+            ],
+            'input' => [ 'shape' => 'ListVeditProjectsRequestShape', ],
+            'output' => [ 'shape' => 'ListVeditProjectsResponseShape', ],
+        ],
+        'CreateVeditProject' => [
+            'name' => 'CreateVeditProject',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/veditProjects',
+            ],
+            'input' => [ 'shape' => 'CreateVeditProjectRequestShape', ],
+            'output' => [ 'shape' => 'CreateVeditProjectResponseShape', ],
+        ],
+        'GetVeditProject' => [
+            'name' => 'GetVeditProject',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/veditProjects/{projectId}',
+            ],
+            'input' => [ 'shape' => 'GetVeditProjectRequestShape', ],
+            'output' => [ 'shape' => 'GetVeditProjectResponseShape', ],
+        ],
+        'UpdateVeditProject' => [
+            'name' => 'UpdateVeditProject',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/veditProjects/{projectId}',
+            ],
+            'input' => [ 'shape' => 'UpdateVeditProjectRequestShape', ],
+            'output' => [ 'shape' => 'UpdateVeditProjectResponseShape', ],
+        ],
+        'DeleteVeditProject' => [
+            'name' => 'DeleteVeditProject',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/veditProjects/{projectId}',
+            ],
+            'input' => [ 'shape' => 'DeleteVeditProjectRequestShape', ],
+            'output' => [ 'shape' => 'DeleteVeditProjectResponseShape', ],
+        ],
         'ListVideos' => [
             'name' => 'ListVideos',
             'http' => [
@@ -1460,6 +1523,126 @@ return [
             'type' => 'structure',
             'members' => [
                 'mid' => [ 'type' => 'string', 'locationName' => 'mid', ],
+            ],
+        ],
+        'ClipOperation' => [
+            'type' => 'structure',
+            'members' => [
+                'opType' => [ 'type' => 'string', 'locationName' => 'opType', ],
+                'params' => [ 'type' => 'object', 'locationName' => 'params', ],
+            ],
+        ],
+        'MediaTrack' => [
+            'type' => 'structure',
+            'members' => [
+                'trackType' => [ 'type' => 'string', 'locationName' => 'trackType', ],
+                'clips' => [ 'type' => 'list', 'member' => [ 'shape' => 'MediaClip', ], ],
+            ],
+        ],
+        'MediaClip' => [
+            'type' => 'structure',
+            'members' => [
+                'mediaId' => [ 'type' => 'string', 'locationName' => 'mediaId', ],
+                'mediaIn' => [ 'type' => 'integer', 'locationName' => 'mediaIn', ],
+                'mediaOut' => [ 'type' => 'integer', 'locationName' => 'mediaOut', ],
+                'timelineIn' => [ 'type' => 'integer', 'locationName' => 'timelineIn', ],
+                'timelineOut' => [ 'type' => 'integer', 'locationName' => 'timelineOut', ],
+                'operations' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClipOperation', ], ],
+            ],
+        ],
+        'SubmittedVeditJob' => [
+            'type' => 'structure',
+            'members' => [
+                'jobId' => [ 'type' => 'long', 'locationName' => 'jobId', ],
+                'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
+            ],
+        ],
+        'Timeline' => [
+            'type' => 'structure',
+            'members' => [
+                'trackList' => [ 'type' => 'list', 'member' => [ 'shape' => 'MediaTrack', ], ],
+            ],
+        ],
+        'MediaMetadata' => [
+            'type' => 'structure',
+            'members' => [
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+            ],
+        ],
+        'VeditJobSubmitReqData' => [
+            'type' => 'structure',
+            'members' => [
+                'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
+                'mediaMetadata' =>  [ 'shape' => 'MediaMetadata', ],
+                'userData' => [ 'type' => 'string', 'locationName' => 'userData', ],
+            ],
+        ],
+        'VeditJobCreateReqData' => [
+            'type' => 'structure',
+            'members' => [
+                'projectName' => [ 'type' => 'string', 'locationName' => 'projectName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'timeline' =>  [ 'shape' => 'Timeline', ],
+                'mediaMetadata' =>  [ 'shape' => 'MediaMetadata', ],
+                'userData' => [ 'type' => 'string', 'locationName' => 'userData', ],
+            ],
+        ],
+        'VeditProjectUpdateReqData' => [
+            'type' => 'structure',
+            'members' => [
+                'projectName' => [ 'type' => 'string', 'locationName' => 'projectName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'timeline' =>  [ 'shape' => 'Timeline', ],
+            ],
+        ],
+        'VeditProjectData' => [
+            'type' => 'structure',
+            'members' => [
+                'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
+                'projectName' => [ 'type' => 'string', 'locationName' => 'projectName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'timeline' =>  [ 'shape' => 'Timeline', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'VeditProjectCreateReqData' => [
+            'type' => 'structure',
+            'members' => [
+                'projectName' => [ 'type' => 'string', 'locationName' => 'projectName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'timeline' =>  [ 'shape' => 'Timeline', ],
+            ],
+        ],
+        'TransparentParams' => [
+            'type' => 'structure',
+            'members' => [
+                'alpha' => [ 'type' => 'integer', 'locationName' => 'alpha', ],
+            ],
+        ],
+        'AudioVolumeParams' => [
+            'type' => 'structure',
+            'members' => [
+                'value' => [ 'type' => 'integer', 'locationName' => 'value', ],
+            ],
+        ],
+        'CropParams' => [
+            'type' => 'structure',
+            'members' => [
+                'x' => [ 'type' => 'integer', 'locationName' => 'x', ],
+                'y' => [ 'type' => 'integer', 'locationName' => 'y', ],
+                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+            ],
+        ],
+        'VeditProjectPageData' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'VeditProjectData', ], ],
             ],
         ],
         'BatchUpdateVideosResultObject' => [
@@ -3033,6 +3216,171 @@ return [
         'DeleteTranscodeTemplateGroupResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'SubmitVeditJobRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
+                'mediaMetadata' =>  [ 'shape' => 'MediaMetadata', ],
+                'userData' => [ 'type' => 'string', 'locationName' => 'userData', ],
+            ],
+        ],
+        'CreateVeditJobResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateVeditJobResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateVeditJobRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'projectName' => [ 'type' => 'string', 'locationName' => 'projectName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'timeline' =>  [ 'shape' => 'Timeline', ],
+                'mediaMetadata' =>  [ 'shape' => 'MediaMetadata', ],
+                'userData' => [ 'type' => 'string', 'locationName' => 'userData', ],
+            ],
+        ],
+        'SubmitVeditJobResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jobId' => [ 'type' => 'long', 'locationName' => 'jobId', ],
+                'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
+            ],
+        ],
+        'CreateVeditJobResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jobId' => [ 'type' => 'long', 'locationName' => 'jobId', ],
+                'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
+            ],
+        ],
+        'SubmitVeditJobResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SubmitVeditJobResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListVeditProjectsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'VeditProjectData', ], ],
+            ],
+        ],
+        'CreateVeditProjectResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateVeditProjectResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetVeditProjectResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
+                'projectName' => [ 'type' => 'string', 'locationName' => 'projectName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'timeline' =>  [ 'shape' => 'Timeline', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'GetVeditProjectRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
+            ],
+        ],
+        'GetVeditProjectResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetVeditProjectResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateVeditProjectResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
+                'projectName' => [ 'type' => 'string', 'locationName' => 'projectName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'timeline' =>  [ 'shape' => 'Timeline', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'DeleteVeditProjectResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteVeditProjectRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
+            ],
+        ],
+        'ListVeditProjectsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'UpdateVeditProjectResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateVeditProjectResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateVeditProjectResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
+                'projectName' => [ 'type' => 'string', 'locationName' => 'projectName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'timeline' =>  [ 'shape' => 'Timeline', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'ListVeditProjectsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListVeditProjectsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteVeditProjectResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateVeditProjectRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'projectName' => [ 'type' => 'string', 'locationName' => 'projectName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'timeline' =>  [ 'shape' => 'Timeline', ],
+            ],
+        ],
+        'UpdateVeditProjectRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'projectName' => [ 'type' => 'string', 'locationName' => 'projectName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'timeline' =>  [ 'shape' => 'Timeline', ],
+                'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
             ],
         ],
         'VideoAuditResultShape' => [
