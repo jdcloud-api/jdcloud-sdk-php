@@ -119,6 +119,15 @@ return [
             'input' => [ 'shape' => 'CreateUserRequestShape', ],
             'output' => [ 'shape' => 'CreateUserResponseShape', ],
         ],
+        'DescribeUserByPeer' => [
+            'name' => 'DescribeUserByPeer',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeUserByPeer',
+            ],
+            'input' => [ 'shape' => 'DescribeUserByPeerRequestShape', ],
+            'output' => [ 'shape' => 'DescribeUserByPeerResponseShape', ],
+        ],
         'SendMessageToUser' => [
             'name' => 'SendMessageToUser',
             'http' => [
@@ -137,6 +146,132 @@ return [
             'input' => [ 'shape' => 'SendMessageToRoomRequestShape', ],
             'output' => [ 'shape' => 'SendMessageToRoomResponseShape', ],
         ],
+        'RegisterUser' => [
+            'name' => 'RegisterUser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/registerUser',
+            ],
+            'input' => [ 'shape' => 'RegisterUserRequestShape', ],
+            'output' => [ 'shape' => 'RegisterUserResponseShape', ],
+        ],
+        'DescribeRegisterUser' => [
+            'name' => 'DescribeRegisterUser',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeRegisterUser/{appId}',
+            ],
+            'input' => [ 'shape' => 'DescribeRegisterUserRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRegisterUserResponseShape', ],
+        ],
+        'DescribeRegisterUsers' => [
+            'name' => 'DescribeRegisterUsers',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeRegisterUsers/{appId}',
+            ],
+            'input' => [ 'shape' => 'DescribeRegisterUsersRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRegisterUsersResponseShape', ],
+        ],
+        'RemoveUserByUserRoomId' => [
+            'name' => 'RemoveUserByUserRoomId',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/removeUserByUserRoomId/{appId}',
+            ],
+            'input' => [ 'shape' => 'RemoveUserByUserRoomIdRequestShape', ],
+            'output' => [ 'shape' => 'RemoveUserByUserRoomIdResponseShape', ],
+        ],
+        'RemoveAllUsersByUserRoomId' => [
+            'name' => 'RemoveAllUsersByUserRoomId',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/removeAllUsersByUserRoomId/{appId}',
+            ],
+            'input' => [ 'shape' => 'RemoveAllUsersByUserRoomIdRequestShape', ],
+            'output' => [ 'shape' => 'RemoveAllUsersByUserRoomIdResponseShape', ],
+        ],
+        'DescribeRoomUsers' => [
+            'name' => 'DescribeRoomUsers',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeRoomUsers/{appId}',
+            ],
+            'input' => [ 'shape' => 'DescribeRoomUsersRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRoomUsersResponseShape', ],
+        ],
+        'DescribeRoomUsersNum' => [
+            'name' => 'DescribeRoomUsersNum',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeRoomUsersNum/{appId}',
+            ],
+            'input' => [ 'shape' => 'DescribeRoomUsersNumRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRoomUsersNumResponseShape', ],
+        ],
+        'CreateToken' => [
+            'name' => 'CreateToken',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/createToken',
+            ],
+            'input' => [ 'shape' => 'CreateTokenRequestShape', ],
+            'output' => [ 'shape' => 'CreateTokenResponseShape', ],
+        ],
+        'PostMessageToUserRoom' => [
+            'name' => 'PostMessageToUserRoom',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/postMessageToUserRoom',
+            ],
+            'input' => [ 'shape' => 'PostMessageToUserRoomRequestShape', ],
+            'output' => [ 'shape' => 'PostMessageToUserRoomResponseShape', ],
+        ],
+        'PostMessageToUser' => [
+            'name' => 'PostMessageToUser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/postMessageToUser',
+            ],
+            'input' => [ 'shape' => 'PostMessageToUserRequestShape', ],
+            'output' => [ 'shape' => 'PostMessageToUserResponseShape', ],
+        ],
+        'RegisterUserRoom' => [
+            'name' => 'RegisterUserRoom',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/registerUserRoom',
+            ],
+            'input' => [ 'shape' => 'RegisterUserRoomRequestShape', ],
+            'output' => [ 'shape' => 'RegisterUserRoomResponseShape', ],
+        ],
+        'UpdateUserRoom' => [
+            'name' => 'UpdateUserRoom',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/updateUserRoom/{appId}',
+            ],
+            'input' => [ 'shape' => 'UpdateUserRoomRequestShape', ],
+            'output' => [ 'shape' => 'UpdateUserRoomResponseShape', ],
+        ],
+        'DescribeUserRoom' => [
+            'name' => 'DescribeUserRoom',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeUserRoom/{appId}',
+            ],
+            'input' => [ 'shape' => 'DescribeUserRoomRequestShape', ],
+            'output' => [ 'shape' => 'DescribeUserRoomResponseShape', ],
+        ],
+        'DescribeUserRooms' => [
+            'name' => 'DescribeUserRooms',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeUserRooms/{appId}',
+            ],
+            'input' => [ 'shape' => 'DescribeUserRoomsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeUserRoomsResponseShape', ],
+        ],
     ],
     'shapes' => [
         'AppConentObject' => [
@@ -147,6 +282,14 @@ return [
                 'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
                 'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
                 'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'AppInfoObject', ], ],
+            ],
+        ],
+        'ModifyAppRequestObject' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
             ],
         ],
         'AppKeyInfoObject' => [
@@ -169,6 +312,7 @@ return [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
                 'billType' => [ 'type' => 'string', 'locationName' => 'billType', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
@@ -177,6 +321,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
             ],
         ],
         'ModifyAppNameRequestObject' => [
@@ -192,13 +337,6 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'Sort' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
             ],
         ],
         'RoomInfosObj' => [
@@ -223,6 +361,7 @@ return [
             'members' => [
                 'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
                 'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
             ],
         ],
@@ -231,6 +370,7 @@ return [
             'members' => [
                 'roomId' => [ 'type' => 'long', 'locationName' => 'roomId', ],
                 'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
@@ -305,6 +445,16 @@ return [
                 'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
             ],
         ],
+        'UserInfoObj' => [
+            'type' => 'structure',
+            'members' => [
+                'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'temporary' => [ 'type' => 'boolean', 'locationName' => 'temporary', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
         'CreateUserRequestObj' => [
             'type' => 'structure',
             'members' => [
@@ -327,6 +477,197 @@ return [
                 'eventName' => [ 'type' => 'string', 'locationName' => 'eventName', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
+            ],
+        ],
+        'NotifyConfigRequestObj' => [
+            'type' => 'structure',
+            'members' => [
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'NotifyConfigObj', ], ],
+            ],
+        ],
+        'NotifyConfigObj' => [
+            'type' => 'structure',
+            'members' => [
+                'configId' => [ 'type' => 'long', 'locationName' => 'configId', ],
+                'notifyType' => [ 'type' => 'integer', 'locationName' => 'notifyType', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+            ],
+        ],
+        'RoomUserInfoObj' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'connectId' => [ 'type' => 'string', 'locationName' => 'connectId', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'joinTime' => [ 'type' => 'string', 'locationName' => 'joinTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'RoomUsersNumInfoObj' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'onlineNumber' => [ 'type' => 'integer', 'locationName' => 'onlineNumber', ],
+                'offlineNumber' => [ 'type' => 'integer', 'locationName' => 'offlineNumber', ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+            ],
+        ],
+        'RoomUserInfosObj' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'RoomUserInfoObj', ], ],
+            ],
+        ],
+        'RemoveRoomUsersObj' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'RemoveAllRoomUsersObj' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+            ],
+        ],
+        'ValidateTokenInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'nonce' => [ 'type' => 'string', 'locationName' => 'nonce', ],
+                'timestamp' => [ 'type' => 'long', 'locationName' => 'timestamp', ],
+                'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+            ],
+        ],
+        'CreateTokenInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'timestamp' => [ 'type' => 'long', 'locationName' => 'timestamp', ],
+            ],
+        ],
+        'TokenInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'nonce' => [ 'type' => 'string', 'locationName' => 'nonce', ],
+                'timestamp' => [ 'type' => 'long', 'locationName' => 'timestamp', ],
+                'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+                'available' => [ 'type' => 'boolean', 'locationName' => 'available', ],
+            ],
+        ],
+        'RegisterUserInfoObj' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'temporary' => [ 'type' => 'boolean', 'locationName' => 'temporary', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'RegisterUserResultObj' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
+            ],
+        ],
+        'RegisterUserInfosObj' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'RegisterUserInfoObj', ], ],
+            ],
+        ],
+        'RegisterUserRequestObj' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'temporary' => [ 'type' => 'boolean', 'locationName' => 'temporary', ],
+            ],
+        ],
+        'MessageToUserRoom' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'eventName' => [ 'type' => 'string', 'locationName' => 'eventName', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'MessageToRoomUser' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'eventName' => [ 'type' => 'string', 'locationName' => 'eventName', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'RegisterUserRoomRequestObj' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
+            ],
+        ],
+        'UserRoomInfosObj' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserRoomInfoObj', ], ],
+            ],
+        ],
+        'UpdateUserRoomRequestObj' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
+            ],
+        ],
+        'UserRoomInfoObj' => [
+            'type' => 'structure',
+            'members' => [
+                'roomId' => [ 'type' => 'long', 'locationName' => 'roomId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
         'DescribeAppsRequestShape' => [
@@ -359,6 +700,7 @@ return [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
                 'billType' => [ 'type' => 'string', 'locationName' => 'billType', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
@@ -401,6 +743,7 @@ return [
             'members' => [
                 'roomId' => [ 'type' => 'long', 'locationName' => 'roomId', ],
                 'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
@@ -412,6 +755,7 @@ return [
             'members' => [
                 'roomId' => [ 'type' => 'long', 'locationName' => 'roomId', ],
                 'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
@@ -436,6 +780,7 @@ return [
             'members' => [
                 'roomId' => [ 'type' => 'long', 'locationName' => 'roomId', ],
                 'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
@@ -466,6 +811,7 @@ return [
             'members' => [
                 'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
                 'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
             ],
         ],
@@ -575,6 +921,16 @@ return [
             'members' => [
             ],
         ],
+        'DescribeUserByPeerResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'temporary' => [ 'type' => 'boolean', 'locationName' => 'temporary', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
         'CreateUserResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -597,6 +953,19 @@ return [
                 'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
                 'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
                 'temporary' => [ 'type' => 'boolean', 'locationName' => 'temporary', ],
+            ],
+        ],
+        'DescribeUserByPeerRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
+            ],
+        ],
+        'DescribeUserByPeerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeUserByPeerResultShape', ],
             ],
         ],
         'SendMessageToUserResponseShape' => [
@@ -638,6 +1007,348 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'roomId' => [ 'type' => 'long', 'locationName' => 'roomId', ],
+            ],
+        ],
+        'DescribeRegisterUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'temporary' => [ 'type' => 'boolean', 'locationName' => 'temporary', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'DescribeRegisterUsersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeRegisterUsersResultShape', ],
+            ],
+        ],
+        'DescribeRegisterUsersRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'RegisterUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RegisterUserResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeRegisterUsersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'RegisterUserInfoObj', ], ],
+            ],
+        ],
+        'DescribeRegisterUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'RegisterUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'temporary' => [ 'type' => 'boolean', 'locationName' => 'temporary', ],
+            ],
+        ],
+        'DescribeRegisterUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeRegisterUserResultShape', ],
+            ],
+        ],
+        'RegisterUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
+            ],
+        ],
+        'RemoveAllUsersByUserRoomIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeRoomUsersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeRoomUsersResultShape', ],
+            ],
+        ],
+        'RemoveUserByUserRoomIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RemoveUserByUserRoomIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeRoomUsersNumResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'onlineNumber' => [ 'type' => 'integer', 'locationName' => 'onlineNumber', ],
+                'offlineNumber' => [ 'type' => 'integer', 'locationName' => 'offlineNumber', ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+            ],
+        ],
+        'DescribeRoomUsersNumResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeRoomUsersNumResultShape', ],
+            ],
+        ],
+        'DescribeRoomUsersRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'RemoveAllUsersByUserRoomIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'RemoveUserByUserRoomIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'RemoveAllUsersByUserRoomIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeRoomUsersNumRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'DescribeRoomUsersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'RoomUserInfoObj', ], ],
+            ],
+        ],
+        'CreateTokenResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateTokenResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateTokenResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'nonce' => [ 'type' => 'string', 'locationName' => 'nonce', ],
+                'timestamp' => [ 'type' => 'long', 'locationName' => 'timestamp', ],
+                'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+                'available' => [ 'type' => 'boolean', 'locationName' => 'available', ],
+            ],
+        ],
+        'CreateTokenRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'timestamp' => [ 'type' => 'long', 'locationName' => 'timestamp', ],
+            ],
+        ],
+        'PostMessageToUserRoomRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'eventName' => [ 'type' => 'string', 'locationName' => 'eventName', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'PostMessageToUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'eventName' => [ 'type' => 'string', 'locationName' => 'eventName', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'PostMessageToUserRoomResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'PostMessageToUserRoomResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'PostMessageToUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'PostMessageToUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'RegisterUserRoomResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RegisterUserRoomResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeUserRoomResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeUserRoomResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeUserRoomResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'roomId' => [ 'type' => 'long', 'locationName' => 'roomId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'DescribeUserRoomRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'UpdateUserRoomResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateUserRoomResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeUserRoomsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'UpdateUserRoomRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'UpdateUserRoomResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'roomId' => [ 'type' => 'long', 'locationName' => 'roomId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'DescribeUserRoomsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserRoomInfoObj', ], ],
+            ],
+        ],
+        'DescribeUserRoomsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeUserRoomsResultShape', ],
+            ],
+        ],
+        'RegisterUserRoomResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'roomId' => [ 'type' => 'long', 'locationName' => 'roomId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'RegisterUserRoomRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
             ],
         ],
     ],

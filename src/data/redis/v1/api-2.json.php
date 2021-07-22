@@ -11,6 +11,24 @@ return [
 //        'serviceId' => 'redis',
     ],
     'operations' => [
+        'DescribeAvailableRegion' => [
+            'name' => 'DescribeAvailableRegion',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/availableRegion',
+            ],
+            'input' => [ 'shape' => 'DescribeAvailableRegionRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAvailableRegionResponseShape', ],
+        ],
+        'DescribeAvailableResource' => [
+            'name' => 'DescribeAvailableResource',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/availableResource',
+            ],
+            'input' => [ 'shape' => 'DescribeAvailableResourceRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAvailableResourceResponseShape', ],
+        ],
         'DescribeCacheInstances' => [
             'name' => 'DescribeCacheInstances',
             'http' => [
@@ -245,6 +263,15 @@ return [
             'input' => [ 'shape' => 'DescribeSlowLogRequestShape', ],
             'output' => [ 'shape' => 'DescribeSlowLogResponseShape', ],
         ],
+        'DescribeTaskProgressList' => [
+            'name' => 'DescribeTaskProgressList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/cacheInstance/{cacheInstanceId}/taskProgress',
+            ],
+            'input' => [ 'shape' => 'DescribeTaskProgressListRequestShape', ],
+            'output' => [ 'shape' => 'DescribeTaskProgressListResponseShape', ],
+        ],
         'DescribeInstanceClass' => [
             'name' => 'DescribeInstanceClass',
             'http' => [
@@ -274,6 +301,78 @@ return [
         ],
     ],
     'shapes' => [
+        'AzInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'azId' => [ 'type' => 'string', 'locationName' => 'azId', ],
+                'azName' => [ 'type' => 'string', 'locationName' => 'azName', ],
+                'soldOut' => [ 'type' => 'boolean', 'locationName' => 'soldOut', ],
+            ],
+        ],
+        'AvailableRegion' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'regionName' => [ 'type' => 'string', 'locationName' => 'regionName', ],
+                'soldOut' => [ 'type' => 'boolean', 'locationName' => 'soldOut', ],
+                'quota' =>  [ 'shape' => 'QuotaInfo', ],
+                'availableZones' => [ 'type' => 'list', 'member' => [ 'shape' => 'AzInfo', ], ],
+            ],
+        ],
+        'QuotaInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'max' => [ 'type' => 'integer', 'locationName' => 'max', ],
+                'used' => [ 'type' => 'integer', 'locationName' => 'used', ],
+            ],
+        ],
+        'AvailableMemorySpec' => [
+            'type' => 'structure',
+            'members' => [
+                'memoryGB' => [ 'type' => 'integer', 'locationName' => 'memoryGB', ],
+                'soldOut' => [ 'type' => 'boolean', 'locationName' => 'soldOut', ],
+                'availableZones' => [ 'type' => 'list', 'member' => [ 'shape' => 'AzInfo', ], ],
+                'availableFlavors' => [ 'type' => 'list', 'member' => [ 'shape' => 'AvailableFlavor', ], ],
+            ],
+        ],
+        'AvailableResource' => [
+            'type' => 'structure',
+            'members' => [
+                'architectureType' => [ 'type' => 'string', 'locationName' => 'architectureType', ],
+                'architectureName' => [ 'type' => 'string', 'locationName' => 'architectureName', ],
+                'recommended' => [ 'type' => 'boolean', 'locationName' => 'recommended', ],
+                'soldOut' => [ 'type' => 'boolean', 'locationName' => 'soldOut', ],
+                'availableEngineVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'AvailableEngineVersion', ], ],
+            ],
+        ],
+        'AvailableEngineVersion' => [
+            'type' => 'structure',
+            'members' => [
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'recommended' => [ 'type' => 'boolean', 'locationName' => 'recommended', ],
+                'soldOut' => [ 'type' => 'boolean', 'locationName' => 'soldOut', ],
+                'availableMemorySpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'AvailableMemorySpec', ], ],
+            ],
+        ],
+        'FlavorDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'cpu' => [ 'type' => 'integer', 'locationName' => 'cpu', ],
+                'diskGB' => [ 'type' => 'integer', 'locationName' => 'diskGB', ],
+                'maxConnection' => [ 'type' => 'integer', 'locationName' => 'maxConnection', ],
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+            ],
+        ],
+        'AvailableFlavor' => [
+            'type' => 'structure',
+            'members' => [
+                'shardNumber' => [ 'type' => 'integer', 'locationName' => 'shardNumber', ],
+                'ipNumber' => [ 'type' => 'integer', 'locationName' => 'ipNumber', ],
+                'recommended' => [ 'type' => 'boolean', 'locationName' => 'recommended', ],
+                'instanceClasses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'detail' =>  [ 'shape' => 'FlavorDetail', ],
+            ],
+        ],
         'AzId' => [
             'type' => 'structure',
             'members' => [
@@ -375,6 +474,20 @@ return [
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'shardNumber' => [ 'type' => 'integer', 'locationName' => 'shardNumber', ],
                 'memoryMBPerShard' => [ 'type' => 'integer', 'locationName' => 'memoryMBPerShard', ],
+                'extension' =>  [ 'shape' => 'RespExtension', ],
+            ],
+        ],
+        'RespExtension' => [
+            'type' => 'structure',
+            'members' => [
+                'exposeType' => [ 'type' => 'string', 'locationName' => 'exposeType', ],
+                'exposeDomain' => [ 'type' => 'string', 'locationName' => 'exposeDomain', ],
+            ],
+        ],
+        'ReqExtension' => [
+            'type' => 'structure',
+            'members' => [
+                'exposeType' => [ 'type' => 'string', 'locationName' => 'exposeType', ],
             ],
         ],
         'CacheInstanceSpec' => [
@@ -390,6 +503,8 @@ return [
                 'redisVersion' => [ 'type' => 'string', 'locationName' => 'redisVersion', ],
                 'ipv6On' => [ 'type' => 'integer', 'locationName' => 'ipv6On', ],
                 'shardNumber' => [ 'type' => 'integer', 'locationName' => 'shardNumber', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'extension' =>  [ 'shape' => 'ReqExtension', ],
             ],
         ],
         'Details' => [
@@ -410,11 +525,18 @@ return [
                 'clientCount' => [ 'type' => 'integer', 'locationName' => 'clientCount', ],
             ],
         ],
+        'Redis' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
         'ClusterInfo' => [
             'type' => 'structure',
             'members' => [
                 'proxies' => [ 'type' => 'list', 'member' => [ 'shape' => 'Proxy', ], ],
                 'shards' => [ 'type' => 'list', 'member' => [ 'shape' => 'Shard', ], ],
+                'redis' => [ 'type' => 'list', 'member' => [ 'shape' => 'Redis', ], ],
             ],
         ],
         'Shard' => [
@@ -460,6 +582,7 @@ return [
             'members' => [
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'resourceStatus' => [ 'type' => 'string', 'locationName' => 'resourceStatus', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
             ],
         ],
@@ -512,7 +635,7 @@ return [
                 'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
                 'cpu' => [ 'type' => 'integer', 'locationName' => 'cpu', ],
                 'diskGB' => [ 'type' => 'integer', 'locationName' => 'diskGB', ],
-                'maxConntion' => [ 'type' => 'integer', 'locationName' => 'maxConntion', ],
+                'maxConnection' => [ 'type' => 'integer', 'locationName' => 'maxConnection', ],
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
                 'ipNumber' => [ 'type' => 'integer', 'locationName' => 'ipNumber', ],
                 'shard' =>  [ 'shape' => 'ShardInfo', ],
@@ -522,7 +645,7 @@ return [
         'Node' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
                 'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
             ],
@@ -531,13 +654,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'master' =>  [ 'shape' => 'Node', ],
-                'slave' => [ 'type' => 'list', 'member' => [ 'shape' => 'Node', ], ],
+                'slaves' => [ 'type' => 'list', 'member' => [ 'shape' => 'Node', ], ],
             ],
         ],
         'InstanceVpcIp' => [
             'type' => 'structure',
             'members' => [
-                'proxy' => [ 'type' => 'list', 'member' => [ 'shape' => 'Node', ], ],
+                'proxies' => [ 'type' => 'list', 'member' => [ 'shape' => 'Node', ], ],
                 'shards' => [ 'type' => 'list', 'member' => [ 'shape' => 'RedisShard', ], ],
             ],
         ],
@@ -631,6 +754,55 @@ return [
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'executionTime' => [ 'type' => 'string', 'locationName' => 'executionTime', ],
                 'shardId' => [ 'type' => 'string', 'locationName' => 'shardId', ],
+            ],
+        ],
+        'TaskProgress' => [
+            'type' => 'structure',
+            'members' => [
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+                'progressPercent' => [ 'type' => 'integer', 'locationName' => 'progressPercent', ],
+                'elapsedTimeSecond' => [ 'type' => 'integer', 'locationName' => 'elapsedTimeSecond', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+            ],
+        ],
+        'DescribeAvailableRegionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'availableRegions' => [ 'type' => 'list', 'member' => [ 'shape' => 'AvailableRegion', ], ],
+            ],
+        ],
+        'DescribeAvailableRegionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAvailableRegionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAvailableRegionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeAvailableResourceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'availableResources' => [ 'type' => 'list', 'member' => [ 'shape' => 'AvailableResource', ], ],
+            ],
+        ],
+        'DescribeAvailableResourceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAvailableResourceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAvailableResourceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DescribeClientIpDetailResponseShape' => [
@@ -911,6 +1083,13 @@ return [
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
         ],
+        'DescribeTaskProgressListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeTaskProgressListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeInstanceConfigResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -923,6 +1102,14 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeBackupsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeTaskProgressListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
         ],
         'DescribeClientListRequestShape' => [
@@ -1044,6 +1231,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeTaskProgressListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskProgresses' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskProgress', ], ],
             ],
         ],
         'DescribeClientListResultShape' => [
