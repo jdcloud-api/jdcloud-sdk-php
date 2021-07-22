@@ -20,6 +20,10 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with redis.
  *
+ * @method \Jdcloud\Result describeAvailableRegion(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeAvailableRegionAsync(array $args = [])
+ * @method \Jdcloud\Result describeAvailableResource(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeAvailableResourceAsync(array $args = [])
  * @method \Jdcloud\Result describeCacheInstances(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeCacheInstancesAsync(array $args = [])
  * @method \Jdcloud\Result createCacheInstance(array $args = [])
@@ -72,6 +76,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise modifyIpWhiteListAsync(array $args = [])
  * @method \Jdcloud\Result describeSlowLog(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeSlowLogAsync(array $args = [])
+ * @method \Jdcloud\Result describeTaskProgressList(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeTaskProgressListAsync(array $args = [])
  * @method \Jdcloud\Result describeInstanceClass(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeInstanceClassAsync(array $args = [])
  * @method \Jdcloud\Result describeUserQuota(array $args = [])
