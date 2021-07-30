@@ -408,6 +408,7 @@ return [
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'libId' => [ 'type' => 'string', 'locationName' => 'libId', ],
                 'source' => [ 'type' => 'string', 'locationName' => 'source', ],
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
             ],
         ],
         'CustomItemInfo' => [
@@ -430,6 +431,7 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'scenes' => [ 'type' => 'string', 'locationName' => 'scenes', ],
                 'suggestion' => [ 'type' => 'string', 'locationName' => 'suggestion', ],
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'itemNumber' => [ 'type' => 'integer', 'locationName' => 'itemNumber', ],
@@ -1437,6 +1439,7 @@ return [
         'AsyncAudioScanRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
                 'scenes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'AudioTask', ], ],
                 'callback' => [ 'type' => 'string', 'locationName' => 'callback', ],
@@ -1593,6 +1596,7 @@ return [
         'AsyncImageScanRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
                 'scenes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageTask', ], ],
                 'callback' => [ 'type' => 'string', 'locationName' => 'callback', ],
@@ -1631,6 +1635,7 @@ return [
         'ImageScanRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
                 'scenes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageTask', ], ],
             ],
@@ -1807,6 +1812,7 @@ return [
         'TextScanRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
                 'scenes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TextTask', ], ],
             ],
@@ -1922,6 +1928,7 @@ return [
         'AsyncVideoScanRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
                 'live' => [ 'type' => 'boolean', 'locationName' => 'live', ],
                 'scenes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'audioScenes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
