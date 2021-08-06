@@ -968,6 +968,7 @@ return [
                 'dbStatus' => [ 'type' => 'string', 'locationName' => 'dbStatus', ],
                 'characterSetName' => [ 'type' => 'string', 'locationName' => 'characterSetName', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'comment' => [ 'type' => 'string', 'locationName' => 'comment', ],
                 'accessPrivilege' => [ 'type' => 'list', 'member' => [ 'shape' => 'DBAccessPrivilege', ], ],
             ],
         ],

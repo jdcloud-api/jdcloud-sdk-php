@@ -476,6 +476,7 @@ return [
             'members' => [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'applyStatus' => [ 'type' => 'integer', 'locationName' => 'applyStatus', ],
+                'auditorExplanation' => [ 'type' => 'string', 'locationName' => 'auditorExplanation', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
