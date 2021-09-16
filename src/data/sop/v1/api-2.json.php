@@ -31,5 +31,69 @@ return [
         ],
     ],
     'shapes' => [
+        'GetSecurityTokenInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'durationSeconds' => [ 'type' => 'integer', 'locationName' => 'durationSeconds', ],
+            ],
+        ],
+        'VerificationCodeInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+            ],
+        ],
+        'VerifySecurityTokenInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+            ],
+        ],
+        'GetSecurityTokenResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'securityToken' => [ 'type' => 'string', 'locationName' => 'securityToken', ],
+            ],
+        ],
+        'GetSecurityTokenResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetSecurityTokenResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetSecurityTokenRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'getSecurityTokenInfo' =>  [ 'shape' => 'GetSecurityTokenInfo', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetSensitiveOpSettingResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+                'extInfo' => [ 'type' => 'string', 'locationName' => 'extInfo', ],
+            ],
+        ],
+        'GetSensitiveOpSettingResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetSensitiveOpSettingResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetSensitiveOpSettingRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
     ],
 ];

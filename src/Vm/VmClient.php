@@ -90,6 +90,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise modifyInstanceDiskAttributeAsync(array $args = [])
  * @method \Jdcloud\Result modifyInstanceAttribute(array $args = [])
  * @method \GuzzleHttp\Promise\Promise modifyInstanceAttributeAsync(array $args = [])
+ * @method \Jdcloud\Result modifyInstanceVpcAttribute(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise modifyInstanceVpcAttributeAsync(array $args = [])
  * @method \Jdcloud\Result modifyInstancePassword(array $args = [])
  * @method \GuzzleHttp\Promise\Promise modifyInstancePasswordAsync(array $args = [])
  * @method \Jdcloud\Result describeInstanceVncUrl(array $args = [])
