@@ -22,54 +22,5 @@ return [
         ],
     ],
     'shapes' => [
-        'RegionIndustryData' => [
-            'type' => 'structure',
-            'members' => [
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
-                'industry' => [ 'type' => 'string', 'locationName' => 'industry', ],
-                'firstIndex' => [ 'type' => 'string', 'locationName' => 'firstIndex', ],
-                'secondIndex' => [ 'type' => 'string', 'locationName' => 'secondIndex', ],
-                'dateTime' => [ 'type' => 'string', 'locationName' => 'dateTime', ],
-                'dateType' => [ 'type' => 'string', 'locationName' => 'dateType', ],
-                'indexValue' => [ 'type' => 'string', 'locationName' => 'indexValue', ],
-                'valueUnit' => [ 'type' => 'string', 'locationName' => 'valueUnit', ],
-                'attrType' => [ 'type' => 'string', 'locationName' => 'attrType', ],
-                'attrValue' => [ 'type' => 'string', 'locationName' => 'attrValue', ],
-                'attrValueExt' => [ 'type' => 'string', 'locationName' => 'attrValueExt', ],
-            ],
-        ],
-        'RegionIndustryDataList' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'RegionIndustryData', ], ],
-            ],
-        ],
-        'GetLargeScreenDataResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'boolean', 'locationName' => 'status', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'data' =>  [ 'shape' => 'RegionIndustryDataList', ],
-            ],
-        ],
-        'GetLargeScreenDataResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetLargeScreenDataResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetLargeScreenDataRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
-                'industry' => [ 'type' => 'string', 'locationName' => 'industry', ],
-                'startDate' => [ 'type' => 'string', 'locationName' => 'startDate', ],
-                'endDate' => [ 'type' => 'string', 'locationName' => 'endDate', ],
-                'firstIndex' => [ 'type' => 'string', 'locationName' => 'firstIndex', ],
-                'secondIndex' => [ 'type' => 'string', 'locationName' => 'secondIndex', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
     ],
 ];
