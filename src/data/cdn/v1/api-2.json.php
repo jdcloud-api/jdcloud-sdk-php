@@ -2213,6 +2213,7 @@ return [
         'QueryHttpHeaderResp' => [
             'type' => 'structure',
             'members' => [
+                'edgeType' => [ 'type' => 'integer', 'locationName' => 'edgeType', ],
                 'headerType' => [ 'type' => 'string', 'locationName' => 'headerType', ],
                 'headerName' => [ 'type' => 'string', 'locationName' => 'headerName', ],
                 'headerValue' => [ 'type' => 'string', 'locationName' => 'headerValue', ],
@@ -3346,6 +3347,7 @@ return [
         'SetHttpHeaderRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'edgeType' => [ 'type' => 'integer', 'locationName' => 'edgeType', ],
                 'headerType' => [ 'type' => 'string', 'locationName' => 'headerType', ],
                 'headerName' => [ 'type' => 'string', 'locationName' => 'headerName', ],
                 'headerValue' => [ 'type' => 'string', 'locationName' => 'headerValue', ],
@@ -3851,6 +3853,7 @@ return [
         'DeleteHttpHeaderRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'edgeType' => [ 'type' => 'integer', 'locationName' => 'edgeType', ],
                 'headerType' => [ 'type' => 'string', 'locationName' => 'headerType', ],
                 'headerName' => [ 'type' => 'string', 'locationName' => 'headerName', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
@@ -4143,6 +4146,7 @@ return [
         'QueryHttpHeaderRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'edgeType' => [ 'type' => 'integer', 'locationName' => 'edgeType', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
