@@ -97,6 +97,14 @@ return [
         'namespace' => 'Nativecontainer',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'privatezone' => [
+        'namespace' => 'Privatezone',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'starshield' => [
+        'namespace' => 'Starshield',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'refund' => [
         'namespace' => 'Refund',
         'versions' => [ 'latest' => 'v1', ],
