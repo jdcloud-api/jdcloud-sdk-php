@@ -11,6 +11,15 @@ return [
 //        'serviceId' => 'starshield',
     ],
     'operations' => [
+        'ListAvailablePageRuleSetting' => [
+            'name' => 'ListAvailablePageRuleSetting',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/zones/{zone_identifier}/pagerules$$settings',
+            ],
+            'input' => [ 'shape' => 'ListAvailablePageRuleSettingRequestShape', ],
+            'output' => [ 'shape' => 'ListAvailablePageRuleSettingResponseShape', ],
+        ],
         'ListCertificatePacks' => [
             'name' => 'ListCertificatePacks',
             'http' => [
@@ -29,6 +38,33 @@ return [
             'input' => [ 'shape' => 'DeleteAdvancedCertificateManagerCertificatePackRequestShape', ],
             'output' => [ 'shape' => 'DeleteAdvancedCertificateManagerCertificatePackResponseShape', ],
         ],
+        'OrderAdvancedCertificateManagerCertificatePack' => [
+            'name' => 'OrderAdvancedCertificateManagerCertificatePack',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/ssl$$certificate_packs$$order',
+            ],
+            'input' => [ 'shape' => 'OrderAdvancedCertificateManagerCertificatePackRequestShape', ],
+            'output' => [ 'shape' => 'OrderAdvancedCertificateManagerCertificatePackResponseShape', ],
+        ],
+        'ListAvailableCustomPages' => [
+            'name' => 'ListAvailableCustomPages',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/zones/{zone_identifier}/custom_pages',
+            ],
+            'input' => [ 'shape' => 'ListAvailableCustomPagesRequestShape', ],
+            'output' => [ 'shape' => 'ListAvailableCustomPagesResponseShape', ],
+        ],
+        'UpdateCustomPageURL' => [
+            'name' => 'UpdateCustomPageURL',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/zones/{zone_identifier}/custom_pages/{identifier}',
+            ],
+            'input' => [ 'shape' => 'UpdateCustomPageURLRequestShape', ],
+            'output' => [ 'shape' => 'UpdateCustomPageURLResponseShape', ],
+        ],
         'ListSSLConfigurations' => [
             'name' => 'ListSSLConfigurations',
             'http' => [
@@ -38,6 +74,15 @@ return [
             'input' => [ 'shape' => 'ListSSLConfigurationsRequestShape', ],
             'output' => [ 'shape' => 'ListSSLConfigurationsResponseShape', ],
         ],
+        'CreateSSLConfiguration' => [
+            'name' => 'CreateSSLConfiguration',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/custom_certificates',
+            ],
+            'input' => [ 'shape' => 'CreateSSLConfigurationRequestShape', ],
+            'output' => [ 'shape' => 'CreateSSLConfigurationResponseShape', ],
+        ],
         'DeleteSSLConfiguration' => [
             'name' => 'DeleteSSLConfiguration',
             'http' => [
@@ -46,6 +91,114 @@ return [
             ],
             'input' => [ 'shape' => 'DeleteSSLConfigurationRequestShape', ],
             'output' => [ 'shape' => 'DeleteSSLConfigurationResponseShape', ],
+        ],
+        'ListDNSRecords' => [
+            'name' => 'ListDNSRecords',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/zones/{zone_identifier}/dns_records',
+            ],
+            'input' => [ 'shape' => 'ListDNSRecordsRequestShape', ],
+            'output' => [ 'shape' => 'ListDNSRecordsResponseShape', ],
+        ],
+        'CreateDNSRecord' => [
+            'name' => 'CreateDNSRecord',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/dns_records',
+            ],
+            'input' => [ 'shape' => 'CreateDNSRecordRequestShape', ],
+            'output' => [ 'shape' => 'CreateDNSRecordResponseShape', ],
+        ],
+        'UpdateDNSRecord' => [
+            'name' => 'UpdateDNSRecord',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/zones/{zone_identifier}/dns_records/{identifier}',
+            ],
+            'input' => [ 'shape' => 'UpdateDNSRecordRequestShape', ],
+            'output' => [ 'shape' => 'UpdateDNSRecordResponseShape', ],
+        ],
+        'DeleteDNSRecord' => [
+            'name' => 'DeleteDNSRecord',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/zones/{zone_identifier}/dns_records/{identifier}',
+            ],
+            'input' => [ 'shape' => 'DeleteDNSRecordRequestShape', ],
+            'output' => [ 'shape' => 'DeleteDNSRecordResponseShape', ],
+        ],
+        'CreateFilters' => [
+            'name' => 'CreateFilters',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/filters',
+            ],
+            'input' => [ 'shape' => 'CreateFiltersRequestShape', ],
+            'output' => [ 'shape' => 'CreateFiltersResponseShape', ],
+        ],
+        'UpdateIndividualFilter' => [
+            'name' => 'UpdateIndividualFilter',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/zones/{zone_identifier}/filters/{id}',
+            ],
+            'input' => [ 'shape' => 'UpdateIndividualFilterRequestShape', ],
+            'output' => [ 'shape' => 'UpdateIndividualFilterResponseShape', ],
+        ],
+        'ListOfFirewallRules' => [
+            'name' => 'ListOfFirewallRules',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/zones/{zone_identifier}/firewall$$rules',
+            ],
+            'input' => [ 'shape' => 'ListOfFirewallRulesRequestShape', ],
+            'output' => [ 'shape' => 'ListOfFirewallRulesResponseShape', ],
+        ],
+        'CreateFirewallRules' => [
+            'name' => 'CreateFirewallRules',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/firewall$$rules',
+            ],
+            'input' => [ 'shape' => 'CreateFirewallRulesRequestShape', ],
+            'output' => [ 'shape' => 'CreateFirewallRulesResponseShape', ],
+        ],
+        'UpdateIndividualFirewallRule' => [
+            'name' => 'UpdateIndividualFirewallRule',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/zones/{zone_identifier}/firewall$$rules/{id}',
+            ],
+            'input' => [ 'shape' => 'UpdateIndividualFirewallRuleRequestShape', ],
+            'output' => [ 'shape' => 'UpdateIndividualFirewallRuleResponseShape', ],
+        ],
+        'DeleteIndividualFirewallRules' => [
+            'name' => 'DeleteIndividualFirewallRules',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/zones/{zone_identifier}/firewall$$rules/{id}',
+            ],
+            'input' => [ 'shape' => 'DeleteIndividualFirewallRulesRequestShape', ],
+            'output' => [ 'shape' => 'DeleteIndividualFirewallRulesResponseShape', ],
+        ],
+        'DescribeBotStatus' => [
+            'name' => 'DescribeBotStatus',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/bot/{zoneId}',
+            ],
+            'input' => [ 'shape' => 'DescribeBotStatusRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBotStatusResponseShape', ],
+        ],
+        'OpenFirewallBot' => [
+            'name' => 'OpenFirewallBot',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/bot/{zoneId}',
+            ],
+            'input' => [ 'shape' => 'OpenFirewallBotRequestShape', ],
+            'output' => [ 'shape' => 'OpenFirewallBotResponseShape', ],
         ],
         'DescribeInstances' => [
             'name' => 'DescribeInstances',
@@ -64,6 +217,15 @@ return [
             ],
             'input' => [ 'shape' => 'CreateInstanceRequestShape', ],
             'output' => [ 'shape' => 'CreateInstanceResponseShape', ],
+        ],
+        'CreateFlowPack' => [
+            'name' => 'CreateFlowPack',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/flowPack',
+            ],
+            'input' => [ 'shape' => 'CreateFlowPackRequestShape', ],
+            'output' => [ 'shape' => 'CreateFlowPackResponseShape', ],
         ],
         'ModifyInstance' => [
             'name' => 'ModifyInstance',
@@ -110,6 +272,42 @@ return [
             'input' => [ 'shape' => 'DescribePackageRequestShape', ],
             'output' => [ 'shape' => 'DescribePackageResponseShape', ],
         ],
+        'ListPageRules' => [
+            'name' => 'ListPageRules',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/zones/{zone_identifier}/pagerules',
+            ],
+            'input' => [ 'shape' => 'ListPageRulesRequestShape', ],
+            'output' => [ 'shape' => 'ListPageRulesResponseShape', ],
+        ],
+        'CreatePageRule' => [
+            'name' => 'CreatePageRule',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/pagerules',
+            ],
+            'input' => [ 'shape' => 'CreatePageRuleRequestShape', ],
+            'output' => [ 'shape' => 'CreatePageRuleResponseShape', ],
+        ],
+        'UpdatePageRule' => [
+            'name' => 'UpdatePageRule',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/zones/{zone_identifier}/pagerules/{identifier}',
+            ],
+            'input' => [ 'shape' => 'UpdatePageRuleRequestShape', ],
+            'output' => [ 'shape' => 'UpdatePageRuleResponseShape', ],
+        ],
+        'DeletePageRule' => [
+            'name' => 'DeletePageRule',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/zones/{zone_identifier}/pagerules/{identifier}',
+            ],
+            'input' => [ 'shape' => 'DeletePageRuleRequestShape', ],
+            'output' => [ 'shape' => 'DeletePageRuleResponseShape', ],
+        ],
         'UniversalSSLSettingsDetails' => [
             'name' => 'UniversalSSLSettingsDetails',
             'http' => [
@@ -118,6 +316,15 @@ return [
             ],
             'input' => [ 'shape' => 'UniversalSSLSettingsDetailsRequestShape', ],
             'output' => [ 'shape' => 'UniversalSSLSettingsDetailsResponseShape', ],
+        ],
+        'EditUniversalSSLSettings' => [
+            'name' => 'EditUniversalSSLSettings',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/zones/{zone_identifier}/ssl$$universal$$settings',
+            ],
+            'input' => [ 'shape' => 'EditUniversalSSLSettingsRequestShape', ],
+            'output' => [ 'shape' => 'EditUniversalSSLSettingsResponseShape', ],
         ],
         'ListRuleGroups' => [
             'name' => 'ListRuleGroups',
@@ -137,6 +344,15 @@ return [
             'input' => [ 'shape' => 'RuleGroupDetailsRequestShape', ],
             'output' => [ 'shape' => 'RuleGroupDetailsResponseShape', ],
         ],
+        'EditRuleGroup' => [
+            'name' => 'EditRuleGroup',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/zones/{zone_identifier}/firewall$$waf$$packages/{package_identifier}/groups/{identifier}',
+            ],
+            'input' => [ 'shape' => 'EditRuleGroupRequestShape', ],
+            'output' => [ 'shape' => 'EditRuleGroupResponseShape', ],
+        ],
         'ListFirewallPackages' => [
             'name' => 'ListFirewallPackages',
             'http' => [
@@ -155,6 +371,15 @@ return [
             'input' => [ 'shape' => 'FirewallPackageDetailsRequestShape', ],
             'output' => [ 'shape' => 'FirewallPackageDetailsResponseShape', ],
         ],
+        'EditFirewallPackage' => [
+            'name' => 'EditFirewallPackage',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/zones/{zone_identifier}/firewall$$waf$$packages/{identifier}',
+            ],
+            'input' => [ 'shape' => 'EditFirewallPackageRequestShape', ],
+            'output' => [ 'shape' => 'EditFirewallPackageResponseShape', ],
+        ],
         'ListRules' => [
             'name' => 'ListRules',
             'http' => [
@@ -172,6 +397,15 @@ return [
             ],
             'input' => [ 'shape' => 'ListZonesRequestShape', ],
             'output' => [ 'shape' => 'ListZonesResponseShape', ],
+        ],
+        'CreateZone' => [
+            'name' => 'CreateZone',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones',
+            ],
+            'input' => [ 'shape' => 'CreateZoneRequestShape', ],
+            'output' => [ 'shape' => 'CreateZoneResponseShape', ],
         ],
         'DeleteZone' => [
             'name' => 'DeleteZone',
@@ -208,6 +442,15 @@ return [
             ],
             'input' => [ 'shape' => 'PurgeFilesByCache_TagsAndHostOrPrefixRequestShape', ],
             'output' => [ 'shape' => 'PurgeFilesByCache_TagsAndHostOrPrefixResponseShape', ],
+        ],
+        'GetAllZoneSettings' => [
+            'name' => 'GetAllZoneSettings',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/zones/{zone_identifier}/settings',
+            ],
+            'input' => [ 'shape' => 'GetAllZoneSettingsRequestShape', ],
+            'output' => [ 'shape' => 'GetAllZoneSettingsResponseShape', ],
         ],
         'EditZoneSettingsInfo' => [
             'name' => 'EditZoneSettingsInfo',
@@ -298,6 +541,15 @@ return [
             ],
             'input' => [ 'shape' => 'ChangeBrowserCacheTTLSettingRequestShape', ],
             'output' => [ 'shape' => 'ChangeBrowserCacheTTLSettingResponseShape', ],
+        ],
+        'GetBrowserCheckSetting' => [
+            'name' => 'GetBrowserCheckSetting',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/zones/{zone_identifier}/settings$$browser_check',
+            ],
+            'input' => [ 'shape' => 'GetBrowserCheckSettingRequestShape', ],
+            'output' => [ 'shape' => 'GetBrowserCheckSettingResponseShape', ],
         ],
         'ChangeBrowserCheckSetting' => [
             'name' => 'ChangeBrowserCheckSetting',
@@ -2113,18 +2365,30 @@ return [
                 'modified_on' => [ 'type' => 'string', 'locationName' => 'modified_on', ],
             ],
         ],
+        'ListAvailablePageRuleSettingResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListAvailablePageRuleSettingResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListAvailablePageRuleSettingRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ListAvailablePageRuleSettingResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'AvailablePageRule', ], ],
+            ],
+        ],
         'DeleteAdvancedCertificateManagerCertificatePackResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DeleteAdvancedCertificateManagerCertificatePackResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeleteAdvancedCertificateManagerCertificatePackRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
-                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
             ],
         ],
         'ListCertificatePacksResponseShape' => [
@@ -2140,10 +2404,11 @@ return [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CertificatePack', ], ],
             ],
         ],
-        'DeleteAdvancedCertificateManagerCertificatePackResultShape' => [
+        'OrderAdvancedCertificateManagerCertificatePackResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
+                'result' =>  [ 'shape' => 'OrderAdvancedCertificateManagerCertificatePackResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ListCertificatePacksRequestShape' => [
@@ -2153,16 +2418,82 @@ return [
                 'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
             ],
         ],
-        'DeleteSSLConfigurationResultShape' => [
+        'OrderAdvancedCertificateManagerCertificatePackRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ty_pe' => [ 'type' => 'string', 'locationName' => 'ty_pe', ],
+                'hosts' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'validation_method' => [ 'type' => 'string', 'locationName' => 'validation_method', ],
+                'validity_days' => [ 'type' => 'integer', 'locationName' => 'validity_days', ],
+                'certificate_authority' => [ 'type' => 'string', 'locationName' => 'certificate_authority', ],
+                'cloudflare_branding' => [ 'type' => 'boolean', 'locationName' => 'cloudflare_branding', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'DeleteAdvancedCertificateManagerCertificatePackRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+            ],
+        ],
+        'OrderAdvancedCertificateManagerCertificatePackResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'CertificatePack', ],
+            ],
+        ],
+        'DeleteAdvancedCertificateManagerCertificatePackResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' => [ 'type' => 'string', 'locationName' => 'data', ],
             ],
         ],
-        'ListSSLConfigurationsResultShape' => [
+        'UpdateCustomPageURLResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CustomSSL', ], ],
+                'result' =>  [ 'shape' => 'UpdateCustomPageURLResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListAvailableCustomPagesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ListAvailableCustomPagesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListAvailableCustomPagesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateCustomPageURLResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'CustomPage', ],
+            ],
+        ],
+        'ListAvailableCustomPagesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CustomPage', ], ],
+            ],
+        ],
+        'UpdateCustomPageURLRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+            ],
+        ],
+        'DeleteSSLConfigurationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
             ],
         ],
         'ListSSLConfigurationsResponseShape' => [
@@ -2189,11 +2520,330 @@ return [
                 'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
             ],
         ],
+        'CreateSSLConfigurationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateSSLConfigurationResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DeleteSSLConfigurationResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DeleteSSLConfigurationResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateSSLConfigurationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'CustomSSL', ],
+            ],
+        ],
+        'CreateSSLConfigurationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certificate' => [ 'type' => 'string', 'locationName' => 'certificate', ],
+                'private_key' => [ 'type' => 'string', 'locationName' => 'private_key', ],
+                'bundle_method' => [ 'type' => 'string', 'locationName' => 'bundle_method', ],
+                'geo_restrictions' =>  [ 'shape' => 'Geo_restrictions', ],
+                'ty_pe' => [ 'type' => 'string', 'locationName' => 'ty_pe', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ListSSLConfigurationsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CustomSSL', ], ],
+            ],
+        ],
+        'UpdateDNSRecordRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ty_pe' => [ 'type' => 'string', 'locationName' => 'ty_pe', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'ttl' => [ 'type' => 'double', 'locationName' => 'ttl', ],
+                'proxied' => [ 'type' => 'boolean', 'locationName' => 'proxied', ],
+                'priority' => [ 'type' => 'integer', 'locationName' => 'priority', ],
+                'srvData' =>  [ 'shape' => 'SRVdata', ],
+                'caaData' =>  [ 'shape' => 'CAAdata', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+            ],
+        ],
+        'UpdateDNSRecordResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateDNSRecordResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteDNSRecordRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+            ],
+        ],
+        'UpdateDNSRecordResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'DnsRecord', ],
+            ],
+        ],
+        'ListDNSRecordsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListDNSRecordsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteDNSRecordResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteDNSRecordResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListDNSRecordsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'match' => [ 'type' => 'string', 'locationName' => 'match', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'order' => [ 'type' => 'string', 'locationName' => 'order', ],
+                'page' => [ 'type' => 'double', 'locationName' => 'page', ],
+                'per_page' => [ 'type' => 'double', 'locationName' => 'per_page', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'proxied' => [ 'type' => 'boolean', 'locationName' => 'proxied', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'DeleteDNSRecordResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
+            ],
+        ],
+        'ListDNSRecordsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DnsRecord', ], ],
+            ],
+        ],
+        'CreateDNSRecordResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'DnsRecord', ],
+            ],
+        ],
+        'CreateDNSRecordResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateDNSRecordResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateDNSRecordRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ty_pe' => [ 'type' => 'string', 'locationName' => 'ty_pe', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'ttl' => [ 'type' => 'double', 'locationName' => 'ttl', ],
+                'priority' => [ 'type' => 'double', 'locationName' => 'priority', ],
+                'proxied' => [ 'type' => 'boolean', 'locationName' => 'proxied', ],
+                'srvData' =>  [ 'shape' => 'SRVdata', ],
+                'caaData' =>  [ 'shape' => 'CAAdata', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'UpdateIndividualFilterRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'expression' => [ 'type' => 'string', 'locationName' => 'expression', ],
+                'paused' => [ 'type' => 'boolean', 'locationName' => 'paused', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'ref' => [ 'type' => 'string', 'locationName' => 'ref', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'UpdateIndividualFilterResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'Filter', ],
+            ],
+        ],
+        'UpdateIndividualFilterResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateIndividualFilterResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateFiltersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateFiltersResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateFiltersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'CreateFiltersRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ListOfFirewallRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListOfFirewallRulesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateIndividualFirewallRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateIndividualFirewallRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateIndividualFirewallRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'filter' =>  [ 'shape' => 'Filter', ],
+                'products' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'priority' => [ 'type' => 'double', 'locationName' => 'priority', ],
+                'paused' => [ 'type' => 'boolean', 'locationName' => 'paused', ],
+                'ref' => [ 'type' => 'string', 'locationName' => 'ref', ],
+                'action_parameters' =>  [ 'shape' => 'Action_parameters', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'DeleteIndividualFirewallRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'delete_filter_if_unused' => [ 'type' => 'boolean', 'locationName' => 'delete_filter_if_unused', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
+        'DescribeBotStatusRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneId' => [ 'type' => 'string', 'locationName' => 'zoneId', ],
+            ],
+        ],
+        'ListOfFirewallRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'FirewallRule', ], ],
+            ],
+        ],
+        'CreateFirewallRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'firewallRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'FirewallRule', ], ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'CreateFirewallRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateFirewallRulesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'OpenFirewallBotResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'OpenFirewallBotRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneId' => [ 'type' => 'string', 'locationName' => 'zoneId', ],
+            ],
+        ],
+        'DeleteIndividualFirewallRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'FirewallRule', ],
+            ],
+        ],
+        'DescribeBotStatusResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBotStatusResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListOfFirewallRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'paused' => [ 'type' => 'boolean', 'locationName' => 'paused', ],
+                'page' => [ 'type' => 'double', 'locationName' => 'page', ],
+                'per_page' => [ 'type' => 'double', 'locationName' => 'per_page', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'CreateFirewallRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'FirewallRule', ], ],
+            ],
+        ],
+        'UpdateIndividualFirewallRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'FirewallRule', ],
+            ],
+        ],
+        'OpenFirewallBotResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'OpenFirewallBotResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeBotStatusResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneId' => [ 'type' => 'string', 'locationName' => 'zoneId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'subscriptionType' => [ 'type' => 'string', 'locationName' => 'subscriptionType', ],
+                'subscriptionId' => [ 'type' => 'string', 'locationName' => 'subscriptionId', ],
+                'switchStatus' => [ 'type' => 'string', 'locationName' => 'switchStatus', ],
+            ],
+        ],
+        'DeleteIndividualFirewallRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteIndividualFirewallRulesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateFlowPackResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'buyId' => [ 'type' => 'string', 'locationName' => 'buyId', ],
             ],
         ],
         'CreateInstanceResponseShape' => [
@@ -2243,6 +2893,15 @@ return [
             'members' => [
             ],
         ],
+        'CreateFlowPackRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'flowPackNum' => [ 'type' => 'integer', 'locationName' => 'flowPackNum', ],
+                'returnUrl' => [ 'type' => 'string', 'locationName' => 'returnUrl', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'CreateInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2286,6 +2945,13 @@ return [
             'members' => [
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateFlowPackResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateFlowPackResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeInstancesResponseShape' => [
@@ -2354,10 +3020,113 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'UpdatePageRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdatePageRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeletePageRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+            ],
+        ],
+        'CreatePageRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'targets' => [ 'type' => 'list', 'member' => [ 'shape' => 'Target', ], ],
+                'actions' => [ 'type' => 'list', 'member' => [ 'shape' => 'Action', ], ],
+                'priority' => [ 'type' => 'integer', 'locationName' => 'priority', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'CreatePageRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreatePageRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdatePageRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'PageRule', ],
+            ],
+        ],
+        'UpdatePageRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'targets' => [ 'type' => 'list', 'member' => [ 'shape' => 'Target', ], ],
+                'actions' => [ 'type' => 'list', 'member' => [ 'shape' => 'Action', ], ],
+                'priority' => [ 'type' => 'integer', 'locationName' => 'priority', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+            ],
+        ],
+        'ListPageRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'order' => [ 'type' => 'string', 'locationName' => 'order', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+                'match' => [ 'type' => 'string', 'locationName' => 'match', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ListPageRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'PageRule', ], ],
+            ],
+        ],
+        'CreatePageRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'PageRule', ],
+            ],
+        ],
+        'DeletePageRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
+            ],
+        ],
+        'DeletePageRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeletePageRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListPageRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListPageRulesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'UniversalSSLSettingsDetailsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'UniversalSSLSettingsDetailsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EditUniversalSSLSettingsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'UniversalSSLSetting', ],
+            ],
+        ],
+        'EditUniversalSSLSettingsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EditUniversalSSLSettingsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -2373,12 +3142,26 @@ return [
                 'data' =>  [ 'shape' => 'UniversalSSLSetting', ],
             ],
         ],
+        'EditUniversalSSLSettingsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
         'RuleGroupDetailsRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
                 'package_identifier' => [ 'type' => 'string', 'locationName' => 'package_identifier', ],
                 'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+            ],
+        ],
+        'EditRuleGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EditRuleGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ListRuleGroupsRequestShape' => [
@@ -2409,6 +3192,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'EditRuleGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'WAFRuleGroup', ],
+            ],
+        ],
         'RuleGroupDetailsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2422,15 +3211,40 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'EditRuleGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'mode' => [ 'type' => 'string', 'locationName' => 'mode', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+                'package_identifier' => [ 'type' => 'string', 'locationName' => 'package_identifier', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+            ],
+        ],
         'FirewallPackageDetailsResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'WAFRulePackage', ],
             ],
         ],
+        'EditFirewallPackageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EditFirewallPackageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'FirewallPackageDetailsRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+            ],
+        ],
+        'EditFirewallPackageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'sensitivity' => [ 'type' => 'string', 'locationName' => 'sensitivity', ],
+                'action_mode' => [ 'type' => 'string', 'locationName' => 'action_mode', ],
                 'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
                 'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
             ],
@@ -2467,6 +3281,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'EditFirewallPackageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'WAFRulePackage', ],
+            ],
+        ],
         'ListRulesResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -2494,13 +3314,6 @@ return [
                 'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
                 'zone_id' => [ 'type' => 'string', 'locationName' => 'zone_id', ],
                 'package_id' => [ 'type' => 'string', 'locationName' => 'package_id', ],
-            ],
-        ],
-        'PurgeFilesByCache_TagsAndHostOrPrefixResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'PurgeFilesByCache_TagsAndHostOrPrefixResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DeleteZoneRequestShape' => [
@@ -2538,14 +3351,7 @@ return [
                 'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
             ],
         ],
-        'PurgeAllFilesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'purge_everything' => [ 'type' => 'boolean', 'locationName' => 'purge_everything', ],
-                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
-            ],
-        ],
-        'DeleteZoneResultShape' => [
+        'CreateZoneResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'Zone', ],
@@ -2558,7 +3364,56 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'CreateZoneResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateZoneResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'PurgeAllFilesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'Zone', ],
+            ],
+        ],
+        'PurgeFilesByCache_TagsAndHostOrPrefixResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'Zone', ],
+            ],
+        ],
+        'PurgeFilesByURLRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'files' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+            ],
+        ],
+        'PurgeFilesByCache_TagsAndHostOrPrefixResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'PurgeFilesByCache_TagsAndHostOrPrefixResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateZoneRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'account' =>  [ 'shape' => 'Account', ],
+                'jump_start' => [ 'type' => 'boolean', 'locationName' => 'jump_start', ],
+                'ty_pe' => [ 'type' => 'string', 'locationName' => 'ty_pe', ],
+            ],
+        ],
+        'PurgeAllFilesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'purge_everything' => [ 'type' => 'boolean', 'locationName' => 'purge_everything', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+            ],
+        ],
+        'DeleteZoneResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'Zone', ],
@@ -2589,19 +3444,6 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 '__account__id' => [ 'type' => 'string', 'locationName' => '__account__id', ],
                 'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
-            ],
-        ],
-        'PurgeFilesByCache_TagsAndHostOrPrefixResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' =>  [ 'shape' => 'Zone', ],
-            ],
-        ],
-        'PurgeFilesByURLRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'files' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
             ],
         ],
         'EditZoneSettingsInfoResponseShape' => [
@@ -2976,6 +3818,12 @@ return [
                 'data' =>  [ 'shape' => 'TLSClientAuthentication', ],
             ],
         ],
+        'GetBrowserCheckSettingRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
         'ChangeMirageSettingResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3024,6 +3872,12 @@ return [
                 'data' =>  [ 'shape' => 'SecurityLevel', ],
             ],
         ],
+        'GetAllZoneSettingsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
         'GetWebSocketsSettingRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3053,6 +3907,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'ZoneSetting', ],
+            ],
+        ],
+        'GetBrowserCheckSettingResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'BrowserCheck', ],
             ],
         ],
         'GetSSLSettingResultShape' => [
@@ -3370,6 +4230,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'GetAllZoneSettingsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetAllZoneSettingsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'GetServerSideExcludeSettingRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3659,6 +4526,13 @@ return [
             'members' => [
             ],
         ],
+        'GetBrowserCheckSettingResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetBrowserCheckSettingResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'GetHTTP2SettingResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -3707,6 +4581,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'GetAllZoneSettingsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ZoneSetting', ], ],
             ],
         ],
         'GetBrowserCacheTTLSettingResponseShape' => [
