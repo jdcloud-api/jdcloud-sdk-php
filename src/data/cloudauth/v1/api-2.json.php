@@ -136,6 +136,7 @@ return [
             'members' => [
                 'orgName' => [ 'type' => 'string', 'locationName' => 'orgName', ],
                 'bankCardNum' => [ 'type' => 'string', 'locationName' => 'bankCardNum', ],
+                'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
                 'bankName' => [ 'type' => 'string', 'locationName' => 'bankName', ],
                 'branchBankName' => [ 'type' => 'string', 'locationName' => 'branchBankName', ],
                 'bankCode' => [ 'type' => 'string', 'locationName' => 'bankCode', ],
