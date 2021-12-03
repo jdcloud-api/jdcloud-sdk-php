@@ -182,6 +182,60 @@ return [
             'input' => [ 'shape' => 'AddLiveRestartDomainRequestShape', ],
             'output' => [ 'shape' => 'AddLiveRestartDomainResponseShape', ],
         ],
+        'CreateLiveForwardTask' => [
+            'name' => 'CreateLiveForwardTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/LiveForwardTask:create',
+            ],
+            'input' => [ 'shape' => 'CreateLiveForwardTaskRequestShape', ],
+            'output' => [ 'shape' => 'CreateLiveForwardTaskResponseShape', ],
+        ],
+        'UpdateLiveForwardTask' => [
+            'name' => 'UpdateLiveForwardTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/LiveForwardTask:update',
+            ],
+            'input' => [ 'shape' => 'UpdateLiveForwardTaskRequestShape', ],
+            'output' => [ 'shape' => 'UpdateLiveForwardTaskResponseShape', ],
+        ],
+        'QueryLiveForwardTask' => [
+            'name' => 'QueryLiveForwardTask',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/LiveForwardTask:query',
+            ],
+            'input' => [ 'shape' => 'QueryLiveForwardTaskRequestShape', ],
+            'output' => [ 'shape' => 'QueryLiveForwardTaskResponseShape', ],
+        ],
+        'StartLiveForwardTask' => [
+            'name' => 'StartLiveForwardTask',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/LiveForwardTask:start',
+            ],
+            'input' => [ 'shape' => 'StartLiveForwardTaskRequestShape', ],
+            'output' => [ 'shape' => 'StartLiveForwardTaskResponseShape', ],
+        ],
+        'StopLiveForwardTask' => [
+            'name' => 'StopLiveForwardTask',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/LiveForwardTask:stop',
+            ],
+            'input' => [ 'shape' => 'StopLiveForwardTaskRequestShape', ],
+            'output' => [ 'shape' => 'StopLiveForwardTaskResponseShape', ],
+        ],
+        'DeleteLiveForwardTask' => [
+            'name' => 'DeleteLiveForwardTask',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/LiveForwardTask:delete',
+            ],
+            'input' => [ 'shape' => 'DeleteLiveForwardTaskRequestShape', ],
+            'output' => [ 'shape' => 'DeleteLiveForwardTaskResponseShape', ],
+        ],
         'AddCustomLiveStreamQualityDetectionTemplate' => [
             'name' => 'AddCustomLiveStreamQualityDetectionTemplate',
             'http' => [
@@ -1677,6 +1731,20 @@ return [
                 'notifyUrl' => [ 'type' => 'string', 'locationName' => 'notifyUrl', ],
             ],
         ],
+        'LiveTaskInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'startMode' => [ 'type' => 'integer', 'locationName' => 'startMode', ],
+                'sourceUrl' => [ 'type' => 'string', 'locationName' => 'sourceUrl', ],
+                'pushUrl' => [ 'type' => 'string', 'locationName' => 'pushUrl', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'callbackEvent' => [ 'type' => 'integer', 'locationName' => 'callbackEvent', ],
+                'callbackUrl' => [ 'type' => 'string', 'locationName' => 'callbackUrl', ],
+            ],
+        ],
         'TimeshiftPlayDomain' => [
             'type' => 'structure',
             'members' => [
@@ -2186,6 +2254,130 @@ return [
         'StartLiveDomainResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'QueryLiveForwardTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'CreateLiveForwardTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'StopLiveForwardTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteLiveForwardTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskIds' => [ 'type' => 'string', 'locationName' => 'taskIds', ],
+            ],
+        ],
+        'StartLiveForwardTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskIds' => [ 'type' => 'string', 'locationName' => 'taskIds', ],
+            ],
+        ],
+        'StartLiveForwardTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteLiveForwardTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'QueryLiveForwardTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryLiveForwardTaskResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryLiveForwardTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LiveTaskInfo', ], ],
+            ],
+        ],
+        'StartLiveForwardTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateLiveForwardTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'sourceUrl' => [ 'type' => 'string', 'locationName' => 'sourceUrl', ],
+                'pushUrl' => [ 'type' => 'string', 'locationName' => 'pushUrl', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'callbackEvents' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'callbackUrl' => [ 'type' => 'string', 'locationName' => 'callbackUrl', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'DeleteLiveForwardTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateLiveForwardTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'StopLiveForwardTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateLiveForwardTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateLiveForwardTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StopLiveForwardTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskIds' => [ 'type' => 'string', 'locationName' => 'taskIds', ],
+            ],
+        ],
+        'CreateLiveForwardTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'sourceUrl' => [ 'type' => 'string', 'locationName' => 'sourceUrl', ],
+                'pushUrl' => [ 'type' => 'string', 'locationName' => 'pushUrl', ],
+                'startMode' => [ 'type' => 'string', 'locationName' => 'startMode', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'callbackEvents' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'callbackUrl' => [ 'type' => 'string', 'locationName' => 'callbackUrl', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
         'DeleteLiveStreamDomainQualityDetectionRequestShape' => [
