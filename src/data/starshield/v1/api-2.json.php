@@ -236,6 +236,15 @@ return [
             'input' => [ 'shape' => 'ModifyInstanceRequestShape', ],
             'output' => [ 'shape' => 'ModifyInstanceResponseShape', ],
         ],
+        'DescribeInstanceByOrderNo' => [
+            'name' => 'DescribeInstanceByOrderNo',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instance/{orderNumber}/describeInstance',
+            ],
+            'input' => [ 'shape' => 'DescribeInstanceByOrderNoRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInstanceByOrderNoResponseShape', ],
+        ],
         'SelectDetailList' => [
             'name' => 'SelectDetailList',
             'http' => [
@@ -1641,6 +1650,7 @@ return [
                 'chargeState' => [ 'type' => 'string', 'locationName' => 'chargeState', ],
                 'zonePackNum' => [ 'type' => 'integer', 'locationName' => 'zonePackNum', ],
                 'trafficExpansion' => [ 'type' => 'integer', 'locationName' => 'trafficExpansion', ],
+                'flowUsedCnt' => [ 'type' => 'long', 'locationName' => 'flowUsedCnt', ],
                 'flowRemain' => [ 'type' => 'double', 'locationName' => 'flowRemain', ],
                 'packMode' => [ 'type' => 'string', 'locationName' => 'packMode', ],
                 'memo' => [ 'type' => 'string', 'locationName' => 'memo', ],
@@ -2933,6 +2943,13 @@ return [
                 'buyId' => [ 'type' => 'string', 'locationName' => 'buyId', ],
             ],
         ],
+        'DescribeInstanceByOrderNoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
+            ],
+        ],
         'SelectDetailListResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -2951,6 +2968,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'CreateFlowPackResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeInstanceByOrderNoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceByOrderNoResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -2974,6 +2998,12 @@ return [
                 'memo' => [ 'type' => 'string', 'locationName' => 'memo', ],
                 'returnUrl' => [ 'type' => 'string', 'locationName' => 'returnUrl', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeInstanceByOrderNoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'describeInstancesRes' =>  [ 'shape' => 'DescribeInstancesRes', ],
             ],
         ],
         'DescribePackagesResultShape' => [

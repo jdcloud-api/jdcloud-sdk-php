@@ -70,6 +70,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise createFlowPackAsync(array $args = [])
  * @method \Jdcloud\Result modifyInstance(array $args = [])
  * @method \GuzzleHttp\Promise\Promise modifyInstanceAsync(array $args = [])
+ * @method \Jdcloud\Result describeInstanceByOrderNo(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeInstanceByOrderNoAsync(array $args = [])
  * @method \Jdcloud\Result selectDetailList(array $args = [])
  * @method \GuzzleHttp\Promise\Promise selectDetailListAsync(array $args = [])
  * @method \Jdcloud\Result checkInstancesName(array $args = [])
