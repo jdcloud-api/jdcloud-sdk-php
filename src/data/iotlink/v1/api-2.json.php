@@ -11,6 +11,42 @@ return [
 //        'serviceId' => 'iotlink',
     ],
     'operations' => [
+        'GprsStatusByIMSI' => [
+            'name' => 'GprsStatusByIMSI',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/gprsStatusByIMSI',
+            ],
+            'input' => [ 'shape' => 'GprsStatusByIMSIRequestShape', ],
+            'output' => [ 'shape' => 'GprsStatusByIMSIResponseShape', ],
+        ],
+        'OnOffStatusByIMSI' => [
+            'name' => 'OnOffStatusByIMSI',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/onOffStatusByIMSI',
+            ],
+            'input' => [ 'shape' => 'OnOffStatusByIMSIRequestShape', ],
+            'output' => [ 'shape' => 'OnOffStatusByIMSIResponseShape', ],
+        ],
+        'LifeStatusByIMSI' => [
+            'name' => 'LifeStatusByIMSI',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/lifeStatusByIMSI',
+            ],
+            'input' => [ 'shape' => 'LifeStatusByIMSIRequestShape', ],
+            'output' => [ 'shape' => 'LifeStatusByIMSIResponseShape', ],
+        ],
+        'GprsRealtimeInfoByIMSI' => [
+            'name' => 'GprsRealtimeInfoByIMSI',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/gprsRealtimeInfoByIMSI',
+            ],
+            'input' => [ 'shape' => 'GprsRealtimeInfoByIMSIRequestShape', ],
+            'output' => [ 'shape' => 'GprsRealtimeInfoByIMSIResponseShape', ],
+        ],
         'GprsStatus' => [
             'name' => 'GprsStatus',
             'http' => [
@@ -152,12 +188,41 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'GprsRealtimeInfoByIMSIRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imsi' => [ 'type' => 'string', 'locationName' => 'imsi', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'GprsStatusResultShape' => [
             'type' => 'structure',
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'result' =>  [ 'shape' => 'GprsStatusResp', ],
+            ],
+        ],
+        'GprsStatusByIMSIResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GprsStatusByIMSIResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'LifeStatusByIMSIResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'LifeStatusResp', ],
+            ],
+        ],
+        'LifeStatusByIMSIResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'LifeStatusByIMSIResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'OpenIotFlowResultShape' => [
@@ -205,6 +270,21 @@ return [
                 'result' => [ 'type' => 'string', 'locationName' => 'result', ],
             ],
         ],
+        'LifeStatusByIMSIRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imsi' => [ 'type' => 'string', 'locationName' => 'imsi', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'OnOffStatusByIMSIResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'OnOffStatusResp', ],
+            ],
+        ],
         'OnOffStatusResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -233,6 +313,21 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'OpenIotFlowResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'OnOffStatusByIMSIRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imsi' => [ 'type' => 'string', 'locationName' => 'imsi', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GprsRealtimeInfoByIMSIResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'GprsRealtimeInfoResp', ],
             ],
         ],
         'OpenIotFlowRequestShape' => [
@@ -272,10 +367,24 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'GprsRealtimeInfoByIMSIResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GprsRealtimeInfoByIMSIResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'GprsStatusResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'GprsStatusResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'OnOffStatusByIMSIResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'OnOffStatusByIMSIResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -322,6 +431,13 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'GprsStatusByIMSIRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imsi' => [ 'type' => 'string', 'locationName' => 'imsi', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'LifeStatusResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -365,6 +481,14 @@ return [
             'members' => [
                 'iccids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GprsStatusByIMSIResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'GprsStatusResp', ],
             ],
         ],
     ],

@@ -2267,6 +2267,7 @@ return [
         'CreateLiveForwardTaskResultShape' => [
             'type' => 'structure',
             'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
             ],
         ],
         'StopLiveForwardTaskResultShape' => [
@@ -2341,7 +2342,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'result' =>  [ 'shape' => 'CreateLiveForwardTaskResultShape', ],
             ],
         ],
         'StopLiveForwardTaskResponseShape' => [
