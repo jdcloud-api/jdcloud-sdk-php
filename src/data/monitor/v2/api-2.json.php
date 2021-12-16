@@ -2610,14 +2610,6 @@ return [
                 'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
             ],
         ],
-        'User' => [
-            'type' => 'structure',
-            'members' => [
-                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
-                'login' => [ 'type' => 'string', 'locationName' => 'login', ],
-                'role' => [ 'type' => 'string', 'locationName' => 'role', ],
-            ],
-        ],
         'UpdateTemplateResponseResultV2' => [
             'type' => 'structure',
             'members' => [
@@ -2677,6 +2669,14 @@ return [
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'updatedTime' => [ 'type' => 'long', 'locationName' => 'updatedTime', ],
                 'widgetId' => [ 'type' => 'string', 'locationName' => 'widgetId', ],
+            ],
+        ],
+        'User' => [
+            'type' => 'structure',
+            'members' => [
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'login' => [ 'type' => 'string', 'locationName' => 'login', ],
+                'role' => [ 'type' => 'string', 'locationName' => 'role', ],
             ],
         ],
         'UserRole' => [
