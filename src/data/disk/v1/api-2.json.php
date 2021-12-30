@@ -227,6 +227,15 @@ return [
             'input' => [ 'shape' => 'DescribeSnapshotPolicyDiskRelationsRequestShape', ],
             'output' => [ 'shape' => 'DescribeSnapshotPolicyDiskRelationsResponseShape', ],
         ],
+        'DescribeSoldout' => [
+            'name' => 'DescribeSoldout',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/soldout',
+            ],
+            'input' => [ 'shape' => 'DescribeSoldoutRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSoldoutResponseShape', ],
+        ],
     ],
     'shapes' => [
         'Bind' => [
@@ -397,6 +406,16 @@ return [
             'members' => [
                 'limit' => [ 'type' => 'integer', 'locationName' => 'limit', ],
                 'used' => [ 'type' => 'integer', 'locationName' => 'used', ],
+            ],
+        ],
+        'ReportTask' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'filename' => [ 'type' => 'string', 'locationName' => 'filename', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'createdAt' => [ 'type' => 'string', 'locationName' => 'createdAt', ],
+                'downloadUrl' => [ 'type' => 'string', 'locationName' => 'downloadUrl', ],
             ],
         ],
         'ShareInfo' => [
@@ -1009,6 +1028,26 @@ return [
                 'contactInfo' =>  [ 'shape' => 'ContactInfo', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeSoldoutRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeSoldoutResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSoldoutResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSoldoutResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'soldout' => [ 'type' => 'list', 'member' => [ 'shape' => 'Soldout', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
     ],

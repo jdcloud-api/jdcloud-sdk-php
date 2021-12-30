@@ -68,6 +68,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise applySnapshotPoliciesAsync(array $args = [])
  * @method \Jdcloud\Result describeSnapshotPolicyDiskRelations(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeSnapshotPolicyDiskRelationsAsync(array $args = [])
+ * @method \Jdcloud\Result describeSoldout(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeSoldoutAsync(array $args = [])
  */
 class DiskClient extends JdCloudClient
 {
