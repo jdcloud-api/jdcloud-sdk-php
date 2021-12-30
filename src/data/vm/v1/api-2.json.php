@@ -380,6 +380,15 @@ return [
             'input' => [ 'shape' => 'DescribeInstancesCustomDataRequestShape', ],
             'output' => [ 'shape' => 'DescribeInstancesCustomDataResponseShape', ],
         ],
+        'ModifyInstancePlacement' => [
+            'name' => 'ModifyInstancePlacement',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:modifyInstancePlacement',
+            ],
+            'input' => [ 'shape' => 'ModifyInstancePlacementRequestShape', ],
+            'output' => [ 'shape' => 'ModifyInstancePlacementResponseShape', ],
+        ],
         'DescribeInstanceTemplates' => [
             'name' => 'DescribeInstanceTemplates',
             'http' => [
@@ -735,6 +744,7 @@ return [
                 'policies' => [ 'type' => 'list', 'member' => [ 'shape' => 'Policy', ], ],
                 'dedicatedPoolId' => [ 'type' => 'string', 'locationName' => 'dedicatedPoolId', ],
                 'dedicatedHostId' => [ 'type' => 'string', 'locationName' => 'dedicatedHostId', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'Policy' => [
@@ -818,6 +828,7 @@ return [
                 'autoImagePolicyId' => [ 'type' => 'string', 'locationName' => 'autoImagePolicyId', ],
                 'passwordAuth' => [ 'type' => 'string', 'locationName' => 'passwordAuth', ],
                 'imageInherit' => [ 'type' => 'string', 'locationName' => 'imageInherit', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'InstanceStatus' => [
@@ -1053,7 +1064,7 @@ return [
         'TaskInfo' => [
             'type' => 'structure',
             'members' => [
-                'taskId' => [ 'type' => 'integer', 'locationName' => 'taskId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
                 'progress' => [ 'type' => 'integer', 'locationName' => 'progress', ],
@@ -1111,7 +1122,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
-                'importTaskId' => [ 'type' => 'integer', 'locationName' => 'importTaskId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
             ],
         ],
         'DescribeImageResponseShape' => [
@@ -1291,7 +1302,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'taskAction' => [ 'type' => 'string', 'locationName' => 'taskAction', ],
-                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
@@ -1336,7 +1347,7 @@ return [
         'ExportImageResultShape' => [
             'type' => 'structure',
             'members' => [
-                'exportTaskId' => [ 'type' => 'integer', 'locationName' => 'exportTaskId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
             ],
         ],
         'DescribeImageConstraintsBatchRequestShape' => [
@@ -1465,6 +1476,16 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyInstancePlacementRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
+                'balance' => [ 'type' => 'boolean', 'locationName' => 'balance', ],
+                'clearLocalDisk' => [ 'type' => 'boolean', 'locationName' => 'clearLocalDisk', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'DescribeInstancePrivateIpAddressRequestShape' => [
@@ -1630,6 +1651,12 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeInstancesCustomDataResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyInstancePlacementResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
         'DisassociateElasticIpResultShape' => [
@@ -1831,6 +1858,13 @@ return [
         'ModifyInstanceVpcAttributeResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ModifyInstancePlacementResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyInstancePlacementResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeBriefInstancesResultShape' => [

@@ -102,6 +102,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise rebuildInstanceAsync(array $args = [])
  * @method \Jdcloud\Result describeInstancesCustomData(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeInstancesCustomDataAsync(array $args = [])
+ * @method \Jdcloud\Result modifyInstancePlacement(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise modifyInstancePlacementAsync(array $args = [])
  * @method \Jdcloud\Result describeInstanceTemplates(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeInstanceTemplatesAsync(array $args = [])
  * @method \Jdcloud\Result createInstanceTemplate(array $args = [])
