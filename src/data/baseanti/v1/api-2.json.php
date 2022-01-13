@@ -83,6 +83,15 @@ return [
             'input' => [ 'shape' => 'DescribeCcsIpResourcesRequestShape', ],
             'output' => [ 'shape' => 'DescribeCcsIpResourcesResponseShape', ],
         ],
+        'DescribeWafIpResources' => [
+            'name' => 'DescribeWafIpResources',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/wafIpResources',
+            ],
+            'input' => [ 'shape' => 'DescribeWafIpResourcesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeWafIpResourcesResponseShape', ],
+        ],
         'DescribeIpResourceInfo' => [
             'name' => 'DescribeIpResourceInfo',
             'http' => [
@@ -148,6 +157,16 @@ return [
         ],
     ],
     'shapes' => [
+        'InternalAttackLog' => [
+            'type' => 'structure',
+            'members' => [
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'attackLogId' => [ 'type' => 'string', 'locationName' => 'attackLogId', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'attackStatus' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'AttackLog' => [
             'type' => 'structure',
             'members' => [
@@ -176,6 +195,29 @@ return [
             'members' => [
                 'cleanThresholdBps' => [ 'type' => 'long', 'locationName' => 'cleanThresholdBps', ],
                 'cleanThresholdPps' => [ 'type' => 'long', 'locationName' => 'cleanThresholdPps', ],
+            ],
+        ],
+        'DomainCname' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'deleteTime' => [ 'type' => 'string', 'locationName' => 'deleteTime', ],
+                'isDeleted' => [ 'type' => 'boolean', 'locationName' => 'isDeleted', ],
+            ],
+        ],
+        'DomainCnameSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
+            ],
+        ],
+        'DeleteDomainCnameSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
         'ModifyIpBaseInfoSpec' => [
@@ -227,6 +269,37 @@ return [
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'instanceType' => [ 'type' => 'integer', 'locationName' => 'instanceType', ],
                 'safeStatus' => [ 'type' => 'integer', 'locationName' => 'safeStatus', ],
+            ],
+        ],
+        'JDTIpResource' => [
+            'type' => 'structure',
+            'members' => [
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'resourceType' => [ 'type' => 'integer', 'locationName' => 'resourceType', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'bandwidth' => [ 'type' => 'long', 'locationName' => 'bandwidth', ],
+                'cleanThresholdBps' => [ 'type' => 'long', 'locationName' => 'cleanThresholdBps', ],
+                'cleanThresholdPps' => [ 'type' => 'long', 'locationName' => 'cleanThresholdPps', ],
+                'blackHoleThreshold' => [ 'type' => 'long', 'locationName' => 'blackHoleThreshold', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'instanceType' => [ 'type' => 'integer', 'locationName' => 'instanceType', ],
+                'safeStatus' => [ 'type' => 'integer', 'locationName' => 'safeStatus', ],
+            ],
+        ],
+        'AttackProtection' => [
+            'type' => 'structure',
+            'members' => [
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'protectionAbility' => [ 'type' => 'double', 'locationName' => 'protectionAbility', ],
+                'protectionAbilityUnit' => [ 'type' => 'string', 'locationName' => 'protectionAbilityUnit', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'instanceType' => [ 'type' => 'integer', 'locationName' => 'instanceType', ],
+                'safeStatus' => [ 'type' => 'integer', 'locationName' => 'safeStatus', ],
+                'attackPeak7Day' => [ 'type' => 'double', 'locationName' => 'attackPeak7Day', ],
+                'attackUnit7Day' => [ 'type' => 'string', 'locationName' => 'attackUnit7Day', ],
             ],
         ],
         'IpResourceFlow' => [
@@ -374,57 +447,13 @@ return [
                 'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
-        'DescribeIpResourceFlowResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeIpResourceFlowResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeElasticIpResourcesRequestShape' => [
+        'DescribeWafIpResourcesRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeElasticIpResourcesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpResource', ], ],
-                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
-            ],
-        ],
-        'SetCleanThresholdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DescribeIpResourceInfoResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeIpResourceInfoResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeIpResourceInfoResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeCpsIpResourcesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpResource', ], ],
-                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
-            ],
-        ],
-        'SetCleanThresholdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'error' =>  [ 'shape' => 'SetCleanThresholdResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeCcsIpResourcesResultShape' => [
@@ -436,18 +465,12 @@ return [
                 'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
-        'DescribeIpSafetyInfoRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'DescribeCcsIpResourcesRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -455,26 +478,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'cleanThresholdSpec' =>  [ 'shape' => 'CleanThresholdSpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
-            ],
-        ],
-        'DescribeIpCleanThresholdRangeRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeIpResourceInfoResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' =>  [ 'shape' => 'IpResourceInfo', ],
-            ],
-        ],
-        'DescribeIpResourceInfoRequestShape' => [
-            'type' => 'structure',
-            'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
             ],
@@ -487,19 +490,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeCpsIpResourcesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeCpsIpResourcesResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeCpsIpResourcesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeCpsIpResourcesRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -541,6 +537,150 @@ return [
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
             ],
         ],
+        'DescribeElasticIpResourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeElasticIpResourcesResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeElasticIpResourcesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetIpCleanThresholdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SetIpCleanThresholdResultShape', ],
+                'error' =>  [ 'shape' => 'SetIpCleanThresholdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeIpResourceProtectInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
+                'limit' => [ 'type' => 'integer', 'locationName' => 'limit', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+            ],
+        ],
+        'DescribeIpCleanThresholdRangeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'IpCleanThresholdRange', ],
+            ],
+        ],
+        'DescribeIpResourceFlowResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bps' =>  [ 'shape' => 'IpResourceFlow', ],
+                'pps' =>  [ 'shape' => 'IpResourceFlow', ],
+            ],
+        ],
+        'DescribeIpResourceFlowResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeIpResourceFlowResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeElasticIpResourcesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeElasticIpResourcesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpResource', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+            ],
+        ],
+        'DescribeWafIpResourcesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpResource', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+            ],
+        ],
+        'SetCleanThresholdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeIpResourceInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeIpResourceInfoResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeIpResourceInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeWafIpResourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeWafIpResourcesResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeWafIpResourcesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeCpsIpResourcesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpResource', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+            ],
+        ],
+        'SetCleanThresholdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'error' =>  [ 'shape' => 'SetCleanThresholdResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeIpSafetyInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeIpCleanThresholdRangeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeIpResourceInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'IpResourceInfo', ],
+            ],
+        ],
+        'DescribeIpResourceInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+            ],
+        ],
+        'DescribeCpsIpResourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeCpsIpResourcesResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeCpsIpResourcesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeIpResourcesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -561,37 +701,12 @@ return [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpResourceProtectInfo', ], ],
             ],
         ],
-        'DescribeElasticIpResourcesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeElasticIpResourcesResultShape', ],
-                'error' =>  [ 'shape' => 'DescribeElasticIpResourcesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'SetIpCleanThresholdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'SetIpCleanThresholdResultShape', ],
-                'error' =>  [ 'shape' => 'SetIpCleanThresholdResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeIpCleanThresholdRangeResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeIpCleanThresholdRangeResultShape', ],
                 'error' =>  [ 'shape' => 'DescribeIpCleanThresholdRangeResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeIpResourceProtectInfoRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
-                'limit' => [ 'type' => 'integer', 'locationName' => 'limit', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
             ],
         ],
         'DescribeIpResourcesResponseShape' => [
@@ -602,23 +717,10 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeIpCleanThresholdRangeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' =>  [ 'shape' => 'IpCleanThresholdRange', ],
-            ],
-        ],
         'DescribeIpSafetyInfoResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'IpSafetyInfo', ],
-            ],
-        ],
-        'DescribeIpResourceFlowResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'bps' =>  [ 'shape' => 'IpResourceFlow', ],
-                'pps' =>  [ 'shape' => 'IpResourceFlow', ],
             ],
         ],
     ],
