@@ -62,6 +62,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise sendMessagesByOrderIdUsingPOSTAsync(array $args = [])
  * @method \Jdcloud\Result sendMessagesByPinUsingPOST(array $args = [])
  * @method \GuzzleHttp\Promise\Promise sendMessagesByPinUsingPOSTAsync(array $args = [])
+ * @method \Jdcloud\Result sendMessagesByEncPinUsingPOST(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise sendMessagesByEncPinUsingPOSTAsync(array $args = [])
  * @method \Jdcloud\Result listSmsSignsUsingGET(array $args = [])
  * @method \GuzzleHttp\Promise\Promise listSmsSignsUsingGETAsync(array $args = [])
  * @method \Jdcloud\Result createSmsSignUsingPOST(array $args = [])

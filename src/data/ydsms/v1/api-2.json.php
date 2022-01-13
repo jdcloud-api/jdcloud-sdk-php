@@ -200,6 +200,15 @@ return [
             'input' => [ 'shape' => 'SendMessagesByPinUsingPOSTRequestShape', ],
             'output' => [ 'shape' => 'SendMessagesByPinUsingPOSTResponseShape', ],
         ],
+        'SendMessagesByEncPinUsingPOST' => [
+            'name' => 'SendMessagesByEncPinUsingPOST',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/sendMessagesByEncPin',
+            ],
+            'input' => [ 'shape' => 'SendMessagesByEncPinUsingPOSTRequestShape', ],
+            'output' => [ 'shape' => 'SendMessagesByEncPinUsingPOSTResponseShape', ],
+        ],
         'ListSmsSignsUsingGET' => [
             'name' => 'ListSmsSignsUsingGET',
             'http' => [
@@ -705,6 +714,8 @@ return [
                 'appDesc' => [ 'type' => 'string', 'locationName' => 'appDesc', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'accessKeyId' => [ 'type' => 'string', 'locationName' => 'accessKeyId', ],
+                'accessKeySecret' => [ 'type' => 'string', 'locationName' => 'accessKeySecret', ],
             ],
         ],
         'QueryReplyRecordUsingGETRequestShape' => [
@@ -936,6 +947,16 @@ return [
                 'packageId' => [ 'type' => 'string', 'locationName' => 'packageId', ],
             ],
         ],
+        'SendMessagesByEncPinUsingPOSTRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'signId' => [ 'type' => 'string', 'locationName' => 'signId', ],
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
+                'encPins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'params' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'SendMessagesByPinUsingPOSTResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -984,6 +1005,19 @@ return [
             'type' => 'structure',
             'members' => [
                 'mtResVO' =>  [ 'shape' => 'MtResVO', ],
+            ],
+        ],
+        'SendMessagesByEncPinUsingPOSTResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'mtResVO' =>  [ 'shape' => 'MtResVO', ],
+            ],
+        ],
+        'SendMessagesByEncPinUsingPOSTResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SendMessagesByEncPinUsingPOSTResultShape', ],
             ],
         ],
         'SendMessagesByOrderIdUsingPOSTResultShape' => [

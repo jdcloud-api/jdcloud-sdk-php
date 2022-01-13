@@ -36,6 +36,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeCpsIpResourcesAsync(array $args = [])
  * @method \Jdcloud\Result describeCcsIpResources(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeCcsIpResourcesAsync(array $args = [])
+ * @method \Jdcloud\Result describeWafIpResources(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeWafIpResourcesAsync(array $args = [])
  * @method \Jdcloud\Result describeIpResourceInfo(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeIpResourceInfoAsync(array $args = [])
  * @method \Jdcloud\Result describeIpSafetyInfo(array $args = [])
