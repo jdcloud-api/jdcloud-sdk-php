@@ -605,6 +605,24 @@ return [
             'input' => [ 'shape' => 'SetAccelerateRegionRequestShape', ],
             'output' => [ 'shape' => 'SetAccelerateRegionResponseShape', ],
         ],
+        'ConfigBackSourceRules' => [
+            'name' => 'ConfigBackSourceRules',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/domain/{domain}/configBackSourceRules',
+            ],
+            'input' => [ 'shape' => 'ConfigBackSourceRulesRequestShape', ],
+            'output' => [ 'shape' => 'ConfigBackSourceRulesResponseShape', ],
+        ],
+        'QueryBackSourceRules' => [
+            'name' => 'QueryBackSourceRules',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/domain/{domain}/queryBackSourceRules',
+            ],
+            'input' => [ 'shape' => 'QueryBackSourceRulesRequestShape', ],
+            'output' => [ 'shape' => 'QueryBackSourceRulesResponseShape', ],
+        ],
         'QueryDomainGroupList' => [
             'name' => 'QueryDomainGroupList',
             'http' => [
@@ -1918,7 +1936,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'groupByname' => [ 'type' => 'string', 'locationName' => 'groupByname', ],
-                'domainTyep' => [ 'type' => 'string', 'locationName' => 'domainTyep', ],
+                'domainType' => [ 'type' => 'string', 'locationName' => 'domainType', ],
                 'oriflowPercent' => [ 'type' => 'string', 'locationName' => 'oriflowPercent', ],
                 'oripvPercent' => [ 'type' => 'string', 'locationName' => 'oripvPercent', ],
                 'avgbandwidth' => [ 'type' => 'double', 'locationName' => 'avgbandwidth', ],
@@ -2325,6 +2343,15 @@ return [
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'forbiddenTypeDesc' => [ 'type' => 'string', 'locationName' => 'forbiddenTypeDesc', ],
+            ],
+        ],
+        'BackSourceRule' => [
+            'type' => 'structure',
+            'members' => [
+                'matchMode' => [ 'type' => 'string', 'locationName' => 'matchMode', ],
+                'before' => [ 'type' => 'string', 'locationName' => 'before', ],
+                'after' => [ 'type' => 'string', 'locationName' => 'after', ],
+                'priority' => [ 'type' => 'integer', 'locationName' => 'priority', ],
             ],
         ],
         'TagFilter' => [
@@ -3354,6 +3381,13 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
+        'QueryBackSourceRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryBackSourceRulesResultShape', ],
+            ],
+        ],
         'StopMonitorResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3640,6 +3674,14 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
+        'ConfigBackSourceRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackSourceRule', ], ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
         'PreviewCertificateResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -3800,6 +3842,12 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
+        'QueryBackSourceRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
         'DeleteCacheRuleRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3818,6 +3866,11 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'copyDomains' => [ 'type' => 'string', 'locationName' => 'copyDomains', ],
                 'configKeys' => [ 'type' => 'string', 'locationName' => 'configKeys', ],
+            ],
+        ],
+        'ConfigBackSourceRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'SetAccelerateRegionResultShape' => [
@@ -3930,6 +3983,14 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
+        'QueryBackSourceRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackSourceRule', ], ],
+            ],
+        ],
         'SetHttpTypeResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3974,6 +4035,13 @@ return [
         'DeleteCacheRuleResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ConfigBackSourceRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'ConfigBackSourceRulesResultShape', ],
             ],
         ],
         'DeleteCacheRuleResponseShape' => [

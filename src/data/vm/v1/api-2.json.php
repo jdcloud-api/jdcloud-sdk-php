@@ -1054,6 +1054,14 @@ return [
                 'used' => [ 'type' => 'integer', 'locationName' => 'used', ],
             ],
         ],
+        'RecommendAz' => [
+            'type' => 'structure',
+            'members' => [
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'family' => [ 'type' => 'string', 'locationName' => 'family', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+            ],
+        ],
         'TagFilter' => [
             'type' => 'structure',
             'members' => [
@@ -1656,7 +1664,6 @@ return [
         'ModifyInstancePlacementResultShape' => [
             'type' => 'structure',
             'members' => [
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
         'DisassociateElasticIpResultShape' => [
@@ -1863,7 +1870,6 @@ return [
         'ModifyInstancePlacementResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'ModifyInstancePlacementResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
