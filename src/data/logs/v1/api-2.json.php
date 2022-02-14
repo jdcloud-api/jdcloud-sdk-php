@@ -56,23 +56,50 @@ return [
             'input' => [ 'shape' => 'CreateCollectInfoRequestShape', ],
             'output' => [ 'shape' => 'CreateCollectInfoResponseShape', ],
         ],
-        'DescribeLogdCA' => [
-            'name' => 'DescribeLogdCA',
+        'CreateParser' => [
+            'name' => 'CreateParser',
             'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/ca',
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/logtopics/{logtopicUID}/createParser',
             ],
-            'input' => [ 'shape' => 'DescribeLogdCARequestShape', ],
-            'output' => [ 'shape' => 'DescribeLogdCAResponseShape', ],
+            'input' => [ 'shape' => 'CreateParserRequestShape', ],
+            'output' => [ 'shape' => 'CreateParserResponseShape', ],
         ],
-        'DescribeInstanceCollectConfs' => [
-            'name' => 'DescribeInstanceCollectConfs',
+        'DescribeParser' => [
+            'name' => 'DescribeParser',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/collectconfs',
+                'requestUri' => '/v1/regions/{regionId}/logtopics/{logtopicUID}/describeParser',
             ],
-            'input' => [ 'shape' => 'DescribeInstanceCollectConfsRequestShape', ],
-            'output' => [ 'shape' => 'DescribeInstanceCollectConfsResponseShape', ],
+            'input' => [ 'shape' => 'DescribeParserRequestShape', ],
+            'output' => [ 'shape' => 'DescribeParserResponseShape', ],
+        ],
+        'UpdateParser' => [
+            'name' => 'UpdateParser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/logtopics/{logtopicUID}/updateParser',
+            ],
+            'input' => [ 'shape' => 'UpdateParserRequestShape', ],
+            'output' => [ 'shape' => 'UpdateParserResponseShape', ],
+        ],
+        'ValidateParser' => [
+            'name' => 'ValidateParser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/validateParser',
+            ],
+            'input' => [ 'shape' => 'ValidateParserRequestShape', ],
+            'output' => [ 'shape' => 'ValidateParserResponseShape', ],
+        ],
+        'CreateParser' => [
+            'name' => 'CreateParser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/logtopics/{logtopicUID}/createParser',
+            ],
+            'input' => [ 'shape' => 'CreateParserRequestShape', ],
+            'output' => [ 'shape' => 'CreateParserResponseShape', ],
         ],
         'DescribeLogsets' => [
             'name' => 'DescribeLogsets',
@@ -164,6 +191,69 @@ return [
             'input' => [ 'shape' => 'UpdateLogtopicRequestShape', ],
             'output' => [ 'shape' => 'UpdateLogtopicResponseShape', ],
         ],
+        'TestMetricTask' => [
+            'name' => 'TestMetricTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictaskTest',
+            ],
+            'input' => [ 'shape' => 'TestMetricTaskRequestShape', ],
+            'output' => [ 'shape' => 'TestMetricTaskResponseShape', ],
+        ],
+        'DescribeMetricTasks' => [
+            'name' => 'DescribeMetricTasks',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictasks',
+            ],
+            'input' => [ 'shape' => 'DescribeMetricTasksRequestShape', ],
+            'output' => [ 'shape' => 'DescribeMetricTasksResponseShape', ],
+        ],
+        'CreateMetricTask' => [
+            'name' => 'CreateMetricTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictasks',
+            ],
+            'input' => [ 'shape' => 'CreateMetricTaskRequestShape', ],
+            'output' => [ 'shape' => 'CreateMetricTaskResponseShape', ],
+        ],
+        'DescribeMetricTask' => [
+            'name' => 'DescribeMetricTask',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictasks/{logmetrictaskUID}',
+            ],
+            'input' => [ 'shape' => 'DescribeMetricTaskRequestShape', ],
+            'output' => [ 'shape' => 'DescribeMetricTaskResponseShape', ],
+        ],
+        'UpdateMetricTask' => [
+            'name' => 'UpdateMetricTask',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictasks/{logmetrictaskUID}',
+            ],
+            'input' => [ 'shape' => 'UpdateMetricTaskRequestShape', ],
+            'output' => [ 'shape' => 'UpdateMetricTaskResponseShape', ],
+        ],
+        'DeleteMetricTask' => [
+            'name' => 'DeleteMetricTask',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/metrictasks/{logmetrictaskUID}',
+            ],
+            'input' => [ 'shape' => 'DeleteMetricTaskRequestShape', ],
+            'output' => [ 'shape' => 'DeleteMetricTaskResponseShape', ],
+        ],
+        'Push' => [
+            'name' => 'Push',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/logtopics/{logtopicUID}:push',
+            ],
+            'input' => [ 'shape' => 'PushRequestShape', ],
+            'output' => [ 'shape' => 'PushResponseShape', ],
+        ],
         'Put' => [
             'name' => 'Put',
             'http' => [
@@ -173,14 +263,14 @@ return [
             'input' => [ 'shape' => 'PutRequestShape', ],
             'output' => [ 'shape' => 'PutResponseShape', ],
         ],
-        'SearchLogContext' => [
-            'name' => 'SearchLogContext',
+        'GetLogs' => [
+            'name' => 'GetLogs',
             'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/logcontext',
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/scan',
             ],
-            'input' => [ 'shape' => 'SearchLogContextRequestShape', ],
-            'output' => [ 'shape' => 'SearchLogContextResponseShape', ],
+            'input' => [ 'shape' => 'GetLogsRequestShape', ],
+            'output' => [ 'shape' => 'GetLogsResponseShape', ],
         ],
         'Search' => [
             'name' => 'Search',
@@ -191,8 +281,59 @@ return [
             'input' => [ 'shape' => 'SearchRequestShape', ],
             'output' => [ 'shape' => 'SearchResponseShape', ],
         ],
+        'DescribeSubscribe' => [
+            'name' => 'DescribeSubscribe',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/subscribe',
+            ],
+            'input' => [ 'shape' => 'DescribeSubscribeRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSubscribeResponseShape', ],
+        ],
+        'CreateSubscribe' => [
+            'name' => 'CreateSubscribe',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/subscribe',
+            ],
+            'input' => [ 'shape' => 'CreateSubscribeRequestShape', ],
+            'output' => [ 'shape' => 'CreateSubscribeResponseShape', ],
+        ],
+        'UpdateSubscribe' => [
+            'name' => 'UpdateSubscribe',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/subscribe',
+            ],
+            'input' => [ 'shape' => 'UpdateSubscribeRequestShape', ],
+            'output' => [ 'shape' => 'UpdateSubscribeResponseShape', ],
+        ],
     ],
     'shapes' => [
+        'AgResource' => [
+            'type' => 'structure',
+            'members' => [
+                'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
+                'agName' => [ 'type' => 'string', 'locationName' => 'agName', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+            ],
+        ],
+        'AgResourceEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
+                'agName' => [ 'type' => 'string', 'locationName' => 'agName', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+            ],
+        ],
+        'AnalysisMetaData' => [
+            'type' => 'structure',
+            'members' => [
+                'agg' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'group' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'Pair' => [
             'type' => 'structure',
             'members' => [
@@ -220,23 +361,37 @@ return [
                 'collectTemplateUID' => [ 'type' => 'string', 'locationName' => 'collectTemplateUID', ],
                 'file' => [ 'type' => 'string', 'locationName' => 'file', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
                 'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
                 'path' => [ 'type' => 'string', 'locationName' => 'path', ],
-                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
             ],
         ],
         'CollectInfoDetailEnd' => [
             'type' => 'structure',
             'members' => [
                 'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
+                'agResource' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgResourceEnd', ], ],
                 'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
                 'detail' =>  [ 'shape' => 'CollectTempalteEnd', ],
                 'enabled' => [ 'type' => 'long', 'locationName' => 'enabled', ],
+                'logCustomTarget' => [ 'type' => 'string', 'locationName' => 'logCustomTarget', ],
+                'logCustomTargetConf' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'logtopicEnabled' => [ 'type' => 'boolean', 'locationName' => 'logtopicEnabled', ],
+                'resourceMode' => [ 'type' => 'long', 'locationName' => 'resourceMode', ],
                 'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
                 'resourcesCount' => [ 'type' => 'long', 'locationName' => 'resourcesCount', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'tagResource' =>  [ 'shape' => 'TagResourceEnd', ],
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
                 'templateUID' => [ 'type' => 'string', 'locationName' => 'templateUID', ],
+            ],
+        ],
+        'TagResourceEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'tagKey' => [ 'type' => 'string', 'locationName' => 'tagKey', ],
+                'tagValue' => [ 'type' => 'string', 'locationName' => 'tagValue', ],
             ],
         ],
         'CollectTempalteEnd' => [
@@ -246,6 +401,50 @@ return [
                 'logFile' => [ 'type' => 'string', 'locationName' => 'logFile', ],
                 'logFilters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
+                'regexpStr' => [ 'type' => 'string', 'locationName' => 'regexpStr', ],
+            ],
+        ],
+        'Resource' => [
+            'type' => 'structure',
+            'members' => [
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+            ],
+        ],
+        'CreateCollectInfoSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'agResource' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgResource', ], ],
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'filterEnabled' => [ 'type' => 'boolean', 'locationName' => 'filterEnabled', ],
+                'logCustomTarget' => [ 'type' => 'string', 'locationName' => 'logCustomTarget', ],
+                'logCustomTargetConf' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'logFile' => [ 'type' => 'string', 'locationName' => 'logFile', ],
+                'logFilters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
+                'logtopicEnabled' => [ 'type' => 'boolean', 'locationName' => 'logtopicEnabled', ],
+                'regexpStr' => [ 'type' => 'string', 'locationName' => 'regexpStr', ],
+                'resourceMode' => [ 'type' => 'long', 'locationName' => 'resourceMode', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'tagResource' =>  [ 'shape' => 'TagResource', ],
+                'templateUID' => [ 'type' => 'string', 'locationName' => 'templateUID', ],
+            ],
+        ],
+        'TagResource' => [
+            'type' => 'structure',
+            'members' => [
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'tagKey' => [ 'type' => 'string', 'locationName' => 'tagKey', ],
+                'tagValue' => [ 'type' => 'string', 'locationName' => 'tagValue', ],
+            ],
+        ],
+        'MetricTaskSqlSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'expr' => [ 'type' => 'string', 'locationName' => 'expr', ],
             ],
         ],
         'CreateMetricTaskSpec' => [
@@ -260,7 +459,34 @@ return [
                 'interval' => [ 'type' => 'long', 'locationName' => 'interval', ],
                 'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'settingType' => [ 'type' => 'string', 'locationName' => 'settingType', ],
+                'sqlSpec' =>  [ 'shape' => 'MetricTaskSqlSpec', ],
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
+            ],
+        ],
+        'CreateParserEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'ParserField' => [
+            'type' => 'structure',
+            'members' => [
+                'fieldFormat' => [ 'type' => 'string', 'locationName' => 'fieldFormat', ],
+                'fieldType' => [ 'type' => 'string', 'locationName' => 'fieldType', ],
+                'fieldValue' => [ 'type' => 'string', 'locationName' => 'fieldValue', ],
+                'index' => [ 'type' => 'long', 'locationName' => 'index', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'CreateParserSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'parserFields' => [ 'type' => 'list', 'member' => [ 'shape' => 'ParserField', ], ],
+                'parserMode' => [ 'type' => 'string', 'locationName' => 'parserMode', ],
+                'parserPattern' => [ 'type' => 'string', 'locationName' => 'parserPattern', ],
+                'parserSample' => [ 'type' => 'string', 'locationName' => 'parserSample', ],
             ],
         ],
         'CreateShipperSpec' => [
@@ -273,6 +499,13 @@ return [
                 'targetConf' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
                 'targetType' => [ 'type' => 'long', 'locationName' => 'targetType', ],
                 'timeInterval' => [ 'type' => 'long', 'locationName' => 'timeInterval', ],
+            ],
+        ],
+        'CustomConf' => [
+            'type' => 'structure',
+            'members' => [
+                'conf' => [ 'type' => 'string', 'locationName' => 'conf', ],
+                'destType' => [ 'type' => 'string', 'locationName' => 'destType', ],
             ],
         ],
         'CustomLogSearchOut' => [
@@ -342,6 +575,18 @@ return [
                 'opt' => [ 'type' => 'string', 'locationName' => 'opt', ],
             ],
         ],
+        'CustomSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'filterEnabled' => [ 'type' => 'boolean', 'locationName' => 'filterEnabled', ],
+                'logCustomTarget' => [ 'type' => 'string', 'locationName' => 'logCustomTarget', ],
+                'logCustomTargetConf' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'logFile' => [ 'type' => 'string', 'locationName' => 'logFile', ],
+                'logFilters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
+                'logtopicEnabled' => [ 'type' => 'boolean', 'locationName' => 'logtopicEnabled', ],
+            ],
+        ],
         'DescribeInstanceCollectConfsEnd' => [
             'type' => 'structure',
             'members' => [
@@ -368,6 +613,13 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'DestConf' => [
+            'type' => 'structure',
+            'members' => [
+                'custom' => [ 'type' => 'list', 'member' => [ 'shape' => 'CustomConf', ], ],
+                'jcloud' => [ 'type' => 'boolean', 'locationName' => 'jcloud', ],
             ],
         ],
         'Entry' => [
@@ -419,6 +671,32 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'JdcloudSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'templateUID' => [ 'type' => 'string', 'locationName' => 'templateUID', ],
+            ],
+        ],
+        'LogParserFieldEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'fieldFormat' => [ 'type' => 'string', 'locationName' => 'fieldFormat', ],
+                'fieldName' => [ 'type' => 'string', 'locationName' => 'fieldName', ],
+                'fieldType' => [ 'type' => 'string', 'locationName' => 'fieldType', ],
+                'index' => [ 'type' => 'long', 'locationName' => 'index', ],
+            ],
+        ],
+        'LogParserEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'parserFields' => [ 'type' => 'list', 'member' => [ 'shape' => 'LogParserFieldEnd', ], ],
+                'parserMode' => [ 'type' => 'string', 'locationName' => 'parserMode', ],
+                'parserPattern' => [ 'type' => 'string', 'locationName' => 'parserPattern', ],
+                'parserSample' => [ 'type' => 'string', 'locationName' => 'parserSample', ],
+            ],
+        ],
         'LogsetEnd' => [
             'type' => 'structure',
             'members' => [
@@ -436,6 +714,8 @@ return [
             'members' => [
                 'collectInfo' =>  [ 'shape' => 'CollectInfoDetailEnd', ],
                 'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
@@ -443,6 +723,7 @@ return [
                 'logsetName' => [ 'type' => 'string', 'locationName' => 'logsetName', ],
                 'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'prePattern' => [ 'type' => 'string', 'locationName' => 'prePattern', ],
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
             ],
         ],
@@ -450,7 +731,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'aggregate' => [ 'type' => 'string', 'locationName' => 'aggregate', ],
-                'cretedTime' => [ 'type' => 'string', 'locationName' => 'cretedTime', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'customUnit' => [ 'type' => 'string', 'locationName' => 'customUnit', ],
                 'dataField' => [ 'type' => 'string', 'locationName' => 'dataField', ],
                 'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
@@ -460,15 +741,10 @@ return [
                 'interval' => [ 'type' => 'long', 'locationName' => 'interval', ],
                 'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'settingType' => [ 'type' => 'string', 'locationName' => 'settingType', ],
+                'sqlSpec' =>  [ 'shape' => 'MetricTaskSqlSpec', ],
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-            ],
-        ],
-        'Resource' => [
-            'type' => 'structure',
-            'members' => [
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
             ],
         ],
         'ResourceEnd' => [
@@ -478,6 +754,20 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+            ],
+        ],
+        'SearchFields' => [
+            'type' => 'structure',
+            'members' => [
+                'contentFields' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'tagFields' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFields', ], ],
+            ],
+        ],
+        'TagFields' => [
+            'type' => 'structure',
+            'members' => [
+                'tagk' => [ 'type' => 'string', 'locationName' => 'tagk', ],
+                'tagv' => [ 'type' => 'object', 'locationName' => 'tagv', ],
             ],
         ],
         'SearchLogContextSpec' => [
@@ -632,7 +922,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
+                'disableTable' => [ 'type' => 'long', 'locationName' => 'disableTable', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'specialMode' => [ 'type' => 'long', 'locationName' => 'specialMode', ],
             ],
         ],
         'TestMetricTaskSpec' => [
@@ -644,17 +936,88 @@ return [
                 'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
                 'filterOpen' => [ 'type' => 'string', 'locationName' => 'filterOpen', ],
                 'filterType' => [ 'type' => 'string', 'locationName' => 'filterType', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'settingType' => [ 'type' => 'string', 'locationName' => 'settingType', ],
+                'sqlSpec' =>  [ 'shape' => 'MetricTaskSqlSpec', ],
+            ],
+        ],
+        'TestMultiLinesSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'regexpStr' => [ 'type' => 'string', 'locationName' => 'regexpStr', ],
+            ],
+        ],
+        'UpdateCollectInfoSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'agResource' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgResource', ], ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'filterEnabled' => [ 'type' => 'boolean', 'locationName' => 'filterEnabled', ],
+                'logCustomTarget' => [ 'type' => 'string', 'locationName' => 'logCustomTarget', ],
+                'logCustomTargetConf' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'logFile' => [ 'type' => 'string', 'locationName' => 'logFile', ],
+                'logFilters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
+                'logtopicEnabled' => [ 'type' => 'boolean', 'locationName' => 'logtopicEnabled', ],
+                'regexpStr' => [ 'type' => 'string', 'locationName' => 'regexpStr', ],
+                'resourceMode' => [ 'type' => 'long', 'locationName' => 'resourceMode', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
+                'tagResource' =>  [ 'shape' => 'TagResource', ],
             ],
         ],
         'UpdateMetricTaskSpec' => [
             'type' => 'structure',
             'members' => [
+                'aggregate' => [ 'type' => 'string', 'locationName' => 'aggregate', ],
                 'customUnit' => [ 'type' => 'string', 'locationName' => 'customUnit', ],
+                'dataField' => [ 'type' => 'string', 'locationName' => 'dataField', ],
                 'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
                 'filterOpen' => [ 'type' => 'string', 'locationName' => 'filterOpen', ],
                 'filterType' => [ 'type' => 'string', 'locationName' => 'filterType', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'settingType' => [ 'type' => 'string', 'locationName' => 'settingType', ],
+                'sqlSpec' =>  [ 'shape' => 'MetricTaskSqlSpec', ],
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
+            ],
+        ],
+        'UpdateParserSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'parserFields' => [ 'type' => 'list', 'member' => [ 'shape' => 'ParserField', ], ],
+                'parserMode' => [ 'type' => 'string', 'locationName' => 'parserMode', ],
+                'parserPattern' => [ 'type' => 'string', 'locationName' => 'parserPattern', ],
+                'parserSample' => [ 'type' => 'string', 'locationName' => 'parserSample', ],
+            ],
+        ],
+        'UpdateSubscribeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'long', 'locationName' => 'status', ],
+            ],
+        ],
+        'ValidateParserEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'fields' => [ 'type' => 'list', 'member' => [ 'shape' => 'ValidateParserFieldEnd', ], ],
+            ],
+        ],
+        'ValidateParserFieldEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'fieldValue' => [ 'type' => 'string', 'locationName' => 'fieldValue', ],
+                'index' => [ 'type' => 'long', 'locationName' => 'index', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'ValidateParserSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'parserMode' => [ 'type' => 'string', 'locationName' => 'parserMode', ],
+                'parserPattern' => [ 'type' => 'string', 'locationName' => 'parserPattern', ],
+                'parserSample' => [ 'type' => 'string', 'locationName' => 'parserSample', ],
             ],
         ],
         'CreateCollectInfoResultShape' => [
@@ -666,6 +1029,127 @@ return [
         'UpdateCollectInfoResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateCollectInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'agResource' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgResource', ], ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'filterEnabled' => [ 'type' => 'boolean', 'locationName' => 'filterEnabled', ],
+                'logCustomTarget' => [ 'type' => 'string', 'locationName' => 'logCustomTarget', ],
+                'logCustomTargetConf' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'logFile' => [ 'type' => 'string', 'locationName' => 'logFile', ],
+                'logFilters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
+                'logtopicEnabled' => [ 'type' => 'boolean', 'locationName' => 'logtopicEnabled', ],
+                'regexpStr' => [ 'type' => 'string', 'locationName' => 'regexpStr', ],
+                'resourceMode' => [ 'type' => 'long', 'locationName' => 'resourceMode', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
+                'tagResource' =>  [ 'shape' => 'TagResource', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
+            ],
+        ],
+        'ValidateParserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ValidateParserResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ValidateParserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeParserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'UpdateCollectResourcesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
+            ],
+        ],
+        'UpdateParserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'parserFields' => [ 'type' => 'list', 'member' => [ 'shape' => 'ParserField', ], ],
+                'parserMode' => [ 'type' => 'string', 'locationName' => 'parserMode', ],
+                'parserPattern' => [ 'type' => 'string', 'locationName' => 'parserPattern', ],
+                'parserSample' => [ 'type' => 'string', 'locationName' => 'parserSample', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'UpdateParserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateParserResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateParserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeCollectResourcesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceEnd', ], ],
+                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
+                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'CreateParserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'parserFields' => [ 'type' => 'list', 'member' => [ 'shape' => 'ParserField', ], ],
+                'parserMode' => [ 'type' => 'string', 'locationName' => 'parserMode', ],
+                'parserPattern' => [ 'type' => 'string', 'locationName' => 'parserPattern', ],
+                'parserSample' => [ 'type' => 'string', 'locationName' => 'parserSample', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'CreateParserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateParserResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeParserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeParserResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeParserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ValidateParserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'parserMode' => [ 'type' => 'string', 'locationName' => 'parserMode', ],
+                'parserPattern' => [ 'type' => 'string', 'locationName' => 'parserPattern', ],
+                'parserSample' => [ 'type' => 'string', 'locationName' => 'parserSample', ],
             ],
         ],
         'CreateCollectInfoResponseShape' => [
@@ -673,20 +1157,6 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'CreateCollectInfoResultShape', ],
-            ],
-        ],
-        'UpdateCollectInfoRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
-                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
-                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
-                'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
-                'logFile' => [ 'type' => 'string', 'locationName' => 'logFile', ],
-                'logFilters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'filterEnabled' => [ 'type' => 'boolean', 'locationName' => 'filterEnabled', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
             ],
         ],
         'DescribeCollectInfoResponseShape' => [
@@ -700,14 +1170,20 @@ return [
             'type' => 'structure',
             'members' => [
                 'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
+                'agResource' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgResourceEnd', ], ],
                 'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
                 'detail' =>  [ 'shape' => 'CollectTempalteEnd', ],
                 'enabled' => [ 'type' => 'long', 'locationName' => 'enabled', ],
                 'hasResource' => [ 'type' => 'boolean', 'locationName' => 'hasResource', ],
+                'logCustomTarget' => [ 'type' => 'string', 'locationName' => 'logCustomTarget', ],
+                'logCustomTargetConf' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
                 'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicEnabled' => [ 'type' => 'boolean', 'locationName' => 'logtopicEnabled', ],
                 'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+                'resourceMode' => [ 'type' => 'long', 'locationName' => 'resourceMode', ],
                 'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'tagResource' =>  [ 'shape' => 'TagResourceEnd', ],
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
                 'templateUID' => [ 'type' => 'string', 'locationName' => 'templateUID', ],
             ],
@@ -726,6 +1202,11 @@ return [
                 'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
             ],
         ],
+        'UpdateParserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'UpdateCollectResourcesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -738,40 +1219,28 @@ return [
                 'result' =>  [ 'shape' => 'DescribeCollectResourcesResultShape', ],
             ],
         ],
-        'UpdateCollectResourcesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
-                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
-            ],
-        ],
         'CreateCollectInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'agResource' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgResource', ], ],
                 'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
-                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
-                'templateUID' => [ 'type' => 'string', 'locationName' => 'templateUID', ],
-                'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'filterEnabled' => [ 'type' => 'boolean', 'locationName' => 'filterEnabled', ],
+                'logCustomTarget' => [ 'type' => 'string', 'locationName' => 'logCustomTarget', ],
+                'logCustomTargetConf' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
                 'logFile' => [ 'type' => 'string', 'locationName' => 'logFile', ],
                 'logFilters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'filterEnabled' => [ 'type' => 'boolean', 'locationName' => 'filterEnabled', ],
+                'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
+                'logtopicEnabled' => [ 'type' => 'boolean', 'locationName' => 'logtopicEnabled', ],
+                'regexpStr' => [ 'type' => 'string', 'locationName' => 'regexpStr', ],
+                'resourceMode' => [ 'type' => 'long', 'locationName' => 'resourceMode', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'tagResource' =>  [ 'shape' => 'TagResource', ],
+                'templateUID' => [ 'type' => 'string', 'locationName' => 'templateUID', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
-            ],
-        ],
-        'DescribeCollectResourcesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceEnd', ], ],
-                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
-                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
-                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
             ],
         ],
         'UpdateCollectResourcesResponseShape' => [
@@ -785,48 +1254,6 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
-            ],
-        ],
-        'DescribeLogdCAResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeLogdCAResultShape', ],
-            ],
-        ],
-        'DescribeInstanceCollectConfsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DescribeLogdCARequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DescribeInstanceCollectConfsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'confs' => [ 'type' => 'list', 'member' => [ 'shape' => 'CollectConf', ], ],
-            ],
-        ],
-        'DescribeInstanceCollectConfsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeInstanceCollectConfsResultShape', ],
-            ],
-        ],
-        'DescribeLogdCAResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'cert' => [ 'type' => 'string', 'locationName' => 'cert', ],
-                'expiryDate' => [ 'type' => 'long', 'locationName' => 'expiryDate', ],
-                'privateKey' => [ 'type' => 'string', 'locationName' => 'privateKey', ],
             ],
         ],
         'DescribeLogsetRequestShape' => [
@@ -896,6 +1323,7 @@ return [
         'UpdateLogsetResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeLogsetsRequestShape' => [
@@ -980,6 +1408,7 @@ return [
                 'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
             ],
@@ -999,6 +1428,7 @@ return [
         'UpdateLogtopicResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateLogtopicResultShape' => [
@@ -1017,12 +1447,14 @@ return [
             'members' => [
                 'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
                 'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'logsetName' => [ 'type' => 'string', 'locationName' => 'logsetName', ],
                 'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'prePattern' => [ 'type' => 'string', 'locationName' => 'prePattern', ],
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
             ],
         ],
@@ -1054,6 +1486,196 @@ return [
                 'result' =>  [ 'shape' => 'DescribeLogtopicResultShape', ],
             ],
         ],
+        'TestMetricTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'TestMetricTaskResultShape', ],
+            ],
+        ],
+        'DescribeMetricTasksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeMetricTasksResultShape', ],
+            ],
+        ],
+        'CreateMetricTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'aggregate' => [ 'type' => 'string', 'locationName' => 'aggregate', ],
+                'customUnit' => [ 'type' => 'string', 'locationName' => 'customUnit', ],
+                'dataField' => [ 'type' => 'string', 'locationName' => 'dataField', ],
+                'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
+                'filterOpen' => [ 'type' => 'string', 'locationName' => 'filterOpen', ],
+                'filterType' => [ 'type' => 'string', 'locationName' => 'filterType', ],
+                'interval' => [ 'type' => 'long', 'locationName' => 'interval', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'settingType' => [ 'type' => 'string', 'locationName' => 'settingType', ],
+                'sqlSpec' =>  [ 'shape' => 'MetricTaskSqlSpec', ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'DescribeMetricTasksResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetrictaskDetailEnd', ], ],
+                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
+                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'DescribeMetricTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeMetricTaskResultShape', ],
+            ],
+        ],
+        'DeleteMetricTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'suc' => [ 'type' => 'string', 'locationName' => 'suc', ],
+            ],
+        ],
+        'DescribeMetricTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+                'logmetrictaskUID' => [ 'type' => 'string', 'locationName' => 'logmetrictaskUID', ],
+            ],
+        ],
+        'DescribeMetricTasksRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'UpdateMetricTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'UpdateMetricTaskResultShape', ],
+            ],
+        ],
+        'CreateMetricTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateMetricTaskResultShape', ],
+            ],
+        ],
+        'DeleteMetricTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DeleteMetricTaskResultShape', ],
+            ],
+        ],
+        'DescribeMetricTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'MetrictaskDetailEnd', ],
+            ],
+        ],
+        'DeleteMetricTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+                'logmetrictaskUID' => [ 'type' => 'string', 'locationName' => 'logmetrictaskUID', ],
+            ],
+        ],
+        'UpdateMetricTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'aggregate' => [ 'type' => 'string', 'locationName' => 'aggregate', ],
+                'customUnit' => [ 'type' => 'string', 'locationName' => 'customUnit', ],
+                'dataField' => [ 'type' => 'string', 'locationName' => 'dataField', ],
+                'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
+                'filterOpen' => [ 'type' => 'string', 'locationName' => 'filterOpen', ],
+                'filterType' => [ 'type' => 'string', 'locationName' => 'filterType', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'settingType' => [ 'type' => 'string', 'locationName' => 'settingType', ],
+                'sqlSpec' =>  [ 'shape' => 'MetricTaskSqlSpec', ],
+                'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+                'logmetrictaskUID' => [ 'type' => 'string', 'locationName' => 'logmetrictaskUID', ],
+            ],
+        ],
+        'UpdateMetricTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'suc' => [ 'type' => 'string', 'locationName' => 'suc', ],
+            ],
+        ],
+        'TestMetricTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'aggregate' => [ 'type' => 'string', 'locationName' => 'aggregate', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'dataField' => [ 'type' => 'string', 'locationName' => 'dataField', ],
+                'filterContent' => [ 'type' => 'string', 'locationName' => 'filterContent', ],
+                'filterOpen' => [ 'type' => 'string', 'locationName' => 'filterOpen', ],
+                'filterType' => [ 'type' => 'string', 'locationName' => 'filterType', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'settingType' => [ 'type' => 'string', 'locationName' => 'settingType', ],
+                'sqlSpec' =>  [ 'shape' => 'MetricTaskSqlSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'TestMetricTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'lines' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
+            ],
+        ],
+        'CreateMetricTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'suc' => [ 'type' => 'string', 'locationName' => 'suc', ],
+            ],
+        ],
+        'PushRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'stream' => [ 'type' => 'string', 'locationName' => 'stream', ],
+                'timestamp' => [ 'type' => 'string', 'locationName' => 'timestamp', ],
+                'tags' => [ 'type' => 'object', 'locationName' => 'tags', ],
+                'entries' => [ 'type' => 'list', 'member' => [ 'shape' => 'Entry', ], ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'PushResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'PushResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'PutRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1075,39 +1697,43 @@ return [
             'members' => [
             ],
         ],
-        'SearchLogContextResultShape' => [
+        'GetLogsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskID' => [ 'type' => 'string', 'locationName' => 'taskID', ],
+                'expr' => [ 'type' => 'string', 'locationName' => 'expr', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'sort' => [ 'type' => 'string', 'locationName' => 'sort', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'GetLogsResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'searchFields' =>  [ 'shape' => 'SearchFields', ],
+                'taskID' => [ 'type' => 'string', 'locationName' => 'taskID', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
                 'total' => [ 'type' => 'long', 'locationName' => 'total', ],
             ],
         ],
-        'SearchLogContextResponseShape' => [
+        'GetLogsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'SearchLogContextResultShape', ],
+                'result' =>  [ 'shape' => 'GetLogsResultShape', ],
             ],
         ],
         'SearchResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'searchFields' =>  [ 'shape' => 'SearchFields', ],
                 'total' => [ 'type' => 'long', 'locationName' => 'total', ],
-            ],
-        ],
-        'SearchLogContextRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'anchor' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
-                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'lineSize' => [ 'type' => 'long', 'locationName' => 'lineSize', ],
-                'time' => [ 'type' => 'long', 'locationName' => 'time', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
-                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
             ],
         ],
         'SearchResponseShape' => [
@@ -1132,6 +1758,74 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
                 'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'CreateSubscribeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'DescribeSubscribeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeSubscribeResultShape', ],
+            ],
+        ],
+        'CreateSubscribeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateSubscribeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'long', 'locationName' => 'status', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'UpdateSubscribeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeSubscribeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'DescribeSubscribeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'kafkaBroker' => [ 'type' => 'string', 'locationName' => 'kafkaBroker', ],
+                'kafkaPassword' => [ 'type' => 'string', 'locationName' => 'kafkaPassword', ],
+                'kafkaTopic' => [ 'type' => 'string', 'locationName' => 'kafkaTopic', ],
+                'kafkaUsername' => [ 'type' => 'string', 'locationName' => 'kafkaUsername', ],
+                'logtopicId' => [ 'type' => 'string', 'locationName' => 'logtopicId', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'status' => [ 'type' => 'long', 'locationName' => 'status', ],
+                'updatedTime' => [ 'type' => 'string', 'locationName' => 'updatedTime', ],
+            ],
+        ],
+        'CreateSubscribeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateSubscribeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
     ],
