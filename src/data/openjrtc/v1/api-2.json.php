@@ -128,6 +128,24 @@ return [
             'input' => [ 'shape' => 'DescribeUserByPeerRequestShape', ],
             'output' => [ 'shape' => 'DescribeUserByPeerResponseShape', ],
         ],
+        'StartMcuTranscode' => [
+            'name' => 'StartMcuTranscode',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/startMcuTranscode',
+            ],
+            'input' => [ 'shape' => 'StartMcuTranscodeRequestShape', ],
+            'output' => [ 'shape' => 'StartMcuTranscodeResponseShape', ],
+        ],
+        'StopMcuTranscode' => [
+            'name' => 'StopMcuTranscode',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/stopMcuTask',
+            ],
+            'input' => [ 'shape' => 'StopMcuTranscodeRequestShape', ],
+            'output' => [ 'shape' => 'StopMcuTranscodeResponseShape', ],
+        ],
         'SendMessageToUser' => [
             'name' => 'SendMessageToUser',
             'http' => [
@@ -145,6 +163,24 @@ return [
             ],
             'input' => [ 'shape' => 'SendMessageToRoomRequestShape', ],
             'output' => [ 'shape' => 'SendMessageToRoomResponseShape', ],
+        ],
+        'AddPushStreamRule' => [
+            'name' => 'AddPushStreamRule',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/addPushStreamRule',
+            ],
+            'input' => [ 'shape' => 'AddPushStreamRuleRequestShape', ],
+            'output' => [ 'shape' => 'AddPushStreamRuleResponseShape', ],
+        ],
+        'AddRecordRule' => [
+            'name' => 'AddRecordRule',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/addRecordRule',
+            ],
+            'input' => [ 'shape' => 'AddRecordRuleRequestShape', ],
+            'output' => [ 'shape' => 'AddRecordRuleResponseShape', ],
         ],
         'RegisterUser' => [
             'name' => 'RegisterUser',
@@ -208,6 +244,15 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeRoomUsersNumRequestShape', ],
             'output' => [ 'shape' => 'DescribeRoomUsersNumResponseShape', ],
+        ],
+        'CloseRoomUserStream' => [
+            'name' => 'CloseRoomUserStream',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/closeRoomUserStream/{appId}',
+            ],
+            'input' => [ 'shape' => 'CloseRoomUserStreamRequestShape', ],
+            'output' => [ 'shape' => 'CloseRoomUserStreamResponseShape', ],
         ],
         'CreateToken' => [
             'name' => 'CreateToken',
@@ -383,6 +428,40 @@ return [
                 'peerIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
+        'UserOnlineNumInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'roomId' => [ 'type' => 'long', 'locationName' => 'roomId', ],
+                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'UserNumInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+                'duration' => [ 'type' => 'long', 'locationName' => 'duration', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'BaseDataOverview' => [
+            'type' => 'structure',
+            'members' => [
+                'activeUserNumber' => [ 'type' => 'long', 'locationName' => 'activeUserNumber', ],
+                'duration' => [ 'type' => 'long', 'locationName' => 'duration', ],
+            ],
+        ],
+        'PushStreamUserId' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+            ],
+        ],
         'RoomUserNumInfos' => [
             'type' => 'structure',
             'members' => [
@@ -390,16 +469,58 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
                 'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
-                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserNumInfoObj', ], ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserNumInfo', ], ],
             ],
         ],
-        'UserNumInfoObj' => [
+        'CallDurationByCodeRate' => [
             'type' => 'structure',
             'members' => [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-                'roomId' => [ 'type' => 'long', 'locationName' => 'roomId', ],
-                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'date' => [ 'type' => 'long', 'locationName' => 'date', ],
+                'audio' => [ 'type' => 'long', 'locationName' => 'audio', ],
+                'lte_480' => [ 'type' => 'long', 'locationName' => 'lte_480', ],
+                'gt_480_lte_720' => [ 'type' => 'long', 'locationName' => 'gt_480_lte_720', ],
+                'gte_720' => [ 'type' => 'long', 'locationName' => 'gte_720', ],
+            ],
+        ],
+        'StreamBitRate' => [
+            'type' => 'structure',
+            'members' => [
+                'date' => [ 'type' => 'long', 'locationName' => 'date', ],
+                'bitrate' => [ 'type' => 'long', 'locationName' => 'bitrate', ],
+            ],
+        ],
+        'RoomUserRecordInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'RoomUserRecord', ], ],
+            ],
+        ],
+        'CallDuration' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'date' => [ 'type' => 'long', 'locationName' => 'date', ],
+                'duration' => [ 'type' => 'long', 'locationName' => 'duration', ],
+            ],
+        ],
+        'RoomUserRecord' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'deviceName' => [ 'type' => 'string', 'locationName' => 'deviceName', ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
+                'deviceMode' => [ 'type' => 'string', 'locationName' => 'deviceMode', ],
+                'osVersion' => [ 'type' => 'string', 'locationName' => 'osVersion', ],
+                'duration' => [ 'type' => 'long', 'locationName' => 'duration', ],
+                'joinTime' => [ 'type' => 'string', 'locationName' => 'joinTime', ],
+                'leaveTime' => [ 'type' => 'string', 'locationName' => 'leaveTime', ],
             ],
         ],
         'GenerateTokenAuthInfo' => [
@@ -464,6 +585,53 @@ return [
                 'temporary' => [ 'type' => 'boolean', 'locationName' => 'temporary', ],
             ],
         ],
+        'LiveDomainObj' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
+            ],
+        ],
+        'StopMcuTranscode' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+            ],
+        ],
+        'StartMcuTranscode' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'layoutTemplate' => [ 'type' => 'integer', 'locationName' => 'layoutTemplate', ],
+                'mainUserId' => [ 'type' => 'string', 'locationName' => 'mainUserId', ],
+                'outputType' => [ 'type' => 'integer', 'locationName' => 'outputType', ],
+                'outputName' => [ 'type' => 'string', 'locationName' => 'outputName', ],
+                'mcuUserInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'McuUser', ], ],
+                'outputEncode' =>  [ 'shape' => 'OutputEncode', ],
+            ],
+        ],
+        'McuUser' => [
+            'type' => 'structure',
+            'members' => [
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+            ],
+        ],
+        'OutputEncode' => [
+            'type' => 'structure',
+            'members' => [
+                'outputKind' => [ 'type' => 'integer', 'locationName' => 'outputKind', ],
+                'audioSampleRate' => [ 'type' => 'integer', 'locationName' => 'audioSampleRate', ],
+                'audioBitrate' => [ 'type' => 'integer', 'locationName' => 'audioBitrate', ],
+                'audioChannels' => [ 'type' => 'integer', 'locationName' => 'audioChannels', ],
+                'videoBitrate' => [ 'type' => 'integer', 'locationName' => 'videoBitrate', ],
+                'videoFrame' => [ 'type' => 'integer', 'locationName' => 'videoFrame', ],
+                'videoWidth' => [ 'type' => 'integer', 'locationName' => 'videoWidth', ],
+                'videoHeight' => [ 'type' => 'integer', 'locationName' => 'videoHeight', ],
+                'videoGop' => [ 'type' => 'integer', 'locationName' => 'videoGop', ],
+            ],
+        ],
         'MessageToRoom' => [
             'type' => 'structure',
             'members' => [
@@ -491,6 +659,102 @@ return [
                 'configId' => [ 'type' => 'long', 'locationName' => 'configId', ],
                 'notifyType' => [ 'type' => 'integer', 'locationName' => 'notifyType', ],
                 'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+            ],
+        ],
+        'UpdatePushStreamConfigReqObj' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'pushType' => [ 'type' => 'integer', 'locationName' => 'pushType', ],
+                'pushDomain' => [ 'type' => 'string', 'locationName' => 'pushDomain', ],
+            ],
+        ],
+        'PushStreamConfigInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'pushStatus' => [ 'type' => 'integer', 'locationName' => 'pushStatus', ],
+                'pushType' => [ 'type' => 'integer', 'locationName' => 'pushType', ],
+                'pushDomain' => [ 'type' => 'string', 'locationName' => 'pushDomain', ],
+            ],
+        ],
+        'AddPushStreamConfigReqObj' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'pushType' => [ 'type' => 'integer', 'locationName' => 'pushType', ],
+                'pushDomain' => [ 'type' => 'string', 'locationName' => 'pushDomain', ],
+            ],
+        ],
+        'PushStreamRule' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'mcuUsers' => [ 'type' => 'string', 'locationName' => 'mcuUsers', ],
+            ],
+        ],
+        'AddPushStreamRuleObj' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'PushStreamRule', ], ],
+            ],
+        ],
+        'RecordBucketObj' => [
+            'type' => 'structure',
+            'members' => [
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
+            ],
+        ],
+        'RecordConfigInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'recordStatus' => [ 'type' => 'integer', 'locationName' => 'recordStatus', ],
+                'recordType' => [ 'type' => 'integer', 'locationName' => 'recordType', ],
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
+                'fileType' => [ 'type' => 'string', 'locationName' => 'fileType', ],
+                'callbackUrl' => [ 'type' => 'string', 'locationName' => 'callbackUrl', ],
+                'callbackToken' => [ 'type' => 'string', 'locationName' => 'callbackToken', ],
+            ],
+        ],
+        'AddRecordConfigReqObj' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'recordType' => [ 'type' => 'integer', 'locationName' => 'recordType', ],
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
+                'fileType' => [ 'type' => 'string', 'locationName' => 'fileType', ],
+                'callbackUrl' => [ 'type' => 'string', 'locationName' => 'callbackUrl', ],
+                'callbackToken' => [ 'type' => 'string', 'locationName' => 'callbackToken', ],
+            ],
+        ],
+        'UpdateRecordConfigReqObj' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'recordType' => [ 'type' => 'integer', 'locationName' => 'recordType', ],
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
+                'fileType' => [ 'type' => 'string', 'locationName' => 'fileType', ],
+                'callbackUrl' => [ 'type' => 'string', 'locationName' => 'callbackUrl', ],
+                'callbackToken' => [ 'type' => 'string', 'locationName' => 'callbackToken', ],
+            ],
+        ],
+        'RecordRule' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'mcuUsers' => [ 'type' => 'string', 'locationName' => 'mcuUsers', ],
+                'filePrefix' => [ 'type' => 'string', 'locationName' => 'filePrefix', ],
+            ],
+        ],
+        'AddRecordRuleObj' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'RecordRule', ], ],
             ],
         ],
         'RoomUserInfoObj' => [
@@ -524,6 +788,14 @@ return [
                 'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
                 'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
                 'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'RoomUserInfoObj', ], ],
+            ],
+        ],
+        'CloseRoomUserStreamObj' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'streamId' => [ 'type' => 'string', 'locationName' => 'streamId', ],
             ],
         ],
         'RemoveRoomUsersObj' => [
@@ -892,22 +1164,15 @@ return [
                 'roomId' => [ 'type' => 'long', 'locationName' => 'roomId', ],
             ],
         ],
+        'RemoveAllRoomUsersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'RemoveRoomUserResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeRoomOnlineUserNumResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeRoomOnlineUserNumResultShape', ],
-            ],
-        ],
-        'RemoveAllRoomUsersResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'RemoveAllRoomUsersResponseShape' => [
@@ -919,6 +1184,13 @@ return [
         'RemoveRoomUserResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeRoomOnlineUserNumResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeRoomOnlineUserNumResultShape', ],
             ],
         ],
         'DescribeUserByPeerResultShape' => [
@@ -968,6 +1240,48 @@ return [
                 'result' =>  [ 'shape' => 'DescribeUserByPeerResultShape', ],
             ],
         ],
+        'StartMcuTranscodeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'layoutTemplate' => [ 'type' => 'integer', 'locationName' => 'layoutTemplate', ],
+                'mainUserId' => [ 'type' => 'string', 'locationName' => 'mainUserId', ],
+                'outputType' => [ 'type' => 'integer', 'locationName' => 'outputType', ],
+                'outputName' => [ 'type' => 'string', 'locationName' => 'outputName', ],
+                'mcuUserInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'McuUser', ], ],
+                'outputEncode' =>  [ 'shape' => 'OutputEncode', ],
+            ],
+        ],
+        'StopMcuTranscodeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+            ],
+        ],
+        'StopMcuTranscodeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StartMcuTranscodeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StartMcuTranscodeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'StopMcuTranscodeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'SendMessageToUserResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1007,6 +1321,42 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'roomId' => [ 'type' => 'long', 'locationName' => 'roomId', ],
+            ],
+        ],
+        'AddPushStreamRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'PushStreamRule', ], ],
+            ],
+        ],
+        'AddPushStreamRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddPushStreamRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AddRecordRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'RecordRule', ], ],
+            ],
+        ],
+        'AddRecordRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddRecordRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DescribeRegisterUserResultShape' => [
@@ -1089,6 +1439,12 @@ return [
             'members' => [
             ],
         ],
+        'CloseRoomUserStreamResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeRoomUsersResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1134,11 +1490,25 @@ return [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
             ],
         ],
+        'CloseRoomUserStreamRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'streamId' => [ 'type' => 'string', 'locationName' => 'streamId', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
         'RemoveAllUsersByUserRoomIdRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'CloseRoomUserStreamResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'RemoveUserByUserRoomIdRequestShape' => [
