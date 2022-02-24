@@ -74,6 +74,24 @@ return [
             'input' => [ 'shape' => 'GetQpsDataRequestShape', ],
             'output' => [ 'shape' => 'GetQpsDataResponseShape', ],
         ],
+        'GetStatusCodeInfo' => [
+            'name' => 'GetStatusCodeInfo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/chart:getStatusCodeInfo',
+            ],
+            'input' => [ 'shape' => 'GetStatusCodeInfoRequestShape', ],
+            'output' => [ 'shape' => 'GetStatusCodeInfoResponseShape', ],
+        ],
+        'GetMainAntiInfoNew' => [
+            'name' => 'GetMainAntiInfoNew',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/chart:getMainAntiInfoNew',
+            ],
+            'input' => [ 'shape' => 'GetMainAntiInfoNewRequestShape', ],
+            'output' => [ 'shape' => 'GetMainAntiInfoNewResponseShape', ],
+        ],
         'GetEsLogDetail' => [
             'name' => 'GetEsLogDetail',
             'http' => [
@@ -2633,6 +2651,13 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
+        'GetStatusCodeInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetStatusCodeInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'GetEsLogDetailRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2675,10 +2700,43 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'GetMainAntiInfoNewResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ip' => [ 'type' => 'integer', 'locationName' => 'ip', ],
+                'ipPre' => [ 'type' => 'integer', 'locationName' => 'ipPre', ],
+                'pv' => [ 'type' => 'integer', 'locationName' => 'pv', ],
+                'pvPre' => [ 'type' => 'integer', 'locationName' => 'pvPre', ],
+                'maxBps' => [ 'type' => 'integer', 'locationName' => 'maxBps', ],
+                'maxBpsPre' => [ 'type' => 'integer', 'locationName' => 'maxBpsPre', ],
+                'wafAnti' => [ 'type' => 'integer', 'locationName' => 'wafAnti', ],
+                'wafAntiPre' => [ 'type' => 'integer', 'locationName' => 'wafAntiPre', ],
+                'domainCount' => [ 'type' => 'integer', 'locationName' => 'domainCount', ],
+                'aclAnti' => [ 'type' => 'integer', 'locationName' => 'aclAnti', ],
+                'aclAntiPre' => [ 'type' => 'integer', 'locationName' => 'aclAntiPre', ],
+                'ccAnti' => [ 'type' => 'integer', 'locationName' => 'ccAnti', ],
+                'ccAntiPre' => [ 'type' => 'integer', 'locationName' => 'ccAntiPre', ],
+                'botAnti' => [ 'type' => 'integer', 'locationName' => 'botAnti', ],
+                'botAntiPre' => [ 'type' => 'integer', 'locationName' => 'botAntiPre', ],
+            ],
+        ],
         'GetAntiEventRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'req' =>  [ 'shape' => 'GetAntiEventReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetStatusCodeInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'statusCodeData' =>  [ 'shape' => 'StatusCodeData', ],
+            ],
+        ],
+        'GetMainAntiInfoNewRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'GetChartReq', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -2689,6 +2747,20 @@ return [
                 'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
                 'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
                 'events' => [ 'type' => 'list', 'member' => [ 'shape' => 'EsLogEvent', ], ],
+            ],
+        ],
+        'GetStatusCodeInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'GetStatusCodeReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetMainAntiInfoNewResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetMainAntiInfoNewResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetBpsDataResultShape' => [

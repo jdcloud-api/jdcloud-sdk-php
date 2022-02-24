@@ -218,6 +218,24 @@ return [
             'input' => [ 'shape' => 'DisassociateSecurityGroupRequestShape', ],
             'output' => [ 'shape' => 'DisassociateSecurityGroupResponseShape', ],
         ],
+        'ExportLoadBalancers' => [
+            'name' => 'ExportLoadBalancers',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/loadBalancers:export',
+            ],
+            'input' => [ 'shape' => 'ExportLoadBalancersRequestShape', ],
+            'output' => [ 'shape' => 'ExportLoadBalancersResponseShape', ],
+        ],
+        'DescribeLoadBalancersExportTasks' => [
+            'name' => 'DescribeLoadBalancersExportTasks',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/loadBalancers:exporttask',
+            ],
+            'input' => [ 'shape' => 'DescribeLoadBalancersExportTasksRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLoadBalancersExportTasksResponseShape', ],
+        ],
         'DescribeTargetGroups' => [
             'name' => 'DescribeTargetGroups',
             'http' => [
@@ -447,6 +465,7 @@ return [
                 'httpForwardedPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedPort', ],
                 'httpForwardedHost' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedHost', ],
                 'httpForwardedVip' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedVip', ],
+                'httpForwardedClientPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedClientPort', ],
                 'healthCheck' => [ 'type' => 'object', 'locationName' => 'healthCheck', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
             ],
@@ -493,6 +512,7 @@ return [
                 'httpForwardedPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedPort', ],
                 'httpForwardedHost' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedHost', ],
                 'httpForwardedVip' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedVip', ],
+                'httpForwardedClientPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedClientPort', ],
             ],
         ],
         'CreateListenerSpec' => [
@@ -500,6 +520,8 @@ return [
             'members' => [
                 'listenerName' => [ 'type' => 'string', 'locationName' => 'listenerName', ],
                 'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'hstsEnable' => [ 'type' => 'boolean', 'locationName' => 'hstsEnable', ],
+                'hstsMaxAge' => [ 'type' => 'integer', 'locationName' => 'hstsMaxAge', ],
                 'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
                 'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
@@ -526,8 +548,10 @@ return [
                 'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
                 'elasticIp' =>  [ 'shape' => 'ElasticIpSpec', ],
+                'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
                 'securityGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'domainEnable' => [ 'type' => 'boolean', 'locationName' => 'domainEnable', ],
                 'deleteProtection' => [ 'type' => 'boolean', 'locationName' => 'deleteProtection', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
@@ -569,6 +593,18 @@ return [
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
             ],
         ],
+        'ExportTask' => [
+            'type' => 'structure',
+            'members' => [
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'loadBalancerType' => [ 'type' => 'string', 'locationName' => 'loadBalancerType', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'downloadUrl' => [ 'type' => 'string', 'locationName' => 'downloadUrl', ],
+            ],
+        ],
         'ExtensionCertificateSpec' => [
             'type' => 'structure',
             'members' => [
@@ -600,6 +636,8 @@ return [
                 'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
                 'loadBalancerType' => [ 'type' => 'string', 'locationName' => 'loadBalancerType', ],
                 'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'hstsEnable' => [ 'type' => 'boolean', 'locationName' => 'hstsEnable', ],
+                'hstsMaxAge' => [ 'type' => 'integer', 'locationName' => 'hstsMaxAge', ],
                 'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
@@ -641,8 +679,12 @@ return [
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'domainEnable' => [ 'type' => 'boolean', 'locationName' => 'domainEnable', ],
+                'internalDomain' => [ 'type' => 'string', 'locationName' => 'internalDomain', ],
+                'internetDomain' => [ 'type' => 'string', 'locationName' => 'internetDomain', ],
                 'deleteProtection' => [ 'type' => 'boolean', 'locationName' => 'deleteProtection', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'azType' => [ 'type' => 'string', 'locationName' => 'azType', ],
             ],
         ],
         'ModifyQuotaSpec' => [
@@ -779,6 +821,7 @@ return [
                 'httpForwardedPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedPort', ],
                 'httpForwardedHost' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedHost', ],
                 'httpForwardedVip' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedVip', ],
+                'httpForwardedClientPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedClientPort', ],
                 'closeHealthCheck' => [ 'type' => 'boolean', 'locationName' => 'closeHealthCheck', ],
             ],
         ],
@@ -801,6 +844,8 @@ return [
             'members' => [
                 'listenerName' => [ 'type' => 'string', 'locationName' => 'listenerName', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'hstsEnable' => [ 'type' => 'boolean', 'locationName' => 'hstsEnable', ],
+                'hstsMaxAge' => [ 'type' => 'integer', 'locationName' => 'hstsMaxAge', ],
                 'certificateSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'CertificateSpec', ], ],
                 'connectionIdleTimeSeconds' => [ 'type' => 'integer', 'locationName' => 'connectionIdleTimeSeconds', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
@@ -814,7 +859,9 @@ return [
                 'loadBalancerName' => [ 'type' => 'string', 'locationName' => 'loadBalancerName', ],
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'domainEnable' => [ 'type' => 'boolean', 'locationName' => 'domainEnable', ],
                 'deleteProtection' => [ 'type' => 'boolean', 'locationName' => 'deleteProtection', ],
+                'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
             ],
         ],
         'UpdateRulesSpec' => [
@@ -894,6 +941,7 @@ return [
                 'httpForwardedPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedPort', ],
                 'httpForwardedHost' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedHost', ],
                 'httpForwardedVip' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedVip', ],
+                'httpForwardedClientPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedClientPort', ],
                 'closeHealthCheck' => [ 'type' => 'boolean', 'locationName' => 'closeHealthCheck', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
@@ -938,6 +986,7 @@ return [
                 'httpForwardedPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedPort', ],
                 'httpForwardedHost' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedHost', ],
                 'httpForwardedVip' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedVip', ],
+                'httpForwardedClientPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedClientPort', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1087,6 +1136,8 @@ return [
             'members' => [
                 'listenerName' => [ 'type' => 'string', 'locationName' => 'listenerName', ],
                 'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'hstsEnable' => [ 'type' => 'boolean', 'locationName' => 'hstsEnable', ],
+                'hstsMaxAge' => [ 'type' => 'integer', 'locationName' => 'hstsMaxAge', ],
                 'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
                 'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
@@ -1156,6 +1207,8 @@ return [
             'members' => [
                 'listenerName' => [ 'type' => 'string', 'locationName' => 'listenerName', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'hstsEnable' => [ 'type' => 'boolean', 'locationName' => 'hstsEnable', ],
+                'hstsMaxAge' => [ 'type' => 'integer', 'locationName' => 'hstsMaxAge', ],
                 'certificateSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'CertificateSpec', ], ],
                 'connectionIdleTimeSeconds' => [ 'type' => 'integer', 'locationName' => 'connectionIdleTimeSeconds', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
@@ -1189,8 +1242,10 @@ return [
                 'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
                 'elasticIp' =>  [ 'shape' => 'ElasticIpSpec', ],
+                'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
                 'securityGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'domainEnable' => [ 'type' => 'boolean', 'locationName' => 'domainEnable', ],
                 'deleteProtection' => [ 'type' => 'boolean', 'locationName' => 'deleteProtection', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -1238,9 +1293,28 @@ return [
                 'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
             ],
         ],
+        'ExportLoadBalancersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ExportLoadBalancersResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'AssociateElasticIpResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ExportLoadBalancersRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'fileType' => [ 'type' => 'string', 'locationName' => 'fileType', ],
+                'startPage' => [ 'type' => 'integer', 'locationName' => 'startPage', ],
+                'endPage' => [ 'type' => 'integer', 'locationName' => 'endPage', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DisassociateSecurityGroupResponseShape' => [
@@ -1266,6 +1340,12 @@ return [
                 'loadBalancer' =>  [ 'shape' => 'LoadBalancer', ],
             ],
         ],
+        'ExportLoadBalancersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
         'DescribeLoadBalancersRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1289,12 +1369,25 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeLoadBalancersExportTasksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLoadBalancersExportTasksResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'AssociateSecurityGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'securityGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
+            ],
+        ],
+        'DescribeLoadBalancersExportTasksResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'exportTasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'ExportTask', ], ],
             ],
         ],
         'DeleteLoadBalancerRequestShape' => [
@@ -1320,6 +1413,12 @@ return [
             'members' => [
             ],
         ],
+        'DescribeLoadBalancersExportTasksRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'DisassociateElasticIpResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1343,7 +1442,9 @@ return [
                 'loadBalancerName' => [ 'type' => 'string', 'locationName' => 'loadBalancerName', ],
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'domainEnable' => [ 'type' => 'boolean', 'locationName' => 'domainEnable', ],
                 'deleteProtection' => [ 'type' => 'boolean', 'locationName' => 'deleteProtection', ],
+                'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
             ],
