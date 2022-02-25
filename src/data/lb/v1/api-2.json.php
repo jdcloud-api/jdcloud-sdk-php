@@ -218,24 +218,6 @@ return [
             'input' => [ 'shape' => 'DisassociateSecurityGroupRequestShape', ],
             'output' => [ 'shape' => 'DisassociateSecurityGroupResponseShape', ],
         ],
-        'ExportLoadBalancers' => [
-            'name' => 'ExportLoadBalancers',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/loadBalancers:export',
-            ],
-            'input' => [ 'shape' => 'ExportLoadBalancersRequestShape', ],
-            'output' => [ 'shape' => 'ExportLoadBalancersResponseShape', ],
-        ],
-        'DescribeLoadBalancersExportTasks' => [
-            'name' => 'DescribeLoadBalancersExportTasks',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/loadBalancers:exporttask',
-            ],
-            'input' => [ 'shape' => 'DescribeLoadBalancersExportTasksRequestShape', ],
-            'output' => [ 'shape' => 'DescribeLoadBalancersExportTasksResponseShape', ],
-        ],
         'DescribeTargetGroups' => [
             'name' => 'DescribeTargetGroups',
             'http' => [
@@ -1293,28 +1275,9 @@ return [
                 'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
             ],
         ],
-        'ExportLoadBalancersResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ExportLoadBalancersResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'AssociateElasticIpResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'ExportLoadBalancersRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'fileType' => [ 'type' => 'string', 'locationName' => 'fileType', ],
-                'startPage' => [ 'type' => 'integer', 'locationName' => 'startPage', ],
-                'endPage' => [ 'type' => 'integer', 'locationName' => 'endPage', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DisassociateSecurityGroupResponseShape' => [
@@ -1340,12 +1303,6 @@ return [
                 'loadBalancer' =>  [ 'shape' => 'LoadBalancer', ],
             ],
         ],
-        'ExportLoadBalancersResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
-            ],
-        ],
         'DescribeLoadBalancersRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1369,25 +1326,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeLoadBalancersExportTasksResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeLoadBalancersExportTasksResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'AssociateSecurityGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'securityGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
-            ],
-        ],
-        'DescribeLoadBalancersExportTasksResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'exportTasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'ExportTask', ], ],
             ],
         ],
         'DeleteLoadBalancerRequestShape' => [
@@ -1411,12 +1355,6 @@ return [
         'DisassociateElasticIpResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'DescribeLoadBalancersExportTasksRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DisassociateElasticIpResponseShape' => [
