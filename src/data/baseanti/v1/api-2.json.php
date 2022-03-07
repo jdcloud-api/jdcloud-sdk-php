@@ -447,6 +447,15 @@ return [
                 'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
+        'Err' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'long', 'locationName' => 'code', ],
+                'details' => [ 'type' => 'object', 'locationName' => 'details', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
         'DescribeWafIpResourcesRequestShape' => [
             'type' => 'structure',
             'members' => [

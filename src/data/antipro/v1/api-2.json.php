@@ -873,6 +873,15 @@ return [
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
             ],
         ],
+        'Err' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'long', 'locationName' => 'code', ],
+                'details' => [ 'type' => 'object', 'locationName' => 'details', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
         'DescribeAttackSourceRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1393,6 +1402,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'BatchResultDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'successCount' => [ 'type' => 'integer', 'locationName' => 'successCount', ],
+                'failed' => [ 'type' => 'list', 'member' => [ 'shape' => 'ErrorItem', ], ],
+            ],
+        ],
         'EnableInstanceAclResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1405,7 +1421,6 @@ return [
             'members' => [
                 'createInstanceSpec' =>  [ 'shape' => 'CreateInstanceSpec', ],
                 'autoRenewalSpec' =>  [ 'shape' => 'AutoRenewalSpec', ],
-                'extraOperationSpec' =>  [ 'shape' => 'ExtraOperationSpec', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1516,6 +1531,16 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ErrorItem' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'code' => [ 'type' => 'long', 'locationName' => 'code', ],
+                'details' => [ 'type' => 'object', 'locationName' => 'details', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
         'ModifyInstanceResponseShape' => [
@@ -1675,6 +1700,14 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeCpsIpResourcesRequestShape' => [

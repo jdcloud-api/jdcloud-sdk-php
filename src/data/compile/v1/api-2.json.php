@@ -367,6 +367,14 @@ return [
                 'result' =>  [ 'shape' => 'GetJobsResultShape', ],
             ],
         ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'UpdateJobResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -416,6 +424,13 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'GetBuildLogResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'Sort' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
             ],
         ],
         'GetJobRequestShape' => [
