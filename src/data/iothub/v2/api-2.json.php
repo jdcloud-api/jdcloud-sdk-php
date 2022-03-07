@@ -656,6 +656,14 @@ return [
                 'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
             ],
         ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'QueryDeviceDetailResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -878,7 +886,6 @@ return [
                 'productName' => [ 'type' => 'string', 'locationName' => 'productName', ],
                 'productType' => [ 'type' => 'integer', 'locationName' => 'productType', ],
                 'productDescription' => [ 'type' => 'string', 'locationName' => 'productDescription', ],
-                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],

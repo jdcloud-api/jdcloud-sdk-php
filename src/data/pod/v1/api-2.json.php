@@ -547,6 +547,16 @@ return [
                 'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
             ],
         ],
+        'ChargeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
+                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
+                'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
+                'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
+            ],
+        ],
         'ElasticIpSpec' => [
             'type' => 'structure',
             'members' => [
@@ -689,6 +699,30 @@ return [
                 'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
                 'deviceIndex' => [ 'type' => 'integer', 'locationName' => 'deviceIndex', ],
                 'networkInterface' =>  [ 'shape' => 'NetworkInterfaceSpec', ],
+            ],
+        ],
+        'NetworkInterfaceSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'networkInterfaceName' => [ 'type' => 'string', 'locationName' => 'networkInterfaceName', ],
+                'primaryIpAddress' => [ 'type' => 'string', 'locationName' => 'primaryIpAddress', ],
+                'secondaryIpAddresses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'secondaryIpCount' => [ 'type' => 'integer', 'locationName' => 'secondaryIpCount', ],
+                'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'Charge' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeStatus' => [ 'type' => 'string', 'locationName' => 'chargeStatus', ],
+                'chargeStartTime' => [ 'type' => 'string', 'locationName' => 'chargeStartTime', ],
+                'chargeExpiredTime' => [ 'type' => 'string', 'locationName' => 'chargeExpiredTime', ],
+                'chargeRetireTime' => [ 'type' => 'string', 'locationName' => 'chargeRetireTime', ],
             ],
         ],
         'Tag' => [
@@ -959,6 +993,14 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'DescribeInstanceTypesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -981,12 +1023,6 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'AssociateElasticIpResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribePodRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1000,26 +1036,6 @@ return [
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
-            ],
-        ],
-        'DescribePodResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pod' =>  [ 'shape' => 'Pod', ],
-            ],
-        ],
-        'DisassociateElasticIpResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CheckPodNameRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'podName' => [ 'type' => 'string', 'locationName' => 'podName', ],
-                'maxCount' => [ 'type' => 'integer', 'locationName' => 'maxCount', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'CheckPodNameResponseShape' => [
@@ -1048,14 +1064,6 @@ return [
             'members' => [
                 'pods' => [ 'type' => 'list', 'member' => [ 'shape' => 'Pod', ], ],
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'ModifyPodAttributeRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
             ],
         ],
         'GetContainerLogsRequestShape' => [
@@ -1089,6 +1097,108 @@ return [
                 'logs' =>  [ 'shape' => 'Logs', ],
             ],
         ],
+        'ResizePodRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'containerResources' => [ 'type' => 'list', 'member' => [ 'shape' => 'ContainerResourceSpec', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
+            ],
+        ],
+        'CheckPodNameResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+            ],
+        ],
+        'StopPodResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DisassociateElasticIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'StopPodResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeletePodRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
+            ],
+        ],
+        'AssociateElasticIpRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
+            ],
+        ],
+        'DeletePodResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyPodAttributeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ResizePodResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyPodAttributeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AssociateElasticIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribePodResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pod' =>  [ 'shape' => 'Pod', ],
+            ],
+        ],
+        'DisassociateElasticIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CheckPodNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'podName' => [ 'type' => 'string', 'locationName' => 'podName', ],
+                'maxCount' => [ 'type' => 'integer', 'locationName' => 'maxCount', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ModifyPodAttributeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
+            ],
+        ],
         'DescribePodResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1102,36 +1212,15 @@ return [
                 'podIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
-        'ResizePodRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
-                'containerResources' => [ 'type' => 'list', 'member' => [ 'shape' => 'ContainerResourceSpec', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
-            ],
-        ],
         'AssociateElasticIpResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'CheckPodNameResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
             ],
         ],
         'StartPodResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'StopPodResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'CreatePodsRequestShape' => [
@@ -1166,53 +1255,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DisassociateElasticIpResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'StopPodResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeletePodRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
-            ],
-        ],
-        'AssociateElasticIpRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
-            ],
-        ],
-        'DeletePodResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'CreatePodsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'CreatePodsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModifyPodAttributeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ResizePodResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'ResizePodResponseShape' => [
@@ -1238,11 +1285,6 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
-            ],
-        ],
-        'ModifyPodAttributeResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'DescribeQuotaResultShape' => [

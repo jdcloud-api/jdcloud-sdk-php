@@ -2214,6 +2214,15 @@ return [
                 'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
+        'Err' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'long', 'locationName' => 'code', ],
+                'details' => [ 'type' => 'object', 'locationName' => 'details', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
         'DescribeCCAttackLogDetailsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2791,6 +2800,13 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'forwardRuleId' => [ 'type' => 'string', 'locationName' => 'forwardRuleId', ],
+            ],
+        ],
+        'Sort' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
             ],
         ],
         'DescribeForwardRuleRequestShape' => [
@@ -3636,6 +3652,23 @@ return [
                 'result' =>  [ 'shape' => 'DescribeCpsIpListResultShape', ],
                 'error' =>  [ 'shape' => 'DescribeCpsIpListResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ErrorItem' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'code' => [ 'type' => 'long', 'locationName' => 'code', ],
+                'details' => [ 'type' => 'object', 'locationName' => 'details', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'BatchResultDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'successCount' => [ 'type' => 'integer', 'locationName' => 'successCount', ],
+                'failed' => [ 'type' => 'list', 'member' => [ 'shape' => 'ErrorItem', ], ],
             ],
         ],
         'CreateIpSetResponseShape' => [

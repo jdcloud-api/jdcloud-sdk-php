@@ -459,6 +459,14 @@ return [
                 'isDefault' => [ 'type' => 'boolean', 'locationName' => 'isDefault', ],
             ],
         ],
+        'ChargeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
+                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
+            ],
+        ],
         'HealthCheckSpec' => [
             'type' => 'structure',
             'members' => [
@@ -521,6 +529,14 @@ return [
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
+        'ElasticIpSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+                'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
+            ],
+        ],
         'CreateLoadBalancerSpec' => [
             'type' => 'structure',
             'members' => [
@@ -533,7 +549,6 @@ return [
                 'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
                 'securityGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'domainEnable' => [ 'type' => 'boolean', 'locationName' => 'domainEnable', ],
                 'deleteProtection' => [ 'type' => 'boolean', 'locationName' => 'deleteProtection', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
@@ -565,14 +580,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'ruleIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'ElasticIpSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'bandwidth' => [ 'type' => 'integer', 'locationName' => 'bandwidth', ],
-                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
-                'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
             ],
         ],
         'ExportTask' => [
@@ -661,12 +668,19 @@ return [
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'domainEnable' => [ 'type' => 'boolean', 'locationName' => 'domainEnable', ],
-                'internalDomain' => [ 'type' => 'string', 'locationName' => 'internalDomain', ],
-                'internetDomain' => [ 'type' => 'string', 'locationName' => 'internetDomain', ],
                 'deleteProtection' => [ 'type' => 'boolean', 'locationName' => 'deleteProtection', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'azType' => [ 'type' => 'string', 'locationName' => 'azType', ],
+            ],
+        ],
+        'Charge' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeStatus' => [ 'type' => 'string', 'locationName' => 'chargeStatus', ],
+                'chargeStartTime' => [ 'type' => 'string', 'locationName' => 'chargeStartTime', ],
+                'chargeExpiredTime' => [ 'type' => 'string', 'locationName' => 'chargeExpiredTime', ],
+                'chargeRetireTime' => [ 'type' => 'string', 'locationName' => 'chargeRetireTime', ],
             ],
         ],
         'ModifyQuotaSpec' => [
@@ -894,6 +908,14 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeBackendsRequestShape' => [
@@ -1227,7 +1249,6 @@ return [
                 'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
                 'securityGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'domainEnable' => [ 'type' => 'boolean', 'locationName' => 'domainEnable', ],
                 'deleteProtection' => [ 'type' => 'boolean', 'locationName' => 'deleteProtection', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],

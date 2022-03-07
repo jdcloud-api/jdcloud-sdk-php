@@ -845,7 +845,6 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'input' => [ 'type' => 'object', 'locationName' => 'input', ],
-                'callbackBeanName' => [ 'type' => 'string', 'locationName' => 'callbackBeanName', ],
             ],
         ],
         'TopicList' => [
@@ -2006,6 +2005,14 @@ return [
                 'msgId' => [ 'type' => 'string', 'locationName' => 'msgId', ],
             ],
         ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'UpdateDeviceResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2108,7 +2115,6 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'input' => [ 'type' => 'object', 'locationName' => 'input', ],
-                'callbackBeanName' => [ 'type' => 'string', 'locationName' => 'callbackBeanName', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
@@ -2471,8 +2477,6 @@ return [
                 'productName' => [ 'type' => 'string', 'locationName' => 'productName', ],
                 'productType' => [ 'type' => 'integer', 'locationName' => 'productType', ],
                 'productDescription' => [ 'type' => 'string', 'locationName' => 'productDescription', ],
-                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
-                'internalTags' => [ 'type' => 'object', 'locationName' => 'internalTags', ],
                 'collDeviceType' => [ 'type' => 'string', 'locationName' => 'collDeviceType', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
@@ -2645,8 +2649,6 @@ return [
                 'productName' => [ 'type' => 'string', 'locationName' => 'productName', ],
                 'productType' => [ 'type' => 'integer', 'locationName' => 'productType', ],
                 'productDescription' => [ 'type' => 'string', 'locationName' => 'productDescription', ],
-                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
-                'internalTags' => [ 'type' => 'object', 'locationName' => 'internalTags', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],

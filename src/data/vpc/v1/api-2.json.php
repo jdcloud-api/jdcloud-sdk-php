@@ -633,6 +633,16 @@ return [
                 'ipCharge' =>  [ 'shape' => 'Charge', ],
             ],
         ],
+        'Charge' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeStatus' => [ 'type' => 'string', 'locationName' => 'chargeStatus', ],
+                'chargeStartTime' => [ 'type' => 'string', 'locationName' => 'chargeStartTime', ],
+                'chargeExpiredTime' => [ 'type' => 'string', 'locationName' => 'chargeExpiredTime', ],
+                'chargeRetireTime' => [ 'type' => 'string', 'locationName' => 'chargeRetireTime', ],
+            ],
+        ],
         'AzIp' => [
             'type' => 'structure',
             'members' => [
@@ -649,6 +659,16 @@ return [
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
                 'ipCharge' =>  [ 'shape' => 'ChargeSpec', ],
+            ],
+        ],
+        'ChargeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
+                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
+                'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
+                'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
             ],
         ],
         'Tag' => [
@@ -1215,30 +1235,11 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
         ],
-        'DescribeElasticIpResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'elasticIp' =>  [ 'shape' => 'ElasticIp', ],
-            ],
-        ],
-        'DescribeElasticIpResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeElasticIpResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeElasticIpRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
-            ],
-        ],
-        'DeleteElasticIpResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeElasticIpsRequestShape' => [
@@ -1257,6 +1258,65 @@ return [
                 'result' =>  [ 'shape' => 'CreateElasticIpsResultShape', ],
             ],
         ],
+        'ModifyElasticIpRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
+            ],
+        ],
+        'DeleteElasticIpRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
+            ],
+        ],
+        'ModifyElasticIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'CreateElasticIpsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'maxCount' => [ 'type' => 'integer', 'locationName' => 'maxCount', ],
+                'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
+                'elasticIpSpec' =>  [ 'shape' => 'ElasticIpSpec', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeElasticIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'elasticIp' =>  [ 'shape' => 'ElasticIp', ],
+            ],
+        ],
+        'DescribeElasticIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeElasticIpResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteElasticIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeElasticIpsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1269,14 +1329,6 @@ return [
             'members' => [
                 'elasticIpIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModifyElasticIpRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
             ],
         ],
         'DescribeElasticIpsResponseShape' => [
@@ -1294,30 +1346,6 @@ return [
         'DeleteElasticIpResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'DeleteElasticIpRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
-            ],
-        ],
-        'ModifyElasticIpResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateElasticIpsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'maxCount' => [ 'type' => 'integer', 'locationName' => 'maxCount', ],
-                'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
-                'elasticIpSpec' =>  [ 'shape' => 'ElasticIpSpec', ],
-                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
-                'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'ModifyNetworkAclRequestShape' => [

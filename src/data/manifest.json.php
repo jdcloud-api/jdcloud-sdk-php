@@ -5,6 +5,10 @@ return [
         'namespace' => 'Vqd',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'smartdba' => [
+        'namespace' => 'Smartdba',
+        'versions' => [ 'latest' => 'v2', ],
+    ],
     'streamcomputer' => [
         'namespace' => 'Streamcomputer',
         'versions' => [ 'latest' => 'v1', ],
@@ -223,6 +227,10 @@ return [
     ],
     'kubernetes' => [
         'namespace' => 'Kubernetes',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'tidb' => [
+        'namespace' => 'Tidb',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'ipanti' => [
