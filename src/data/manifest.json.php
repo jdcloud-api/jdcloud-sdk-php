@@ -9,6 +9,10 @@ return [
         'namespace' => 'Smartdba',
         'versions' => [ 'latest' => 'v2', ],
     ],
+    'dms' => [
+        'namespace' => 'Dms',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'streamcomputer' => [
         'namespace' => 'Streamcomputer',
         'versions' => [ 'latest' => 'v1', ],
