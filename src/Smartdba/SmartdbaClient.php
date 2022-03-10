@@ -20,8 +20,6 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with smartdba.
  *
- * @method \Jdcloud\Result describeAlarmHistory(array $args = [])
- * @method \GuzzleHttp\Promise\Promise describeAlarmHistoryAsync(array $args = [])
  */
 class SmartdbaClient extends JdCloudClient
 {

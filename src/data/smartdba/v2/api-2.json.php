@@ -11,15 +11,6 @@ return [
 //        'serviceId' => 'smartdba',
     ],
     'operations' => [
-        'DescribeAlarmHistory' => [
-            'name' => 'DescribeAlarmHistory',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v2/regions/{regionId}/describeAlarmHistory',
-            ],
-            'input' => [ 'shape' => 'DescribeAlarmHistoryRequestShape', ],
-            'output' => [ 'shape' => 'DescribeAlarmHistoryResponseShape', ],
-        ],
     ],
     'shapes' => [
         'AlarmDetail' => [
@@ -187,7 +178,7 @@ return [
                 'selectType' => [ 'type' => 'string', 'locationName' => 'selectType', ],
                 'table' => [ 'type' => 'string', 'locationName' => 'table', ],
                 'partitions' => [ 'type' => 'string', 'locationName' => 'partitions', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'accessType' => [ 'type' => 'string', 'locationName' => 'accessType', ],
                 'possibleKeys' => [ 'type' => 'string', 'locationName' => 'possibleKeys', ],
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'keyLen' => [ 'type' => 'string', 'locationName' => 'keyLen', ],
@@ -645,33 +636,6 @@ return [
                 'user' => [ 'type' => 'string', 'locationName' => 'user', ],
                 'activeCount' => [ 'type' => 'integer', 'locationName' => 'activeCount', ],
                 'threadIdList' => [ 'type' => 'string', 'locationName' => 'threadIdList', ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'DescribeAlarmHistoryRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'dbType' => [ 'type' => 'string', 'locationName' => 'dbType', ],
-                'instanceGid' => [ 'type' => 'string', 'locationName' => 'instanceGid', ],
-                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeAlarmHistoryResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeAlarmHistoryResultShape', ],
-            ],
-        ],
-        'DescribeAlarmHistoryResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'AlarmHistoryDetail', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
