@@ -309,6 +309,10 @@ return [
         'namespace' => 'Disk',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'dbs' => [
+        'namespace' => 'Dbs',
+        'versions' => [ 'latest' => 'v2', ],
+    ],
     'nc' => [
         'namespace' => 'Nc',
         'versions' => [ 'latest' => 'v1', ],
