@@ -173,6 +173,24 @@ return [
             'input' => [ 'shape' => 'PutCustomMetricDataRequestShape', ],
             'output' => [ 'shape' => 'PutCustomMetricDataResponseShape', ],
         ],
+        'Put' => [
+            'name' => 'Put',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/put',
+            ],
+            'input' => [ 'shape' => 'PutRequestShape', ],
+            'output' => [ 'shape' => 'PutResponseShape', ],
+        ],
+        'PutProductMetricData' => [
+            'name' => 'PutProductMetricData',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/put',
+            ],
+            'input' => [ 'shape' => 'PutProductMetricDataRequestShape', ],
+            'output' => [ 'shape' => 'PutProductMetricDataResponseShape', ],
+        ],
     ],
     'shapes' => [
         'AddTagsSpec' => [
@@ -278,6 +296,184 @@ return [
             'members' => [
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'value' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'AlarmDimension' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'categoryId' => [ 'type' => 'integer', 'locationName' => 'categoryId', ],
+                'dimension' => [ 'type' => 'string', 'locationName' => 'dimension', ],
+                'dimensionNameCH' => [ 'type' => 'string', 'locationName' => 'dimensionNameCH', ],
+                'dimensionNameEN' => [ 'type' => 'string', 'locationName' => 'dimensionNameEN', ],
+                'tagServiceCode' => [ 'type' => 'string', 'locationName' => 'tagServiceCode', ],
+                'webCode' => [ 'type' => 'string', 'locationName' => 'webCode', ],
+                'dashboard' => [ 'type' => 'integer', 'locationName' => 'dashboard', ],
+                'hasSubNode' => [ 'type' => 'integer', 'locationName' => 'hasSubNode', ],
+                'groupCodes' => [ 'type' => 'string', 'locationName' => 'groupCodes', ],
+                'tags' => [ 'type' => 'string', 'locationName' => 'tags', ],
+                'column' => [ 'type' => 'string', 'locationName' => 'column', ],
+                'dir' => [ 'type' => 'string', 'locationName' => 'dir', ],
+                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+            ],
+        ],
+        'AlarmCategory' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
+                'categoryType' => [ 'type' => 'integer', 'locationName' => 'categoryType', ],
+                'categoryNameCH' => [ 'type' => 'string', 'locationName' => 'categoryNameCH', ],
+                'categoryNameEN' => [ 'type' => 'string', 'locationName' => 'categoryNameEN', ],
+                'tagServiceCode' => [ 'type' => 'string', 'locationName' => 'tagServiceCode', ],
+                'webCode' => [ 'type' => 'string', 'locationName' => 'webCode', ],
+                'dashboard' => [ 'type' => 'integer', 'locationName' => 'dashboard', ],
+                'groupCodes' => [ 'type' => 'string', 'locationName' => 'groupCodes', ],
+                'tags' => [ 'type' => 'string', 'locationName' => 'tags', ],
+                'alarmDimensions' => [ 'type' => 'list', 'member' => [ 'shape' => 'AlarmDimension', ], ],
+                'column' => [ 'type' => 'string', 'locationName' => 'column', ],
+                'dir' => [ 'type' => 'string', 'locationName' => 'dir', ],
+                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+            ],
+        ],
+        'Chart' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'groupCode' => [ 'type' => 'string', 'locationName' => 'groupCode', ],
+                'chartNameCH' => [ 'type' => 'string', 'locationName' => 'chartNameCH', ],
+                'chartNameEN' => [ 'type' => 'string', 'locationName' => 'chartNameEN', ],
+                'chartUnitCH' => [ 'type' => 'string', 'locationName' => 'chartUnitCH', ],
+                'chartUnitEN' => [ 'type' => 'string', 'locationName' => 'chartUnitEN', ],
+                'chartIndex' => [ 'type' => 'integer', 'locationName' => 'chartIndex', ],
+                'metrics' => [ 'type' => 'string', 'locationName' => 'metrics', ],
+                'metricIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'column' => [ 'type' => 'string', 'locationName' => 'column', ],
+                'dir' => [ 'type' => 'string', 'locationName' => 'dir', ],
+                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+            ],
+        ],
+        'Metric' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'metricIndex' => [ 'type' => 'integer', 'locationName' => 'metricIndex', ],
+                'metricID' => [ 'type' => 'string', 'locationName' => 'metricID', ],
+                'metricNameCH' => [ 'type' => 'string', 'locationName' => 'metricNameCH', ],
+                'metricNameEN' => [ 'type' => 'string', 'locationName' => 'metricNameEN', ],
+                'valueType' => [ 'type' => 'string', 'locationName' => 'valueType', ],
+                'downsampleAgg' => [ 'type' => 'string', 'locationName' => 'downsampleAgg', ],
+                'groupAgg' => [ 'type' => 'string', 'locationName' => 'groupAgg', ],
+                'isRate' => [ 'type' => 'integer', 'locationName' => 'isRate', ],
+                'isSumRate' => [ 'type' => 'integer', 'locationName' => 'isSumRate', ],
+                'defaultDownsample' => [ 'type' => 'string', 'locationName' => 'defaultDownsample', ],
+                'upUnit' => [ 'type' => 'string', 'locationName' => 'upUnit', ],
+                'monitorUnitCH' => [ 'type' => 'string', 'locationName' => 'monitorUnitCH', ],
+                'monitorUnitEN' => [ 'type' => 'string', 'locationName' => 'monitorUnitEN', ],
+                'alarmUnitCH' => [ 'type' => 'string', 'locationName' => 'alarmUnitCH', ],
+                'alarmUnitEN' => [ 'type' => 'string', 'locationName' => 'alarmUnitEN', ],
+                'unitConvertFrom' => [ 'type' => 'integer', 'locationName' => 'unitConvertFrom', ],
+                'unitConvertTo' => [ 'type' => 'integer', 'locationName' => 'unitConvertTo', ],
+                'isShow' => [ 'type' => 'integer', 'locationName' => 'isShow', ],
+                'isEnable' => [ 'type' => 'integer', 'locationName' => 'isEnable', ],
+                'defaultTagName' => [ 'type' => 'string', 'locationName' => 'defaultTagName', ],
+                'defaultTagValue' => [ 'type' => 'string', 'locationName' => 'defaultTagValue', ],
+                'tags' => [ 'type' => 'string', 'locationName' => 'tags', ],
+                'isAlarm' => [ 'type' => 'integer', 'locationName' => 'isAlarm', ],
+                'newNet' => [ 'type' => 'integer', 'locationName' => 'newNet', ],
+                'timeInterval' => [ 'type' => 'integer', 'locationName' => 'timeInterval', ],
+                'serviceCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'groupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'groupCodes' => [ 'type' => 'string', 'locationName' => 'groupCodes', ],
+                'column' => [ 'type' => 'string', 'locationName' => 'column', ],
+                'dir' => [ 'type' => 'string', 'locationName' => 'dir', ],
+                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+            ],
+        ],
+        'MetricGroup' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'groupCode' => [ 'type' => 'string', 'locationName' => 'groupCode', ],
+                'groupNameCH' => [ 'type' => 'string', 'locationName' => 'groupNameCH', ],
+                'groupNameEN' => [ 'type' => 'string', 'locationName' => 'groupNameEN', ],
+                'webCode' => [ 'type' => 'string', 'locationName' => 'webCode', ],
+                'mainTag' => [ 'type' => 'string', 'locationName' => 'mainTag', ],
+                'tags' => [ 'type' => 'string', 'locationName' => 'tags', ],
+                'parent' => [ 'type' => 'integer', 'locationName' => 'parent', ],
+                'hasChildren' => [ 'type' => 'boolean', 'locationName' => 'hasChildren', ],
+                'deletable' => [ 'type' => 'boolean', 'locationName' => 'deletable', ],
+                'serviceCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'column' => [ 'type' => 'string', 'locationName' => 'column', ],
+                'dir' => [ 'type' => 'string', 'locationName' => 'dir', ],
+                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+            ],
+        ],
+        'OpenApi' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'groupCode' => [ 'type' => 'string', 'locationName' => 'groupCode', ],
+                'gwServiceCode' => [ 'type' => 'string', 'locationName' => 'gwServiceCode', ],
+                'interfaceName' => [ 'type' => 'string', 'locationName' => 'interfaceName', ],
+                'reqUrl' => [ 'type' => 'string', 'locationName' => 'reqUrl', ],
+                'reqMethod' => [ 'type' => 'string', 'locationName' => 'reqMethod', ],
+                'reqVersion' => [ 'type' => 'string', 'locationName' => 'reqVersion', ],
+                'paramResourceIds' => [ 'type' => 'string', 'locationName' => 'paramResourceIds', ],
+                'paramRegion' => [ 'type' => 'string', 'locationName' => 'paramRegion', ],
+                'respResourceId' => [ 'type' => 'string', 'locationName' => 'respResourceId', ],
+                'respResourceName' => [ 'type' => 'string', 'locationName' => 'respResourceName', ],
+                'testCasePin' => [ 'type' => 'string', 'locationName' => 'testCasePin', ],
+                'testCaseRegion' => [ 'type' => 'string', 'locationName' => 'testCaseRegion', ],
+                'testCaseIds' => [ 'type' => 'string', 'locationName' => 'testCaseIds', ],
+                'column' => [ 'type' => 'string', 'locationName' => 'column', ],
+                'dir' => [ 'type' => 'string', 'locationName' => 'dir', ],
+                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+            ],
+        ],
+        'ServiceLine' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'serviceNameCH' => [ 'type' => 'string', 'locationName' => 'serviceNameCH', ],
+                'serviceNameEN' => [ 'type' => 'string', 'locationName' => 'serviceNameEN', ],
+                'metricsTimeDelay' => [ 'type' => 'integer', 'locationName' => 'metricsTimeDelay', ],
+                'timeInterval' => [ 'type' => 'integer', 'locationName' => 'timeInterval', ],
+                'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
+                'disableAlarmGroup' => [ 'type' => 'integer', 'locationName' => 'disableAlarmGroup', ],
+                'commitId' => [ 'type' => 'string', 'locationName' => 'commitId', ],
+                'groups' => [ 'type' => 'string', 'locationName' => 'groups', ],
+                'groupList' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricGroup', ], ],
+                'column' => [ 'type' => 'string', 'locationName' => 'column', ],
+                'dir' => [ 'type' => 'string', 'locationName' => 'dir', ],
+                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+            ],
+        ],
+        'ServiceUser' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'erp' => [ 'type' => 'string', 'locationName' => 'erp', ],
+                'isAdmin' => [ 'type' => 'boolean', 'locationName' => 'isAdmin', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'serviceCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'column' => [ 'type' => 'string', 'locationName' => 'column', ],
+                'dir' => [ 'type' => 'string', 'locationName' => 'dir', ],
+                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
             ],
         ],
         'BaseRule' => [
@@ -450,14 +646,6 @@ return [
                 'tag' => [ 'type' => 'list', 'member' => [ 'shape' => 'WidgetTagResource', ], ],
             ],
         ],
-        'Chart' => [
-            'type' => 'structure',
-            'members' => [
-                'chartName' => [ 'type' => 'string', 'locationName' => 'chartName', ],
-                'chartUnit' => [ 'type' => 'string', 'locationName' => 'chartUnit', ],
-                'include' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
         'ChartDetail' => [
             'type' => 'structure',
             'members' => [
@@ -618,6 +806,8 @@ return [
             'members' => [
                 'resourceItems' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceItem', ], ],
                 'tagsOption' =>  [ 'shape' => 'TagsOption', ],
+                'resourceGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'resourceFilterType' => [ 'type' => 'long', 'locationName' => 'resourceFilterType', ],
             ],
         ],
         'ResourceItem' => [
@@ -1567,6 +1757,20 @@ return [
                 'errDetail' => [ 'type' => 'string', 'locationName' => 'errDetail', ],
             ],
         ],
+        'ErrOpenapiResponseInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'OpenapiErrInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
         'FolderInfo' => [
             'type' => 'structure',
             'members' => [
@@ -1744,16 +1948,6 @@ return [
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'srcServiceCode' => [ 'type' => 'string', 'locationName' => 'srcServiceCode', ],
                 'tags' =>  [ 'shape' => 'HandleTags', ],
-            ],
-        ],
-        'Metric' => [
-            'type' => 'structure',
-            'members' => [
-                'aggregator' => [ 'type' => 'string', 'locationName' => 'aggregator', ],
-                'calculateUnit' => [ 'type' => 'string', 'locationName' => 'calculateUnit', ],
-                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
-                'metricName' => [ 'type' => 'string', 'locationName' => 'metricName', ],
-                'period' => [ 'type' => 'string', 'locationName' => 'period', ],
             ],
         ],
         'MetricCm' => [
@@ -2146,6 +2340,36 @@ return [
             'type' => 'structure',
             'members' => [
                 'dataInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataInfoB', ], ],
+            ],
+        ],
+        'PutPoint' => [
+            'type' => 'structure',
+            'members' => [
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'tags' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'timestamp' => [ 'type' => 'long', 'locationName' => 'timestamp', ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
+            ],
+        ],
+        'PutResInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'failed' => [ 'type' => 'integer', 'locationName' => 'failed', ],
+                'success' => [ 'type' => 'integer', 'locationName' => 'success', ],
+            ],
+        ],
+        'PutResponseInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'PutResultInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'failed' => [ 'type' => 'integer', 'locationName' => 'failed', ],
+                'success' => [ 'type' => 'integer', 'locationName' => 'success', ],
             ],
         ],
         'SqlDataPoint' => [
@@ -2610,14 +2834,6 @@ return [
                 'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
             ],
         ],
-        'User' => [
-            'type' => 'structure',
-            'members' => [
-                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
-                'login' => [ 'type' => 'string', 'locationName' => 'login', ],
-                'role' => [ 'type' => 'string', 'locationName' => 'role', ],
-            ],
-        ],
         'UpdateTemplateResponseResultV2' => [
             'type' => 'structure',
             'members' => [
@@ -2677,6 +2893,14 @@ return [
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'updatedTime' => [ 'type' => 'long', 'locationName' => 'updatedTime', ],
                 'widgetId' => [ 'type' => 'string', 'locationName' => 'widgetId', ],
+            ],
+        ],
+        'User' => [
+            'type' => 'structure',
+            'members' => [
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'login' => [ 'type' => 'string', 'locationName' => 'login', ],
+                'role' => [ 'type' => 'string', 'locationName' => 'role', ],
             ],
         ],
         'UserRole' => [
@@ -3010,6 +3234,17 @@ return [
                 'namespaceUID' => [ 'type' => 'string', 'locationName' => 'namespaceUID', ],
             ],
         ],
+        'PutRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'dataCenter' => [ 'type' => 'string', 'locationName' => 'dataCenter', ],
+                'dataPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'PutPoint', ], ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+            ],
+        ],
         'LastDownsampleRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3179,6 +3414,54 @@ return [
             'type' => 'structure',
             'members' => [
                 'metricDataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricDataCm', ], ],
+            ],
+        ],
+        'PutProductMetricDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'dataPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataPointX', ], ],
+            ],
+        ],
+        'PutProductMetricDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'PutProductMetricDataResultShape', ],
+            ],
+        ],
+        'PutRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'dataPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataPointX', ], ],
+            ],
+        ],
+        'PutResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'failed' => [ 'type' => 'integer', 'locationName' => 'failed', ],
+                'success' => [ 'type' => 'integer', 'locationName' => 'success', ],
+            ],
+        ],
+        'PutProductMetricDataResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'failed' => [ 'type' => 'integer', 'locationName' => 'failed', ],
+                'success' => [ 'type' => 'integer', 'locationName' => 'success', ],
+            ],
+        ],
+        'PutResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'PutResultShape', ],
             ],
         ],
     ],
