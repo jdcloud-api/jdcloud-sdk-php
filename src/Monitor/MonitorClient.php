@@ -56,6 +56,10 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise putMetricDataAsync(array $args = [])
  * @method \Jdcloud\Result putCustomMetricData(array $args = [])
  * @method \GuzzleHttp\Promise\Promise putCustomMetricDataAsync(array $args = [])
+ * @method \Jdcloud\Result put(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise putAsync(array $args = [])
+ * @method \Jdcloud\Result putProductMetricData(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise putProductMetricDataAsync(array $args = [])
  */
 class MonitorClient extends JdCloudClient
 {
