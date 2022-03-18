@@ -321,6 +321,10 @@ return [
         'namespace' => 'Ydsms',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'clickhouse' => [
+        'namespace' => 'Clickhouse',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'vm' => [
         'namespace' => 'Vm',
         'versions' => [ 'latest' => 'v1', ],
