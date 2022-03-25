@@ -20,6 +20,10 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with openjrtc.
  *
+ * @method \Jdcloud\Result startAsrTask(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise startAsrTaskAsync(array $args = [])
+ * @method \Jdcloud\Result stopAsrTask(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise stopAsrTaskAsync(array $args = [])
  * @method \Jdcloud\Result describeApps(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeAppsAsync(array $args = [])
  * @method \Jdcloud\Result describeApp(array $args = [])
@@ -42,6 +46,16 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise removeRoomUserAsync(array $args = [])
  * @method \Jdcloud\Result removeAllRoomUsers(array $args = [])
  * @method \GuzzleHttp\Promise\Promise removeAllRoomUsersAsync(array $args = [])
+ * @method \Jdcloud\Result describeOnlineUserNum(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeOnlineUserNumAsync(array $args = [])
+ * @method \Jdcloud\Result describeUserRecordByRoom(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeUserRecordByRoomAsync(array $args = [])
+ * @method \Jdcloud\Result describeP2pStreamBitRate(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeP2pStreamBitRateAsync(array $args = [])
+ * @method \Jdcloud\Result describeCallDurationByCodeRate(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeCallDurationByCodeRateAsync(array $args = [])
+ * @method \Jdcloud\Result describeDailyCallDuration(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeDailyCallDurationAsync(array $args = [])
  * @method \Jdcloud\Result createUser(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createUserAsync(array $args = [])
  * @method \Jdcloud\Result describeUserByPeer(array $args = [])
