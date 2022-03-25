@@ -11,6 +11,24 @@ return [
 //        'serviceId' => 'openjrtc',
     ],
     'operations' => [
+        'StartAsrTask' => [
+            'name' => 'StartAsrTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/startAsrTask',
+            ],
+            'input' => [ 'shape' => 'StartAsrTaskRequestShape', ],
+            'output' => [ 'shape' => 'StartAsrTaskResponseShape', ],
+        ],
+        'StopAsrTask' => [
+            'name' => 'StopAsrTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/stopAsrTask',
+            ],
+            'input' => [ 'shape' => 'StopAsrTaskRequestShape', ],
+            'output' => [ 'shape' => 'StopAsrTaskResponseShape', ],
+        ],
         'DescribeApps' => [
             'name' => 'DescribeApps',
             'http' => [
@@ -109,6 +127,51 @@ return [
             ],
             'input' => [ 'shape' => 'RemoveAllRoomUsersRequestShape', ],
             'output' => [ 'shape' => 'RemoveAllRoomUsersResponseShape', ],
+        ],
+        'DescribeOnlineUserNum' => [
+            'name' => 'DescribeOnlineUserNum',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeOnlineUserNum',
+            ],
+            'input' => [ 'shape' => 'DescribeOnlineUserNumRequestShape', ],
+            'output' => [ 'shape' => 'DescribeOnlineUserNumResponseShape', ],
+        ],
+        'DescribeUserRecordByRoom' => [
+            'name' => 'DescribeUserRecordByRoom',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeUserRecordByRoom',
+            ],
+            'input' => [ 'shape' => 'DescribeUserRecordByRoomRequestShape', ],
+            'output' => [ 'shape' => 'DescribeUserRecordByRoomResponseShape', ],
+        ],
+        'DescribeP2pStreamBitRate' => [
+            'name' => 'DescribeP2pStreamBitRate',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeP2pStreamBitRate',
+            ],
+            'input' => [ 'shape' => 'DescribeP2pStreamBitRateRequestShape', ],
+            'output' => [ 'shape' => 'DescribeP2pStreamBitRateResponseShape', ],
+        ],
+        'DescribeCallDurationByCodeRate' => [
+            'name' => 'DescribeCallDurationByCodeRate',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeCallDurationByCodeRate',
+            ],
+            'input' => [ 'shape' => 'DescribeCallDurationByCodeRateRequestShape', ],
+            'output' => [ 'shape' => 'DescribeCallDurationByCodeRateResponseShape', ],
+        ],
+        'DescribeDailyCallDuration' => [
+            'name' => 'DescribeDailyCallDuration',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeDailyCallDuration',
+            ],
+            'input' => [ 'shape' => 'DescribeDailyCallDurationRequestShape', ],
+            'output' => [ 'shape' => 'DescribeDailyCallDurationResponseShape', ],
         ],
         'CreateUser' => [
             'name' => 'CreateUser',
@@ -374,6 +437,22 @@ return [
             'members' => [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'StopAsrTask' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'asrTaskType' => [ 'type' => 'integer', 'locationName' => 'asrTaskType', ],
+            ],
+        ],
+        'StartAsrTask' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'asrTaskType' => [ 'type' => 'integer', 'locationName' => 'asrTaskType', ],
             ],
         ],
         'Filter' => [
@@ -942,6 +1021,44 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
+        'StartAsrTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'StartAsrTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StopAsrTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'asrTaskType' => [ 'type' => 'integer', 'locationName' => 'asrTaskType', ],
+            ],
+        ],
+        'StartAsrTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'asrTaskType' => [ 'type' => 'integer', 'locationName' => 'asrTaskType', ],
+            ],
+        ],
+        'StopAsrTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StopAsrTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DescribeAppsRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1191,6 +1308,122 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'DescribeRoomOnlineUserNumResultShape', ],
+            ],
+        ],
+        'DescribeP2pStreamBitRateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'kind' => [ 'type' => 'string', 'locationName' => 'kind', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'joinTime' => [ 'type' => 'string', 'locationName' => 'joinTime', ],
+                'leaveTime' => [ 'type' => 'string', 'locationName' => 'leaveTime', ],
+                'fromUserId' => [ 'type' => 'string', 'locationName' => 'fromUserId', ],
+                'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+            ],
+        ],
+        'DescribeOnlineUserNumResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeOnlineUserNumResultShape', ],
+            ],
+        ],
+        'DescribeCallDurationByCodeRateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'DescribeUserRecordByRoomResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'RoomUserRecord', ], ],
+            ],
+        ],
+        'DescribeUserRecordByRoomResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeUserRecordByRoomResultShape', ],
+            ],
+        ],
+        'DescribeP2pStreamBitRateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'StreamBitRate', ], ],
+            ],
+        ],
+        'DescribeCallDurationByCodeRateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeCallDurationByCodeRateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeDailyCallDurationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'CallDuration', ], ],
+            ],
+        ],
+        'DescribeOnlineUserNumResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserNumInfo', ], ],
+            ],
+        ],
+        'DescribeP2pStreamBitRateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeP2pStreamBitRateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeCallDurationByCodeRateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'CallDurationByCodeRate', ], ],
+            ],
+        ],
+        'DescribeDailyCallDurationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeDailyCallDurationResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeOnlineUserNumRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'DescribeUserRecordByRoomRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
+        'DescribeDailyCallDurationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DescribeUserByPeerResultShape' => [
