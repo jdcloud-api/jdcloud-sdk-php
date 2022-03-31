@@ -245,23 +245,14 @@ return [
             'input' => [ 'shape' => 'DeleteMetricTaskRequestShape', ],
             'output' => [ 'shape' => 'DeleteMetricTaskResponseShape', ],
         ],
-        'Push' => [
-            'name' => 'Push',
+        'Histograms' => [
+            'name' => 'Histograms',
             'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/logtopics/{logtopicUID}:push',
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/histograms',
             ],
-            'input' => [ 'shape' => 'PushRequestShape', ],
-            'output' => [ 'shape' => 'PushResponseShape', ],
-        ],
-        'Put' => [
-            'name' => 'Put',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/logtopics/{logtopicUID}:put',
-            ],
-            'input' => [ 'shape' => 'PutRequestShape', ],
-            'output' => [ 'shape' => 'PutResponseShape', ],
+            'input' => [ 'shape' => 'HistogramsRequestShape', ],
+            'output' => [ 'shape' => 'HistogramsResponseShape', ],
         ],
         'GetLogs' => [
             'name' => 'GetLogs',
@@ -480,6 +471,16 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
+        'PipelineSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'field' => [ 'type' => 'string', 'locationName' => 'field', ],
+                'fieldType' => [ 'type' => 'string', 'locationName' => 'fieldType', ],
+                'parserMode' => [ 'type' => 'string', 'locationName' => 'parserMode', ],
+                'parserPattern' => [ 'type' => 'string', 'locationName' => 'parserPattern', ],
+                'parserSample' => [ 'type' => 'string', 'locationName' => 'parserSample', ],
+            ],
+        ],
         'CreateParserSpec' => [
             'type' => 'structure',
             'members' => [
@@ -487,6 +488,7 @@ return [
                 'parserMode' => [ 'type' => 'string', 'locationName' => 'parserMode', ],
                 'parserPattern' => [ 'type' => 'string', 'locationName' => 'parserPattern', ],
                 'parserSample' => [ 'type' => 'string', 'locationName' => 'parserSample', ],
+                'pipelines' => [ 'type' => 'list', 'member' => [ 'shape' => 'PipelineSpec', ], ],
             ],
         ],
         'CreateShipperSpec' => [
@@ -990,6 +992,7 @@ return [
                 'parserMode' => [ 'type' => 'string', 'locationName' => 'parserMode', ],
                 'parserPattern' => [ 'type' => 'string', 'locationName' => 'parserPattern', ],
                 'parserSample' => [ 'type' => 'string', 'locationName' => 'parserSample', ],
+                'pipelines' => [ 'type' => 'list', 'member' => [ 'shape' => 'PipelineSpec', ], ],
             ],
         ],
         'UpdateSubscribeSpec' => [
@@ -1007,6 +1010,7 @@ return [
         'ValidateParserFieldEnd' => [
             'type' => 'structure',
             'members' => [
+                'fieldType' => [ 'type' => 'string', 'locationName' => 'fieldType', ],
                 'fieldValue' => [ 'type' => 'string', 'locationName' => 'fieldValue', ],
                 'index' => [ 'type' => 'long', 'locationName' => 'index', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
@@ -1018,6 +1022,7 @@ return [
                 'parserMode' => [ 'type' => 'string', 'locationName' => 'parserMode', ],
                 'parserPattern' => [ 'type' => 'string', 'locationName' => 'parserPattern', ],
                 'parserSample' => [ 'type' => 'string', 'locationName' => 'parserSample', ],
+                'pipelines' => [ 'type' => 'list', 'member' => [ 'shape' => 'PipelineSpec', ], ],
             ],
         ],
         'CreateCollectInfoResultShape' => [
@@ -1088,6 +1093,7 @@ return [
                 'parserMode' => [ 'type' => 'string', 'locationName' => 'parserMode', ],
                 'parserPattern' => [ 'type' => 'string', 'locationName' => 'parserPattern', ],
                 'parserSample' => [ 'type' => 'string', 'locationName' => 'parserSample', ],
+                'pipelines' => [ 'type' => 'list', 'member' => [ 'shape' => 'PipelineSpec', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
             ],
@@ -1121,6 +1127,7 @@ return [
                 'parserMode' => [ 'type' => 'string', 'locationName' => 'parserMode', ],
                 'parserPattern' => [ 'type' => 'string', 'locationName' => 'parserPattern', ],
                 'parserSample' => [ 'type' => 'string', 'locationName' => 'parserSample', ],
+                'pipelines' => [ 'type' => 'list', 'member' => [ 'shape' => 'PipelineSpec', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
             ],
@@ -1150,6 +1157,7 @@ return [
                 'parserMode' => [ 'type' => 'string', 'locationName' => 'parserMode', ],
                 'parserPattern' => [ 'type' => 'string', 'locationName' => 'parserPattern', ],
                 'parserSample' => [ 'type' => 'string', 'locationName' => 'parserSample', ],
+                'pipelines' => [ 'type' => 'list', 'member' => [ 'shape' => 'PipelineSpec', ], ],
             ],
         ],
         'CreateCollectInfoResponseShape' => [
@@ -1655,62 +1663,6 @@ return [
                 'suc' => [ 'type' => 'string', 'locationName' => 'suc', ],
             ],
         ],
-        'PushRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'stream' => [ 'type' => 'string', 'locationName' => 'stream', ],
-                'timestamp' => [ 'type' => 'string', 'locationName' => 'timestamp', ],
-                'tags' => [ 'type' => 'object', 'locationName' => 'tags', ],
-                'entries' => [ 'type' => 'list', 'member' => [ 'shape' => 'Entry', ], ],
-                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
-            ],
-        ],
-        'PushResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'PushResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'PutRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'stream' => [ 'type' => 'string', 'locationName' => 'stream', ],
-                'timestamp' => [ 'type' => 'string', 'locationName' => 'timestamp', ],
-                'tags' => [ 'type' => 'object', 'locationName' => 'tags', ],
-                'entries' => [ 'type' => 'list', 'member' => [ 'shape' => 'Entry', ], ],
-                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
-            ],
-        ],
-        'PutResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'PutResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'GetLogsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'taskID' => [ 'type' => 'string', 'locationName' => 'taskID', ],
-                'expr' => [ 'type' => 'string', 'locationName' => 'expr', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'sort' => [ 'type' => 'string', 'locationName' => 'sort', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
-                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
-            ],
-        ],
         'GetLogsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1728,19 +1680,21 @@ return [
                 'result' =>  [ 'shape' => 'GetLogsResultShape', ],
             ],
         ],
-        'SearchResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'searchFields' =>  [ 'shape' => 'SearchFields', ],
-                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
-            ],
-        ],
-        'SearchResponseShape' => [
+        'HistogramsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'SearchResultShape', ],
+                'result' =>  [ 'shape' => 'HistogramsResultShape', ],
+            ],
+        ],
+        'HistogramsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'long', 'locationName' => 'count', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'progress' => [ 'type' => 'string', 'locationName' => 'progress', ],
+                'searchFields' =>  [ 'shape' => 'SearchFields', ],
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
             ],
         ],
         'SearchRequestShape' => [
@@ -1758,6 +1712,48 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
                 'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'GetLogsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskID' => [ 'type' => 'string', 'locationName' => 'taskID', ],
+                'expr' => [ 'type' => 'string', 'locationName' => 'expr', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'sort' => [ 'type' => 'string', 'locationName' => 'sort', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'SearchResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'searchFields' =>  [ 'shape' => 'SearchFields', ],
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+            ],
+        ],
+        'HistogramsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'expr' => [ 'type' => 'string', 'locationName' => 'expr', ],
+                'caseSensitive' => [ 'type' => 'boolean', 'locationName' => 'caseSensitive', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'SearchResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SearchResultShape', ],
             ],
         ],
         'CreateSubscribeRequestShape' => [

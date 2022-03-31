@@ -155,15 +155,6 @@ return [
             'input' => [ 'shape' => 'DescribeDomainNamesRequestShape', ],
             'output' => [ 'shape' => 'DescribeDomainNamesResponseShape', ],
         ],
-        'DeleteInstanceByForce' => [
-            'name' => 'DeleteInstanceByForce',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:deleteInstanceByForce',
-            ],
-            'input' => [ 'shape' => 'DeleteInstanceByForceRequestShape', ],
-            'output' => [ 'shape' => 'DeleteInstanceByForceResponseShape', ],
-        ],
         'ModifyInstanceName' => [
             'name' => 'ModifyInstanceName',
             'http' => [
@@ -172,6 +163,15 @@ return [
             ],
             'input' => [ 'shape' => 'ModifyInstanceNameRequestShape', ],
             'output' => [ 'shape' => 'ModifyInstanceNameResponseShape', ],
+        ],
+        'ModifyReplicaNum' => [
+            'name' => 'ModifyReplicaNum',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:modifyReplicaNum',
+            ],
+            'input' => [ 'shape' => 'ModifyReplicaNumRequestShape', ],
+            'output' => [ 'shape' => 'ModifyReplicaNumResponseShape', ],
         ],
         'UpgradeEngineVersion' => [
             'name' => 'UpgradeEngineVersion',
@@ -236,42 +236,6 @@ return [
             'input' => [ 'shape' => 'InternalDescribeInstanceRequestShape', ],
             'output' => [ 'shape' => 'InternalDescribeInstanceResponseShape', ],
         ],
-        'EnableCloudDiskCapacity' => [
-            'name' => 'EnableCloudDiskCapacity',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/cloudDiskCapacity:enableCloudDiskCapacity',
-            ],
-            'input' => [ 'shape' => 'EnableCloudDiskCapacityRequestShape', ],
-            'output' => [ 'shape' => 'EnableCloudDiskCapacityResponseShape', ],
-        ],
-        'DisableCloudDiskCapacity' => [
-            'name' => 'DisableCloudDiskCapacity',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/cloudDiskCapacity:disableCloudDiskCapacity',
-            ],
-            'input' => [ 'shape' => 'DisableCloudDiskCapacityRequestShape', ],
-            'output' => [ 'shape' => 'DisableCloudDiskCapacityResponseShape', ],
-        ],
-        'DetachNetwork' => [
-            'name' => 'DetachNetwork',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:detachNetwork',
-            ],
-            'input' => [ 'shape' => 'DetachNetworkRequestShape', ],
-            'output' => [ 'shape' => 'DetachNetworkResponseShape', ],
-        ],
-        'AttachNetwork' => [
-            'name' => 'AttachNetwork',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:attachNetwork',
-            ],
-            'input' => [ 'shape' => 'AttachNetworkRequestShape', ],
-            'output' => [ 'shape' => 'AttachNetworkResponseShape', ],
-        ],
         'DescribeAuditResult' => [
             'name' => 'DescribeAuditResult',
             'http' => [
@@ -307,15 +271,6 @@ return [
             ],
             'input' => [ 'shape' => 'ModifyParametersRequestShape', ],
             'output' => [ 'shape' => 'ModifyParametersResponseShape', ],
-        ],
-        'DescribeExposeType' => [
-            'name' => 'DescribeExposeType',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/vpcs/{vpcId}:describeExposeType',
-            ],
-            'input' => [ 'shape' => 'DescribeExposeTypeRequestShape', ],
-            'output' => [ 'shape' => 'DescribeExposeTypeResponseShape', ],
         ],
         'DescribeWhiteList' => [
             'name' => 'DescribeWhiteList',
@@ -874,11 +829,18 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DetachNetworkRequestShape' => [
+        'ModifyReplicaNumRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'newReplicaNum' => [ 'type' => 'string', 'locationName' => 'newReplicaNum', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ModifyReplicaNumResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
             ],
         ],
         'DescribeDomainNamesResultShape' => [
@@ -903,11 +865,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DetachNetworkResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'TagFilter' => [
             'type' => 'structure',
             'members' => [
@@ -929,16 +886,6 @@ return [
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceInfo', ], ],
             ],
         ],
-        'DetachNetworkResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'EnableCloudDiskCapacityResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'CreateInstanceResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -958,11 +905,6 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeNodesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeleteInstanceByForceResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'ModifyInstanceNameResponseShape' => [
@@ -1020,6 +962,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ModifyReplicaNumResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifyReplicaNumResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeNodesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1031,29 +980,11 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'AttachNetworkResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DescribeDomainNamesRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'EnableCloudDiskCapacityRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'EnableCloudDiskCapacityResponseShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'DisableInternetAccessResultShape' => [
@@ -1075,11 +1006,6 @@ return [
                 'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
             ],
         ],
-        'DeleteInstanceByForceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'CreateInstanceRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1096,13 +1022,6 @@ return [
         'DeleteInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'AttachNetworkRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'DescribeDefaultConfigResultShape' => [
@@ -1165,14 +1084,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DisableCloudDiskCapacityRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'DescribeDefaultConfigResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1200,34 +1111,11 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'AttachNetworkResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeleteInstanceByForceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestUser' => [ 'type' => 'string', 'locationName' => 'requestUser', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DisableCloudDiskCapacityResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DescribeInstanceAttributesRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DisableCloudDiskCapacityResponseShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'DescribePodMapRequestShape' => [
@@ -1347,26 +1235,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeParametersResultShape', ],
-            ],
-        ],
-        'DescribeExposeTypeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeExposeTypeResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeExposeTypeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'exposeType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'DescribeExposeTypeRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
             ],
         ],
         'AddWhiteListGroupResponseShape' => [
