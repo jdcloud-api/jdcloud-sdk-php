@@ -11,6 +11,78 @@ return [
 //        'serviceId' => 'vpc',
     ],
     'operations' => [
+        'DescribeBandwidthPackages' => [
+            'name' => 'DescribeBandwidthPackages',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages/',
+            ],
+            'input' => [ 'shape' => 'DescribeBandwidthPackagesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBandwidthPackagesResponseShape', ],
+        ],
+        'CreateBandwidthPackage' => [
+            'name' => 'CreateBandwidthPackage',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages/',
+            ],
+            'input' => [ 'shape' => 'CreateBandwidthPackageRequestShape', ],
+            'output' => [ 'shape' => 'CreateBandwidthPackageResponseShape', ],
+        ],
+        'DescribeBandwidthPackage' => [
+            'name' => 'DescribeBandwidthPackage',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages/{bandwidthPackageId}',
+            ],
+            'input' => [ 'shape' => 'DescribeBandwidthPackageRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBandwidthPackageResponseShape', ],
+        ],
+        'ModifyBandwidthPackage' => [
+            'name' => 'ModifyBandwidthPackage',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages/{bandwidthPackageId}',
+            ],
+            'input' => [ 'shape' => 'ModifyBandwidthPackageRequestShape', ],
+            'output' => [ 'shape' => 'ModifyBandwidthPackageResponseShape', ],
+        ],
+        'DeleteBandwidthPackage' => [
+            'name' => 'DeleteBandwidthPackage',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages/{bandwidthPackageId}',
+            ],
+            'input' => [ 'shape' => 'DeleteBandwidthPackageRequestShape', ],
+            'output' => [ 'shape' => 'DeleteBandwidthPackageResponseShape', ],
+        ],
+        'AddBandwidthPackageIP' => [
+            'name' => 'AddBandwidthPackageIP',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages/{bandwidthPackageId}:addBandwidthPackageIP',
+            ],
+            'input' => [ 'shape' => 'AddBandwidthPackageIPRequestShape', ],
+            'output' => [ 'shape' => 'AddBandwidthPackageIPResponseShape', ],
+        ],
+        'RemoveBandwidthPackageIP' => [
+            'name' => 'RemoveBandwidthPackageIP',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages/{bandwidthPackageId}:removeBandwidthPackageIP',
+            ],
+            'input' => [ 'shape' => 'RemoveBandwidthPackageIPRequestShape', ],
+            'output' => [ 'shape' => 'RemoveBandwidthPackageIPResponseShape', ],
+        ],
+        'ModifyBandwidthPackageIpBandwidth' => [
+            'name' => 'ModifyBandwidthPackageIpBandwidth',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/bandwidthPackages/{bandwidthPackageId}:modifyBandwidthPackageIpBandwidth',
+            ],
+            'input' => [ 'shape' => 'ModifyBandwidthPackageIpBandwidthRequestShape', ],
+            'output' => [ 'shape' => 'ModifyBandwidthPackageIpBandwidthResponseShape', ],
+        ],
         'DescribeElasticIps' => [
             'name' => 'DescribeElasticIps',
             'http' => [
@@ -544,6 +616,19 @@ return [
         ],
     ],
     'shapes' => [
+        'AddBandwidthPackageIPSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'publicIpId' => [ 'type' => 'string', 'locationName' => 'publicIpId', ],
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+            ],
+        ],
+        'AddBandwidthPackageIPsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackageIPSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddBandwidthPackageIPSpec', ], ],
+            ],
+        ],
         'AddNetworkAclRuleSpec' => [
             'type' => 'structure',
             'members' => [
@@ -555,6 +640,13 @@ return [
                 'ruleAction' => [ 'type' => 'string', 'locationName' => 'ruleAction', ],
                 'priority' => [ 'type' => 'integer', 'locationName' => 'priority', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'FailedList' => [
+            'type' => 'structure',
+            'members' => [
+                'ipAddress' => [ 'type' => 'string', 'locationName' => 'ipAddress', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
             ],
         ],
         'AddNetworkAclRulesSpec' => [
@@ -603,12 +695,30 @@ return [
                 'routeTableRuleSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddRouteTableRules', ], ],
             ],
         ],
+        'AssignNetworkInterfaceSecondaryIps' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+                'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
+                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'secondaryIpCount' => [ 'type' => 'double', 'locationName' => 'secondaryIpCount', ],
+                'secondaryIpMaskLen' => [ 'type' => 'integer', 'locationName' => 'secondaryIpMaskLen', ],
+            ],
+        ],
+        'AssignNetworkInterfaceSecondaryIpsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterfaceSecondaryIpsSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'AssignNetworkInterfaceSecondaryIps', ], ],
+            ],
+        ],
         'AssignSecondaryIpsSpec' => [
             'type' => 'structure',
             'members' => [
                 'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
                 'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'secondaryIpCount' => [ 'type' => 'double', 'locationName' => 'secondaryIpCount', ],
+                'secondaryIpMaskLen' => [ 'type' => 'integer', 'locationName' => 'secondaryIpMaskLen', ],
+                'secondaryIpAddress' => [ 'type' => 'string', 'locationName' => 'secondaryIpAddress', ],
             ],
         ],
         'AssociateElasticIpSpec' => [
@@ -678,6 +788,57 @@ return [
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
+        'BandwidthPackage' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+                'bandwidthPackageName' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+                'charge' =>  [ 'shape' => 'Charge', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'publicIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'BwpIp', ], ],
+                'ipCount' => [ 'type' => 'integer', 'locationName' => 'ipCount', ],
+                'guaranteedRatio' => [ 'type' => 'integer', 'locationName' => 'guaranteedRatio', ],
+                'guaranteedBandwidth' => [ 'type' => 'float32', 'locationName' => 'guaranteedBandwidth', ],
+                'adminStatus' => [ 'type' => 'string', 'locationName' => 'adminStatus', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+            ],
+        ],
+        'BwpIp' => [
+            'type' => 'structure',
+            'members' => [
+                'publicIpId' => [ 'type' => 'string', 'locationName' => 'publicIpId', ],
+                'addedTime' => [ 'type' => 'string', 'locationName' => 'addedTime', ],
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+            ],
+        ],
+        'CancelBandwidthPackageIpBandwidthSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
+            ],
+        ],
+        'CancelBandwidthPackageIpsBandwidthSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackageIPSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'CancelBandwidthPackageIpBandwidthSpec', ], ],
+            ],
+        ],
+        'CreateBandwidthPackageSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+                'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+            ],
+        ],
         'ElasticIpSpec' => [
             'type' => 'structure',
             'members' => [
@@ -694,6 +855,8 @@ return [
                 'elasticIpSpec' =>  [ 'shape' => 'ElasticIpSpec', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'dryRun' => [ 'type' => 'boolean', 'locationName' => 'dryRun', ],
             ],
         ],
         'CreateVpcPeeringSpec' => [
@@ -750,6 +913,54 @@ return [
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+            ],
+        ],
+        'InatInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'elasticIp' => [ 'type' => 'string', 'locationName' => 'elasticIp', ],
+            ],
+        ],
+        'Ipv6Info' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'ipv6Address' => [ 'type' => 'string', 'locationName' => 'ipv6Address', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'ElasticIpInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
+                'isJDEip' => [ 'type' => 'boolean', 'locationName' => 'isJDEip', ],
+            ],
+        ],
+        'ModifyBandwidthPackageIpBandwidthSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'publicIpId' => [ 'type' => 'string', 'locationName' => 'publicIpId', ],
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+            ],
+        ],
+        'ModifyBandwidthPackageIpsBandwidthSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackageIPSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'ModifyBandwidthPackageIpBandwidthSpec', ], ],
+            ],
+        ],
+        'ModifyBandwidthPackageSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
         ],
         'ModifyElasticIpSpec' => [
@@ -870,6 +1081,7 @@ return [
             'members' => [
                 'subnetName' => [ 'type' => 'string', 'locationName' => 'subnetName', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'ipMaskLen' => [ 'type' => 'integer', 'locationName' => 'ipMaskLen', ],
             ],
         ],
         'ModifyVpcPeeringSpec' => [
@@ -900,6 +1112,7 @@ return [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'azIp' => [ 'type' => 'list', 'member' => [ 'shape' => 'AzIp', ], ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
         ],
         'NatGatewayState' => [
@@ -962,6 +1175,7 @@ return [
             'members' => [
                 'networkInterfaceName' => [ 'type' => 'string', 'locationName' => 'networkInterfaceName', ],
                 'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+                'azType' => [ 'type' => 'string', 'locationName' => 'azType', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'role' => [ 'type' => 'string', 'locationName' => 'role', ],
                 'macAddress' => [ 'type' => 'string', 'locationName' => 'macAddress', ],
@@ -971,6 +1185,7 @@ return [
                 'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
                 'primaryIp' =>  [ 'shape' => 'NetworkInterfacePrivateIp', ],
                 'secondaryIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterfacePrivateIp', ], ],
+                'secondaryCidrs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'instanceOwnerId' => [ 'type' => 'string', 'locationName' => 'instanceOwnerId', ],
@@ -987,6 +1202,12 @@ return [
                 'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
                 'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
+            ],
+        ],
+        'NetworkInterfaceIpv6Address' => [
+            'type' => 'structure',
+            'members' => [
+                'ipv6Address' => [ 'type' => 'string', 'locationName' => 'ipv6Address', ],
             ],
         ],
         'NetworkInterfacePermission' => [
@@ -1065,6 +1286,15 @@ return [
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
         ],
+        'OpModifyBandwidthPackageSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
+            ],
+        ],
         'OpModifyElasticIpSpec' => [
             'type' => 'structure',
             'members' => [
@@ -1076,6 +1306,19 @@ return [
             'type' => 'structure',
             'members' => [
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
+            ],
+        ],
+        'RemoveBandwidthPackageIPSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'publicIpId' => [ 'type' => 'string', 'locationName' => 'publicIpId', ],
+            ],
+        ],
+        'OpRemoveBandwidthPackageIPsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackageIPSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'RemoveBandwidthPackageIPSpec', ], ],
                 'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
             ],
         ],
@@ -1094,6 +1337,21 @@ return [
                 'parentResourceId' => [ 'type' => 'string', 'locationName' => 'parentResourceId', ],
                 'maxLimit' => [ 'type' => 'double', 'locationName' => 'maxLimit', ],
                 'count' => [ 'type' => 'double', 'locationName' => 'count', ],
+            ],
+        ],
+        'RemoveBandwidthPackageIPsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackageIPSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'RemoveBandwidthPackageIPSpec', ], ],
+            ],
+        ],
+        'ResourceInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'bind' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceInfo', ], ],
             ],
         ],
         'RoutePropagation' => [
@@ -1115,6 +1373,8 @@ return [
                 'routeTableRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'RouteTableRule', ], ],
                 'routePropagations' => [ 'type' => 'list', 'member' => [ 'shape' => 'RoutePropagation', ], ],
                 'subnetIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'azType' => [ 'type' => 'string', 'locationName' => 'azType', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
             ],
         ],
@@ -1126,7 +1386,7 @@ return [
                 'nextHopType' => [ 'type' => 'string', 'locationName' => 'nextHopType', ],
                 'nextHopId' => [ 'type' => 'string', 'locationName' => 'nextHopId', ],
                 'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
-                'routeType' => [ 'type' => 'string', 'locationName' => 'routeType', ],
+                'origin' => [ 'type' => 'string', 'locationName' => 'origin', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
         ],
@@ -1136,6 +1396,18 @@ return [
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'routeTableName' => [ 'type' => 'string', 'locationName' => 'routeTableName', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'OpSegment' => [
+            'type' => 'structure',
+            'members' => [
+                'segmentId' => [ 'type' => 'string', 'locationName' => 'segmentId', ],
+                'segmentName' => [ 'type' => 'string', 'locationName' => 'segmentName', ],
+                'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
+                'availableIpCount' => [ 'type' => 'integer', 'locationName' => 'availableIpCount', ],
+                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+                'startIp' => [ 'type' => 'string', 'locationName' => 'startIp', ],
+                'endIp' => [ 'type' => 'string', 'locationName' => 'endIp', ],
             ],
         ],
         'Segment' => [
@@ -1159,6 +1431,7 @@ return [
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
                 'availableIpCount' => [ 'type' => 'double', 'locationName' => 'availableIpCount', ],
+                'ipMaskLen' => [ 'type' => 'integer', 'locationName' => 'ipMaskLen', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
                 'aclId' => [ 'type' => 'string', 'locationName' => 'aclId', ],
@@ -1177,8 +1450,7 @@ return [
                 'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
                 'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'subnetType' => [ 'type' => 'string', 'locationName' => 'subnetType', ],
-                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'ipMaskLen' => [ 'type' => 'integer', 'locationName' => 'ipMaskLen', ],
             ],
         ],
         'TagFilter' => [
@@ -1188,10 +1460,25 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'UnassignNetworkInterfaceSecondaryIps' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'secondaryCidrs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UnassignNetworkInterfaceSecondaryIpsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterfaceSecondaryIpsSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'UnassignNetworkInterfaceSecondaryIps', ], ],
+            ],
+        ],
         'UnassignSecondaryIpsSpec' => [
             'type' => 'structure',
             'members' => [
                 'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'secondaryCidrs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'Vpc' => [
@@ -1205,6 +1492,8 @@ return [
                 'routeTableIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'subnets' => [ 'type' => 'list', 'member' => [ 'shape' => 'Subnet', ], ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'azType' => [ 'type' => 'string', 'locationName' => 'azType', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
             ],
         ],
         'VpcPeering' => [
@@ -1215,6 +1504,8 @@ return [
                 'vpcPeeringState' => [ 'type' => 'string', 'locationName' => 'vpcPeeringState', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'vpcInfo' =>  [ 'shape' => 'VpcPeeringVpcInfo', ],
+                'azType' => [ 'type' => 'string', 'locationName' => 'azType', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'remoteVpcInfo' =>  [ 'shape' => 'VpcPeeringVpcInfo', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
             ],
@@ -1225,6 +1516,8 @@ return [
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'vpcName' => [ 'type' => 'string', 'locationName' => 'vpcName', ],
                 'addressPrefix' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'azType' => [ 'type' => 'string', 'locationName' => 'azType', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
             ],
         ],
         'VpcSpec' => [
@@ -1233,6 +1526,183 @@ return [
                 'vpcName' => [ 'type' => 'string', 'locationName' => 'vpcName', ],
                 'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'azType' => [ 'type' => 'string', 'locationName' => 'azType', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+            ],
+        ],
+        'AddBandwidthPackageIPRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackageIPSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddBandwidthPackageIPSpec', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+            ],
+        ],
+        'ModifyBandwidthPackageIpBandwidthResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeBandwidthPackageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+            ],
+        ],
+        'DescribeBandwidthPackageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackage' =>  [ 'shape' => 'BandwidthPackage', ],
+            ],
+        ],
+        'CreateBandwidthPackageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+                'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'RemoveBandwidthPackageIPRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackageIPSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'RemoveBandwidthPackageIPSpec', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+            ],
+        ],
+        'ModifyBandwidthPackageIpBandwidthRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackageIPSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'ModifyBandwidthPackageIpBandwidthSpec', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+            ],
+        ],
+        'DescribeBandwidthPackagesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBandwidthPackagesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteBandwidthPackageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+            ],
+        ],
+        'RemoveBandwidthPackageIPResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateBandwidthPackageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ModifyBandwidthPackageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bandwidthPackageId' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageId', ],
+            ],
+        ],
+        'DescribeBandwidthPackageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBandwidthPackageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyBandwidthPackageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateBandwidthPackageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateBandwidthPackageResultShape', ],
+            ],
+        ],
+        'DeleteBandwidthPackageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteBandwidthPackageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyBandwidthPackageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AddBandwidthPackageIPResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AddBandwidthPackageIPResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyBandwidthPackageIpBandwidthResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'RemoveBandwidthPackageIPResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeBandwidthPackagesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthPackages' => [ 'type' => 'list', 'member' => [ 'shape' => 'BandwidthPackage', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeBandwidthPackagesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DescribeElasticIpRequestShape' => [
@@ -1249,6 +1719,7 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1279,14 +1750,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'Filter' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
         'CreateElasticIpsRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1295,6 +1758,8 @@ return [
                 'elasticIpSpec' =>  [ 'shape' => 'ElasticIpSpec', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'dryRun' => [ 'type' => 'boolean', 'locationName' => 'dryRun', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1559,6 +2024,8 @@ return [
                 'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
                 'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'secondaryIpCount' => [ 'type' => 'double', 'locationName' => 'secondaryIpCount', ],
+                'secondaryIpMaskLen' => [ 'type' => 'integer', 'locationName' => 'secondaryIpMaskLen', ],
+                'secondaryIpAddress' => [ 'type' => 'string', 'locationName' => 'secondaryIpAddress', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
             ],
@@ -1573,6 +2040,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'secondaryCidrs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
             ],
@@ -2168,6 +2636,7 @@ return [
             'members' => [
                 'subnetName' => [ 'type' => 'string', 'locationName' => 'subnetName', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'ipMaskLen' => [ 'type' => 'integer', 'locationName' => 'ipMaskLen', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
             ],
@@ -2180,8 +2649,7 @@ return [
                 'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
                 'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'subnetType' => [ 'type' => 'string', 'locationName' => 'subnetType', ],
-                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'ipMaskLen' => [ 'type' => 'integer', 'locationName' => 'ipMaskLen', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -2275,6 +2743,8 @@ return [
                 'vpcName' => [ 'type' => 'string', 'locationName' => 'vpcName', ],
                 'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'azType' => [ 'type' => 'string', 'locationName' => 'azType', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],

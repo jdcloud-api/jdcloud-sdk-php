@@ -593,6 +593,7 @@ return [
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
                 'availableIpCount' => [ 'type' => 'double', 'locationName' => 'availableIpCount', ],
+                'ipMaskLen' => [ 'type' => 'integer', 'locationName' => 'ipMaskLen', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
                 'aclId' => [ 'type' => 'string', 'locationName' => 'aclId', ],
@@ -729,6 +730,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'secondaryCidrs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
             ],
@@ -748,12 +750,6 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'AssignSecondaryIpsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeNetworkInterfaceResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -765,6 +761,7 @@ return [
             'members' => [
                 'networkInterfaceName' => [ 'type' => 'string', 'locationName' => 'networkInterfaceName', ],
                 'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+                'azType' => [ 'type' => 'string', 'locationName' => 'azType', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'role' => [ 'type' => 'string', 'locationName' => 'role', ],
                 'macAddress' => [ 'type' => 'string', 'locationName' => 'macAddress', ],
@@ -774,6 +771,7 @@ return [
                 'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
                 'primaryIp' =>  [ 'shape' => 'NetworkInterfacePrivateIp', ],
                 'secondaryIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterfacePrivateIp', ], ],
+                'secondaryCidrs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'instanceOwnerId' => [ 'type' => 'string', 'locationName' => 'instanceOwnerId', ],
@@ -784,31 +782,7 @@ return [
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
             ],
         ],
-        'UnassignSecondaryIpsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeleteNetworkInterfaceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'AssignSecondaryIpsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'AssignSecondaryIpsSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
-                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'secondaryIpCount' => [ 'type' => 'double', 'locationName' => 'secondaryIpCount', ],
-            ],
-        ],
-        'UnassignSecondaryIpsResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -829,34 +803,11 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'AssignSecondaryIpsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
-                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'secondaryIpCount' => [ 'type' => 'double', 'locationName' => 'secondaryIpCount', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
-            ],
-        ],
-        'DeleteNetworkInterfaceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
-            ],
-        ],
         'DescribeNetworkInterfacesResultShape' => [
             'type' => 'structure',
             'members' => [
                 'networkInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterface', ], ],
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'UnassignSecondaryIpsSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'NetworkInterfaceSpec' => [
@@ -871,6 +822,76 @@ return [
                 'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'CreateNetworkInterfaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+            ],
+        ],
+        'AssignSecondaryIpsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UnassignSecondaryIpsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteNetworkInterfaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AssignSecondaryIpsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
+                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'secondaryIpCount' => [ 'type' => 'double', 'locationName' => 'secondaryIpCount', ],
+                'secondaryIpMaskLen' => [ 'type' => 'integer', 'locationName' => 'secondaryIpMaskLen', ],
+                'secondaryIpAddress' => [ 'type' => 'string', 'locationName' => 'secondaryIpAddress', ],
+            ],
+        ],
+        'UnassignSecondaryIpsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'NetworkInterfaceIpv6Address' => [
+            'type' => 'structure',
+            'members' => [
+                'ipv6Address' => [ 'type' => 'string', 'locationName' => 'ipv6Address', ],
+            ],
+        ],
+        'AssignSecondaryIpsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'force' => [ 'type' => 'boolean', 'locationName' => 'force', ],
+                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'secondaryIpCount' => [ 'type' => 'double', 'locationName' => 'secondaryIpCount', ],
+                'secondaryIpMaskLen' => [ 'type' => 'integer', 'locationName' => 'secondaryIpMaskLen', ],
+                'secondaryIpAddress' => [ 'type' => 'string', 'locationName' => 'secondaryIpAddress', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+            ],
+        ],
+        'DeleteNetworkInterfaceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+            ],
+        ],
+        'UnassignSecondaryIpsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'secondaryCidrs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeNetworkInterfaceRequestShape' => [
@@ -906,12 +927,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateNetworkInterfaceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
             ],
         ],
         'SecurityGroupRule' => [
@@ -1297,8 +1312,7 @@ return [
                 'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
                 'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'subnetType' => [ 'type' => 'string', 'locationName' => 'subnetType', ],
-                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'ipMaskLen' => [ 'type' => 'integer', 'locationName' => 'ipMaskLen', ],
             ],
         ],
         'DescribeSubnetResultShape' => [
@@ -1351,8 +1365,7 @@ return [
                 'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
                 'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'subnetType' => [ 'type' => 'string', 'locationName' => 'subnetType', ],
-                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'ipMaskLen' => [ 'type' => 'integer', 'locationName' => 'ipMaskLen', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],

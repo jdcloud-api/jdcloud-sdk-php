@@ -20,6 +20,22 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with vpc.
  *
+ * @method \Jdcloud\Result describeBandwidthPackages(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeBandwidthPackagesAsync(array $args = [])
+ * @method \Jdcloud\Result createBandwidthPackage(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createBandwidthPackageAsync(array $args = [])
+ * @method \Jdcloud\Result describeBandwidthPackage(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeBandwidthPackageAsync(array $args = [])
+ * @method \Jdcloud\Result modifyBandwidthPackage(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise modifyBandwidthPackageAsync(array $args = [])
+ * @method \Jdcloud\Result deleteBandwidthPackage(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteBandwidthPackageAsync(array $args = [])
+ * @method \Jdcloud\Result addBandwidthPackageIP(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise addBandwidthPackageIPAsync(array $args = [])
+ * @method \Jdcloud\Result removeBandwidthPackageIP(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise removeBandwidthPackageIPAsync(array $args = [])
+ * @method \Jdcloud\Result modifyBandwidthPackageIpBandwidth(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise modifyBandwidthPackageIpBandwidthAsync(array $args = [])
  * @method \Jdcloud\Result describeElasticIps(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeElasticIpsAsync(array $args = [])
  * @method \Jdcloud\Result createElasticIps(array $args = [])
