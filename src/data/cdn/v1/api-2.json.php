@@ -623,6 +623,24 @@ return [
             'input' => [ 'shape' => 'QueryBackSourceRulesRequestShape', ],
             'output' => [ 'shape' => 'QueryBackSourceRulesResponseShape', ],
         ],
+        'ConfigBackSourceOss' => [
+            'name' => 'ConfigBackSourceOss',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/domain/{domain}/configBackSourceOss',
+            ],
+            'input' => [ 'shape' => 'ConfigBackSourceOssRequestShape', ],
+            'output' => [ 'shape' => 'ConfigBackSourceOssResponseShape', ],
+        ],
+        'QueryBackSourceOss' => [
+            'name' => 'QueryBackSourceOss',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/domain/{domain}/queryBackSourceOss',
+            ],
+            'input' => [ 'shape' => 'QueryBackSourceOssRequestShape', ],
+            'output' => [ 'shape' => 'QueryBackSourceOssResponseShape', ],
+        ],
         'QueryDomainGroupList' => [
             'name' => 'QueryDomainGroupList',
             'http' => [
@@ -3609,6 +3627,11 @@ return [
                 'allowNoUserAgentHeader' => [ 'type' => 'string', 'locationName' => 'allowNoUserAgentHeader', ],
             ],
         ],
+        'ConfigBackSourceOssResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'UpdateCacheRuleRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3708,6 +3731,15 @@ return [
                 'result' =>  [ 'shape' => 'ExecuteDomainCopyResultShape', ],
             ],
         ],
+        'QueryBackSourceOssResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
+                'suffix' => [ 'type' => 'string', 'locationName' => 'suffix', ],
+                'domain2' => [ 'type' => 'string', 'locationName' => 'domain2', ],
+            ],
+        ],
         'SetCacheRulesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3751,6 +3783,18 @@ return [
         'ConfigBackSourcePathResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ConfigBackSourceOssRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
+                'suffix' => [ 'type' => 'string', 'locationName' => 'suffix', ],
+                'domain2' => [ 'type' => 'string', 'locationName' => 'domain2', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
         'SetFilterArgsResultShape' => [
@@ -3991,6 +4035,13 @@ return [
                 'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackSourceRule', ], ],
             ],
         ],
+        'ConfigBackSourceOssResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'ConfigBackSourceOssResultShape', ],
+            ],
+        ],
         'SetHttpTypeResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -4042,6 +4093,12 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'ConfigBackSourceRulesResultShape', ],
+            ],
+        ],
+        'QueryBackSourceOssRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
         'DeleteCacheRuleResponseShape' => [
@@ -4270,6 +4327,13 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'UpdateCacheRuleResultShape', ],
+            ],
+        ],
+        'QueryBackSourceOssResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryBackSourceOssResultShape', ],
             ],
         ],
         'DeleteExtraCacheTimeResultShape' => [
