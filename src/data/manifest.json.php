@@ -233,6 +233,10 @@ return [
         'namespace' => 'Kubernetes',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'dh' => [
+        'namespace' => 'Dh',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'tidb' => [
         'namespace' => 'Tidb',
         'versions' => [ 'latest' => 'v1', ],
