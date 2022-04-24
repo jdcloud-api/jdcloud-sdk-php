@@ -272,6 +272,51 @@ return [
             'input' => [ 'shape' => 'DescribeRegisterUsersRequestShape', ],
             'output' => [ 'shape' => 'DescribeRegisterUsersResponseShape', ],
         ],
+        'DescribeStreamInfosByUserRoomId' => [
+            'name' => 'DescribeStreamInfosByUserRoomId',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeStreamInfosByUserRoomId/{appId}',
+            ],
+            'input' => [ 'shape' => 'DescribeStreamInfosByUserRoomIdRequestShape', ],
+            'output' => [ 'shape' => 'DescribeStreamInfosByUserRoomIdResponseShape', ],
+        ],
+        'DescribeStreamInfosByUserId' => [
+            'name' => 'DescribeStreamInfosByUserId',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeStreamInfosByUserId/{appId}',
+            ],
+            'input' => [ 'shape' => 'DescribeStreamInfosByUserIdRequestShape', ],
+            'output' => [ 'shape' => 'DescribeStreamInfosByUserIdResponseShape', ],
+        ],
+        'DescribeStreamInfoByStreamId' => [
+            'name' => 'DescribeStreamInfoByStreamId',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeStreamInfoByStreamId/{appId}',
+            ],
+            'input' => [ 'shape' => 'DescribeStreamInfoByStreamIdRequestShape', ],
+            'output' => [ 'shape' => 'DescribeStreamInfoByStreamIdResponseShape', ],
+        ],
+        'DescribeStreamRecordsByUserId' => [
+            'name' => 'DescribeStreamRecordsByUserId',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeStreamRecordsByUserId/{appId}',
+            ],
+            'input' => [ 'shape' => 'DescribeStreamRecordsByUserIdRequestShape', ],
+            'output' => [ 'shape' => 'DescribeStreamRecordsByUserIdResponseShape', ],
+        ],
+        'DescribeStreamRecordsByStreamId' => [
+            'name' => 'DescribeStreamRecordsByStreamId',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeStreamRecordsByStreamId/{appId}',
+            ],
+            'input' => [ 'shape' => 'DescribeStreamRecordsByStreamIdRequestShape', ],
+            'output' => [ 'shape' => 'DescribeStreamRecordsByStreamIdResponseShape', ],
+        ],
         'RemoveUserByUserRoomId' => [
             'name' => 'RemoveUserByUserRoomId',
             'http' => [
@@ -888,6 +933,62 @@ return [
             'type' => 'structure',
             'members' => [
                 'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+            ],
+        ],
+        'RoomStreamContent' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'StreamInfo', ], ],
+            ],
+        ],
+        'StreamRecordInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'streamId' => [ 'type' => 'string', 'locationName' => 'streamId', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'kind' => [ 'type' => 'integer', 'locationName' => 'kind', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'StreamInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'streamId' => [ 'type' => 'string', 'locationName' => 'streamId', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'kind' => [ 'type' => 'integer', 'locationName' => 'kind', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'deviceType' => [ 'type' => 'integer', 'locationName' => 'deviceType', ],
+                'publishCount' => [ 'type' => 'integer', 'locationName' => 'publishCount', ],
+                'publishTime' => [ 'type' => 'string', 'locationName' => 'publishTime', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'StreamRecordContent' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'StreamRecordInfo', ], ],
             ],
         ],
         'ValidateTokenInfo' => [
@@ -1665,6 +1766,142 @@ return [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
                 'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
+            ],
+        ],
+        'DescribeStreamInfosByUserRoomIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'StreamInfo', ], ],
+            ],
+        ],
+        'DescribeStreamInfosByUserIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'DescribeStreamInfosByUserIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'StreamInfo', ], ],
+            ],
+        ],
+        'DescribeStreamRecordsByUserIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'StreamRecordInfo', ], ],
+            ],
+        ],
+        'DescribeStreamRecordsByUserIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeStreamRecordsByUserIdResultShape', ],
+            ],
+        ],
+        'DescribeStreamInfosByUserIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeStreamInfosByUserIdResultShape', ],
+            ],
+        ],
+        'DescribeStreamInfoByStreamIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'streamId' => [ 'type' => 'string', 'locationName' => 'streamId', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'DescribeStreamInfoByStreamIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeStreamInfoByStreamIdResultShape', ],
+            ],
+        ],
+        'DescribeStreamRecordsByStreamIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'StreamRecordInfo', ], ],
+            ],
+        ],
+        'DescribeStreamRecordsByStreamIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'streamId' => [ 'type' => 'string', 'locationName' => 'streamId', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'DescribeStreamInfosByUserRoomIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'DescribeStreamRecordsByStreamIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeStreamRecordsByStreamIdResultShape', ],
+            ],
+        ],
+        'DescribeStreamInfosByUserRoomIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeStreamInfosByUserRoomIdResultShape', ],
+            ],
+        ],
+        'DescribeStreamInfoByStreamIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'streamId' => [ 'type' => 'string', 'locationName' => 'streamId', ],
+                'streamName' => [ 'type' => 'string', 'locationName' => 'streamName', ],
+                'kind' => [ 'type' => 'integer', 'locationName' => 'kind', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'deviceType' => [ 'type' => 'integer', 'locationName' => 'deviceType', ],
+                'publishCount' => [ 'type' => 'integer', 'locationName' => 'publishCount', ],
+                'publishTime' => [ 'type' => 'string', 'locationName' => 'publishTime', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'DescribeStreamRecordsByUserIdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
             ],
         ],
         'RemoveAllUsersByUserRoomIdResultShape' => [
