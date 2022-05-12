@@ -94,6 +94,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise removeAllUsersByUserRoomIdAsync(array $args = [])
  * @method \Jdcloud\Result describeRoomUsers(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeRoomUsersAsync(array $args = [])
+ * @method \Jdcloud\Result describeRoomUser(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeRoomUserAsync(array $args = [])
  * @method \Jdcloud\Result describeRoomUsersNum(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeRoomUsersNumAsync(array $args = [])
  * @method \Jdcloud\Result closeRoomUserStream(array $args = [])
