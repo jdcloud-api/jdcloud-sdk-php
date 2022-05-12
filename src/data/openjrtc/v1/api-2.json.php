@@ -344,6 +344,15 @@ return [
             'input' => [ 'shape' => 'DescribeRoomUsersRequestShape', ],
             'output' => [ 'shape' => 'DescribeRoomUsersResponseShape', ],
         ],
+        'DescribeRoomUser' => [
+            'name' => 'DescribeRoomUser',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeRoomUser/{appId}',
+            ],
+            'input' => [ 'shape' => 'DescribeRoomUserRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRoomUserResponseShape', ],
+        ],
         'DescribeRoomUsersNum' => [
             'name' => 'DescribeRoomUsersNum',
             'http' => [
@@ -531,6 +540,7 @@ return [
                 'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
+                'meetingType' => [ 'type' => 'integer', 'locationName' => 'meetingType', ],
                 'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
             ],
         ],
@@ -1302,6 +1312,7 @@ return [
                 'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
+                'meetingType' => [ 'type' => 'integer', 'locationName' => 'meetingType', ],
                 'peerId' => [ 'type' => 'long', 'locationName' => 'peerId', ],
             ],
         ],
@@ -1904,17 +1915,6 @@ return [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
             ],
         ],
-        'RemoveAllUsersByUserRoomIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'CloseRoomUserStreamResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeRoomUsersResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1926,6 +1926,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeRoomUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
             ],
         ],
         'RemoveUserByUserRoomIdResultShape' => [
@@ -1941,6 +1949,51 @@ return [
                 'onlineNumber' => [ 'type' => 'integer', 'locationName' => 'onlineNumber', ],
                 'offlineNumber' => [ 'type' => 'integer', 'locationName' => 'offlineNumber', ],
                 'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+            ],
+        ],
+        'DescribeRoomUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeRoomUserResultShape', ],
+            ],
+        ],
+        'CloseRoomUserStreamRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'streamId' => [ 'type' => 'string', 'locationName' => 'streamId', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'CloseRoomUserStreamResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeRoomUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'connectId' => [ 'type' => 'string', 'locationName' => 'connectId', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'joinTime' => [ 'type' => 'string', 'locationName' => 'joinTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'RemoveAllUsersByUserRoomIdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CloseRoomUserStreamResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeRoomUsersNumResponseShape' => [
@@ -1960,25 +2013,11 @@ return [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
             ],
         ],
-        'CloseRoomUserStreamRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
-                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
-                'streamId' => [ 'type' => 'string', 'locationName' => 'streamId', ],
-                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-            ],
-        ],
         'RemoveAllUsersByUserRoomIdRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-            ],
-        ],
-        'CloseRoomUserStreamResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'RemoveUserByUserRoomIdRequestShape' => [
