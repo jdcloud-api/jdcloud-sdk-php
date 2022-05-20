@@ -1,6 +1,10 @@
 <?php
 // This file was auto-generated
 return [
+    'rdts' => [
+        'namespace' => 'Rdts',
+        'versions' => [ 'latest' => 'v2', ],
+    ],
     'vqd' => [
         'namespace' => 'Vqd',
         'versions' => [ 'latest' => 'v1', ],

@@ -3520,6 +3520,7 @@ return [
             'members' => [
                 'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
             ],
         ],
         'DescribeOriginWhiteIpListResponseShape' => [
@@ -3544,6 +3545,7 @@ return [
             'members' => [
                 'createInstanceSpec' =>  [ 'shape' => 'CreateInstanceSpec', ],
                 'autoRenewalSpec' =>  [ 'shape' => 'AutoRenewalSpec', ],
+                'autoPay' => [ 'type' => 'boolean', 'locationName' => 'autoPay', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
