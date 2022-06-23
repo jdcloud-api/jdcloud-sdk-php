@@ -342,6 +342,7 @@ return [
                 'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
+                'needPay' => [ 'type' => 'boolean', 'locationName' => 'needPay', ],
             ],
         ],
         'AssignCertReq' => [
@@ -752,7 +753,6 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
-                'isGm' => [ 'type' => 'integer', 'locationName' => 'isGm', ],
             ],
         ],
         'AccessWafStatus' => [
@@ -842,6 +842,16 @@ return [
                 'reqHeaderNum' => [ 'type' => 'integer', 'locationName' => 'reqHeaderNum', ],
                 'respHeaderNum' => [ 'type' => 'integer', 'locationName' => 'respHeaderNum', ],
                 'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+            ],
+        ],
+        'IpbanUsrConf' => [
+            'type' => 'structure',
+            'members' => [
+                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
+                'ipbanTime' => [ 'type' => 'integer', 'locationName' => 'ipbanTime', ],
+                'detectTime' => [ 'type' => 'integer', 'locationName' => 'detectTime', ],
+                'threshold' => [ 'type' => 'integer', 'locationName' => 'threshold', ],
+                'action' =>  [ 'shape' => 'DenyActionCfg', ],
             ],
         ],
         'LastAttackReport' => [
@@ -977,9 +987,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
-                'banTime' => [ 'type' => 'integer', 'locationName' => 'banTime', ],
-                'detectTime' => [ 'type' => 'integer', 'locationName' => 'detectTime', ],
-                'threshold' => [ 'type' => 'integer', 'locationName' => 'threshold', ],
+                'ipbanMode' => [ 'type' => 'integer', 'locationName' => 'ipbanMode', ],
+                'action' =>  [ 'shape' => 'DenyActionCfg', ],
             ],
         ],
         'UserPolicyInfo' => [
@@ -1031,7 +1040,6 @@ return [
             'members' => [
                 'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
                 'ccMode' => [ 'type' => 'integer', 'locationName' => 'ccMode', ],
-                'qps' => [ 'type' => 'integer', 'locationName' => 'qps', ],
                 'enableUserDefine' => [ 'type' => 'integer', 'locationName' => 'enableUserDefine', ],
                 'rulesCount' => [ 'type' => 'integer', 'locationName' => 'rulesCount', ],
                 'action' =>  [ 'shape' => 'DenyActionCfg', ],
@@ -1054,6 +1062,14 @@ return [
                 'ruleIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
             ],
         ],
+        'SpiderConf' => [
+            'type' => 'structure',
+            'members' => [
+                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
+                'spiderMode' => [ 'type' => 'integer', 'locationName' => 'spiderMode', ],
+                'action' =>  [ 'shape' => 'DenyActionCfg', ],
+            ],
+        ],
         'UserPolicyName' => [
             'type' => 'structure',
             'members' => [
@@ -1073,8 +1089,9 @@ return [
                 'ccConf' =>  [ 'shape' => 'CcConf', ],
                 'aclConf' =>  [ 'shape' => 'AclConf', ],
                 'ipbanConf' =>  [ 'shape' => 'IpbanConf', ],
+                'ipbanUsrConf' =>  [ 'shape' => 'IpbanConf', ],
                 'lastAttackReport' =>  [ 'shape' => 'LastAttackReport', ],
-                'antispiderConf' =>  [ 'shape' => 'EnableConf', ],
+                'antispiderConf' =>  [ 'shape' => 'SpiderConf', ],
                 'webcacheConf' =>  [ 'shape' => 'EnableConf', ],
                 'disableWaf' => [ 'type' => 'integer', 'locationName' => 'disableWaf', ],
                 'skipConf' =>  [ 'shape' => 'SkipConf', ],
@@ -1211,6 +1228,7 @@ return [
                 'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
                 'atCfg' =>  [ 'shape' => 'AtCfg', ],
+                'tag' => [ 'type' => 'string', 'locationName' => 'tag', ],
             ],
         ],
         'SetWebcacheUrlReq' => [
@@ -1249,7 +1267,7 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'event' =>  [ 'shape' => 'RiskEventCfg', ],
-                'vars' =>  [ 'shape' => 'RiskVarCfg', ],
+                'vars' => [ 'type' => 'list', 'member' => [ 'shape' => 'RiskVarCfg', ], ],
                 'policys' => [ 'type' => 'list', 'member' => [ 'shape' => 'RiskPolicyCfg', ], ],
             ],
         ],
@@ -1493,6 +1511,19 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'rewriteType' => [ 'type' => 'string', 'locationName' => 'rewriteType', ],
                 'rewriteRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'RewriteRuleCfg', ], ],
+            ],
+        ],
+        'SetIpbanUsrReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
+                'detectTime' => [ 'type' => 'integer', 'locationName' => 'detectTime', ],
+                'threshold' => [ 'type' => 'integer', 'locationName' => 'threshold', ],
+                'ipbanTime' => [ 'type' => 'integer', 'locationName' => 'ipbanTime', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+                'action' =>  [ 'shape' => 'DenyActionCfg', ],
             ],
         ],
         'StatusListCfg' => [
@@ -1784,6 +1815,7 @@ return [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'val' => [ 'type' => 'string', 'locationName' => 'val', ],
                 'atCfg' =>  [ 'shape' => 'AtCfg', ],
+                'tag' => [ 'type' => 'string', 'locationName' => 'tag', ],
             ],
         ],
         'ListWafConditionCfg' => [
@@ -2102,6 +2134,7 @@ return [
             'members' => [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'spiderMode' => [ 'type' => 'integer', 'locationName' => 'spiderMode', ],
                 'action' =>  [ 'shape' => 'DenyActionCfg', ],
             ],
         ],
@@ -2307,7 +2340,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
-                'val' => [ 'type' => 'integer', 'locationName' => 'val', ],
+                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
             ],
         ],
         'SetStatusReq' => [
@@ -2323,9 +2356,8 @@ return [
             'members' => [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'detectTime' => [ 'type' => 'integer', 'locationName' => 'detectTime', ],
-                'threshold' => [ 'type' => 'integer', 'locationName' => 'threshold', ],
-                'banTime' => [ 'type' => 'integer', 'locationName' => 'banTime', ],
+                'ipbanMode' => [ 'type' => 'integer', 'locationName' => 'ipbanMode', ],
+                'action' =>  [ 'shape' => 'DenyActionCfg', ],
             ],
         ],
         'SetUriReq' => [
@@ -2391,7 +2423,6 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'ccMode' => [ 'type' => 'integer', 'locationName' => 'ccMode', ],
-                'qps' => [ 'type' => 'integer', 'locationName' => 'qps', ],
                 'action' =>  [ 'shape' => 'DenyActionCfg', ],
             ],
         ],
@@ -2597,6 +2628,7 @@ return [
             'members' => [
                 'buyId' => [ 'type' => 'string', 'locationName' => 'buyId', ],
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
             ],
         ],
         'UpgradeInstanceResultShape' => [
@@ -2604,6 +2636,7 @@ return [
             'members' => [
                 'buyId' => [ 'type' => 'string', 'locationName' => 'buyId', ],
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
             ],
         ],
         'BindCertRequestShape' => [
@@ -2672,6 +2705,7 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'logType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'logId' => [ 'type' => 'string', 'locationName' => 'logId', ],
+                'request_id' => [ 'type' => 'string', 'locationName' => 'request_id', ],
                 'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
                 'end' => [ 'type' => 'integer', 'locationName' => 'end', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
@@ -2863,7 +2897,6 @@ return [
         'DisableRulesResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DisableRulesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -2940,12 +2973,6 @@ return [
         'DisableRulesResultShape' => [
             'type' => 'structure',
             'members' => [
-                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainMainConfig', ], ],
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'maxLimit' => [ 'type' => 'integer', 'locationName' => 'maxLimit', ],
             ],
         ],
         'AddDomainRequestShape' => [
@@ -2982,11 +3009,12 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'disableWaf' => [ 'type' => 'integer', 'locationName' => 'disableWaf', ],
                 'aclConf' =>  [ 'shape' => 'AclConf', ],
-                'antispiderConf' =>  [ 'shape' => 'EnableConf', ],
+                'antispiderConf' =>  [ 'shape' => 'SpiderConf', ],
                 'ccConf' =>  [ 'shape' => 'CcConf', ],
                 'denyConf' =>  [ 'shape' => 'DenyConf', ],
                 'intSemConf' =>  [ 'shape' => 'IntSemConf', ],
                 'ipbanConf' =>  [ 'shape' => 'IpbanConf', ],
+                'ipbanUsrConf' =>  [ 'shape' => 'IpbanUsrConf', ],
                 'ratelimitConf' =>  [ 'shape' => 'RatelimitConf', ],
                 'threatinfoConf' =>  [ 'shape' => 'EnableConf', ],
                 'userDefPageConf' =>  [ 'shape' => 'UserDefPageConf', ],
@@ -3090,7 +3118,7 @@ return [
                 'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'list' =>  [ 'shape' => 'StdBotRules', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'StdBotRules', ], ],
             ],
         ],
         'AntiLevelWafResultShape' => [
@@ -3148,7 +3176,7 @@ return [
                 'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'data' =>  [ 'shape' => 'ListWafRuleCfg', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'ListWafRuleCfg', ], ],
             ],
         ],
         'SetWafRuleRequestShape' => [
@@ -3227,7 +3255,7 @@ return [
                 'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'list' =>  [ 'shape' => 'ListWafConditionCfg', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'ListWafConditionCfg', ], ],
             ],
         ],
         'SetWafRuleResultShape' => [
