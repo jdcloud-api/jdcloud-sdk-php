@@ -11,6 +11,60 @@ return [
 //        'serviceId' => 'dms',
     ],
     'operations' => [
+        'CreateImportFileTask' => [
+            'name' => 'CreateImportFileTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/importFileTask:create',
+            ],
+            'input' => [ 'shape' => 'CreateImportFileTaskRequestShape', ],
+            'output' => [ 'shape' => 'CreateImportFileTaskResponseShape', ],
+        ],
+        'UploadImportFileTask' => [
+            'name' => 'UploadImportFileTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/importFileTask:upload',
+            ],
+            'input' => [ 'shape' => 'UploadImportFileTaskRequestShape', ],
+            'output' => [ 'shape' => 'UploadImportFileTaskResponseShape', ],
+        ],
+        'CreateDataFlow' => [
+            'name' => 'CreateDataFlow',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/dataFlow:create',
+            ],
+            'input' => [ 'shape' => 'CreateDataFlowRequestShape', ],
+            'output' => [ 'shape' => 'CreateDataFlowResponseShape', ],
+        ],
+        'CreateStructureFlow' => [
+            'name' => 'CreateStructureFlow',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/structureFlow:create',
+            ],
+            'input' => [ 'shape' => 'CreateStructureFlowRequestShape', ],
+            'output' => [ 'shape' => 'CreateStructureFlowResponseShape', ],
+        ],
+        'CreateExportFlow' => [
+            'name' => 'CreateExportFlow',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/exportFlow:create',
+            ],
+            'input' => [ 'shape' => 'CreateExportFlowRequestShape', ],
+            'output' => [ 'shape' => 'CreateExportFlowResponseShape', ],
+        ],
+        'StartFlow' => [
+            'name' => 'StartFlow',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/flow:start',
+            ],
+            'input' => [ 'shape' => 'StartFlowRequestShape', ],
+            'output' => [ 'shape' => 'StartFlowResponseShape', ],
+        ],
         'GeneralCreateTableSql' => [
             'name' => 'GeneralCreateTableSql',
             'http' => [
@@ -164,6 +218,24 @@ return [
             'input' => [ 'shape' => 'UpdatePersonalSqlRequestShape', ],
             'output' => [ 'shape' => 'UpdatePersonalSqlResponseShape', ],
         ],
+        'ProgramList' => [
+            'name' => 'ProgramList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/program:list',
+            ],
+            'input' => [ 'shape' => 'ProgramListRequestShape', ],
+            'output' => [ 'shape' => 'ProgramListResponseShape', ],
+        ],
+        'ExeProgram' => [
+            'name' => 'ExeProgram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/program:exe',
+            ],
+            'input' => [ 'shape' => 'ExeProgramRequestShape', ],
+            'output' => [ 'shape' => 'ExeProgramResponseShape', ],
+        ],
         'ConsoleExplain' => [
             'name' => 'ConsoleExplain',
             'http' => [
@@ -280,6 +352,42 @@ return [
             ],
             'input' => [ 'shape' => 'GetCreateTableBatchSqlRequestShape', ],
             'output' => [ 'shape' => 'GetCreateTableBatchSqlResponseShape', ],
+        ],
+        'GeneralCreateView' => [
+            'name' => 'GeneralCreateView',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/view:generalCreate',
+            ],
+            'input' => [ 'shape' => 'GeneralCreateViewRequestShape', ],
+            'output' => [ 'shape' => 'GeneralCreateViewResponseShape', ],
+        ],
+        'GeneralAlterView' => [
+            'name' => 'GeneralAlterView',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/view:generalAlter',
+            ],
+            'input' => [ 'shape' => 'GeneralAlterViewRequestShape', ],
+            'output' => [ 'shape' => 'GeneralAlterViewResponseShape', ],
+        ],
+        'GeneralDropView' => [
+            'name' => 'GeneralDropView',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/view:generalDrop',
+            ],
+            'input' => [ 'shape' => 'GeneralDropViewRequestShape', ],
+            'output' => [ 'shape' => 'GeneralDropViewResponseShape', ],
+        ],
+        'ViewInfo' => [
+            'name' => 'ViewInfo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/view:info',
+            ],
+            'input' => [ 'shape' => 'ViewInfoRequestShape', ],
+            'output' => [ 'shape' => 'ViewInfoResponseShape', ],
         ],
     ],
     'shapes' => [
@@ -420,6 +528,25 @@ return [
                 'domains' => [ 'type' => 'object', 'locationName' => 'domains', ],
             ],
         ],
+        'DmsSql' => [
+            'type' => 'structure',
+            'members' => [
+                'sql' => [ 'type' => 'string', 'locationName' => 'sql', ],
+                'sqlTypeEnum' => [ 'type' => 'string', 'locationName' => 'sqlTypeEnum', ],
+            ],
+        ],
+        'DmsSubFileImport' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'parentId' => [ 'type' => 'integer', 'locationName' => 'parentId', ],
+                'fileIndex' => [ 'type' => 'integer', 'locationName' => 'fileIndex', ],
+                'uploadStatus' => [ 'type' => 'string', 'locationName' => 'uploadStatus', ],
+                'chkSumMd5' => [ 'type' => 'string', 'locationName' => 'chkSumMd5', ],
+                'beginDate' => [ 'type' => 'string', 'locationName' => 'beginDate', ],
+                'finishDate' => [ 'type' => 'string', 'locationName' => 'finishDate', ],
+            ],
+        ],
         'DmsTableStruct' => [
             'type' => 'structure',
             'members' => [
@@ -466,6 +593,15 @@ return [
                 'sqlType' => [ 'type' => 'string', 'locationName' => 'sqlType', ],
             ],
         ],
+        'Parameter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'columnTypeEnum' => [ 'type' => 'string', 'locationName' => 'columnTypeEnum', ],
+                'parameterModeEnum' => [ 'type' => 'string', 'locationName' => 'parameterModeEnum', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'PersonalSql' => [
             'type' => 'structure',
             'members' => [
@@ -491,6 +627,158 @@ return [
             'members' => [
                 'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
                 'tableStruct' => [ 'type' => 'string', 'locationName' => 'tableStruct', ],
+            ],
+        ],
+        'UploadImportFileTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'chunkNumber' => [ 'type' => 'integer', 'locationName' => 'chunkNumber', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+                'file' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateDataFlowRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'taskPlanTypeEnum' => [ 'type' => 'string', 'locationName' => 'taskPlanTypeEnum', ],
+                'dbaApproveTypeEnum' => [ 'type' => 'string', 'locationName' => 'dbaApproveTypeEnum', ],
+                'memo' => [ 'type' => 'string', 'locationName' => 'memo', ],
+                'sqlText' => [ 'type' => 'string', 'locationName' => 'sqlText', ],
+                'sqlFileTaskId' => [ 'type' => 'string', 'locationName' => 'sqlFileTaskId', ],
+                'rollbackSqlText' => [ 'type' => 'string', 'locationName' => 'rollbackSqlText', ],
+                'rollbackFileTaskId' => [ 'type' => 'string', 'locationName' => 'rollbackFileTaskId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'UploadImportFileTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UploadImportFileTaskResultShape', ],
+            ],
+        ],
+        'CreateDataFlowResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'flowId' => [ 'type' => 'string', 'locationName' => 'flowId', ],
+            ],
+        ],
+        'CreateStructureFlowRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'taskPlanTypeEnum' => [ 'type' => 'string', 'locationName' => 'taskPlanTypeEnum', ],
+                'dbaApproveTypeEnum' => [ 'type' => 'string', 'locationName' => 'dbaApproveTypeEnum', ],
+                'memo' => [ 'type' => 'string', 'locationName' => 'memo', ],
+                'sqlText' => [ 'type' => 'string', 'locationName' => 'sqlText', ],
+                'sqlFileTaskId' => [ 'type' => 'string', 'locationName' => 'sqlFileTaskId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'UploadImportFileResult' => [
+            'type' => 'structure',
+            'members' => [
+                'finish' => [ 'type' => 'boolean', 'locationName' => 'finish', ],
+                'currentChunkInfo' =>  [ 'shape' => 'DmsSubFileImport', ],
+            ],
+        ],
+        'CreateImportFileTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'uploadId' => [ 'type' => 'string', 'locationName' => 'uploadId', ],
+            ],
+        ],
+        'UploadImportFileTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'uploadImportFileResult' =>  [ 'shape' => 'UploadImportFileResult', ],
+            ],
+        ],
+        'StartFlowResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'error' =>  [ 'shape' => 'StartFlowResultShape', ],
+            ],
+        ],
+        'CreateImportFileTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateImportFileTaskResultShape', ],
+            ],
+        ],
+        'CreateExportFlowResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateExportFlowResultShape', ],
+            ],
+        ],
+        'StartFlowRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'flowOrderUniqId' => [ 'type' => 'string', 'locationName' => 'flowOrderUniqId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateExportFlowResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'flowId' => [ 'type' => 'string', 'locationName' => 'flowId', ],
+            ],
+        ],
+        'CreateStructureFlowResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateStructureFlowResultShape', ],
+            ],
+        ],
+        'CreateDataFlowResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateDataFlowResultShape', ],
+            ],
+        ],
+        'StartFlowResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateStructureFlowResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'flowId' => [ 'type' => 'string', 'locationName' => 'flowId', ],
+            ],
+        ],
+        'CreateExportFlowRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'taskPlanTypeEnum' => [ 'type' => 'string', 'locationName' => 'taskPlanTypeEnum', ],
+                'dbaApproveTypeEnum' => [ 'type' => 'string', 'locationName' => 'dbaApproveTypeEnum', ],
+                'memo' => [ 'type' => 'string', 'locationName' => 'memo', ],
+                'exportTypeEnum' => [ 'type' => 'string', 'locationName' => 'exportTypeEnum', ],
+                'exportFileTypeEnum' => [ 'type' => 'string', 'locationName' => 'exportFileTypeEnum', ],
+                'rowsNum' => [ 'type' => 'integer', 'locationName' => 'rowsNum', ],
+                'ignoreError' => [ 'type' => 'boolean', 'locationName' => 'ignoreError', ],
+                'ignoreReason' => [ 'type' => 'string', 'locationName' => 'ignoreReason', ],
+                'exportSqlText' => [ 'type' => 'string', 'locationName' => 'exportSqlText', ],
+                'tableFilters' =>  [ 'shape' => 'TableFilter', ],
+                'exportContentTypeEnum' => [ 'type' => 'string', 'locationName' => 'exportContentTypeEnum', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateImportFileTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filename' => [ 'type' => 'string', 'locationName' => 'filename', ],
+                'totalSize' => [ 'type' => 'integer', 'locationName' => 'totalSize', ],
+                'chunkSize' => [ 'type' => 'integer', 'locationName' => 'chunkSize', ],
+                'totalChunks' => [ 'type' => 'integer', 'locationName' => 'totalChunks', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'GeneralCreateTableSqlRequestShape' => [
@@ -853,6 +1141,50 @@ return [
                 'result' =>  [ 'shape' => 'QueryPersonalSqlsResultShape', ],
             ],
         ],
+        'ProgramListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'viewNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'procedureNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'functionNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'triggerNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'eventNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ExeProgramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ExeProgramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ProgramListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ProgramListResultShape', ],
+            ],
+        ],
+        'ExeProgramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ProgramListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'filter' => [ 'type' => 'string', 'locationName' => 'filter', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'GetCreateTableBatchSqlResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1158,6 +1490,107 @@ return [
             'type' => 'structure',
             'members' => [
                 'dmsSqlResults' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSqlResult', ], ],
+            ],
+        ],
+        'GeneralCreateViewRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
+                'viewAlgorithm' => [ 'type' => 'string', 'locationName' => 'viewAlgorithm', ],
+                'definer' => [ 'type' => 'string', 'locationName' => 'definer', ],
+                'viewSecurity' => [ 'type' => 'string', 'locationName' => 'viewSecurity', ],
+                'viewCheckOption' => [ 'type' => 'string', 'locationName' => 'viewCheckOption', ],
+                'definitionSql' => [ 'type' => 'string', 'locationName' => 'definitionSql', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GeneralDropViewRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GeneralDropViewResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+            ],
+        ],
+        'GeneralAlterViewResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GeneralAlterViewResultShape', ],
+            ],
+        ],
+        'GeneralCreateViewResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+            ],
+        ],
+        'ViewInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GeneralCreateViewResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GeneralCreateViewResultShape', ],
+            ],
+        ],
+        'GeneralAlterViewResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+            ],
+        ],
+        'GeneralDropViewResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GeneralDropViewResultShape', ],
+            ],
+        ],
+        'GeneralAlterViewRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
+                'originViewName' => [ 'type' => 'string', 'locationName' => 'originViewName', ],
+                'viewAlgorithm' => [ 'type' => 'string', 'locationName' => 'viewAlgorithm', ],
+                'definer' => [ 'type' => 'string', 'locationName' => 'definer', ],
+                'viewSecurity' => [ 'type' => 'string', 'locationName' => 'viewSecurity', ],
+                'viewCheckOption' => [ 'type' => 'string', 'locationName' => 'viewCheckOption', ],
+                'definitionSql' => [ 'type' => 'string', 'locationName' => 'definitionSql', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ViewInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
+                'definer' => [ 'type' => 'string', 'locationName' => 'definer', ],
+                'viewAlgorithm' => [ 'type' => 'string', 'locationName' => 'viewAlgorithm', ],
+                'viewCheckOption' => [ 'type' => 'string', 'locationName' => 'viewCheckOption', ],
+                'viewSecurity' => [ 'type' => 'string', 'locationName' => 'viewSecurity', ],
+                'definitionSql' => [ 'type' => 'string', 'locationName' => 'definitionSql', ],
+            ],
+        ],
+        'ViewInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ViewInfoResultShape', ],
             ],
         ],
     ],

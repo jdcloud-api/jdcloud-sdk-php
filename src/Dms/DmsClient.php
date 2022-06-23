@@ -20,6 +20,18 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with dms.
  *
+ * @method \Jdcloud\Result createImportFileTask(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createImportFileTaskAsync(array $args = [])
+ * @method \Jdcloud\Result uploadImportFileTask(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise uploadImportFileTaskAsync(array $args = [])
+ * @method \Jdcloud\Result createDataFlow(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createDataFlowAsync(array $args = [])
+ * @method \Jdcloud\Result createStructureFlow(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createStructureFlowAsync(array $args = [])
+ * @method \Jdcloud\Result createExportFlow(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createExportFlowAsync(array $args = [])
+ * @method \Jdcloud\Result startFlow(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise startFlowAsync(array $args = [])
  * @method \Jdcloud\Result generalCreateTableSql(array $args = [])
  * @method \GuzzleHttp\Promise\Promise generalCreateTableSqlAsync(array $args = [])
  * @method \Jdcloud\Result generalAlterTableSql(array $args = [])
@@ -54,6 +66,10 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise deletePersonalSqlAsync(array $args = [])
  * @method \Jdcloud\Result updatePersonalSql(array $args = [])
  * @method \GuzzleHttp\Promise\Promise updatePersonalSqlAsync(array $args = [])
+ * @method \Jdcloud\Result programList(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise programListAsync(array $args = [])
+ * @method \Jdcloud\Result exeProgram(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise exeProgramAsync(array $args = [])
  * @method \Jdcloud\Result consoleExplain(array $args = [])
  * @method \GuzzleHttp\Promise\Promise consoleExplainAsync(array $args = [])
  * @method \Jdcloud\Result consoleSql(array $args = [])
@@ -80,6 +96,14 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise createTableBatchAsync(array $args = [])
  * @method \Jdcloud\Result getCreateTableBatchSql(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getCreateTableBatchSqlAsync(array $args = [])
+ * @method \Jdcloud\Result generalCreateView(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise generalCreateViewAsync(array $args = [])
+ * @method \Jdcloud\Result generalAlterView(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise generalAlterViewAsync(array $args = [])
+ * @method \Jdcloud\Result generalDropView(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise generalDropViewAsync(array $args = [])
+ * @method \Jdcloud\Result viewInfo(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise viewInfoAsync(array $args = [])
  */
 class DmsClient extends JdCloudClient
 {
