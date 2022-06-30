@@ -160,6 +160,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise configBackSourceOssAsync(array $args = [])
  * @method \Jdcloud\Result queryBackSourceOss(array $args = [])
  * @method \GuzzleHttp\Promise\Promise queryBackSourceOssAsync(array $args = [])
+ * @method \Jdcloud\Result speedLimit(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise speedLimitAsync(array $args = [])
  * @method \Jdcloud\Result queryDomainGroupList(array $args = [])
  * @method \GuzzleHttp\Promise\Promise queryDomainGroupListAsync(array $args = [])
  * @method \Jdcloud\Result queryDomainGroupDetail(array $args = [])

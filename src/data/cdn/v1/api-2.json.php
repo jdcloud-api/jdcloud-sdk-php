@@ -641,6 +641,15 @@ return [
             'input' => [ 'shape' => 'QueryBackSourceOssRequestShape', ],
             'output' => [ 'shape' => 'QueryBackSourceOssResponseShape', ],
         ],
+        'SpeedLimit' => [
+            'name' => 'SpeedLimit',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/domain/{domain}/speedLimit',
+            ],
+            'input' => [ 'shape' => 'SpeedLimitRequestShape', ],
+            'output' => [ 'shape' => 'SpeedLimitResponseShape', ],
+        ],
         'QueryDomainGroupList' => [
             'name' => 'QueryDomainGroupList',
             'http' => [
@@ -3761,6 +3770,13 @@ return [
                 'result' =>  [ 'shape' => 'DeleteHttpHeaderResultShape', ],
             ],
         ],
+        'SpeedLimitRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'limitRate' => [ 'type' => 'integer', 'locationName' => 'limitRate', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
         'QueryIpBlackListRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3945,6 +3961,13 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'SetAccelerateRegionResultShape', ],
+            ],
+        ],
+        'SpeedLimitResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SpeedLimitResultShape', ],
             ],
         ],
         'DeleteHttpHeaderRequestShape' => [
@@ -4320,6 +4343,11 @@ return [
             'members' => [
                 'content' => [ 'type' => 'string', 'locationName' => 'content', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'SpeedLimitResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'UpdateCacheRuleResponseShape' => [
