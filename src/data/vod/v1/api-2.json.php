@@ -29,6 +29,15 @@ return [
             'input' => [ 'shape' => 'CreateCategoryRequestShape', ],
             'output' => [ 'shape' => 'CreateCategoryResponseShape', ],
         ],
+        'ListAllCategories' => [
+            'name' => 'ListAllCategories',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/categories:listAll',
+            ],
+            'input' => [ 'shape' => 'ListAllCategoriesRequestShape', ],
+            'output' => [ 'shape' => 'ListAllCategoriesResponseShape', ],
+        ],
         'GetCategoryWithChildren' => [
             'name' => 'GetCategoryWithChildren',
             'http' => [
@@ -326,6 +335,24 @@ return [
             'input' => [ 'shape' => 'DeleteQualityDetectionTemplateRequestShape', ],
             'output' => [ 'shape' => 'DeleteQualityDetectionTemplateResponseShape', ],
         ],
+        'SubmitSnapshotTask' => [
+            'name' => 'SubmitSnapshotTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/snapshotJobs:submit',
+            ],
+            'input' => [ 'shape' => 'SubmitSnapshotTaskRequestShape', ],
+            'output' => [ 'shape' => 'SubmitSnapshotTaskResponseShape', ],
+        ],
+        'ListSnapshotTasks' => [
+            'name' => 'ListSnapshotTasks',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/snapshotTasks',
+            ],
+            'input' => [ 'shape' => 'ListSnapshotTasksRequestShape', ],
+            'output' => [ 'shape' => 'ListSnapshotTasksResponseShape', ],
+        ],
         'ListSnapshotTemplates' => [
             'name' => 'ListSnapshotTemplates',
             'http' => [
@@ -356,7 +383,7 @@ return [
         'UpdateSnapshotTemplate' => [
             'name' => 'UpdateSnapshotTemplate',
             'http' => [
-                'method' => 'PATCH',
+                'method' => 'PUT',
                 'requestUri' => '/v1/snapshotTemplates/{templateId}',
             ],
             'input' => [ 'shape' => 'UpdateSnapshotTemplateRequestShape', ],
@@ -1129,12 +1156,63 @@ return [
                 'detections' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'SnapshotJobSummary' => [
+            'type' => 'structure',
+            'members' => [
+                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
+                'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskSummary', ], ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'SnapshotTaskSummaryPageInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'SnapshotTaskSummary', ], ],
+            ],
+        ],
+        'TaskSummary' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'snapshotType' => [ 'type' => 'string', 'locationName' => 'snapshotType', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'errorCode' => [ 'type' => 'string', 'locationName' => 'errorCode', ],
+                'errorMessage' => [ 'type' => 'string', 'locationName' => 'errorMessage', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'SnapshotTaskSummary' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
+                'videoId' => [ 'type' => 'string', 'locationName' => 'videoId', ],
+                'snapshotType' => [ 'type' => 'string', 'locationName' => 'snapshotType', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'outputBucket' => [ 'type' => 'string', 'locationName' => 'outputBucket', ],
+                'outputFileKey' => [ 'type' => 'string', 'locationName' => 'outputFileKey', ],
+                'spriteFileKey' => [ 'type' => 'string', 'locationName' => 'spriteFileKey', ],
+                'errorCode' => [ 'type' => 'string', 'locationName' => 'errorCode', ],
+                'errorMessage' => [ 'type' => 'string', 'locationName' => 'errorMessage', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
         'CreateSnapshotTemplateRequestInfo' => [
             'type' => 'structure',
             'members' => [
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
-                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
-                'templateConfig' => [ 'type' => 'string', 'locationName' => 'templateConfig', ],
+                'snapshotType' => [ 'type' => 'string', 'locationName' => 'snapshotType', ],
+                'imageSampleConfig' =>  [ 'shape' => 'ImageSampleConfig', ],
+                'imageSpriteConfig' =>  [ 'shape' => 'ImageSpriteConfig', ],
             ],
         ],
         'SnapshotTemplateSampleConfigInfo' => [
@@ -1150,11 +1228,40 @@ return [
                 'fillType' => [ 'type' => 'string', 'locationName' => 'fillType', ],
             ],
         ],
+        'ImageSpriteConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'integer', 'locationName' => 'startTime', ],
+                'intervalTime' => [ 'type' => 'integer', 'locationName' => 'intervalTime', ],
+                'frameType' => [ 'type' => 'string', 'locationName' => 'frameType', ],
+                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
+                'rows' => [ 'type' => 'integer', 'locationName' => 'rows', ],
+                'columns' => [ 'type' => 'integer', 'locationName' => 'columns', ],
+                'cellWidth' => [ 'type' => 'integer', 'locationName' => 'cellWidth', ],
+                'cellHeight' => [ 'type' => 'integer', 'locationName' => 'cellHeight', ],
+                'doKeepShots' => [ 'type' => 'boolean', 'locationName' => 'doKeepShots', ],
+            ],
+        ],
         'UpdateSnapshotTemplateRequestInfo' => [
             'type' => 'structure',
             'members' => [
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
-                'templateConfig' => [ 'type' => 'string', 'locationName' => 'templateConfig', ],
+                'snapshotType' => [ 'type' => 'string', 'locationName' => 'snapshotType', ],
+                'imageSampleConfig' =>  [ 'shape' => 'ImageSampleConfig', ],
+                'imageSpriteConfig' =>  [ 'shape' => 'ImageSpriteConfig', ],
+            ],
+        ],
+        'ImageSampleConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'integer', 'locationName' => 'startTime', ],
+                'intervalTime' => [ 'type' => 'integer', 'locationName' => 'intervalTime', ],
+                'frameType' => [ 'type' => 'string', 'locationName' => 'frameType', ],
+                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
+                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'fillType' => [ 'type' => 'string', 'locationName' => 'fillType', ],
             ],
         ],
         'SnapshotTemplatePageInfo' => [
@@ -1186,8 +1293,9 @@ return [
             'members' => [
                 'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
-                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
-                'templateConfig' => [ 'type' => 'string', 'locationName' => 'templateConfig', ],
+                'snapshotType' => [ 'type' => 'string', 'locationName' => 'snapshotType', ],
+                'imageSampleConfig' =>  [ 'shape' => 'ImageSampleConfig', ],
+                'imageSpriteConfig' =>  [ 'shape' => 'ImageSpriteConfig', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
@@ -1543,10 +1651,28 @@ return [
             'type' => 'structure',
             'members' => [
                 'mediaId' => [ 'type' => 'string', 'locationName' => 'mediaId', ],
+                'mediaType' => [ 'type' => 'string', 'locationName' => 'mediaType', ],
+                'mediaUrl' => [ 'type' => 'string', 'locationName' => 'mediaUrl', ],
                 'mediaIn' => [ 'type' => 'integer', 'locationName' => 'mediaIn', ],
                 'mediaOut' => [ 'type' => 'integer', 'locationName' => 'mediaOut', ],
                 'timelineIn' => [ 'type' => 'integer', 'locationName' => 'timelineIn', ],
                 'timelineOut' => [ 'type' => 'integer', 'locationName' => 'timelineOut', ],
+                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
+                'posX' => [ 'type' => 'integer', 'locationName' => 'posX', ],
+                'posY' => [ 'type' => 'integer', 'locationName' => 'posY', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'font' => [ 'type' => 'string', 'locationName' => 'font', ],
+                'fontSize' => [ 'type' => 'integer', 'locationName' => 'fontSize', ],
+                'fontColor' => [ 'type' => 'string', 'locationName' => 'fontColor', ],
+                'fontColorOpacity' => [ 'type' => 'double', 'locationName' => 'fontColorOpacity', ],
+                'spacing' => [ 'type' => 'integer', 'locationName' => 'spacing', ],
+                'angle' => [ 'type' => 'integer', 'locationName' => 'angle', ],
+                'borderStyle' => [ 'type' => 'integer', 'locationName' => 'borderStyle', ],
+                'outline' => [ 'type' => 'integer', 'locationName' => 'outline', ],
+                'outlineColor' => [ 'type' => 'string', 'locationName' => 'outlineColor', ],
+                'shadow' => [ 'type' => 'integer', 'locationName' => 'shadow', ],
+                'backColor' => [ 'type' => 'string', 'locationName' => 'backColor', ],
+                'fontFace' =>  [ 'shape' => 'FontFace', ],
                 'operations' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClipOperation', ], ],
             ],
         ],
@@ -1555,6 +1681,14 @@ return [
             'members' => [
                 'jobId' => [ 'type' => 'long', 'locationName' => 'jobId', ],
                 'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
+            ],
+        ],
+        'FontFace' => [
+            'type' => 'structure',
+            'members' => [
+                'bold' => [ 'type' => 'boolean', 'locationName' => 'bold', ],
+                'italic' => [ 'type' => 'boolean', 'locationName' => 'italic', ],
+                'underline' => [ 'type' => 'boolean', 'locationName' => 'underline', ],
             ],
         ],
         'Timeline' => [
@@ -1612,27 +1746,6 @@ return [
                 'projectName' => [ 'type' => 'string', 'locationName' => 'projectName', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'timeline' =>  [ 'shape' => 'Timeline', ],
-            ],
-        ],
-        'TransparentParams' => [
-            'type' => 'structure',
-            'members' => [
-                'alpha' => [ 'type' => 'integer', 'locationName' => 'alpha', ],
-            ],
-        ],
-        'AudioVolumeParams' => [
-            'type' => 'structure',
-            'members' => [
-                'value' => [ 'type' => 'integer', 'locationName' => 'value', ],
-            ],
-        ],
-        'CropParams' => [
-            'type' => 'structure',
-            'members' => [
-                'x' => [ 'type' => 'integer', 'locationName' => 'x', ],
-                'y' => [ 'type' => 'integer', 'locationName' => 'y', ],
-                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
-                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
             ],
         ],
         'VeditProjectPageData' => [
@@ -2012,6 +2125,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ListAllCategoriesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'flatMode' => [ 'type' => 'boolean', 'locationName' => 'flatMode', ],
+                'treeMode' => [ 'type' => 'boolean', 'locationName' => 'treeMode', ],
+            ],
+        ],
         'GetCategoryRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2043,6 +2163,13 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
+        'ListAllCategoriesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'flatResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'CategoryObject', ], ],
+                'treeResult' =>  [ 'shape' => 'CategoryTreeNode', ],
+            ],
+        ],
         'GetCategoryWithChildrenResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2066,6 +2193,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'UpdateCategoryResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListAllCategoriesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListAllCategoriesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -2721,10 +2855,68 @@ return [
                 'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
             ],
         ],
+        'SubmitSnapshotJobsRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'videoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'SubmitSnapshotTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jobs' => [ 'type' => 'list', 'member' => [ 'shape' => 'SnapshotJobSummary', ], ],
+            ],
+        ],
+        'SubmitSnapshotTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'videoIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'templateIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'SubmitSnapshotJobsResult' => [
+            'type' => 'structure',
+            'members' => [
+                'jobs' => [ 'type' => 'list', 'member' => [ 'shape' => 'SnapshotJobSummary', ], ],
+            ],
+        ],
+        'SubmitSnapshotTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SubmitSnapshotTaskResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListSnapshotTasksResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'SnapshotTaskSummary', ], ],
+            ],
+        ],
+        'ListSnapshotTasksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListSnapshotTasksResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListSnapshotTasksRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
         'DeleteSnapshotTemplateRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
             ],
         ],
         'DeleteSnapshotTemplateResultShape' => [
@@ -2743,8 +2935,10 @@ return [
             'type' => 'structure',
             'members' => [
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
-                'templateConfig' => [ 'type' => 'string', 'locationName' => 'templateConfig', ],
-                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+                'snapshotType' => [ 'type' => 'string', 'locationName' => 'snapshotType', ],
+                'imageSampleConfig' =>  [ 'shape' => 'ImageSampleConfig', ],
+                'imageSpriteConfig' =>  [ 'shape' => 'ImageSpriteConfig', ],
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
             ],
         ],
         'GetSnapshotTemplateResponseShape' => [
@@ -2759,8 +2953,9 @@ return [
             'members' => [
                 'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
-                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
-                'templateConfig' => [ 'type' => 'string', 'locationName' => 'templateConfig', ],
+                'snapshotType' => [ 'type' => 'string', 'locationName' => 'snapshotType', ],
+                'imageSampleConfig' =>  [ 'shape' => 'ImageSampleConfig', ],
+                'imageSpriteConfig' =>  [ 'shape' => 'ImageSpriteConfig', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
@@ -2770,8 +2965,9 @@ return [
             'members' => [
                 'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
-                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
-                'templateConfig' => [ 'type' => 'string', 'locationName' => 'templateConfig', ],
+                'snapshotType' => [ 'type' => 'string', 'locationName' => 'snapshotType', ],
+                'imageSampleConfig' =>  [ 'shape' => 'ImageSampleConfig', ],
+                'imageSpriteConfig' =>  [ 'shape' => 'ImageSpriteConfig', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
@@ -2781,8 +2977,9 @@ return [
             'members' => [
                 'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
-                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
-                'templateConfig' => [ 'type' => 'string', 'locationName' => 'templateConfig', ],
+                'snapshotType' => [ 'type' => 'string', 'locationName' => 'snapshotType', ],
+                'imageSampleConfig' =>  [ 'shape' => 'ImageSampleConfig', ],
+                'imageSpriteConfig' =>  [ 'shape' => 'ImageSpriteConfig', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
@@ -2808,8 +3005,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
-                'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
-                'templateConfig' => [ 'type' => 'string', 'locationName' => 'templateConfig', ],
+                'snapshotType' => [ 'type' => 'string', 'locationName' => 'snapshotType', ],
+                'imageSampleConfig' =>  [ 'shape' => 'ImageSampleConfig', ],
+                'imageSpriteConfig' =>  [ 'shape' => 'ImageSpriteConfig', ],
             ],
         ],
         'DeleteSnapshotTemplateResponseShape' => [
@@ -2836,7 +3034,7 @@ return [
         'GetSnapshotTemplateRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'templateId' => [ 'type' => 'long', 'locationName' => 'templateId', ],
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
             ],
         ],
         'GetTranscodeSummariesResponseShape' => [
@@ -3292,12 +3490,6 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
-        'GetVeditProjectRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
-            ],
-        ],
         'GetVeditProjectResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3325,14 +3517,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
-            ],
-        ],
-        'ListVeditProjectsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
             ],
         ],
         'UpdateVeditProjectResponseShape' => [
@@ -3381,6 +3565,20 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'timeline' =>  [ 'shape' => 'Timeline', ],
                 'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
+            ],
+        ],
+        'GetVeditProjectRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'projectId' => [ 'type' => 'long', 'locationName' => 'projectId', ],
+            ],
+        ],
+        'ListVeditProjectsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
             ],
         ],
         'VideoAuditResultShape' => [
