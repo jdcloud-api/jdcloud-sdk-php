@@ -20,6 +20,14 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with pod.
  *
+ * @method \Jdcloud\Result createConfigFile(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createConfigFileAsync(array $args = [])
+ * @method \Jdcloud\Result describeConfigFile(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeConfigFileAsync(array $args = [])
+ * @method \Jdcloud\Result deleteConfigFile(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteConfigFileAsync(array $args = [])
+ * @method \Jdcloud\Result updateConfigFile(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise updateConfigFileAsync(array $args = [])
  * @method \Jdcloud\Result describeContainer(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeContainerAsync(array $args = [])
  * @method \Jdcloud\Result attach(array $args = [])
