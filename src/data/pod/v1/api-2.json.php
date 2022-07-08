@@ -11,6 +11,42 @@ return [
 //        'serviceId' => 'pod',
     ],
     'operations' => [
+        'CreateConfigFile' => [
+            'name' => 'CreateConfigFile',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/configFiles',
+            ],
+            'input' => [ 'shape' => 'CreateConfigFileRequestShape', ],
+            'output' => [ 'shape' => 'CreateConfigFileResponseShape', ],
+        ],
+        'DescribeConfigFile' => [
+            'name' => 'DescribeConfigFile',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/configFiles/{name}',
+            ],
+            'input' => [ 'shape' => 'DescribeConfigFileRequestShape', ],
+            'output' => [ 'shape' => 'DescribeConfigFileResponseShape', ],
+        ],
+        'DeleteConfigFile' => [
+            'name' => 'DeleteConfigFile',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/configFiles/{name}',
+            ],
+            'input' => [ 'shape' => 'DeleteConfigFileRequestShape', ],
+            'output' => [ 'shape' => 'DeleteConfigFileResponseShape', ],
+        ],
+        'UpdateConfigFile' => [
+            'name' => 'UpdateConfigFile',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/configFiles/{name}:update',
+            ],
+            'input' => [ 'shape' => 'UpdateConfigFileRequestShape', ],
+            'output' => [ 'shape' => 'UpdateConfigFileResponseShape', ],
+        ],
         'DescribeContainer' => [
             'name' => 'DescribeContainer',
             'http' => [
@@ -238,12 +274,32 @@ return [
         ],
     ],
     'shapes' => [
+        'AvailablityGroup' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
         'BindInfo' => [
             'type' => 'structure',
             'members' => [
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
                 'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+            ],
+        ],
+        'CFSVolumeSource' => [
+            'type' => 'structure',
+            'members' => [
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+            ],
+        ],
+        'CFSVolumeSourceSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
             ],
         ],
         'CloudDisk' => [
@@ -271,6 +327,52 @@ return [
                 'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
                 'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
                 'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+            ],
+        ],
+        'FileToPath' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'ConfigFile' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'FileToPath', ], ],
+            ],
+        ],
+        'ConfigFileToPathSource' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'mode' => [ 'type' => 'string', 'locationName' => 'mode', ],
+            ],
+        ],
+        'ConfigFileToPathSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'mode' => [ 'type' => 'string', 'locationName' => 'mode', ],
+            ],
+        ],
+        'ConfigFileVolumeSource' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'defaultMode' => [ 'type' => 'string', 'locationName' => 'defaultMode', ],
+                'fileToPath' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigFileToPathSource', ], ],
+            ],
+        ],
+        'ConfigFileVolumeSourceSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'defaultMode' => [ 'type' => 'string', 'locationName' => 'defaultMode', ],
+                'fileToPath' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigFileToPathSpec', ], ],
             ],
         ],
         'Hh' => [
@@ -365,6 +467,7 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
                 'readOnly' => [ 'type' => 'boolean', 'locationName' => 'readOnly', ],
+                'subPath' => [ 'type' => 'string', 'locationName' => 'subPath', ],
             ],
         ],
         'TcpSocket' => [
@@ -451,6 +554,7 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
                 'readOnly' => [ 'type' => 'boolean', 'locationName' => 'readOnly', ],
+                'subPath' => [ 'type' => 'string', 'locationName' => 'subPath', ],
             ],
         ],
         'HhSpec' => [
@@ -751,6 +855,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'hostname' => [ 'type' => 'string', 'locationName' => 'hostname', ],
+                'ag' =>  [ 'shape' => 'AvailablityGroup', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'restartPolicy' => [ 'type' => 'string', 'locationName' => 'restartPolicy', ],
                 'terminationGracePeriodSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGracePeriodSeconds', ],
@@ -864,6 +969,86 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+            ],
+        ],
+        'CreateConfigFileRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'FileToPath', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'UpdateConfigFileResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateConfigFileResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateConfigFileResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'DescribeConfigFileResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeConfigFileResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateConfigFileRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'FileToPath', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateConfigFileResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'DescribeConfigFileResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'configFile' =>  [ 'shape' => 'ConfigFile', ],
+            ],
+        ],
+        'CreateConfigFileResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateConfigFileResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteConfigFileResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeConfigFileRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'DeleteConfigFileResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteConfigFileRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
         'AttachResultShape' => [
