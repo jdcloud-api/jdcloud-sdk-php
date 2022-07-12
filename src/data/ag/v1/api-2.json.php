@@ -97,6 +97,7 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'count' => [ 'type' => 'double', 'locationName' => 'count', ],
                 'autoScaling' => [ 'type' => 'boolean', 'locationName' => 'autoScaling', ],
+                'configurationType' => [ 'type' => 'string', 'locationName' => 'configurationType', ],
             ],
         ],
         'Quota' => [
@@ -185,6 +186,7 @@ return [
                 'agType' => [ 'type' => 'string', 'locationName' => 'agType', ],
                 'instanceTemplateId' => [ 'type' => 'string', 'locationName' => 'instanceTemplateId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'configurationType' => [ 'type' => 'string', 'locationName' => 'configurationType', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
