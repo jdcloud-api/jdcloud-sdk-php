@@ -11,6 +11,24 @@ return [
 //        'serviceId' => 'iotlink',
     ],
     'operations' => [
+        'CardInfo' => [
+            'name' => 'CardInfo',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/cardInfo',
+            ],
+            'input' => [ 'shape' => 'CardInfoRequestShape', ],
+            'output' => [ 'shape' => 'CardInfoResponseShape', ],
+        ],
+        'RealNameQueryIot' => [
+            'name' => 'RealNameQueryIot',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/realNameQueryIot',
+            ],
+            'input' => [ 'shape' => 'RealNameQueryIotRequestShape', ],
+            'output' => [ 'shape' => 'RealNameQueryIotResponseShape', ],
+        ],
         'GprsStatusByIMSI' => [
             'name' => 'GprsStatusByIMSI',
             'http' => [
@@ -156,6 +174,17 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
+        'RealNameQueryIotResp' => [
+            'type' => 'structure',
+            'members' => [
+                'activeTime' => [ 'type' => 'string', 'locationName' => 'activeTime', ],
+                'prodStatusName' => [ 'type' => 'string', 'locationName' => 'prodStatusName', ],
+                'certNumber' => [ 'type' => 'string', 'locationName' => 'certNumber', ],
+                'number' => [ 'type' => 'string', 'locationName' => 'number', ],
+                'authRespCode' => [ 'type' => 'string', 'locationName' => 'authRespCode', ],
+                'authRespMsg' => [ 'type' => 'string', 'locationName' => 'authRespMsg', ],
+            ],
+        ],
         'OnOffStatusResp' => [
             'type' => 'structure',
             'members' => [
@@ -179,6 +208,15 @@ return [
                 'msisdn' => [ 'type' => 'string', 'locationName' => 'msisdn', ],
                 'imsi' => [ 'type' => 'string', 'locationName' => 'imsi', ],
                 'onlinestatus' => [ 'type' => 'string', 'locationName' => 'onlinestatus', ],
+            ],
+        ],
+        'CardInfoResp' => [
+            'type' => 'structure',
+            'members' => [
+                'iccid' => [ 'type' => 'string', 'locationName' => 'iccid', ],
+                'packageName' => [ 'type' => 'string', 'locationName' => 'packageName', ],
+                'activeTm' => [ 'type' => 'string', 'locationName' => 'activeTm', ],
+                'packageExpiredTm' => [ 'type' => 'string', 'locationName' => 'packageExpiredTm', ],
             ],
         ],
         'OnOffStatusResponseShape' => [
@@ -210,27 +248,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'LifeStatusByIMSIResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'result' =>  [ 'shape' => 'LifeStatusResp', ],
-            ],
-        ],
         'LifeStatusByIMSIResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'LifeStatusByIMSIResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'OpenIotFlowResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'OperationIotlinkResp', ], ],
             ],
         ],
         'CloseIotFlowResultShape' => [
@@ -248,11 +270,27 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'RealNameQueryIotResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'RealNameQueryIotResp', ],
+            ],
+        ],
         'CloseIotCardRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'iccids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CardInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'CardInfoResp', ],
             ],
         ],
         'GprsRealtimeInfoResponseShape' => [
@@ -270,19 +308,11 @@ return [
                 'result' => [ 'type' => 'string', 'locationName' => 'result', ],
             ],
         ],
-        'LifeStatusByIMSIRequestShape' => [
+        'CardInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'imsi' => [ 'type' => 'string', 'locationName' => 'imsi', ],
+                'iccid' => [ 'type' => 'string', 'locationName' => 'iccid', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'OnOffStatusByIMSIResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'result' =>  [ 'shape' => 'OnOffStatusResp', ],
             ],
         ],
         'OnOffStatusResultShape' => [
@@ -301,13 +331,6 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'OpenIotCardResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'OpenIotCardResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'OpenIotFlowResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -320,6 +343,139 @@ return [
             'members' => [
                 'imsi' => [ 'type' => 'string', 'locationName' => 'imsi', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'SearchResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SearchResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CloseIotFlowResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CloseIotFlowResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'LifeStatusResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'LifeStatusResp', ],
+            ],
+        ],
+        'CloseIotFlowRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'iccids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GprsStatusRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'iccid' => [ 'type' => 'string', 'locationName' => 'iccid', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GprsStatusByIMSIRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imsi' => [ 'type' => 'string', 'locationName' => 'imsi', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'SearchResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+            ],
+        ],
+        'OperateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestType' => [ 'type' => 'string', 'locationName' => 'requestType', ],
+                'requestParam' => [ 'type' => 'string', 'locationName' => 'requestParam', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GprsRealtimeInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'GprsRealtimeInfoResp', ],
+            ],
+        ],
+        'OpenIotCardRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'iccids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'RealNameQueryIotRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'iccid' => [ 'type' => 'string', 'locationName' => 'iccid', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CardInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CardInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'LifeStatusByIMSIResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'LifeStatusResp', ],
+            ],
+        ],
+        'OpenIotFlowResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'OperationIotlinkResp', ], ],
+            ],
+        ],
+        'RealNameQueryIotResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RealNameQueryIotResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'LifeStatusByIMSIRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imsi' => [ 'type' => 'string', 'locationName' => 'imsi', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'OnOffStatusByIMSIResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'OnOffStatusResp', ],
+            ],
+        ],
+        'OpenIotCardResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'OpenIotCardResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GprsRealtimeInfoByIMSIResultShape' => [
@@ -337,13 +493,6 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'SearchResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'SearchResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'OpenIotCardResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -358,13 +507,6 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'OperationIotlinkResp', ], ],
-            ],
-        ],
-        'CloseIotFlowResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CloseIotFlowResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GprsRealtimeInfoByIMSIResponseShape' => [
@@ -402,39 +544,10 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'LifeStatusResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'result' =>  [ 'shape' => 'LifeStatusResp', ],
-            ],
-        ],
-        'CloseIotFlowRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'iccids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GprsStatusRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'iccid' => [ 'type' => 'string', 'locationName' => 'iccid', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'GprsRealtimeInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'iccid' => [ 'type' => 'string', 'locationName' => 'iccid', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GprsStatusByIMSIRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'imsi' => [ 'type' => 'string', 'locationName' => 'imsi', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -445,41 +558,10 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'SearchResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
-            ],
-        ],
-        'OperateRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestType' => [ 'type' => 'string', 'locationName' => 'requestType', ],
-                'requestParam' => [ 'type' => 'string', 'locationName' => 'requestParam', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'OnOffStatusRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'iccid' => [ 'type' => 'string', 'locationName' => 'iccid', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GprsRealtimeInfoResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'result' =>  [ 'shape' => 'GprsRealtimeInfoResp', ],
-            ],
-        ],
-        'OpenIotCardRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'iccids' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
