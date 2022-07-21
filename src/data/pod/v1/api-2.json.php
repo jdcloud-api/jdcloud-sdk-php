@@ -880,6 +880,8 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'jdcloudDisk' =>  [ 'shape' => 'JDCloudVolumeSource', ],
+                'cfs' =>  [ 'shape' => 'CFSVolumeSource', ],
+                'configFile' =>  [ 'shape' => 'ConfigFileVolumeSource', ],
             ],
         ],
         'PodStatus' => [
@@ -919,6 +921,8 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'jdcloudDisk' =>  [ 'shape' => 'JDCloudVolumeSourceSpec', ],
+                'cfs' =>  [ 'shape' => 'CFSVolumeSourceSpec', ],
+                'configFile' =>  [ 'shape' => 'ConfigFileVolumeSourceSpec', ],
             ],
         ],
         'Quota' => [
