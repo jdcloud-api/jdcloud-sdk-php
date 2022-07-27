@@ -1928,6 +1928,7 @@ return [
         'DescribeBigKeyListRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'date' => [ 'type' => 'string', 'locationName' => 'date', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
@@ -1949,7 +1950,6 @@ return [
         'DescribeAnalysisThresholdRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
