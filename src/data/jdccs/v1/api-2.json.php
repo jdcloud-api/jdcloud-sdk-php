@@ -146,6 +146,24 @@ return [
             'input' => [ 'shape' => 'DescribeOpenDevicesDataRequestShape', ],
             'output' => [ 'shape' => 'DescribeOpenDevicesDataResponseShape', ],
         ],
+        'DescribeRangetimeCabinetCurrent' => [
+            'name' => 'DescribeRangetimeCabinetCurrent',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/idcs/{idc}/rangetimeCabinetCurrent',
+            ],
+            'input' => [ 'shape' => 'DescribeRangetimeCabinetCurrentRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRangetimeCabinetCurrentResponseShape', ],
+        ],
+        'DescribeRealtimeCabinetCurrent' => [
+            'name' => 'DescribeRealtimeCabinetCurrent',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/idcs/{idc}/realtimeCabinetCurrent',
+            ],
+            'input' => [ 'shape' => 'DescribeRealtimeCabinetCurrentRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRealtimeCabinetCurrentResponseShape', ],
+        ],
         'DescribeIdcs' => [
             'name' => 'DescribeIdcs',
             'http' => [
@@ -407,6 +425,16 @@ return [
                 'rackUOccupy' => [ 'type' => 'integer', 'locationName' => 'rackUOccupy', ],
                 'rackUFree' => [ 'type' => 'integer', 'locationName' => 'rackUFree', ],
                 'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
+            ],
+        ],
+        'CabinetCurrentRespItem' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'timestamp' => [ 'type' => 'integer', 'locationName' => 'timestamp', ],
+                'aValue' => [ 'type' => 'double', 'locationName' => 'aValue', ],
+                'bValue' => [ 'type' => 'double', 'locationName' => 'bValue', ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
             ],
         ],
         'CabinetOverview' => [
@@ -976,6 +1004,13 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'DescribeRangetimeCabinetCurrentResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRangetimeCabinetCurrentResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeBandwidthTrafficRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1007,6 +1042,13 @@ return [
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'TrafficSamplingData', ], ],
             ],
         ],
+        'DescribeRealtimeCabinetCurrentResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRealtimeCabinetCurrentResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeMetricsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1035,6 +1077,13 @@ return [
                 'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
             ],
         ],
+        'DescribeRealtimeCabinetCurrentRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
+            ],
+        ],
         'DescribeOpenDevicesDataResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1049,6 +1098,16 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeRangetimeCabinetCurrentRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'startTime' => [ 'type' => 'integer', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'integer', 'locationName' => 'endTime', ],
+                'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
+                'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
+            ],
+        ],
         'DescribeMetricsResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1060,6 +1119,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'LastDownsampleRespItem', ], ],
+            ],
+        ],
+        'DescribeRealtimeCabinetCurrentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'CabinetCurrentRespItem', ], ],
             ],
         ],
         'LastDownsampleRequestShape' => [
@@ -1110,6 +1175,12 @@ return [
                 'port' => [ 'type' => 'string', 'locationName' => 'port', ],
                 'idc' => [ 'type' => 'string', 'locationName' => 'idc', ],
                 'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+            ],
+        ],
+        'DescribeRangetimeCabinetCurrentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'CabinetCurrentRespItem', ], ],
             ],
         ],
         'DescribeMetricDataResponseShape' => [

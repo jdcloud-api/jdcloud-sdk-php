@@ -461,6 +461,12 @@ return [
                 'attachTime' => [ 'type' => 'string', 'locationName' => 'attachTime', ],
             ],
         ],
+        'NetworkInterfaceIpv6Address' => [
+            'type' => 'structure',
+            'members' => [
+                'ipv6Address' => [ 'type' => 'string', 'locationName' => 'ipv6Address', ],
+            ],
+        ],
         'NetworkInterfacePrivateIp' => [
             'type' => 'structure',
             'members' => [
@@ -860,12 +866,6 @@ return [
         'UnassignSecondaryIpsResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'NetworkInterfaceIpv6Address' => [
-            'type' => 'structure',
-            'members' => [
-                'ipv6Address' => [ 'type' => 'string', 'locationName' => 'ipv6Address', ],
             ],
         ],
         'AssignSecondaryIpsRequestShape' => [
@@ -1383,6 +1383,19 @@ return [
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
+        'InstanceTypeBurstInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'creditsEarnedPerHour' => [ 'type' => 'float', 'locationName' => 'creditsEarnedPerHour', ],
+                'basePerformance' => [ 'type' => 'float', 'locationName' => 'basePerformance', ],
+            ],
+        ],
+        'BurstSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'burstMode' => [ 'type' => 'string', 'locationName' => 'burstMode', ],
+            ],
+        ],
         'InstanceDiskAttachmentSpec' => [
             'type' => 'structure',
             'members' => [
@@ -1435,10 +1448,13 @@ return [
         'InstanceSpec' => [
             'type' => 'structure',
             'members' => [
+                'dedicatedPoolId' => [ 'type' => 'string', 'locationName' => 'dedicatedPoolId', ],
+                'dedicatedHostId' => [ 'type' => 'string', 'locationName' => 'dedicatedHostId', ],
                 'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
                 'instanceTemplateId' => [ 'type' => 'string', 'locationName' => 'instanceTemplateId', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'burstSpec' =>  [ 'shape' => 'BurstSpec', ],
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'hostname' => [ 'type' => 'string', 'locationName' => 'hostname', ],
@@ -1469,6 +1485,7 @@ return [
                 'family' => [ 'type' => 'string', 'locationName' => 'family', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'cpu' => [ 'type' => 'integer', 'locationName' => 'cpu', ],
+                'architecture' => [ 'type' => 'string', 'locationName' => 'architecture', ],
                 'memoryMB' => [ 'type' => 'integer', 'locationName' => 'memoryMB', ],
                 'nicLimit' => [ 'type' => 'integer', 'locationName' => 'nicLimit', ],
                 'cloudDiskCountLimit' => [ 'type' => 'integer', 'locationName' => 'cloudDiskCountLimit', ],
@@ -1477,6 +1494,7 @@ return [
                 'gpu' =>  [ 'shape' => 'Gpu', ],
                 'localDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'LocalDisk', ], ],
                 'generation' => [ 'type' => 'integer', 'locationName' => 'generation', ],
+                'burstInfo' =>  [ 'shape' => 'InstanceTypeBurstInfo', ],
             ],
         ],
         'Gpu' => [
