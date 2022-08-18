@@ -94,6 +94,13 @@ return [
         ],
     ],
     'shapes' => [
+        'AvailableAz' => [
+            'type' => 'structure',
+            'members' => [
+                'fileSystemType' => [ 'type' => 'string', 'locationName' => 'fileSystemType', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'Tag' => [
             'type' => 'structure',
             'members' => [
@@ -111,6 +118,7 @@ return [
                 'sizeByte' =>  [ 'shape' => 'SizeByte', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'fileSystemType' => [ 'type' => 'string', 'locationName' => 'fileSystemType', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'dnsName' => [ 'type' => 'string', 'locationName' => 'dnsName', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
@@ -120,7 +128,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'timestamp' => [ 'type' => 'string', 'locationName' => 'timestamp', ],
-                'value' => [ 'type' => 'uint64', 'locationName' => 'value', ],
+                'value' => [ 'type' => 'long', 'locationName' => 'value', ],
             ],
         ],
         'MountTarget' => [
@@ -132,6 +140,7 @@ return [
                 'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'securityGroupId' => [ 'type' => 'string', 'locationName' => 'securityGroupId', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'dnsName' => [ 'type' => 'string', 'locationName' => 'dnsName', ],
             ],
@@ -234,6 +243,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
                 'fileSystemType' => [ 'type' => 'string', 'locationName' => 'fileSystemType', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],

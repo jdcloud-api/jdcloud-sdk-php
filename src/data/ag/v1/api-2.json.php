@@ -98,6 +98,16 @@ return [
                 'count' => [ 'type' => 'double', 'locationName' => 'count', ],
                 'autoScaling' => [ 'type' => 'boolean', 'locationName' => 'autoScaling', ],
                 'configurationType' => [ 'type' => 'string', 'locationName' => 'configurationType', ],
+                'placementType' => [ 'type' => 'string', 'locationName' => 'placementType', ],
+                'instancesQuotas' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstancesQuota', ], ],
+            ],
+        ],
+        'InstancesQuota' => [
+            'type' => 'structure',
+            'members' => [
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'limit' => [ 'type' => 'integer', 'locationName' => 'limit', ],
+                'used' => [ 'type' => 'integer', 'locationName' => 'used', ],
             ],
         ],
         'Quota' => [
@@ -187,6 +197,7 @@ return [
                 'instanceTemplateId' => [ 'type' => 'string', 'locationName' => 'instanceTemplateId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'configurationType' => [ 'type' => 'string', 'locationName' => 'configurationType', ],
+                'placementType' => [ 'type' => 'string', 'locationName' => 'placementType', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
