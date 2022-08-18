@@ -329,18 +329,18 @@ return [
                 'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
             ],
         ],
-        'FileToPath' => [
-            'type' => 'structure',
-            'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
-            ],
-        ],
         'ConfigFile' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'FileToPath', ], ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigFileData', ], ],
+            ],
+        ],
+        'ConfigFileData' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'ConfigFileToPathSource' => [
@@ -669,6 +669,13 @@ return [
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
             ],
         ],
+        'FileToPath' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'HostAlias' => [
             'type' => 'structure',
             'members' => [
@@ -979,7 +986,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'FileToPath', ], ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigFileData', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1007,7 +1014,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'FileToPath', ], ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigFileData', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
