@@ -650,6 +650,15 @@ return [
             'input' => [ 'shape' => 'SpeedLimitRequestShape', ],
             'output' => [ 'shape' => 'SpeedLimitResponseShape', ],
         ],
+        'BatchIpBlackList' => [
+            'name' => 'BatchIpBlackList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/batchIpBlackList',
+            ],
+            'input' => [ 'shape' => 'BatchIpBlackListRequestShape', ],
+            'output' => [ 'shape' => 'BatchIpBlackListResponseShape', ],
+        ],
         'QueryDomainGroupList' => [
             'name' => 'QueryDomainGroupList',
             'http' => [
@@ -991,6 +1000,15 @@ return [
             ],
             'input' => [ 'shape' => 'QueryLivePrefetchTaskRequestShape', ],
             'output' => [ 'shape' => 'QueryLivePrefetchTaskResponseShape', ],
+        ],
+        'QueryPinCanIPType' => [
+            'name' => 'QueryPinCanIPType',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/mix:queryPinCanIPType',
+            ],
+            'input' => [ 'shape' => 'QueryPinCanIPTypeRequestShape', ],
+            'output' => [ 'shape' => 'QueryPinCanIPTypeResponseShape', ],
         ],
         'BatCreatePrefetchTask' => [
             'name' => 'BatCreatePrefetchTask',
@@ -3441,6 +3459,13 @@ return [
                 'result' =>  [ 'shape' => 'SetMonitorResultShape', ],
             ],
         ],
+        'BatchIpBlackListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'BatchIpBlackListResultShape', ],
+            ],
+        ],
         'SetIgnoreQueryStringResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3637,6 +3662,11 @@ return [
             ],
         ],
         'ConfigBackSourceOssResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'BatchIpBlackListResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -4348,6 +4378,15 @@ return [
         'SpeedLimitResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'BatchIpBlackListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domains' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ipList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'forbidTime' => [ 'type' => 'long', 'locationName' => 'forbidTime', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
             ],
         ],
         'UpdateCacheRuleResponseShape' => [
@@ -5447,6 +5486,24 @@ return [
                 'result' =>  [ 'shape' => 'QueryLivePrefetchTaskResultShape', ],
             ],
         ],
+        'QueryPinCanIPTypeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'QueryPinCanIPTypeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryPinCanIPTypeResultShape', ],
+            ],
+        ],
+        'QueryPinCanIPTypeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'canIPType' => [ 'type' => 'boolean', 'locationName' => 'canIPType', ],
+            ],
+        ],
         'StopPrefetchTaskRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -6284,6 +6341,7 @@ return [
                 'period' => [ 'type' => 'string', 'locationName' => 'period', ],
                 'groupBy' => [ 'type' => 'string', 'locationName' => 'groupBy', ],
                 'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
+                'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
             ],
         ],
         'QueryStatisticsDataGroupByAreaResponseShape' => [
@@ -6334,6 +6392,7 @@ return [
                 'scheme' => [ 'type' => 'string', 'locationName' => 'scheme', ],
                 'abroad' => [ 'type' => 'boolean', 'locationName' => 'abroad', ],
                 'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
+                'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
             ],
         ],
         'QueryMixTrafficGroupSumResponseShape' => [
@@ -6389,6 +6448,7 @@ return [
                 'period' => [ 'type' => 'string', 'locationName' => 'period', ],
                 'scheme' => [ 'type' => 'string', 'locationName' => 'scheme', ],
                 'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
+                'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
             ],
         ],
         'QueryStatisticsTopUrlResponseShape' => [
@@ -6413,6 +6473,7 @@ return [
                 'groupBy' => [ 'type' => 'string', 'locationName' => 'groupBy', ],
                 'abroad' => [ 'type' => 'boolean', 'locationName' => 'abroad', ],
                 'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
+                'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
             ],
         ],
         'QueryDirBandwidthResultShape' => [
@@ -6486,6 +6547,7 @@ return [
                 'period' => [ 'type' => 'string', 'locationName' => 'period', ],
                 'abroad' => [ 'type' => 'boolean', 'locationName' => 'abroad', ],
                 'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
+                'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
             ],
         ],
         'QueryStatisticsTopUrlRequestShape' => [
@@ -6510,6 +6572,7 @@ return [
                 'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
                 'period' => [ 'type' => 'string', 'locationName' => 'period', ],
                 'cacheType' => [ 'type' => 'string', 'locationName' => 'cacheType', ],
+                'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
             ],
         ],
         'QueryLiveTrafficGroupSumResponseShape' => [
