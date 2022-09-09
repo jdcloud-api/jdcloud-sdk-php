@@ -11,6 +11,42 @@ return [
 //        'serviceId' => 'dms',
     ],
     'operations' => [
+        'GeneralCreateEvent' => [
+            'name' => 'GeneralCreateEvent',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/event:generalCreate',
+            ],
+            'input' => [ 'shape' => 'GeneralCreateEventRequestShape', ],
+            'output' => [ 'shape' => 'GeneralCreateEventResponseShape', ],
+        ],
+        'GeneralAlterEvent' => [
+            'name' => 'GeneralAlterEvent',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/event:generalAlter',
+            ],
+            'input' => [ 'shape' => 'GeneralAlterEventRequestShape', ],
+            'output' => [ 'shape' => 'GeneralAlterEventResponseShape', ],
+        ],
+        'GeneralDropEvent' => [
+            'name' => 'GeneralDropEvent',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/event:generalDrop',
+            ],
+            'input' => [ 'shape' => 'GeneralDropEventRequestShape', ],
+            'output' => [ 'shape' => 'GeneralDropEventResponseShape', ],
+        ],
+        'EventInfo' => [
+            'name' => 'EventInfo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/event:info',
+            ],
+            'input' => [ 'shape' => 'EventInfoRequestShape', ],
+            'output' => [ 'shape' => 'EventInfoResponseShape', ],
+        ],
         'CreateImportFileTask' => [
             'name' => 'CreateImportFileTask',
             'http' => [
@@ -64,6 +100,60 @@ return [
             ],
             'input' => [ 'shape' => 'StartFlowRequestShape', ],
             'output' => [ 'shape' => 'StartFlowResponseShape', ],
+        ],
+        'GeneralCreateFunction' => [
+            'name' => 'GeneralCreateFunction',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/function:generalCreate',
+            ],
+            'input' => [ 'shape' => 'GeneralCreateFunctionRequestShape', ],
+            'output' => [ 'shape' => 'GeneralCreateFunctionResponseShape', ],
+        ],
+        'GeneralAlterFunction' => [
+            'name' => 'GeneralAlterFunction',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/function:generalAlter',
+            ],
+            'input' => [ 'shape' => 'GeneralAlterFunctionRequestShape', ],
+            'output' => [ 'shape' => 'GeneralAlterFunctionResponseShape', ],
+        ],
+        'GeneralDropFunction' => [
+            'name' => 'GeneralDropFunction',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/function:generalDrop',
+            ],
+            'input' => [ 'shape' => 'GeneralDropFunctionRequestShape', ],
+            'output' => [ 'shape' => 'GeneralDropFunctionResponseShape', ],
+        ],
+        'FunctionList' => [
+            'name' => 'FunctionList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/function:list',
+            ],
+            'input' => [ 'shape' => 'FunctionListRequestShape', ],
+            'output' => [ 'shape' => 'FunctionListResponseShape', ],
+        ],
+        'FunctionInfo' => [
+            'name' => 'FunctionInfo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/function:info',
+            ],
+            'input' => [ 'shape' => 'FunctionInfoRequestShape', ],
+            'output' => [ 'shape' => 'FunctionInfoResponseShape', ],
+        ],
+        'FunctionInvoke' => [
+            'name' => 'FunctionInvoke',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/function:invoke',
+            ],
+            'input' => [ 'shape' => 'FunctionInvokeRequestShape', ],
+            'output' => [ 'shape' => 'FunctionInvokeResponseShape', ],
         ],
         'GeneralCreateTableSql' => [
             'name' => 'GeneralCreateTableSql',
@@ -136,6 +226,15 @@ return [
             ],
             'input' => [ 'shape' => 'LogoutRequestShape', ],
             'output' => [ 'shape' => 'LogoutResponseShape', ],
+        ],
+        'QueryTypeInstance' => [
+            'name' => 'QueryTypeInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/typeInstances:query',
+            ],
+            'input' => [ 'shape' => 'QueryTypeInstanceRequestShape', ],
+            'output' => [ 'shape' => 'QueryTypeInstanceResponseShape', ],
         ],
         'TableInfo' => [
             'name' => 'TableInfo',
@@ -218,6 +317,60 @@ return [
             'input' => [ 'shape' => 'UpdatePersonalSqlRequestShape', ],
             'output' => [ 'shape' => 'UpdatePersonalSqlResponseShape', ],
         ],
+        'GeneralCreateProcedure' => [
+            'name' => 'GeneralCreateProcedure',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/procedure:generalCreate',
+            ],
+            'input' => [ 'shape' => 'GeneralCreateProcedureRequestShape', ],
+            'output' => [ 'shape' => 'GeneralCreateProcedureResponseShape', ],
+        ],
+        'GeneralAlterProcedure' => [
+            'name' => 'GeneralAlterProcedure',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/procedure:generalAlter',
+            ],
+            'input' => [ 'shape' => 'GeneralAlterProcedureRequestShape', ],
+            'output' => [ 'shape' => 'GeneralAlterProcedureResponseShape', ],
+        ],
+        'GeneralDropProcedure' => [
+            'name' => 'GeneralDropProcedure',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/procedure:generalDrop',
+            ],
+            'input' => [ 'shape' => 'GeneralDropProcedureRequestShape', ],
+            'output' => [ 'shape' => 'GeneralDropProcedureResponseShape', ],
+        ],
+        'ProcedureList' => [
+            'name' => 'ProcedureList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/procedure:list',
+            ],
+            'input' => [ 'shape' => 'ProcedureListRequestShape', ],
+            'output' => [ 'shape' => 'ProcedureListResponseShape', ],
+        ],
+        'ProcedureInfo' => [
+            'name' => 'ProcedureInfo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/procedure:info',
+            ],
+            'input' => [ 'shape' => 'ProcedureInfoRequestShape', ],
+            'output' => [ 'shape' => 'ProcedureInfoResponseShape', ],
+        ],
+        'ProcedureInvoke' => [
+            'name' => 'ProcedureInvoke',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/procedure:invoke',
+            ],
+            'input' => [ 'shape' => 'ProcedureInvokeRequestShape', ],
+            'output' => [ 'shape' => 'ProcedureInvokeResponseShape', ],
+        ],
         'ProgramList' => [
             'name' => 'ProgramList',
             'http' => [
@@ -254,15 +407,6 @@ return [
             'input' => [ 'shape' => 'ConsoleSqlRequestShape', ],
             'output' => [ 'shape' => 'ConsoleSqlResponseShape', ],
         ],
-        'OpenTable' => [
-            'name' => 'OpenTable',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/console:openTable',
-            ],
-            'input' => [ 'shape' => 'OpenTableRequestShape', ],
-            'output' => [ 'shape' => 'OpenTableResponseShape', ],
-        ],
         'ConsoleGeneralData' => [
             'name' => 'ConsoleGeneralData',
             'http' => [
@@ -281,60 +425,6 @@ return [
             'input' => [ 'shape' => 'FormatSqlRequestShape', ],
             'output' => [ 'shape' => 'FormatSqlResponseShape', ],
         ],
-        'GetExportId' => [
-            'name' => 'GetExportId',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/console:getExportId',
-            ],
-            'input' => [ 'shape' => 'GetExportIdRequestShape', ],
-            'output' => [ 'shape' => 'GetExportIdResponseShape', ],
-        ],
-        'GetExportDataId' => [
-            'name' => 'GetExportDataId',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/console:getExportDataId',
-            ],
-            'input' => [ 'shape' => 'GetExportDataIdRequestShape', ],
-            'output' => [ 'shape' => 'GetExportDataIdResponseShape', ],
-        ],
-        'DownloadExportFile' => [
-            'name' => 'DownloadExportFile',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/console:downloadExportFile',
-            ],
-            'input' => [ 'shape' => 'DownloadExportFileRequestShape', ],
-            'output' => [ 'shape' => 'DownloadExportFileResponseShape', ],
-        ],
-        'ExportData' => [
-            'name' => 'ExportData',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/console:exportData',
-            ],
-            'input' => [ 'shape' => 'ExportDataRequestShape', ],
-            'output' => [ 'shape' => 'ExportDataResponseShape', ],
-        ],
-        'ExportStruct' => [
-            'name' => 'ExportStruct',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/console:exportStruct',
-            ],
-            'input' => [ 'shape' => 'ExportStructRequestShape', ],
-            'output' => [ 'shape' => 'ExportStructResponseShape', ],
-        ],
-        'ImportDdlDml' => [
-            'name' => 'ImportDdlDml',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/console:import',
-            ],
-            'input' => [ 'shape' => 'ImportDdlDmlRequestShape', ],
-            'output' => [ 'shape' => 'ImportDdlDmlResponseShape', ],
-        ],
         'CreateTableBatch' => [
             'name' => 'CreateTableBatch',
             'http' => [
@@ -352,6 +442,51 @@ return [
             ],
             'input' => [ 'shape' => 'GetCreateTableBatchSqlRequestShape', ],
             'output' => [ 'shape' => 'GetCreateTableBatchSqlResponseShape', ],
+        ],
+        'GeneralCreateTrigger' => [
+            'name' => 'GeneralCreateTrigger',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/trigger:generalCreate',
+            ],
+            'input' => [ 'shape' => 'GeneralCreateTriggerRequestShape', ],
+            'output' => [ 'shape' => 'GeneralCreateTriggerResponseShape', ],
+        ],
+        'GeneralAlterTrigger' => [
+            'name' => 'GeneralAlterTrigger',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/trigger:generalAlter',
+            ],
+            'input' => [ 'shape' => 'GeneralAlterTriggerRequestShape', ],
+            'output' => [ 'shape' => 'GeneralAlterTriggerResponseShape', ],
+        ],
+        'GeneralDropTrigger' => [
+            'name' => 'GeneralDropTrigger',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/trigger:generalDrop',
+            ],
+            'input' => [ 'shape' => 'GeneralDropTriggerRequestShape', ],
+            'output' => [ 'shape' => 'GeneralDropTriggerResponseShape', ],
+        ],
+        'TriggerList' => [
+            'name' => 'TriggerList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/trigger:list',
+            ],
+            'input' => [ 'shape' => 'TriggerListRequestShape', ],
+            'output' => [ 'shape' => 'TriggerListResponseShape', ],
+        ],
+        'TriggerInfo' => [
+            'name' => 'TriggerInfo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/trigger:info',
+            ],
+            'input' => [ 'shape' => 'TriggerInfoRequestShape', ],
+            'output' => [ 'shape' => 'TriggerInfoResponseShape', ],
         ],
         'GeneralCreateView' => [
             'name' => 'GeneralCreateView',
@@ -522,10 +657,45 @@ return [
                 'instanceInfo' => [ 'type' => 'object', 'locationName' => 'instanceInfo', ],
             ],
         ],
+        'DmsPrivilegeInstanceParam' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DmsPrivilegeVO' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'username' => [ 'type' => 'string', 'locationName' => 'username', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'privilegeName' => [ 'type' => 'string', 'locationName' => 'privilegeName', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'databaseName' => [ 'type' => 'string', 'locationName' => 'databaseName', ],
+                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
+                'fieldName' => [ 'type' => 'string', 'locationName' => 'fieldName', ],
+                'authStatus' => [ 'type' => 'string', 'locationName' => 'authStatus', ],
+                'authDate' => [ 'type' => 'string', 'locationName' => 'authDate', ],
+                'expireDate' => [ 'type' => 'string', 'locationName' => 'expireDate', ],
+                'releaseStatus' => [ 'type' => 'string', 'locationName' => 'releaseStatus', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'DmsRegionDomain' => [
             'type' => 'structure',
             'members' => [
                 'domains' => [ 'type' => 'object', 'locationName' => 'domains', ],
+            ],
+        ],
+        'DmsRoleVO' => [
+            'type' => 'structure',
+            'members' => [
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
             ],
         ],
         'DmsSql' => [
@@ -545,6 +715,29 @@ return [
                 'chkSumMd5' => [ 'type' => 'string', 'locationName' => 'chkSumMd5', ],
                 'beginDate' => [ 'type' => 'string', 'locationName' => 'beginDate', ],
                 'finishDate' => [ 'type' => 'string', 'locationName' => 'finishDate', ],
+            ],
+        ],
+        'DmsSubUserVO' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'DmsSyncSubUserVO' => [
+            'type' => 'structure',
+            'members' => [
+                'username' => [ 'type' => 'string', 'locationName' => 'username', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'roleList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DmsTableStruct' => [
@@ -573,6 +766,32 @@ return [
                 'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
                 'tableComment' => [ 'type' => 'string', 'locationName' => 'tableComment', ],
                 'tableCharset' => [ 'type' => 'string', 'locationName' => 'tableCharset', ],
+            ],
+        ],
+        'DmsUserEnableVO' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'activeStatus' => [ 'type' => 'string', 'locationName' => 'activeStatus', ],
+            ],
+        ],
+        'DmsUserVO' => [
+            'type' => 'structure',
+            'members' => [
+                'username' => [ 'type' => 'string', 'locationName' => 'username', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'masterPin' => [ 'type' => 'string', 'locationName' => 'masterPin', ],
+                'isMaster' => [ 'type' => 'string', 'locationName' => 'isMaster', ],
+                'accountId' => [ 'type' => 'long', 'locationName' => 'accountId', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'activeStatus' => [ 'type' => 'string', 'locationName' => 'activeStatus', ],
+                'deleteStatus' => [ 'type' => 'string', 'locationName' => 'deleteStatus', ],
+                'addDate' => [ 'type' => 'string', 'locationName' => 'addDate', ],
+                'loginDate' => [ 'type' => 'string', 'locationName' => 'loginDate', ],
+                'createDate' => [ 'type' => 'string', 'locationName' => 'createDate', ],
+                'modifiedDate' => [ 'type' => 'string', 'locationName' => 'modifiedDate', ],
+                'roleVOList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsRoleVO', ], ],
             ],
         ],
         'HistorySql' => [
@@ -627,6 +846,122 @@ return [
             'members' => [
                 'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
                 'tableStruct' => [ 'type' => 'string', 'locationName' => 'tableStruct', ],
+            ],
+        ],
+        'EventInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'eventName' => [ 'type' => 'string', 'locationName' => 'eventName', ],
+                'eventComment' => [ 'type' => 'string', 'locationName' => 'eventComment', ],
+                'eventStatus' => [ 'type' => 'string', 'locationName' => 'eventStatus', ],
+                'isPreserve' => [ 'type' => 'boolean', 'locationName' => 'isPreserve', ],
+                'eventDefinition' => [ 'type' => 'string', 'locationName' => 'eventDefinition', ],
+                'eventType' => [ 'type' => 'string', 'locationName' => 'eventType', ],
+                'executeAt' => [ 'type' => 'string', 'locationName' => 'executeAt', ],
+                'intervalValue' => [ 'type' => 'string', 'locationName' => 'intervalValue', ],
+                'intervalField' => [ 'type' => 'string', 'locationName' => 'intervalField', ],
+                'starts' => [ 'type' => 'string', 'locationName' => 'starts', ],
+                'ends' => [ 'type' => 'string', 'locationName' => 'ends', ],
+            ],
+        ],
+        'GeneralCreateEventRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'eventName' => [ 'type' => 'string', 'locationName' => 'eventName', ],
+                'eventComment' => [ 'type' => 'string', 'locationName' => 'eventComment', ],
+                'eventStatus' => [ 'type' => 'string', 'locationName' => 'eventStatus', ],
+                'isPreserve' => [ 'type' => 'boolean', 'locationName' => 'isPreserve', ],
+                'eventDefinition' => [ 'type' => 'string', 'locationName' => 'eventDefinition', ],
+                'eventType' => [ 'type' => 'string', 'locationName' => 'eventType', ],
+                'executeAt' => [ 'type' => 'string', 'locationName' => 'executeAt', ],
+                'intervalValue' => [ 'type' => 'string', 'locationName' => 'intervalValue', ],
+                'intervalField' => [ 'type' => 'string', 'locationName' => 'intervalField', ],
+                'starts' => [ 'type' => 'string', 'locationName' => 'starts', ],
+                'ends' => [ 'type' => 'string', 'locationName' => 'ends', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GeneralCreateEventResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GeneralCreateEventResultShape', ],
+            ],
+        ],
+        'EventInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EventInfoResultShape', ],
+            ],
+        ],
+        'GeneralDropEventResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+            ],
+        ],
+        'GeneralAlterEventResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GeneralAlterEventResultShape', ],
+            ],
+        ],
+        'EventInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'eventName' => [ 'type' => 'string', 'locationName' => 'eventName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GeneralDropEventResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GeneralDropEventResultShape', ],
+            ],
+        ],
+        'GeneralCreateEventResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+            ],
+        ],
+        'GeneralAlterEventRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'originEventName' => [ 'type' => 'string', 'locationName' => 'originEventName', ],
+                'eventName' => [ 'type' => 'string', 'locationName' => 'eventName', ],
+                'eventComment' => [ 'type' => 'string', 'locationName' => 'eventComment', ],
+                'eventStatus' => [ 'type' => 'string', 'locationName' => 'eventStatus', ],
+                'isPreserve' => [ 'type' => 'boolean', 'locationName' => 'isPreserve', ],
+                'eventDefinition' => [ 'type' => 'string', 'locationName' => 'eventDefinition', ],
+                'eventType' => [ 'type' => 'string', 'locationName' => 'eventType', ],
+                'executeAt' => [ 'type' => 'string', 'locationName' => 'executeAt', ],
+                'intervalValue' => [ 'type' => 'string', 'locationName' => 'intervalValue', ],
+                'intervalField' => [ 'type' => 'string', 'locationName' => 'intervalField', ],
+                'starts' => [ 'type' => 'string', 'locationName' => 'starts', ],
+                'ends' => [ 'type' => 'string', 'locationName' => 'ends', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GeneralAlterEventResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+            ],
+        ],
+        'GeneralDropEventRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'eventName' => [ 'type' => 'string', 'locationName' => 'eventName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'UploadImportFileTaskRequestShape' => [
@@ -781,6 +1116,166 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'FunctionListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'functionNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'FunctionListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'filter' => [ 'type' => 'string', 'locationName' => 'filter', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GeneralCreateFunctionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GeneralCreateFunctionResultShape', ],
+            ],
+        ],
+        'FunctionInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'FunctionInfoResultShape', ],
+            ],
+        ],
+        'GeneralAlterFunctionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
+                'originFunctionName' => [ 'type' => 'string', 'locationName' => 'originFunctionName', ],
+                'functionSecurity' => [ 'type' => 'string', 'locationName' => 'functionSecurity', ],
+                'dataAccess' => [ 'type' => 'string', 'locationName' => 'dataAccess', ],
+                'deterministic' => [ 'type' => 'boolean', 'locationName' => 'deterministic', ],
+                'definitionSql' => [ 'type' => 'string', 'locationName' => 'definitionSql', ],
+                'completeSql' => [ 'type' => 'string', 'locationName' => 'completeSql', ],
+                'parameters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Parameter', ], ],
+                'definer' => [ 'type' => 'string', 'locationName' => 'definer', ],
+                'comment' => [ 'type' => 'string', 'locationName' => 'comment', ],
+                'returnType' => [ 'type' => 'string', 'locationName' => 'returnType', ],
+                'returnLength' => [ 'type' => 'integer', 'locationName' => 'returnLength', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'FunctionInvokeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
+                'parameters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Parameter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GeneralDropFunctionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GeneralCreateFunctionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+            ],
+        ],
+        'GeneralAlterFunctionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+            ],
+        ],
+        'GeneralCreateFunctionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
+                'functionSecurity' => [ 'type' => 'string', 'locationName' => 'functionSecurity', ],
+                'dataAccess' => [ 'type' => 'string', 'locationName' => 'dataAccess', ],
+                'deterministic' => [ 'type' => 'boolean', 'locationName' => 'deterministic', ],
+                'definitionSql' => [ 'type' => 'string', 'locationName' => 'definitionSql', ],
+                'parameters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Parameter', ], ],
+                'definer' => [ 'type' => 'string', 'locationName' => 'definer', ],
+                'comment' => [ 'type' => 'string', 'locationName' => 'comment', ],
+                'returnType' => [ 'type' => 'string', 'locationName' => 'returnType', ],
+                'returnLength' => [ 'type' => 'integer', 'locationName' => 'returnLength', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'FunctionInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'FunctionInvokeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'returnValue' => [ 'type' => 'string', 'locationName' => 'returnValue', ],
+                'outArgs' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+            ],
+        ],
+        'FunctionInvokeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'FunctionInvokeResultShape', ],
+            ],
+        ],
+        'GeneralDropFunctionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+            ],
+        ],
+        'FunctionInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
+                'functionSecurity' => [ 'type' => 'string', 'locationName' => 'functionSecurity', ],
+                'dataAccess' => [ 'type' => 'string', 'locationName' => 'dataAccess', ],
+                'deterministic' => [ 'type' => 'boolean', 'locationName' => 'deterministic', ],
+                'definitionSql' => [ 'type' => 'string', 'locationName' => 'definitionSql', ],
+                'completeSql' => [ 'type' => 'string', 'locationName' => 'completeSql', ],
+                'parameters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Parameter', ], ],
+                'definer' => [ 'type' => 'string', 'locationName' => 'definer', ],
+                'comment' => [ 'type' => 'string', 'locationName' => 'comment', ],
+                'returnType' => [ 'type' => 'string', 'locationName' => 'returnType', ],
+                'returnLength' => [ 'type' => 'integer', 'locationName' => 'returnLength', ],
+                'returnDecimal' => [ 'type' => 'integer', 'locationName' => 'returnDecimal', ],
+            ],
+        ],
+        'FunctionListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'FunctionListResultShape', ],
+            ],
+        ],
+        'GeneralAlterFunctionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GeneralAlterFunctionResultShape', ],
+            ],
+        ],
+        'GeneralDropFunctionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GeneralDropFunctionResultShape', ],
+            ],
+        ],
         'GeneralCreateTableSqlRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -888,6 +1383,13 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'QueryTypeInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dbType' => [ 'type' => 'integer', 'locationName' => 'dbType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'QueryInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -903,6 +1405,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'error' =>  [ 'shape' => 'LoginResultShape', ],
+            ],
+        ],
+        'QueryTypeInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryTypeInstanceResultShape', ],
             ],
         ],
         'OpenRequestShape' => [
@@ -938,6 +1446,15 @@ return [
             'type' => 'structure',
             'members' => [
                 'error' =>  [ 'shape' => 'OpenResultShape', ],
+            ],
+        ],
+        'QueryTypeInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'dbType' => [ 'type' => 'integer', 'locationName' => 'dbType', ],
+                'loginedInstance' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsInstance', ], ],
+                'unloginedInstance' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsInstance', ], ],
             ],
         ],
         'LoginResultShape' => [
@@ -1141,6 +1658,158 @@ return [
                 'result' =>  [ 'shape' => 'QueryPersonalSqlsResultShape', ],
             ],
         ],
+        'GeneralDropProcedureResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GeneralDropProcedureResultShape', ],
+            ],
+        ],
+        'GeneralDropProcedureRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'procedureName' => [ 'type' => 'string', 'locationName' => 'procedureName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ProcedureListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'procedureNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'GeneralAlterProcedureResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+            ],
+        ],
+        'ProcedureListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'filter' => [ 'type' => 'string', 'locationName' => 'filter', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GeneralAlterProcedureRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'originProcedureName' => [ 'type' => 'string', 'locationName' => 'originProcedureName', ],
+                'procedureName' => [ 'type' => 'string', 'locationName' => 'procedureName', ],
+                'definer' => [ 'type' => 'string', 'locationName' => 'definer', ],
+                'procedureSecurity' => [ 'type' => 'string', 'locationName' => 'procedureSecurity', ],
+                'dataAccess' => [ 'type' => 'string', 'locationName' => 'dataAccess', ],
+                'deterministic' => [ 'type' => 'boolean', 'locationName' => 'deterministic', ],
+                'definitionSql' => [ 'type' => 'string', 'locationName' => 'definitionSql', ],
+                'completeSql' => [ 'type' => 'string', 'locationName' => 'completeSql', ],
+                'parameters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Parameter', ], ],
+                'comment' => [ 'type' => 'string', 'locationName' => 'comment', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ProcedureListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ProcedureListResultShape', ],
+            ],
+        ],
+        'ProcedureInvokeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ProcedureInvokeResultShape', ],
+            ],
+        ],
+        'ProcedureInvokeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'procedureName' => [ 'type' => 'string', 'locationName' => 'procedureName', ],
+                'parameters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Parameter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ProcedureInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'procedureName' => [ 'type' => 'string', 'locationName' => 'procedureName', ],
+                'definer' => [ 'type' => 'string', 'locationName' => 'definer', ],
+                'procedureSecurity' => [ 'type' => 'string', 'locationName' => 'procedureSecurity', ],
+                'dataAccess' => [ 'type' => 'string', 'locationName' => 'dataAccess', ],
+                'deterministic' => [ 'type' => 'boolean', 'locationName' => 'deterministic', ],
+                'definitionSql' => [ 'type' => 'string', 'locationName' => 'definitionSql', ],
+                'completeSql' => [ 'type' => 'string', 'locationName' => 'completeSql', ],
+                'parameters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Parameter', ], ],
+                'comment' => [ 'type' => 'string', 'locationName' => 'comment', ],
+            ],
+        ],
+        'ProcedureInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'procedureName' => [ 'type' => 'string', 'locationName' => 'procedureName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GeneralCreateProcedureRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'procedureName' => [ 'type' => 'string', 'locationName' => 'procedureName', ],
+                'procedureSecurity' => [ 'type' => 'string', 'locationName' => 'procedureSecurity', ],
+                'dataAccess' => [ 'type' => 'string', 'locationName' => 'dataAccess', ],
+                'deterministic' => [ 'type' => 'boolean', 'locationName' => 'deterministic', ],
+                'definitionSql' => [ 'type' => 'string', 'locationName' => 'definitionSql', ],
+                'parameters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Parameter', ], ],
+                'definer' => [ 'type' => 'string', 'locationName' => 'definer', ],
+                'comment' => [ 'type' => 'string', 'locationName' => 'comment', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ProcedureInvokeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'returnValue' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+            ],
+        ],
+        'GeneralCreateProcedureResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+            ],
+        ],
+        'GeneralDropProcedureResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+            ],
+        ],
+        'ProcedureInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ProcedureInfoResultShape', ],
+            ],
+        ],
+        'GeneralCreateProcedureResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GeneralCreateProcedureResultShape', ],
+            ],
+        ],
+        'GeneralAlterProcedureResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GeneralAlterProcedureResultShape', ],
+            ],
+        ],
         'ProgramListResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1197,21 +1866,6 @@ return [
                 'dmsSqlResults' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSqlResult', ], ],
             ],
         ],
-        'GetExportDataIdRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
-                'sql' => [ 'type' => 'string', 'locationName' => 'sql', ],
-                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
-                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
-                'ignoreCheck' => [ 'type' => 'boolean', 'locationName' => 'ignoreCheck', ],
-                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
-                'charset' => [ 'type' => 'string', 'locationName' => 'charset', ],
-                'exportTypeEnum' => [ 'type' => 'string', 'locationName' => 'exportTypeEnum', ],
-                'exportFileTypeEnum' => [ 'type' => 'string', 'locationName' => 'exportFileTypeEnum', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'ConsoleSqlResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1219,22 +1873,10 @@ return [
                 'result' =>  [ 'shape' => 'ConsoleSqlResultShape', ],
             ],
         ],
-        'ImportDdlDmlResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'FormatSqlResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'FormatSqlResultShape', ],
-            ],
-        ],
-        'OpenTableResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'error' =>  [ 'shape' => 'OpenTableResultShape', ],
-                'result' =>  [ 'shape' => 'OpenTableResultShape', ],
             ],
         ],
         'ConsoleSqlRequestShape' => [
@@ -1244,27 +1886,6 @@ return [
                 'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
                 'sqls' => [ 'type' => 'string', 'locationName' => 'sqls', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'ExportDataResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'ImportDdlDmlRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
-                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
-                'charset' => [ 'type' => 'string', 'locationName' => 'charset', ],
-                'sqls' => [ 'type' => 'string', 'locationName' => 'sqls', ],
-                'sqlConsoleTypeEnum' => [ 'type' => 'string', 'locationName' => 'sqlConsoleTypeEnum', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DownloadExportFileResponseShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'CreateTableBatchResultShape' => [
@@ -1277,17 +1898,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'strResult' => [ 'type' => 'string', 'locationName' => 'strResult', ],
-            ],
-        ],
-        'GetExportIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'strResult' => [ 'type' => 'string', 'locationName' => 'strResult', ],
-            ],
-        ],
-        'DownloadExportFileResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'ConsoleGeneralDataResultShape' => [
@@ -1305,31 +1915,10 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'OpenTableRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
-                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
-                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'ConsoleGeneralDataResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'ConsoleGeneralDataResultShape', ],
-            ],
-        ],
-        'ExportStructRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
-                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
-                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
-                'charset' => [ 'type' => 'string', 'locationName' => 'charset', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'GetCreateTableBatchSqlRequestShape' => [
@@ -1356,55 +1945,12 @@ return [
                 'result' =>  [ 'shape' => 'ConsoleExplainResultShape', ],
             ],
         ],
-        'OpenTableResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dmsSqlResults' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSqlResult', ], ],
-                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
-            ],
-        ],
-        'ExportDataRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
-                'sql' => [ 'type' => 'string', 'locationName' => 'sql', ],
-                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
-                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
-                'charset' => [ 'type' => 'string', 'locationName' => 'charset', ],
-                'exportTypeEnum' => [ 'type' => 'string', 'locationName' => 'exportTypeEnum', ],
-                'exportFileTypeEnum' => [ 'type' => 'string', 'locationName' => 'exportFileTypeEnum', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'ExportDataResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'GetExportIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetExportIdResultShape', ],
-            ],
-        ],
         'FormatSqlRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
                 'sqlStr' => [ 'type' => 'string', 'locationName' => 'sqlStr', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'ExportStructResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'tableStructs' => [ 'type' => 'list', 'member' => [ 'shape' => 'TableStruct', ], ],
-            ],
-        ],
-        'ExportStructResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ExportStructResultShape', ],
             ],
         ],
         'GetCreateTableBatchSqlResultShape' => [
@@ -1429,46 +1975,10 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'GetExportDataIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'strResult' => [ 'type' => 'string', 'locationName' => 'strResult', ],
-            ],
-        ],
-        'ImportDdlDmlResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'GetExportIdRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
-                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
-                'charset' => [ 'type' => 'string', 'locationName' => 'charset', ],
-                'exportTypeEnum' => [ 'type' => 'string', 'locationName' => 'exportTypeEnum', ],
-                'exportFileTypeEnum' => [ 'type' => 'string', 'locationName' => 'exportFileTypeEnum', ],
-                'exportContentTypeEnum' => [ 'type' => 'string', 'locationName' => 'exportContentTypeEnum', ],
-                'tableFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TableFilter', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DownloadExportFileRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'exportId' => [ 'type' => 'string', 'locationName' => 'exportId', ],
-            ],
-        ],
         'DmsSqlsResult' => [
             'type' => 'structure',
             'members' => [
                 'dmsSqlResults' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSqlResult', ], ],
-            ],
-        ],
-        'GetExportDataIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetExportDataIdResultShape', ],
             ],
         ],
         'DmsSqlResult' => [
@@ -1490,6 +2000,125 @@ return [
             'type' => 'structure',
             'members' => [
                 'dmsSqlResults' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSqlResult', ], ],
+            ],
+        ],
+        'TriggerListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'filter' => [ 'type' => 'string', 'locationName' => 'filter', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'TriggerListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'TriggerListResultShape', ],
+            ],
+        ],
+        'GeneralCreateTriggerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GeneralCreateTriggerResultShape', ],
+            ],
+        ],
+        'GeneralDropTriggerResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+            ],
+        ],
+        'GeneralAlterTriggerResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+            ],
+        ],
+        'GeneralCreateTriggerRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'triggerName' => [ 'type' => 'string', 'locationName' => 'triggerName', ],
+                'triggerTiming' => [ 'type' => 'string', 'locationName' => 'triggerTiming', ],
+                'triggerEvent' => [ 'type' => 'string', 'locationName' => 'triggerEvent', ],
+                'triggerTable' => [ 'type' => 'string', 'locationName' => 'triggerTable', ],
+                'triggerStatement' => [ 'type' => 'string', 'locationName' => 'triggerStatement', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'TriggerInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'triggerName' => [ 'type' => 'string', 'locationName' => 'triggerName', ],
+                'triggerTiming' => [ 'type' => 'string', 'locationName' => 'triggerTiming', ],
+                'triggerEvent' => [ 'type' => 'string', 'locationName' => 'triggerEvent', ],
+                'triggerTable' => [ 'type' => 'string', 'locationName' => 'triggerTable', ],
+                'triggerStatement' => [ 'type' => 'string', 'locationName' => 'triggerStatement', ],
+            ],
+        ],
+        'GeneralAlterTriggerRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'originTriggerName' => [ 'type' => 'string', 'locationName' => 'originTriggerName', ],
+                'triggerName' => [ 'type' => 'string', 'locationName' => 'triggerName', ],
+                'triggerTiming' => [ 'type' => 'string', 'locationName' => 'triggerTiming', ],
+                'triggerEvent' => [ 'type' => 'string', 'locationName' => 'triggerEvent', ],
+                'triggerTable' => [ 'type' => 'string', 'locationName' => 'triggerTable', ],
+                'triggerStatement' => [ 'type' => 'string', 'locationName' => 'triggerStatement', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GeneralAlterTriggerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GeneralAlterTriggerResultShape', ],
+            ],
+        ],
+        'TriggerInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'triggerName' => [ 'type' => 'string', 'locationName' => 'triggerName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'TriggerInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'TriggerInfoResultShape', ],
+            ],
+        ],
+        'GeneralDropTriggerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GeneralDropTriggerResultShape', ],
+            ],
+        ],
+        'GeneralDropTriggerRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'triggerName' => [ 'type' => 'string', 'locationName' => 'triggerName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GeneralCreateTriggerResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSqls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSql', ], ],
+            ],
+        ],
+        'TriggerListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'triggerNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'GeneralCreateViewRequestShape' => [
