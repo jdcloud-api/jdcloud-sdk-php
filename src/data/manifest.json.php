@@ -53,6 +53,10 @@ return [
         'namespace' => 'Edcps',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'bastion' => [
+        'namespace' => 'Bastion',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'portal' => [
         'namespace' => 'Portal',
         'versions' => [ 'latest' => 'v1', ],

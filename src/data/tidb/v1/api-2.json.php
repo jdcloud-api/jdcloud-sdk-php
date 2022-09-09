@@ -65,15 +65,6 @@ return [
             'input' => [ 'shape' => 'DeleteBackupRequestShape', ],
             'output' => [ 'shape' => 'DeleteBackupResponseShape', ],
         ],
-        'DescribeAvailableZones' => [
-            'name' => 'DescribeAvailableZones',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/azs',
-            ],
-            'input' => [ 'shape' => 'DescribeAvailableZonesRequestShape', ],
-            'output' => [ 'shape' => 'DescribeAvailableZonesResponseShape', ],
-        ],
         'DescribeOrderableInstanceType' => [
             'name' => 'DescribeOrderableInstanceType',
             'http' => [
@@ -254,6 +245,51 @@ return [
             'input' => [ 'shape' => 'DescribeUpgradePlanRequestShape', ],
             'output' => [ 'shape' => 'DescribeUpgradePlanResponseShape', ],
         ],
+        'EnableInternetAccess' => [
+            'name' => 'EnableInternetAccess',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:enableInternetAccess',
+            ],
+            'input' => [ 'shape' => 'EnableInternetAccessRequestShape', ],
+            'output' => [ 'shape' => 'EnableInternetAccessResponseShape', ],
+        ],
+        'DisableInternetAccess' => [
+            'name' => 'DisableInternetAccess',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:disableInternetAccess',
+            ],
+            'input' => [ 'shape' => 'DisableInternetAccessRequestShape', ],
+            'output' => [ 'shape' => 'DisableInternetAccessResponseShape', ],
+        ],
+        'EnableSSL' => [
+            'name' => 'EnableSSL',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/ssl:enableSSL',
+            ],
+            'input' => [ 'shape' => 'EnableSSLRequestShape', ],
+            'output' => [ 'shape' => 'EnableSSLResponseShape', ],
+        ],
+        'DisableSSL' => [
+            'name' => 'DisableSSL',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/ssl:disableSSL',
+            ],
+            'input' => [ 'shape' => 'DisableSSLRequestShape', ],
+            'output' => [ 'shape' => 'DisableSSLResponseShape', ],
+        ],
+        'DescribeSSL' => [
+            'name' => 'DescribeSSL',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/ssl',
+            ],
+            'input' => [ 'shape' => 'DescribeSSLRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSSLResponseShape', ],
+        ],
         'DescribeDataMigration' => [
             'name' => 'DescribeDataMigration',
             'http' => [
@@ -280,6 +316,60 @@ return [
             ],
             'input' => [ 'shape' => 'VerifyFilefromOSSRequestShape', ],
             'output' => [ 'shape' => 'VerifyFilefromOSSResponseShape', ],
+        ],
+        'DescribeReplications' => [
+            'name' => 'DescribeReplications',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/replications',
+            ],
+            'input' => [ 'shape' => 'DescribeReplicationsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeReplicationsResponseShape', ],
+        ],
+        'CreateReplication' => [
+            'name' => 'CreateReplication',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/replications',
+            ],
+            'input' => [ 'shape' => 'CreateReplicationRequestShape', ],
+            'output' => [ 'shape' => 'CreateReplicationResponseShape', ],
+        ],
+        'DeleteReplication' => [
+            'name' => 'DeleteReplication',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/replications/{taskId}',
+            ],
+            'input' => [ 'shape' => 'DeleteReplicationRequestShape', ],
+            'output' => [ 'shape' => 'DeleteReplicationResponseShape', ],
+        ],
+        'ResumeReplication' => [
+            'name' => 'ResumeReplication',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/replications/{taskId}:resumeReplication',
+            ],
+            'input' => [ 'shape' => 'ResumeReplicationRequestShape', ],
+            'output' => [ 'shape' => 'ResumeReplicationResponseShape', ],
+        ],
+        'StopReplication' => [
+            'name' => 'StopReplication',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/replications/{taskId}:stopReplication',
+            ],
+            'input' => [ 'shape' => 'StopReplicationRequestShape', ],
+            'output' => [ 'shape' => 'StopReplicationResponseShape', ],
+        ],
+        'ModifyReplication' => [
+            'name' => 'ModifyReplication',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/replications/{taskId}:modifyReplication',
+            ],
+            'input' => [ 'shape' => 'ModifyReplicationRequestShape', ],
+            'output' => [ 'shape' => 'ModifyReplicationResponseShape', ],
         ],
         'DescribeWhiteList' => [
             'name' => 'DescribeWhiteList',
@@ -497,6 +587,7 @@ return [
             'members' => [
                 'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
                 'targetType' => [ 'type' => 'string', 'locationName' => 'targetType', ],
+                'replicationObjects' => [ 'type' => 'string', 'locationName' => 'replicationObjects', ],
                 'targetIP' => [ 'type' => 'string', 'locationName' => 'targetIP', ],
                 'targetPort' => [ 'type' => 'string', 'locationName' => 'targetPort', ],
                 'targetUser' => [ 'type' => 'string', 'locationName' => 'targetUser', ],
@@ -737,25 +828,6 @@ return [
             'members' => [
             ],
         ],
-        'DescribeAvailableZonesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'availableZones' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'DescribeAvailableZonesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeAvailableZonesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeAvailableZonesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'DescribeOrderableInstanceTypeResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -851,6 +923,16 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DisableInternetAccessResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableSSLResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'CreateInstanceFromBackupRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -889,6 +971,14 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'EnableInternetAccessRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceType' => [ 'type' => 'string', 'locationName' => 'serviceType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'RebootPodRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -916,6 +1006,29 @@ return [
         'DeleteInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeSSLResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSSLResultShape', ],
+            ],
+        ],
+        'DisableInternetAccessResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableInternetAccessResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableSSLRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'DescribeBackupPolicyRequestShape' => [
@@ -957,6 +1070,11 @@ return [
                 'monitorFlavors' =>  [ 'shape' => 'NodeFlavor', ],
                 'tiflashFlavors' =>  [ 'shape' => 'NodeFlavor', ],
                 'ticdcFlavors' =>  [ 'shape' => 'NodeFlavor', ],
+            ],
+        ],
+        'DisableSSLResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DescribeInstancesResultShape' => [
@@ -1020,6 +1138,14 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'DisableInternetAccessRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceType' => [ 'type' => 'string', 'locationName' => 'serviceType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'ModifyNodeNumResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1038,10 +1164,21 @@ return [
             'members' => [
             ],
         ],
+        'DescribeSSLResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'available' => [ 'type' => 'boolean', 'locationName' => 'available', ],
+            ],
+        ],
         'DescribeUpgradeVersionsResultShape' => [
             'type' => 'structure',
             'members' => [
                 'versions' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DisableSSLResponseShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DescribeInstancesRequestShape' => [
@@ -1051,7 +1188,15 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DisableSSLRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'DescribeParametersResponseShape' => [
@@ -1117,10 +1262,22 @@ return [
             'members' => [
             ],
         ],
+        'EnableInternetAccessResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'ModifyNodeNumResultShape' => [
             'type' => 'structure',
             'members' => [
                 'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
+            ],
+        ],
+        'DescribeSSLRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'CreateInstanceResponseShape' => [
@@ -1143,6 +1300,11 @@ return [
             ],
         ],
         'ModifyParametersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableSSLResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -1240,6 +1402,122 @@ return [
                 'importTask' =>  [ 'shape' => 'FullImportTask', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'CreateReplicationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'replication' =>  [ 'shape' => 'ReplicationSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DeleteReplicationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'StopReplicationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteReplicationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyReplicationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeReplicationsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'StopReplicationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'CreateReplicationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'replicationId' => [ 'type' => 'string', 'locationName' => 'replicationId', ],
+            ],
+        ],
+        'DeleteReplicationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'ModifyReplicationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'targetComment' => [ 'type' => 'string', 'locationName' => 'targetComment', ],
+                'targetUser' => [ 'type' => 'string', 'locationName' => 'targetUser', ],
+                'targetPassword' => [ 'type' => 'string', 'locationName' => 'targetPassword', ],
+                'kafkaTopic' => [ 'type' => 'string', 'locationName' => 'kafkaTopic', ],
+                'kafkaVersion' => [ 'type' => 'string', 'locationName' => 'kafkaVersion', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ModifyReplicationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'StopReplicationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateReplicationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ResumeReplicationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ResumeReplicationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'DescribeReplicationsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeReplicationsResultShape', ],
+            ],
+        ],
+        'ResumeReplicationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeReplicationsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'replications' => [ 'type' => 'list', 'member' => [ 'shape' => 'ReplicationTask', ], ],
             ],
         ],
         'DeleteWhiteListGroupResponseShape' => [
