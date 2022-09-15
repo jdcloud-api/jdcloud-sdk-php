@@ -524,6 +524,24 @@ return [
             'input' => [ 'shape' => 'DescribeHotKeyDetail2RequestShape', ],
             'output' => [ 'shape' => 'DescribeHotKeyDetail2ResponseShape', ],
         ],
+        'DescribeHotKeySummary' => [
+            'name' => 'DescribeHotKeySummary',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/cacheInstance/{cacheInstanceId}/hotKeyAnalysisSummary',
+            ],
+            'input' => [ 'shape' => 'DescribeHotKeySummaryRequestShape', ],
+            'output' => [ 'shape' => 'DescribeHotKeySummaryResponseShape', ],
+        ],
+        'DescribeHotKeyDetail' => [
+            'name' => 'DescribeHotKeyDetail',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/cacheInstance/{cacheInstanceId}/hotKeyAnalysisDetail',
+            ],
+            'input' => [ 'shape' => 'DescribeHotKeyDetailRequestShape', ],
+            'output' => [ 'shape' => 'DescribeHotKeyDetailResponseShape', ],
+        ],
         'DescribeInstanceClass' => [
             'name' => 'DescribeInstanceClass',
             'http' => [
@@ -1122,21 +1140,6 @@ return [
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
             ],
         ],
-        'TpStat' => [
-            'type' => 'structure',
-            'members' => [
-                'ts' => [ 'type' => 'string', 'locationName' => 'ts', ],
-                'tp999' => [ 'type' => 'integer', 'locationName' => 'tp999', ],
-                'tp99' => [ 'type' => 'integer', 'locationName' => 'tp99', ],
-                'tp90' => [ 'type' => 'integer', 'locationName' => 'tp90', ],
-                'tp50' => [ 'type' => 'integer', 'locationName' => 'tp50', ],
-                'max' => [ 'type' => 'integer', 'locationName' => 'max', ],
-                'min' => [ 'type' => 'integer', 'locationName' => 'min', ],
-                'success' => [ 'type' => 'integer', 'locationName' => 'success', ],
-                'error' => [ 'type' => 'integer', 'locationName' => 'error', ],
-                'redirection' => [ 'type' => 'integer', 'locationName' => 'redirection', ],
-            ],
-        ],
         'DefaultFilterValue' => [
             'type' => 'structure',
             'members' => [
@@ -1149,8 +1152,16 @@ return [
         'PerformanceDataMsg' => [
             'type' => 'structure',
             'members' => [
-                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
-                'tpStat' =>  [ 'shape' => 'TpStat', ],
+                'ts' => [ 'type' => 'string', 'locationName' => 'ts', ],
+                'tp999' => [ 'type' => 'integer', 'locationName' => 'tp999', ],
+                'tp99' => [ 'type' => 'integer', 'locationName' => 'tp99', ],
+                'tp90' => [ 'type' => 'integer', 'locationName' => 'tp90', ],
+                'tp50' => [ 'type' => 'integer', 'locationName' => 'tp50', ],
+                'max' => [ 'type' => 'integer', 'locationName' => 'max', ],
+                'min' => [ 'type' => 'integer', 'locationName' => 'min', ],
+                'success' => [ 'type' => 'integer', 'locationName' => 'success', ],
+                'error' => [ 'type' => 'integer', 'locationName' => 'error', ],
+                'redirection' => [ 'type' => 'integer', 'locationName' => 'redirection', ],
             ],
         ],
         'RedisCmd' => [
@@ -1568,12 +1579,33 @@ return [
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
         ],
+        'DescribeHotKeyDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'nodeId' => [ 'type' => 'string', 'locationName' => 'nodeId', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
         'ModifyBackupPolicyRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'autoBackup' => [ 'type' => 'boolean', 'locationName' => 'autoBackup', ],
                 'backupTime' => [ 'type' => 'string', 'locationName' => 'backupTime', ],
                 'backupPeriod' => [ 'type' => 'string', 'locationName' => 'backupPeriod', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
+        'DescribeHotKeySummaryRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
@@ -1704,6 +1736,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeHotKeySummaryResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'hotKeyAnalysisNodesList' => [ 'type' => 'list', 'member' => [ 'shape' => 'HotKeyAnalysisNode', ], ],
             ],
         ],
         'StartClearDataResponseShape' => [
@@ -1876,6 +1914,13 @@ return [
             'members' => [
                 'orderNum' => [ 'type' => 'string', 'locationName' => 'orderNum', ],
                 'buyId' => [ 'type' => 'string', 'locationName' => 'buyId', ],
+            ],
+        ],
+        'DescribeHotKeyDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeHotKeyDetailResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeCacheInstanceResultShape' => [
@@ -2129,6 +2174,13 @@ return [
             'members' => [
             ],
         ],
+        'DescribeHotKeyDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'hotHeys' => [ 'type' => 'list', 'member' => [ 'shape' => 'RedisHotKey', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
         'DescribeBigKeyListResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2282,6 +2334,13 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
+        'DescribeHotKeySummaryResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeHotKeySummaryResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateBigKeyAnalysisResultShape' => [
