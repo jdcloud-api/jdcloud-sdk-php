@@ -113,7 +113,7 @@ return [
         'DescribeInstances' => [
             'name' => 'DescribeInstances',
             'http' => [
-                'method' => 'GET',
+                'method' => 'POST',
                 'requestUri' => '/v1/regions/{regionId}/instances:describeInstances',
             ],
             'input' => [ 'shape' => 'DescribeInstancesRequestShape', ],

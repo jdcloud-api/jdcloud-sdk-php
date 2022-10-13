@@ -281,6 +281,10 @@ return [
         'namespace' => 'Function',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'reservedinstance' => [
+        'namespace' => 'Reservedinstance',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'rms' => [
         'namespace' => 'Rms',
         'versions' => [ 'latest' => 'v2', ],
