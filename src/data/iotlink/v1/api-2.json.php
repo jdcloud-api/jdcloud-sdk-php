@@ -11,6 +11,51 @@ return [
 //        'serviceId' => 'iotlink',
     ],
     'operations' => [
+        'QueryValidPeriodForNB' => [
+            'name' => 'QueryValidPeriodForNB',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/queryValidPeriodForNB',
+            ],
+            'input' => [ 'shape' => 'QueryValidPeriodForNBRequestShape', ],
+            'output' => [ 'shape' => 'QueryValidPeriodForNBResponseShape', ],
+        ],
+        'QueryDayHistoryTraffic' => [
+            'name' => 'QueryDayHistoryTraffic',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/queryDayHistoryTraffic',
+            ],
+            'input' => [ 'shape' => 'QueryDayHistoryTrafficRequestShape', ],
+            'output' => [ 'shape' => 'QueryDayHistoryTrafficResponseShape', ],
+        ],
+        'SimRealNameReg' => [
+            'name' => 'SimRealNameReg',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/simRealNameReg',
+            ],
+            'input' => [ 'shape' => 'SimRealNameRegRequestShape', ],
+            'output' => [ 'shape' => 'SimRealNameRegResponseShape', ],
+        ],
+        'QueryTrafficByDate' => [
+            'name' => 'QueryTrafficByDate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/queryTrafficByDate',
+            ],
+            'input' => [ 'shape' => 'QueryTrafficByDateRequestShape', ],
+            'output' => [ 'shape' => 'QueryTrafficByDateResponseShape', ],
+        ],
+        'SpeedLimitAction' => [
+            'name' => 'SpeedLimitAction',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/speedLimitAction',
+            ],
+            'input' => [ 'shape' => 'SpeedLimitActionRequestShape', ],
+            'output' => [ 'shape' => 'SpeedLimitActionResponseShape', ],
+        ],
         'CardInfo' => [
             'name' => 'CardInfo',
             'http' => [
@@ -201,6 +246,14 @@ return [
                 'used' => [ 'type' => 'string', 'locationName' => 'used', ],
             ],
         ],
+        'QueryValidPeriodForNBResp' => [
+            'type' => 'structure',
+            'members' => [
+                'iccid' => [ 'type' => 'string', 'locationName' => 'iccid', ],
+                'packageName' => [ 'type' => 'string', 'locationName' => 'packageName', ],
+                'validPeriod' => [ 'type' => 'string', 'locationName' => 'validPeriod', ],
+            ],
+        ],
         'GprsStatusResp' => [
             'type' => 'structure',
             'members' => [
@@ -217,6 +270,21 @@ return [
                 'packageName' => [ 'type' => 'string', 'locationName' => 'packageName', ],
                 'activeTm' => [ 'type' => 'string', 'locationName' => 'activeTm', ],
                 'packageExpiredTm' => [ 'type' => 'string', 'locationName' => 'packageExpiredTm', ],
+            ],
+        ],
+        'SimRealNameRegResp' => [
+            'type' => 'structure',
+            'members' => [
+                'busiSeq' => [ 'type' => 'string', 'locationName' => 'busiSeq', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+            ],
+        ],
+        'QueryDayHistoryTrafficResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
             ],
         ],
         'OnOffStatusResponseShape' => [
@@ -308,6 +376,13 @@ return [
                 'result' => [ 'type' => 'string', 'locationName' => 'result', ],
             ],
         ],
+        'SimRealNameRegResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SimRealNameRegResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CardInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -331,10 +406,25 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'QueryTrafficByDateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+            ],
+        ],
         'OpenIotFlowResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'OpenIotFlowResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryDayHistoryTrafficResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryDayHistoryTrafficResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -350,6 +440,21 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'SearchResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryTrafficByDateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestParam' => [ 'type' => 'string', 'locationName' => 'requestParam', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'SpeedLimitActionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
             ],
         ],
         'CloseIotFlowResponseShape' => [
@@ -426,6 +531,20 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'SimRealNameRegRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestParam' => [ 'type' => 'string', 'locationName' => 'requestParam', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'QueryTrafficByDateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryTrafficByDateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CardInfoResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -449,11 +568,26 @@ return [
                 'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'OperationIotlinkResp', ], ],
             ],
         ],
+        'SimRealNameRegResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'SimRealNameRegResp', ],
+            ],
+        ],
         'RealNameQueryIotResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'RealNameQueryIotResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryDayHistoryTrafficRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestParam' => [ 'type' => 'string', 'locationName' => 'requestParam', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'LifeStatusByIMSIRequestShape' => [
@@ -463,12 +597,27 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'QueryValidPeriodForNBResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'QueryValidPeriodForNBResp', ], ],
+            ],
+        ],
         'OnOffStatusByIMSIResultShape' => [
             'type' => 'structure',
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'result' =>  [ 'shape' => 'OnOffStatusResp', ],
+            ],
+        ],
+        'SpeedLimitActionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SpeedLimitActionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'OpenIotCardResponseShape' => [
@@ -501,12 +650,26 @@ return [
                 'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'OperationIotlinkResp', ], ],
             ],
         ],
+        'QueryValidPeriodForNBResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryValidPeriodForNBResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CloseIotCardResultShape' => [
             'type' => 'structure',
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'OperationIotlinkResp', ], ],
+            ],
+        ],
+        'SpeedLimitActionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestParam' => [ 'type' => 'string', 'locationName' => 'requestParam', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'GprsRealtimeInfoByIMSIResponseShape' => [
@@ -521,6 +684,13 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'GprsStatusResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QueryValidPeriodForNBRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestParam' => [ 'type' => 'string', 'locationName' => 'requestParam', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'OnOffStatusByIMSIResponseShape' => [

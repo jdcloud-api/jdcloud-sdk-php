@@ -20,6 +20,16 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with iotlink.
  *
+ * @method \Jdcloud\Result queryValidPeriodForNB(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryValidPeriodForNBAsync(array $args = [])
+ * @method \Jdcloud\Result queryDayHistoryTraffic(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryDayHistoryTrafficAsync(array $args = [])
+ * @method \Jdcloud\Result simRealNameReg(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise simRealNameRegAsync(array $args = [])
+ * @method \Jdcloud\Result queryTrafficByDate(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryTrafficByDateAsync(array $args = [])
+ * @method \Jdcloud\Result speedLimitAction(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise speedLimitActionAsync(array $args = [])
  * @method \Jdcloud\Result cardInfo(array $args = [])
  * @method \GuzzleHttp\Promise\Promise cardInfoAsync(array $args = [])
  * @method \Jdcloud\Result realNameQueryIot(array $args = [])
