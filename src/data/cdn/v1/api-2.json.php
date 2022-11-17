@@ -758,6 +758,15 @@ return [
             'input' => [ 'shape' => 'DeleteDomainRequestShape', ],
             'output' => [ 'shape' => 'DeleteDomainResponseShape', ],
         ],
+        'QueryDomainCnameTag' => [
+            'name' => 'QueryDomainCnameTag',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/queryDomainCnameTag',
+            ],
+            'input' => [ 'shape' => 'QueryDomainCnameTagRequestShape', ],
+            'output' => [ 'shape' => 'QueryDomainCnameTagResponseShape', ],
+        ],
         'StartDomain' => [
             'name' => 'StartDomain',
             'http' => [
@@ -4743,6 +4752,7 @@ return [
                 'ossSource' => [ 'type' => 'string', 'locationName' => 'ossSource', ],
                 'accelerateRegion' => [ 'type' => 'string', 'locationName' => 'accelerateRegion', ],
                 'tempInstId' => [ 'type' => 'long', 'locationName' => 'tempInstId', ],
+                'domainCnameTag' => [ 'type' => 'string', 'locationName' => 'domainCnameTag', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
@@ -4769,6 +4779,12 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'domains' => [ 'type' => 'list', 'member' => [ 'shape' => 'ListDomainItem', ], ],
+            ],
+        ],
+        'QueryDomainCnameTagResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cnameTags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'BatchCreateRequestShape' => [
@@ -4867,6 +4883,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'QueryDomainCnameTagResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryDomainCnameTagResultShape', ],
+            ],
+        ],
         'DeleteDomainResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -4896,6 +4919,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryDomainCnameTagRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainType' => [ 'type' => 'string', 'locationName' => 'domainType', ],
             ],
         ],
         'StartDomainResultShape' => [
