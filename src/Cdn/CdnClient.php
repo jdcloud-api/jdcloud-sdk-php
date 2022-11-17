@@ -186,6 +186,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise createDomainAsync(array $args = [])
  * @method \Jdcloud\Result deleteDomain(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteDomainAsync(array $args = [])
+ * @method \Jdcloud\Result queryDomainCnameTag(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryDomainCnameTagAsync(array $args = [])
  * @method \Jdcloud\Result startDomain(array $args = [])
  * @method \GuzzleHttp\Promise\Promise startDomainAsync(array $args = [])
  * @method \Jdcloud\Result stopDomain(array $args = [])
