@@ -254,6 +254,42 @@ return [
             'input' => [ 'shape' => 'DeleteSubnetRequestShape', ],
             'output' => [ 'shape' => 'DeleteSubnetResponseShape', ],
         ],
+        'DescribeVmInstances' => [
+            'name' => 'DescribeVmInstances',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/ydVmInstances',
+            ],
+            'input' => [ 'shape' => 'DescribeVmInstancesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeVmInstancesResponseShape', ],
+        ],
+        'DescribeVmInstance' => [
+            'name' => 'DescribeVmInstance',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/ydVmInstances/{instanceId}',
+            ],
+            'input' => [ 'shape' => 'DescribeVmInstanceRequestShape', ],
+            'output' => [ 'shape' => 'DescribeVmInstanceResponseShape', ],
+        ],
+        'AttachNetworkInterface' => [
+            'name' => 'AttachNetworkInterface',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/ydVmInstances/{instanceId}:attachNetworkInterface',
+            ],
+            'input' => [ 'shape' => 'AttachNetworkInterfaceRequestShape', ],
+            'output' => [ 'shape' => 'AttachNetworkInterfaceResponseShape', ],
+        ],
+        'DetachNetworkInterface' => [
+            'name' => 'DetachNetworkInterface',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/ydVmInstances/{instanceId}:detachNetworkInterface',
+            ],
+            'input' => [ 'shape' => 'DetachNetworkInterfaceRequestShape', ],
+            'output' => [ 'shape' => 'DetachNetworkInterfaceResponseShape', ],
+        ],
     ],
     'shapes' => [
         'Application' => [
@@ -610,11 +646,30 @@ return [
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
             ],
         ],
+        'YdSnapfee' => [
+            'type' => 'structure',
+            'members' => [
+                'jdcloudPin' => [ 'type' => 'string', 'locationName' => 'jdcloudPin', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'ydPin' => [ 'type' => 'string', 'locationName' => 'ydPin', ],
+                'ydResourceId' => [ 'type' => 'string', 'locationName' => 'ydResourceId', ],
+            ],
+        ],
+        'YdSnapfeeState' => [
+            'type' => 'structure',
+            'members' => [
+                'ydPin' => [ 'type' => 'string', 'locationName' => 'ydPin', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'state' => [ 'type' => 'integer', 'locationName' => 'state', ],
+            ],
+        ],
         'YdUser' => [
             'type' => 'structure',
             'members' => [
                 'ydPin' => [ 'type' => 'string', 'locationName' => 'ydPin', ],
                 'jdcloudPin' => [ 'type' => 'string', 'locationName' => 'jdcloudPin', ],
+                'ydSubPin' => [ 'type' => 'string', 'locationName' => 'ydSubPin', ],
+                'jdcloudSubPin' => [ 'type' => 'string', 'locationName' => 'jdcloudSubPin', ],
             ],
         ],
         'DescribeTasksResultShape' => [
@@ -1390,6 +1445,27 @@ return [
                 'basePerformance' => [ 'type' => 'float', 'locationName' => 'basePerformance', ],
             ],
         ],
+        'DescribeVmInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeVmInstancesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DetachNetworkInterfaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeVmInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'BurstSpec' => [
             'type' => 'structure',
             'members' => [
@@ -1404,6 +1480,11 @@ return [
                 'cloudDiskSpec' =>  [ 'shape' => 'DiskSpec', ],
                 'deviceName' => [ 'type' => 'string', 'locationName' => 'deviceName', ],
                 'noDevice' => [ 'type' => 'boolean', 'locationName' => 'noDevice', ],
+            ],
+        ],
+        'AttachNetworkInterfaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DiskSpec' => [
@@ -1437,12 +1518,25 @@ return [
                 'networkInterface' =>  [ 'shape' => 'NetworkInterfaceSpec', ],
             ],
         ],
+        'DescribeVmInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'ElasticIpSpec' => [
             'type' => 'structure',
             'members' => [
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
                 'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
+            ],
+        ],
+        'DescribeVmInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instance' =>  [ 'shape' => 'Instance', ],
             ],
         ],
         'InstanceSpec' => [
@@ -1497,11 +1591,29 @@ return [
                 'burstInfo' =>  [ 'shape' => 'InstanceTypeBurstInfo', ],
             ],
         ],
+        'AttachNetworkInterfaceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DetachNetworkInterfaceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'Gpu' => [
             'type' => 'structure',
             'members' => [
                 'model' => [ 'type' => 'string', 'locationName' => 'model', ],
                 'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+            ],
+        ],
+        'DetachNetworkInterfaceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'InstanceTypeState' => [
@@ -1520,6 +1632,15 @@ return [
                 'used' => [ 'type' => 'integer', 'locationName' => 'used', ],
             ],
         ],
+        'AttachNetworkInterfaceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'ChargeSpec' => [
             'type' => 'structure',
             'members' => [
@@ -1528,6 +1649,20 @@ return [
                 'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
                 'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
                 'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
+            ],
+        ],
+        'DescribeVmInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeVmInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeVmInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instances' => [ 'type' => 'list', 'member' => [ 'shape' => 'Instance', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
             ],
         ],
     ],

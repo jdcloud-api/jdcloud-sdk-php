@@ -56,60 +56,6 @@ return [
             'input' => [ 'shape' => 'DeleteClusterRequestShape', ],
             'output' => [ 'shape' => 'DeleteClusterResponseShape', ],
         ],
-        'SetUserMetrics' => [
-            'name' => 'SetUserMetrics',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}:setUserMetrics',
-            ],
-            'input' => [ 'shape' => 'SetUserMetricsRequestShape', ],
-            'output' => [ 'shape' => 'SetUserMetricsResponseShape', ],
-        ],
-        'AbortUpgrade' => [
-            'name' => 'AbortUpgrade',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}:abortUpgrade',
-            ],
-            'input' => [ 'shape' => 'AbortUpgradeRequestShape', ],
-            'output' => [ 'shape' => 'AbortUpgradeResponseShape', ],
-        ],
-        'DescribeProgress' => [
-            'name' => 'DescribeProgress',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}/progress',
-            ],
-            'input' => [ 'shape' => 'DescribeProgressRequestShape', ],
-            'output' => [ 'shape' => 'DescribeProgressResponseShape', ],
-        ],
-        'SetAutoUpgrade' => [
-            'name' => 'SetAutoUpgrade',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}:setAutoUpgrade',
-            ],
-            'input' => [ 'shape' => 'SetAutoUpgradeRequestShape', ],
-            'output' => [ 'shape' => 'SetAutoUpgradeResponseShape', ],
-        ],
-        'UpgradeCluster' => [
-            'name' => 'UpgradeCluster',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}:upgradeCluster',
-            ],
-            'input' => [ 'shape' => 'UpgradeClusterRequestShape', ],
-            'output' => [ 'shape' => 'UpgradeClusterResponseShape', ],
-        ],
-        'SetAddons' => [
-            'name' => 'SetAddons',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}:setAddons',
-            ],
-            'input' => [ 'shape' => 'SetAddonsRequestShape', ],
-            'output' => [ 'shape' => 'SetAddonsResponseShape', ],
-        ],
         'DescribeNodeGroups' => [
             'name' => 'DescribeNodeGroups',
             'http' => [
@@ -164,24 +110,6 @@ return [
             'input' => [ 'shape' => 'SetNodeGroupSizeRequestShape', ],
             'output' => [ 'shape' => 'SetNodeGroupSizeResponseShape', ],
         ],
-        'SetAutoRepair' => [
-            'name' => 'SetAutoRepair',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/nodeGroups/{nodeGroupId}:setAutoRepair',
-            ],
-            'input' => [ 'shape' => 'SetAutoRepairRequestShape', ],
-            'output' => [ 'shape' => 'SetAutoRepairResponseShape', ],
-        ],
-        'RollbackNodeGroupUpgrade' => [
-            'name' => 'RollbackNodeGroupUpgrade',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/nodeGroups/{nodeGroupId}:rollbackNodeGroupUpgrade',
-            ],
-            'input' => [ 'shape' => 'RollbackNodeGroupUpgradeRequestShape', ],
-            'output' => [ 'shape' => 'RollbackNodeGroupUpgradeResponseShape', ],
-        ],
         'SetNodeGroupCA' => [
             'name' => 'SetNodeGroupCA',
             'http' => [
@@ -209,15 +137,6 @@ return [
             'input' => [ 'shape' => 'DescribeQuotasRequestShape', ],
             'output' => [ 'shape' => 'DescribeQuotasResponseShape', ],
         ],
-        'DescribeServerConfig' => [
-            'name' => 'DescribeServerConfig',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/serverConfig',
-            ],
-            'input' => [ 'shape' => 'DescribeServerConfigRequestShape', ],
-            'output' => [ 'shape' => 'DescribeServerConfigResponseShape', ],
-        ],
         'DescribeVersions' => [
             'name' => 'DescribeVersions',
             'http' => [
@@ -227,47 +146,138 @@ return [
             'input' => [ 'shape' => 'DescribeVersionsRequestShape', ],
             'output' => [ 'shape' => 'DescribeVersionsResponseShape', ],
         ],
-        'DescribeNodeVersion' => [
-            'name' => 'DescribeNodeVersion',
+        'DescribeServerlessClusters' => [
+            'name' => 'DescribeServerlessClusters',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/nodeVersions/{nodeVersion}',
+                'requestUri' => '/v1/regions/{regionId}/serverless-clusters',
             ],
-            'input' => [ 'shape' => 'DescribeNodeVersionRequestShape', ],
-            'output' => [ 'shape' => 'DescribeNodeVersionResponseShape', ],
+            'input' => [ 'shape' => 'DescribeServerlessClustersRequestShape', ],
+            'output' => [ 'shape' => 'DescribeServerlessClustersResponseShape', ],
         ],
-        'DescribeUpgradableMasterVersions' => [
-            'name' => 'DescribeUpgradableMasterVersions',
+        'CreateServerlessCluster' => [
+            'name' => 'CreateServerlessCluster',
             'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}/upgradableMasterVersions',
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/serverless-clusters',
             ],
-            'input' => [ 'shape' => 'DescribeUpgradableMasterVersionsRequestShape', ],
-            'output' => [ 'shape' => 'DescribeUpgradableMasterVersionsResponseShape', ],
+            'input' => [ 'shape' => 'CreateServerlessClusterRequestShape', ],
+            'output' => [ 'shape' => 'CreateServerlessClusterResponseShape', ],
         ],
-        'DescribeUpgradableNodeVersions' => [
-            'name' => 'DescribeUpgradableNodeVersions',
+        'DescribeServerlessCluster' => [
+            'name' => 'DescribeServerlessCluster',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}/upgradableNodeVersions',
+                'requestUri' => '/v1/regions/{regionId}/serverless-clusters/{clusterId}',
             ],
-            'input' => [ 'shape' => 'DescribeUpgradableNodeVersionsRequestShape', ],
-            'output' => [ 'shape' => 'DescribeUpgradableNodeVersionsResponseShape', ],
+            'input' => [ 'shape' => 'DescribeServerlessClusterRequestShape', ],
+            'output' => [ 'shape' => 'DescribeServerlessClusterResponseShape', ],
+        ],
+        'ModifyServerlessCluster' => [
+            'name' => 'ModifyServerlessCluster',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/serverless-clusters/{clusterId}',
+            ],
+            'input' => [ 'shape' => 'ModifyServerlessClusterRequestShape', ],
+            'output' => [ 'shape' => 'ModifyServerlessClusterResponseShape', ],
+        ],
+        'DeleteServerlessCluster' => [
+            'name' => 'DeleteServerlessCluster',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/serverless-clusters/{clusterId}',
+            ],
+            'input' => [ 'shape' => 'DeleteServerlessClusterRequestShape', ],
+            'output' => [ 'shape' => 'DeleteServerlessClusterResponseShape', ],
+        ],
+        'DescribeServerlessVersions' => [
+            'name' => 'DescribeServerlessVersions',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/serverless-versions',
+            ],
+            'input' => [ 'shape' => 'DescribeServerlessVersionsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeServerlessVersionsResponseShape', ],
         ],
     ],
     'shapes' => [
+        'StringKeyValuePair' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'AddonConfig' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'params' => [ 'type' => 'object', 'locationName' => 'params', ],
+                'parameters' => [ 'type' => 'list', 'member' => [ 'shape' => 'StringKeyValuePair', ], ],
+                'addonDetail' =>  [ 'shape' => 'ClusterAddon', ],
+            ],
+        ],
+        'ClusterAddon' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'required' => [ 'type' => 'boolean', 'locationName' => 'required', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'availableVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterAddonVersion', ], ],
+            ],
+        ],
+        'ClusterAddonVersion' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'releaseNote' => [ 'type' => 'string', 'locationName' => 'releaseNote', ],
+                'minAdaptedK8sVersion' => [ 'type' => 'string', 'locationName' => 'minAdaptedK8sVersion', ],
+                'maxAdaptedK8sVersion' => [ 'type' => 'string', 'locationName' => 'maxAdaptedK8sVersion', ],
             ],
         ],
         'AddonConfigSpec' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'params' => [ 'type' => 'object', 'locationName' => 'params', ],
+                'parameters' => [ 'type' => 'list', 'member' => [ 'shape' => 'StringKeyValuePair', ], ],
+            ],
+        ],
+        'NodeElasticIpSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'bandWidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandWidthMbps', ],
+                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+            ],
+        ],
+        'NatGatewaySpec' => [
+            'type' => 'structure',
+            'members' => [
+                'natType' => [ 'type' => 'string', 'locationName' => 'natType', ],
+                'natId' => [ 'type' => 'string', 'locationName' => 'natId', ],
+                'elasticIpSpec' =>  [ 'shape' => 'NodeElasticIpSpec', ],
+            ],
+        ],
+        'AutoClusterNetworkSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'publicApiServer' => [ 'type' => 'boolean', 'locationName' => 'publicApiServer', ],
+                'masterCidr' => [ 'type' => 'string', 'locationName' => 'masterCidr', ],
+                'nodeNetworkCidr' => [ 'type' => 'string', 'locationName' => 'nodeNetworkCidr', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'dualStack' => [ 'type' => 'boolean', 'locationName' => 'dualStack', ],
+                'masterNatEnabled' => [ 'type' => 'boolean', 'locationName' => 'masterNatEnabled', ],
+                'natGateway' =>  [ 'shape' => 'NatGatewaySpec', ],
+                'nodeElasticIpSpec' =>  [ 'shape' => 'NodeElasticIpSpec', ],
             ],
         ],
         'CAConfig' => [
@@ -310,8 +320,10 @@ return [
                 'masterCidr' => [ 'type' => 'string', 'locationName' => 'masterCidr', ],
                 'serviceCidr' => [ 'type' => 'string', 'locationName' => 'serviceCidr', ],
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'podSubnets' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterNetworkPodSubnet', ], ],
                 'clusterSubnets' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterNetworkSubnet', ], ],
                 'natGateway' => [ 'type' => 'list', 'member' => [ 'shape' => 'NatGateway', ], ],
+                'nodeElasticIpSpec' =>  [ 'shape' => 'NodeElasticIpSpec', ],
             ],
         ],
         'Cluster' => [
@@ -332,7 +344,9 @@ return [
                 'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
                 'basicAuth' => [ 'type' => 'boolean', 'locationName' => 'basicAuth', ],
                 'clientCertificate' => [ 'type' => 'boolean', 'locationName' => 'clientCertificate', ],
+                'privateEndpoint' => [ 'type' => 'string', 'locationName' => 'privateEndpoint', ],
                 'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
+                'endpointIPV6' => [ 'type' => 'string', 'locationName' => 'endpointIPV6', ],
                 'endpointPort' => [ 'type' => 'string', 'locationName' => 'endpointPort', ],
                 'dashboardPort' => [ 'type' => 'string', 'locationName' => 'dashboardPort', ],
                 'userMetrics' => [ 'type' => 'boolean', 'locationName' => 'userMetrics', ],
@@ -343,6 +357,8 @@ return [
                 'masterProgress' =>  [ 'shape' => 'MaintenanceWindow', ],
                 'clusterNetwork' =>  [ 'shape' => 'ClusterNetwork', ],
                 'networkMode' => [ 'type' => 'string', 'locationName' => 'networkMode', ],
+                'clusterEnvironments' => [ 'type' => 'list', 'member' => [ 'shape' => 'StringKeyValuePair', ], ],
+                'isEdge' => [ 'type' => 'boolean', 'locationName' => 'isEdge', ],
             ],
         ],
         'NodeGroup' => [
@@ -364,7 +380,6 @@ return [
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'stateMessage' => [ 'type' => 'string', 'locationName' => 'stateMessage', ],
-                'autoRepair' => [ 'type' => 'boolean', 'locationName' => 'autoRepair', ],
                 'progress' =>  [ 'shape' => 'NodeGroupProgress', ],
                 'caConfig' =>  [ 'shape' => 'CAConfig', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
@@ -400,12 +415,7 @@ return [
         'NodeNetwork' => [
             'type' => 'structure',
             'members' => [
-                'podSubnetId' => [ 'type' => 'string', 'locationName' => 'podSubnetId', ],
                 'nodeSubnetId' => [ 'type' => 'string', 'locationName' => 'nodeSubnetId', ],
-                'serviceSubnetId' => [ 'type' => 'string', 'locationName' => 'serviceSubnetId', ],
-                'servicePublicSubnetId' => [ 'type' => 'string', 'locationName' => 'servicePublicSubnetId', ],
-                'nodeNetworkCidr' => [ 'type' => 'string', 'locationName' => 'nodeNetworkCidr', ],
-                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
             ],
         ],
         'NodeGroupProgress' => [
@@ -433,6 +443,49 @@ return [
                 'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
             ],
         ],
+        'DataDiskSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
+                'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
+                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
+                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+                'autoFormat' => [ 'type' => 'boolean', 'locationName' => 'autoFormat', ],
+                'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
+                'mountPoint' => [ 'type' => 'string', 'locationName' => 'mountPoint', ],
+            ],
+        ],
+        'DiskSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'systemDiskCategory' => [ 'type' => 'string', 'locationName' => 'systemDiskCategory', ],
+                'systemDiskSize' => [ 'type' => 'integer', 'locationName' => 'systemDiskSize', ],
+                'systemDiskType' => [ 'type' => 'string', 'locationName' => 'systemDiskType', ],
+                'systemDiskIops' => [ 'type' => 'integer', 'locationName' => 'systemDiskIops', ],
+            ],
+        ],
+        'ClusterNetworkPodSubnet' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'subnetType' => [ 'type' => 'string', 'locationName' => 'subnetType', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+                'ipMaskLen' => [ 'type' => 'integer', 'locationName' => 'ipMaskLen', ],
+                'availableCidrCount' => [ 'type' => 'integer', 'locationName' => 'availableCidrCount', ],
+                'eniLen' => [ 'type' => 'integer', 'locationName' => 'eniLen', ],
+                'ipamPolicy' => [ 'type' => 'string', 'locationName' => 'ipamPolicy', ],
+                'runtimeError' => [ 'type' => 'string', 'locationName' => 'runtimeError', ],
+            ],
+        ],
+        'UserScriptSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'NodeConfig' => [
             'type' => 'structure',
             'members' => [
@@ -444,13 +497,10 @@ return [
                 'systemDiskType' => [ 'type' => 'string', 'locationName' => 'systemDiskType', ],
                 'systemDiskIops' => [ 'type' => 'integer', 'locationName' => 'systemDiskIops', ],
                 'labels' => [ 'type' => 'list', 'member' => [ 'shape' => 'LabelSpec', ], ],
-            ],
-        ],
-        'NatGatewaySpec' => [
-            'type' => 'structure',
-            'members' => [
-                'natType' => [ 'type' => 'string', 'locationName' => 'natType', ],
-                'natId' => [ 'type' => 'string', 'locationName' => 'natId', ],
+                'userScripts' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserScriptSpec', ], ],
+                'dataDiskSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataDiskSpec', ], ],
+                'systemDiskSpec' =>  [ 'shape' => 'DiskSpec', ],
+                'securityGroup' => [ 'type' => 'string', 'locationName' => 'securityGroup', ],
             ],
         ],
         'ClusterNetworkSpec' => [
@@ -466,12 +516,30 @@ return [
                 'natGateway' =>  [ 'shape' => 'NatGatewaySpec', ],
             ],
         ],
+        'ClusterPodSubnet' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'subnetType' => [ 'type' => 'string', 'locationName' => 'subnetType', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+                'ipMaskLen' => [ 'type' => 'integer', 'locationName' => 'ipMaskLen', ],
+                'availableCidrCount' => [ 'type' => 'integer', 'locationName' => 'availableCidrCount', ],
+                'eniLen' => [ 'type' => 'integer', 'locationName' => 'eniLen', ],
+                'ipamPolicy' => [ 'type' => 'string', 'locationName' => 'ipamPolicy', ],
+                'runtimeError' => [ 'type' => 'string', 'locationName' => 'runtimeError', ],
+                'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
+                'availableIpNum' => [ 'type' => 'integer', 'locationName' => 'availableIpNum', ],
+                'subnetName' => [ 'type' => 'string', 'locationName' => 'subnetName', ],
+            ],
+        ],
         'ClusterSubnet' => [
             'type' => 'structure',
             'members' => [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'subnetType' => [ 'type' => 'string', 'locationName' => 'subnetType', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
                 'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
                 'availableIpNum' => [ 'type' => 'integer', 'locationName' => 'availableIpNum', ],
                 'subnetName' => [ 'type' => 'string', 'locationName' => 'subnetName', ],
@@ -485,9 +553,6 @@ return [
                 'nodeConfig' =>  [ 'shape' => 'NodeConfigSpec', ],
                 'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'initialNodeCount' => [ 'type' => 'integer', 'locationName' => 'initialNodeCount', ],
-                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
-                'nodeCidr' => [ 'type' => 'string', 'locationName' => 'nodeCidr', ],
-                'autoRepair' => [ 'type' => 'boolean', 'locationName' => 'autoRepair', ],
                 'caConfig' =>  [ 'shape' => 'CAConfigSpec', ],
             ],
         ],
@@ -495,20 +560,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
-                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
                 'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'systemDisk' =>  [ 'shape' => 'DiskSpec', ],
                 'labels' => [ 'type' => 'list', 'member' => [ 'shape' => 'LabelSpec', ], ],
-            ],
-        ],
-        'DiskSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'systemDiskCategory' => [ 'type' => 'string', 'locationName' => 'systemDiskCategory', ],
-                'systemDiskSize' => [ 'type' => 'integer', 'locationName' => 'systemDiskSize', ],
-                'systemDiskType' => [ 'type' => 'string', 'locationName' => 'systemDiskType', ],
-                'systemDiskIops' => [ 'type' => 'integer', 'locationName' => 'systemDiskIops', ],
+                'userScripts' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserScriptSpec', ], ],
+                'dataDiskSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataDiskSpec', ], ],
+                'securityGroup' => [ 'type' => 'string', 'locationName' => 'securityGroup', ],
             ],
         ],
         'ClusterSpec' => [
@@ -526,6 +584,22 @@ return [
                 'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
             ],
         ],
+        'CustomizedClusterNetworkSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'publicApiServer' => [ 'type' => 'boolean', 'locationName' => 'publicApiServer', ],
+                'masterCidr' => [ 'type' => 'string', 'locationName' => 'masterCidr', ],
+                'serviceCidr' => [ 'type' => 'string', 'locationName' => 'serviceCidr', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'podSubnetId' => [ 'type' => 'string', 'locationName' => 'podSubnetId', ],
+                'lbSubnetId' => [ 'type' => 'string', 'locationName' => 'lbSubnetId', ],
+                'nodeSubnetId' => [ 'type' => 'string', 'locationName' => 'nodeSubnetId', ],
+                'dualStack' => [ 'type' => 'boolean', 'locationName' => 'dualStack', ],
+                'masterNatEnabled' => [ 'type' => 'boolean', 'locationName' => 'masterNatEnabled', ],
+                'natGateway' =>  [ 'shape' => 'NatGatewaySpec', ],
+                'nodeElasticIpSpec' =>  [ 'shape' => 'NodeElasticIpSpec', ],
+            ],
+        ],
         'CustomizedNodeGroupSpec' => [
             'type' => 'structure',
             'members' => [
@@ -536,6 +610,18 @@ return [
                 'initialNodeCount' => [ 'type' => 'integer', 'locationName' => 'initialNodeCount', ],
                 'autoRepair' => [ 'type' => 'boolean', 'locationName' => 'autoRepair', ],
                 'caConfig' =>  [ 'shape' => 'CAConfigSpec', ],
+            ],
+        ],
+        'GpuInstaller' => [
+            'type' => 'structure',
+            'members' => [
+                'installerName' => [ 'type' => 'string', 'locationName' => 'installerName', ],
+                'imageName' => [ 'type' => 'string', 'locationName' => 'imageName', ],
+                'imageVersion' => [ 'type' => 'string', 'locationName' => 'imageVersion', ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
+                'driverVersion' => [ 'type' => 'string', 'locationName' => 'driverVersion', ],
+                'cudaVersion' => [ 'type' => 'string', 'locationName' => 'cudaVersion', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
             ],
         ],
         'Label' => [
@@ -586,14 +672,6 @@ return [
                 'progress' => [ 'type' => 'string', 'locationName' => 'progress', ],
             ],
         ],
-        'NodeVersion' => [
-            'type' => 'structure',
-            'members' => [
-                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
-                'imageOs' => [ 'type' => 'string', 'locationName' => 'imageOs', ],
-                'versionStatus' => [ 'type' => 'string', 'locationName' => 'versionStatus', ],
-            ],
-        ],
         'MasterVersion' => [
             'type' => 'structure',
             'members' => [
@@ -601,8 +679,8 @@ return [
                 'isDefault' => [ 'type' => 'boolean', 'locationName' => 'isDefault', ],
                 'defaultNodeVersion' => [ 'type' => 'string', 'locationName' => 'defaultNodeVersion', ],
                 'versionStatus' => [ 'type' => 'string', 'locationName' => 'versionStatus', ],
-                'nodeVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeVersion', ], ],
                 'nodeOsTypes' => [ 'type' => 'string', 'locationName' => 'nodeOsTypes', ],
+                'clusterAddons' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterAddon', ], ],
             ],
         ],
         'NodeGroupNetworkSpec' => [
@@ -616,6 +694,28 @@ return [
             'members' => [
                 'nodeVersion' => [ 'type' => 'string', 'locationName' => 'nodeVersion', ],
                 'imageId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'NodeVersion' => [
+            'type' => 'structure',
+            'members' => [
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'imageOs' => [ 'type' => 'string', 'locationName' => 'imageOs', ],
+                'versionStatus' => [ 'type' => 'string', 'locationName' => 'versionStatus', ],
+            ],
+        ],
+        'Param' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'ParamSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
         'Quota' => [
@@ -634,6 +734,71 @@ return [
                 'validNodeConfig' => [ 'type' => 'list', 'member' => [ 'shape' => 'ValidNodeConfig', ], ],
             ],
         ],
+        'ServerlessClusterNetworkConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'publicApiServer' => [ 'type' => 'boolean', 'locationName' => 'publicApiServer', ],
+                'masterCidr' => [ 'type' => 'string', 'locationName' => 'masterCidr', ],
+                'serviceCidr' => [ 'type' => 'string', 'locationName' => 'serviceCidr', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'podSubnets' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterNetworkPodSubnet', ], ],
+                'lbSubnets' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterNetworkSubnet', ], ],
+                'natGateways' => [ 'type' => 'list', 'member' => [ 'shape' => 'NatGateway', ], ],
+            ],
+        ],
+        'ServerlessCluster' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'clusterCidr' => [ 'type' => 'string', 'locationName' => 'clusterCidr', ],
+                'masterAuth' =>  [ 'shape' => 'MasterAuth', ],
+                'clusterState' => [ 'type' => 'string', 'locationName' => 'clusterState', ],
+                'stateMessage' => [ 'type' => 'string', 'locationName' => 'stateMessage', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'basicAuth' => [ 'type' => 'boolean', 'locationName' => 'basicAuth', ],
+                'clientCertificate' => [ 'type' => 'boolean', 'locationName' => 'clientCertificate', ],
+                'privateEndpoint' => [ 'type' => 'string', 'locationName' => 'privateEndpoint', ],
+                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
+                'endpointIPV6' => [ 'type' => 'string', 'locationName' => 'endpointIPV6', ],
+                'endpointPort' => [ 'type' => 'string', 'locationName' => 'endpointPort', ],
+                'dashboardPort' => [ 'type' => 'string', 'locationName' => 'dashboardPort', ],
+                'userMetrics' => [ 'type' => 'boolean', 'locationName' => 'userMetrics', ],
+                'addonsConfig' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddonConfig', ], ],
+                'masterProgress' =>  [ 'shape' => 'MaintenanceWindow', ],
+                'clusterNetwork' =>  [ 'shape' => 'ServerlessClusterNetworkConfig', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'networkMode' => [ 'type' => 'string', 'locationName' => 'networkMode', ],
+                'clusterEnvironments' => [ 'type' => 'list', 'member' => [ 'shape' => 'StringKeyValuePair', ], ],
+                'isEdge' => [ 'type' => 'boolean', 'locationName' => 'isEdge', ],
+            ],
+        ],
+        'ServerlessClusterNetworkSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'publicApiServer' => [ 'type' => 'boolean', 'locationName' => 'publicApiServer', ],
+                'masterCidr' => [ 'type' => 'string', 'locationName' => 'masterCidr', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'natGateway' =>  [ 'shape' => 'NatGatewaySpec', ],
+                'serviceCidr' => [ 'type' => 'string', 'locationName' => 'serviceCidr', ],
+                'podSubnetId' => [ 'type' => 'string', 'locationName' => 'podSubnetId', ],
+                'lbSubnetId' => [ 'type' => 'string', 'locationName' => 'lbSubnetId', ],
+                'dualStack' => [ 'type' => 'boolean', 'locationName' => 'dualStack', ],
+                'masterNatEnabled' => [ 'type' => 'boolean', 'locationName' => 'masterNatEnabled', ],
+            ],
+        ],
+        'ServerlessMasterVersion' => [
+            'type' => 'structure',
+            'members' => [
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'isDefault' => [ 'type' => 'boolean', 'locationName' => 'isDefault', ],
+                'versionStatus' => [ 'type' => 'string', 'locationName' => 'versionStatus', ],
+                'clusterAddons' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterAddon', ], ],
+            ],
+        ],
         'TagFilter' => [
             'type' => 'structure',
             'members' => [
@@ -646,16 +811,17 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'basicAuth' => [ 'type' => 'boolean', 'locationName' => 'basicAuth', ],
-                'clientCertificate' => [ 'type' => 'boolean', 'locationName' => 'clientCertificate', ],
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'isEdge' => [ 'type' => 'boolean', 'locationName' => 'isEdge', ],
                 'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'nodeGroup' =>  [ 'shape' => 'NodeGroupSpec', ],
-                'masterCidr' => [ 'type' => 'string', 'locationName' => 'masterCidr', ],
                 'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
                 'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
-                'userMetrics' => [ 'type' => 'boolean', 'locationName' => 'userMetrics', ],
                 'addonsConfig' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddonConfigSpec', ], ],
+                'clusterNetworkType' => [ 'type' => 'string', 'locationName' => 'clusterNetworkType', ],
+                'autoClusterNetworkSpec' =>  [ 'shape' => 'AutoClusterNetworkSpec', ],
+                'customizedClusterNetworkSpec' =>  [ 'shape' => 'CustomizedClusterNetworkSpec', ],
+                'clusterEnvironments' => [ 'type' => 'list', 'member' => [ 'shape' => 'StringKeyValuePair', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -666,24 +832,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'AbortUpgradeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'SetAddonsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UpgradeClusterResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'CreateClusterResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -691,27 +839,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeProgressRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'nodeGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-            ],
-        ],
         'DescribeClustersResultShape' => [
             'type' => 'structure',
             'members' => [
                 'clusters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Cluster', ], ],
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'SetAddonsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'addonsConfig' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddonConfigSpec', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
         'DescribeClustersRequestShape' => [
@@ -726,29 +858,15 @@ return [
         'DeleteClusterRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-            ],
-        ],
-        'SetAutoUpgradeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeClusterResultShape' => [
             'type' => 'structure',
             'members' => [
                 'cluster' =>  [ 'shape' => 'Cluster', ],
-            ],
-        ],
-        'SetAutoUpgradeRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'autoUpgrade' => [ 'type' => 'boolean', 'locationName' => 'autoUpgrade', ],
-                'maintenanceWindow' =>  [ 'shape' => 'MaintenanceWindowSpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
         'DescribeClusterRequestShape' => [
@@ -758,47 +876,10 @@ return [
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
-        'DescribeProgressResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'masterProgress' =>  [ 'shape' => 'MasterProgress', ],
-                'nodeGroupProgresses' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeGroupProgress', ], ],
-            ],
-        ],
-        'SetUserMetricsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-            ],
-        ],
-        'DescribeProgressResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeProgressResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'SetAutoUpgradeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'SetAddonsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'CreateClusterResultShape' => [
             'type' => 'structure',
             'members' => [
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-            ],
-        ],
-        'SetUserMetricsResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'Filter' => [
@@ -807,12 +888,6 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'SetUserMetricsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeClusterResponseShape' => [
@@ -831,24 +906,9 @@ return [
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
-        'AbortUpgradeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DeleteClusterResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'UpgradeClusterRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'scope' => [ 'type' => 'string', 'locationName' => 'scope', ],
-                'nodeGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
         'ModifyClusterResultShape' => [
@@ -856,22 +916,10 @@ return [
             'members' => [
             ],
         ],
-        'AbortUpgradeRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-            ],
-        ],
         'DeleteClusterResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UpgradeClusterResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'ModifyClusterResponseShape' => [
@@ -911,29 +959,9 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'RollbackNodeGroupUpgradeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'SetNodeGroupSizeResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'SetAutoRepairResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'SetAutoRepairRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
             ],
         ],
         'DescribeNodeGroupResponseShape' => [
@@ -955,11 +983,6 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
-            ],
-        ],
-        'SetAutoRepairResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'DescribeNodeGroupResultShape' => [
@@ -1034,11 +1057,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'RollbackNodeGroupUpgradeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'SetNodeGroupCAResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1059,9 +1077,6 @@ return [
                 'nodeConfig' =>  [ 'shape' => 'NodeConfigSpec', ],
                 'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'initialNodeCount' => [ 'type' => 'integer', 'locationName' => 'initialNodeCount', ],
-                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
-                'nodeCidr' => [ 'type' => 'string', 'locationName' => 'nodeCidr', ],
-                'autoRepair' => [ 'type' => 'boolean', 'locationName' => 'autoRepair', ],
                 'caConfig' =>  [ 'shape' => 'CAConfigSpec', ],
                 'nodeGroupNetwork' =>  [ 'shape' => 'NodeGroupNetworkSpec', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -1071,13 +1086,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'RollbackNodeGroupUpgradeRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
             ],
         ],
         'DescribeQuotasResultShape' => [
@@ -1100,50 +1108,17 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeUpgradableNodeVersionsRequestShape' => [
+        'DescribeVersionsResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'nodeGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-            ],
-        ],
-        'DescribeNodeVersionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeNodeVersionResultShape', ],
+                'result' =>  [ 'shape' => 'DescribeVersionsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeServerConfigResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'serverConfig' =>  [ 'shape' => 'ServerConfig', ],
             ],
         ],
         'DescribeVersionsResultShape' => [
             'type' => 'structure',
             'members' => [
                 'masterVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'MasterVersion', ], ],
-            ],
-        ],
-        'DescribeUpgradableMasterVersionsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'masterVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'MasterVersion', ], ],
-            ],
-        ],
-        'DescribeUpgradableMasterVersionsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-            ],
-        ],
-        'DescribeUpgradableNodeVersionsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ndoeVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeVersion', ], ],
             ],
         ],
         'DescribeVersionsRequestShape' => [
@@ -1153,50 +1128,133 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DescribeServerConfigResponseShape' => [
+        'DeleteServerlessClusterResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeServerConfigResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeUpgradableNodeVersionsResponseShape' => [
+        'DeleteServerlessClusterResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeUpgradableNodeVersionsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeVersionsResponseShape' => [
+        'DescribeServerlessVersionsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeVersionsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeNodeVersionRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'nodeVersion' => [ 'type' => 'string', 'locationName' => 'nodeVersion', ],
-            ],
-        ],
-        'DescribeServerConfigRequestShape' => [
-            'type' => 'structure',
-            'members' => [
+                'masterVersion' => [ 'type' => 'string', 'locationName' => 'masterVersion', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DescribeNodeVersionResultShape' => [
+        'DescribeServerlessClusterResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'nodeVersion' =>  [ 'shape' => 'NodeVersion', ],
+                'result' =>  [ 'shape' => 'DescribeServerlessClusterResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeUpgradableMasterVersionsResponseShape' => [
+        'CreateServerlessClusterResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeUpgradableMasterVersionsResultShape', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'DescribeServerlessVersionsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeServerlessVersionsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyServerlessClusterResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeServerlessClustersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusters' => [ 'type' => 'list', 'member' => [ 'shape' => 'ServerlessCluster', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeServerlessVersionsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'masterVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'ServerlessMasterVersion', ], ],
+            ],
+        ],
+        'CreateServerlessClusterRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
+                'addonsConfig' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddonConfigSpec', ], ],
+                'clusterNetworkSpec' =>  [ 'shape' => 'ServerlessClusterNetworkSpec', ],
+                'clusterEnvironments' => [ 'type' => 'list', 'member' => [ 'shape' => 'StringKeyValuePair', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeServerlessClustersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeServerlessClustersResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeServerlessClusterResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cluster' =>  [ 'shape' => 'ServerlessCluster', ],
+            ],
+        ],
+        'DescribeServerlessClustersRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteServerlessClusterRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'routeTableId' => [ 'type' => 'string', 'locationName' => 'routeTableId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'DescribeServerlessClusterRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'ModifyServerlessClusterRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'ModifyServerlessClusterResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateServerlessClusterResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateServerlessClusterResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],

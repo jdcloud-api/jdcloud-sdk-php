@@ -74,6 +74,14 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeSubnetAsync(array $args = [])
  * @method \Jdcloud\Result deleteSubnet(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteSubnetAsync(array $args = [])
+ * @method \Jdcloud\Result describeVmInstances(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeVmInstancesAsync(array $args = [])
+ * @method \Jdcloud\Result describeVmInstance(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeVmInstanceAsync(array $args = [])
+ * @method \Jdcloud\Result attachNetworkInterface(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise attachNetworkInterfaceAsync(array $args = [])
+ * @method \Jdcloud\Result detachNetworkInterface(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise detachNetworkInterfaceAsync(array $args = [])
  */
 class YundingClient extends JdCloudClient
 {

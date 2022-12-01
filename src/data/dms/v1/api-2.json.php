@@ -11,6 +11,15 @@ return [
 //        'serviceId' => 'dms',
     ],
     'operations' => [
+        'DmsConsoleCheck' => [
+            'name' => 'DmsConsoleCheck',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/console:check',
+            ],
+            'input' => [ 'shape' => 'DmsConsoleCheckRequestShape', ],
+            'output' => [ 'shape' => 'DmsConsoleCheckResponseShape', ],
+        ],
         'GeneralCreateEvent' => [
             'name' => 'GeneralCreateEvent',
             'http' => [
@@ -236,6 +245,15 @@ return [
             'input' => [ 'shape' => 'QueryTypeInstanceRequestShape', ],
             'output' => [ 'shape' => 'QueryTypeInstanceResponseShape', ],
         ],
+        'CheckInstance' => [
+            'name' => 'CheckInstance',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:check',
+            ],
+            'input' => [ 'shape' => 'CheckInstanceRequestShape', ],
+            'output' => [ 'shape' => 'CheckInstanceResponseShape', ],
+        ],
         'TableInfo' => [
             'name' => 'TableInfo',
             'http' => [
@@ -280,6 +298,42 @@ return [
             ],
             'input' => [ 'shape' => 'GetDmsDomainRequestShape', ],
             'output' => [ 'shape' => 'GetDmsDomainResponseShape', ],
+        ],
+        'GetDmsDomains' => [
+            'name' => 'GetDmsDomains',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/getDmsDomain',
+            ],
+            'input' => [ 'shape' => 'GetDmsDomainsRequestShape', ],
+            'output' => [ 'shape' => 'GetDmsDomainsResponseShape', ],
+        ],
+        'QueryOperationType' => [
+            'name' => 'QueryOperationType',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/operationType:query',
+            ],
+            'input' => [ 'shape' => 'QueryOperationTypeRequestShape', ],
+            'output' => [ 'shape' => 'QueryOperationTypeResponseShape', ],
+        ],
+        'QueryOperationLog' => [
+            'name' => 'QueryOperationLog',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/operationLog:query',
+            ],
+            'input' => [ 'shape' => 'QueryOperationLogRequestShape', ],
+            'output' => [ 'shape' => 'QueryOperationLogResponseShape', ],
+        ],
+        'OperationDetail' => [
+            'name' => 'OperationDetail',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/operationDetail/{operationId}',
+            ],
+            'input' => [ 'shape' => 'OperationDetailRequestShape', ],
+            'output' => [ 'shape' => 'OperationDetailResponseShape', ],
         ],
         'QueryPersonalSqls' => [
             'name' => 'QueryPersonalSqls',
@@ -443,6 +497,69 @@ return [
             'input' => [ 'shape' => 'GetCreateTableBatchSqlRequestShape', ],
             'output' => [ 'shape' => 'GetCreateTableBatchSqlResponseShape', ],
         ],
+        'CreateOnlineSqlTask' => [
+            'name' => 'CreateOnlineSqlTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/sqltask:create',
+            ],
+            'input' => [ 'shape' => 'CreateOnlineSqlTaskRequestShape', ],
+            'output' => [ 'shape' => 'CreateOnlineSqlTaskResponseShape', ],
+        ],
+        'StartOnlineSqlTask' => [
+            'name' => 'StartOnlineSqlTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/sqltask:start',
+            ],
+            'input' => [ 'shape' => 'StartOnlineSqlTaskRequestShape', ],
+            'output' => [ 'shape' => 'StartOnlineSqlTaskResponseShape', ],
+        ],
+        'SuspendOnlineSqlTask' => [
+            'name' => 'SuspendOnlineSqlTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/sqltask:suspend',
+            ],
+            'input' => [ 'shape' => 'SuspendOnlineSqlTaskRequestShape', ],
+            'output' => [ 'shape' => 'SuspendOnlineSqlTaskResponseShape', ],
+        ],
+        'RestartOnlineSqlTask' => [
+            'name' => 'RestartOnlineSqlTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/sqltask:restart',
+            ],
+            'input' => [ 'shape' => 'RestartOnlineSqlTaskRequestShape', ],
+            'output' => [ 'shape' => 'RestartOnlineSqlTaskResponseShape', ],
+        ],
+        'OnlineSqlTaskQuery' => [
+            'name' => 'OnlineSqlTaskQuery',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/sqltask:query',
+            ],
+            'input' => [ 'shape' => 'OnlineSqlTaskQueryRequestShape', ],
+            'output' => [ 'shape' => 'OnlineSqlTaskQueryResponseShape', ],
+        ],
+        'OnlineSubSqlTaskQuery' => [
+            'name' => 'OnlineSubSqlTaskQuery',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/subsqltask:query',
+            ],
+            'input' => [ 'shape' => 'OnlineSubSqlTaskQueryRequestShape', ],
+            'output' => [ 'shape' => 'OnlineSubSqlTaskQueryResponseShape', ],
+        ],
+        'OnlineProxySubTaskQuery' => [
+            'name' => 'OnlineProxySubTaskQuery',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/proxysubtask:query',
+            ],
+            'input' => [ 'shape' => 'OnlineProxySubTaskQueryRequestShape', ],
+            'output' => [ 'shape' => 'OnlineProxySubTaskQueryResponseShape', ],
+        ],
         'GeneralCreateTrigger' => [
             'name' => 'GeneralCreateTrigger',
             'http' => [
@@ -488,6 +605,114 @@ return [
             'input' => [ 'shape' => 'TriggerInfoRequestShape', ],
             'output' => [ 'shape' => 'TriggerInfoResponseShape', ],
         ],
+        'QueryUserList' => [
+            'name' => 'QueryUserList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/management:queryUserList',
+            ],
+            'input' => [ 'shape' => 'QueryUserListRequestShape', ],
+            'output' => [ 'shape' => 'QueryUserListResponseShape', ],
+        ],
+        'QueryUserNotSync' => [
+            'name' => 'QueryUserNotSync',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/management:queryUserNotSync',
+            ],
+            'input' => [ 'shape' => 'QueryUserNotSyncRequestShape', ],
+            'output' => [ 'shape' => 'QueryUserNotSyncResponseShape', ],
+        ],
+        'SyncSubUser' => [
+            'name' => 'SyncSubUser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/management:syncSubUser',
+            ],
+            'input' => [ 'shape' => 'SyncSubUserRequestShape', ],
+            'output' => [ 'shape' => 'SyncSubUserResponseShape', ],
+        ],
+        'UpdateUserInfo' => [
+            'name' => 'UpdateUserInfo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/management:updateUserInfo',
+            ],
+            'input' => [ 'shape' => 'UpdateUserInfoRequestShape', ],
+            'output' => [ 'shape' => 'UpdateUserInfoResponseShape', ],
+        ],
+        'EnableUser' => [
+            'name' => 'EnableUser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/management:enableUser',
+            ],
+            'input' => [ 'shape' => 'EnableUserRequestShape', ],
+            'output' => [ 'shape' => 'EnableUserResponseShape', ],
+        ],
+        'DeleteUser' => [
+            'name' => 'DeleteUser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/management:deleteUser',
+            ],
+            'input' => [ 'shape' => 'DeleteUserRequestShape', ],
+            'output' => [ 'shape' => 'DeleteUserResponseShape', ],
+        ],
+        'GetUserInfo' => [
+            'name' => 'GetUserInfo',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/management:getUserInfo',
+            ],
+            'input' => [ 'shape' => 'GetUserInfoRequestShape', ],
+            'output' => [ 'shape' => 'GetUserInfoResponseShape', ],
+        ],
+        'QueryPrivilegeList' => [
+            'name' => 'QueryPrivilegeList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/management:queryPrivilegeList',
+            ],
+            'input' => [ 'shape' => 'QueryPrivilegeListRequestShape', ],
+            'output' => [ 'shape' => 'QueryPrivilegeListResponseShape', ],
+        ],
+        'QueryPrivilegeSelfList' => [
+            'name' => 'QueryPrivilegeSelfList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/management:queryPrivilegeSelfList',
+            ],
+            'input' => [ 'shape' => 'QueryPrivilegeSelfListRequestShape', ],
+            'output' => [ 'shape' => 'QueryPrivilegeSelfListResponseShape', ],
+        ],
+        'ReleasePrivilege' => [
+            'name' => 'ReleasePrivilege',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/management:releasePrivilege',
+            ],
+            'input' => [ 'shape' => 'ReleasePrivilegeRequestShape', ],
+            'output' => [ 'shape' => 'ReleasePrivilegeResponseShape', ],
+        ],
+        'AuthPrivilege' => [
+            'name' => 'AuthPrivilege',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/management:authPrivilege',
+            ],
+            'input' => [ 'shape' => 'AuthPrivilegeRequestShape', ],
+            'output' => [ 'shape' => 'AuthPrivilegeResponseShape', ],
+        ],
+        'ModifyPrivilegeExpireDate' => [
+            'name' => 'ModifyPrivilegeExpireDate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/management:modifyPrivilegeExpireDate',
+            ],
+            'input' => [ 'shape' => 'ModifyPrivilegeExpireDateRequestShape', ],
+            'output' => [ 'shape' => 'ModifyPrivilegeExpireDateResponseShape', ],
+        ],
         'GeneralCreateView' => [
             'name' => 'GeneralCreateView',
             'http' => [
@@ -526,6 +751,35 @@ return [
         ],
     ],
     'shapes' => [
+        'OgShardingAlgorithmProperties' => [
+            'type' => 'structure',
+            'members' => [
+                'shardingAlgorithmType' => [ 'type' => 'string', 'locationName' => 'shardingAlgorithmType', ],
+                'shardingCount' => [ 'type' => 'integer', 'locationName' => 'shardingCount', ],
+                'rangeLower' => [ 'type' => 'integer', 'locationName' => 'rangeLower', ],
+                'rangeUpper' => [ 'type' => 'integer', 'locationName' => 'rangeUpper', ],
+                'shardingVolume' => [ 'type' => 'integer', 'locationName' => 'shardingVolume', ],
+                'shardingRanges' => [ 'type' => 'string', 'locationName' => 'shardingRanges', ],
+                'dateTimeLower' => [ 'type' => 'string', 'locationName' => 'dateTimeLower', ],
+                'dateTimeUpper' => [ 'type' => 'string', 'locationName' => 'dateTimeUpper', ],
+                'shardingSeconds' => [ 'type' => 'integer', 'locationName' => 'shardingSeconds', ],
+                'allowRangeQueryWithInlineSharding' => [ 'type' => 'boolean', 'locationName' => 'allowRangeQueryWithInlineSharding', ],
+                'datetimePattern' => [ 'type' => 'string', 'locationName' => 'datetimePattern', ],
+                'shardingSuffixPattern' => [ 'type' => 'string', 'locationName' => 'shardingSuffixPattern', ],
+                'dateTimeIntervalAmount' => [ 'type' => 'integer', 'locationName' => 'dateTimeIntervalAmount', ],
+                'dateTimeIntervalUnit' => [ 'type' => 'string', 'locationName' => 'dateTimeIntervalUnit', ],
+            ],
+        ],
+        'AutoTableShardingInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
+                'shardingColumn' => [ 'type' => 'string', 'locationName' => 'shardingColumn', ],
+                'ogShardingAlgorithmProperties' =>  [ 'shape' => 'OgShardingAlgorithmProperties', ],
+                'primaryKeyName' => [ 'type' => 'string', 'locationName' => 'primaryKeyName', ],
+                'primaryKeyStrategy' => [ 'type' => 'string', 'locationName' => 'primaryKeyStrategy', ],
+            ],
+        ],
         'ColumnInfo' => [
             'type' => 'structure',
             'members' => [
@@ -547,6 +801,28 @@ return [
             'members' => [
                 'tableTypeEnum' => [ 'type' => 'string', 'locationName' => 'tableTypeEnum', ],
                 'stardbSplitInfo' =>  [ 'shape' => 'StardbSplitInfo', ],
+                'dmsOgTableRule' =>  [ 'shape' => 'DmsOgTableRule', ],
+            ],
+        ],
+        'TableShardingInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
+                'databaseStrategyType' => [ 'type' => 'string', 'locationName' => 'databaseStrategyType', ],
+                'databaseShardingColumn' => [ 'type' => 'string', 'locationName' => 'databaseShardingColumn', ],
+                'databaseShardingAlgorithmProperties' =>  [ 'shape' => 'OgShardingAlgorithmProperties', ],
+                'tableStrategyType' => [ 'type' => 'string', 'locationName' => 'tableStrategyType', ],
+                'tableShardingColumn' => [ 'type' => 'string', 'locationName' => 'tableShardingColumn', ],
+                'tableShardingAlgorithmProperties' =>  [ 'shape' => 'OgShardingAlgorithmProperties', ],
+                'primaryKeyName' => [ 'type' => 'string', 'locationName' => 'primaryKeyName', ],
+                'primaryKeyStrategy' => [ 'type' => 'string', 'locationName' => 'primaryKeyStrategy', ],
+            ],
+        ],
+        'DmsOgTableRule' => [
+            'type' => 'structure',
+            'members' => [
+                'autoTableShardingInfo' =>  [ 'shape' => 'AutoTableShardingInfo', ],
+                'tableShardingInfo' =>  [ 'shape' => 'TableShardingInfo', ],
             ],
         ],
         'CreateTableInfo' => [
@@ -657,6 +933,81 @@ return [
                 'instanceInfo' => [ 'type' => 'object', 'locationName' => 'instanceInfo', ],
             ],
         ],
+        'DmsOnlineProxySubTask' => [
+            'type' => 'structure',
+            'members' => [
+                'subTaskId' => [ 'type' => 'integer', 'locationName' => 'subTaskId', ],
+                'sql' => [ 'type' => 'integer', 'locationName' => 'sql', ],
+                'nodeIp' => [ 'type' => 'string', 'locationName' => 'nodeIp', ],
+                'nodePort' => [ 'type' => 'string', 'locationName' => 'nodePort', ],
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'ext' => [ 'type' => 'boolean', 'locationName' => 'ext', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'DmsOnlineSubSqlTask' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'parentId' => [ 'type' => 'integer', 'locationName' => 'parentId', ],
+                'sqlText' => [ 'type' => 'string', 'locationName' => 'sqlText', ],
+                'runStatus' => [ 'type' => 'string', 'locationName' => 'runStatus', ],
+                'createdDate' => [ 'type' => 'string', 'locationName' => 'createdDate', ],
+                'finishDate' => [ 'type' => 'string', 'locationName' => 'finishDate', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'stardbProxy' => [ 'type' => 'boolean', 'locationName' => 'stardbProxy', ],
+                'proxyTaskId' => [ 'type' => 'string', 'locationName' => 'proxyTaskId', ],
+            ],
+        ],
+        'DmsOnlineTask' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'planTime' => [ 'type' => 'string', 'locationName' => 'planTime', ],
+                'transaction' => [ 'type' => 'boolean', 'locationName' => 'transaction', ],
+                'parallel' => [ 'type' => 'boolean', 'locationName' => 'parallel', ],
+                'ignoreError' => [ 'type' => 'boolean', 'locationName' => 'ignoreError', ],
+                'runStatus' => [ 'type' => 'string', 'locationName' => 'runStatus', ],
+                'createdDate' => [ 'type' => 'string', 'locationName' => 'createdDate', ],
+                'finishDate' => [ 'type' => 'string', 'locationName' => 'finishDate', ],
+                'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'runIp' => [ 'type' => 'string', 'locationName' => 'runIp', ],
+            ],
+        ],
+        'DmsOperationLog' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'operationTime' => [ 'type' => 'string', 'locationName' => 'operationTime', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'masterPin' => [ 'type' => 'string', 'locationName' => 'masterPin', ],
+                'supType' => [ 'type' => 'string', 'locationName' => 'supType', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'flowId' => [ 'type' => 'string', 'locationName' => 'flowId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'memo' => [ 'type' => 'string', 'locationName' => 'memo', ],
+            ],
+        ],
+        'DmsOperationType' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
+                'children' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsOperationType', ], ],
+            ],
+        ],
         'DmsPrivilegeInstanceParam' => [
             'type' => 'structure',
             'members' => [
@@ -681,7 +1032,7 @@ return [
                 'authStatus' => [ 'type' => 'string', 'locationName' => 'authStatus', ],
                 'authDate' => [ 'type' => 'string', 'locationName' => 'authDate', ],
                 'expireDate' => [ 'type' => 'string', 'locationName' => 'expireDate', ],
-                'releaseStatus' => [ 'type' => 'string', 'locationName' => 'releaseStatus', ],
+                'releaseStatus' => [ 'type' => 'boolean', 'locationName' => 'releaseStatus', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
@@ -772,7 +1123,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
-                'activeStatus' => [ 'type' => 'string', 'locationName' => 'activeStatus', ],
+                'activeStatus' => [ 'type' => 'boolean', 'locationName' => 'activeStatus', ],
             ],
         ],
         'DmsUserVO' => [
@@ -781,7 +1132,7 @@ return [
                 'username' => [ 'type' => 'string', 'locationName' => 'username', ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'masterPin' => [ 'type' => 'string', 'locationName' => 'masterPin', ],
-                'isMaster' => [ 'type' => 'string', 'locationName' => 'isMaster', ],
+                'isMaster' => [ 'type' => 'boolean', 'locationName' => 'isMaster', ],
                 'accountId' => [ 'type' => 'long', 'locationName' => 'accountId', ],
                 'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
                 'email' => [ 'type' => 'string', 'locationName' => 'email', ],
@@ -810,6 +1161,23 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'exeStatus' => [ 'type' => 'string', 'locationName' => 'exeStatus', ],
                 'sqlType' => [ 'type' => 'string', 'locationName' => 'sqlType', ],
+            ],
+        ],
+        'PairValue' => [
+            'type' => 'structure',
+            'members' => [
+                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'OgFrontInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'ogShardingPrimaryKeys' => [ 'type' => 'list', 'member' => [ 'shape' => 'PairValue', ], ],
+                'ogAutoAlgorithms' => [ 'type' => 'list', 'member' => [ 'shape' => 'PairValue', ], ],
+                'tableTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'PairValue', ], ],
+                'primaryKeyDataType' => [ 'type' => 'list', 'member' => [ 'shape' => 'PairValue', ], ],
+                'columnTypes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'Parameter' => [
@@ -846,6 +1214,23 @@ return [
             'members' => [
                 'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
                 'tableStruct' => [ 'type' => 'string', 'locationName' => 'tableStruct', ],
+            ],
+        ],
+        'DmsConsoleCheckRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DmsConsoleCheckResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'strResult' => [ 'type' => 'string', 'locationName' => 'strResult', ],
+            ],
+        ],
+        'DmsConsoleCheckResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DmsConsoleCheckResultShape', ],
             ],
         ],
         'EventInfoResultShape' => [
@@ -1289,18 +1674,6 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'GeneralAlterTableSqlRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
-                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
-                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
-                'metaTableInfo' =>  [ 'shape' => 'MetaTableInfo', ],
-                'columnInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'ColumnInfo', ], ],
-                'indexInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'IndexInfo', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'GeneralCreateTableSqlResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1323,6 +1696,18 @@ return [
             'type' => 'structure',
             'members' => [
                 'strResult' => [ 'type' => 'string', 'locationName' => 'strResult', ],
+            ],
+        ],
+        'GeneralAlterTableSqlRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
+                'metaTableInfo' =>  [ 'shape' => 'MetaTableInfo', ],
+                'columnInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'ColumnInfo', ], ],
+                'indexInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'IndexInfo', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'HistorySqlResponseShape' => [
@@ -1448,6 +1833,18 @@ return [
                 'error' =>  [ 'shape' => 'OpenResultShape', ],
             ],
         ],
+        'CheckInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'CheckInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'QueryTypeInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1460,6 +1857,12 @@ return [
         'LoginResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'CheckInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'error' =>  [ 'shape' => 'CheckInstanceResultShape', ],
             ],
         ],
         'LogoutRequestShape' => [
@@ -1480,24 +1883,12 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'TableInfoResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dmsTableStruct' =>  [ 'shape' => 'DmsTableStruct', ],
-            ],
-        ],
         'TableListRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
                 'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'SqlTableInfoResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'SqlTableInfoResultShape', ],
             ],
         ],
         'GetDmsDomainRequestShape' => [
@@ -1512,6 +1903,48 @@ return [
                 'databaseNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'GetDmsDomainsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'TableInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'TableInfoResultShape', ],
+            ],
+        ],
+        'TableListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'tableNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DatabaseListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'SqlTableInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsTableStructs' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsTableStruct', ], ],
+            ],
+        ],
+        'TableInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsTableStruct' =>  [ 'shape' => 'DmsTableStruct', ],
+            ],
+        ],
+        'SqlTableInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SqlTableInfoResultShape', ],
+            ],
+        ],
         'SqlTableInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1521,7 +1954,19 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'GetDmsDomainsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetDmsDomainsResultShape', ],
+            ],
+        ],
         'GetDmsDomainResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domains' => [ 'type' => 'object', 'locationName' => 'domains', ],
+            ],
+        ],
+        'GetDmsDomainsResultShape' => [
             'type' => 'structure',
             'members' => [
                 'domains' => [ 'type' => 'object', 'locationName' => 'domains', ],
@@ -1554,29 +1999,70 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'TableInfoResponseShape' => [
+        'QueryOperationTypeRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'TableInfoResultShape', ],
-            ],
-        ],
-        'TableListResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'tableNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'DatabaseListRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'SqlTableInfoResultShape' => [
+        'OperationDetailResultShape' => [
             'type' => 'structure',
             'members' => [
-                'dmsTableStructs' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsTableStruct', ], ],
+                'dmsOperationLog' =>  [ 'shape' => 'DmsOperationLog', ],
+            ],
+        ],
+        'QueryOperationTypeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'dmsOperationTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsOperationType', ], ],
+            ],
+        ],
+        'QueryOperationLogResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryOperationLogResultShape', ],
+            ],
+        ],
+        'OperationDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'operationId' => [ 'type' => 'integer', 'locationName' => 'operationId', ],
+            ],
+        ],
+        'QueryOperationLogResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'operationLogs' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsOperationLog', ], ],
+            ],
+        ],
+        'QueryOperationTypeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryOperationTypeResultShape', ],
+            ],
+        ],
+        'OperationDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'OperationDetailResultShape', ],
+            ],
+        ],
+        'QueryOperationLogRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'supType' => [ 'type' => 'string', 'locationName' => 'supType', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'AddPersonalSqlResultShape' => [
@@ -2002,6 +2488,152 @@ return [
                 'dmsSqlResults' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSqlResult', ], ],
             ],
         ],
+        'RestartOnlineSqlTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'OnlineProxySubTaskQueryResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'OnlineProxySubTaskQueryResultShape', ],
+            ],
+        ],
+        'OnlineProxySubTaskQueryResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsOnlineProxySubTasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsOnlineProxySubTask', ], ],
+            ],
+        ],
+        'RestartOnlineSqlTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'StartOnlineSqlTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'OnlineSubSqlTaskQueryResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'OnlineSubSqlTaskQueryResultShape', ],
+            ],
+        ],
+        'OnlineSqlTaskQueryResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'planTime' => [ 'type' => 'string', 'locationName' => 'planTime', ],
+                'transaction' => [ 'type' => 'boolean', 'locationName' => 'transaction', ],
+                'parallel' => [ 'type' => 'boolean', 'locationName' => 'parallel', ],
+                'ignoreError' => [ 'type' => 'boolean', 'locationName' => 'ignoreError', ],
+                'runStatus' => [ 'type' => 'string', 'locationName' => 'runStatus', ],
+                'createdDate' => [ 'type' => 'string', 'locationName' => 'createdDate', ],
+                'finishDate' => [ 'type' => 'string', 'locationName' => 'finishDate', ],
+                'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'runIp' => [ 'type' => 'string', 'locationName' => 'runIp', ],
+            ],
+        ],
+        'OnlineSqlTaskQueryResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'OnlineSqlTaskQueryResultShape', ],
+            ],
+        ],
+        'OnlineSubSqlTaskQueryResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsOnlineSubSqlTasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsOnlineSubSqlTask', ], ],
+            ],
+        ],
+        'SuspendOnlineSqlTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'RestartOnlineSqlTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'integer', 'locationName' => 'taskId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'StartOnlineSqlTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'integer', 'locationName' => 'taskId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'SuspendOnlineSqlTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'integer', 'locationName' => 'taskId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'OnlineProxySubTaskQueryRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'integer', 'locationName' => 'taskId', ],
+                'proxyTaskId' => [ 'type' => 'string', 'locationName' => 'proxyTaskId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateOnlineSqlTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateOnlineSqlTaskResultShape', ],
+            ],
+        ],
+        'StartOnlineSqlTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateOnlineSqlTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'intResult' => [ 'type' => 'integer', 'locationName' => 'intResult', ],
+            ],
+        ],
+        'CreateOnlineSqlTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSourceId' => [ 'type' => 'integer', 'locationName' => 'dataSourceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+                'planTime' => [ 'type' => 'string', 'locationName' => 'planTime', ],
+                'sqls' => [ 'type' => 'string', 'locationName' => 'sqls', ],
+                'taskTypeEnum' => [ 'type' => 'string', 'locationName' => 'taskTypeEnum', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'OnlineSqlTaskQueryRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'integer', 'locationName' => 'taskId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'SuspendOnlineSqlTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'OnlineSubSqlTaskQueryRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'integer', 'locationName' => 'taskId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'TriggerListRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2119,6 +2751,245 @@ return [
             'type' => 'structure',
             'members' => [
                 'triggerNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'QueryUserListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'dmsUserVOList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsUserVO', ], ],
+            ],
+        ],
+        'QueryPrivilegeListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'isAdmin' => [ 'type' => 'boolean', 'locationName' => 'isAdmin', ],
+                'dmsPrivilegeVOList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsPrivilegeVO', ], ],
+            ],
+        ],
+        'DeleteUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsUserDeleteList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'QueryPrivilegeListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'showNormal' => [ 'type' => 'boolean', 'locationName' => 'showNormal', ],
+                'releaseStatus' => [ 'type' => 'boolean', 'locationName' => 'releaseStatus', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'AuthPrivilegeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsUserEnableVOList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsUserEnableVO', ], ],
+            ],
+        ],
+        'QueryPrivilegeSelfListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryPrivilegeSelfListResultShape', ],
+            ],
+        ],
+        'EnableUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AuthPrivilegeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pinList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'privilegeName' => [ 'type' => 'string', 'locationName' => 'privilegeName', ],
+                'expireDate' => [ 'type' => 'string', 'locationName' => 'expireDate', ],
+                'dmsPrivilegeInstanceParamList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsPrivilegeInstanceParam', ], ],
+            ],
+        ],
+        'ReleasePrivilegeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'QueryUserListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'activeStatus' => [ 'type' => 'boolean', 'locationName' => 'activeStatus', ],
+                'role' => [ 'type' => 'string', 'locationName' => 'role', ],
+                'loginDateStart' => [ 'type' => 'string', 'locationName' => 'loginDateStart', ],
+                'loginDateEnd' => [ 'type' => 'string', 'locationName' => 'loginDateEnd', ],
+                'username' => [ 'type' => 'string', 'locationName' => 'username', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'SyncSubUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dmsSyncSubUserVOList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSyncSubUserVO', ], ],
+            ],
+        ],
+        'ReleasePrivilegeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'idList' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+            ],
+        ],
+        'DeleteUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyPrivilegeExpireDateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'idList' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'expireDate' => [ 'type' => 'string', 'locationName' => 'expireDate', ],
+            ],
+        ],
+        'UpdateUserInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'roleList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'QueryUserNotSyncResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryUserNotSyncResultShape', ],
+            ],
+        ],
+        'GetUserInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SyncSubUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyPrivilegeExpireDateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SyncSubUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateUserInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'QueryPrivilegeSelfListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'showNormal' => [ 'type' => 'boolean', 'locationName' => 'showNormal', ],
+                'releaseStatus' => [ 'type' => 'boolean', 'locationName' => 'releaseStatus', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'QueryPrivilegeListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryPrivilegeListResultShape', ],
+            ],
+        ],
+        'AuthPrivilegeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ReleasePrivilegeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyPrivilegeExpireDateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetUserInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'isMaster' => [ 'type' => 'boolean', 'locationName' => 'isMaster', ],
+                'username' => [ 'type' => 'string', 'locationName' => 'username', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'masterPin' => [ 'type' => 'string', 'locationName' => 'masterPin', ],
+                'accountId' => [ 'type' => 'long', 'locationName' => 'accountId', ],
+                'roleList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'QueryUserListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryUserListResultShape', ],
+            ],
+        ],
+        'QueryUserNotSyncResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'subUserList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsSubUserVO', ], ],
+            ],
+        ],
+        'GetUserInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetUserInfoResultShape', ],
+            ],
+        ],
+        'QueryPrivilegeSelfListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'isAdmin' => [ 'type' => 'boolean', 'locationName' => 'isAdmin', ],
+                'dmsPrivilegeVOList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DmsPrivilegeVO', ], ],
+            ],
+        ],
+        'UpdateUserInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'QueryUserNotSyncRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
+                'sort' => [ 'type' => 'integer', 'locationName' => 'sort', ],
             ],
         ],
         'GeneralCreateViewRequestShape' => [
