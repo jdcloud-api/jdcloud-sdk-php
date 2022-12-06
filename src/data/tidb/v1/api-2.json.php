@@ -1450,7 +1450,7 @@ return [
         'CreateReplicationResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'replicationId' => [ 'type' => 'string', 'locationName' => 'replicationId', ],
+                'result' =>  [ 'shape' => 'CreateReplicationResultShape', ],
             ],
         ],
         'DeleteReplicationRequestShape' => [
@@ -1487,6 +1487,7 @@ return [
         'CreateReplicationResultShape' => [
             'type' => 'structure',
             'members' => [
+                'replicationId' => [ 'type' => 'string', 'locationName' => 'replicationId', ],
             ],
         ],
         'ResumeReplicationResultShape' => [
