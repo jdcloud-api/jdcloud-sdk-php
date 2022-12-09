@@ -1470,6 +1470,7 @@ return [
                 'targetPassword' => [ 'type' => 'string', 'locationName' => 'targetPassword', ],
                 'kafkaTopic' => [ 'type' => 'string', 'locationName' => 'kafkaTopic', ],
                 'kafkaVersion' => [ 'type' => 'string', 'locationName' => 'kafkaVersion', ],
+                'replicationObjects' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
