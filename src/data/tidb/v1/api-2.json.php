@@ -469,6 +469,7 @@ return [
                 'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
                 'cpu' => [ 'type' => 'integer', 'locationName' => 'cpu', ],
                 'memoryGB' => [ 'type' => 'integer', 'locationName' => 'memoryGB', ],
+                'defaultStorageGB' => [ 'type' => 'integer', 'locationName' => 'defaultStorageGB', ],
                 'storageGB' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
             ],
         ],
