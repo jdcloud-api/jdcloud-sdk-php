@@ -146,6 +146,33 @@ return [
             'input' => [ 'shape' => 'QueryUnForbiddenStatusRequestShape', ],
             'output' => [ 'shape' => 'QueryUnForbiddenStatusResponseShape', ],
         ],
+        'QueryForbiddenInfoListCommon' => [
+            'name' => 'QueryForbiddenInfoListCommon',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/forbiddenInfoCommon:query',
+            ],
+            'input' => [ 'shape' => 'QueryForbiddenInfoListCommonRequestShape', ],
+            'output' => [ 'shape' => 'QueryForbiddenInfoListCommonResponseShape', ],
+        ],
+        'CreateForbiddenInfoCommon' => [
+            'name' => 'CreateForbiddenInfoCommon',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/forbiddenInfoCommon:create',
+            ],
+            'input' => [ 'shape' => 'CreateForbiddenInfoCommonRequestShape', ],
+            'output' => [ 'shape' => 'CreateForbiddenInfoCommonResponseShape', ],
+        ],
+        'DeleteForbiddenInfoCommon' => [
+            'name' => 'DeleteForbiddenInfoCommon',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/forbiddenInfoCommon:delete',
+            ],
+            'input' => [ 'shape' => 'DeleteForbiddenInfoCommonRequestShape', ],
+            'output' => [ 'shape' => 'DeleteForbiddenInfoCommonResponseShape', ],
+        ],
         'PreviewCertificate' => [
             'name' => 'PreviewCertificate',
             'http' => [
@@ -2230,6 +2257,22 @@ return [
                 'updateBy' => [ 'type' => 'long', 'locationName' => 'updateBy', ],
             ],
         ],
+        'ForbiddenInfoCommon' => [
+            'type' => 'structure',
+            'members' => [
+                'forbiddenType' => [ 'type' => 'string', 'locationName' => 'forbiddenType', ],
+                'forbiddenDomain' => [ 'type' => 'string', 'locationName' => 'forbiddenDomain', ],
+                'forbiddenUrl' => [ 'type' => 'string', 'locationName' => 'forbiddenUrl', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'linkOther' => [ 'type' => 'string', 'locationName' => 'linkOther', ],
+                'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'statusDesc' => [ 'type' => 'string', 'locationName' => 'statusDesc', ],
+            ],
+        ],
         'SnowLeopardIpSourceInfo' => [
             'type' => 'structure',
             'members' => [
@@ -2685,6 +2728,45 @@ return [
             'members' => [
                 'attackCount' => [ 'type' => 'long', 'locationName' => 'attackCount', ],
                 'attackType' => [ 'type' => 'string', 'locationName' => 'attackType', ],
+            ],
+        ],
+        'SchedServiceNode' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'businessType' => [ 'type' => 'long', 'locationName' => 'businessType', ],
+                'cdnNodeLevel' => [ 'type' => 'long', 'locationName' => 'cdnNodeLevel', ],
+                'nodeType' => [ 'type' => 'long', 'locationName' => 'nodeType', ],
+                'cdnNodeStatus' => [ 'type' => 'long', 'locationName' => 'cdnNodeStatus', ],
+                'cdnNodeName' => [ 'type' => 'string', 'locationName' => 'cdnNodeName', ],
+                'datacenterCode' => [ 'type' => 'string', 'locationName' => 'datacenterCode', ],
+                'idcCode' => [ 'type' => 'string', 'locationName' => 'idcCode', ],
+                'idcName' => [ 'type' => 'string', 'locationName' => 'idcName', ],
+                'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
+                'ispName' => [ 'type' => 'string', 'locationName' => 'ispName', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'prov' => [ 'type' => 'string', 'locationName' => 'prov', ],
+                'vips' => [ 'type' => 'list', 'member' => [ 'shape' => 'VipItem', ], ],
+            ],
+        ],
+        'VipItem' => [
+            'type' => 'structure',
+            'members' => [
+                'vipStatus' => [ 'type' => 'integer', 'locationName' => 'vipStatus', ],
+                'vip' => [ 'type' => 'string', 'locationName' => 'vip', ],
+            ],
+        ],
+        'OriSchedRule' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'customName' => [ 'type' => 'string', 'locationName' => 'customName', ],
+                'oriSource' => [ 'type' => 'string', 'locationName' => 'oriSource', ],
+                'serviceNode' => [ 'type' => 'string', 'locationName' => 'serviceNode', ],
+                'sourceType' => [ 'type' => 'string', 'locationName' => 'sourceType', ],
+                'sources' => [ 'type' => 'string', 'locationName' => 'sources', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
         'HdrCtrl' => [
@@ -3299,6 +3381,19 @@ return [
                 'europe' => [ 'type' => 'list', 'member' => [ 'shape' => 'AreaIspItem', ], ],
             ],
         ],
+        'QueryForbiddenInfoListCommonResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryForbiddenInfoListCommonResultShape', ],
+            ],
+        ],
+        'DeleteForbiddenInfoCommonResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
         'QueryForbiddenInfoListRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3315,10 +3410,46 @@ return [
                 'result' =>  [ 'shape' => 'DeleteForbiddenInfoResultShape', ],
             ],
         ],
+        'DeleteForbiddenInfoCommonResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DeleteForbiddenInfoCommonResultShape', ],
+            ],
+        ],
+        'QueryForbiddenInfoListCommonRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryDomain' => [ 'type' => 'string', 'locationName' => 'queryDomain', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'forbiddenUrl' => [ 'type' => 'string', 'locationName' => 'forbiddenUrl', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
         'DeleteForbiddenInfoResultShape' => [
             'type' => 'structure',
             'members' => [
                 'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'QueryForbiddenInfoListCommonResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'ForbiddenInfoCommon', ], ],
+            ],
+        ],
+        'CreateForbiddenInfoCommonRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'forbiddenType' => [ 'type' => 'string', 'locationName' => 'forbiddenType', ],
+                'forbiddenDomain' => [ 'type' => 'string', 'locationName' => 'forbiddenDomain', ],
+                'forbiddenUrl' => [ 'type' => 'string', 'locationName' => 'forbiddenUrl', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'linkOther' => [ 'type' => 'string', 'locationName' => 'linkOther', ],
+                'shareCacheDomainFlag' => [ 'type' => 'string', 'locationName' => 'shareCacheDomainFlag', ],
+                'token' => [ 'type' => 'string', 'locationName' => 'token', ],
             ],
         ],
         'QueryForbiddenInfoListResultShape' => [
@@ -3326,6 +3457,12 @@ return [
             'members' => [
                 'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
                 'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'ForbiddenInfo', ], ],
+            ],
+        ],
+        'CreateForbiddenInfoCommonResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
             ],
         ],
         'QueryForbiddenInfoListResponseShape' => [
@@ -3359,6 +3496,16 @@ return [
                 'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'UnForbiddenTaskItem', ], ],
             ],
         ],
+        'DeleteForbiddenInfoCommonRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'forbiddenType' => [ 'type' => 'string', 'locationName' => 'forbiddenType', ],
+                'forbiddenDomain' => [ 'type' => 'string', 'locationName' => 'forbiddenDomain', ],
+                'forbiddenUrl' => [ 'type' => 'string', 'locationName' => 'forbiddenUrl', ],
+                'shareCacheDomainFlag' => [ 'type' => 'string', 'locationName' => 'shareCacheDomainFlag', ],
+                'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+            ],
+        ],
         'CreateForbiddenInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3369,6 +3516,13 @@ return [
                 'linkOther' => [ 'type' => 'string', 'locationName' => 'linkOther', ],
                 'shareCacheDomainFlag' => [ 'type' => 'string', 'locationName' => 'shareCacheDomainFlag', ],
                 'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+            ],
+        ],
+        'CreateForbiddenInfoCommonResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateForbiddenInfoCommonResultShape', ],
             ],
         ],
         'CreateForbiddenInfoResponseShape' => [
