@@ -179,7 +179,7 @@ return [
     ],
     'detection' => [
         'namespace' => 'Detection',
-        'versions' => [ 'latest' => 'v2', ],
+        'versions' => [ 'latest' => 'v3', ],
     ],
     'renewal' => [
         'namespace' => 'Renewal',
