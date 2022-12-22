@@ -92,6 +92,15 @@ return [
             'input' => [ 'shape' => 'ModifyCacheInstanceClassRequestShape', ],
             'output' => [ 'shape' => 'ModifyCacheInstanceClassResponseShape', ],
         ],
+        'DescribeResizeModeIpTimeInfo' => [
+            'name' => 'DescribeResizeModeIpTimeInfo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/cacheInstance/{cacheInstanceId}/describeResizeModeIpTimeInfo',
+            ],
+            'input' => [ 'shape' => 'DescribeResizeModeIpTimeInfoRequestShape', ],
+            'output' => [ 'shape' => 'DescribeResizeModeIpTimeInfoResponseShape', ],
+        ],
         'ResetCacheInstancePassword' => [
             'name' => 'ResetCacheInstancePassword',
             'http' => [
@@ -542,6 +551,24 @@ return [
             'input' => [ 'shape' => 'DescribeHotKeyDetailRequestShape', ],
             'output' => [ 'shape' => 'DescribeHotKeyDetailResponseShape', ],
         ],
+        'RestartProxy' => [
+            'name' => 'RestartProxy',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/cacheInstance/{cacheInstanceId}/restartProxy',
+            ],
+            'input' => [ 'shape' => 'RestartProxyRequestShape', ],
+            'output' => [ 'shape' => 'RestartProxyResponseShape', ],
+        ],
+        'ClientKill' => [
+            'name' => 'ClientKill',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/cacheInstance/{cacheInstanceId}/clientKill',
+            ],
+            'input' => [ 'shape' => 'ClientKillRequestShape', ],
+            'output' => [ 'shape' => 'ClientKillResponseShape', ],
+        ],
         'DescribeInstanceClass' => [
             'name' => 'DescribeInstanceClass',
             'http' => [
@@ -820,6 +847,7 @@ return [
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'instanceVersion' => [ 'type' => 'string', 'locationName' => 'instanceVersion', ],
                 'auth' => [ 'type' => 'boolean', 'locationName' => 'auth', ],
+                'isAllowNoAuth' => [ 'type' => 'boolean', 'locationName' => 'isAllowNoAuth', ],
                 'redisVersion' => [ 'type' => 'string', 'locationName' => 'redisVersion', ],
                 'cacheInstanceType' => [ 'type' => 'string', 'locationName' => 'cacheInstanceType', ],
                 'ipv6On' => [ 'type' => 'integer', 'locationName' => 'ipv6On', ],
@@ -1177,6 +1205,7 @@ return [
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'accessTime' => [ 'type' => 'string', 'locationName' => 'accessTime', ],
                 'accessCount' => [ 'type' => 'integer', 'locationName' => 'accessCount', ],
+                'db' => [ 'type' => 'integer', 'locationName' => 'db', ],
             ],
         ],
         'RedisBigKey' => [
@@ -1207,8 +1236,8 @@ return [
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'slots' => [ 'type' => 'integer', 'locationName' => 'slots', ],
-                'usedMemory' => [ 'type' => 'integer', 'locationName' => 'usedMemory', ],
-                'maxMemory' => [ 'type' => 'integer', 'locationName' => 'maxMemory', ],
+                'usedMemory' => [ 'type' => 'long', 'locationName' => 'usedMemory', ],
+                'maxMemory' => [ 'type' => 'long', 'locationName' => 'maxMemory', ],
             ],
         ],
         'RedisType' => [
@@ -1304,6 +1333,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ClientKillResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'SetDisableCommandsRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1368,6 +1402,15 @@ return [
                 'time' => [ 'type' => 'string', 'locationName' => 'time', ],
             ],
         ],
+        'DescribeResizeModeIpTimeInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cacheInstanceClass' => [ 'type' => 'string', 'locationName' => 'cacheInstanceClass', ],
+                'shardNumber' => [ 'type' => 'integer', 'locationName' => 'shardNumber', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
         'DescribeInstanceConfigRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1380,6 +1423,7 @@ return [
             'members' => [
                 'cacheInstanceClass' => [ 'type' => 'string', 'locationName' => 'cacheInstanceClass', ],
                 'shardNumber' => [ 'type' => 'integer', 'locationName' => 'shardNumber', ],
+                'parallel' => [ 'type' => 'boolean', 'locationName' => 'parallel', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
@@ -1468,6 +1512,7 @@ return [
         'CreateCacheAnalysisRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'sizeMode' => [ 'type' => 'string', 'locationName' => 'sizeMode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
@@ -1663,6 +1708,15 @@ return [
                 'lastTransitionTime' => [ 'type' => 'string', 'locationName' => 'lastTransitionTime', ],
             ],
         ],
+        'ClientKillRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'option' => [ 'type' => 'string', 'locationName' => 'option', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
+            ],
+        ],
         'DescribeBigKeyList2ResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1738,10 +1792,27 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ClientKillResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeHotKeySummaryResultShape' => [
             'type' => 'structure',
             'members' => [
                 'hotKeyAnalysisNodesList' => [ 'type' => 'list', 'member' => [ 'shape' => 'HotKeyAnalysisNode', ], ],
+            ],
+        ],
+        'DescribeResizeModeIpTimeInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'supportPScale' => [ 'type' => 'boolean', 'locationName' => 'supportPScale', ],
+                'supportParallel' => [ 'type' => 'boolean', 'locationName' => 'supportParallel', ],
+                'serialIpCount' => [ 'type' => 'integer', 'locationName' => 'serialIpCount', ],
+                'serialTimeCost' => [ 'type' => 'integer', 'locationName' => 'serialTimeCost', ],
+                'parallelIpCount' => [ 'type' => 'integer', 'locationName' => 'parallelIpCount', ],
+                'parallelTimeCost' => [ 'type' => 'integer', 'locationName' => 'parallelTimeCost', ],
             ],
         ],
         'StartClearDataResponseShape' => [
@@ -1882,6 +1953,13 @@ return [
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
         ],
+        'DescribeResizeModeIpTimeInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeResizeModeIpTimeInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'StopCacheAnalysisResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2012,6 +2090,7 @@ return [
                 'setSize' => [ 'type' => 'integer', 'locationName' => 'setSize', ],
                 'zsetSize' => [ 'type' => 'integer', 'locationName' => 'zsetSize', ],
                 'top' => [ 'type' => 'integer', 'locationName' => 'top', ],
+                'sizeMode' => [ 'type' => 'string', 'locationName' => 'sizeMode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
@@ -2062,6 +2141,11 @@ return [
             'type' => 'structure',
             'members' => [
                 'ipWhiteList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'RestartProxyResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DescribeIpWhiteListRequestShape' => [
@@ -2385,6 +2469,12 @@ return [
                 'keySizeDistribution' => [ 'type' => 'object', 'locationName' => 'keySizeDistribution', ],
             ],
         ],
+        'RestartProxyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CreateCacheAnalysisResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -2428,6 +2518,14 @@ return [
                 'setSize' => [ 'type' => 'integer', 'locationName' => 'setSize', ],
                 'zsetSize' => [ 'type' => 'integer', 'locationName' => 'zsetSize', ],
                 'topSize' => [ 'type' => 'integer', 'locationName' => 'topSize', ],
+            ],
+        ],
+        'RestartProxyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'proxyIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cacheInstanceId' => [ 'type' => 'string', 'locationName' => 'cacheInstanceId', ],
             ],
         ],
         'CreateBigKeyAnalysis2ResultShape' => [
