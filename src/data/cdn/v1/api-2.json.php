@@ -20,6 +20,15 @@ return [
             'input' => [ 'shape' => 'QueryDomainsLogRequestShape', ],
             'output' => [ 'shape' => 'QueryDomainsLogResponseShape', ],
         ],
+        'QueryDomainsLogForJd' => [
+            'name' => 'QueryDomainsLogForJd',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/logsJd',
+            ],
+            'input' => [ 'shape' => 'QueryDomainsLogForJdRequestShape', ],
+            'output' => [ 'shape' => 'QueryDomainsLogForJdResponseShape', ],
+        ],
         'QueryDomainLog' => [
             'name' => 'QueryDomainLog',
             'http' => [
@@ -3136,6 +3145,29 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'urls' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainLog', ], ],
+            ],
+        ],
+        'QueryDomainsLogForJdResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'logs' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainsLog', ], ],
+            ],
+        ],
+        'QueryDomainsLogForJdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryDomainsLogForJdResultShape', ],
+            ],
+        ],
+        'QueryDomainsLogForJdRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'interval' => [ 'type' => 'string', 'locationName' => 'interval', ],
+                'logType' => [ 'type' => 'string', 'locationName' => 'logType', ],
             ],
         ],
         'QueryDomainLogRequestShape' => [

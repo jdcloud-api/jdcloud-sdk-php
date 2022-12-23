@@ -22,6 +22,8 @@ use Jdcloud\PresignUrlMiddleware;
  *
  * @method \Jdcloud\Result queryDomainsLog(array $args = [])
  * @method \GuzzleHttp\Promise\Promise queryDomainsLogAsync(array $args = [])
+ * @method \Jdcloud\Result queryDomainsLogForJd(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryDomainsLogForJdAsync(array $args = [])
  * @method \Jdcloud\Result queryDomainLog(array $args = [])
  * @method \GuzzleHttp\Promise\Promise queryDomainLogAsync(array $args = [])
  * @method \Jdcloud\Result queryOnlineBillingType(array $args = [])
