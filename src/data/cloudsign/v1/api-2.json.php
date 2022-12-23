@@ -56,6 +56,42 @@ return [
             'input' => [ 'shape' => 'DeleteContractRequestShape', ],
             'output' => [ 'shape' => 'DeleteContractResponseShape', ],
         ],
+        'SaveEvidence' => [
+            'name' => 'SaveEvidence',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/evidence:evidenceSave',
+            ],
+            'input' => [ 'shape' => 'SaveEvidenceRequestShape', ],
+            'output' => [ 'shape' => 'SaveEvidenceResponseShape', ],
+        ],
+        'SaveMultiEvidence' => [
+            'name' => 'SaveMultiEvidence',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/evidence:evidenceMultisave',
+            ],
+            'input' => [ 'shape' => 'SaveMultiEvidenceRequestShape', ],
+            'output' => [ 'shape' => 'SaveMultiEvidenceResponseShape', ],
+        ],
+        'GetEvidence' => [
+            'name' => 'GetEvidence',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/evidence:evidenceGetEvidence',
+            ],
+            'input' => [ 'shape' => 'GetEvidenceRequestShape', ],
+            'output' => [ 'shape' => 'GetEvidenceResponseShape', ],
+        ],
+        'GetMultiEvidence' => [
+            'name' => 'GetMultiEvidence',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/evidence:evidenceGetmulti',
+            ],
+            'input' => [ 'shape' => 'GetMultiEvidenceRequestShape', ],
+            'output' => [ 'shape' => 'GetMultiEvidenceResponseShape', ],
+        ],
         'DescribeApplyStatus' => [
             'name' => 'DescribeApplyStatus',
             'http' => [
@@ -268,6 +304,106 @@ return [
                 'identifyValue' => [ 'type' => 'string', 'locationName' => 'identifyValue', ],
             ],
         ],
+        'CountByPeriodResp' => [
+            'type' => 'structure',
+            'members' => [
+                'get' => [ 'type' => '类型是map&lt;String, int&gt;, 意思是map&lt;时间, 数量&gt;。如果是1，时间为“2022-09-21 18:00:00”；如果是7、30，时间为“2022-09-21”', 'locationName' => 'get', ],
+                'put' => [ 'type' => '同上', 'locationName' => 'put', ],
+                'getReport' => [ 'type' => '同上', 'locationName' => 'getReport', ],
+            ],
+        ],
+        'GetCountResp' => [
+            'type' => 'structure',
+            'members' => [
+                'totalNumber' => [ 'type' => 'integer', 'locationName' => 'totalNumber', ],
+                'getNumber' => [ 'type' => 'integer', 'locationName' => 'getNumber', ],
+                'putNumber' => [ 'type' => 'integer', 'locationName' => 'putNumber', ],
+                'czReportNumber' => [ 'type' => 'integer', 'locationName' => 'czReportNumber', ],
+                'totalTodayNumber' => [ 'type' => 'integer', 'locationName' => 'totalTodayNumber', ],
+                'czReportTodayNumber' => [ 'type' => 'integer', 'locationName' => 'czReportTodayNumber', ],
+                'putTodayNumber' => [ 'type' => 'integer', 'locationName' => 'putTodayNumber', ],
+                'getTodayNumber' => [ 'type' => 'integer', 'locationName' => 'getTodayNumber', ],
+                'totalYesterdayNumber' => [ 'type' => 'integer', 'locationName' => 'totalYesterdayNumber', ],
+                'putYesterdayNumber' => [ 'type' => 'integer', 'locationName' => 'putYesterdayNumber', ],
+                'czReportYesterdayNumber' => [ 'type' => 'integer', 'locationName' => 'czReportYesterdayNumber', ],
+                'getYesterdayNumber' => [ 'type' => 'integer', 'locationName' => 'getYesterdayNumber', ],
+            ],
+        ],
+        'RecordListResp' => [
+            'type' => 'structure',
+            'members' => [
+                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+                'last' => [ 'type' => 'boolean', 'locationName' => 'last', ],
+                'numberOfElements' => [ 'type' => 'integer', 'locationName' => 'numberOfElements', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'first' => [ 'type' => 'boolean', 'locationName' => 'first', ],
+                'empty' => [ 'type' => 'boolean', 'locationName' => 'empty', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+            ],
+        ],
+        'UserTypeResp' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'AuditStaticsResp' => [
+            'type' => 'structure',
+            'members' => [
+                'get' => [ 'type' => 'string', 'locationName' => 'get', ],
+                'put' => [ 'type' => 'string', 'locationName' => 'put', ],
+                'total' => [ 'type' => 'string', 'locationName' => 'total', ],
+            ],
+        ],
+        'UserResp' => [
+            'type' => 'structure',
+            'members' => [
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'last' => [ 'type' => 'boolean', 'locationName' => 'last', ],
+                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+                'numberOfElements' => [ 'type' => 'integer', 'locationName' => 'numberOfElements', ],
+                'first' => [ 'type' => 'boolean', 'locationName' => 'first', ],
+                'pageable' => [ 'type' => 'string', 'locationName' => 'pageable', ],
+                'sort' => [ 'type' => 'string', 'locationName' => 'sort', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+            ],
+        ],
+        'AuditResp' => [
+            'type' => 'structure',
+            'members' => [
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'last' => [ 'type' => 'boolean', 'locationName' => 'last', ],
+                'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+                'numberOfElements' => [ 'type' => 'integer', 'locationName' => 'numberOfElements', ],
+                'first' => [ 'type' => 'boolean', 'locationName' => 'first', ],
+                'pageable' => [ 'type' => 'string', 'locationName' => 'pageable', ],
+                'sort' => [ 'type' => 'string', 'locationName' => 'sort', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+            ],
+        ],
+        'SaveEvidenceResp' => [
+            'type' => 'structure',
+            'members' => [
+                'evidenceId' => [ 'type' => 'string', 'locationName' => 'evidenceId', ],
+                'messageId' => [ 'type' => 'string', 'locationName' => 'messageId', ],
+            ],
+        ],
+        'GetEvidenceResp' => [
+            'type' => 'structure',
+            'members' => [
+                'evidenceId' => [ 'type' => 'string', 'locationName' => 'evidenceId', ],
+                'messageId' => [ 'type' => 'string', 'locationName' => 'messageId', ],
+                'evidenceMessageId' => [ 'type' => 'string', 'locationName' => 'evidenceMessageId', ],
+                'evidenceFileList' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+            ],
+        ],
         'StampInfo' => [
             'type' => 'structure',
             'members' => [
@@ -450,6 +586,112 @@ return [
             'members' => [
                 'contractList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ContractInfo', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'GetMultiEvidenceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetMultiEvidenceResultShape', ],
+            ],
+        ],
+        'SaveMultiEvidenceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'data' =>  [ 'shape' => 'SaveEvidenceResp', ],
+            ],
+        ],
+        'SaveMultiEvidenceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SaveMultiEvidenceResultShape', ],
+            ],
+        ],
+        'SaveEvidenceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'businessId' => [ 'type' => 'string', 'locationName' => 'businessId', ],
+                'file' => [ 'type' => 'string', 'locationName' => 'file', ],
+            ],
+        ],
+        'GetEvidenceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'businessId' => [ 'type' => 'string', 'locationName' => 'businessId', ],
+                'evidenceId' => [ 'type' => 'string', 'locationName' => 'evidenceId', ],
+            ],
+        ],
+        'GetEvidenceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'data' =>  [ 'shape' => 'GetEvidenceResp', ],
+            ],
+        ],
+        'SaveEvidenceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SaveEvidenceResultShape', ],
+            ],
+        ],
+        'GetEvidenceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetEvidenceResultShape', ],
+            ],
+        ],
+        'SaveMultiEvidenceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'businessId' => [ 'type' => 'string', 'locationName' => 'businessId', ],
+                'file' => [ 'type' => 'string', 'locationName' => 'file', ],
+                'businessCode' => [ 'type' => 'string', 'locationName' => 'businessCode', ],
+                'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+                'lender' => [ 'type' => 'string', 'locationName' => 'lender', ],
+                'messageId' => [ 'type' => 'string', 'locationName' => 'messageId', ],
+                'evidenceType' => [ 'type' => 'string', 'locationName' => 'evidenceType', ],
+                'messageDate' => [ 'type' => 'yyyy-MM-dd HH:mm:ss', 'locationName' => 'messageDate', ],
+            ],
+        ],
+        'GetMultiEvidenceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'businessId' => [ 'type' => 'string', 'locationName' => 'businessId', ],
+                'evidenceId' => [ 'type' => 'string', 'locationName' => 'evidenceId', ],
+                'applicantIdType' => [ 'type' => 'string', 'locationName' => 'applicantIdType', ],
+                'applicantIdNum' => [ 'type' => 'string', 'locationName' => 'applicantIdNum', ],
+                'businessCode' => [ 'type' => 'string', 'locationName' => 'businessCode', ],
+                'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+                'messageId' => [ 'type' => 'string', 'locationName' => 'messageId', ],
+                'evidenceType' => [ 'type' => 'string', 'locationName' => 'evidenceType', ],
+                'messageDate' => [ 'type' => 'yyyy-MM-dd HH:mm:ss', 'locationName' => 'messageDate', ],
+                'evidenceMessageId' => [ 'type' => 'string', 'locationName' => 'evidenceMessageId', ],
+            ],
+        ],
+        'GetMultiEvidenceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'data' =>  [ 'shape' => 'GetEvidenceResp', ],
+            ],
+        ],
+        'SaveEvidenceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'data' =>  [ 'shape' => 'SaveEvidenceResp', ],
             ],
         ],
         'SetKmsKeyIdResponseShape' => [

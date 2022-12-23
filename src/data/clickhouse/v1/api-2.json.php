@@ -119,6 +119,15 @@ return [
             'input' => [ 'shape' => 'DescribeInstancesRequestShape', ],
             'output' => [ 'shape' => 'DescribeInstancesResponseShape', ],
         ],
+        'DescribeAvailableDBInfoInternel' => [
+            'name' => 'DescribeAvailableDBInfoInternel',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances:describeAvailableDBInfoInternel',
+            ],
+            'input' => [ 'shape' => 'DescribeAvailableDBInfoInternelRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAvailableDBInfoInternelResponseShape', ],
+        ],
         'DescribeNodeClasses' => [
             'name' => 'DescribeNodeClasses',
             'http' => [
@@ -149,7 +158,7 @@ return [
         'DescribeDomainNames' => [
             'name' => 'DescribeDomainNames',
             'http' => [
-                'method' => 'GET',
+                'method' => 'POST',
                 'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:describeDomainNames',
             ],
             'input' => [ 'shape' => 'DescribeDomainNamesRequestShape', ],
@@ -389,6 +398,8 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
             ],
         ],
         'Charge' => [
@@ -443,7 +454,10 @@ return [
                 'supersetInternalDomainName' => [ 'type' => 'string', 'locationName' => 'supersetInternalDomainName', ],
                 'supersetPublicDomainName' => [ 'type' => 'string', 'locationName' => 'supersetPublicDomainName', ],
                 'supersetPort' => [ 'type' => 'string', 'locationName' => 'supersetPort', ],
+                'openHotCold' => [ 'type' => 'integer', 'locationName' => 'openHotCold', ],
                 'aeStatus' => [ 'type' => 'integer', 'locationName' => 'aeStatus', ],
+                'architecture' => [ 'type' => 'string', 'locationName' => 'architecture', ],
+                'osType' => [ 'type' => 'string', 'locationName' => 'osType', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
@@ -465,9 +479,13 @@ return [
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'zkNodeStorageGB' => [ 'type' => 'integer', 'locationName' => 'zkNodeStorageGB', ],
-                'monitorNodeStorageGB' => [ 'type' => 'integer', 'locationName' => 'monitorNodeStorageGB', ],
+                'architecture' => [ 'type' => 'string', 'locationName' => 'architecture', ],
+                'osType' => [ 'type' => 'string', 'locationName' => 'osType', ],
+                'openHotCold' => [ 'type' => 'integer', 'locationName' => 'openHotCold', ],
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
                 'tagSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
             ],
         ],
         'ChargeSpec' => [
@@ -489,6 +507,33 @@ return [
                 'cpuUtil' => [ 'type' => 'float', 'locationName' => 'cpuUtil', ],
                 'memeryUtil' => [ 'type' => 'float', 'locationName' => 'memeryUtil', ],
                 'diskUsage' => [ 'type' => 'float', 'locationName' => 'diskUsage', ],
+            ],
+        ],
+        'ArchitectureVersion' => [
+            'type' => 'structure',
+            'members' => [
+                'engineVersion' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'arch' => [ 'type' => 'string', 'locationName' => 'arch', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+            ],
+        ],
+        'Shards' => [
+            'type' => 'structure',
+            'members' => [
+                'index' => [ 'type' => 'integer', 'locationName' => 'index', ],
+                'replicaDomainNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'replicaDmsDomainName' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'Domains' => [
+            'type' => 'structure',
+            'members' => [
+                'shards' => [ 'type' => 'list', 'member' => [ 'shape' => 'Shards', ], ],
+                'shardNum' => [ 'type' => 'integer', 'locationName' => 'shardNum', ],
+                'replicaNum' => [ 'type' => 'integer', 'locationName' => 'replicaNum', ],
+                'publicDomainName' => [ 'type' => 'string', 'locationName' => 'publicDomainName', ],
+                'internalDomainName' => [ 'type' => 'string', 'locationName' => 'internalDomainName', ],
+                'monitorDomainName' => [ 'type' => 'string', 'locationName' => 'monitorDomainName', ],
             ],
         ],
         'FilterGroup' => [
@@ -542,13 +587,6 @@ return [
             'members' => [
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
-            ],
-        ],
-        'Shards' => [
-            'type' => 'structure',
-            'members' => [
-                'index' => [ 'type' => 'string', 'locationName' => 'index', ],
-                'replicaDomainNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'SlowLog' => [
@@ -771,6 +809,7 @@ return [
                 'chNodeClass' => [ 'type' => 'string', 'locationName' => 'chNodeClass', ],
                 'shardNum' => [ 'type' => 'integer', 'locationName' => 'shardNum', ],
                 'replicaNum' => [ 'type' => 'integer', 'locationName' => 'replicaNum', ],
+                'archType' => [ 'type' => 'string', 'locationName' => 'archType', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -789,6 +828,7 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -814,6 +854,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'clickhouseInstanceAttributes' =>  [ 'shape' => 'ClickhouseInstanceAttributes', ],
+            ],
+        ],
+        'DescribeAvailableDBInfoInternelResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAvailableDBInfoInternelResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'EnableInternetAccessResponseShape' => [
@@ -846,11 +893,7 @@ return [
         'DescribeDomainNamesResultShape' => [
             'type' => 'structure',
             'members' => [
-                'shards' => [ 'type' => 'list', 'member' => [ 'shape' => 'Shards', ], ],
-                'shardNum' => [ 'type' => 'integer', 'locationName' => 'shardNum', ],
-                'replicaNum' => [ 'type' => 'integer', 'locationName' => 'replicaNum', ],
-                'publicDomainName' => [ 'type' => 'string', 'locationName' => 'publicDomainName', ],
-                'internalDomainName' => [ 'type' => 'string', 'locationName' => 'internalDomainName', ],
+                'instance' =>  [ 'shape' => 'Domains', ],
             ],
         ],
         'DeleteInstanceResponseShape' => [
@@ -952,6 +995,7 @@ return [
             'members' => [
                 'nodeType' => [ 'type' => 'string', 'locationName' => 'nodeType', ],
                 'nodeStorageType' => [ 'type' => 'string', 'locationName' => 'nodeStorageType', ],
+                'archType' => [ 'type' => 'string', 'locationName' => 'archType', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1084,6 +1128,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeAvailableDBInfoInternelRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'azs' => [ 'type' => 'string', 'locationName' => 'azs', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'DescribeDefaultConfigResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1109,6 +1160,14 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeAvailableDBInfoInternelResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'engineVersion' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'architectureType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'architectureVersion' => [ 'type' => 'list', 'member' => [ 'shape' => 'ArchitectureVersion', ], ],
             ],
         ],
         'DescribeInstanceAttributesRequestShape' => [

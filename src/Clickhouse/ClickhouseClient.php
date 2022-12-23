@@ -44,6 +44,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise deleteInstanceAsync(array $args = [])
  * @method \Jdcloud\Result describeInstances(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeInstancesAsync(array $args = [])
+ * @method \Jdcloud\Result describeAvailableDBInfoInternel(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeAvailableDBInfoInternelAsync(array $args = [])
  * @method \Jdcloud\Result describeNodeClasses(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeNodeClassesAsync(array $args = [])
  * @method \Jdcloud\Result describeDefaultConfig(array $args = [])
