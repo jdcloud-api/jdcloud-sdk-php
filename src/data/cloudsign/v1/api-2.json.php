@@ -565,7 +565,9 @@ return [
         'VerifyContractResultShape' => [
             'type' => 'structure',
             'members' => [
-                'verifyInfo' =>  [ 'shape' => 'VerifyInfo', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'results' => [ 'type' => 'list', 'member' => [ 'shape' => 'StampResult', ], ],
             ],
         ],
         'DescribeContractListResponseShape' => [
@@ -769,13 +771,14 @@ return [
         'DownloadStampsResultShape' => [
             'type' => 'structure',
             'members' => [
+                'stampInfo' =>  [ 'shape' => 'StampInfo', ],
             ],
         ],
         'DownloadStampsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DownloadStampsResultShape', ], ],
+                'result' =>  [ 'shape' => 'DownloadStampsResultShape', ],
             ],
         ],
         'UploadStampRequestShape' => [
