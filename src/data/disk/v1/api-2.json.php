@@ -83,6 +83,15 @@ return [
             'input' => [ 'shape' => 'DescribeVolumesIgnoreServiceCodeRequestShape', ],
             'output' => [ 'shape' => 'DescribeVolumesIgnoreServiceCodeResponseShape', ],
         ],
+        'RecoverDisk' => [
+            'name' => 'RecoverDisk',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/disks/{diskId}:recover',
+            ],
+            'input' => [ 'shape' => 'RecoverDiskRequestShape', ],
+            'output' => [ 'shape' => 'RecoverDiskResponseShape', ],
+        ],
         'DescribeQuota' => [
             'name' => 'DescribeQuota',
             'http' => [
@@ -337,6 +346,9 @@ return [
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'snapshotPolicies' => [ 'type' => 'list', 'member' => [ 'shape' => 'SnapshotPolicy', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'canPutInRecycleBin' => [ 'type' => 'boolean', 'locationName' => 'canPutInRecycleBin', ],
+                'trashTime' => [ 'type' => 'string', 'locationName' => 'trashTime', ],
             ],
         ],
         'ChargeSpec' => [
@@ -346,6 +358,8 @@ return [
                 'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
                 'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
                 'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
+                'autoChangeChargeMode' => [ 'type' => 'boolean', 'locationName' => 'autoChangeChargeMode', ],
+                'autoChangeChargeModeDate' => [ 'type' => 'string', 'locationName' => 'autoChangeChargeModeDate', ],
                 'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
             ],
         ],
@@ -405,6 +419,13 @@ return [
                 'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'bind' => [ 'type' => 'list', 'member' => [ 'shape' => 'Bind', ], ],
+            ],
+        ],
+        'Sort' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'direction' => [ 'type' => 'integer', 'locationName' => 'direction', ],
             ],
         ],
         'OrderItem' => [
@@ -574,6 +595,13 @@ return [
             'members' => [
             ],
         ],
+        'RecoverDiskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
+            ],
+        ],
         'CreateDisksResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -606,11 +634,18 @@ return [
         'DescribeDisksRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'orders' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'RecoverDiskResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'ModifyDiskAttributeRequestShape' => [
@@ -673,8 +708,14 @@ return [
         'DeleteDiskRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'putInRecycleBin' => [ 'type' => 'boolean', 'locationName' => 'putInRecycleBin', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
+            ],
+        ],
+        'RecoverDiskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'CreateDisksRequestShape' => [
@@ -684,6 +725,7 @@ return [
                 'maxCount' => [ 'type' => 'integer', 'locationName' => 'maxCount', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
