@@ -154,6 +154,14 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise modifyVpcPeeringAsync(array $args = [])
  * @method \Jdcloud\Result deleteVpcPeering(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteVpcPeeringAsync(array $args = [])
+ * @method \Jdcloud\Result createVpcPolicy(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createVpcPolicyAsync(array $args = [])
+ * @method \Jdcloud\Result describeVpcPolicy(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeVpcPolicyAsync(array $args = [])
+ * @method \Jdcloud\Result modifyVpcPolicy(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise modifyVpcPolicyAsync(array $args = [])
+ * @method \Jdcloud\Result deleteVpcPolicy(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteVpcPolicyAsync(array $args = [])
  */
 class VpcClient extends JdCloudClient
 {

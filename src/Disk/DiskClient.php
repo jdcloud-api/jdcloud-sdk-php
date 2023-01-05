@@ -36,6 +36,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise extendDiskAsync(array $args = [])
  * @method \Jdcloud\Result describeVolumesIgnoreServiceCode(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeVolumesIgnoreServiceCodeAsync(array $args = [])
+ * @method \Jdcloud\Result recoverDisk(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise recoverDiskAsync(array $args = [])
  * @method \Jdcloud\Result describeQuota(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeQuotaAsync(array $args = [])
  * @method \Jdcloud\Result describeSnapshots(array $args = [])
