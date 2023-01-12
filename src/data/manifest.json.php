@@ -233,6 +233,10 @@ return [
         'namespace' => 'Asset',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'autotaskpolicy' => [
+        'namespace' => 'Autotaskpolicy',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'rds' => [
         'namespace' => 'Rds',
         'versions' => [ 'latest' => 'v1', ],
