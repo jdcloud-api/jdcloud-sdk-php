@@ -836,6 +836,7 @@ return [
                 'offline' => [ 'type' => 'boolean', 'locationName' => 'offline', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'imported' => [ 'type' => 'boolean', 'locationName' => 'imported', ],
+                'expiredTime' => [ 'type' => 'string', 'locationName' => 'expiredTime', ],
             ],
         ],
         'InstanceDiskAttachment' => [
