@@ -36,6 +36,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise listSSLConfigurationsAsync(array $args = [])
  * @method \Jdcloud\Result createSSLConfiguration(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createSSLConfigurationAsync(array $args = [])
+ * @method \Jdcloud\Result editSSLConfiguration(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise editSSLConfigurationAsync(array $args = [])
  * @method \Jdcloud\Result deleteSSLConfiguration(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteSSLConfigurationAsync(array $args = [])
  * @method \Jdcloud\Result listDNSRecords(array $args = [])
