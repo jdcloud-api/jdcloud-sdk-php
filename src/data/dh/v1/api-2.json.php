@@ -103,6 +103,49 @@ return [
         ],
     ],
     'shapes' => [
+        'BindInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+            ],
+        ],
+        'Socket' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'cores' => [ 'type' => 'list', 'member' => [ 'shape' => 'Core', ], ],
+            ],
+        ],
+        'Thread' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'alloced' => [ 'type' => 'boolean', 'locationName' => 'alloced', ],
+            ],
+        ],
+        'Numa' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'cores' => [ 'type' => 'list', 'member' => [ 'shape' => 'Core', ], ],
+            ],
+        ],
+        'Core' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'threads' => [ 'type' => 'list', 'member' => [ 'shape' => 'Thread', ], ],
+            ],
+        ],
+        'CpuTopology' => [
+            'type' => 'structure',
+            'members' => [
+                'sockets' => [ 'type' => 'list', 'member' => [ 'shape' => 'Socket', ], ],
+                'numas' => [ 'type' => 'list', 'member' => [ 'shape' => 'Numa', ], ],
+            ],
+        ],
         'LocalDevice' => [
             'type' => 'structure',
             'members' => [
@@ -113,6 +156,13 @@ return [
                 'deviceInfo' => [ 'type' => 'string', 'locationName' => 'deviceInfo', ],
                 'state' => [ 'type' => 'string', 'locationName' => 'state', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+            ],
+        ],
+        'Tag' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'Charge' => [
@@ -141,6 +191,9 @@ return [
                 'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'cpuTopology' =>  [ 'shape' => 'CpuTopology', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'ResourceCapacity' => [
@@ -173,6 +226,26 @@ return [
                 'dedicatedHost' => [ 'type' => 'list', 'member' => [ 'shape' => 'DedicatedHostBreif', ], ],
             ],
         ],
+        'DedicatedHostInternal' => [
+            'type' => 'structure',
+            'members' => [
+                'dedicatedHostId' => [ 'type' => 'string', 'locationName' => 'dedicatedHostId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'dedicatedHostType' => [ 'type' => 'string', 'locationName' => 'dedicatedHostType', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'dedicatedPoolId' => [ 'type' => 'string', 'locationName' => 'dedicatedPoolId', ],
+                'logicRack' => [ 'type' => 'integer', 'locationName' => 'logicRack', ],
+                'supportedInstanceType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'capacity' =>  [ 'shape' => 'ResourceCapacity', ],
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'localDevices' => [ 'type' => 'list', 'member' => [ 'shape' => 'LocalDevice', ], ],
+                'cpuTopology' =>  [ 'shape' => 'CpuTopology', ],
+                'rack' => [ 'type' => 'string', 'locationName' => 'rack', ],
+            ],
+        ],
         'DedicatedHostSpec' => [
             'type' => 'structure',
             'members' => [
@@ -181,6 +254,8 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'ChargeSpec' => [
@@ -230,6 +305,15 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
+        'InstanceInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'bind' => [ 'type' => 'list', 'member' => [ 'shape' => 'BindInfo', ], ],
+            ],
+        ],
         'Quota' => [
             'type' => 'structure',
             'members' => [
@@ -238,11 +322,60 @@ return [
                 'used' => [ 'type' => 'integer', 'locationName' => 'used', ],
             ],
         ],
+        'TagFilter' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'Status' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'validity' => [ 'type' => 'boolean', 'locationName' => 'validity', ],
+            ],
+        ],
+        'ModifyDedicatedHostAttributeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ReleaseDedicatedHostResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ReleaseDedicatedHostRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'dedicatedHostId' => [ 'type' => 'string', 'locationName' => 'dedicatedHostId', ],
+            ],
+        ],
+        'AllocDedicatedHostsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dedicatedHostSpec' =>  [ 'shape' => 'DedicatedHostSpec', ],
+                'deployPolicy' => [ 'type' => 'string', 'locationName' => 'deployPolicy', ],
+                'maxCount' => [ 'type' => 'integer', 'locationName' => 'maxCount', ],
+                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'enableCpuTopology' => [ 'type' => 'boolean', 'locationName' => 'enableCpuTopology', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'AllocDedicatedHostsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dedicatedHostIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'DescribeDedicatedHostsRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
@@ -259,11 +392,6 @@ return [
             'members' => [
                 'dedicatedHostTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'HostType', ], ],
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'ModifyDedicatedHostAttributeResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'ReleaseDedicatedHostResultShape' => [
@@ -285,33 +413,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'ReleaseDedicatedHostResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DescribeDedicatedHostsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeDedicatedHostsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ReleaseDedicatedHostRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'dedicatedHostId' => [ 'type' => 'string', 'locationName' => 'dedicatedHostId', ],
-            ],
-        ],
-        'AllocDedicatedHostsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dedicatedHostSpec' =>  [ 'shape' => 'DedicatedHostSpec', ],
-                'deployPolicy' => [ 'type' => 'string', 'locationName' => 'deployPolicy', ],
-                'maxCount' => [ 'type' => 'integer', 'locationName' => 'maxCount', ],
-                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'AllocDedicatedHostsResponseShape' => [
@@ -326,6 +432,7 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'enableCpuTopology' => [ 'type' => 'boolean', 'locationName' => 'enableCpuTopology', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'dedicatedHostId' => [ 'type' => 'string', 'locationName' => 'dedicatedHostId', ],
             ],
@@ -333,12 +440,6 @@ return [
         'ModifyDedicatedHostAttributeResponseShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'AllocDedicatedHostsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'dedicatedHostIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'Filter' => [
