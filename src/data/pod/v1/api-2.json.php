@@ -749,6 +749,7 @@ return [
                 'nicLimit' => [ 'type' => 'integer', 'locationName' => 'nicLimit', ],
                 'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
                 'state' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceTypeState', ], ],
+                'cloudDiskTypes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'JDCloudVolumeSource' => [
@@ -882,6 +883,7 @@ return [
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'Volume' => [
@@ -923,6 +925,7 @@ return [
                 'elasticIp' =>  [ 'shape' => 'ElasticIpSpec', ],
                 'primaryNetworkInterface' =>  [ 'shape' => 'NetworkInterfaceAttachmentSpec', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'VolumeSpec' => [
@@ -982,6 +985,13 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+            ],
+        ],
+        'Status' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'validity' => [ 'type' => 'boolean', 'locationName' => 'validity', ],
             ],
         ],
         'CreateConfigFileRequestShape' => [
