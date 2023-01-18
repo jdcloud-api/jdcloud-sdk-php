@@ -202,6 +202,12 @@ return [
         ],
     ],
     'shapes' => [
+        'AvailablityGroup' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
         'BindInfo' => [
             'type' => 'structure',
             'members' => [
@@ -267,6 +273,7 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'hostAliases' => [ 'type' => 'list', 'member' => [ 'shape' => 'HostAlias', ], ],
                 'hostname' => [ 'type' => 'string', 'locationName' => 'hostname', ],
+                'ag' =>  [ 'shape' => 'AvailablityGroup', ],
                 'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'args' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'envs' => [ 'type' => 'list', 'member' => [ 'shape' => 'EnvVar', ], ],
@@ -289,6 +296,7 @@ return [
                 'launchTime' => [ 'type' => 'string', 'locationName' => 'launchTime', ],
                 'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'EnvVar' => [
@@ -429,6 +437,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'DiskSpec' => [
@@ -490,6 +499,7 @@ return [
                 'nicLimit' => [ 'type' => 'integer', 'locationName' => 'nicLimit', ],
                 'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
                 'state' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceTypeState', ], ],
+                'cloudDiskTypes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'LocalDiskSpec' => [
@@ -537,6 +547,13 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+            ],
+        ],
+        'Status' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'validity' => [ 'type' => 'boolean', 'locationName' => 'validity', ],
             ],
         ],
         'DescribeContainersResultShape' => [
