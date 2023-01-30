@@ -2372,6 +2372,7 @@ return [
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'auditStatus' => [ 'type' => 'string', 'locationName' => 'auditStatus', ],
                 'accelerateRegion' => [ 'type' => 'string', 'locationName' => 'accelerateRegion', ],
+                'overseaStatus' => [ 'type' => 'long', 'locationName' => 'overseaStatus', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
         ],
@@ -4578,6 +4579,7 @@ return [
         'BatchIpBlackListRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'operateDomainRange' => [ 'type' => 'string', 'locationName' => 'operateDomainRange', ],
                 'domains' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'ipList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'forbidTime' => [ 'type' => 'long', 'locationName' => 'forbidTime', ],
@@ -4896,6 +4898,7 @@ return [
                 'accelerateRegion' => [ 'type' => 'string', 'locationName' => 'accelerateRegion', ],
                 'filterBy' => [ 'type' => 'integer', 'locationName' => 'filterBy', ],
                 'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'withThirdPartyStatus' => [ 'type' => 'boolean', 'locationName' => 'withThirdPartyStatus', ],
             ],
         ],
         'StopDomainResultShape' => [
@@ -5182,6 +5185,7 @@ return [
                 'sslCertEndTime' => [ 'type' => 'string', 'locationName' => 'sslCertEndTime', ],
                 'accelerateRegion' => [ 'type' => 'string', 'locationName' => 'accelerateRegion', ],
                 'txt' => [ 'type' => 'string', 'locationName' => 'txt', ],
+                'overseaStatus' => [ 'type' => 'long', 'locationName' => 'overseaStatus', ],
             ],
         ],
         'BatchCreateResultShape' => [
