@@ -232,6 +232,7 @@ return [
                 'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
                 'contractTitle' => [ 'type' => 'string', 'locationName' => 'contractTitle', ],
                 'caType' => [ 'type' => 'string', 'locationName' => 'caType', ],
+                'stampStyle' => [ 'type' => 'string', 'locationName' => 'stampStyle', ],
             ],
         ],
         'VerifyInfo' => [
