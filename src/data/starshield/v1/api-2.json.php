@@ -11,6 +11,186 @@ return [
 //        'serviceId' => 'starshield',
     ],
     'operations' => [
+        'Dashboard' => [
+            'name' => 'Dashboard',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/zones/{zone_identifier}/analytics$$dashboard',
+            ],
+            'input' => [ 'shape' => 'DashboardRequestShape', ],
+            'output' => [ 'shape' => 'DashboardResponseShape', ],
+        ],
+        'TopK' => [
+            'name' => 'TopK',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/analytics$$topK',
+            ],
+            'input' => [ 'shape' => 'TopKRequestShape', ],
+            'output' => [ 'shape' => 'TopKResponseShape', ],
+        ],
+        'BandwidthTopK' => [
+            'name' => 'BandwidthTopK',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/analytics$$bandwidthTopK',
+            ],
+            'input' => [ 'shape' => 'BandwidthTopKRequestShape', ],
+            'output' => [ 'shape' => 'BandwidthTopKResponseShape', ],
+        ],
+        'DateHistogram' => [
+            'name' => 'DateHistogram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/analytics$$dateHistogram',
+            ],
+            'input' => [ 'shape' => 'DateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'DateHistogramResponseShape', ],
+        ],
+        'DateHistogramBandwidth' => [
+            'name' => 'DateHistogramBandwidth',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/analytics$$dateHistogramBandwidth',
+            ],
+            'input' => [ 'shape' => 'DateHistogramBandwidthRequestShape', ],
+            'output' => [ 'shape' => 'DateHistogramBandwidthResponseShape', ],
+        ],
+        'BandwidthTrend' => [
+            'name' => 'BandwidthTrend',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/analytics$$bandwidthTrend',
+            ],
+            'input' => [ 'shape' => 'BandwidthTrendRequestShape', ],
+            'output' => [ 'shape' => 'BandwidthTrendResponseShape', ],
+        ],
+        'CacheTopK' => [
+            'name' => 'CacheTopK',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/analytics$$cacheTopK',
+            ],
+            'input' => [ 'shape' => 'CacheTopKRequestShape', ],
+            'output' => [ 'shape' => 'CacheTopKResponseShape', ],
+        ],
+        'CacheBandwidthTopK' => [
+            'name' => 'CacheBandwidthTopK',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/analytics$$cacheBandwidthTopK',
+            ],
+            'input' => [ 'shape' => 'CacheBandwidthTopKRequestShape', ],
+            'output' => [ 'shape' => 'CacheBandwidthTopKResponseShape', ],
+        ],
+        'CacheDateHistogram' => [
+            'name' => 'CacheDateHistogram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/analytics$$cacheDateHistogram',
+            ],
+            'input' => [ 'shape' => 'CacheDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'CacheDateHistogramResponseShape', ],
+        ],
+        'CacheDateHistogramBandwidth' => [
+            'name' => 'CacheDateHistogramBandwidth',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/analytics$$cacheDateHistogramBandwidth',
+            ],
+            'input' => [ 'shape' => 'CacheDateHistogramBandwidthRequestShape', ],
+            'output' => [ 'shape' => 'CacheDateHistogramBandwidthResponseShape', ],
+        ],
+        'FirewallTopK' => [
+            'name' => 'FirewallTopK',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/analytics$$firewallTopK',
+            ],
+            'input' => [ 'shape' => 'FirewallTopKRequestShape', ],
+            'output' => [ 'shape' => 'FirewallTopKResponseShape', ],
+        ],
+        'FirewallDateHistogram' => [
+            'name' => 'FirewallDateHistogram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/analytics$$firewallDateHistogram',
+            ],
+            'input' => [ 'shape' => 'FirewallDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'FirewallDateHistogramResponseShape', ],
+        ],
+        'QpsZone' => [
+            'name' => 'QpsZone',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/qps',
+            ],
+            'input' => [ 'shape' => 'QpsZoneRequestShape', ],
+            'output' => [ 'shape' => 'QpsZoneResponseShape', ],
+        ],
+        'Xps' => [
+            'name' => 'Xps',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/xps',
+            ],
+            'input' => [ 'shape' => 'XpsRequestShape', ],
+            'output' => [ 'shape' => 'XpsResponseShape', ],
+        ],
+        'QpsInstance' => [
+            'name' => 'QpsInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/qps',
+            ],
+            'input' => [ 'shape' => 'QpsInstanceRequestShape', ],
+            'output' => [ 'shape' => 'QpsInstanceResponseShape', ],
+        ],
+        'BpsZone' => [
+            'name' => 'BpsZone',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/bps',
+            ],
+            'input' => [ 'shape' => 'BpsZoneRequestShape', ],
+            'output' => [ 'shape' => 'BpsZoneResponseShape', ],
+        ],
+        'BpsInstance' => [
+            'name' => 'BpsInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/bps',
+            ],
+            'input' => [ 'shape' => 'BpsInstanceRequestShape', ],
+            'output' => [ 'shape' => 'BpsInstanceResponseShape', ],
+        ],
+        'FirewallActivityLog' => [
+            'name' => 'FirewallActivityLog',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/analytics$$firewallActivityLog',
+            ],
+            'input' => [ 'shape' => 'FirewallActivityLogRequestShape', ],
+            'output' => [ 'shape' => 'FirewallActivityLogResponseShape', ],
+        ],
+        'AccessLog' => [
+            'name' => 'AccessLog',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/analytics$$accessLog',
+            ],
+            'input' => [ 'shape' => 'AccessLogRequestShape', ],
+            'output' => [ 'shape' => 'AccessLogResponseShape', ],
+        ],
+        'GroupBy' => [
+            'name' => 'GroupBy',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/zones/{zone_identifier}/analytics$$groupBy',
+            ],
+            'input' => [ 'shape' => 'GroupByRequestShape', ],
+            'output' => [ 'shape' => 'GroupByResponseShape', ],
+        ],
         'ListAvailablePageRuleSetting' => [
             'name' => 'ListAvailablePageRuleSetting',
             'http' => [
@@ -272,6 +452,240 @@ return [
             'input' => [ 'shape' => 'CheckInstancesNameRequestShape', ],
             'output' => [ 'shape' => 'CheckInstancesNameResponseShape', ],
         ],
+        'Ips' => [
+            'name' => 'Ips',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/ips',
+            ],
+            'input' => [ 'shape' => 'IpsRequestShape', ],
+            'output' => [ 'shape' => 'IpsResponseShape', ],
+        ],
+        'InstanceBandwidthAvg' => [
+            'name' => 'InstanceBandwidthAvg',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/instanceBandwidthAvg',
+            ],
+            'input' => [ 'shape' => 'InstanceBandwidthAvgRequestShape', ],
+            'output' => [ 'shape' => 'InstanceBandwidthAvgResponseShape', ],
+        ],
+        'InstanceBandwidthMax' => [
+            'name' => 'InstanceBandwidthMax',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/instanceBandwidthMax',
+            ],
+            'input' => [ 'shape' => 'InstanceBandwidthMaxRequestShape', ],
+            'output' => [ 'shape' => 'InstanceBandwidthMaxResponseShape', ],
+        ],
+        'InstanceBandwidthP95' => [
+            'name' => 'InstanceBandwidthP95',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/instanceBandwidthP95',
+            ],
+            'input' => [ 'shape' => 'InstanceBandwidthP95RequestShape', ],
+            'output' => [ 'shape' => 'InstanceBandwidthP95ResponseShape', ],
+        ],
+        'InstanceBandwidthDateHistogram' => [
+            'name' => 'InstanceBandwidthDateHistogram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/instanceBandwidthDateHistogram',
+            ],
+            'input' => [ 'shape' => 'InstanceBandwidthDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'InstanceBandwidthDateHistogramResponseShape', ],
+        ],
+        'InstanceBandwidthMultiDateHistogram' => [
+            'name' => 'InstanceBandwidthMultiDateHistogram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/instanceBandwidthMultiDateHistogram',
+            ],
+            'input' => [ 'shape' => 'InstanceBandwidthMultiDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'InstanceBandwidthMultiDateHistogramResponseShape', ],
+        ],
+        'BandwidthDateHistogramTopK' => [
+            'name' => 'BandwidthDateHistogramTopK',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/bandwidthDateHistogramTopK',
+            ],
+            'input' => [ 'shape' => 'BandwidthDateHistogramTopKRequestShape', ],
+            'output' => [ 'shape' => 'BandwidthDateHistogramTopKResponseShape', ],
+        ],
+        'BandwidthTopK' => [
+            'name' => 'BandwidthTopK',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/bandwidthTopK',
+            ],
+            'input' => [ 'shape' => 'BandwidthTopKRequestShape', ],
+            'output' => [ 'shape' => 'BandwidthTopKResponseShape', ],
+        ],
+        'InstanceBandwidthList' => [
+            'name' => 'InstanceBandwidthList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/instanceBandwidthList',
+            ],
+            'input' => [ 'shape' => 'InstanceBandwidthListRequestShape', ],
+            'output' => [ 'shape' => 'InstanceBandwidthListResponseShape', ],
+        ],
+        'InstanceTrafficSum' => [
+            'name' => 'InstanceTrafficSum',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/instanceTrafficSum',
+            ],
+            'input' => [ 'shape' => 'InstanceTrafficSumRequestShape', ],
+            'output' => [ 'shape' => 'InstanceTrafficSumResponseShape', ],
+        ],
+        'InstanceTrafficDateHistogram' => [
+            'name' => 'InstanceTrafficDateHistogram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/instanceTrafficDateHistogram',
+            ],
+            'input' => [ 'shape' => 'InstanceTrafficDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'InstanceTrafficDateHistogramResponseShape', ],
+        ],
+        'InstanceTrafficMultiDateHistogram' => [
+            'name' => 'InstanceTrafficMultiDateHistogram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/instanceTrafficMultiDateHistogram',
+            ],
+            'input' => [ 'shape' => 'InstanceTrafficMultiDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'InstanceTrafficMultiDateHistogramResponseShape', ],
+        ],
+        'TrafficDateHistogramTopK' => [
+            'name' => 'TrafficDateHistogramTopK',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/trafficDateHistogramTopK',
+            ],
+            'input' => [ 'shape' => 'TrafficDateHistogramTopKRequestShape', ],
+            'output' => [ 'shape' => 'TrafficDateHistogramTopKResponseShape', ],
+        ],
+        'TrafficTopK' => [
+            'name' => 'TrafficTopK',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/trafficTopK',
+            ],
+            'input' => [ 'shape' => 'TrafficTopKRequestShape', ],
+            'output' => [ 'shape' => 'TrafficTopKResponseShape', ],
+        ],
+        'InstanceRequestSum' => [
+            'name' => 'InstanceRequestSum',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/instanceRequestSum',
+            ],
+            'input' => [ 'shape' => 'InstanceRequestSumRequestShape', ],
+            'output' => [ 'shape' => 'InstanceRequestSumResponseShape', ],
+        ],
+        'InstanceRequestDateHistogram' => [
+            'name' => 'InstanceRequestDateHistogram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/instanceRequestDateHistogram',
+            ],
+            'input' => [ 'shape' => 'InstanceRequestDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'InstanceRequestDateHistogramResponseShape', ],
+        ],
+        'InstanceRequestMultiDateHistogram' => [
+            'name' => 'InstanceRequestMultiDateHistogram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/instanceRequestMultiDateHistogram',
+            ],
+            'input' => [ 'shape' => 'InstanceRequestMultiDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'InstanceRequestMultiDateHistogramResponseShape', ],
+        ],
+        'RequestDateHistogramTopK' => [
+            'name' => 'RequestDateHistogramTopK',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/requestDateHistogramTopK',
+            ],
+            'input' => [ 'shape' => 'RequestDateHistogramTopKRequestShape', ],
+            'output' => [ 'shape' => 'RequestDateHistogramTopKResponseShape', ],
+        ],
+        'RequestTopK' => [
+            'name' => 'RequestTopK',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/instances/{instanceId}/requestTopK',
+            ],
+            'input' => [ 'shape' => 'RequestTopKRequestShape', ],
+            'output' => [ 'shape' => 'RequestTopKResponseShape', ],
+        ],
+        'ListLogpushJobs' => [
+            'name' => 'ListLogpushJobs',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/zones/{zone_identifier}/logpush$$jobs',
+            ],
+            'input' => [ 'shape' => 'ListLogpushJobsRequestShape', ],
+            'output' => [ 'shape' => 'ListLogpushJobsResponseShape', ],
+        ],
+        'CreateLogpushJob' => [
+            'name' => 'CreateLogpushJob',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/logpush$$jobs',
+            ],
+            'input' => [ 'shape' => 'CreateLogpushJobRequestShape', ],
+            'output' => [ 'shape' => 'CreateLogpushJobResponseShape', ],
+        ],
+        'Fields' => [
+            'name' => 'Fields',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/zones/{zone_identifier}/logpush$$datasets/{dataset}/fields',
+            ],
+            'input' => [ 'shape' => 'FieldsRequestShape', ],
+            'output' => [ 'shape' => 'FieldsResponseShape', ],
+        ],
+        'FieldsDefault' => [
+            'name' => 'FieldsDefault',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/zones/{zone_identifier}/logpush$$datasets/{dataset}/fieldsDefault',
+            ],
+            'input' => [ 'shape' => 'FieldsDefaultRequestShape', ],
+            'output' => [ 'shape' => 'FieldsDefaultResponseShape', ],
+        ],
+        'UpdateLogpushJob' => [
+            'name' => 'UpdateLogpushJob',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/zones/{zone_identifier}/logpush$$jobs/{job_identifier}',
+            ],
+            'input' => [ 'shape' => 'UpdateLogpushJobRequestShape', ],
+            'output' => [ 'shape' => 'UpdateLogpushJobResponseShape', ],
+        ],
+        'DeleteLogpushJob' => [
+            'name' => 'DeleteLogpushJob',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/zones/{zone_identifier}/logpush$$jobs/{job_identifier}',
+            ],
+            'input' => [ 'shape' => 'DeleteLogpushJobRequestShape', ],
+            'output' => [ 'shape' => 'DeleteLogpushJobResponseShape', ],
+        ],
+        'CheckDestinationExists' => [
+            'name' => 'CheckDestinationExists',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/logpush$$validate$$destination$$exists',
+            ],
+            'input' => [ 'shape' => 'CheckDestinationExistsRequestShape', ],
+            'output' => [ 'shape' => 'CheckDestinationExistsResponseShape', ],
+        ],
         'DescribePackages' => [
             'name' => 'DescribePackages',
             'http' => [
@@ -406,6 +820,123 @@ return [
             ],
             'input' => [ 'shape' => 'ListRulesRequestShape', ],
             'output' => [ 'shape' => 'ListRulesResponseShape', ],
+        ],
+        'RuleDetails' => [
+            'name' => 'RuleDetails',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/zones/{zone_id}/firewall$$waf$$packages/{package_id}/rules/{identifier}',
+            ],
+            'input' => [ 'shape' => 'RuleDetailsRequestShape', ],
+            'output' => [ 'shape' => 'RuleDetailsResponseShape', ],
+        ],
+        'EditRule' => [
+            'name' => 'EditRule',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/zones/{zone_id}/firewall$$waf$$packages/{package_id}/rules/{identifier}',
+            ],
+            'input' => [ 'shape' => 'EditRuleRequestShape', ],
+            'output' => [ 'shape' => 'EditRuleResponseShape', ],
+        ],
+        'ZoneBandwidthAvg' => [
+            'name' => 'ZoneBandwidthAvg',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/zoneBandwidthAvg',
+            ],
+            'input' => [ 'shape' => 'ZoneBandwidthAvgRequestShape', ],
+            'output' => [ 'shape' => 'ZoneBandwidthAvgResponseShape', ],
+        ],
+        'ZoneBandwidthMax' => [
+            'name' => 'ZoneBandwidthMax',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/zoneBandwidthMax',
+            ],
+            'input' => [ 'shape' => 'ZoneBandwidthMaxRequestShape', ],
+            'output' => [ 'shape' => 'ZoneBandwidthMaxResponseShape', ],
+        ],
+        'ZoneBandwidthP95' => [
+            'name' => 'ZoneBandwidthP95',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/zoneBandwidthP95',
+            ],
+            'input' => [ 'shape' => 'ZoneBandwidthP95RequestShape', ],
+            'output' => [ 'shape' => 'ZoneBandwidthP95ResponseShape', ],
+        ],
+        'ZoneBandwidthDateHistogram' => [
+            'name' => 'ZoneBandwidthDateHistogram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/zoneBandwidthDateHistogram',
+            ],
+            'input' => [ 'shape' => 'ZoneBandwidthDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'ZoneBandwidthDateHistogramResponseShape', ],
+        ],
+        'ZoneBandwidthMultiDateHistogram' => [
+            'name' => 'ZoneBandwidthMultiDateHistogram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/zoneBandwidthMultiDateHistogram',
+            ],
+            'input' => [ 'shape' => 'ZoneBandwidthMultiDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'ZoneBandwidthMultiDateHistogramResponseShape', ],
+        ],
+        'ZoneTrafficSum' => [
+            'name' => 'ZoneTrafficSum',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/zoneTrafficSum',
+            ],
+            'input' => [ 'shape' => 'ZoneTrafficSumRequestShape', ],
+            'output' => [ 'shape' => 'ZoneTrafficSumResponseShape', ],
+        ],
+        'ZoneTrafficDateHistogram' => [
+            'name' => 'ZoneTrafficDateHistogram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/zoneTrafficDateHistogram',
+            ],
+            'input' => [ 'shape' => 'ZoneTrafficDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'ZoneTrafficDateHistogramResponseShape', ],
+        ],
+        'ZoneTrafficMultiDateHistogram' => [
+            'name' => 'ZoneTrafficMultiDateHistogram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/zoneTrafficMultiDateHistogram',
+            ],
+            'input' => [ 'shape' => 'ZoneTrafficMultiDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'ZoneTrafficMultiDateHistogramResponseShape', ],
+        ],
+        'ZoneRequestSum' => [
+            'name' => 'ZoneRequestSum',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/zoneRequestSum',
+            ],
+            'input' => [ 'shape' => 'ZoneRequestSumRequestShape', ],
+            'output' => [ 'shape' => 'ZoneRequestSumResponseShape', ],
+        ],
+        'ZoneRequestDateHistogram' => [
+            'name' => 'ZoneRequestDateHistogram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/zoneRequestDateHistogram',
+            ],
+            'input' => [ 'shape' => 'ZoneRequestDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'ZoneRequestDateHistogramResponseShape', ],
+        ],
+        'ZoneRequestMultiDateHistogram' => [
+            'name' => 'ZoneRequestMultiDateHistogram',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/zoneRequestMultiDateHistogram',
+            ],
+            'input' => [ 'shape' => 'ZoneRequestMultiDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'ZoneRequestMultiDateHistogramResponseShape', ],
         ],
         'ListZones' => [
             'name' => 'ListZones',
@@ -1632,6 +2163,7 @@ return [
             'members' => [
                 'qpsTotal' =>  [ 'shape' => 'ChartItemValue', ],
                 'wafAnti' =>  [ 'shape' => 'ChartItemValue', ],
+                'botAnti' =>  [ 'shape' => 'ChartItemValue', ],
                 'ccAnti' =>  [ 'shape' => 'ChartItemValue', ],
                 'aclAnti' =>  [ 'shape' => 'ChartItemValue', ],
                 'cacheTotal' =>  [ 'shape' => 'ChartItemValue', ],
@@ -3012,6 +3544,501 @@ return [
                 'modified_on' => [ 'type' => 'string', 'locationName' => 'modified_on', ],
             ],
         ],
+        'CacheDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dateHistograms' => [ 'type' => 'list', 'member' => [ 'shape' => 'DateHistogram', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'util' => [ 'type' => 'string', 'locationName' => 'util', ],
+            ],
+        ],
+        'QpsZoneResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QpsZoneResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CacheDateHistogramBandwidthRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'topK' => [ 'type' => 'integer', 'locationName' => 'topK', ],
+                'criterionName' => [ 'type' => 'string', 'locationName' => 'criterionName', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'AnalyticsReportingFilter', ], ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'FirewallActivityLogResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'double', 'locationName' => 'total', ],
+                'activityLogs' => [ 'type' => 'list', 'member' => [ 'shape' => 'ActivityLog', ], ],
+            ],
+        ],
+        'QpsInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QpsInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AccessLogResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AccessLogResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'BpsInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'BpsInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'FirewallActivityLogResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'FirewallActivityLogResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'TopKResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'topkAnalytics' =>  [ 'shape' => 'TopkAnalytics', ],
+            ],
+        ],
+        'DashboardResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DashboardResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'BandwidthTopKResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'topkAnalytics' =>  [ 'shape' => 'TopkAnalytics', ],
+            ],
+        ],
+        'FirewallDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'topK' => [ 'type' => 'integer', 'locationName' => 'topK', ],
+                'criterionName' => [ 'type' => 'string', 'locationName' => 'criterionName', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'AnalyticsReportingFilter', ], ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'DashboardResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneAnalytics' =>  [ 'shape' => 'ZoneAnalytics', ],
+            ],
+        ],
+        'BpsZoneResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'BpsZoneResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'XpsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'SimpleDateHistogram', ],
+            ],
+        ],
+        'BandwidthTopKResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'BandwidthTopKResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'XpsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'DateHistogramBandwidthRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'topK' => [ 'type' => 'integer', 'locationName' => 'topK', ],
+                'criterionName' => [ 'type' => 'string', 'locationName' => 'criterionName', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'AnalyticsReportingFilter', ], ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'DateHistogramBandwidthResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DateHistogramBandwidthResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'XpsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'XpsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QpsInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'SimpleDateHistogram', ],
+            ],
+        ],
+        'BpsZoneRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'CacheDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CacheDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DateHistogramBandwidthResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dateHistograms' => [ 'type' => 'list', 'member' => [ 'shape' => 'DateHistogram', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'util' => [ 'type' => 'string', 'locationName' => 'util', ],
+            ],
+        ],
+        'DateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CacheTopKRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'topK' => [ 'type' => 'integer', 'locationName' => 'topK', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'AnalyticsReportingFilter', ], ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'CacheDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'topK' => [ 'type' => 'integer', 'locationName' => 'topK', ],
+                'criterionName' => [ 'type' => 'string', 'locationName' => 'criterionName', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'AnalyticsReportingFilter', ], ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'TopKRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'topK' => [ 'type' => 'integer', 'locationName' => 'topK', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'AnalyticsReportingFilter', ], ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'CacheTopKResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'topkAnalytics' =>  [ 'shape' => 'TopkAnalytics', ],
+            ],
+        ],
+        'FirewallTopKResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'topkAnalytics' =>  [ 'shape' => 'TopkAnalytics', ],
+            ],
+        ],
+        'FirewallTopKRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'topK' => [ 'type' => 'integer', 'locationName' => 'topK', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'AnalyticsReportingFilter', ], ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'BpsInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'BandwidthTrendResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'BandwidthTrendResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GroupByResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+            ],
+        ],
+        'CacheDateHistogramBandwidthResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CacheDateHistogramBandwidthResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CacheBandwidthTopKResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CacheBandwidthTopKResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CacheDateHistogramBandwidthResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dateHistograms' => [ 'type' => 'list', 'member' => [ 'shape' => 'DateHistogram', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'util' => [ 'type' => 'string', 'locationName' => 'util', ],
+            ],
+        ],
+        'FirewallTopKResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'FirewallTopKResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'topK' => [ 'type' => 'integer', 'locationName' => 'topK', ],
+                'criterionName' => [ 'type' => 'string', 'locationName' => 'criterionName', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'AnalyticsReportingFilter', ], ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'FirewallDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dateHistograms' => [ 'type' => 'list', 'member' => [ 'shape' => 'DateHistogram', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'util' => [ 'type' => 'string', 'locationName' => 'util', ],
+            ],
+        ],
+        'TopKResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'TopKResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DashboardRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'AnalyticsReportingFilter', ], ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'BandwidthTopKRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'topK' => [ 'type' => 'integer', 'locationName' => 'topK', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'AnalyticsReportingFilter', ], ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'CacheBandwidthTopKResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'topkAnalytics' =>  [ 'shape' => 'TopkAnalytics', ],
+            ],
+        ],
+        'BpsZoneResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'SimpleDateHistogram', ],
+            ],
+        ],
+        'AccessLogRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'AnalyticsReportingFilter', ], ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'DateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dateHistograms' => [ 'type' => 'list', 'member' => [ 'shape' => 'DateHistogram', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'util' => [ 'type' => 'string', 'locationName' => 'util', ],
+            ],
+        ],
+        'CacheBandwidthTopKRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'topK' => [ 'type' => 'integer', 'locationName' => 'topK', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'AnalyticsReportingFilter', ], ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'BpsInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'SimpleDateHistogram', ],
+            ],
+        ],
+        'FirewallDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'FirewallDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QpsZoneRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'AccessLogResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'double', 'locationName' => 'total', ],
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'AccessLog', ], ],
+            ],
+        ],
+        'BandwidthTrendResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'SimpleDateHistogram', ],
+            ],
+        ],
+        'BandwidthTrendRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'CacheTopKResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CacheTopKResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GroupByRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'criterionName' => [ 'type' => 'string', 'locationName' => 'criterionName', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'GroupByResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GroupByResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'QpsInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'QpsZoneResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'SimpleDateHistogram', ],
+            ],
+        ],
+        'FirewallActivityLogRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'AnalyticsReportingFilter', ], ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
         'ListAvailablePageRuleSettingResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3517,13 +4544,6 @@ return [
                 'buyId' => [ 'type' => 'string', 'locationName' => 'buyId', ],
             ],
         ],
-        'CreateInstanceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateInstanceResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeInstancesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3538,6 +4558,67 @@ return [
             'members' => [
                 'resourceList' => [ 'type' => 'string', 'locationName' => 'resourceList', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'IpsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jdcloudCidrs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ModifyInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'buyId' => [ 'type' => 'string', 'locationName' => 'buyId', ],
+            ],
+        ],
+        'CheckInstancesNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstancesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'packType' => [ 'type' => 'string', 'locationName' => 'packType', ],
+                'zonePackNum' => [ 'type' => 'integer', 'locationName' => 'zonePackNum', ],
+                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
+                'durationUnit' => [ 'type' => 'string', 'locationName' => 'durationUnit', ],
+                'autoRenewStatus' => [ 'type' => 'string', 'locationName' => 'autoRenewStatus', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'memo' => [ 'type' => 'string', 'locationName' => 'memo', ],
+                'returnUrl' => [ 'type' => 'string', 'locationName' => 'returnUrl', ],
+                'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeInstanceByOrderNoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'describeInstancesRes' =>  [ 'shape' => 'DescribeInstancesRes', ],
+            ],
+        ],
+        'IpsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ModifyInstanceResponseShape' => [
@@ -3557,6 +4638,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'data' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+            ],
+        ],
+        'IpsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'IpsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CheckInstancesNameResultShape' => [
@@ -3602,12 +4690,6 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'ModifyInstanceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'buyId' => [ 'type' => 'string', 'locationName' => 'buyId', ],
-            ],
-        ],
         'DescribeInstanceByOrderNoRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3620,13 +4702,6 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'SelectDetailListResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CheckInstancesNameRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'CreateFlowPackResponseShape' => [
@@ -3643,33 +4718,546 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeInstancesResponseShape' => [
+        'TrafficDateHistogramTopKRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeInstancesResultShape', ],
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'InstanceTrafficDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'InstanceTrafficMultiDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'InstanceTrafficMultiDateHistogramResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CreateInstanceRequestShape' => [
+        'InstanceTrafficMultiDateHistogramResultShape' => [
             'type' => 'structure',
             'members' => [
-                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
-                'packType' => [ 'type' => 'string', 'locationName' => 'packType', ],
-                'zonePackNum' => [ 'type' => 'integer', 'locationName' => 'zonePackNum', ],
-                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
-                'durationUnit' => [ 'type' => 'string', 'locationName' => 'durationUnit', ],
-                'autoRenewStatus' => [ 'type' => 'string', 'locationName' => 'autoRenewStatus', ],
-                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
-                'memo' => [ 'type' => 'string', 'locationName' => 'memo', ],
-                'returnUrl' => [ 'type' => 'string', 'locationName' => 'returnUrl', ],
-                'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'dateHistograms' => [ 'type' => 'list', 'member' => [ 'shape' => 'DateHistogram', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'util' => [ 'type' => 'string', 'locationName' => 'util', ],
             ],
         ],
-        'DescribeInstanceByOrderNoResultShape' => [
+        'TrafficTopKResultShape' => [
             'type' => 'structure',
             'members' => [
-                'describeInstancesRes' =>  [ 'shape' => 'DescribeInstancesRes', ],
+                'data' =>  [ 'shape' => 'TopK', ],
+            ],
+        ],
+        'InstanceRequestDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'InstanceRequestDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'InstanceTrafficMultiDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryModes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'TrafficDateHistogramTopKResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dateHistograms' => [ 'type' => 'list', 'member' => [ 'shape' => 'DateHistogram', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'util' => [ 'type' => 'string', 'locationName' => 'util', ],
+            ],
+        ],
+        'InstanceTrafficSumResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+            ],
+        ],
+        'InstanceBandwidthAvgResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+            ],
+        ],
+        'InstanceRequestMultiDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryModes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'InstanceRequestSumResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+            ],
+        ],
+        'InstanceRequestSumResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'InstanceRequestSumResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'InstanceBandwidthMaxRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'InstanceTrafficDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'InstanceTrafficDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'InstanceRequestMultiDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'InstanceRequestMultiDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'InstanceBandwidthDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'InstanceBandwidthDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'BandwidthDateHistogramTopKResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'BandwidthDateHistogramTopKResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'InstanceBandwidthMultiDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dateHistograms' => [ 'type' => 'list', 'member' => [ 'shape' => 'DateHistogram', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'util' => [ 'type' => 'string', 'locationName' => 'util', ],
+            ],
+        ],
+        'InstanceTrafficDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'SimpleDateHistogram', ],
+            ],
+        ],
+        'InstanceBandwidthDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'InstanceRequestSumRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'InstanceBandwidthAvgResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'InstanceBandwidthAvgResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RequestTopKRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'InstanceTrafficSumResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'InstanceTrafficSumResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'InstanceBandwidthAvgRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'InstanceBandwidthP95ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'InstanceBandwidthP95ResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RequestTopKResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RequestTopKResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'TrafficTopKRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'BandwidthDateHistogramTopKResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dateHistograms' => [ 'type' => 'list', 'member' => [ 'shape' => 'DateHistogram', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'util' => [ 'type' => 'string', 'locationName' => 'util', ],
+            ],
+        ],
+        'RequestDateHistogramTopKRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'InstanceBandwidthListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'RequestDateHistogramTopKResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dateHistograms' => [ 'type' => 'list', 'member' => [ 'shape' => 'DateHistogram', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'util' => [ 'type' => 'string', 'locationName' => 'util', ],
+            ],
+        ],
+        'InstanceBandwidthListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'double', 'locationName' => 'total', ],
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CdnZoneBandwidth', ], ],
+            ],
+        ],
+        'InstanceRequestDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'SimpleDateHistogram', ],
+            ],
+        ],
+        'InstanceTrafficSumRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'BandwidthDateHistogramTopKRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'InstanceBandwidthMaxResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'CdnBandwidthMax', ],
+            ],
+        ],
+        'InstanceRequestDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'InstanceBandwidthListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'InstanceBandwidthListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RequestTopKResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'TopK', ],
+            ],
+        ],
+        'InstanceBandwidthP95RequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'InstanceBandwidthP95ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+            ],
+        ],
+        'InstanceBandwidthMultiDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'InstanceBandwidthMultiDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'InstanceBandwidthMaxResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'InstanceBandwidthMaxResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'InstanceBandwidthDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'SimpleDateHistogram', ],
+            ],
+        ],
+        'InstanceBandwidthMultiDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryModes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'TrafficDateHistogramTopKResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'TrafficDateHistogramTopKResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RequestDateHistogramTopKResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RequestDateHistogramTopKResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'TrafficTopKResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'TrafficTopKResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'InstanceRequestMultiDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dateHistograms' => [ 'type' => 'list', 'member' => [ 'shape' => 'DateHistogram', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'util' => [ 'type' => 'string', 'locationName' => 'util', ],
+            ],
+        ],
+        'CreateLogpushJobRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zone_name' => [ 'type' => 'string', 'locationName' => 'zone_name', ],
+                'destination_conf' => [ 'type' => 'string', 'locationName' => 'destination_conf', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'dataset' => [ 'type' => 'string', 'locationName' => 'dataset', ],
+                'logpull_options' => [ 'type' => 'string', 'locationName' => 'logpull_options', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'CreateLogpushJobResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateLogpushJobResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteLogpushJobResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteLogpushJobResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateLogpushJobResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'LogpushJob', ],
+            ],
+        ],
+        'FieldsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+                'dataset' => [ 'type' => 'string', 'locationName' => 'dataset', ],
+            ],
+        ],
+        'FieldsDefaultResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'FieldsDefaultResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteLogpushJobRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+                'job_identifier' => [ 'type' => 'string', 'locationName' => 'job_identifier', ],
+            ],
+        ],
+        'FieldsDefaultRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+                'dataset' => [ 'type' => 'string', 'locationName' => 'dataset', ],
+            ],
+        ],
+        'UpdateLogpushJobResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'LogpushJob', ],
+            ],
+        ],
+        'ListLogpushJobsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'CheckDestinationExistsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CheckDestinationExistsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListLogpushJobsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListLogpushJobsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'FieldsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'FieldsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CheckDestinationExistsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'destination_conf' => [ 'type' => 'string', 'locationName' => 'destination_conf', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'FieldsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LogModule', ], ],
+            ],
+        ],
+        'CheckDestinationExistsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'boolean', 'locationName' => 'data', ],
+            ],
+        ],
+        'ListLogpushJobsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LogpushJob', ], ],
+            ],
+        ],
+        'FieldsDefaultResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LogModule', ], ],
+            ],
+        ],
+        'DeleteLogpushJobResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'LogpushJob', ],
+            ],
+        ],
+        'UpdateLogpushJobResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateLogpushJobResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateLogpushJobRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'logpull_options' => [ 'type' => 'string', 'locationName' => 'logpull_options', ],
+                'destination_conf' => [ 'type' => 'string', 'locationName' => 'destination_conf', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+                'job_identifier' => [ 'type' => 'string', 'locationName' => 'job_identifier', ],
             ],
         ],
         'DescribePackagesResultShape' => [
@@ -3990,10 +5578,53 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'RuleDetailsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RuleDetailsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RuleDetailsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zone_id' => [ 'type' => 'string', 'locationName' => 'zone_id', ],
+                'package_id' => [ 'type' => 'string', 'locationName' => 'package_id', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
+            ],
+        ],
+        'EditRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'WAFRule', ],
+            ],
+        ],
+        'EditRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EditRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RuleDetailsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'WAFRule', ],
+            ],
+        ],
         'ListRulesResultShape' => [
             'type' => 'structure',
             'members' => [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'WAFRule', ], ],
+            ],
+        ],
+        'EditRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'mode' => [ 'type' => 'string', 'locationName' => 'mode', ],
+                'zone_id' => [ 'type' => 'string', 'locationName' => 'zone_id', ],
+                'package_id' => [ 'type' => 'string', 'locationName' => 'package_id', ],
+                'identifier' => [ 'type' => 'string', 'locationName' => 'identifier', ],
             ],
         ],
         'ListRulesRequestShape' => [
@@ -4010,6 +5641,268 @@ return [
                 'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
                 'zone_id' => [ 'type' => 'string', 'locationName' => 'zone_id', ],
                 'package_id' => [ 'type' => 'string', 'locationName' => 'package_id', ],
+            ],
+        ],
+        'ZoneTrafficMultiDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ZoneTrafficMultiDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ZoneRequestSumResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ZoneRequestSumResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ZoneTrafficSumRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ZoneBandwidthMultiDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dateHistograms' => [ 'type' => 'list', 'member' => [ 'shape' => 'DateHistogram', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'util' => [ 'type' => 'string', 'locationName' => 'util', ],
+            ],
+        ],
+        'ZoneTrafficDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ZoneBandwidthP95RequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ZoneBandwidthAvgResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+            ],
+        ],
+        'ZoneBandwidthDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ZoneBandwidthDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ZoneBandwidthMaxResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ZoneBandwidthMaxResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ZoneBandwidthMaxRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ZoneTrafficMultiDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dateHistograms' => [ 'type' => 'list', 'member' => [ 'shape' => 'DateHistogram', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'util' => [ 'type' => 'string', 'locationName' => 'util', ],
+            ],
+        ],
+        'ZoneBandwidthP95ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ZoneBandwidthP95ResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ZoneTrafficMultiDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryModes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ZoneBandwidthMultiDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryModes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ZoneTrafficDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ZoneTrafficDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ZoneRequestDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'SimpleDateHistogram', ],
+            ],
+        ],
+        'ZoneRequestMultiDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dateHistograms' => [ 'type' => 'list', 'member' => [ 'shape' => 'DateHistogram', ], ],
+                'timeScope' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'util' => [ 'type' => 'string', 'locationName' => 'util', ],
+            ],
+        ],
+        'ZoneBandwidthDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'SimpleDateHistogram', ],
+            ],
+        ],
+        'ZoneBandwidthAvgResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ZoneBandwidthAvgResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ZoneTrafficSumResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ZoneTrafficSumResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ZoneRequestSumResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+            ],
+        ],
+        'ZoneRequestMultiDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryModes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ZoneRequestDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ZoneRequestSumRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ZoneBandwidthP95ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+            ],
+        ],
+        'ZoneBandwidthDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ZoneBandwidthMaxResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'CdnBandwidthMax', ],
+            ],
+        ],
+        'ZoneRequestDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ZoneRequestDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ZoneBandwidthMultiDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ZoneBandwidthMultiDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ZoneRequestMultiDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ZoneRequestMultiDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ZoneTrafficSumResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+            ],
+        ],
+        'ZoneBandwidthAvgRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queryMode' => [ 'type' => 'string', 'locationName' => 'queryMode', ],
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ZoneTrafficDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'SimpleDateHistogram', ],
             ],
         ],
         'DeleteZoneRequestShape' => [
