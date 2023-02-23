@@ -113,7 +113,7 @@ return [
         'DescribeInstances' => [
             'name' => 'DescribeInstances',
             'http' => [
-                'method' => 'POST',
+                'method' => 'GET',
                 'requestUri' => '/v1/regions/{regionId}/instances:describeInstances',
             ],
             'input' => [ 'shape' => 'DescribeInstancesRequestShape', ],
@@ -128,6 +128,15 @@ return [
             'input' => [ 'shape' => 'DescribeInstanceClassesRequestShape', ],
             'output' => [ 'shape' => 'DescribeInstanceClassesResponseShape', ],
         ],
+        'CreateInstanceByTime' => [
+            'name' => 'CreateInstanceByTime',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:createInstanceByTime',
+            ],
+            'input' => [ 'shape' => 'CreateInstanceByTimeRequestShape', ],
+            'output' => [ 'shape' => 'CreateInstanceByTimeResponseShape', ],
+        ],
         'CreateInstanceFromBackup' => [
             'name' => 'CreateInstanceFromBackup',
             'http' => [
@@ -136,6 +145,15 @@ return [
             ],
             'input' => [ 'shape' => 'CreateInstanceFromBackupRequestShape', ],
             'output' => [ 'shape' => 'CreateInstanceFromBackupResponseShape', ],
+        ],
+        'DescribeRestoreTimeInterval' => [
+            'name' => 'DescribeRestoreTimeInterval',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:describeRestoreTimeInterval',
+            ],
+            'input' => [ 'shape' => 'DescribeRestoreTimeIntervalRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRestoreTimeIntervalResponseShape', ],
         ],
         'DescribeBackupPolicy' => [
             'name' => 'DescribeBackupPolicy',
@@ -289,6 +307,15 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeSSLRequestShape', ],
             'output' => [ 'shape' => 'DescribeSSLResponseShape', ],
+        ],
+        'DescribeAvailableDBInfoInternel' => [
+            'name' => 'DescribeAvailableDBInfoInternel',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances:describeAvailableDBInfoInternel',
+            ],
+            'input' => [ 'shape' => 'DescribeAvailableDBInfoInternelRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAvailableDBInfoInternelResponseShape', ],
         ],
         'DescribeDataMigration' => [
             'name' => 'DescribeDataMigration',
@@ -486,6 +513,7 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
+                'architecture' => [ 'type' => 'string', 'locationName' => 'architecture', ],
                 'minorVersion' => [ 'type' => 'string', 'locationName' => 'minorVersion', ],
                 'totalNodeNum' => [ 'type' => 'integer', 'locationName' => 'totalNodeNum', ],
                 'totalCPU' => [ 'type' => 'integer', 'locationName' => 'totalCPU', ],
@@ -624,6 +652,14 @@ return [
                 'orderableStorageTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'Disk', ], ],
             ],
         ],
+        'ArchitectureVersion' => [
+            'type' => 'structure',
+            'members' => [
+                'engineVersion' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'arch' => [ 'type' => 'string', 'locationName' => 'arch', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+            ],
+        ],
         'TiDBNode' => [
             'type' => 'structure',
             'members' => [
@@ -641,6 +677,7 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
+                'architecture' => [ 'type' => 'string', 'locationName' => 'architecture', ],
                 'minorVersion' => [ 'type' => 'string', 'locationName' => 'minorVersion', ],
                 'totalNodeNum' => [ 'type' => 'integer', 'locationName' => 'totalNodeNum', ],
                 'tidbNodeSpec' =>  [ 'shape' => 'NodeSpec', ],
@@ -691,6 +728,7 @@ return [
             'members' => [
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'engineVersion' => [ 'type' => 'string', 'locationName' => 'engineVersion', ],
+                'architecture' => [ 'type' => 'string', 'locationName' => 'architecture', ],
                 'tidbNodeSpec' =>  [ 'shape' => 'NodeSpec', ],
                 'tikvNodeSpec' =>  [ 'shape' => 'NodeSpec', ],
                 'pdNodeSpec' =>  [ 'shape' => 'NodeSpec', ],
@@ -907,6 +945,13 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'DescribeRestoreTimeIntervalRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'RebootPodResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -948,6 +993,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeUpgradePlanResultShape', ],
+            ],
+        ],
+        'DescribeAvailableDBInfoInternelRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'azs' => [ 'type' => 'string', 'locationName' => 'azs', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'ModifyBackupPolicyRequestShape' => [
@@ -1109,9 +1161,22 @@ return [
                 'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
             ],
         ],
+        'DescribeRestoreTimeIntervalResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRestoreTimeIntervalResultShape', ],
+            ],
+        ],
         'ModifyParametersResponseShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeRestoreTimeIntervalResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
             ],
         ],
         'DescribeUpgradePlanResultShape' => [
@@ -1179,6 +1244,13 @@ return [
                 'versions' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'CreateInstanceByTimeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
+            ],
+        ],
         'DisableSSLResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1211,6 +1283,22 @@ return [
         'ModifyBackupPolicyResponseShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeAvailableDBInfoInternelResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAvailableDBInfoInternelResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateInstanceByTimeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'restoreTime' => [ 'type' => 'string', 'locationName' => 'restoreTime', ],
+                'instanceSpec' =>  [ 'shape' => 'TidbInstanceSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'DescribeInstanceAttributesResultShape' => [
@@ -1319,11 +1407,25 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'CreateInstanceByTimeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateInstanceByTimeResultShape', ],
+            ],
+        ],
         'DescribeNodesResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeNodesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAvailableDBInfoInternelResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'engineVersion' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'architectureType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'architectureVersion' => [ 'type' => 'list', 'member' => [ 'shape' => 'ArchitectureVersion', ], ],
             ],
         ],
         'DescribeParametersRequestShape' => [
