@@ -104,6 +104,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeBotStatusAsync(array $args = [])
  * @method \Jdcloud\Result openFirewallBot(array $args = [])
  * @method \GuzzleHttp\Promise\Promise openFirewallBotAsync(array $args = [])
+ * @method \Jdcloud\Result closeFirewallBot(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise closeFirewallBotAsync(array $args = [])
  * @method \Jdcloud\Result describeInstances(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeInstancesAsync(array $args = [])
  * @method \Jdcloud\Result createInstance(array $args = [])
