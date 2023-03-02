@@ -389,6 +389,15 @@ return [
             'input' => [ 'shape' => 'OpenFirewallBotRequestShape', ],
             'output' => [ 'shape' => 'OpenFirewallBotResponseShape', ],
         ],
+        'CloseFirewallBot' => [
+            'name' => 'CloseFirewallBot',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/bot/{zoneId}',
+            ],
+            'input' => [ 'shape' => 'CloseFirewallBotRequestShape', ],
+            'output' => [ 'shape' => 'CloseFirewallBotResponseShape', ],
+        ],
         'DescribeInstances' => [
             'name' => 'DescribeInstances',
             'http' => [
@@ -2040,6 +2049,7 @@ return [
                 'created_on' => [ 'type' => 'string', 'locationName' => 'created_on', ],
                 'proxiable' => [ 'type' => 'boolean', 'locationName' => 'proxiable', ],
                 'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'ty_pe' => [ 'type' => 'string', 'locationName' => 'ty_pe', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'proxied' => [ 'type' => 'boolean', 'locationName' => 'proxied', ],
@@ -3173,6 +3183,7 @@ return [
                 'name_servers' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'original_registrar' => [ 'type' => 'string', 'locationName' => 'original_registrar', ],
                 'enableCname2Rs' => [ 'type' => 'integer', 'locationName' => 'enableCname2Rs', ],
+                'cname_suffix' => [ 'type' => 'string', 'locationName' => 'cname_suffix', ],
             ],
         ],
         'Plan_pending' => [
@@ -3641,7 +3652,8 @@ return [
         'DashboardResultShape' => [
             'type' => 'structure',
             'members' => [
-                'zoneAnalytics' =>  [ 'shape' => 'ZoneAnalytics', ],
+                'totals' =>  [ 'shape' => 'Totals', ],
+                'timeseries' => [ 'type' => 'list', 'member' => [ 'shape' => 'Totals', ], ],
             ],
         ],
         'BpsZoneResponseShape' => [
@@ -3776,13 +3788,41 @@ return [
         'CacheTopKResultShape' => [
             'type' => 'structure',
             'members' => [
-                'topkAnalytics' =>  [ 'shape' => 'TopkAnalytics', ],
+                'countries' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topCountries' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topDeviceTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topHosts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topPaths' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topContentTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topStatusCodes' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topIPs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topUserAgents' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topHttpMethods' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topASNs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topFirewallRuleIds' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topFirewallRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topWafRuleIds' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topWafRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
             ],
         ],
         'FirewallTopKResultShape' => [
             'type' => 'structure',
             'members' => [
-                'topkAnalytics' =>  [ 'shape' => 'TopkAnalytics', ],
+                'countries' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topCountries' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topDeviceTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topHosts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topPaths' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topContentTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topStatusCodes' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topIPs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topUserAgents' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topHttpMethods' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topASNs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topFirewallRuleIds' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topFirewallRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topWafRuleIds' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topWafRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
             ],
         ],
         'FirewallTopKRequestShape' => [
@@ -3901,7 +3941,21 @@ return [
         'CacheBandwidthTopKResultShape' => [
             'type' => 'structure',
             'members' => [
-                'topkAnalytics' =>  [ 'shape' => 'TopkAnalytics', ],
+                'countries' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topCountries' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topDeviceTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topHosts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topPaths' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topContentTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topStatusCodes' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topIPs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topUserAgents' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topHttpMethods' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topASNs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topFirewallRuleIds' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topFirewallRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topWafRuleIds' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'topWafRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
             ],
         ],
         'BpsZoneResultShape' => [
@@ -4431,6 +4485,38 @@ return [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
             ],
         ],
+        'OpenFirewallBotRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneId' => [ 'type' => 'string', 'locationName' => 'zoneId', ],
+            ],
+        ],
+        'DescribeBotStatusResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBotStatusResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CloseFirewallBotResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CloseFirewallBotResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CloseFirewallBotResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'CloseFirewallBotRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneId' => [ 'type' => 'string', 'locationName' => 'zoneId', ],
+            ],
+        ],
         'DeleteIndividualFirewallRulesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -4471,23 +4557,10 @@ return [
                 'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
             ],
         ],
-        'OpenFirewallBotRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'zoneId' => [ 'type' => 'string', 'locationName' => 'zoneId', ],
-            ],
-        ],
         'DeleteIndividualFirewallRulesResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' =>  [ 'shape' => 'FirewallRule', ],
-            ],
-        ],
-        'DescribeBotStatusResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeBotStatusResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ListOfFirewallRulesRequestShape' => [
@@ -4786,13 +4859,13 @@ return [
         'InstanceTrafficSumResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
             ],
         ],
         'InstanceBandwidthAvgResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
             ],
         ],
         'InstanceRequestMultiDateHistogramRequestShape' => [
@@ -4807,7 +4880,7 @@ return [
         'InstanceRequestSumResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
             ],
         ],
         'InstanceRequestSumResponseShape' => [
@@ -4984,7 +5057,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'total' => [ 'type' => 'double', 'locationName' => 'total', ],
-                'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CdnZoneBandwidth', ], ],
+                'cdnZoneBandwidths' => [ 'type' => 'list', 'member' => [ 'shape' => 'CdnZoneBandwidth', ], ],
             ],
         ],
         'InstanceRequestDateHistogramResultShape' => [
@@ -5014,7 +5087,8 @@ return [
         'InstanceBandwidthMaxResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'CdnBandwidthMax', ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
+                'timestamp' => [ 'type' => 'double', 'locationName' => 'timestamp', ],
             ],
         ],
         'InstanceRequestDateHistogramRequestShape' => [
@@ -5051,7 +5125,7 @@ return [
         'InstanceBandwidthP95ResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
             ],
         ],
         'InstanceBandwidthMultiDateHistogramResponseShape' => [
@@ -5699,7 +5773,7 @@ return [
         'ZoneBandwidthAvgResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
             ],
         ],
         'ZoneBandwidthDateHistogramResponseShape' => [
@@ -5807,7 +5881,7 @@ return [
         'ZoneRequestSumResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
             ],
         ],
         'ZoneRequestMultiDateHistogramRequestShape' => [
@@ -5843,7 +5917,7 @@ return [
         'ZoneBandwidthP95ResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
             ],
         ],
         'ZoneBandwidthDateHistogramRequestShape' => [
@@ -5859,7 +5933,8 @@ return [
         'ZoneBandwidthMaxResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'CdnBandwidthMax', ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
+                'timestamp' => [ 'type' => 'double', 'locationName' => 'timestamp', ],
             ],
         ],
         'ZoneRequestDateHistogramResponseShape' => [
@@ -5886,7 +5961,7 @@ return [
         'ZoneTrafficSumResultShape' => [
             'type' => 'structure',
             'members' => [
-                'data' =>  [ 'shape' => 'CdnSingleMetric', ],
+                'value' => [ 'type' => 'double', 'locationName' => 'value', ],
             ],
         ],
         'ZoneBandwidthAvgRequestShape' => [
