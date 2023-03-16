@@ -1815,6 +1815,8 @@ return [
                 'firewallSource' => [ 'type' => 'string', 'locationName' => 'firewallSource', ],
                 'userAgent' => [ 'type' => 'string', 'locationName' => 'userAgent', ],
                 'ruleId' => [ 'type' => 'string', 'locationName' => 'ruleId', ],
+                'group' => [ 'type' => 'string', 'locationName' => 'group', ],
+                'ruleMessage' => [ 'type' => 'string', 'locationName' => 'ruleMessage', ],
             ],
         ],
         'AccessLog' => [
@@ -1955,6 +1957,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'ty_pe' => [ 'type' => 'string', 'locationName' => 'ty_pe', ],
                 'hosts' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'certificates' => [ 'type' => 'list', 'member' => [ 'shape' => 'Certificate', ], ],
