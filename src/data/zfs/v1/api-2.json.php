@@ -56,6 +56,15 @@ return [
             'input' => [ 'shape' => 'DeleteFileSystemRequestShape', ],
             'output' => [ 'shape' => 'DeleteFileSystemResponseShape', ],
         ],
+        'DescribeMountedClients' => [
+            'name' => 'DescribeMountedClients',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/describeMountedClients',
+            ],
+            'input' => [ 'shape' => 'DescribeMountedClientsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeMountedClientsResponseShape', ],
+        ],
         'DescribeMountTargets' => [
             'name' => 'DescribeMountTargets',
             'http' => [
@@ -172,6 +181,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeMountedClientsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeMountedClientsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DeleteFileSystemResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -195,6 +211,17 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'fileSystemId' => [ 'type' => 'string', 'locationName' => 'fileSystemId', ],
+            ],
+        ],
+        'DescribeMountedClientsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'fileSystemId' => [ 'type' => 'string', 'locationName' => 'fileSystemId', ],
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'clientIP' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'Filter' => [
@@ -245,6 +272,13 @@ return [
                 'fileSystemType' => [ 'type' => 'string', 'locationName' => 'fileSystemType', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeMountedClientsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clientsIPs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
         'DescribeFileSystemsResultShape' => [

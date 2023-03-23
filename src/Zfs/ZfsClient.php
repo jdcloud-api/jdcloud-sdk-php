@@ -30,6 +30,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise modifyFileSystemAttributeAsync(array $args = [])
  * @method \Jdcloud\Result deleteFileSystem(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteFileSystemAsync(array $args = [])
+ * @method \Jdcloud\Result describeMountedClients(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeMountedClientsAsync(array $args = [])
  * @method \Jdcloud\Result describeMountTargets(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeMountTargetsAsync(array $args = [])
  * @method \Jdcloud\Result createMountTarget(array $args = [])
