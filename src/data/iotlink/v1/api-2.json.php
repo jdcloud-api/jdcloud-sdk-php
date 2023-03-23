@@ -11,6 +11,33 @@ return [
 //        'serviceId' => 'iotlink',
     ],
     'operations' => [
+        'OrdinaryRealNameClear' => [
+            'name' => 'OrdinaryRealNameClear',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/ordinaryRealNameClear',
+            ],
+            'input' => [ 'shape' => 'OrdinaryRealNameClearRequestShape', ],
+            'output' => [ 'shape' => 'OrdinaryRealNameClearResponseShape', ],
+        ],
+        'CardBindStatus' => [
+            'name' => 'CardBindStatus',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/cardBindStatus',
+            ],
+            'input' => [ 'shape' => 'CardBindStatusRequestShape', ],
+            'output' => [ 'shape' => 'CardBindStatusResponseShape', ],
+        ],
+        'GetOnlineStatus' => [
+            'name' => 'GetOnlineStatus',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/getOnlineStatus',
+            ],
+            'input' => [ 'shape' => 'GetOnlineStatusRequestShape', ],
+            'output' => [ 'shape' => 'GetOnlineStatusResponseShape', ],
+        ],
         'QueryValidPeriodForNB' => [
             'name' => 'QueryValidPeriodForNB',
             'http' => [
@@ -219,6 +246,15 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
+        'RequestServActiveResp' => [
+            'type' => 'structure',
+            'members' => [
+                'iccid' => [ 'type' => 'string', 'locationName' => 'iccid', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
+            ],
+        ],
         'RealNameQueryIotResp' => [
             'type' => 'structure',
             'members' => [
@@ -263,6 +299,15 @@ return [
                 'onlinestatus' => [ 'type' => 'string', 'locationName' => 'onlinestatus', ],
             ],
         ],
+        'CardBindStatusResp' => [
+            'type' => 'structure',
+            'members' => [
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+                'errorCode' => [ 'type' => 'string', 'locationName' => 'errorCode', ],
+                'errorDes' => [ 'type' => 'string', 'locationName' => 'errorDes', ],
+                'sepTime' => [ 'type' => 'string', 'locationName' => 'sepTime', ],
+            ],
+        ],
         'CardInfoResp' => [
             'type' => 'structure',
             'members' => [
@@ -277,6 +322,17 @@ return [
             'members' => [
                 'busiSeq' => [ 'type' => 'string', 'locationName' => 'busiSeq', ],
                 'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+            ],
+        ],
+        'GetOnlineStatusResp' => [
+            'type' => 'structure',
+            'members' => [
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+                'msisdn' => [ 'type' => 'string', 'locationName' => 'msisdn', ],
+                'eventTimeStamp' => [ 'type' => 'string', 'locationName' => 'eventTimeStamp', ],
+                'provname' => [ 'type' => 'string', 'locationName' => 'provname', ],
+                'stopTime' => [ 'type' => 'string', 'locationName' => 'stopTime', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
             ],
         ],
         'QueryDayHistoryTrafficResultShape' => [
@@ -383,6 +439,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'GetOnlineStatusResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetOnlineStatusResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'CardInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -398,12 +461,27 @@ return [
                 'result' =>  [ 'shape' => 'OnOffStatusResp', ],
             ],
         ],
+        'GetOnlineStatusResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'GetOnlineStatusResp', ],
+            ],
+        ],
         'SearchRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'requestType' => [ 'type' => 'string', 'locationName' => 'requestType', ],
                 'requestParam' => [ 'type' => 'string', 'locationName' => 'requestParam', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CardBindStatusResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CardBindStatusResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'QueryTrafficByDateResultShape' => [
@@ -531,6 +609,20 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'OrdinaryRealNameClearRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestParam' => [ 'type' => 'string', 'locationName' => 'requestParam', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CardBindStatusRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'iccid' => [ 'type' => 'string', 'locationName' => 'iccid', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'SimRealNameRegRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -576,6 +668,14 @@ return [
                 'result' =>  [ 'shape' => 'SimRealNameRegResp', ],
             ],
         ],
+        'CardBindStatusResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'CardBindStatusResp', ],
+            ],
+        ],
         'RealNameQueryIotResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -617,6 +717,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'SpeedLimitActionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'OrdinaryRealNameClearResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'OrdinaryRealNameClearResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -714,6 +821,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'GetOnlineStatusRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'iccid' => [ 'type' => 'string', 'locationName' => 'iccid', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'GprsRealtimeInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -741,6 +855,14 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'result' =>  [ 'shape' => 'GprsStatusResp', ],
+            ],
+        ],
+        'OrdinaryRealNameClearResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
             ],
         ],
     ],
