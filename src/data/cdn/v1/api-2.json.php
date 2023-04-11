@@ -848,6 +848,24 @@ return [
             'input' => [ 'shape' => 'QueryDomainConfigRequestShape', ],
             'output' => [ 'shape' => 'QueryDomainConfigResponseShape', ],
         ],
+        'DomainTxtGenerate' => [
+            'name' => 'DomainTxtGenerate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/domainTxtGenerate',
+            ],
+            'input' => [ 'shape' => 'DomainTxtGenerateRequestShape', ],
+            'output' => [ 'shape' => 'DomainTxtGenerateResponseShape', ],
+        ],
+        'DomainTxtValidate' => [
+            'name' => 'DomainTxtValidate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/domainTxtValidate',
+            ],
+            'input' => [ 'shape' => 'DomainTxtValidateRequestShape', ],
+            'output' => [ 'shape' => 'DomainTxtValidateResponseShape', ],
+        ],
         'QueryDomainTempInstList' => [
             'name' => 'QueryDomainTempInstList',
             'http' => [
@@ -2421,6 +2439,7 @@ return [
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'auditStatus' => [ 'type' => 'string', 'locationName' => 'auditStatus', ],
                 'accelerateRegion' => [ 'type' => 'string', 'locationName' => 'accelerateRegion', ],
+                'overseaStatus' => [ 'type' => 'long', 'locationName' => 'overseaStatus', ],
             ],
         ],
         'DomainSourceInfo' => [
@@ -4887,6 +4906,124 @@ return [
             'members' => [
             ],
         ],
+        'QueryOssBucketsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetDomainListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'domains' => [ 'type' => 'list', 'member' => [ 'shape' => 'ListDomainItem', ], ],
+            ],
+        ],
+        'QueryDomainCnameTagResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cnameTags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'BatchCreateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domains' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'sourceType' => [ 'type' => 'string', 'locationName' => 'sourceType', ],
+                'cdnType' => [ 'type' => 'string', 'locationName' => 'cdnType', ],
+                'backSourceType' => [ 'type' => 'string', 'locationName' => 'backSourceType', ],
+                'dailyBandWidth' => [ 'type' => 'long', 'locationName' => 'dailyBandWidth', ],
+                'quaility' => [ 'type' => 'string', 'locationName' => 'quaility', ],
+                'maxFileSize' => [ 'type' => 'long', 'locationName' => 'maxFileSize', ],
+                'minFileSize' => [ 'type' => 'long', 'locationName' => 'minFileSize', ],
+                'sumFileSize' => [ 'type' => 'long', 'locationName' => 'sumFileSize', ],
+                'avgFileSize' => [ 'type' => 'long', 'locationName' => 'avgFileSize', ],
+                'defaultSourceHost' => [ 'type' => 'string', 'locationName' => 'defaultSourceHost', ],
+                'httpType' => [ 'type' => 'string', 'locationName' => 'httpType', ],
+                'ipSource' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpSourceInfo', ], ],
+                'domainSource' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainSourceInfo', ], ],
+                'ossSource' => [ 'type' => 'string', 'locationName' => 'ossSource', ],
+                'accelerateRegion' => [ 'type' => 'string', 'locationName' => 'accelerateRegion', ],
+                'tempInstId' => [ 'type' => 'long', 'locationName' => 'tempInstId', ],
+            ],
+        ],
+        'DomainTxtValidateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pass' => [ 'type' => 'boolean', 'locationName' => 'pass', ],
+                'errMsg' => [ 'type' => 'string', 'locationName' => 'errMsg', ],
+            ],
+        ],
+        'QueryDomainConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryDomainConfigResultShape', ],
+            ],
+        ],
+        'QueryOssBucketsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'ossBuckets' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+            ],
+        ],
+        'DomainTxtValidateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DomainTxtValidateResultShape', ],
+            ],
+        ],
+        'QueryDomainCnameTagResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryDomainCnameTagResultShape', ],
+            ],
+        ],
+        'GetDomainListByFilterResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetDomainListByFilterResultShape', ],
+            ],
+        ],
+        'CreateDomainResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateDomainResultShape', ],
+            ],
+        ],
+        'DeleteDomainRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'DomainTxtGenerateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DomainTxtValidateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'validateType' => [ 'type' => 'string', 'locationName' => 'validateType', ],
+                'hostRecord' => [ 'type' => 'string', 'locationName' => 'hostRecord', ],
+                'txt' => [ 'type' => 'string', 'locationName' => 'txt', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+            ],
+        ],
+        'DomainTxtGenerateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
         'GetDomainListByFilterRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -4906,11 +5043,6 @@ return [
             'members' => [
             ],
         ],
-        'QueryOssBucketsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'GetDomainListRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -4920,6 +5052,7 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'accelerateRegion' => [ 'type' => 'string', 'locationName' => 'accelerateRegion', ],
+                'withThirdPartyStatus' => [ 'type' => 'boolean', 'locationName' => 'withThirdPartyStatus', ],
             ],
         ],
         'CreateDomainRequestShape' => [
@@ -4961,46 +5094,16 @@ return [
                 'domains' => [ 'type' => 'list', 'member' => [ 'shape' => 'ListDomainItemByFilter', ], ],
             ],
         ],
-        'GetDomainListResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'domains' => [ 'type' => 'list', 'member' => [ 'shape' => 'ListDomainItem', ], ],
-            ],
-        ],
-        'QueryDomainCnameTagResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'cnameTags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'BatchCreateRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domains' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'sourceType' => [ 'type' => 'string', 'locationName' => 'sourceType', ],
-                'cdnType' => [ 'type' => 'string', 'locationName' => 'cdnType', ],
-                'backSourceType' => [ 'type' => 'string', 'locationName' => 'backSourceType', ],
-                'dailyBandWidth' => [ 'type' => 'long', 'locationName' => 'dailyBandWidth', ],
-                'quaility' => [ 'type' => 'string', 'locationName' => 'quaility', ],
-                'maxFileSize' => [ 'type' => 'long', 'locationName' => 'maxFileSize', ],
-                'minFileSize' => [ 'type' => 'long', 'locationName' => 'minFileSize', ],
-                'sumFileSize' => [ 'type' => 'long', 'locationName' => 'sumFileSize', ],
-                'avgFileSize' => [ 'type' => 'long', 'locationName' => 'avgFileSize', ],
-                'defaultSourceHost' => [ 'type' => 'string', 'locationName' => 'defaultSourceHost', ],
-                'httpType' => [ 'type' => 'string', 'locationName' => 'httpType', ],
-                'ipSource' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpSourceInfo', ], ],
-                'domainSource' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainSourceInfo', ], ],
-                'ossSource' => [ 'type' => 'string', 'locationName' => 'ossSource', ],
-                'accelerateRegion' => [ 'type' => 'string', 'locationName' => 'accelerateRegion', ],
-                'tempInstId' => [ 'type' => 'long', 'locationName' => 'tempInstId', ],
-            ],
-        ],
         'CreateDomainResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DomainTxtGenerateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
             ],
         ],
         'GetDomainDetailRequestShape' => [
@@ -5044,25 +5147,11 @@ return [
                 'result' =>  [ 'shape' => 'BatchCreateResultShape', ],
             ],
         ],
-        'QueryDomainConfigResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryDomainConfigResultShape', ],
-            ],
-        ],
         'GetDomainListResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'GetDomainListResultShape', ],
-            ],
-        ],
-        'QueryOssBucketsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
-                'ossBuckets' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
             ],
         ],
         'DeleteDomainResponseShape' => [
@@ -5072,39 +5161,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'QueryDomainCnameTagResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryDomainCnameTagResultShape', ],
-            ],
-        ],
         'DeleteDomainResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
         ],
         'StartDomainRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'GetDomainListByFilterResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'GetDomainListByFilterResultShape', ],
-            ],
-        ],
-        'CreateDomainResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'CreateDomainResultShape', ],
-            ],
-        ],
-        'DeleteDomainRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
