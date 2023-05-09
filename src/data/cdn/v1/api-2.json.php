@@ -848,14 +848,14 @@ return [
             'input' => [ 'shape' => 'QueryDomainConfigRequestShape', ],
             'output' => [ 'shape' => 'QueryDomainConfigResponseShape', ],
         ],
-        'DomainTxtGenerate' => [
-            'name' => 'DomainTxtGenerate',
+        'GenerateDomainTxt' => [
+            'name' => 'GenerateDomainTxt',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/domainTxtGenerate',
+                'requestUri' => '/v1/generateDomainTxt',
             ],
-            'input' => [ 'shape' => 'DomainTxtGenerateRequestShape', ],
-            'output' => [ 'shape' => 'DomainTxtGenerateResponseShape', ],
+            'input' => [ 'shape' => 'GenerateDomainTxtRequestShape', ],
+            'output' => [ 'shape' => 'GenerateDomainTxtResponseShape', ],
         ],
         'DomainTxtValidate' => [
             'name' => 'DomainTxtValidate',
@@ -4962,6 +4962,13 @@ return [
                 'result' =>  [ 'shape' => 'QueryDomainConfigResultShape', ],
             ],
         ],
+        'GenerateDomainTxtResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GenerateDomainTxtResultShape', ],
+            ],
+        ],
         'QueryOssBucketsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -5003,11 +5010,6 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
-        'DomainTxtGenerateResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DomainTxtValidateRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -5016,12 +5018,6 @@ return [
                 'hostRecord' => [ 'type' => 'string', 'locationName' => 'hostRecord', ],
                 'txt' => [ 'type' => 'string', 'locationName' => 'txt', ],
                 'url' => [ 'type' => 'string', 'locationName' => 'url', ],
-            ],
-        ],
-        'DomainTxtGenerateRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
         'GetDomainListByFilterRequestShape' => [
@@ -5097,13 +5093,6 @@ return [
         'CreateDomainResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'DomainTxtGenerateResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
             ],
         ],
         'GetDomainDetailRequestShape' => [
@@ -5209,6 +5198,12 @@ return [
                 'result' =>  [ 'shape' => 'QueryOssBucketsResultShape', ],
             ],
         ],
+        'GenerateDomainTxtRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
         'GetDomainDetailResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -5248,6 +5243,12 @@ return [
                 'accelerateRegion' => [ 'type' => 'string', 'locationName' => 'accelerateRegion', ],
                 'txt' => [ 'type' => 'string', 'locationName' => 'txt', ],
                 'overseaStatus' => [ 'type' => 'long', 'locationName' => 'overseaStatus', ],
+            ],
+        ],
+        'GenerateDomainTxtResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'txt' => [ 'type' => 'string', 'locationName' => 'txt', ],
             ],
         ],
         'BatchCreateResultShape' => [
