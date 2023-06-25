@@ -137,6 +137,24 @@ return [
             'input' => [ 'shape' => 'UpdateDomainRequestShape', ],
             'output' => [ 'shape' => 'UpdateDomainResponseShape', ],
         ],
+        'AddDomainScdn' => [
+            'name' => 'AddDomainScdn',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/domain:addScdn',
+            ],
+            'input' => [ 'shape' => 'AddDomainScdnRequestShape', ],
+            'output' => [ 'shape' => 'AddDomainScdnResponseShape', ],
+        ],
+        'UpdateDomainScdn' => [
+            'name' => 'UpdateDomainScdn',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/domain:updateScdn',
+            ],
+            'input' => [ 'shape' => 'UpdateDomainScdnRequestShape', ],
+            'output' => [ 'shape' => 'UpdateDomainScdnResponseShape', ],
+        ],
         'DeleteDomain' => [
             'name' => 'DeleteDomain',
             'http' => [
@@ -182,6 +200,15 @@ return [
             'input' => [ 'shape' => 'ListMainCfgRequestShape', ],
             'output' => [ 'shape' => 'ListMainCfgResponseShape', ],
         ],
+        'ListMainCfgFactor' => [
+            'name' => 'ListMainCfgFactor',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/domain:listMainCfgFactor',
+            ],
+            'input' => [ 'shape' => 'ListMainCfgFactorRequestShape', ],
+            'output' => [ 'shape' => 'ListMainCfgFactorResponseShape', ],
+        ],
         'DisableRules' => [
             'name' => 'DisableRules',
             'http' => [
@@ -199,6 +226,15 @@ return [
             ],
             'input' => [ 'shape' => 'EnableWafRequestShape', ],
             'output' => [ 'shape' => 'EnableWafResponseShape', ],
+        ],
+        'EnableJs' => [
+            'name' => 'EnableJs',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/waf:enableJs',
+            ],
+            'input' => [ 'shape' => 'EnableJsRequestShape', ],
+            'output' => [ 'shape' => 'EnableJsResponseShape', ],
         ],
         'AntiModeWaf' => [
             'name' => 'AntiModeWaf',
@@ -290,6 +326,15 @@ return [
             'input' => [ 'shape' => 'ListWafFilterRequestShape', ],
             'output' => [ 'shape' => 'ListWafFilterResponseShape', ],
         ],
+        'RefreshUrlCache' => [
+            'name' => 'RefreshUrlCache',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/webcache:refreshUrlCache',
+            ],
+            'input' => [ 'shape' => 'RefreshUrlCacheRequestShape', ],
+            'output' => [ 'shape' => 'RefreshUrlCacheResponseShape', ],
+        ],
         'ListBotStdRules' => [
             'name' => 'ListBotStdRules',
             'http' => [
@@ -365,7 +410,7 @@ return [
         'ChartItemValue' => [
             'type' => 'structure',
             'members' => [
-                'value' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'value' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
         'EsLogFile' => [
@@ -398,7 +443,7 @@ return [
                 'rank' => [ 'type' => 'integer', 'locationName' => 'rank', ],
                 'src' => [ 'type' => 'string', 'locationName' => 'src', ],
                 'pv' => [ 'type' => 'integer', 'locationName' => 'pv', ],
-                'count' => [ 'type' => 'list', 'member' => [ 'shape' => 'KVPair', ], ],
+                'count' =>  [ 'shape' => 'AntiValue', ],
             ],
         ],
         'GetUserPinVipInfoReq' => [
@@ -448,22 +493,12 @@ return [
                 'url_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
             ],
         ],
-        'Abnormal' => [
-            'type' => 'structure',
-            'members' => [
-                'noResp' =>  [ 'shape' => 'ChartItemValue', ],
-                's503' =>  [ 'shape' => 'ChartItemValue', ],
-                's404' =>  [ 'shape' => 'ChartItemValue', ],
-                's502' =>  [ 'shape' => 'ChartItemValue', ],
-                's504' =>  [ 'shape' => 'ChartItemValue', ],
-                's5XX' =>  [ 'shape' => 'ChartItemValue', ],
-            ],
-        ],
         'Qps' => [
             'type' => 'structure',
             'members' => [
                 'qpsTotal' =>  [ 'shape' => 'ChartItemValue', ],
                 'wafAnti' =>  [ 'shape' => 'ChartItemValue', ],
+                'botAnti' =>  [ 'shape' => 'ChartItemValue', ],
                 'ccAnti' =>  [ 'shape' => 'ChartItemValue', ],
                 'aclAnti' =>  [ 'shape' => 'ChartItemValue', ],
                 'cacheTotal' =>  [ 'shape' => 'ChartItemValue', ],
@@ -475,18 +510,18 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'logId' => [ 'type' => 'string', 'locationName' => 'logId', ],
-                'accessTime' => [ 'type' => 'integer', 'locationName' => 'accessTime', ],
+                'accessTime' => [ 'type' => 'long', 'locationName' => 'accessTime', ],
             ],
         ],
         'TopN' => [
             'type' => 'structure',
             'members' => [
-                'addr_top10' =>  [ 'shape' => 'TopValue', ],
-                'area_top10' =>  [ 'shape' => 'TopValue', ],
-                'url_top10' =>  [ 'shape' => 'TopValue', ],
-                'ua_top10' =>  [ 'shape' => 'TopValue', ],
-                'domain_anti_top10' =>  [ 'shape' => 'TopAntiValue', ],
-                'url_anti_top10' =>  [ 'shape' => 'TopAntiValue', ],
+                'addr_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
+                'area_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
+                'url_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
+                'ua_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
+                'domain_anti_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopAntiValue', ], ],
+                'url_anti_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopAntiValue', ], ],
             ],
         ],
         'ListEsLogDownloadReq' => [
@@ -503,7 +538,7 @@ return [
         'EsLogEvent' => [
             'type' => 'structure',
             'members' => [
-                'accessTime' => [ 'type' => 'integer', 'locationName' => 'accessTime', ],
+                'accessTime' => [ 'type' => 'long', 'locationName' => 'accessTime', ],
                 'remoteAddr' => [ 'type' => 'string', 'locationName' => 'remoteAddr', ],
                 'remotePort' => [ 'type' => 'string', 'locationName' => 'remotePort', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
@@ -554,6 +589,17 @@ return [
                 'status_code' => [ 'type' => 'list', 'member' => [ 'shape' => 'KVPair', ], ],
             ],
         ],
+        'Exception' => [
+            'type' => 'structure',
+            'members' => [
+                's499' =>  [ 'shape' => 'ChartItemValue', ],
+                's503' =>  [ 'shape' => 'ChartItemValue', ],
+                's404' =>  [ 'shape' => 'ChartItemValue', ],
+                's502' =>  [ 'shape' => 'ChartItemValue', ],
+                's504' =>  [ 'shape' => 'ChartItemValue', ],
+                's5XX' =>  [ 'shape' => 'ChartItemValue', ],
+            ],
+        ],
         'UserPin2Ips' => [
             'type' => 'structure',
             'members' => [
@@ -583,7 +629,7 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'antiType' => [ 'type' => 'string', 'locationName' => 'antiType', ],
                 'remoteAddr' => [ 'type' => 'string', 'locationName' => 'remoteAddr', ],
-                'antiStatus' => [ 'type' => 'string', 'locationName' => 'antiStatus', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
                 'end' => [ 'type' => 'integer', 'locationName' => 'end', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
@@ -613,7 +659,6 @@ return [
                 'addr_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
                 'url_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
                 'area_top50' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
-                'waf_rule_sum' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
             ],
         ],
         'GetEsLogReq' => [
@@ -647,6 +692,26 @@ return [
                 'value' => [ 'type' => 'double', 'locationName' => 'value', ],
             ],
         ],
+        'UpBps' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+                'wafAnti' => [ 'type' => 'long', 'locationName' => 'wafAnti', ],
+                'ccAnti' => [ 'type' => 'long', 'locationName' => 'ccAnti', ],
+                'aclAnti' => [ 'type' => 'long', 'locationName' => 'aclAnti', ],
+                'botAnti' => [ 'type' => 'long', 'locationName' => 'botAnti', ],
+                'cacheTotal' => [ 'type' => 'long', 'locationName' => 'cacheTotal', ],
+            ],
+        ],
+        'AntiValue' => [
+            'type' => 'structure',
+            'members' => [
+                'wafAnti' => [ 'type' => 'integer', 'locationName' => 'wafAnti', ],
+                'ccAnti' => [ 'type' => 'integer', 'locationName' => 'ccAnti', ],
+                'aclAnti' => [ 'type' => 'integer', 'locationName' => 'aclAnti', ],
+                'botAnti' => [ 'type' => 'integer', 'locationName' => 'botAnti', ],
+            ],
+        ],
         'AntiEvent' => [
             'type' => 'structure',
             'members' => [
@@ -654,7 +719,7 @@ return [
                 'csaInfo' => [ 'type' => 'string', 'locationName' => 'csaInfo', ],
                 'riskLevel' => [ 'type' => 'string', 'locationName' => 'riskLevel', ],
                 'area' => [ 'type' => 'string', 'locationName' => 'area', ],
-                'accessTime' => [ 'type' => 'integer', 'locationName' => 'accessTime', ],
+                'accessTime' => [ 'type' => 'long', 'locationName' => 'accessTime', ],
                 'method' => [ 'type' => 'string', 'locationName' => 'method', ],
                 'attackType' => [ 'type' => 'string', 'locationName' => 'attackType', ],
                 'url' => [ 'type' => 'string', 'locationName' => 'url', ],
@@ -664,16 +729,24 @@ return [
                 'logId' => [ 'type' => 'string', 'locationName' => 'logId', ],
                 'isReported' => [ 'type' => 'integer', 'locationName' => 'isReported', ],
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
-                'antiStatus' => [ 'type' => 'string', 'locationName' => 'antiStatus', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'upstreamErr' => [ 'type' => 'string', 'locationName' => 'upstreamErr', ],
                 'skipExist' => [ 'type' => 'integer', 'locationName' => 'skipExist', ],
                 'denyExist' => [ 'type' => 'integer', 'locationName' => 'denyExist', ],
+                'antiReqRaw' => [ 'type' => 'string', 'locationName' => 'antiReqRaw', ],
             ],
         ],
         'UserDefPageConf' => [
             'type' => 'structure',
             'members' => [
                 'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+            ],
+        ],
+        'KeyPair' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'integer', 'locationName' => 'value', ],
             ],
         ],
         'AddDomain' => [
@@ -780,11 +853,41 @@ return [
                 'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
             ],
         ],
+        'AntiMode' => [
+            'type' => 'structure',
+            'members' => [
+                'waf' => [ 'type' => 'integer', 'locationName' => 'waf', ],
+            ],
+        ],
         'UserPolicyIdInfo' => [
             'type' => 'structure',
             'members' => [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+            ],
+        ],
+        'AddDomainScdn' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'domains' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'protocols' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'sslProtocols' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'lbType' => [ 'type' => 'string', 'locationName' => 'lbType', ],
+                'rsConfig' =>  [ 'shape' => 'RsConfig', ],
+                'pureClient' => [ 'type' => 'integer', 'locationName' => 'pureClient', ],
+                'httpsRedirect' => [ 'type' => 'integer', 'locationName' => 'httpsRedirect', ],
+                'rsOnlySupportHttp' => [ 'type' => 'integer', 'locationName' => 'rsOnlySupportHttp', ],
+                'gmCertSupport' => [ 'type' => 'integer', 'locationName' => 'gmCertSupport', ],
+                'httpVersion' => [ 'type' => 'string', 'locationName' => 'httpVersion', ],
+                'enableKeepalive' => [ 'type' => 'integer', 'locationName' => 'enableKeepalive', ],
+                'suiteLevel' => [ 'type' => 'integer', 'locationName' => 'suiteLevel', ],
+                'userSuiteLevel' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'enableUnderscores' => [ 'type' => 'integer', 'locationName' => 'enableUnderscores', ],
+                'disableHealthCheck' => [ 'type' => 'integer', 'locationName' => 'disableHealthCheck', ],
+                'proxyConnectTimeout' => [ 'type' => 'integer', 'locationName' => 'proxyConnectTimeout', ],
+                'backSource' => [ 'type' => 'integer', 'locationName' => 'backSource', ],
             ],
         ],
         'DomainMainConfig' => [
@@ -801,6 +904,7 @@ return [
                 'gmHttpsCertUpdateStatus' => [ 'type' => 'integer', 'locationName' => 'gmHttpsCertUpdateStatus', ],
                 'gmCertSupport' => [ 'type' => 'integer', 'locationName' => 'gmCertSupport', ],
                 'antiStatus' =>  [ 'shape' => 'AntiStatus', ],
+                'antiMode' =>  [ 'shape' => 'AntiMode', ],
                 'disableWaf' => [ 'type' => 'integer', 'locationName' => 'disableWaf', ],
                 'attackInfo' =>  [ 'shape' => 'AttackInfo', ],
                 'dnsStatus' =>  [ 'shape' => 'DnsStatus', ],
@@ -940,10 +1044,20 @@ return [
             'members' => [
                 'ruleId' => [ 'type' => 'long', 'locationName' => 'ruleId', ],
                 'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
+                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
                 'ruleLevel' => [ 'type' => 'integer', 'locationName' => 'ruleLevel', ],
                 'cve' => [ 'type' => 'string', 'locationName' => 'cve', ],
                 'updateTime' => [ 'type' => 'long', 'locationName' => 'updateTime', ],
                 'ruleDesc' => [ 'type' => 'string', 'locationName' => 'ruleDesc', ],
+            ],
+        ],
+        'ListMainFactor' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'factor' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyPair', ], ],
             ],
         ],
         'AntiStatus' => [
@@ -1077,38 +1191,6 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
-        'DomainConfig' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
-                'certName' => [ 'type' => 'string', 'locationName' => 'certName', ],
-                'lbConf' =>  [ 'shape' => 'LbConf', ],
-                'dnsStatus' =>  [ 'shape' => 'DnsStatus', ],
-                'wafConf' =>  [ 'shape' => 'WafConf', ],
-                'ccConf' =>  [ 'shape' => 'CcConf', ],
-                'aclConf' =>  [ 'shape' => 'AclConf', ],
-                'ipbanConf' =>  [ 'shape' => 'IpbanConf', ],
-                'ipbanUsrConf' =>  [ 'shape' => 'IpbanConf', ],
-                'lastAttackReport' =>  [ 'shape' => 'LastAttackReport', ],
-                'antispiderConf' =>  [ 'shape' => 'SpiderConf', ],
-                'webcacheConf' =>  [ 'shape' => 'EnableConf', ],
-                'disableWaf' => [ 'type' => 'integer', 'locationName' => 'disableWaf', ],
-                'skipConf' =>  [ 'shape' => 'SkipConf', ],
-                'denyConf' =>  [ 'shape' => 'DenyConf', ],
-                'webUserdefConf' =>  [ 'shape' => 'WebUserdefConf', ],
-                'ratelimitConf' =>  [ 'shape' => 'RatelimitConf', ],
-                'userDefPageConf' =>  [ 'shape' => 'UserDefPageConf', ],
-                'filterHeaderConf' =>  [ 'shape' => 'FilterHeaderConf', ],
-                'filterSenseConf' =>  [ 'shape' => 'FilterSenseConf', ],
-                'intSemConf' =>  [ 'shape' => 'IntSemConf', ],
-                'uriRewriteConf' =>  [ 'shape' => 'UriRewriteConf', ],
-                'threatinfoConf' =>  [ 'shape' => 'EnableConf', ],
-                'proxycacheConf' =>  [ 'shape' => 'EnableConf', ],
-                'botConf' =>  [ 'shape' => 'EnableConf', ],
-                'riskConf' =>  [ 'shape' => 'RiskConf', ],
-            ],
-        ],
         'UserPolicyReq' => [
             'type' => 'structure',
             'members' => [
@@ -1131,6 +1213,7 @@ return [
                 'lbType' => [ 'type' => 'string', 'locationName' => 'lbType', ],
                 'rsConfig' =>  [ 'shape' => 'RsConfig', ],
                 'pureClient' => [ 'type' => 'integer', 'locationName' => 'pureClient', ],
+                'sslModify' => [ 'type' => 'integer', 'locationName' => 'sslModify', ],
                 'httpsRedirect' => [ 'type' => 'integer', 'locationName' => 'httpsRedirect', ],
                 'rsOnlySupportHttp' => [ 'type' => 'integer', 'locationName' => 'rsOnlySupportHttp', ],
                 'httpsCertUpdateStatus' => [ 'type' => 'integer', 'locationName' => 'httpsCertUpdateStatus', ],
@@ -1226,9 +1309,11 @@ return [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
-                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
+                'ruleType' => [ 'type' => 'integer', 'locationName' => 'ruleType', ],
                 'atCfg' =>  [ 'shape' => 'AtCfg', ],
                 'tag' => [ 'type' => 'string', 'locationName' => 'tag', ],
+                'skipRuleId' => [ 'type' => 'string', 'locationName' => 'skipRuleId', ],
             ],
         ],
         'SetWebcacheUrlReq' => [
@@ -1489,6 +1574,7 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'iswhite' => [ 'type' => 'integer', 'locationName' => 'iswhite', ],
+                'skipRuleId' => [ 'type' => 'string', 'locationName' => 'skipRuleId', ],
                 'cookies' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyValCfg', ], ],
             ],
         ],
@@ -1529,6 +1615,7 @@ return [
         'StatusListCfg' => [
             'type' => 'structure',
             'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'oriStatus' => [ 'type' => 'string', 'locationName' => 'oriStatus', ],
                 'setStatus' => [ 'type' => 'string', 'locationName' => 'setStatus', ],
@@ -1635,8 +1722,11 @@ return [
         'ConditionNameSet' => [
             'type' => 'structure',
             'members' => [
+                'conditionId' => [ 'type' => 'integer', 'locationName' => 'conditionId', ],
                 'conditionName' => [ 'type' => 'string', 'locationName' => 'conditionName', ],
+                'conditionType' => [ 'type' => 'string', 'locationName' => 'conditionType', ],
                 'opposite' => [ 'type' => 'string', 'locationName' => 'opposite', ],
+                'nand' => [ 'type' => 'string', 'locationName' => 'nand', ],
             ],
         ],
         'ListProxycacheUrl' => [
@@ -1694,6 +1784,7 @@ return [
                 'val' => [ 'type' => 'string', 'locationName' => 'val', ],
                 'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
                 'atCfg' =>  [ 'shape' => 'AtCfg', ],
+                'skipRuleId' => [ 'type' => 'string', 'locationName' => 'skipRuleId', ],
             ],
         ],
         'RiskRuleCfg' => [
@@ -1711,6 +1802,14 @@ return [
                 'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
                 'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
                 'redirection' => [ 'type' => 'string', 'locationName' => 'redirection', ],
+            ],
+        ],
+        'OwnerCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
+                'atCfg' =>  [ 'shape' => 'AtCfg', ],
             ],
         ],
         'EnableReq' => [
@@ -1731,6 +1830,18 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
         ],
+        'UrlListCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+                'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
+                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
+                'atCfg' =>  [ 'shape' => 'AtCfg', ],
+                'skipRuleId' => [ 'type' => 'string', 'locationName' => 'skipRuleId', ],
+            ],
+        ],
         'SetBotThreatIpRuleReq' => [
             'type' => 'structure',
             'members' => [
@@ -1747,6 +1858,8 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'iswhite' => [ 'type' => 'integer', 'locationName' => 'iswhite', ],
                 'isEnable' => [ 'type' => 'integer', 'locationName' => 'isEnable', ],
+                'ruleType' => [ 'type' => 'integer', 'locationName' => 'ruleType', ],
+                'skipRuleId' => [ 'type' => 'string', 'locationName' => 'skipRuleId', ],
                 'ips' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpCfg', ], ],
             ],
         ],
@@ -1852,7 +1965,18 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'iswhite' => [ 'type' => 'integer', 'locationName' => 'iswhite', ],
+                'skipRuleId' => [ 'type' => 'string', 'locationName' => 'skipRuleId', ],
                 'headers' => [ 'type' => 'list', 'member' => [ 'shape' => 'KeyValCfg', ], ],
+            ],
+        ],
+        'SetOwnerReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'iswhite' => [ 'type' => 'integer', 'locationName' => 'iswhite', ],
+                'skipRuleId' => [ 'type' => 'string', 'locationName' => 'skipRuleId', ],
+                'owners' => [ 'type' => 'list', 'member' => [ 'shape' => 'OwnerCfg', ], ],
             ],
         ],
         'SetFilterReqRespRulesReq' => [
@@ -1895,6 +2019,16 @@ return [
                 'sceneRef' => [ 'type' => 'string', 'locationName' => 'sceneRef', ],
                 'event' => [ 'type' => 'string', 'locationName' => 'event', ],
                 'redirection' => [ 'type' => 'string', 'locationName' => 'redirection', ],
+            ],
+        ],
+        'OwnerListCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+                'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
+                'atCfg' =>  [ 'shape' => 'AtCfg', ],
             ],
         ],
         'RiskJsCfg' => [
@@ -1943,6 +2077,7 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'iswhite' => [ 'type' => 'integer', 'locationName' => 'iswhite', ],
                 'listType' => [ 'type' => 'string', 'locationName' => 'listType', ],
+                'skipRuleId' => [ 'type' => 'string', 'locationName' => 'skipRuleId', ],
                 'listRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'ListRuleCfg', ], ],
             ],
         ],
@@ -2004,15 +2139,11 @@ return [
                 'blockTime' => [ 'type' => 'integer', 'locationName' => 'blockTime', ],
             ],
         ],
-        'ValListCfg' => [
+        'CommonIpsetReq' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
-                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
-                'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
-                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
-                'atCfg' =>  [ 'shape' => 'AtCfg', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
             ],
         ],
         'StatusCfg' => [
@@ -2041,6 +2172,7 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'iswhite' => [ 'type' => 'integer', 'locationName' => 'iswhite', ],
+                'skipRuleId' => [ 'type' => 'string', 'locationName' => 'skipRuleId', ],
                 'geos' => [ 'type' => 'list', 'member' => [ 'shape' => 'GeoCfg', ], ],
             ],
         ],
@@ -2062,6 +2194,7 @@ return [
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'val' => [ 'type' => 'string', 'locationName' => 'val', ],
                 'atCfg' =>  [ 'shape' => 'AtCfg', ],
+                'skipRuleId' => [ 'type' => 'string', 'locationName' => 'skipRuleId', ],
             ],
         ],
         'RiskVarCfg' => [
@@ -2235,6 +2368,15 @@ return [
                 'setVal' => [ 'type' => 'string', 'locationName' => 'setVal', ],
             ],
         ],
+        'GroupCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'field' => [ 'type' => 'string', 'locationName' => 'field', ],
+                'logic' => [ 'type' => 'integer', 'locationName' => 'logic', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'SetBotStdRuleReq' => [
             'type' => 'structure',
             'members' => [
@@ -2269,13 +2411,12 @@ return [
                 'uriRewriteEnable' => [ 'type' => 'string', 'locationName' => 'uriRewriteEnable', ],
             ],
         ],
-        'ValCfg' => [
+        'IpsetlistCfg' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
-                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
-                'atCfg' =>  [ 'shape' => 'AtCfg', ],
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'tag' => [ 'type' => 'string', 'locationName' => 'tag', ],
             ],
         ],
         'CacheItemCfg' => [
@@ -2291,6 +2432,22 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'ImportIpsetReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'ips' => [ 'type' => 'string', 'locationName' => 'ips', ],
+                'isUpdate' => [ 'type' => 'integer', 'locationName' => 'isUpdate', ],
+                'tag' => [ 'type' => 'string', 'locationName' => 'tag', ],
+            ],
+        ],
+        'ListIpsetReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
         'ListBotThreatIpRuleReq' => [
@@ -2316,6 +2473,18 @@ return [
                 'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
             ],
         ],
+        'GroupListCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'disable' => [ 'type' => 'integer', 'locationName' => 'disable', ],
+                'groupMatchItems' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupCfg', ], ],
+                'atCfg' =>  [ 'shape' => 'AtCfg', ],
+                'skipRuleId' => [ 'type' => 'string', 'locationName' => 'skipRuleId', ],
+            ],
+        ],
         'SetBotUsrRuleReq' => [
             'type' => 'structure',
             'members' => [
@@ -2336,6 +2505,18 @@ return [
                 'blockTime' => [ 'type' => 'integer', 'locationName' => 'blockTime', ],
             ],
         ],
+        'SetGroupReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
+                'iswhite' => [ 'type' => 'integer', 'locationName' => 'iswhite', ],
+                'skipRuleId' => [ 'type' => 'string', 'locationName' => 'skipRuleId', ],
+                'groupMatchItems' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupCfg', ], ],
+                'atCfg' =>  [ 'shape' => 'AtCfg', ],
+            ],
+        ],
         'MatchOpValCfg' => [
             'type' => 'structure',
             'members' => [
@@ -2349,6 +2530,25 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'status' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatusCfg', ], ],
+            ],
+        ],
+        'UriCfg' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'matchOp' => [ 'type' => 'integer', 'locationName' => 'matchOp', ],
+                'val' => [ 'type' => 'string', 'locationName' => 'val', ],
+                'atCfg' =>  [ 'shape' => 'AtCfg', ],
+            ],
+        ],
+        'ListWafRulesReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
         ],
         'SetIpbanReq' => [
@@ -2366,7 +2566,8 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'iswhite' => [ 'type' => 'integer', 'locationName' => 'iswhite', ],
-                'uris' => [ 'type' => 'list', 'member' => [ 'shape' => 'ValCfg', ], ],
+                'skipRuleId' => [ 'type' => 'string', 'locationName' => 'skipRuleId', ],
+                'uris' => [ 'type' => 'list', 'member' => [ 'shape' => 'UriCfg', ], ],
             ],
         ],
         'RewriteRuleCfg' => [
@@ -2458,10 +2659,25 @@ return [
                 'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
             ],
         ],
+        'ListSslConfigReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
         'SetWafInstanceIdRegionReq' => [
             'type' => 'structure',
             'members' => [
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+            ],
+        ],
+        'SetSslConfigReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'sslProtocols' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'suiteLevel' => [ 'type' => 'integer', 'locationName' => 'suiteLevel', ],
+                'userSuiteLevel' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'InstanceIdCfg' => [
@@ -2489,7 +2705,7 @@ return [
         'ContactGroup' => [
             'type' => 'structure',
             'members' => [
-                'contactId' => [ 'type' => 'integer', 'locationName' => 'contactId', ],
+                'contactId' => [ 'type' => 'string', 'locationName' => 'contactId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'selected' => [ 'type' => 'integer', 'locationName' => 'selected', ],
             ],
@@ -2504,6 +2720,18 @@ return [
                 'warnType' => [ 'type' => 'string', 'locationName' => 'warnType', ],
                 'unit' => [ 'type' => 'string', 'locationName' => 'unit', ],
                 'detectUnit' => [ 'type' => 'string', 'locationName' => 'detectUnit', ],
+                'detectSpan' => [ 'type' => 'integer', 'locationName' => 'detectSpan', ],
+                'detectThreshold' => [ 'type' => 'integer', 'locationName' => 'detectThreshold', ],
+                'detectItems' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'contactWays' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'contactorPersons' => [ 'type' => 'list', 'member' => [ 'shape' => 'ContactPerson', ], ],
+                'contactorGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'ContactGroup', ], ],
+                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
+                'glbDisable' => [ 'type' => 'integer', 'locationName' => 'glbDisable', ],
+                'usrDisable' => [ 'type' => 'integer', 'locationName' => 'usrDisable', ],
+                'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
+                'mode' => [ 'type' => 'integer', 'locationName' => 'mode', ],
+                'userPinScdn' => [ 'type' => 'string', 'locationName' => 'userPinScdn', ],
             ],
         ],
         'WarningCfg' => [
@@ -2525,12 +2753,14 @@ return [
                 'contactorPersons' => [ 'type' => 'list', 'member' => [ 'shape' => 'ContactPerson', ], ],
                 'contactorGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'ContactGroup', ], ],
                 'detectItems' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'mode' => [ 'type' => 'integer', 'locationName' => 'mode', ],
+                'userPinScdn' => [ 'type' => 'string', 'locationName' => 'userPinScdn', ],
             ],
         ],
         'Contactor' => [
             'type' => 'structure',
             'members' => [
-                'contactId' => [ 'type' => 'integer', 'locationName' => 'contactId', ],
+                'contactId' => [ 'type' => 'string', 'locationName' => 'contactId', ],
                 'selected' => [ 'type' => 'integer', 'locationName' => 'selected', ],
             ],
         ],
@@ -2568,7 +2798,7 @@ return [
         'ContactPerson' => [
             'type' => 'structure',
             'members' => [
-                'contactId' => [ 'type' => 'integer', 'locationName' => 'contactId', ],
+                'contactId' => [ 'type' => 'string', 'locationName' => 'contactId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'phoneNumber' => [ 'type' => 'string', 'locationName' => 'phoneNumber', ],
                 'email' => [ 'type' => 'string', 'locationName' => 'email', ],
@@ -2872,6 +3102,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ListMainCfgFactorResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListMainCfgFactorResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'ListMainCfgResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2880,6 +3117,12 @@ return [
                 'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'maxLimit' => [ 'type' => 'integer', 'locationName' => 'maxLimit', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'tldLimit' => [ 'type' => 'integer', 'locationName' => 'tldLimit', ],
+                'tldNum' => [ 'type' => 'integer', 'locationName' => 'tldNum', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'invalidRegion' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'invalidIpv6' => [ 'type' => 'integer', 'locationName' => 'invalidIpv6', ],
             ],
         ],
         'EnableCname2RsExternalResponseShape' => [
@@ -2892,6 +3135,22 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListMainCfgFactorResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainMainConfig', ], ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'maxLimit' => [ 'type' => 'integer', 'locationName' => 'maxLimit', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'tldLimit' => [ 'type' => 'integer', 'locationName' => 'tldLimit', ],
+                'tldNum' => [ 'type' => 'integer', 'locationName' => 'tldNum', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'invalidRegion' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'invalidIpv6' => [ 'type' => 'integer', 'locationName' => 'invalidIpv6', ],
             ],
         ],
         'DisableRulesResponseShape' => [
@@ -2962,6 +3221,11 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
+        'AddDomainScdnResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DisableRulesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2983,6 +3247,14 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
+        'AddDomainScdnRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'AddDomainScdn', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
         'GetDomainLbConfigResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2993,6 +3265,14 @@ return [
         'UpdateDomainResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'UpdateDomainScdnRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'AddDomainScdn', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
         'EnableCname2RsExternalRequestShape' => [
@@ -3008,6 +3288,7 @@ return [
             'members' => [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'disableWaf' => [ 'type' => 'integer', 'locationName' => 'disableWaf', ],
+                'enableJs' => [ 'type' => 'integer', 'locationName' => 'enableJs', ],
                 'aclConf' =>  [ 'shape' => 'AclConf', ],
                 'antispiderConf' =>  [ 'shape' => 'SpiderConf', ],
                 'ccConf' =>  [ 'shape' => 'CcConf', ],
@@ -3031,7 +3312,27 @@ return [
                 'botConf' =>  [ 'shape' => 'BotConf', ],
             ],
         ],
+        'AddDomainScdnResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListMainCfgFactorRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ListMainFactor', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
         'DeleteDomainResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateDomainScdnResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
@@ -3043,6 +3344,11 @@ return [
                 'req' =>  [ 'shape' => 'ListDomains', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'UpdateDomainScdnResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'ListDomainsResponseShape' => [
@@ -3134,6 +3440,14 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
+        'RefreshUrlCacheRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'CommonNameReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
         'ListWafRulesResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3150,6 +3464,12 @@ return [
         'DelWafRuleResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'RefreshUrlCacheResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'SetWafConditionResultShape' => [
@@ -3269,6 +3589,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'EnableJsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'AntiModeWafResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -3287,6 +3613,24 @@ return [
             'members' => [
             ],
         ],
+        'RefreshUrlCacheResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableJsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'EnableReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'EnableJsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DelWafConditionResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -3295,7 +3639,7 @@ return [
         'ListWafRulesRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'req' =>  [ 'shape' => 'ListRulesReq', ],
+                'req' =>  [ 'shape' => 'ListWafRulesReq', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
