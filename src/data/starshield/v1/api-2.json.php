@@ -1956,12 +1956,26 @@ return [
         'CertificatePack' => [
             'type' => 'structure',
             'members' => [
+                'certificate_authority' => [ 'type' => 'string', 'locationName' => 'certificate_authority', ],
+                'created_on' => [ 'type' => 'string', 'locationName' => 'created_on', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'ty_pe' => [ 'type' => 'string', 'locationName' => 'ty_pe', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'validation_method' => [ 'type' => 'string', 'locationName' => 'validation_method', ],
+                'validation_records' => [ 'type' => 'list', 'member' => [ 'shape' => 'Validation_record', ], ],
+                'validity_days' => [ 'type' => 'integer', 'locationName' => 'validity_days', ],
                 'hosts' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'certificates' => [ 'type' => 'list', 'member' => [ 'shape' => 'Certificate', ], ],
                 'primary_certificate' => [ 'type' => 'string', 'locationName' => 'primary_certificate', ],
+            ],
+        ],
+        'Validation_record' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'txt_name' => [ 'type' => 'string', 'locationName' => 'txt_name', ],
+                'txt_value' => [ 'type' => 'string', 'locationName' => 'txt_value', ],
             ],
         ],
         'Advanced' => [
@@ -3629,6 +3643,13 @@ return [
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
                 'editable' => [ 'type' => 'boolean', 'locationName' => 'editable', ],
                 'modified_on' => [ 'type' => 'string', 'locationName' => 'modified_on', ],
+            ],
+        ],
+        'ZoneConfItem' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'WebApplicationFirewall' => [
@@ -6597,7 +6618,7 @@ return [
         'EditZoneSettingsInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'Item', ], ],
+                'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'ZoneConfItem', ], ],
                 'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
             ],
         ],
