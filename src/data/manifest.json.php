@@ -349,6 +349,10 @@ return [
         'namespace' => 'Vm',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'fc' => [
+        'namespace' => 'Fc',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'dcap' => [
         'namespace' => 'Dcap',
         'versions' => [ 'latest' => 'v1', ],
