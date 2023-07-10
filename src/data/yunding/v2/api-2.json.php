@@ -1560,7 +1560,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'pin' => [ 'type' => 'integer', 'locationName' => 'pin', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
             ],
         ],
         'Quota' => [
