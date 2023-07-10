@@ -559,6 +559,13 @@ return [
                 'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
             ],
         ],
+        'Core' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'threads' => [ 'type' => 'list', 'member' => [ 'shape' => 'Thread', ], ],
+            ],
+        ],
         'LightCloudDiskInfo' => [
             'type' => 'structure',
             'members' => [
@@ -592,6 +599,20 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
+        'Socket' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'cores' => [ 'type' => 'list', 'member' => [ 'shape' => 'Core', ], ],
+            ],
+        ],
+        'Numa' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'cores' => [ 'type' => 'list', 'member' => [ 'shape' => 'Core', ], ],
+            ],
+        ],
         'BriefInstance' => [
             'type' => 'structure',
             'members' => [
@@ -615,6 +636,21 @@ return [
                 'chargeOnStopped' => [ 'type' => 'string', 'locationName' => 'chargeOnStopped', ],
                 'dedicatedPoolId' => [ 'type' => 'string', 'locationName' => 'dedicatedPoolId', ],
                 'dedicatedHostId' => [ 'type' => 'string', 'locationName' => 'dedicatedHostId', ],
+                'cpuTopology' =>  [ 'shape' => 'CpuTopology', ],
+            ],
+        ],
+        'Thread' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+            ],
+        ],
+        'CpuTopology' => [
+            'type' => 'structure',
+            'members' => [
+                'sockets' => [ 'type' => 'list', 'member' => [ 'shape' => 'Socket', ], ],
+                'numas' => [ 'type' => 'list', 'member' => [ 'shape' => 'Numa', ], ],
             ],
         ],
         'BurstInfo' => [
@@ -652,41 +688,6 @@ return [
             'members' => [
                 'destinationImageId' => [ 'type' => 'string', 'locationName' => 'destinationImageId', ],
                 'sourceImageId' => [ 'type' => 'string', 'locationName' => 'sourceImageId', ],
-            ],
-        ],
-        'Core' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'threads' => [ 'type' => 'list', 'member' => [ 'shape' => 'Thread', ], ],
-            ],
-        ],
-        'Socket' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'cores' => [ 'type' => 'list', 'member' => [ 'shape' => 'Core', ], ],
-            ],
-        ],
-        'Numa' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'cores' => [ 'type' => 'list', 'member' => [ 'shape' => 'Core', ], ],
-            ],
-        ],
-        'Thread' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'pin' => [ 'type' => 'integer', 'locationName' => 'pin', ],
-            ],
-        ],
-        'CpuTopology' => [
-            'type' => 'structure',
-            'members' => [
-                'sockets' => [ 'type' => 'list', 'member' => [ 'shape' => 'Socket', ], ],
-                'numas' => [ 'type' => 'list', 'member' => [ 'shape' => 'Numa', ], ],
             ],
         ],
         'CustomData' => [
@@ -1373,6 +1374,7 @@ return [
                 'chargeOnStopped' => [ 'type' => 'string', 'locationName' => 'chargeOnStopped', ],
                 'dedicatedPoolId' => [ 'type' => 'string', 'locationName' => 'dedicatedPoolId', ],
                 'dedicatedHostId' => [ 'type' => 'string', 'locationName' => 'dedicatedHostId', ],
+                'cpuTopology' =>  [ 'shape' => 'CpuTopology', ],
                 'hostIp' => [ 'type' => 'string', 'locationName' => 'hostIp', ],
                 'rack' => [ 'type' => 'string', 'locationName' => 'rack', ],
                 'tor' => [ 'type' => 'string', 'locationName' => 'tor', ],
@@ -1864,6 +1866,7 @@ return [
                 'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
                 'balance' => [ 'type' => 'boolean', 'locationName' => 'balance', ],
                 'clearLocalDisk' => [ 'type' => 'boolean', 'locationName' => 'clearLocalDisk', ],
+                'isManaged' => [ 'type' => 'boolean', 'locationName' => 'isManaged', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2121,6 +2124,7 @@ return [
                 'instanceSpec' =>  [ 'shape' => 'InstanceSpec', ],
                 'maxCount' => [ 'type' => 'integer', 'locationName' => 'maxCount', ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'isManaged' => [ 'type' => 'boolean', 'locationName' => 'isManaged', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
