@@ -56,6 +56,51 @@ return [
             'input' => [ 'shape' => 'DeleteContractRequestShape', ],
             'output' => [ 'shape' => 'DeleteContractResponseShape', ],
         ],
+        'DescribeContractList' => [
+            'name' => 'DescribeContractList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/smqContract:describeContractList',
+            ],
+            'input' => [ 'shape' => 'DescribeContractListRequestShape', ],
+            'output' => [ 'shape' => 'DescribeContractListResponseShape', ],
+        ],
+        'SignContract' => [
+            'name' => 'SignContract',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/smqContract:signContract',
+            ],
+            'input' => [ 'shape' => 'SignContractRequestShape', ],
+            'output' => [ 'shape' => 'SignContractResponseShape', ],
+        ],
+        'VerifyContract' => [
+            'name' => 'VerifyContract',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/smqContract/{contractId}:verifyContract',
+            ],
+            'input' => [ 'shape' => 'VerifyContractRequestShape', ],
+            'output' => [ 'shape' => 'VerifyContractResponseShape', ],
+        ],
+        'DownloadContracts' => [
+            'name' => 'DownloadContracts',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/smqContract/{contractId}:downloadContracts',
+            ],
+            'input' => [ 'shape' => 'DownloadContractsRequestShape', ],
+            'output' => [ 'shape' => 'DownloadContractsResponseShape', ],
+        ],
+        'DeleteContract' => [
+            'name' => 'DeleteContract',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/smqContract/{contractId}:deleteContract',
+            ],
+            'input' => [ 'shape' => 'DeleteContractRequestShape', ],
+            'output' => [ 'shape' => 'DeleteContractResponseShape', ],
+        ],
         'SaveEvidence' => [
             'name' => 'SaveEvidence',
             'http' => [
@@ -92,6 +137,15 @@ return [
             'input' => [ 'shape' => 'GetMultiEvidenceRequestShape', ],
             'output' => [ 'shape' => 'GetMultiEvidenceResponseShape', ],
         ],
+        'GetSaveReport' => [
+            'name' => 'GetSaveReport',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/evidence:evidenceGetSaveReport',
+            ],
+            'input' => [ 'shape' => 'GetSaveReportRequestShape', ],
+            'output' => [ 'shape' => 'GetSaveReportResponseShape', ],
+        ],
         'DescribeApplyStatus' => [
             'name' => 'DescribeApplyStatus',
             'http' => [
@@ -127,6 +181,105 @@ return [
             ],
             'input' => [ 'shape' => 'SetKmsKeyIdRequestShape', ],
             'output' => [ 'shape' => 'SetKmsKeyIdResponseShape', ],
+        ],
+        'DescribeStampList' => [
+            'name' => 'DescribeStampList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/smqStamp:describeStampList',
+            ],
+            'input' => [ 'shape' => 'DescribeStampListRequestShape', ],
+            'output' => [ 'shape' => 'DescribeStampListResponseShape', ],
+        ],
+        'UploadStamp' => [
+            'name' => 'UploadStamp',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/smqStamp:uploadStamp',
+            ],
+            'input' => [ 'shape' => 'UploadStampRequestShape', ],
+            'output' => [ 'shape' => 'UploadStampResponseShape', ],
+        ],
+        'DownloadStamps' => [
+            'name' => 'DownloadStamps',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/smqStamp/{stampId}:downloadStamps',
+            ],
+            'input' => [ 'shape' => 'DownloadStampsRequestShape', ],
+            'output' => [ 'shape' => 'DownloadStampsResponseShape', ],
+        ],
+        'DeleteStamp' => [
+            'name' => 'DeleteStamp',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/smqStamp/{stampId}:deleteStamp',
+            ],
+            'input' => [ 'shape' => 'DeleteStampRequestShape', ],
+            'output' => [ 'shape' => 'DeleteStampResponseShape', ],
+        ],
+        'EditStamp' => [
+            'name' => 'EditStamp',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/smqStamp:editStamp',
+            ],
+            'input' => [ 'shape' => 'EditStampRequestShape', ],
+            'output' => [ 'shape' => 'EditStampResponseShape', ],
+        ],
+        'DescribeStampHistoryList' => [
+            'name' => 'DescribeStampHistoryList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/smqStamphistory:describeStampHistoryList',
+            ],
+            'input' => [ 'shape' => 'DescribeStampHistoryListRequestShape', ],
+            'output' => [ 'shape' => 'DescribeStampHistoryListResponseShape', ],
+        ],
+        'DescribeTemplateList' => [
+            'name' => 'DescribeTemplateList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/smqTmplate:describeTemplateList',
+            ],
+            'input' => [ 'shape' => 'DescribeTemplateListRequestShape', ],
+            'output' => [ 'shape' => 'DescribeTemplateListResponseShape', ],
+        ],
+        'UploadTemplate' => [
+            'name' => 'UploadTemplate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/smqTmplate:uploadTemplate',
+            ],
+            'input' => [ 'shape' => 'UploadTemplateRequestShape', ],
+            'output' => [ 'shape' => 'UploadTemplateResponseShape', ],
+        ],
+        'DownloadTemplates' => [
+            'name' => 'DownloadTemplates',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/smqTmplate/{templateId}:downloadTemplates',
+            ],
+            'input' => [ 'shape' => 'DownloadTemplatesRequestShape', ],
+            'output' => [ 'shape' => 'DownloadTemplatesResponseShape', ],
+        ],
+        'DeleteTemplate' => [
+            'name' => 'DeleteTemplate',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/smqTmplate/{templateId}:deleteTemplate',
+            ],
+            'input' => [ 'shape' => 'DeleteTemplateRequestShape', ],
+            'output' => [ 'shape' => 'DeleteTemplateResponseShape', ],
+        ],
+        'PaddingTemplate' => [
+            'name' => 'PaddingTemplate',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/smqTmplate/{templateId}:paddingTemplate',
+            ],
+            'input' => [ 'shape' => 'PaddingTemplateRequestShape', ],
+            'output' => [ 'shape' => 'PaddingTemplateResponseShape', ],
         ],
         'DescribeStampList' => [
             'name' => 'DescribeStampList',
@@ -211,6 +364,64 @@ return [
         ],
     ],
     'shapes' => [
+        'PageAgentSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'agentName' => [ 'type' => 'string', 'locationName' => 'agentName', ],
+                'agentPhone' => [ 'type' => 'string', 'locationName' => 'agentPhone', ],
+                'agentIdCardNum' => [ 'type' => 'string', 'locationName' => 'agentIdCardNum', ],
+            ],
+        ],
+        'DetailAgentInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'agentId' => [ 'type' => 'string', 'locationName' => 'agentId', ],
+                'agentName' => [ 'type' => 'string', 'locationName' => 'agentName', ],
+                'agentPhone' => [ 'type' => 'string', 'locationName' => 'agentPhone', ],
+                'agentIdCardNum' => [ 'type' => 'string', 'locationName' => 'agentIdCardNum', ],
+                'agentFileName' => [ 'type' => 'string', 'locationName' => 'agentFileName', ],
+                'agentAuthFile' => [ 'type' => 'string', 'locationName' => 'agentAuthFile', ],
+            ],
+        ],
+        'AgentSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'agentName' => [ 'type' => 'string', 'locationName' => 'agentName', ],
+                'agentIdcardNum' => [ 'type' => 'string', 'locationName' => 'agentIdcardNum', ],
+                'agentPhone' => [ 'type' => 'string', 'locationName' => 'agentPhone', ],
+                'agentAuthFile' => [ 'type' => 'string', 'locationName' => 'agentAuthFile', ],
+                'agentFileName' => [ 'type' => 'string', 'locationName' => 'agentFileName', ],
+                'note' => [ 'type' => 'string', 'locationName' => 'note', ],
+            ],
+        ],
+        'EditAgentSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'agentId' => [ 'type' => 'string', 'locationName' => 'agentId', ],
+                'agentAuthFile' => [ 'type' => 'string', 'locationName' => 'agentAuthFile', ],
+            ],
+        ],
+        'AgentInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'agentName' => [ 'type' => 'string', 'locationName' => 'agentName', ],
+                'agentPhone' => [ 'type' => 'string', 'locationName' => 'agentPhone', ],
+                'agentIdCardNum' => [ 'type' => 'string', 'locationName' => 'agentIdCardNum', ],
+                'agentFileName' => [ 'type' => 'string', 'locationName' => 'agentFileName', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'note' => [ 'type' => 'string', 'locationName' => 'note', ],
+            ],
+        ],
+        'PageAgentResp' => [
+            'type' => 'structure',
+            'members' => [
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgentInfo', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
         'ContractInfo' => [
             'type' => 'structure',
             'members' => [
@@ -220,6 +431,7 @@ return [
                 'contractContent' => [ 'type' => 'string', 'locationName' => 'contractContent', ],
                 'contractDigest' => [ 'type' => 'string', 'locationName' => 'contractDigest', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'businessId' => [ 'type' => 'string', 'locationName' => 'businessId', ],
             ],
         ],
         'ContractSpec' => [
@@ -233,6 +445,10 @@ return [
                 'contractTitle' => [ 'type' => 'string', 'locationName' => 'contractTitle', ],
                 'caType' => [ 'type' => 'string', 'locationName' => 'caType', ],
                 'stampStyle' => [ 'type' => 'string', 'locationName' => 'stampStyle', ],
+                'certExpire' => [ 'type' => 'integer', 'locationName' => 'certExpire', ],
+                'businessId' => [ 'type' => 'string', 'locationName' => 'businessId', ],
+                'needStorage' => [ 'type' => 'boolean', 'locationName' => 'needStorage', ],
+                'needContract' => [ 'type' => 'boolean', 'locationName' => 'needContract', ],
             ],
         ],
         'VerifyInfo' => [
@@ -270,6 +486,9 @@ return [
                 'transactorMobile' => [ 'type' => 'string', 'locationName' => 'transactorMobile', ],
                 'identifyType' => [ 'type' => 'string', 'locationName' => 'identifyType', ],
                 'identifyValue' => [ 'type' => 'string', 'locationName' => 'identifyValue', ],
+                'stampStyle' => [ 'type' => 'string', 'locationName' => 'stampStyle', ],
+                'certExpire' => [ 'type' => 'integer', 'locationName' => 'certExpire', ],
+                'pageRange' => [ 'type' => 'string', 'locationName' => 'pageRange', ],
             ],
         ],
         'ContractVerifySpec' => [
@@ -303,6 +522,167 @@ return [
                 'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
                 'identifyType' => [ 'type' => 'string', 'locationName' => 'identifyType', ],
                 'identifyValue' => [ 'type' => 'string', 'locationName' => 'identifyValue', ],
+                'stampStyle' => [ 'type' => 'string', 'locationName' => 'stampStyle', ],
+                'certExpire' => [ 'type' => 'integer', 'locationName' => 'certExpire', ],
+                'pageRange' => [ 'type' => 'string', 'locationName' => 'pageRange', ],
+            ],
+        ],
+        'SignUserContractStatus' => [
+            'type' => 'structure',
+            'members' => [
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'statusDescription' => [ 'type' => 'string', 'locationName' => 'statusDescription', ],
+            ],
+        ],
+        'DownloadContractInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'contractId' => [ 'type' => 'string', 'locationName' => 'contractId', ],
+                'contractName' => [ 'type' => 'string', 'locationName' => 'contractName', ],
+                'contractContent' => [ 'type' => 'string', 'locationName' => 'contractContent', ],
+                'contractDigest' => [ 'type' => 'string', 'locationName' => 'contractDigest', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'PdfViewInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'pdfBase64' => [ 'type' => 'string', 'locationName' => 'pdfBase64', ],
+                'numberOfPages' => [ 'type' => 'integer', 'locationName' => 'numberOfPages', ],
+                'pageInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'PdfPageInfo', ], ],
+            ],
+        ],
+        'SignatureInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'page' => [ 'type' => 'integer', 'locationName' => 'page', ],
+                'positionX' => [ 'type' => 'integer', 'locationName' => 'positionX', ],
+                'positionY' => [ 'type' => 'integer', 'locationName' => 'positionY', ],
+                'stampId' => [ 'type' => 'string', 'locationName' => 'stampId', ],
+            ],
+        ],
+        'ReadySignContractResp' => [
+            'type' => 'structure',
+            'members' => [
+                'pageInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'PdfPageInfo', ], ],
+                'signStamps' => [ 'type' => 'list', 'member' => [ 'shape' => 'SignStampInfo', ], ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
+                'senderName' => [ 'type' => 'string', 'locationName' => 'senderName', ],
+                'signingName' => [ 'type' => 'string', 'locationName' => 'signingName', ],
+                'signPositionType' => [ 'type' => 'integer', 'locationName' => 'signPositionType', ],
+            ],
+        ],
+        'PageSignContractInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'contractId' => [ 'type' => 'string', 'locationName' => 'contractId', ],
+                'contractRecordId' => [ 'type' => 'string', 'locationName' => 'contractRecordId', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'fileSize' => [ 'type' => 'string', 'locationName' => 'fileSize', ],
+                'contractNo' => [ 'type' => 'string', 'locationName' => 'contractNo', ],
+                'contractNoSub' => [ 'type' => 'string', 'locationName' => 'contractNoSub', ],
+                'orderSign' => [ 'type' => 'integer', 'locationName' => 'orderSign', ],
+                'orderSignDescription' => [ 'type' => 'string', 'locationName' => 'orderSignDescription', ],
+                'note' => [ 'type' => 'string', 'locationName' => 'note', ],
+                'senderName' => [ 'type' => 'string', 'locationName' => 'senderName', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'statusDescription' => [ 'type' => 'string', 'locationName' => 'statusDescription', ],
+                'signUserList' => [ 'type' => 'list', 'member' => [ 'shape' => 'SignUserContractStatus', ], ],
+                'rejectUserId' => [ 'type' => 'string', 'locationName' => 'rejectUserId', ],
+                'rejectUserName' => [ 'type' => 'string', 'locationName' => 'rejectUserName', ],
+                'signPositionType' => [ 'type' => 'integer', 'locationName' => 'signPositionType', ],
+                'signPositionTypeDescription' => [ 'type' => 'string', 'locationName' => 'signPositionTypeDescription', ],
+            ],
+        ],
+        'CreateContractSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'users' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserInfo', ], ],
+                'signPositionType' => [ 'type' => 'integer', 'locationName' => 'signPositionType', ],
+                'orderSign' => [ 'type' => 'integer', 'locationName' => 'orderSign', ],
+                'contractBase64' => [ 'type' => 'string', 'locationName' => 'contractBase64', ],
+                'contractNo' => [ 'type' => 'string', 'locationName' => 'contractNo', ],
+                'contractNoSub' => [ 'type' => 'string', 'locationName' => 'contractNoSub', ],
+                'note' => [ 'type' => 'string', 'locationName' => 'note', ],
+                'ownerCloudUserId' => [ 'type' => 'string', 'locationName' => 'ownerCloudUserId', ],
+            ],
+        ],
+        'DownloadContractResp' => [
+            'type' => 'structure',
+            'members' => [
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'contractList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DownloadContractInfo', ], ],
+            ],
+        ],
+        'PdfPageInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'page' => [ 'type' => 'integer', 'locationName' => 'page', ],
+                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
+                'imgBase64' => [ 'type' => 'string', 'locationName' => 'imgBase64', ],
+            ],
+        ],
+        'HistoryContractInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'statusDescription' => [ 'type' => 'string', 'locationName' => 'statusDescription', ],
+                'contractId' => [ 'type' => 'string', 'locationName' => 'contractId', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'PreviewAndHistoryResp' => [
+            'type' => 'structure',
+            'members' => [
+                'historyInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'HistoryContractInfo', ], ],
+                'names' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'pdfViewInfo' =>  [ 'shape' => 'PdfViewInfo', ],
+            ],
+        ],
+        'UserInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
+                'idCardNum' => [ 'type' => 'string', 'locationName' => 'idCardNum', ],
+                'signOrder' => [ 'type' => 'integer', 'locationName' => 'signOrder', ],
+                'userType' => [ 'type' => 'integer', 'locationName' => 'userType', ],
+                'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
+            ],
+        ],
+        'SignContractSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'contractRecordId' => [ 'type' => 'string', 'locationName' => 'contractRecordId', ],
+                'smsCode' => [ 'type' => 'string', 'locationName' => 'smsCode', ],
+                'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
+                'stampId' => [ 'type' => 'string', 'locationName' => 'stampId', ],
+                'signatures' => [ 'type' => 'list', 'member' => [ 'shape' => 'SignatureInfo', ], ],
+            ],
+        ],
+        'SignStampInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'stampId' => [ 'type' => 'string', 'locationName' => 'stampId', ],
+                'stampName' => [ 'type' => 'string', 'locationName' => 'stampName', ],
+                'stampUrl' => [ 'type' => 'string', 'locationName' => 'stampUrl', ],
+            ],
+        ],
+        'PageContractResp' => [
+            'type' => 'structure',
+            'members' => [
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'PageSignContractInfo', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
         ],
         'CountByPeriodResp' => [
@@ -405,6 +785,12 @@ return [
                 'evidenceFileList' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
             ],
         ],
+        'SmsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'contractRecordId' => [ 'type' => 'string', 'locationName' => 'contractRecordId', ],
+            ],
+        ],
         'StampInfo' => [
             'type' => 'structure',
             'members' => [
@@ -413,6 +799,26 @@ return [
                 'stampContent' => [ 'type' => 'string', 'locationName' => 'stampContent', ],
                 'stampDigest' => [ 'type' => 'string', 'locationName' => 'stampDigest', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'stampUrl' => [ 'type' => 'string', 'locationName' => 'stampUrl', ],
+                'stampAttributes' => [ 'type' => 'string', 'locationName' => 'stampAttributes', ],
+            ],
+        ],
+        'StampHistoryInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'createdBy' => [ 'type' => 'string', 'locationName' => 'createdBy', ],
+                'operatorPhone' => [ 'type' => 'string', 'locationName' => 'operatorPhone', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'operatorType' => [ 'type' => 'string', 'locationName' => 'operatorType', ],
+                'note' => [ 'type' => 'string', 'locationName' => 'note', ],
+            ],
+        ],
+        'EidtStampSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'stampId' => [ 'type' => 'string', 'locationName' => 'stampId', ],
+                'stampName' => [ 'type' => 'string', 'locationName' => 'stampName', ],
             ],
         ],
         'StampSpec' => [
@@ -420,6 +826,16 @@ return [
             'members' => [
                 'stampContent' => [ 'type' => 'string', 'locationName' => 'stampContent', ],
                 'stampName' => [ 'type' => 'string', 'locationName' => 'stampName', ],
+                'note' => [ 'type' => 'string', 'locationName' => 'note', ],
+            ],
+        ],
+        'PageStampHistoryResp' => [
+            'type' => 'structure',
+            'members' => [
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'StampHistoryInfo', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
         ],
         'SignItem' => [
@@ -476,7 +892,44 @@ return [
                 'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
                 'templateTitle' => [ 'type' => 'string', 'locationName' => 'templateTitle', ],
                 'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
+                'note' => [ 'type' => 'string', 'locationName' => 'note', ],
                 'holdingKeys' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UserCenterInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'idCardNum' => [ 'type' => 'string', 'locationName' => 'idCardNum', ],
+                'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
+            ],
+        ],
+        'UserCenterSmsCodeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
+            ],
+        ],
+        'UserCenterInfoSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'smsCode' => [ 'type' => 'string', 'locationName' => 'smsCode', ],
+                'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
+            ],
+        ],
+        'AuthorizedUserInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'cloudUserId' => [ 'type' => 'string', 'locationName' => 'cloudUserId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'CreateOrderInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'pageSignBuyId' => [ 'type' => 'string', 'locationName' => 'pageSignBuyId', ],
+                'apiSignBuyId' => [ 'type' => 'string', 'locationName' => 'apiSignBuyId', ],
+                'storageBuyId' => [ 'type' => 'string', 'locationName' => 'storageBuyId', ],
             ],
         ],
         'DeleteContractResponseShape' => [
@@ -614,6 +1067,13 @@ return [
                 'result' =>  [ 'shape' => 'SaveMultiEvidenceResultShape', ],
             ],
         ],
+        'GetSaveReportRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'businessId' => [ 'type' => 'string', 'locationName' => 'businessId', ],
+                'chainCode' => [ 'type' => 'string', 'locationName' => 'chainCode', ],
+            ],
+        ],
         'SaveEvidenceRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -649,6 +1109,22 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'GetEvidenceResultShape', ],
+            ],
+        ],
+        'GetSaveReportResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetSaveReportResultShape', ],
+            ],
+        ],
+        'GetSaveReportResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'data' => [ 'type' => 'object', 'locationName' => 'data', ],
             ],
         ],
         'SaveMultiEvidenceRequestShape' => [
@@ -769,7 +1245,7 @@ return [
         'DownloadStampsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'stampInfo' =>  [ 'shape' => 'StampInfo', ],
+                'stampList' => [ 'type' => 'list', 'member' => [ 'shape' => 'StampInfo', ], ],
             ],
         ],
         'DownloadStampsResponseShape' => [
@@ -783,6 +1259,44 @@ return [
             'type' => 'structure',
             'members' => [
                 'stampSpec' =>  [ 'shape' => 'StampSpec', ],
+            ],
+        ],
+        'DescribeStampHistoryListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'stampId' => [ 'type' => 'string', 'locationName' => 'stampId', ],
+            ],
+        ],
+        'DescribeStampHistoryListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeStampHistoryListResultShape', ],
+            ],
+        ],
+        'DescribeStampHistoryListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'data' =>  [ 'shape' => 'PageStampHistoryResp', ],
+            ],
+        ],
+        'EditStampRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'stampId' => [ 'type' => 'string', 'locationName' => 'stampId', ],
+                'stampName' => [ 'type' => 'string', 'locationName' => 'stampName', ],
+            ],
+        ],
+        'EditStampResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'EditStampResultShape', ],
             ],
         ],
         'DeleteStampResultShape' => [
@@ -812,8 +1326,8 @@ return [
         'DescribeStampListResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeStampListResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeStampListResultShape', ],
             ],
         ],
         'DescribeStampListRequestShape' => [
@@ -822,6 +1336,14 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'stampName' => [ 'type' => 'string', 'locationName' => 'stampName', ],
+            ],
+        ],
+        'EditStampResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
             ],
         ],
         'UploadStampResultShape' => [
@@ -835,6 +1357,8 @@ return [
             'members' => [
                 'stampList' => [ 'type' => 'list', 'member' => [ 'shape' => 'StampInfo', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
         ],
         'DeleteStampResponseShape' => [
@@ -886,7 +1410,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DownloadTemplatesResultShape', ], ],
+                'result' =>  [ 'shape' => 'DownloadTemplatesResultShape', ],
             ],
         ],
         'PaddingTemplateResponseShape' => [
@@ -907,11 +1431,14 @@ return [
             'members' => [
                 'templateList' => [ 'type' => 'list', 'member' => [ 'shape' => 'TemplateInfo', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
         ],
         'DownloadTemplatesResultShape' => [
             'type' => 'structure',
             'members' => [
+                'templateList' => [ 'type' => 'list', 'member' => [ 'shape' => 'TemplateInfo', ], ],
             ],
         ],
         'DeleteTemplateRequestShape' => [
@@ -929,8 +1456,8 @@ return [
         'DescribeTemplateListResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeTemplateListResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeTemplateListResultShape', ],
             ],
         ],
         'UploadTemplateResponseShape' => [
