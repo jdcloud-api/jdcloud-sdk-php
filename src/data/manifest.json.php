@@ -413,6 +413,10 @@ return [
         'namespace' => 'Jdworkspace',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'dts' => [
+        'namespace' => 'Dts',
+        'versions' => [ 'latest' => 'v2', ],
+    ],
     'vpc' => [
         'namespace' => 'Vpc',
         'versions' => [ 'latest' => 'v1', ],
