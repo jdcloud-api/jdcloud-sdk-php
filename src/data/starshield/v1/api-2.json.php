@@ -2601,6 +2601,17 @@ return [
                 'builtInPredefinedRule' => [ 'type' => 'boolean', 'locationName' => 'builtInPredefinedRule', ],
                 'firewallRuleNum' => [ 'type' => 'integer', 'locationName' => 'firewallRuleNum', ],
                 'firewalRegularRule' => [ 'type' => 'boolean', 'locationName' => 'firewalRegularRule', ],
+                'availableDnsRecordNum' => [ 'type' => 'integer', 'locationName' => 'availableDnsRecordNum', ],
+                'zoneAccessType' => [ 'type' => 'string', 'locationName' => 'zoneAccessType', ],
+                'rateLimit' => [ 'type' => 'integer', 'locationName' => 'rateLimit', ],
+                'logPush' => [ 'type' => 'boolean', 'locationName' => 'logPush', ],
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'appAttackProtection' => [ 'type' => 'boolean', 'locationName' => 'appAttackProtection', ],
+                'ccAttackStandardProtection' => [ 'type' => 'boolean', 'locationName' => 'ccAttackStandardProtection', ],
+                'ccAttackAdvancedProtection' => [ 'type' => 'boolean', 'locationName' => 'ccAttackAdvancedProtection', ],
+                'technicalSupport' => [ 'type' => 'string', 'locationName' => 'technicalSupport', ],
+                'zoneExtPack' => [ 'type' => 'boolean', 'locationName' => 'zoneExtPack', ],
+                'websocket' => [ 'type' => 'boolean', 'locationName' => 'websocket', ],
             ],
         ],
         'DescribeInstancesRes' => [
@@ -2650,6 +2661,8 @@ return [
                 'id' => [ 'type' => 'double', 'locationName' => 'id', ],
                 'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
                 'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'datasetType' => [ 'type' => 'integer', 'locationName' => 'datasetType', ],
+                'event' => [ 'type' => 'integer', 'locationName' => 'event', ],
                 'intervalType' => [ 'type' => 'integer', 'locationName' => 'intervalType', ],
                 'logType' => [ 'type' => 'integer', 'locationName' => 'logType', ],
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
@@ -4294,6 +4307,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'AvailablePageRule', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
         'DeleteAdvancedCertificateManagerCertificatePackResponseShape' => [
@@ -4314,6 +4330,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CertificatePack', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
         'OrderAdvancedCertificateManagerCertificatePackResponseShape' => [
@@ -4327,6 +4346,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'page' => [ 'type' => 'double', 'locationName' => 'page', ],
+                'per_page' => [ 'type' => 'double', 'locationName' => 'per_page', ],
                 'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
             ],
         ],
@@ -4391,6 +4412,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CustomPage', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
         'UpdateCustomPageURLRequestShape' => [
@@ -4567,6 +4591,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DnsRecord', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
         'CreateDNSRecordResultShape' => [
@@ -4719,6 +4746,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'FirewallRule', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
         'CreateFirewallRulesRequestShape' => [
@@ -4763,6 +4793,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'FirewallRule', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
         'UpdateIndividualFirewallRuleResultShape' => [
@@ -5624,6 +5657,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'PageRule', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
         'CreatePageRuleResultShape' => [
