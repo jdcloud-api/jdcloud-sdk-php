@@ -389,6 +389,10 @@ return [
         'namespace' => 'Ossopenapi',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'bgw' => [
+        'namespace' => 'Bgw',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'cloudsign' => [
         'namespace' => 'Cloudsign',
         'versions' => [ 'latest' => 'v1', ],
