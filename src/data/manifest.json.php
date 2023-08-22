@@ -21,6 +21,10 @@ return [
         'namespace' => 'Streamcomputer',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'flowlog' => [
+        'namespace' => 'Flowlog',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'ssl' => [
         'namespace' => 'Ssl',
         'versions' => [ 'latest' => 'v1', ],
