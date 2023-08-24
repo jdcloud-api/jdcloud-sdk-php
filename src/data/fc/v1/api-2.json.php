@@ -29,15 +29,6 @@ return [
             'input' => [ 'shape' => 'CreateFunctionRequestShape', ],
             'output' => [ 'shape' => 'CreateFunctionResponseShape', ],
         ],
-        'CheckFunction' => [
-            'name' => 'CheckFunction',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/services/{serviceName}/functions/{functionName}:check',
-            ],
-            'input' => [ 'shape' => 'CheckFunctionRequestShape', ],
-            'output' => [ 'shape' => 'CheckFunctionResponseShape', ],
-        ],
         'DescribeFunction' => [
             'name' => 'DescribeFunction',
             'http' => [
@@ -92,33 +83,6 @@ return [
             'input' => [ 'shape' => 'InvokeFunctionRequestShape', ],
             'output' => [ 'shape' => 'InvokeFunctionResponseShape', ],
         ],
-        'DescribeAllFunctions' => [
-            'name' => 'DescribeAllFunctions',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/functions',
-            ],
-            'input' => [ 'shape' => 'DescribeAllFunctionsRequestShape', ],
-            'output' => [ 'shape' => 'DescribeAllFunctionsResponseShape', ],
-        ],
-        'InternalCreateFunction' => [
-            'name' => 'InternalCreateFunction',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/services/{serviceName}/functions:internal',
-            ],
-            'input' => [ 'shape' => 'InternalCreateFunctionRequestShape', ],
-            'output' => [ 'shape' => 'InternalCreateFunctionResponseShape', ],
-        ],
-        'InternalUpdateFunction' => [
-            'name' => 'InternalUpdateFunction',
-            'http' => [
-                'method' => 'PATCH',
-                'requestUri' => '/v1/regions/{regionId}/services/{serviceName}/functions/{functionName}:internal',
-            ],
-            'input' => [ 'shape' => 'InternalUpdateFunctionRequestShape', ],
-            'output' => [ 'shape' => 'InternalUpdateFunctionResponseShape', ],
-        ],
         'DescribeInstanceTypes' => [
             'name' => 'DescribeInstanceTypes',
             'http' => [
@@ -145,15 +109,6 @@ return [
             ],
             'input' => [ 'shape' => 'CreateServiceRequestShape', ],
             'output' => [ 'shape' => 'CreateServiceResponseShape', ],
-        ],
-        'CheckService' => [
-            'name' => 'CheckService',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/services/{serviceName}:check',
-            ],
-            'input' => [ 'shape' => 'CheckServiceRequestShape', ],
-            'output' => [ 'shape' => 'CheckServiceResponseShape', ],
         ],
         'DescribeService' => [
             'name' => 'DescribeService',
@@ -379,15 +334,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeAllFunctionsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'Filter' => [
             'type' => 'structure',
             'members' => [
@@ -406,13 +352,6 @@ return [
                 'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
             ],
         ],
-        'CheckFunctionResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
-            ],
-        ],
         'CreateFunctionRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -429,28 +368,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CheckFunctionRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
-                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
-            ],
-        ],
-        'CheckFunctionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CheckFunctionResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeAllFunctionsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeAllFunctionsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'CreateFunctionResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -458,16 +375,10 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeAllFunctionsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'functions' => [ 'type' => 'list', 'member' => [ 'shape' => 'Function', ], ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
-            ],
-        ],
         'DeleteFunctionRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'deleteTrigger' => [ 'type' => 'boolean', 'locationName' => 'deleteTrigger', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
                 'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
@@ -524,13 +435,6 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'InternalCreateFunctionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'InternalCreateFunctionResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'UpdateFunctionRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -576,36 +480,10 @@ return [
                 'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
             ],
         ],
-        'InternalUpdateFunctionRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' =>  [ 'shape' => 'InternalCode', ],
-                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
-                'runtime' => [ 'type' => 'string', 'locationName' => 'runtime', ],
-                'handler' => [ 'type' => 'string', 'locationName' => 'handler', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'envs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Environment', ], ],
-                'cpu' => [ 'type' => 'double', 'locationName' => 'cpu', ],
-                'memorySize' => [ 'type' => 'integer', 'locationName' => 'memorySize', ],
-                'diskSize' => [ 'type' => 'integer', 'locationName' => 'diskSize', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
-                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
-            ],
-        ],
         'UpdateFunctionResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'InternalCreateFunctionRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'functionSpec' =>  [ 'shape' => 'InternalFunctionSpec', ],
-                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
             ],
         ],
         'DescribeFunctionCodeResultShape' => [
@@ -628,28 +506,11 @@ return [
                 'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
             ],
         ],
-        'InternalCreateFunctionResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'functionName' => [ 'type' => 'string', 'locationName' => 'functionName', ],
-            ],
-        ],
         'DescribeFunctionResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeFunctionResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'InternalUpdateFunctionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'InternalUpdateFunctionResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'DescribeInstanceTypesResponseShape' => [
@@ -696,13 +557,6 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'CheckServiceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
-                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
-            ],
-        ],
         'UpdateServiceResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -728,13 +582,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CheckServiceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
-            ],
-        ],
         'DescribeServiceRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -745,13 +592,6 @@ return [
         'DeleteServiceResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'CheckServiceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CheckServiceResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DeleteServiceResponseShape' => [
