@@ -425,6 +425,10 @@ return [
         'namespace' => 'Dts',
         'versions' => [ 'latest' => 'v2', ],
     ],
+    'assistant' => [
+        'namespace' => 'Assistant',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'vpc' => [
         'namespace' => 'Vpc',
         'versions' => [ 'latest' => 'v1', ],
