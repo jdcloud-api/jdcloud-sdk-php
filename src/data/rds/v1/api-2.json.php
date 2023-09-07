@@ -317,6 +317,15 @@ return [
             'input' => [ 'shape' => 'ClearBinlogsRequestShape', ],
             'output' => [ 'shape' => 'ClearBinlogsResponseShape', ],
         ],
+        'DescribeBinlogDownloadInternalURL' => [
+            'name' => 'DescribeBinlogDownloadInternalURL',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/binlogs/{binlogBackupId}:describeBinlogDownloadInternalURL',
+            ],
+            'input' => [ 'shape' => 'DescribeBinlogDownloadInternalURLRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBinlogDownloadInternalURLResponseShape', ],
+        ],
         'AlterTableWithOnlineDDL' => [
             'name' => 'AlterTableWithOnlineDDL',
             'http' => [
@@ -1073,6 +1082,15 @@ return [
             'input' => [ 'shape' => 'DescribeWhiteListRequestShape', ],
             'output' => [ 'shape' => 'DescribeWhiteListResponseShape', ],
         ],
+        'CreateWhiteListGroup' => [
+            'name' => 'CreateWhiteListGroup',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/whiteList',
+            ],
+            'input' => [ 'shape' => 'CreateWhiteListGroupRequestShape', ],
+            'output' => [ 'shape' => 'CreateWhiteListGroupResponseShape', ],
+        ],
         'ModifyWhiteList' => [
             'name' => 'ModifyWhiteList',
             'http' => [
@@ -1081,6 +1099,15 @@ return [
             ],
             'input' => [ 'shape' => 'ModifyWhiteListRequestShape', ],
             'output' => [ 'shape' => 'ModifyWhiteListResponseShape', ],
+        ],
+        'DeleteWhiteListGroup' => [
+            'name' => 'DeleteWhiteListGroup',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/whiteList',
+            ],
+            'input' => [ 'shape' => 'DeleteWhiteListGroupRequestShape', ],
+            'output' => [ 'shape' => 'DeleteWhiteListGroupResponseShape', ],
         ],
     ],
     'shapes' => [
@@ -1133,12 +1160,28 @@ return [
                 'uploadTime' => [ 'type' => 'string', 'locationName' => 'uploadTime', ],
             ],
         ],
+        'AutoFailoverStatus' => [
+            'type' => 'structure',
+            'members' => [
+                'available' => [ 'type' => 'boolean', 'locationName' => 'available', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'AzInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'laz' => [ 'type' => 'string', 'locationName' => 'laz', ],
+                'paz' => [ 'type' => 'string', 'locationName' => 'paz', ],
+                'azType' => [ 'type' => 'integer', 'locationName' => 'azType', ],
+            ],
+        ],
         'Backup' => [
             'type' => 'structure',
             'members' => [
                 'backupId' => [ 'type' => 'string', 'locationName' => 'backupId', ],
                 'backupName' => [ 'type' => 'string', 'locationName' => 'backupName', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'backupStatus' => [ 'type' => 'string', 'locationName' => 'backupStatus', ],
                 'backupStartTime' => [ 'type' => 'string', 'locationName' => 'backupStartTime', ],
                 'backupEndTime' => [ 'type' => 'string', 'locationName' => 'backupEndTime', ],
@@ -1148,6 +1191,11 @@ return [
                 'backupUnit' => [ 'type' => 'string', 'locationName' => 'backupUnit', ],
                 'backupFiles' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'backupSizeByte' => [ 'type' => 'long', 'locationName' => 'backupSizeByte', ],
+                'descriptionkey' => [ 'type' => 'string', 'locationName' => 'descriptionkey', ],
+                'availabilityZone' => [ 'type' => 'string', 'locationName' => 'availabilityZone', ],
+                'engine' => [ 'type' => 'string', 'locationName' => 'engine', ],
+                'ifSupportDownload' => [ 'type' => 'integer', 'locationName' => 'ifSupportDownload', ],
+                'serverId' => [ 'type' => 'string', 'locationName' => 'serverId', ],
             ],
         ],
         'BackupSpec' => [
@@ -1186,6 +1234,10 @@ return [
                 'binlogSizeKB' => [ 'type' => 'long', 'locationName' => 'binlogSizeKB', ],
                 'binlogStartTime' => [ 'type' => 'string', 'locationName' => 'binlogStartTime', ],
                 'binlogEndTime' => [ 'type' => 'string', 'locationName' => 'binlogEndTime', ],
+                'descriptionkey' => [ 'type' => 'string', 'locationName' => 'descriptionkey', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'serverId' => [ 'type' => 'string', 'locationName' => 'serverId', ],
             ],
         ],
         'DBAccessPrivilege' => [
@@ -1229,6 +1281,9 @@ return [
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'sourceInstanceId' => [ 'type' => 'string', 'locationName' => 'sourceInstanceId', ],
                 'instancePort' => [ 'type' => 'string', 'locationName' => 'instancePort', ],
+                'azType' => [ 'type' => 'integer', 'locationName' => 'azType', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
             ],
         ],
         'Charge' => [
@@ -1299,6 +1354,9 @@ return [
                 'readWriteProxyId' => [ 'type' => 'string', 'locationName' => 'readWriteProxyId', ],
                 'syncTaskId' => [ 'type' => 'string', 'locationName' => 'syncTaskId', ],
                 'instanceVip' => [ 'type' => 'string', 'locationName' => 'instanceVip', ],
+                'azType' => [ 'type' => 'integer', 'locationName' => 'azType', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
             ],
         ],
         'DBInstanceInternal' => [
@@ -1310,6 +1368,11 @@ return [
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'instanceStatus' => [ 'type' => 'string', 'locationName' => 'instanceStatus', ],
                 'accessibleStatus' => [ 'type' => 'integer', 'locationName' => 'accessibleStatus', ],
+                'hostIp' => [ 'type' => 'string', 'locationName' => 'hostIp', ],
+                'userIp' => [ 'type' => 'string', 'locationName' => 'userIp', ],
+                'vmId' => [ 'type' => 'string', 'locationName' => 'vmId', ],
+                'internalDomainName' => [ 'type' => 'string', 'locationName' => 'internalDomainName', ],
+                'instancePort' => [ 'type' => 'string', 'locationName' => 'instancePort', ],
             ],
         ],
         'DBInstanceParameter' => [
@@ -1353,6 +1416,7 @@ return [
                 'storageEncrypted' => [ 'type' => 'boolean', 'locationName' => 'storageEncrypted', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'tagSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'DBInstanceSpecWithoutCharge' => [
@@ -1607,6 +1671,7 @@ return [
                 'internalDomainName' => [ 'type' => 'string', 'locationName' => 'internalDomainName', ],
                 'port' => [ 'type' => 'string', 'locationName' => 'port', ],
                 'delayThreshold' => [ 'type' => 'integer', 'locationName' => 'delayThreshold', ],
+                'walDelayThreshold' => [ 'type' => 'integer', 'locationName' => 'walDelayThreshold', ],
                 'loadBalancerPolicy' => [ 'type' => 'string', 'locationName' => 'loadBalancerPolicy', ],
                 'healthCheck' =>  [ 'shape' => 'HealthCheck', ],
             ],
@@ -1636,6 +1701,7 @@ return [
                 'storageEncrypted' => [ 'type' => 'boolean', 'locationName' => 'storageEncrypted', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'tagSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'Schema' => [
@@ -1658,6 +1724,7 @@ return [
                 'lockTime' => [ 'type' => 'float', 'locationName' => 'lockTime', ],
                 'rowsExamined' => [ 'type' => 'integer', 'locationName' => 'rowsExamined', ],
                 'rowsReturned' => [ 'type' => 'integer', 'locationName' => 'rowsReturned', ],
+                'clientIp' => [ 'type' => 'string', 'locationName' => 'clientIp', ],
             ],
         ],
         'SlowLogDigest' => [
@@ -1694,6 +1761,16 @@ return [
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
                 'instanceStatus' => [ 'type' => 'string', 'locationName' => 'instanceStatus', ],
                 'tdeStatus' => [ 'type' => 'string', 'locationName' => 'tdeStatus', ],
+            ],
+        ],
+        'SwitchLog' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'causeCode' => [ 'type' => 'string', 'locationName' => 'causeCode', ],
+                'causeDetail' => [ 'type' => 'string', 'locationName' => 'causeDetail', ],
             ],
         ],
         'WhiteList' => [
@@ -2164,6 +2241,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'azInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'AzInfo', ], ],
             ],
         ],
         'DescribeAzsResponseShape' => [
@@ -2195,6 +2273,7 @@ return [
                 'backupTimeRangeEndFilter' => [ 'type' => 'string', 'locationName' => 'backupTimeRangeEndFilter', ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -2338,13 +2417,6 @@ return [
                 'result' =>  [ 'shape' => 'DescribeBackupSynchronicitiesResultShape', ],
             ],
         ],
-        'DescribeBinlogDownloadURLResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'publicURL' => [ 'type' => 'string', 'locationName' => 'publicURL', ],
-                'internalURL' => [ 'type' => 'string', 'locationName' => 'internalURL', ],
-            ],
-        ],
         'ClearBinlogsRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2352,35 +2424,9 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'DescribeBinlogDownloadURLRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'seconds' => [ 'type' => 'integer', 'locationName' => 'seconds', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'binlogBackupId' => [ 'type' => 'string', 'locationName' => 'binlogBackupId', ],
-            ],
-        ],
         'ClearBinlogsResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'DescribeBinlogsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DescribeBinlogsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeBinlogsResultShape', ],
             ],
         ],
         'DescribeBinlogDownloadURLResponseShape' => [
@@ -2399,6 +2445,61 @@ return [
             'members' => [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'binlogs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Binlog', ], ],
+            ],
+        ],
+        'DescribeBinlogDownloadURLResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publicURL' => [ 'type' => 'string', 'locationName' => 'publicURL', ],
+                'internalURL' => [ 'type' => 'string', 'locationName' => 'internalURL', ],
+            ],
+        ],
+        'DescribeBinlogDownloadInternalURLResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'internalURL' => [ 'type' => 'string', 'locationName' => 'internalURL', ],
+            ],
+        ],
+        'DescribeBinlogDownloadInternalURLRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'seconds' => [ 'type' => 'integer', 'locationName' => 'seconds', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'binlogBackupId' => [ 'type' => 'string', 'locationName' => 'binlogBackupId', ],
+            ],
+        ],
+        'DescribeBinlogDownloadURLRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'seconds' => [ 'type' => 'integer', 'locationName' => 'seconds', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'binlogBackupId' => [ 'type' => 'string', 'locationName' => 'binlogBackupId', ],
+            ],
+        ],
+        'DescribeBinlogsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeBinlogsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBinlogsResultShape', ],
+            ],
+        ],
+        'DescribeBinlogDownloadInternalURLResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBinlogDownloadInternalURLResultShape', ],
             ],
         ],
         'AlterTableWithOnlineDDLResponseShape' => [
@@ -2680,6 +2781,7 @@ return [
         'DescribeInstanceAttributesRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'instanceExistence' => [ 'type' => 'integer', 'locationName' => 'instanceExistence', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -2898,6 +3000,9 @@ return [
                 'cycleMode' => [ 'type' => 'integer', 'locationName' => 'cycleMode', ],
                 'backupBinlog' => [ 'type' => 'string', 'locationName' => 'backupBinlog', ],
                 'enhancedBackup' => [ 'type' => 'string', 'locationName' => 'enhancedBackup', ],
+                'releasedKeepPolicy' => [ 'type' => 'string', 'locationName' => 'releasedKeepPolicy', ],
+                'backupPeriod' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'binlogRetentionNumber' => [ 'type' => 'integer', 'locationName' => 'binlogRetentionNumber', ],
             ],
         ],
         'DescribeBackupPolicyResponseShape' => [
@@ -2931,6 +3036,7 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -3300,6 +3406,8 @@ return [
                 'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
                 'roInstanceProxy' => [ 'type' => 'string', 'locationName' => 'roInstanceProxy', ],
                 'tagSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -3328,6 +3436,9 @@ return [
                 'binlogSpaceProtection' => [ 'type' => 'string', 'locationName' => 'binlogSpaceProtection', ],
                 'retentionPeriod' => [ 'type' => 'integer', 'locationName' => 'retentionPeriod', ],
                 'cycleMode' => [ 'type' => 'integer', 'locationName' => 'cycleMode', ],
+                'releasedKeepPolicy' => [ 'type' => 'string', 'locationName' => 'releasedKeepPolicy', ],
+                'backupPeriod' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'binlogRetentionNumber' => [ 'type' => 'integer', 'locationName' => 'binlogRetentionNumber', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -3990,6 +4101,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'delayThreshold' => [ 'type' => 'integer', 'locationName' => 'delayThreshold', ],
+                'walDelayThreshold' => [ 'type' => 'integer', 'locationName' => 'walDelayThreshold', ],
                 'loadBalancerPolicy' => [ 'type' => 'string', 'locationName' => 'loadBalancerPolicy', ],
                 'healthCheckSpec' =>  [ 'shape' => 'HealthCheckSpec', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -4065,6 +4177,7 @@ return [
             'members' => [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'delayThreshold' => [ 'type' => 'integer', 'locationName' => 'delayThreshold', ],
+                'walDelayThreshold' => [ 'type' => 'integer', 'locationName' => 'walDelayThreshold', ],
                 'loadBalancerPolicy' => [ 'type' => 'string', 'locationName' => 'loadBalancerPolicy', ],
                 'healthCheckSpec' =>  [ 'shape' => 'HealthCheckSpec', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -4165,24 +4278,18 @@ return [
                 'result' =>  [ 'shape' => 'DescribeWhiteListResultShape', ],
             ],
         ],
-        'ModifyWhiteListResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'ModifyWhiteListRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'whiteListName' => [ 'type' => 'string', 'locationName' => 'whiteListName', ],
                 'ips' => [ 'type' => 'string', 'locationName' => 'ips', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
-        'DescribeWhiteListRequestShape' => [
+        'CreateWhiteListGroupResultShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'DescribeWhiteListResultShape' => [
@@ -4191,9 +4298,53 @@ return [
                 'whiteLists' => [ 'type' => 'list', 'member' => [ 'shape' => 'WhiteList', ], ],
             ],
         ],
+        'CreateWhiteListGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'whiteListName' => [ 'type' => 'string', 'locationName' => 'whiteListName', ],
+                'ips' => [ 'type' => 'string', 'locationName' => 'ips', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'ModifyWhiteListResponseShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DeleteWhiteListGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteWhiteListGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'whiteListName' => [ 'type' => 'string', 'locationName' => 'whiteListName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'CreateWhiteListGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteWhiteListGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyWhiteListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeWhiteListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
     ],
