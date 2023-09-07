@@ -88,6 +88,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeBinlogDownloadURLAsync(array $args = [])
  * @method \Jdcloud\Result clearBinlogs(array $args = [])
  * @method \GuzzleHttp\Promise\Promise clearBinlogsAsync(array $args = [])
+ * @method \Jdcloud\Result describeBinlogDownloadInternalURL(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeBinlogDownloadInternalURLAsync(array $args = [])
  * @method \Jdcloud\Result alterTableWithOnlineDDL(array $args = [])
  * @method \GuzzleHttp\Promise\Promise alterTableWithOnlineDDLAsync(array $args = [])
  * @method \Jdcloud\Result describePrivilege(array $args = [])
@@ -256,8 +258,12 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise enableTdeAsync(array $args = [])
  * @method \Jdcloud\Result describeWhiteList(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeWhiteListAsync(array $args = [])
+ * @method \Jdcloud\Result createWhiteListGroup(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createWhiteListGroupAsync(array $args = [])
  * @method \Jdcloud\Result modifyWhiteList(array $args = [])
  * @method \GuzzleHttp\Promise\Promise modifyWhiteListAsync(array $args = [])
+ * @method \Jdcloud\Result deleteWhiteListGroup(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteWhiteListGroupAsync(array $args = [])
  */
 class RdsClient extends JdCloudClient
 {
