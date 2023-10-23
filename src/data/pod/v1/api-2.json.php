@@ -101,6 +101,69 @@ return [
             'input' => [ 'shape' => 'ResizeTTYRequestShape', ],
             'output' => [ 'shape' => 'ResizeTTYResponseShape', ],
         ],
+        'CreateImageCache' => [
+            'name' => 'CreateImageCache',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/imageCache',
+            ],
+            'input' => [ 'shape' => 'CreateImageCacheRequestShape', ],
+            'output' => [ 'shape' => 'CreateImageCacheResponseShape', ],
+        ],
+        'DescribeImageCaches' => [
+            'name' => 'DescribeImageCaches',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/imageCaches',
+            ],
+            'input' => [ 'shape' => 'DescribeImageCachesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeImageCachesResponseShape', ],
+        ],
+        'CreateImageCaches' => [
+            'name' => 'CreateImageCaches',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/imageCaches',
+            ],
+            'input' => [ 'shape' => 'CreateImageCachesRequestShape', ],
+            'output' => [ 'shape' => 'CreateImageCachesResponseShape', ],
+        ],
+        'DescribeImageCache' => [
+            'name' => 'DescribeImageCache',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/imageCache/{imageCacheId}',
+            ],
+            'input' => [ 'shape' => 'DescribeImageCacheRequestShape', ],
+            'output' => [ 'shape' => 'DescribeImageCacheResponseShape', ],
+        ],
+        'DeleteImageCache' => [
+            'name' => 'DeleteImageCache',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/imageCache/{imageCacheId}',
+            ],
+            'input' => [ 'shape' => 'DeleteImageCacheRequestShape', ],
+            'output' => [ 'shape' => 'DeleteImageCacheResponseShape', ],
+        ],
+        'GetMostSuitableImageCache' => [
+            'name' => 'GetMostSuitableImageCache',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/imageCache:getMostSuitable',
+            ],
+            'input' => [ 'shape' => 'GetMostSuitableImageCacheRequestShape', ],
+            'output' => [ 'shape' => 'GetMostSuitableImageCacheResponseShape', ],
+        ],
+        'UpdateImageCache' => [
+            'name' => 'UpdateImageCache',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/imageCache/{imageCacheId}:update',
+            ],
+            'input' => [ 'shape' => 'UpdateImageCacheRequestShape', ],
+            'output' => [ 'shape' => 'UpdateImageCacheResponseShape', ],
+        ],
         'DescribeInstanceTypes' => [
             'name' => 'DescribeInstanceTypes',
             'http' => [
@@ -580,6 +643,7 @@ return [
                 'resources' =>  [ 'shape' => 'ResourceRequestsSpec', ],
                 'systemDisk' =>  [ 'shape' => 'CloudDiskSpec', ],
                 'volumeMounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'VolumeMountSpec', ], ],
+                'imageCacheId' => [ 'type' => 'string', 'locationName' => 'imageCacheId', ],
             ],
         ],
         'ProbeSpec' => [
@@ -678,6 +742,28 @@ return [
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
+        'ImageCache' => [
+            'type' => 'structure',
+            'members' => [
+                'imageCacheId' => [ 'type' => 'string', 'locationName' => 'imageCacheId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+                'imageName' => [ 'type' => 'string', 'locationName' => 'imageName', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'expireDateTime' => [ 'type' => 'string', 'locationName' => 'expireDateTime', ],
+                'lastMatchedTime' => [ 'type' => 'string', 'locationName' => 'lastMatchedTime', ],
+                'useCount' => [ 'type' => 'integer', 'locationName' => 'useCount', ],
+                'snapShotId' => [ 'type' => 'string', 'locationName' => 'snapShotId', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'GetMostSuitableImageCache' => [
+            'type' => 'structure',
+            'members' => [
+                'found' => [ 'type' => 'boolean', 'locationName' => 'found', ],
+                'imageCache' =>  [ 'shape' => 'ImageCache', ],
+            ],
+        ],
         'HostAlias' => [
             'type' => 'structure',
             'members' => [
@@ -690,6 +776,15 @@ return [
             'members' => [
                 'hostnames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+            ],
+        ],
+        'ImageCacheSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'image' => [ 'type' => 'string', 'locationName' => 'image', ],
+                'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+                'retentionDays' => [ 'type' => 'integer', 'locationName' => 'retentionDays', ],
             ],
         ],
         'InstanceInfo' => [
@@ -924,8 +1019,11 @@ return [
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
                 'elasticIp' =>  [ 'shape' => 'ElasticIpSpec', ],
                 'primaryNetworkInterface' =>  [ 'shape' => 'NetworkInterfaceAttachmentSpec', ],
+                'secondaryNetworkInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterfaceAttachmentSpec', ], ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'autoMatchImageCache' => [ 'type' => 'boolean', 'locationName' => 'autoMatchImageCache', ],
+                'autoCreateImageCache' => [ 'type' => 'boolean', 'locationName' => 'autoCreateImageCache', ],
             ],
         ],
         'VolumeSpec' => [
@@ -1209,6 +1307,152 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'UpdateImageCacheRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'retentionDays' => [ 'type' => 'integer', 'locationName' => 'retentionDays', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'imageCacheId' => [ 'type' => 'string', 'locationName' => 'imageCacheId', ],
+            ],
+        ],
+        'DescribeImageCachesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeImageCacheResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeImageCacheResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetMostSuitableImageCacheRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'image' => [ 'type' => 'string', 'locationName' => 'image', ],
+                'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeImageCachesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imageCaches' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageCache', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'CreateImageCachesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'imageCacheSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageCacheSpec', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateImageCacheRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'imageCacheSpec' =>  [ 'shape' => 'ImageCacheSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateImageCachesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateImageCachesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetMostSuitableImageCacheResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetMostSuitableImageCacheResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteImageCacheResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateImageCacheResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateImageCachesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imageCacheId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'GetMostSuitableImageCacheResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'found' => [ 'type' => 'boolean', 'locationName' => 'found', ],
+                'imageCache' =>  [ 'shape' => 'ImageCache', ],
+            ],
+        ],
+        'DeleteImageCacheRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'imageCacheId' => [ 'type' => 'string', 'locationName' => 'imageCacheId', ],
+            ],
+        ],
+        'DescribeImageCachesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeImageCachesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeImageCacheRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'imageCacheId' => [ 'type' => 'string', 'locationName' => 'imageCacheId', ],
+            ],
+        ],
+        'DescribeImageCacheResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imageCache' =>  [ 'shape' => 'ImageCache', ],
+            ],
+        ],
+        'UpdateImageCacheResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateImageCacheResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imageCacheId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DeleteImageCacheResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateImageCacheResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateImageCacheResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeInstanceTypesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1340,6 +1584,7 @@ return [
         'DeletePodRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'deletePrimaryNetworkInterfaceAllElasticIp' => [ 'type' => 'boolean', 'locationName' => 'deletePrimaryNetworkInterfaceAllElasticIp', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
             ],
