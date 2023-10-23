@@ -438,6 +438,9 @@ return [
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'imageCacheId' => [ 'type' => 'string', 'locationName' => 'imageCacheId', ],
+                'autoMatchImageCache' => [ 'type' => 'boolean', 'locationName' => 'autoMatchImageCache', ],
+                'autoCreateImageCache' => [ 'type' => 'boolean', 'locationName' => 'autoCreateImageCache', ],
             ],
         ],
         'DiskSpec' => [
