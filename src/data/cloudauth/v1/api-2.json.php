@@ -20,6 +20,15 @@ return [
             'input' => [ 'shape' => 'PersonalAuthRequestShape', ],
             'output' => [ 'shape' => 'PersonalAuthResponseShape', ],
         ],
+        'PersonalMobile' => [
+            'name' => 'PersonalMobile',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/detail:mobile3',
+            ],
+            'input' => [ 'shape' => 'PersonalMobileRequestShape', ],
+            'output' => [ 'shape' => 'PersonalMobileResponseShape', ],
+        ],
         'CompanyTransfer' => [
             'name' => 'CompanyTransfer',
             'http' => [
@@ -55,6 +64,24 @@ return [
             ],
             'input' => [ 'shape' => 'CheckLegalPersonRequestShape', ],
             'output' => [ 'shape' => 'CheckLegalPersonResponseShape', ],
+        ],
+        'CheckLegalPersonDetail' => [
+            'name' => 'CheckLegalPersonDetail',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/company:legalPersonDetail',
+            ],
+            'input' => [ 'shape' => 'CheckLegalPersonDetailRequestShape', ],
+            'output' => [ 'shape' => 'CheckLegalPersonDetailResponseShape', ],
+        ],
+        'CheckCompanyInfo3' => [
+            'name' => 'CheckCompanyInfo3',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/company:info3',
+            ],
+            'input' => [ 'shape' => 'CheckCompanyInfo3RequestShape', ],
+            'output' => [ 'shape' => 'CheckCompanyInfo3ResponseShape', ],
         ],
         'QueryCityList' => [
             'name' => 'QueryCityList',
@@ -110,6 +137,24 @@ return [
             'input' => [ 'shape' => 'IDCardRequestShape', ],
             'output' => [ 'shape' => 'IDCardResponseShape', ],
         ],
+        'GetAliveUrl' => [
+            'name' => 'GetAliveUrl',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/alive:getUrl',
+            ],
+            'input' => [ 'shape' => 'GetAliveUrlRequestShape', ],
+            'output' => [ 'shape' => 'GetAliveUrlResponseShape', ],
+        ],
+        'GetAliveResult' => [
+            'name' => 'GetAliveResult',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/alive:getResult',
+            ],
+            'input' => [ 'shape' => 'GetAliveResultRequestShape', ],
+            'output' => [ 'shape' => 'GetAliveResultResponseShape', ],
+        ],
         'DescribeApplyStatus' => [
             'name' => 'DescribeApplyStatus',
             'http' => [
@@ -121,22 +166,18 @@ return [
         ],
     ],
     'shapes' => [
-        'AccountInfoSimple' => [
+        'PersonalMobileSpec' => [
             'type' => 'structure',
             'members' => [
-                'orgName' => [ 'type' => 'string', 'locationName' => 'orgName', ],
-                'bankCardNum' => [ 'type' => 'string', 'locationName' => 'bankCardNum', ],
-                'bankCode' => [ 'type' => 'string', 'locationName' => 'bankCode', ],
+                'personalUser' =>  [ 'shape' => 'PersonalMobile3', ],
             ],
         ],
-        'AuthInfo' => [
+        'PersonalMobile3' => [
             'type' => 'structure',
             'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'idCard' => [ 'type' => 'string', 'locationName' => 'idCard', ],
+                'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
             ],
         ],
         'AccountInfo' => [
@@ -162,13 +203,6 @@ return [
                 'legalPersonId' => [ 'type' => 'string', 'locationName' => 'legalPersonId', ],
             ],
         ],
-        'AuthDetail' => [
-            'type' => 'structure',
-            'members' => [
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
-            ],
-        ],
         'OCRInfo' => [
             'type' => 'structure',
             'members' => [
@@ -179,20 +213,9 @@ return [
                 'idNumber' => [ 'type' => 'string', 'locationName' => 'idNumber', ],
                 'birthday' => [ 'type' => 'string', 'locationName' => 'birthday', ],
                 'gender' => [ 'type' => 'string', 'locationName' => 'gender', ],
-            ],
-        ],
-        'CheckInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'paymentAmount' => [ 'type' => 'string', 'locationName' => 'paymentAmount', ],
-                'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
-            ],
-        ],
-        'PersonalSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'checkType' => [ 'type' => 'integer', 'locationName' => 'checkType', ],
-                'personalUser' =>  [ 'shape' => 'PersonalUser', ],
+                'authority' => [ 'type' => 'string', 'locationName' => 'authority', ],
+                'issueTime' => [ 'type' => 'string', 'locationName' => 'issueTime', ],
+                'dueTime' => [ 'type' => 'string', 'locationName' => 'dueTime', ],
             ],
         ],
         'CompanyInfo' => [
@@ -212,6 +235,74 @@ return [
                 'bankcard' => [ 'type' => 'string', 'locationName' => 'bankcard', ],
                 'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
                 'imgBase64' => [ 'type' => 'string', 'locationName' => 'imgBase64', ],
+            ],
+        ],
+        'AccountInfoSimple' => [
+            'type' => 'structure',
+            'members' => [
+                'orgName' => [ 'type' => 'string', 'locationName' => 'orgName', ],
+                'bankCardNum' => [ 'type' => 'string', 'locationName' => 'bankCardNum', ],
+                'bankCode' => [ 'type' => 'string', 'locationName' => 'bankCode', ],
+            ],
+        ],
+        'CompanyInfo3Spec' => [
+            'type' => 'structure',
+            'members' => [
+                'companyName' => [ 'type' => 'string', 'locationName' => 'companyName', ],
+                'idCode' => [ 'type' => 'string', 'locationName' => 'idCode', ],
+                'legalPersonName' => [ 'type' => 'string', 'locationName' => 'legalPersonName', ],
+            ],
+        ],
+        'AuthInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
+        'AliveUrlInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+            ],
+        ],
+        'AliveResultInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'faceImage' => [ 'type' => 'string', 'locationName' => 'faceImage', ],
+                'sceneImage' => [ 'type' => 'string', 'locationName' => 'sceneImage', ],
+                'h5Result' => [ 'type' => 'string', 'locationName' => 'h5Result', ],
+                'smResult' => [ 'type' => 'string', 'locationName' => 'smResult', ],
+                'rxResult' => [ 'type' => 'string', 'locationName' => 'rxResult', ],
+                'score' => [ 'type' => 'string', 'locationName' => 'score', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+            ],
+        ],
+        'AuthDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
+            ],
+        ],
+        'CheckInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'paymentAmount' => [ 'type' => 'string', 'locationName' => 'paymentAmount', ],
+                'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
+            ],
+        ],
+        'PersonalSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'checkType' => [ 'type' => 'integer', 'locationName' => 'checkType', ],
+                'personalUser' =>  [ 'shape' => 'PersonalUser', ],
             ],
         ],
         'StatisticInfo' => [
@@ -272,49 +363,10 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
         ],
-        'QueryBankBranchListResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryBankBranchListResultShape', ],
-            ],
-        ],
-        'QueryProvinceListRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'PersonalAuthResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
-            ],
-        ],
         'CheckCompanyInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'companyInfo' =>  [ 'shape' => 'CompanyInfo', ],
-            ],
-        ],
-        'IDCardRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'imageData' => [ 'type' => 'string', 'locationName' => 'imageData', ],
-                'side' => [ 'type' => 'string', 'locationName' => 'side', ],
-            ],
-        ],
-        'CheckCompanyInfoResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
         'CompanyTransferSimpleResponseShape' => [
@@ -322,6 +374,13 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'CompanyTransferSimpleResultShape', ],
+            ],
+        ],
+        'GetAliveResultResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetAliveResultResultShape', ],
             ],
         ],
         'CompanyTransferResultShape' => [
@@ -342,12 +401,6 @@ return [
                 'code' => [ 'type' => 'string', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
-            ],
-        ],
-        'PersonalAuthRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'personalSpec' =>  [ 'shape' => 'PersonalSpec', ],
             ],
         ],
         'CompanyTransferSimpleRequestShape' => [
@@ -386,33 +439,10 @@ return [
                 'result' =>  [ 'shape' => 'QueryCityListResultShape', ],
             ],
         ],
-        'QueryBankBranchListResultShape' => [
+        'CheckCompanyInfo3RequestShape' => [
             'type' => 'structure',
             'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
-            ],
-        ],
-        'CheckLegalPersonResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'CheckLegalPersonResultShape', ],
-            ],
-        ],
-        'CompanyTransferResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'CompanyTransferResultShape', ],
-            ],
-        ],
-        'QueryBankListRequestShape' => [
-            'type' => 'structure',
-            'members' => [
+                'companyInfo3Spec' =>  [ 'shape' => 'CompanyInfo3Spec', ],
             ],
         ],
         'CheckCompanyInfoResponseShape' => [
@@ -423,16 +453,6 @@ return [
             ],
         ],
         'CheckLegalPersonResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
-            ],
-        ],
-        'QueryCityListResultShape' => [
             'type' => 'structure',
             'members' => [
                 'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
@@ -462,18 +482,21 @@ return [
                 'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
-        'IDCardResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'IDCardResultShape', ],
-            ],
-        ],
         'QueryProvinceListResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'QueryProvinceListResultShape', ],
+            ],
+        ],
+        'CheckCompanyInfo3ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
         'CheckCompanyTransferRequestShape' => [
@@ -489,12 +512,6 @@ return [
                 'result' =>  [ 'shape' => 'CheckCompanyTransferResultShape', ],
             ],
         ],
-        'CheckLegalPersonRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'legalPersonSpec' =>  [ 'shape' => 'LegalPersonSpec', ],
-            ],
-        ],
         'IDCardResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -505,6 +522,9 @@ return [
                 'idNumber' => [ 'type' => 'string', 'locationName' => 'idNumber', ],
                 'birthday' => [ 'type' => 'string', 'locationName' => 'birthday', ],
                 'gender' => [ 'type' => 'string', 'locationName' => 'gender', ],
+                'authority' => [ 'type' => 'string', 'locationName' => 'authority', ],
+                'issueTime' => [ 'type' => 'string', 'locationName' => 'issueTime', ],
+                'dueTime' => [ 'type' => 'string', 'locationName' => 'dueTime', ],
             ],
         ],
         'QueryBankListResponseShape' => [
@@ -518,6 +538,198 @@ return [
             'type' => 'structure',
             'members' => [
                 'provinceCode' => [ 'type' => 'string', 'locationName' => 'provinceCode', ],
+            ],
+        ],
+        'QueryBankBranchListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryBankBranchListResultShape', ],
+            ],
+        ],
+        'QueryProvinceListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetAliveResultRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+            ],
+        ],
+        'PersonalAuthResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
+        'GetAliveResultResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'faceImage' => [ 'type' => 'string', 'locationName' => 'faceImage', ],
+                'sceneImage' => [ 'type' => 'string', 'locationName' => 'sceneImage', ],
+                'h5Result' => [ 'type' => 'string', 'locationName' => 'h5Result', ],
+                'smResult' => [ 'type' => 'string', 'locationName' => 'smResult', ],
+                'rxResult' => [ 'type' => 'string', 'locationName' => 'rxResult', ],
+                'score' => [ 'type' => 'string', 'locationName' => 'score', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+            ],
+        ],
+        'IDCardRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imageData' => [ 'type' => 'string', 'locationName' => 'imageData', ],
+                'side' => [ 'type' => 'string', 'locationName' => 'side', ],
+            ],
+        ],
+        'CheckCompanyInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
+        'CheckCompanyInfo3ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CheckCompanyInfo3ResultShape', ],
+            ],
+        ],
+        'PersonalAuthRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'personalSpec' =>  [ 'shape' => 'PersonalSpec', ],
+            ],
+        ],
+        'PersonalMobileResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'PersonalMobileResultShape', ],
+            ],
+        ],
+        'CheckLegalPersonDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'legalPersonSpec' =>  [ 'shape' => 'LegalPersonSpec', ],
+            ],
+        ],
+        'QueryBankBranchListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
+        'CheckLegalPersonResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CheckLegalPersonResultShape', ],
+            ],
+        ],
+        'CompanyTransferResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CompanyTransferResultShape', ],
+            ],
+        ],
+        'QueryBankListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'QueryCityListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
+        'GetAliveUrlResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetAliveUrlResultShape', ],
+            ],
+        ],
+        'CheckLegalPersonDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
+        'GetAliveUrlRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'idcard' => [ 'type' => 'string', 'locationName' => 'idcard', ],
+                'returnUrl' => [ 'type' => 'string', 'locationName' => 'returnUrl', ],
+            ],
+        ],
+        'CheckLegalPersonDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CheckLegalPersonDetailResultShape', ],
+            ],
+        ],
+        'IDCardResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'IDCardResultShape', ],
+            ],
+        ],
+        'PersonalMobileResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
+        'CheckLegalPersonRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'legalPersonSpec' =>  [ 'shape' => 'LegalPersonSpec', ],
+            ],
+        ],
+        'GetAliveUrlResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+            ],
+        ],
+        'PersonalMobileRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'personalMobileSpec' =>  [ 'shape' => 'PersonalMobileSpec', ],
             ],
         ],
         'QueryBankBranchListRequestShape' => [
