@@ -155,6 +155,15 @@ return [
             'input' => [ 'shape' => 'UpdateAutoScalingRequestShape', ],
             'output' => [ 'shape' => 'UpdateAutoScalingResponseShape', ],
         ],
+        'ModifyInstancesManaged' => [
+            'name' => 'ModifyInstancesManaged',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/autoScaling/{agId}:modifyInstancesManaged',
+            ],
+            'input' => [ 'shape' => 'ModifyInstancesManagedRequestShape', ],
+            'output' => [ 'shape' => 'ModifyInstancesManagedResponseShape', ],
+        ],
         'DescribeAsRules' => [
             'name' => 'DescribeAsRules',
             'http' => [
@@ -970,9 +979,13 @@ return [
                 'asCronId' => [ 'type' => 'string', 'locationName' => 'asCronId', ],
             ],
         ],
-        'DisableAutoScalingResultShape' => [
+        'ModifyInstancesManagedRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'isManaged' => [ 'type' => 'boolean', 'locationName' => 'isManaged', ],
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
             ],
         ],
         'DisableAutoScalingRequestShape' => [
@@ -1000,13 +1013,29 @@ return [
             'members' => [
             ],
         ],
-        'EnableAutoScalingResponseShape' => [
+        'DisableAutoScalingResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DisableAutoScalingResponseShape' => [
+        'ModifyInstancesManagedResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisableAutoScalingResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyInstancesManagedResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableAutoScalingResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
