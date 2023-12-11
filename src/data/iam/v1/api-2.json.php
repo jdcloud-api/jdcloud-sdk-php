@@ -101,6 +101,15 @@ return [
             'input' => [ 'shape' => 'DescribeAttachedGroupPoliciesRequestShape', ],
             'output' => [ 'shape' => 'DescribeAttachedGroupPoliciesResponseShape', ],
         ],
+        'DescribeAttachedGroupPoliciesScope' => [
+            'name' => 'DescribeAttachedGroupPoliciesScope',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/group/{groupName}/policiesScope',
+            ],
+            'input' => [ 'shape' => 'DescribeAttachedGroupPoliciesScopeRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAttachedGroupPoliciesScopeResponseShape', ],
+        ],
         'DetachGroupPolicy' => [
             'name' => 'DetachGroupPolicy',
             'http' => [
@@ -136,6 +145,60 @@ return [
             ],
             'input' => [ 'shape' => 'AddSubUserToGroupRequestShape', ],
             'output' => [ 'shape' => 'AddSubUserToGroupResponseShape', ],
+        ],
+        'CreateVirtualMFADevice' => [
+            'name' => 'CreateVirtualMFADevice',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/virtualMFADevice',
+            ],
+            'input' => [ 'shape' => 'CreateVirtualMFADeviceRequestShape', ],
+            'output' => [ 'shape' => 'CreateVirtualMFADeviceResponseShape', ],
+        ],
+        'DescribeVirtualMFA' => [
+            'name' => 'DescribeVirtualMFA',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/virtualMFA',
+            ],
+            'input' => [ 'shape' => 'DescribeVirtualMFARequestShape', ],
+            'output' => [ 'shape' => 'DescribeVirtualMFAResponseShape', ],
+        ],
+        'BindMFADevice' => [
+            'name' => 'BindMFADevice',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/virtualMFADevice:bind',
+            ],
+            'input' => [ 'shape' => 'BindMFADeviceRequestShape', ],
+            'output' => [ 'shape' => 'BindMFADeviceResponseShape', ],
+        ],
+        'BindMFADeviceByOneCode' => [
+            'name' => 'BindMFADeviceByOneCode',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/virtualMFADevice:bindByOneCode',
+            ],
+            'input' => [ 'shape' => 'BindMFADeviceByOneCodeRequestShape', ],
+            'output' => [ 'shape' => 'BindMFADeviceByOneCodeResponseShape', ],
+        ],
+        'UnbindMFADevice' => [
+            'name' => 'UnbindMFADevice',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/virtualMFADevice:unbind',
+            ],
+            'input' => [ 'shape' => 'UnbindMFADeviceRequestShape', ],
+            'output' => [ 'shape' => 'UnbindMFADeviceResponseShape', ],
+        ],
+        'AddOrganizationUserRelation' => [
+            'name' => 'AddOrganizationUserRelation',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/organization/{orgId}/userRelation:add',
+            ],
+            'input' => [ 'shape' => 'AddOrganizationUserRelationRequestShape', ],
+            'output' => [ 'shape' => 'AddOrganizationUserRelationResponseShape', ],
         ],
         'CreatePermission' => [
             'name' => 'CreatePermission',
@@ -263,6 +326,15 @@ return [
             'input' => [ 'shape' => 'CreateRoleRequestShape', ],
             'output' => [ 'shape' => 'CreateRoleResponseShape', ],
         ],
+        'CopyRole' => [
+            'name' => 'CopyRole',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/copyRole',
+            ],
+            'input' => [ 'shape' => 'CopyRoleRequestShape', ],
+            'output' => [ 'shape' => 'CopyRoleResponseShape', ],
+        ],
         'DescribeRole' => [
             'name' => 'DescribeRole',
             'http' => [
@@ -325,6 +397,15 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeRolePoliciesRequestShape', ],
             'output' => [ 'shape' => 'DescribeRolePoliciesResponseShape', ],
+        ],
+        'DescribeRolePoliciesScope' => [
+            'name' => 'DescribeRolePoliciesScope',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/role/{roleName}/policiesScope',
+            ],
+            'input' => [ 'shape' => 'DescribeRolePoliciesScopeRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRolePoliciesScopeResponseShape', ],
         ],
         'CreateSubUser' => [
             'name' => 'CreateSubUser',
@@ -389,6 +470,15 @@ return [
             'input' => [ 'shape' => 'DescribeAttachedSubUserPoliciesRequestShape', ],
             'output' => [ 'shape' => 'DescribeAttachedSubUserPoliciesResponseShape', ],
         ],
+        'DescribeAttachedSubUserPoliciesScope' => [
+            'name' => 'DescribeAttachedSubUserPoliciesScope',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/subUser/{subUser}/policiesScope',
+            ],
+            'input' => [ 'shape' => 'DescribeAttachedSubUserPoliciesScopeRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAttachedSubUserPoliciesScopeResponseShape', ],
+        ],
         'DetachSubUserPolicy' => [
             'name' => 'DetachSubUserPolicy',
             'http' => [
@@ -406,6 +496,15 @@ return [
             ],
             'input' => [ 'shape' => 'AttachSubUserPolicyRequestShape', ],
             'output' => [ 'shape' => 'AttachSubUserPolicyResponseShape', ],
+        ],
+        'CreateSubUserInner' => [
+            'name' => 'CreateSubUserInner',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/subUserInner',
+            ],
+            'input' => [ 'shape' => 'CreateSubUserInnerRequestShape', ],
+            'output' => [ 'shape' => 'CreateSubUserInnerResponseShape', ],
         ],
         'DescribeUserAccessKeys' => [
             'name' => 'DescribeUserAccessKeys',
@@ -452,6 +551,15 @@ return [
             'input' => [ 'shape' => 'DeleteUserAccessKeyRequestShape', ],
             'output' => [ 'shape' => 'DeleteUserAccessKeyResponseShape', ],
         ],
+        'DescribeUserPin' => [
+            'name' => 'DescribeUserPin',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/user:describeUserPin',
+            ],
+            'input' => [ 'shape' => 'DescribeUserPinRequestShape', ],
+            'output' => [ 'shape' => 'DescribeUserPinResponseShape', ],
+        ],
     ],
     'shapes' => [
         'APIInfo' => [
@@ -466,10 +574,72 @@ return [
                 'terResourceType' => [ 'type' => 'string', 'locationName' => 'terResourceType', ],
             ],
         ],
+        'AccessKeyRemarkInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+            ],
+        ],
+        'ActionConditionVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'conditionName' => [ 'type' => 'string', 'locationName' => 'conditionName', ],
+                'postProcess' => [ 'type' => 'integer', 'locationName' => 'postProcess', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'ApiInfoShowRule' => [
+            'type' => 'structure',
+            'members' => [
+                'showCreateByPolicy' => [ 'type' => 'boolean', 'locationName' => 'showCreateByPolicy', ],
+                'showCreateByTag' => [ 'type' => 'boolean', 'locationName' => 'showCreateByTag', ],
+                'showCreateByBusiness' => [ 'type' => 'boolean', 'locationName' => 'showCreateByBusiness', ],
+            ],
+        ],
+        'ApiInfoVo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceNameCN' => [ 'type' => 'string', 'locationName' => 'serviceNameCN', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'serviceOldCode' => [ 'type' => 'string', 'locationName' => 'serviceOldCode', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'subResourceType' => [ 'type' => 'string', 'locationName' => 'subResourceType', ],
+                'actionName' => [ 'type' => 'string', 'locationName' => 'actionName', ],
+                'actionDescription' => [ 'type' => 'string', 'locationName' => 'actionDescription', ],
+                'actionType' => [ 'type' => 'string', 'locationName' => 'actionType', ],
+                'method' => [ 'type' => 'string', 'locationName' => 'method', ],
+                'region' => [ 'type' => 'integer', 'locationName' => 'region', ],
+                'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
+                'accessLevel' => [ 'type' => 'integer', 'locationName' => 'accessLevel', ],
+                'showRule' => [ 'type' => 'list', 'member' => [ 'shape' => 'ApiInfoShowRule', ], ],
+                'supply' => [ 'type' => 'integer', 'locationName' => 'supply', ],
+                'ignoreDeny' => [ 'type' => 'integer', 'locationName' => 'ignoreDeny', ],
+                'tagResourceLevel' => [ 'type' => 'integer', 'locationName' => 'tagResourceLevel', ],
+            ],
+        ],
         'AddPermissionsInfo' => [
             'type' => 'structure',
             'members' => [
                 'permissionIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+            ],
+        ],
+        'PolicyCollection' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+            ],
+        ],
+        'AttachedPolicyInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'policyId' => [ 'type' => 'string', 'locationName' => 'policyId', ],
             ],
         ],
         'AuthenticationInfo' => [
@@ -494,6 +664,7 @@ return [
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'canSale' => [ 'type' => 'integer', 'locationName' => 'canSale', ],
                 'visible' => [ 'type' => 'integer', 'locationName' => 'visible', ],
+                'zoneType' => [ 'type' => 'string', 'locationName' => 'zoneType', ],
             ],
         ],
         'BaseProductRegionVo' => [
@@ -510,6 +681,26 @@ return [
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'visible' => [ 'type' => 'integer', 'locationName' => 'visible', ],
                 'azStatusList' => [ 'type' => 'list', 'member' => [ 'shape' => 'AzSaleStatusVo', ], ],
+            ],
+        ],
+        'BaseResponseVo' => [
+            'type' => 'structure',
+            'members' => [
+                'isSuccess' => [ 'type' => 'boolean', 'locationName' => 'isSuccess', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'errorCode' => [ 'type' => 'integer', 'locationName' => 'errorCode', ],
+                'data' => [ 'type' => 'integer', 'locationName' => 'data', ],
+                'errStrSet' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'PageInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'currentPage' => [ 'type' => 'integer', 'locationName' => 'currentPage', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalRecord' => [ 'type' => 'integer', 'locationName' => 'totalRecord', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
         'SubUserInfo' => [
@@ -533,6 +724,13 @@ return [
                 'conditionMappings' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConditionMappingVo', ], ],
             ],
         ],
+        'CopyRoleInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'oldRoleName' => [ 'type' => 'string', 'locationName' => 'oldRoleName', ],
+                'newRoleName' => [ 'type' => 'string', 'locationName' => 'newRoleName', ],
+            ],
+        ],
         'CreateGroupInfo' => [
             'type' => 'structure',
             'members' => [
@@ -549,6 +747,15 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'CreateIdentityProviderInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'protocolType' => [ 'type' => 'string', 'locationName' => 'protocolType', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'metadata' => [ 'type' => 'string', 'locationName' => 'metadata', ],
             ],
         ],
         'CreateLoginProfileInfo' => [
@@ -587,6 +794,7 @@ return [
             'members' => [
                 'policyDocument' => [ 'type' => 'string', 'locationName' => 'policyDocument', ],
                 'setAsDefault' => [ 'type' => 'boolean', 'locationName' => 'setAsDefault', ],
+                'rotateStrategy' => [ 'type' => 'string', 'locationName' => 'rotateStrategy', ],
             ],
         ],
         'CreatePolicyInfo' => [
@@ -607,6 +815,35 @@ return [
                 'maxSessionDuration' => [ 'type' => 'integer', 'locationName' => 'maxSessionDuration', ],
             ],
         ],
+        'CreateServiceInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceInfoVo' =>  [ 'shape' => 'ServiceInfoVo', ],
+            ],
+        ],
+        'ServiceInfoVo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'cnName' => [ 'type' => 'string', 'locationName' => 'cnName', ],
+                'enName' => [ 'type' => 'string', 'locationName' => 'enName', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'updateUser' => [ 'type' => 'string', 'locationName' => 'updateUser', ],
+            ],
+        ],
+        'CreateSubUserWithOrgInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'orgId' => [ 'type' => 'string', 'locationName' => 'orgId', ],
+                'orgUserId' => [ 'type' => 'string', 'locationName' => 'orgUserId', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'createAk' => [ 'type' => 'boolean', 'locationName' => 'createAk', ],
+                'consoleLogin' => [ 'type' => 'boolean', 'locationName' => 'consoleLogin', ],
+            ],
+        ],
         'CreateSubUserInfo' => [
             'type' => 'structure',
             'members' => [
@@ -615,6 +852,23 @@ return [
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
                 'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
                 'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'createAk' => [ 'type' => 'boolean', 'locationName' => 'createAk', ],
+                'needResetPassword' => [ 'type' => 'boolean', 'locationName' => 'needResetPassword', ],
+                'consoleLogin' => [ 'type' => 'boolean', 'locationName' => 'consoleLogin', ],
+                'autoGeneratePassword' => [ 'type' => 'boolean', 'locationName' => 'autoGeneratePassword', ],
+                'contactTag' => [ 'type' => 'boolean', 'locationName' => 'contactTag', ],
+            ],
+        ],
+        'CreateSubUserInfoInner' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
                 'createAk' => [ 'type' => 'boolean', 'locationName' => 'createAk', ],
                 'needResetPassword' => [ 'type' => 'boolean', 'locationName' => 'needResetPassword', ],
                 'consoleLogin' => [ 'type' => 'boolean', 'locationName' => 'consoleLogin', ],
@@ -632,6 +886,7 @@ return [
                 'secretAccessKey' => [ 'type' => 'string', 'locationName' => 'secretAccessKey', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
             ],
         ],
         'EmailSmsInfo' => [
@@ -645,6 +900,20 @@ return [
                 'templateId' => [ 'type' => 'integer', 'locationName' => 'templateId', ],
                 'templateParam' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'smsMessageSource' => [ 'type' => 'string', 'locationName' => 'smsMessageSource', ],
+            ],
+        ],
+        'EntityObjectLimits' => [
+            'type' => 'structure',
+            'members' => [
+                'userCountLimit' => [ 'type' => 'integer', 'locationName' => 'userCountLimit', ],
+                'policyCountLimit' => [ 'type' => 'integer', 'locationName' => 'policyCountLimit', ],
+                'roleCountLimit' => [ 'type' => 'integer', 'locationName' => 'roleCountLimit', ],
+                'groupCountLimit' => [ 'type' => 'integer', 'locationName' => 'groupCountLimit', ],
+                'userAttachedPolicyCountLimit' => [ 'type' => 'integer', 'locationName' => 'userAttachedPolicyCountLimit', ],
+                'groupAttachedPolicyCountLimit' => [ 'type' => 'integer', 'locationName' => 'groupAttachedPolicyCountLimit', ],
+                'roleAttachedPolicyCountLimit' => [ 'type' => 'integer', 'locationName' => 'roleAttachedPolicyCountLimit', ],
+                'userAttachToGroupCountLimit' => [ 'type' => 'integer', 'locationName' => 'userAttachToGroupCountLimit', ],
+                'groupAttachedUserCountLimit' => [ 'type' => 'integer', 'locationName' => 'groupAttachedUserCountLimit', ],
             ],
         ],
         'Flags' => [
@@ -697,6 +966,17 @@ return [
                 'policies' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'IdentityProviderInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'protocolType' => [ 'type' => 'string', 'locationName' => 'protocolType', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'metadata' => [ 'type' => 'string', 'locationName' => 'metadata', ],
+                'jrn' => [ 'type' => 'string', 'locationName' => 'jrn', ],
+                'forwardIdPUrl' => [ 'type' => 'string', 'locationName' => 'forwardIdPUrl', ],
+            ],
+        ],
         'ListRoleInfo' => [
             'type' => 'structure',
             'members' => [
@@ -729,6 +1009,48 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
+            ],
+        ],
+        'RemoveOrganizationUserRelationInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'subUserName' => [ 'type' => 'string', 'locationName' => 'subUserName', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+            ],
+        ],
+        'OrganizationUserRelation' => [
+            'type' => 'structure',
+            'members' => [
+                'orgId' => [ 'type' => 'string', 'locationName' => 'orgId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'subUserName' => [ 'type' => 'string', 'locationName' => 'subUserName', ],
+                'departmentPathName' => [ 'type' => 'string', 'locationName' => 'departmentPathName', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'OrganizationUser' => [
+            'type' => 'structure',
+            'members' => [
+                'orgId' => [ 'type' => 'string', 'locationName' => 'orgId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'departmentPathName' => [ 'type' => 'string', 'locationName' => 'departmentPathName', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'validateState' => [ 'type' => 'integer', 'locationName' => 'validateState', ],
+            ],
+        ],
+        'AddOrganizationUserRelationInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'subUserName' => [ 'type' => 'string', 'locationName' => 'subUserName', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+            ],
+        ],
+        'Organization' => [
+            'type' => 'structure',
+            'members' => [
+                'orgId' => [ 'type' => 'string', 'locationName' => 'orgId', ],
+                'loginUrl' => [ 'type' => 'string', 'locationName' => 'loginUrl', ],
             ],
         ],
         'PasswordPolicyRule' => [
@@ -772,11 +1094,27 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'jrn' => [ 'type' => 'string', 'locationName' => 'jrn', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'policyType' => [ 'type' => 'string', 'locationName' => 'policyType', ],
+                'policyType' => [ 'type' => 'integer', 'locationName' => 'policyType', ],
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
-                'defaultEdition' => [ 'type' => 'integer', 'locationName' => 'defaultEdition', ],
+                'currentDefaultEdition' => [ 'type' => 'string', 'locationName' => 'currentDefaultEdition', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'scopeType' => [ 'type' => 'integer', 'locationName' => 'scopeType', ],
+            ],
+        ],
+        'ClonePoliciesInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'sourceSubUser' => [ 'type' => 'string', 'locationName' => 'sourceSubUser', ],
+                'targetSubUser' => [ 'type' => 'string', 'locationName' => 'targetSubUser', ],
+            ],
+        ],
+        'PolicyAttachedEntity' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'entityType' => [ 'type' => 'string', 'locationName' => 'entityType', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
         'PolicyDetail' => [
@@ -788,7 +1126,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'policyType' => [ 'type' => 'string', 'locationName' => 'policyType', ],
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
-                'defaultEdition' => [ 'type' => 'integer', 'locationName' => 'defaultEdition', ],
+                'currentDefaultEdition' => [ 'type' => 'string', 'locationName' => 'currentDefaultEdition', ],
                 'content' => [ 'type' => 'string', 'locationName' => 'content', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
@@ -798,7 +1136,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'isDefaultEdition' => [ 'type' => 'boolean', 'locationName' => 'isDefaultEdition', ],
-                'edition' => [ 'type' => 'integer', 'locationName' => 'edition', ],
+                'edition' => [ 'type' => 'string', 'locationName' => 'edition', ],
+                'policyDocument' => [ 'type' => 'string', 'locationName' => 'policyDocument', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
@@ -811,10 +1150,54 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
+        'QueryApiInfoByConditions' => [
+            'type' => 'structure',
+            'members' => [
+                'apiInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'ApiInfoVo', ], ],
+                'totalRecord' => [ 'type' => 'integer', 'locationName' => 'totalRecord', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'QueryApiInfoByConditionsInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceNameCNs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'serviceNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'actionTypes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'actionDescription' => [ 'type' => 'string', 'locationName' => 'actionDescription', ],
+                'actionName' => [ 'type' => 'string', 'locationName' => 'actionName', ],
+                'actionNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'accessLevels' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'page' => [ 'type' => 'integer', 'locationName' => 'page', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
         'RemovePermissionInfo' => [
             'type' => 'structure',
             'members' => [
                 'permissionId' => [ 'type' => 'integer', 'locationName' => 'permissionId', ],
+            ],
+        ],
+        'ResourceGroup' => [
+            'type' => 'structure',
+            'members' => [
+                'scopeId' => [ 'type' => 'string', 'locationName' => 'scopeId', ],
+                'scopeName' => [ 'type' => 'string', 'locationName' => 'scopeName', ],
+            ],
+        ],
+        'Response' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'simpleInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'SimpleInfo', ], ],
+            ],
+        ],
+        'SimpleInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
         'ResultMsg' => [
@@ -841,10 +1224,12 @@ return [
         'RolePolicy' => [
             'type' => 'structure',
             'members' => [
+                'policyId' => [ 'type' => 'string', 'locationName' => 'policyId', ],
                 'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
                 'policyJrn' => [ 'type' => 'string', 'locationName' => 'policyJrn', ],
+                'scopeType' => [ 'type' => 'integer', 'locationName' => 'scopeType', ],
             ],
         ],
         'SendBatchMsg' => [
@@ -887,9 +1272,22 @@ return [
                 'resourceList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'ServiceInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'cnName' => [ 'type' => 'string', 'locationName' => 'cnName', ],
+                'enName' => [ 'type' => 'string', 'locationName' => 'enName', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
+                'canDelete' => [ 'type' => 'boolean', 'locationName' => 'canDelete', ],
+            ],
+        ],
         'SubUser' => [
             'type' => 'structure',
             'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
                 'email' => [ 'type' => 'string', 'locationName' => 'email', ],
@@ -897,6 +1295,7 @@ return [
                 'account' => [ 'type' => 'string', 'locationName' => 'account', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
             ],
         ],
         'SubUserAccessKey' => [
@@ -905,8 +1304,66 @@ return [
                 'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
                 'secretAccessKey' => [ 'type' => 'string', 'locationName' => 'secretAccessKey', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'lastVisitTime' => [ 'type' => 'string', 'locationName' => 'lastVisitTime', ],
+                'lastVisitEvent' => [ 'type' => 'string', 'locationName' => 'lastVisitEvent', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'yn' => [ 'type' => 'integer', 'locationName' => 'yn', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+            ],
+        ],
+        'SubUserAuditRecord' => [
+            'type' => 'structure',
+            'members' => [
+                'lastVisitTime' => [ 'type' => 'string', 'locationName' => 'lastVisitTime', ],
+                'lastVisitEvent' => [ 'type' => 'string', 'locationName' => 'lastVisitEvent', ],
+            ],
+        ],
+        'SysPermissionMenuVo' => [
+            'type' => 'structure',
+            'members' => [
+                'menuId' => [ 'type' => 'string', 'locationName' => 'menuId', ],
+                'autoMountChildMenu' => [ 'type' => 'string', 'locationName' => 'autoMountChildMenu', ],
+            ],
+        ],
+        'SysPermission' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'policyId' => [ 'type' => 'string', 'locationName' => 'policyId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'createBy' => [ 'type' => 'integer', 'locationName' => 'createBy', ],
+                'createByErp' => [ 'type' => 'string', 'locationName' => 'createByErp', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'updateBy' => [ 'type' => 'integer', 'locationName' => 'updateBy', ],
+                'updateByErp' => [ 'type' => 'string', 'locationName' => 'updateByErp', ],
+                'menuInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'SysPermissionMenuVo', ], ],
+                'erp' => [ 'type' => 'string', 'locationName' => 'erp', ],
+            ],
+        ],
+        'TPaasUser' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'account' => [ 'type' => 'integer', 'locationName' => 'account', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+            ],
+        ],
+        'UpdateApiInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'UpdateAssumeRolePolicyInfo' => [
@@ -919,6 +1376,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'UpdateIdentityProviderInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'metadata' => [ 'type' => 'string', 'locationName' => 'metadata', ],
             ],
         ],
         'UpdateLoginProfileInfo' => [
@@ -963,6 +1427,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
                 'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
             ],
         ],
         'UserAccessKey' => [
@@ -971,8 +1436,12 @@ return [
                 'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
                 'accessKeySecret' => [ 'type' => 'string', 'locationName' => 'accessKeySecret', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'modified' => [ 'type' => 'string', 'locationName' => 'modified', ],
+                'lastVisitTime' => [ 'type' => 'string', 'locationName' => 'lastVisitTime', ],
+                'lastVisitEvent' => [ 'type' => 'string', 'locationName' => 'lastVisitEvent', ],
                 'state' => [ 'type' => 'integer', 'locationName' => 'state', ],
                 'yn' => [ 'type' => 'integer', 'locationName' => 'yn', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
             ],
         ],
         'UserAttachment' => [
@@ -989,6 +1458,13 @@ return [
                 'cpCountry' => [ 'type' => 'string', 'locationName' => 'cpCountry', ],
                 'cpAddress' => [ 'type' => 'string', 'locationName' => 'cpAddress', ],
                 'cpTelphone' => [ 'type' => 'string', 'locationName' => 'cpTelphone', ],
+            ],
+        ],
+        'UserAuditRecord' => [
+            'type' => 'structure',
+            'members' => [
+                'lastVisitTime' => [ 'type' => 'string', 'locationName' => 'lastVisitTime', ],
+                'lastVisitEvent' => [ 'type' => 'string', 'locationName' => 'lastVisitEvent', ],
             ],
         ],
         'UserReqVo' => [
@@ -1087,6 +1563,146 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'CreateSensitiveActionRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'CreateServiceLinkedRoleTemplateRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+                'assumeRolePolicyDocument' => [ 'type' => 'string', 'locationName' => 'assumeRolePolicyDocument', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'maxSessionDuration' => [ 'type' => 'integer', 'locationName' => 'maxSessionDuration', ],
+                'invisible' => [ 'type' => 'boolean', 'locationName' => 'invisible', ],
+            ],
+        ],
+        'UpdateConditionRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'qualifier' => [ 'type' => 'integer', 'locationName' => 'qualifier', ],
+                'exists' => [ 'type' => 'integer', 'locationName' => 'exists', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+            ],
+        ],
+        'DeletePolicyCollectionRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+            ],
+        ],
+        'UpdateServiceLinkedRoleTemplateRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'roleId' => [ 'type' => 'string', 'locationName' => 'roleId', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'assumeRolePolicyDocument' => [ 'type' => 'string', 'locationName' => 'assumeRolePolicyDocument', ],
+                'maxSessionDuration' => [ 'type' => 'integer', 'locationName' => 'maxSessionDuration', ],
+            ],
+        ],
+        'AddConditionRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'qualifier' => [ 'type' => 'integer', 'locationName' => 'qualifier', ],
+                'exists' => [ 'type' => 'integer', 'locationName' => 'exists', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+            ],
+        ],
+        'UpdateEntityObjectLimitsRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'entityObjectLimits' => [ 'type' => 'list', 'member' => [ 'shape' => 'EntityObjectLimits', ], ],
+            ],
+        ],
+        'UpdateActionConditionRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'actionCondition' => [ 'type' => 'list', 'member' => [ 'shape' => 'ActionConditionVo', ], ],
+            ],
+        ],
+        'AttachSystemAccessKeyPolicyRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'systemAccessKey' => [ 'type' => 'string', 'locationName' => 'systemAccessKey', ],
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+            ],
+        ],
+        'AddApiInfosRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'apiInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'ApiInfoVo', ], ],
+            ],
+        ],
+        'DeleteConditionRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+            ],
+        ],
+        'AddPolicyCollectionRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'policyCollection' => [ 'type' => 'list', 'member' => [ 'shape' => 'PolicyCollection', ], ],
+            ],
+        ],
+        'AddActionConditionRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'actions' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'conditionNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'postProcess' => [ 'type' => 'integer', 'locationName' => 'postProcess', ],
+            ],
+        ],
+        'UpdateSensitiveActionRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'SystemAccessKeyRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'akType' => [ 'type' => 'string', 'locationName' => 'akType', ],
+                'erp' => [ 'type' => 'string', 'locationName' => 'erp', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'policyContent' => [ 'type' => 'string', 'locationName' => 'policyContent', ],
+                'systemAccessKey' => [ 'type' => 'string', 'locationName' => 'systemAccessKey', ],
+                'attachDefaultPolicy' => [ 'type' => 'boolean', 'locationName' => 'attachDefaultPolicy', ],
+            ],
+        ],
+        'DeleteActionConditionRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+            ],
+        ],
+        'DetachSystemAccessKeyPolicyRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'systemAccessKey' => [ 'type' => 'string', 'locationName' => 'systemAccessKey', ],
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+            ],
+        ],
+        'DescribeAttachedGroupPoliciesScopeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'policies' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceGroup', ], ],
+            ],
+        ],
         'DetachGroupPolicyResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1138,6 +1754,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'scopeId' => [ 'type' => 'string', 'locationName' => 'scopeId', ],
+                'allowAddPolicy' => [ 'type' => 'string', 'locationName' => 'allowAddPolicy', ],
                 'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
             ],
         ],
@@ -1240,6 +1858,14 @@ return [
                 'sort' => [ 'type' => 'integer', 'locationName' => 'sort', ],
             ],
         ],
+        'DescribeAttachedGroupPoliciesScopeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policyID' => [ 'type' => 'string', 'locationName' => 'policyID', ],
+                'filterBindResGroup' => [ 'type' => 'string', 'locationName' => 'filterBindResGroup', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+            ],
+        ],
         'DescribeGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1263,6 +1889,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'scopeId' => [ 'type' => 'string', 'locationName' => 'scopeId', ],
+                'allowDetachAddPolicy' => [ 'type' => 'string', 'locationName' => 'allowDetachAddPolicy', ],
                 'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
             ],
         ],
@@ -1277,6 +1905,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAttachedGroupPoliciesScopeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAttachedGroupPoliciesScopeResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -1295,6 +1930,116 @@ return [
         'UpdateGroupResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeVirtualMFARequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'queriedAccount' => [ 'type' => 'string', 'locationName' => 'queriedAccount', ],
+            ],
+        ],
+        'DescribeVirtualMFAResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+            ],
+        ],
+        'BindMFADeviceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'BindMFADeviceByOneCodeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'BindMFADeviceByOneCodeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'boundAccount' => [ 'type' => 'string', 'locationName' => 'boundAccount', ],
+                'authenticationCode' => [ 'type' => 'string', 'locationName' => 'authenticationCode', ],
+            ],
+        ],
+        'BindMFADeviceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'boundAccount' => [ 'type' => 'string', 'locationName' => 'boundAccount', ],
+                'authenticationCode1' => [ 'type' => 'string', 'locationName' => 'authenticationCode1', ],
+                'authenticationCode2' => [ 'type' => 'string', 'locationName' => 'authenticationCode2', ],
+            ],
+        ],
+        'UnbindMFADeviceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UnbindMFADeviceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'BindMFADeviceByOneCodeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateVirtualMFADeviceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateVirtualMFADeviceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeVirtualMFAResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeVirtualMFAResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateVirtualMFADeviceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'virtualMFADevice' =>  [ 'shape' => 'VirtualMFADevice', ],
+            ],
+        ],
+        'CreateVirtualMFADeviceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'boundAccount' => [ 'type' => 'string', 'locationName' => 'boundAccount', ],
+            ],
+        ],
+        'UnbindMFADeviceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'unboundAccount' => [ 'type' => 'string', 'locationName' => 'unboundAccount', ],
+            ],
+        ],
+        'BindMFADeviceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddOrganizationUserRelationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddOrganizationUserRelationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AddOrganizationUserRelationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'addOrganizationUserRelationInfo' =>  [ 'shape' => 'AddOrganizationUserRelationInfo', ],
+                'orgId' => [ 'type' => 'string', 'locationName' => 'orgId', ],
             ],
         ],
         'RemovePermissionOfSubUserResponseShape' => [
@@ -1461,6 +2206,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'policy' =>  [ 'shape' => 'PolicyDetail', ],
+                'defaultPolicyEdition' =>  [ 'shape' => 'PolicyEdition', ],
             ],
         ],
         'UpdatePolicyRequestShape' => [
@@ -1565,6 +2311,13 @@ return [
             'members' => [
             ],
         ],
+        'DescribeRolePoliciesScopeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'policies' => [ 'type' => 'list', 'member' => [ 'shape' => 'RolePolicy', ], ],
+            ],
+        ],
         'DescribeRolePoliciesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1577,6 +2330,19 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeRoleResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CopyRoleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CopyRoleResultShape', ],
+            ],
+        ],
+        'CopyRoleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'roleInfo' =>  [ 'shape' => 'RoleInfo', ],
             ],
         ],
         'DescribeRoleRequestShape' => [
@@ -1630,6 +2396,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'scopeId' => [ 'type' => 'string', 'locationName' => 'scopeId', ],
+                'allowDetachAddPolicy' => [ 'type' => 'string', 'locationName' => 'allowDetachAddPolicy', ],
                 'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
             ],
         ],
@@ -1644,6 +2412,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'scopeId' => [ 'type' => 'string', 'locationName' => 'scopeId', ],
+                'allowAddPolicy' => [ 'type' => 'string', 'locationName' => 'allowAddPolicy', ],
                 'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
             ],
         ],
@@ -1664,6 +2434,13 @@ return [
                 'sort' => [ 'type' => 'integer', 'locationName' => 'sort', ],
             ],
         ],
+        'DescribeRolePoliciesScopeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRolePoliciesScopeResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeRoleResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1674,6 +2451,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'roleInfo' =>  [ 'shape' => 'RoleInfo', ],
+            ],
+        ],
+        'CopyRoleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'copyRoleInfo' =>  [ 'shape' => 'CopyRoleInfo', ],
             ],
         ],
         'DescribeRolesResultShape' => [
@@ -1690,6 +2473,14 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
                 'sort' => [ 'type' => 'integer', 'locationName' => 'sort', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+            ],
+        ],
+        'DescribeRolePoliciesScopeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policyID' => [ 'type' => 'string', 'locationName' => 'policyID', ],
+                'filterBindResGroup' => [ 'type' => 'string', 'locationName' => 'filterBindResGroup', ],
                 'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
             ],
         ],
@@ -1736,12 +2527,19 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
                 'sort' => [ 'type' => 'integer', 'locationName' => 'sort', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
         'DetachSubUserPolicyRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'scopeId' => [ 'type' => 'string', 'locationName' => 'scopeId', ],
+                'allowDetachAddPolicy' => [ 'type' => 'string', 'locationName' => 'allowDetachAddPolicy', ],
                 'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
             ],
         ],
@@ -1749,6 +2547,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'subUser' =>  [ 'shape' => 'SubUser', ],
+            ],
+        ],
+        'CreateSubUserInnerResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' =>  [ 'shape' => 'CreateSubUserRes', ],
             ],
         ],
         'CreateSubUserResultShape' => [
@@ -1790,6 +2594,20 @@ return [
                 'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
             ],
         ],
+        'DescribeAttachedSubUserPoliciesScopeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'policies' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceGroup', ], ],
+            ],
+        ],
+        'DescribeAttachedSubUserPoliciesScopeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAttachedSubUserPoliciesScopeResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeAttachedSubUserPoliciesResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1814,6 +2632,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAttachedSubUserPoliciesScopeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policyID' => [ 'type' => 'string', 'locationName' => 'policyID', ],
+                'filterBindResGroup' => [ 'type' => 'string', 'locationName' => 'filterBindResGroup', ],
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
             ],
         ],
         'DescribeSubUserRequestShape' => [
@@ -1864,6 +2690,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'scopeId' => [ 'type' => 'string', 'locationName' => 'scopeId', ],
+                'allowAddPolicy' => [ 'type' => 'string', 'locationName' => 'allowAddPolicy', ],
                 'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
             ],
         ],
@@ -1878,10 +2706,23 @@ return [
             'members' => [
             ],
         ],
+        'CreateSubUserInnerRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'createSubUserInfo' =>  [ 'shape' => 'CreateSubUserInfoInner', ],
+            ],
+        ],
         'DescribeSubUserGroupsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeSubUserGroupsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateSubUserInnerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateSubUserInnerResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -1897,17 +2738,70 @@ return [
             'members' => [
             ],
         ],
+        'DeleteUserAccessKeyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+            ],
+        ],
+        'DescribeUserPinResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeUserPinResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeUserAccessKeysResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeUserAccessKeysResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateUserAccessKeyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateUserAccessKeyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteUserAccessKeyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisabledUserAccessKeyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'EnabledUserAccessKeyResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DeleteUserAccessKeyRequestShape' => [
+        'Filter' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeUserPinRequestShape' => [
+            'type' => 'structure',
+            'members' => [
                 'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'accountId' => [ 'type' => 'string', 'locationName' => 'accountId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DescribeUserAccessKeysRequestShape' => [
@@ -1935,39 +2829,15 @@ return [
                 'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
             ],
         ],
-        'DescribeUserAccessKeysResponseShape' => [
+        'DescribeUserPinResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeUserAccessKeysResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateUserAccessKeyResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
             ],
         ],
         'DisabledUserAccessKeyResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'CreateUserAccessKeyResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeleteUserAccessKeyResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DisabledUserAccessKeyResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'EnabledUserAccessKeyResultShape' => [
