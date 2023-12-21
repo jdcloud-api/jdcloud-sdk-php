@@ -216,6 +216,7 @@ return [
                 'authority' => [ 'type' => 'string', 'locationName' => 'authority', ],
                 'issueTime' => [ 'type' => 'string', 'locationName' => 'issueTime', ],
                 'dueTime' => [ 'type' => 'string', 'locationName' => 'dueTime', ],
+                'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
             ],
         ],
         'CompanyInfo' => [
@@ -270,6 +271,7 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'url' => [ 'type' => 'string', 'locationName' => 'url', ],
                 'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+                'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
             ],
         ],
         'AliveResultInfo' => [
@@ -525,6 +527,7 @@ return [
                 'authority' => [ 'type' => 'string', 'locationName' => 'authority', ],
                 'issueTime' => [ 'type' => 'string', 'locationName' => 'issueTime', ],
                 'dueTime' => [ 'type' => 'string', 'locationName' => 'dueTime', ],
+                'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
             ],
         ],
         'QueryBankListResponseShape' => [
@@ -724,6 +727,7 @@ return [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'url' => [ 'type' => 'string', 'locationName' => 'url', ],
                 'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+                'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
             ],
         ],
         'PersonalMobileRequestShape' => [
