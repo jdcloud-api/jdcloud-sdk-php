@@ -54,6 +54,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise updateAutoScalingAsync(array $args = [])
  * @method \Jdcloud\Result modifyInstancesManaged(array $args = [])
  * @method \GuzzleHttp\Promise\Promise modifyInstancesManagedAsync(array $args = [])
+ * @method \Jdcloud\Result modifyInstancesProtected(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise modifyInstancesProtectedAsync(array $args = [])
  * @method \Jdcloud\Result describeAsRules(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeAsRulesAsync(array $args = [])
  * @method \Jdcloud\Result createAsRule(array $args = [])
