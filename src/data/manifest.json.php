@@ -197,6 +197,10 @@ return [
         'namespace' => 'Yunding',
         'versions' => [ 'latest' => 'v2', ],
     ],
+    'cp' => [
+        'namespace' => 'Cp',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'cr' => [
         'namespace' => 'Cr',
         'versions' => [ 'latest' => 'v1', ],
