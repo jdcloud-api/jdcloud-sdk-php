@@ -11,15 +11,6 @@ return [
 //        'serviceId' => 'assistant',
     ],
     'operations' => [
-        'DescribeAssistants' => [
-            'name' => 'DescribeAssistants',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/describeAssistants',
-            ],
-            'input' => [ 'shape' => 'DescribeAssistantsRequestShape', ],
-            'output' => [ 'shape' => 'DescribeAssistantsResponseShape', ],
-        ],
         'CreateCommand' => [
             'name' => 'CreateCommand',
             'http' => [
@@ -37,15 +28,6 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeCommandsRequestShape', ],
             'output' => [ 'shape' => 'DescribeCommandsResponseShape', ],
-        ],
-        'ModifyCommand' => [
-            'name' => 'ModifyCommand',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/modifyCommand',
-            ],
-            'input' => [ 'shape' => 'ModifyCommandRequestShape', ],
-            'output' => [ 'shape' => 'ModifyCommandResponseShape', ],
         ],
         'DeleteCommands' => [
             'name' => 'DeleteCommands',
@@ -65,15 +47,6 @@ return [
             'input' => [ 'shape' => 'InvokeCommandRequestShape', ],
             'output' => [ 'shape' => 'InvokeCommandResponseShape', ],
         ],
-        'RunCommand' => [
-            'name' => 'RunCommand',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/runCommand',
-            ],
-            'input' => [ 'shape' => 'RunCommandRequestShape', ],
-            'output' => [ 'shape' => 'RunCommandResponseShape', ],
-        ],
         'DescribeInvocations' => [
             'name' => 'DescribeInvocations',
             'http' => [
@@ -83,15 +56,6 @@ return [
             'input' => [ 'shape' => 'DescribeInvocationsRequestShape', ],
             'output' => [ 'shape' => 'DescribeInvocationsResponseShape', ],
         ],
-        'StopInvocation' => [
-            'name' => 'StopInvocation',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/stopInvocation',
-            ],
-            'input' => [ 'shape' => 'StopInvocationRequestShape', ],
-            'output' => [ 'shape' => 'StopInvocationResponseShape', ],
-        ],
         'AddLogConfig' => [
             'name' => 'AddLogConfig',
             'http' => [
@@ -100,15 +64,6 @@ return [
             ],
             'input' => [ 'shape' => 'AddLogConfigRequestShape', ],
             'output' => [ 'shape' => 'AddLogConfigResponseShape', ],
-        ],
-        'ModifyLogConfig' => [
-            'name' => 'ModifyLogConfig',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/modifyLogConfig',
-            ],
-            'input' => [ 'shape' => 'ModifyLogConfigRequestShape', ],
-            'output' => [ 'shape' => 'ModifyLogConfigResponseShape', ],
         ],
     ],
     'shapes' => [
@@ -152,7 +107,11 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'commandId' => [ 'type' => 'string', 'locationName' => 'commandId', ],
                 'commandName' => [ 'type' => 'string', 'locationName' => 'commandName', ],
+                'sourceType' => [ 'type' => 'string', 'locationName' => 'sourceType', ],
                 'invokeId' => [ 'type' => 'string', 'locationName' => 'invokeId', ],
+                'instances' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'invokeInstances' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'commandType' => [ 'type' => 'string', 'locationName' => 'commandType', ],
                 'commandContent' => [ 'type' => 'string', 'locationName' => 'commandContent', ],
                 'commandDescription' => [ 'type' => 'string', 'locationName' => 'commandDescription', ],
@@ -161,7 +120,9 @@ return [
                 'timeout' => [ 'type' => 'string', 'locationName' => 'timeout', ],
                 'username' => [ 'type' => 'string', 'locationName' => 'username', ],
                 'workdir' => [ 'type' => 'string', 'locationName' => 'workdir', ],
+                'errorInfo' => [ 'type' => 'string', 'locationName' => 'errorInfo', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'execTime' => [ 'type' => 'string', 'locationName' => 'execTime', ],
             ],
         ],
         'InvocationInstance' => [
@@ -180,24 +141,11 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
-        'DescribeAssistantsResponseShape' => [
+        'TagFilter' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeAssistantsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeAssistantsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'instances' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DescribeAssistantsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'assistants' => [ 'type' => 'list', 'member' => [ 'shape' => 'Assistant', ], ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'InvokeCommandRequestShape' => [
@@ -205,6 +153,8 @@ return [
             'members' => [
                 'commandId' => [ 'type' => 'string', 'locationName' => 'commandId', ],
                 'instances' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'execTime' => [ 'type' => 'string', 'locationName' => 'execTime', ],
                 'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
                 'username' => [ 'type' => 'string', 'locationName' => 'username', ],
                 'workdir' => [ 'type' => 'string', 'locationName' => 'workdir', ],
@@ -225,12 +175,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'invokeId' => [ 'type' => 'string', 'locationName' => 'invokeId', ],
-            ],
-        ],
-        'ModifyCommandResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'commandId' => [ 'type' => 'string', 'locationName' => 'commandId', ],
             ],
         ],
         'DeleteCommandsResultShape' => [
@@ -266,24 +210,10 @@ return [
                 'commands' => [ 'type' => 'list', 'member' => [ 'shape' => 'Command', ], ],
             ],
         ],
-        'RunCommandResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'commandId' => [ 'type' => 'string', 'locationName' => 'commandId', ],
-                'invokeId' => [ 'type' => 'string', 'locationName' => 'invokeId', ],
-            ],
-        ],
         'DeleteCommandsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DeleteCommandsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'RunCommandResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'RunCommandResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -321,71 +251,11 @@ return [
                 'commandId' => [ 'type' => 'string', 'locationName' => 'commandId', ],
             ],
         ],
-        'ModifyCommandRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'commandId' => [ 'type' => 'string', 'locationName' => 'commandId', ],
-                'commandName' => [ 'type' => 'string', 'locationName' => 'commandName', ],
-                'commandType' => [ 'type' => 'string', 'locationName' => 'commandType', ],
-                'commandContent' => [ 'type' => 'string', 'locationName' => 'commandContent', ],
-                'commandDescription' => [ 'type' => 'string', 'locationName' => 'commandDescription', ],
-                'workdir' => [ 'type' => 'string', 'locationName' => 'workdir', ],
-                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
-                'username' => [ 'type' => 'string', 'locationName' => 'username', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'RunCommandRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'commandName' => [ 'type' => 'string', 'locationName' => 'commandName', ],
-                'commandType' => [ 'type' => 'string', 'locationName' => 'commandType', ],
-                'commandContent' => [ 'type' => 'string', 'locationName' => 'commandContent', ],
-                'windowsPassword' => [ 'type' => 'string', 'locationName' => 'windowsPassword', ],
-                'instances' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
-                'username' => [ 'type' => 'string', 'locationName' => 'username', ],
-                'workdir' => [ 'type' => 'string', 'locationName' => 'workdir', ],
-                'enableParameter' => [ 'type' => 'boolean', 'locationName' => 'enableParameter', ],
-                'keepCommand' => [ 'type' => 'boolean', 'locationName' => 'keepCommand', ],
-                'commandDescription' => [ 'type' => 'string', 'locationName' => 'commandDescription', ],
-                'parameters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Parameter', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'ModifyCommandResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ModifyCommandResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeInvocationsResultShape' => [
             'type' => 'structure',
             'members' => [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'invocations' => [ 'type' => 'list', 'member' => [ 'shape' => 'Invocation', ], ],
-            ],
-        ],
-        'StopInvocationResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'StopInvocationResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'StopInvocationRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'invokeId' => [ 'type' => 'string', 'locationName' => 'invokeId', ],
-                'instances' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'StopInvocationResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'invokeId' => [ 'type' => 'string', 'locationName' => 'invokeId', ],
             ],
         ],
         'DescribeInvocationsRequestShape' => [
@@ -414,19 +284,6 @@ return [
             'members' => [
             ],
         ],
-        'ModifyLogConfigResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'ModifyLogConfigRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'logset' => [ 'type' => 'string', 'locationName' => 'logset', ],
-                'logtopic' => [ 'type' => 'string', 'locationName' => 'logtopic', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'AddLogConfigRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -436,12 +293,6 @@ return [
             ],
         ],
         'AddLogConfigResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModifyLogConfigResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
