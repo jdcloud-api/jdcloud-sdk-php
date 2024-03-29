@@ -421,6 +421,10 @@ return [
         'namespace' => 'Live',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'lavm' => [
+        'namespace' => 'Lavm',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'jdworkspace' => [
         'namespace' => 'Jdworkspace',
         'versions' => [ 'latest' => 'v1', ],
