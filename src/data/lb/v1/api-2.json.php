@@ -65,6 +65,87 @@ return [
             'input' => [ 'shape' => 'DescribeTargetHealthRequestShape', ],
             'output' => [ 'shape' => 'DescribeTargetHealthResponseShape', ],
         ],
+        'UpdateAgTargets' => [
+            'name' => 'UpdateAgTargets',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/backends/{backendId}:updateAgTargets',
+            ],
+            'input' => [ 'shape' => 'UpdateAgTargetsRequestShape', ],
+            'output' => [ 'shape' => 'UpdateAgTargetsResponseShape', ],
+        ],
+        'DescribeAgTargets' => [
+            'name' => 'DescribeAgTargets',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/backends/{backendId}/agTargets',
+            ],
+            'input' => [ 'shape' => 'DescribeAgTargetsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAgTargetsResponseShape', ],
+        ],
+        'DescribeCustomizedConfigurations' => [
+            'name' => 'DescribeCustomizedConfigurations',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/customizedConfigurations/',
+            ],
+            'input' => [ 'shape' => 'DescribeCustomizedConfigurationsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeCustomizedConfigurationsResponseShape', ],
+        ],
+        'CreateCustomizedConfiguration' => [
+            'name' => 'CreateCustomizedConfiguration',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/customizedConfigurations/',
+            ],
+            'input' => [ 'shape' => 'CreateCustomizedConfigurationRequestShape', ],
+            'output' => [ 'shape' => 'CreateCustomizedConfigurationResponseShape', ],
+        ],
+        'DescribeCustomizedConfiguration' => [
+            'name' => 'DescribeCustomizedConfiguration',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/customizedConfigurations/{customizedConfigurationId}',
+            ],
+            'input' => [ 'shape' => 'DescribeCustomizedConfigurationRequestShape', ],
+            'output' => [ 'shape' => 'DescribeCustomizedConfigurationResponseShape', ],
+        ],
+        'UpdateCustomizedConfiguration' => [
+            'name' => 'UpdateCustomizedConfiguration',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/customizedConfigurations/{customizedConfigurationId}',
+            ],
+            'input' => [ 'shape' => 'UpdateCustomizedConfigurationRequestShape', ],
+            'output' => [ 'shape' => 'UpdateCustomizedConfigurationResponseShape', ],
+        ],
+        'DeleteCustomizedConfiguration' => [
+            'name' => 'DeleteCustomizedConfiguration',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/customizedConfigurations/{customizedConfigurationId}',
+            ],
+            'input' => [ 'shape' => 'DeleteCustomizedConfigurationRequestShape', ],
+            'output' => [ 'shape' => 'DeleteCustomizedConfigurationResponseShape', ],
+        ],
+        'AssociateCustomizedConfiguration' => [
+            'name' => 'AssociateCustomizedConfiguration',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/customizedConfigurations/{customizedConfigurationId}:associateCustomizedConfiguration',
+            ],
+            'input' => [ 'shape' => 'AssociateCustomizedConfigurationRequestShape', ],
+            'output' => [ 'shape' => 'AssociateCustomizedConfigurationResponseShape', ],
+        ],
+        'DisassociateCustomizedConfiguration' => [
+            'name' => 'DisassociateCustomizedConfiguration',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/customizedConfigurations/{customizedConfigurationId}:disassociateCustomizedConfiguration',
+            ],
+            'input' => [ 'shape' => 'DisassociateCustomizedConfigurationRequestShape', ],
+            'output' => [ 'shape' => 'DisassociateCustomizedConfigurationResponseShape', ],
+        ],
         'DescribeListeners' => [
             'name' => 'DescribeListeners',
             'http' => [
@@ -182,6 +263,15 @@ return [
             'input' => [ 'shape' => 'DeleteLoadBalancerRequestShape', ],
             'output' => [ 'shape' => 'DeleteLoadBalancerResponseShape', ],
         ],
+        'DescribeLoadBalancersBySecurityGroup' => [
+            'name' => 'DescribeLoadBalancersBySecurityGroup',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/loadBalancers/{securityGroupId}:describeLoadBalancersBySecurityGroup',
+            ],
+            'input' => [ 'shape' => 'DescribeLoadBalancersBySecurityGroupRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLoadBalancersBySecurityGroupResponseShape', ],
+        ],
         'AssociateElasticIp' => [
             'name' => 'AssociateElasticIp',
             'http' => [
@@ -217,6 +307,60 @@ return [
             ],
             'input' => [ 'shape' => 'DisassociateSecurityGroupRequestShape', ],
             'output' => [ 'shape' => 'DisassociateSecurityGroupResponseShape', ],
+        ],
+        'DescribeSecurityPolicies' => [
+            'name' => 'DescribeSecurityPolicies',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/securityPolicies/',
+            ],
+            'input' => [ 'shape' => 'DescribeSecurityPoliciesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSecurityPoliciesResponseShape', ],
+        ],
+        'CreateSecurityPolicy' => [
+            'name' => 'CreateSecurityPolicy',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/securityPolicies/',
+            ],
+            'input' => [ 'shape' => 'CreateSecurityPolicyRequestShape', ],
+            'output' => [ 'shape' => 'CreateSecurityPolicyResponseShape', ],
+        ],
+        'DescribeSecurityPolicy' => [
+            'name' => 'DescribeSecurityPolicy',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/securityPolicies/{securityPolicyId}',
+            ],
+            'input' => [ 'shape' => 'DescribeSecurityPolicyRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSecurityPolicyResponseShape', ],
+        ],
+        'UpdateSecurityPolicy' => [
+            'name' => 'UpdateSecurityPolicy',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/securityPolicies/{securityPolicyId}',
+            ],
+            'input' => [ 'shape' => 'UpdateSecurityPolicyRequestShape', ],
+            'output' => [ 'shape' => 'UpdateSecurityPolicyResponseShape', ],
+        ],
+        'DeleteSecurityPolicy' => [
+            'name' => 'DeleteSecurityPolicy',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/securityPolicies/{securityPolicyId}',
+            ],
+            'input' => [ 'shape' => 'DeleteSecurityPolicyRequestShape', ],
+            'output' => [ 'shape' => 'DeleteSecurityPolicyResponseShape', ],
+        ],
+        'DescribeSupportedCiphers' => [
+            'name' => 'DescribeSupportedCiphers',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/supportedCiphers/',
+            ],
+            'input' => [ 'shape' => 'DescribeSupportedCiphersRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSupportedCiphersResponseShape', ],
         ],
         'DescribeTargetGroups' => [
             'name' => 'DescribeTargetGroups',
@@ -386,6 +530,24 @@ return [
                 'certificates' => [ 'type' => 'list', 'member' => [ 'shape' => 'ExtCertificateSpec', ], ],
             ],
         ],
+        'PreActionSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'extendActionType' => [ 'type' => 'integer', 'locationName' => 'extendActionType', ],
+                'mirrorBackendId' => [ 'type' => 'string', 'locationName' => 'mirrorBackendId', ],
+                'insertHeaderSpec' =>  [ 'shape' => 'InsertHeaderSpec', ],
+                'deleteHeaderSpec' =>  [ 'shape' => 'DeleteHeaderSpec', ],
+                'rewriteSpec' =>  [ 'shape' => 'RewriteSpec', ],
+            ],
+        ],
+        'InsertHeaderSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'valueType' => [ 'type' => 'integer', 'locationName' => 'valueType', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'RuleSpec' => [
             'type' => 'structure',
             'members' => [
@@ -394,6 +556,8 @@ return [
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
                 'redirectActionSpec' =>  [ 'shape' => 'RedirectActionSpec', ],
+                'preActions' => [ 'type' => 'list', 'member' => [ 'shape' => 'PreActionSpec', ], ],
+                'postActions' => [ 'type' => 'list', 'member' => [ 'shape' => 'PostActionSpec', ], ],
             ],
         ],
         'RedirectActionSpec' => [
@@ -407,10 +571,67 @@ return [
                 'statusCode' => [ 'type' => 'string', 'locationName' => 'statusCode', ],
             ],
         ],
+        'DeleteHeaderSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+            ],
+        ],
+        'RewriteSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'query' => [ 'type' => 'string', 'locationName' => 'query', ],
+            ],
+        ],
         'AddRulesSpec' => [
             'type' => 'structure',
             'members' => [
                 'ruleSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'RuleSpec', ], ],
+            ],
+        ],
+        'PostActionSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'extendActionType' => [ 'type' => 'integer', 'locationName' => 'extendActionType', ],
+                'insertHeaderSpec' =>  [ 'shape' => 'InsertHeaderSpec', ],
+                'deleteHeaderSpec' =>  [ 'shape' => 'DeleteHeaderSpec', ],
+            ],
+        ],
+        'AgInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
+                'defaultWeight' => [ 'type' => 'integer', 'locationName' => 'defaultWeight', ],
+            ],
+        ],
+        'AgInfoSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
+                'defaultWeight' => [ 'type' => 'integer', 'locationName' => 'defaultWeight', ],
+            ],
+        ],
+        'AgTarget' => [
+            'type' => 'structure',
+            'members' => [
+                'targetId' => [ 'type' => 'string', 'locationName' => 'targetId', ],
+                'targetGroupId' => [ 'type' => 'string', 'locationName' => 'targetGroupId', ],
+                'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
+                'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
+                'ipAddress' => [ 'type' => 'string', 'locationName' => 'ipAddress', ],
+            ],
+        ],
+        'TargetUpdateSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'targetId' => [ 'type' => 'string', 'locationName' => 'targetId', ],
+                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
             ],
         ],
         'AssAndDisassElasticIpSpec' => [
@@ -425,6 +646,27 @@ return [
                 'securityGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'AssElasticIpSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
+            ],
+        ],
+        'HealthCheck' => [
+            'type' => 'structure',
+            'members' => [
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'healthyThresholdCount' => [ 'type' => 'integer', 'locationName' => 'healthyThresholdCount', ],
+                'unhealthyThresholdCount' => [ 'type' => 'integer', 'locationName' => 'unhealthyThresholdCount', ],
+                'checkTimeoutSeconds' => [ 'type' => 'integer', 'locationName' => 'checkTimeoutSeconds', ],
+                'intervalSeconds' => [ 'type' => 'integer', 'locationName' => 'intervalSeconds', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'httpVersion' => [ 'type' => 'string', 'locationName' => 'httpVersion', ],
+                'httpDomain' => [ 'type' => 'string', 'locationName' => 'httpDomain', ],
+                'httpPath' => [ 'type' => 'string', 'locationName' => 'httpPath', ],
+                'httpCode' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'Backend' => [
             'type' => 'structure',
             'members' => [
@@ -437,6 +679,7 @@ return [
                 'algorithm' => [ 'type' => 'string', 'locationName' => 'algorithm', ],
                 'targetGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'agIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'agInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgInfo', ], ],
                 'proxyProtocol' => [ 'type' => 'boolean', 'locationName' => 'proxyProtocol', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'connectionDrainingSeconds' => [ 'type' => 'integer', 'locationName' => 'connectionDrainingSeconds', ],
@@ -448,7 +691,7 @@ return [
                 'httpForwardedHost' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedHost', ],
                 'httpForwardedVip' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedVip', ],
                 'httpForwardedClientPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedClientPort', ],
-                'healthCheck' => [ 'type' => 'object', 'locationName' => 'healthCheck', ],
+                'healthCheck' =>  [ 'shape' => 'HealthCheck', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
             ],
         ],
@@ -476,6 +719,7 @@ return [
                 'checkTimeoutSeconds' => [ 'type' => 'integer', 'locationName' => 'checkTimeoutSeconds', ],
                 'intervalSeconds' => [ 'type' => 'integer', 'locationName' => 'intervalSeconds', ],
                 'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'httpVersion' => [ 'type' => 'string', 'locationName' => 'httpVersion', ],
                 'httpDomain' => [ 'type' => 'string', 'locationName' => 'httpDomain', ],
                 'httpPath' => [ 'type' => 'string', 'locationName' => 'httpPath', ],
                 'httpCode' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
@@ -492,6 +736,7 @@ return [
                 'algorithm' => [ 'type' => 'string', 'locationName' => 'algorithm', ],
                 'targetGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'agIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'agInfoSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgInfoSpec', ], ],
                 'proxyProtocol' => [ 'type' => 'boolean', 'locationName' => 'proxyProtocol', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'sessionStickiness' => [ 'type' => 'boolean', 'locationName' => 'sessionStickiness', ],
@@ -503,6 +748,13 @@ return [
                 'httpForwardedHost' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedHost', ],
                 'httpForwardedVip' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedVip', ],
                 'httpForwardedClientPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedClientPort', ],
+            ],
+        ],
+        'LimitationSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'qps' => [ 'type' => 'integer', 'locationName' => 'qps', ],
+                'activeConnections' => [ 'type' => 'integer', 'locationName' => 'activeConnections', ],
             ],
         ],
         'CreateListenerSpec' => [
@@ -518,8 +770,10 @@ return [
                 'urlMapId' => [ 'type' => 'string', 'locationName' => 'urlMapId', ],
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'certificateSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'CertificateSpec', ], ],
+                'limitation' =>  [ 'shape' => 'LimitationSpec', ],
                 'connectionIdleTimeSeconds' => [ 'type' => 'integer', 'locationName' => 'connectionIdleTimeSeconds', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'securityPolicyId' => [ 'type' => 'string', 'locationName' => 'securityPolicyId', ],
             ],
         ],
         'Tag' => [
@@ -570,6 +824,51 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
         ],
+        'CustomizedConfiguration' => [
+            'type' => 'structure',
+            'members' => [
+                'customizedConfigurationId' => [ 'type' => 'string', 'locationName' => 'customizedConfigurationId', ],
+                'customizedConfigurationName' => [ 'type' => 'string', 'locationName' => 'customizedConfigurationName', ],
+                'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'customizedConfigurationContent' =>  [ 'shape' => 'CustomizedConfigurationContent', ],
+            ],
+        ],
+        'CustomizedConfigurationContent' => [
+            'type' => 'structure',
+            'members' => [
+                'sessionTicket' => [ 'type' => 'string', 'locationName' => 'sessionTicket', ],
+            ],
+        ],
+        'CustomizedConfigurationContentSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'sessionTicket' => [ 'type' => 'string', 'locationName' => 'sessionTicket', ],
+            ],
+        ],
+        'CustomizedConfigurationSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'customizedConfigurationName' => [ 'type' => 'string', 'locationName' => 'customizedConfigurationName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'customizedConfigurationContent' =>  [ 'shape' => 'CustomizedConfigurationContentSpec', ],
+            ],
+        ],
+        'CustomizedConfigurationUpdateSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'customizedConfigurationName' => [ 'type' => 'string', 'locationName' => 'customizedConfigurationName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'customizedConfigurationContent' =>  [ 'shape' => 'CustomizedConfigurationContentSpec', ],
+            ],
+        ],
+        'DeleteHeader' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+            ],
+        ],
         'DeleteListenerCertificatesSpec' => [
             'type' => 'structure',
             'members' => [
@@ -580,6 +879,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'ruleIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DisassElasticIpSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
+                'deleteElasticIp' => [ 'type' => 'boolean', 'locationName' => 'deleteElasticIp', ],
             ],
         ],
         'ExportTask' => [
@@ -602,18 +908,19 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
-        'HealthCheck' => [
+        'UnhealthReason' => [
             'type' => 'structure',
             'members' => [
-                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
-                'healthyThresholdCount' => [ 'type' => 'integer', 'locationName' => 'healthyThresholdCount', ],
-                'unhealthyThresholdCount' => [ 'type' => 'integer', 'locationName' => 'unhealthyThresholdCount', ],
-                'checkTimeoutSeconds' => [ 'type' => 'integer', 'locationName' => 'checkTimeoutSeconds', ],
-                'intervalSeconds' => [ 'type' => 'integer', 'locationName' => 'intervalSeconds', ],
-                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
-                'httpDomain' => [ 'type' => 'string', 'locationName' => 'httpDomain', ],
-                'httpPath' => [ 'type' => 'string', 'locationName' => 'httpPath', ],
-                'httpCode' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
+        'InsertHeader' => [
+            'type' => 'structure',
+            'members' => [
+                'valueType' => [ 'type' => 'integer', 'locationName' => 'valueType', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'Listener' => [
@@ -633,9 +940,11 @@ return [
                 'urlMapId' => [ 'type' => 'string', 'locationName' => 'urlMapId', ],
                 'connectionIdleTimeSeconds' => [ 'type' => 'integer', 'locationName' => 'connectionIdleTimeSeconds', ],
                 'certificateSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'CertificateSpec', ], ],
+                'limitation' =>  [ 'shape' => 'LimitationSpec', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'extensionCertificateSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'ExtensionCertificateSpec', ], ],
+                'securityPolicyId' => [ 'type' => 'string', 'locationName' => 'securityPolicyId', ],
             ],
         ],
         'LoadBalancerState' => [
@@ -671,6 +980,7 @@ return [
                 'deleteProtection' => [ 'type' => 'boolean', 'locationName' => 'deleteProtection', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'azType' => [ 'type' => 'string', 'locationName' => 'azType', ],
+                'customizedConfigurationId' => [ 'type' => 'string', 'locationName' => 'customizedConfigurationId', ],
             ],
         ],
         'Charge' => [
@@ -690,6 +1000,50 @@ return [
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'parentResourceId' => [ 'type' => 'string', 'locationName' => 'parentResourceId', ],
                 'maxLimit' => [ 'type' => 'integer', 'locationName' => 'maxLimit', ],
+            ],
+        ],
+        'PostAction' => [
+            'type' => 'structure',
+            'members' => [
+                'extendActionType' => [ 'type' => 'integer', 'locationName' => 'extendActionType', ],
+                'insertHeader' =>  [ 'shape' => 'InsertHeader', ],
+                'deleteHeader' =>  [ 'shape' => 'DeleteHeader', ],
+            ],
+        ],
+        'PostActionUpdateSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'extendActionType' => [ 'type' => 'integer', 'locationName' => 'extendActionType', ],
+                'insertHeaderSpec' =>  [ 'shape' => 'InsertHeaderSpec', ],
+                'deleteHeaderSpec' =>  [ 'shape' => 'DeleteHeaderSpec', ],
+            ],
+        ],
+        'PreAction' => [
+            'type' => 'structure',
+            'members' => [
+                'extendActionType' => [ 'type' => 'integer', 'locationName' => 'extendActionType', ],
+                'mirrorBackendId' => [ 'type' => 'string', 'locationName' => 'mirrorBackendId', ],
+                'insertHeader' =>  [ 'shape' => 'InsertHeader', ],
+                'deleteHeader' =>  [ 'shape' => 'DeleteHeader', ],
+                'rewrite' =>  [ 'shape' => 'Rewrite', ],
+            ],
+        ],
+        'Rewrite' => [
+            'type' => 'structure',
+            'members' => [
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'query' => [ 'type' => 'string', 'locationName' => 'query', ],
+            ],
+        ],
+        'PreActionUpdateSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'extendActionType' => [ 'type' => 'integer', 'locationName' => 'extendActionType', ],
+                'mirrorBackendId' => [ 'type' => 'string', 'locationName' => 'mirrorBackendId', ],
+                'insertHeaderSpec' =>  [ 'shape' => 'InsertHeaderSpec', ],
+                'deleteHeaderSpec' =>  [ 'shape' => 'DeleteHeaderSpec', ],
+                'rewriteSpec' =>  [ 'shape' => 'RewriteSpec', ],
             ],
         ],
         'Quota' => [
@@ -721,6 +1075,8 @@ return [
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
                 'redirectAction' =>  [ 'shape' => 'RedirectAction', ],
+                'preActions' => [ 'type' => 'list', 'member' => [ 'shape' => 'PreAction', ], ],
+                'postActions' => [ 'type' => 'list', 'member' => [ 'shape' => 'PostAction', ], ],
             ],
         ],
         'RuleUpdateSpec' => [
@@ -732,6 +1088,46 @@ return [
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
                 'redirectActionSpec' =>  [ 'shape' => 'RedirectActionSpec', ],
+                'preActions' => [ 'type' => 'list', 'member' => [ 'shape' => 'PreActionUpdateSpec', ], ],
+                'postActions' => [ 'type' => 'list', 'member' => [ 'shape' => 'PostActionUpdateSpec', ], ],
+            ],
+        ],
+        'SecurityPolicy' => [
+            'type' => 'structure',
+            'members' => [
+                'securityPolicyId' => [ 'type' => 'string', 'locationName' => 'securityPolicyId', ],
+                'securityPolicyName' => [ 'type' => 'string', 'locationName' => 'securityPolicyName', ],
+                'securityPolicyType' => [ 'type' => 'string', 'locationName' => 'securityPolicyType', ],
+                'listenerIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'protocols' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ciphers' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'SecurityPolicySpec' => [
+            'type' => 'structure',
+            'members' => [
+                'securityPolicyName' => [ 'type' => 'string', 'locationName' => 'securityPolicyName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'protocols' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ciphers' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'SecurityPolicyUpdateSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'securityPolicyName' => [ 'type' => 'string', 'locationName' => 'securityPolicyName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'protocols' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ciphers' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'SupportedCipher' => [
+            'type' => 'structure',
+            'members' => [
+                'cipher' => [ 'type' => 'string', 'locationName' => 'cipher', ],
+                'protocols' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'TagFilter' => [
@@ -746,6 +1142,7 @@ return [
             'members' => [
                 'targetId' => [ 'type' => 'string', 'locationName' => 'targetId', ],
                 'targetGroupId' => [ 'type' => 'string', 'locationName' => 'targetGroupId', ],
+                'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
                 'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
@@ -779,6 +1176,7 @@ return [
                 'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'ipAddress' => [ 'type' => 'string', 'locationName' => 'ipAddress', ],
+                'unhealthReason' =>  [ 'shape' => 'UnhealthReason', ],
             ],
         ],
         'TargetSpec' => [
@@ -791,14 +1189,6 @@ return [
                 'ipAddress' => [ 'type' => 'string', 'locationName' => 'ipAddress', ],
             ],
         ],
-        'TargetUpdateSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'targetId' => [ 'type' => 'string', 'locationName' => 'targetId', ],
-                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
-                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
-            ],
-        ],
         'UpdateBackendSpec' => [
             'type' => 'structure',
             'members' => [
@@ -807,6 +1197,7 @@ return [
                 'algorithm' => [ 'type' => 'string', 'locationName' => 'algorithm', ],
                 'targetGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'agIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'agInfoSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgInfoSpec', ], ],
                 'proxyProtocol' => [ 'type' => 'boolean', 'locationName' => 'proxyProtocol', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'sessionStickiness' => [ 'type' => 'boolean', 'locationName' => 'sessionStickiness', ],
@@ -843,10 +1234,12 @@ return [
                 'hstsEnable' => [ 'type' => 'boolean', 'locationName' => 'hstsEnable', ],
                 'hstsMaxAge' => [ 'type' => 'integer', 'locationName' => 'hstsMaxAge', ],
                 'certificateSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'CertificateSpec', ], ],
+                'limitation' =>  [ 'shape' => 'LimitationSpec', ],
                 'connectionIdleTimeSeconds' => [ 'type' => 'integer', 'locationName' => 'connectionIdleTimeSeconds', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
                 'urlMapId' => [ 'type' => 'string', 'locationName' => 'urlMapId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'securityPolicyId' => [ 'type' => 'string', 'locationName' => 'securityPolicyId', ],
             ],
         ],
         'UpdateLoadBalancerSpec' => [
@@ -897,19 +1290,6 @@ return [
             'members' => [
             ],
         ],
-        'DescribeBackendResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'backend' =>  [ 'shape' => 'Backend', ],
-            ],
-        ],
-        'DeleteBackendRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
-            ],
-        ],
         'Filter' => [
             'type' => 'structure',
             'members' => [
@@ -927,6 +1307,117 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'Sort' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'direction' => [ 'type' => 'string', 'locationName' => 'direction', ],
+            ],
+        ],
+        'UpdateBackendResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateBackendRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'backendName' => [ 'type' => 'string', 'locationName' => 'backendName', ],
+                'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'healthCheckSpec' =>  [ 'shape' => 'HealthCheckSpec', ],
+                'algorithm' => [ 'type' => 'string', 'locationName' => 'algorithm', ],
+                'targetGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'agIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'agInfoSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgInfoSpec', ], ],
+                'proxyProtocol' => [ 'type' => 'boolean', 'locationName' => 'proxyProtocol', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'sessionStickiness' => [ 'type' => 'boolean', 'locationName' => 'sessionStickiness', ],
+                'sessionStickyTimeout' => [ 'type' => 'integer', 'locationName' => 'sessionStickyTimeout', ],
+                'connectionDrainingSeconds' => [ 'type' => 'integer', 'locationName' => 'connectionDrainingSeconds', ],
+                'httpCookieExpireSeconds' => [ 'type' => 'integer', 'locationName' => 'httpCookieExpireSeconds', ],
+                'httpForwardedProtocol' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedProtocol', ],
+                'httpForwardedPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedPort', ],
+                'httpForwardedHost' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedHost', ],
+                'httpForwardedVip' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedVip', ],
+                'httpForwardedClientPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedClientPort', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'UpdateAgTargetsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateAgTargetsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'targetUpdateSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'TargetUpdateSpec', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
+            ],
+        ],
+        'DescribeBackendsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'backends' => [ 'type' => 'list', 'member' => [ 'shape' => 'Backend', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeTargetHealthRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
+            ],
+        ],
+        'DescribeAgTargetsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAgTargetsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteBackendResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAgTargetsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'sorts' => [ 'type' => 'list', 'member' => [ 'shape' => 'Sort', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
+            ],
+        ],
+        'DescribeBackendResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'backend' =>  [ 'shape' => 'Backend', ],
+            ],
+        ],
+        'DescribeAgTargetsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'targets' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgTarget', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DeleteBackendRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
+            ],
+        ],
         'UpdateBackendRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -935,6 +1426,7 @@ return [
                 'algorithm' => [ 'type' => 'string', 'locationName' => 'algorithm', ],
                 'targetGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'agIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'agInfoSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgInfoSpec', ], ],
                 'proxyProtocol' => [ 'type' => 'boolean', 'locationName' => 'proxyProtocol', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'sessionStickiness' => [ 'type' => 'boolean', 'locationName' => 'sessionStickiness', ],
@@ -951,11 +1443,6 @@ return [
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
             ],
         ],
-        'UpdateBackendResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'CreateBackendResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -969,32 +1456,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CreateBackendRequestShape' => [
+        'UpdateBackendResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'backendName' => [ 'type' => 'string', 'locationName' => 'backendName', ],
-                'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
-                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
-                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
-                'healthCheckSpec' =>  [ 'shape' => 'HealthCheckSpec', ],
-                'algorithm' => [ 'type' => 'string', 'locationName' => 'algorithm', ],
-                'targetGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'agIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'proxyProtocol' => [ 'type' => 'boolean', 'locationName' => 'proxyProtocol', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'sessionStickiness' => [ 'type' => 'boolean', 'locationName' => 'sessionStickiness', ],
-                'sessionStickyTimeout' => [ 'type' => 'integer', 'locationName' => 'sessionStickyTimeout', ],
-                'connectionDrainingSeconds' => [ 'type' => 'integer', 'locationName' => 'connectionDrainingSeconds', ],
-                'httpCookieExpireSeconds' => [ 'type' => 'integer', 'locationName' => 'httpCookieExpireSeconds', ],
-                'httpForwardedProtocol' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedProtocol', ],
-                'httpForwardedPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedPort', ],
-                'httpForwardedHost' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedHost', ],
-                'httpForwardedVip' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedVip', ],
-                'httpForwardedClientPort' => [ 'type' => 'boolean', 'locationName' => 'httpForwardedClientPort', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'UpdateBackendResponseShape' => [
+        'UpdateAgTargetsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
@@ -1007,13 +1475,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeBackendsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'backends' => [ 'type' => 'list', 'member' => [ 'shape' => 'Backend', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-            ],
-        ],
         'DescribeBackendResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1021,23 +1482,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeTargetHealthRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
-            ],
-        ],
         'DescribeTargetHealthResultShape' => [
             'type' => 'structure',
             'members' => [
                 'targetHealths' => [ 'type' => 'list', 'member' => [ 'shape' => 'TargetHealth', ], ],
-            ],
-        ],
-        'DeleteBackendResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
         'CreateBackendResponseShape' => [
@@ -1052,6 +1501,148 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
+            ],
+        ],
+        'DescribeCustomizedConfigurationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'customizedConfiguration' =>  [ 'shape' => 'CustomizedConfiguration', ],
+            ],
+        ],
+        'DescribeCustomizedConfigurationsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeCustomizedConfigurationsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateCustomizedConfigurationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateCustomizedConfigurationResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisassociateCustomizedConfigurationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeCustomizedConfigurationsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateCustomizedConfigurationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'customizedConfigurationId' => [ 'type' => 'string', 'locationName' => 'customizedConfigurationId', ],
+            ],
+        ],
+        'UpdateCustomizedConfigurationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'customizedConfigurationName' => [ 'type' => 'string', 'locationName' => 'customizedConfigurationName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'customizedConfigurationContent' =>  [ 'shape' => 'CustomizedConfigurationContentSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'customizedConfigurationId' => [ 'type' => 'string', 'locationName' => 'customizedConfigurationId', ],
+            ],
+        ],
+        'AssociateCustomizedConfigurationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeCustomizedConfigurationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'customizedConfigurationId' => [ 'type' => 'string', 'locationName' => 'customizedConfigurationId', ],
+            ],
+        ],
+        'DeleteCustomizedConfigurationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteCustomizedConfigurationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'customizedConfigurationId' => [ 'type' => 'string', 'locationName' => 'customizedConfigurationId', ],
+            ],
+        ],
+        'CreateCustomizedConfigurationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'customizedConfigurationName' => [ 'type' => 'string', 'locationName' => 'customizedConfigurationName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'customizedConfigurationContent' =>  [ 'shape' => 'CustomizedConfigurationContentSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteCustomizedConfigurationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisassociateCustomizedConfigurationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeCustomizedConfigurationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeCustomizedConfigurationResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisassociateCustomizedConfigurationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'customizedConfigurationId' => [ 'type' => 'string', 'locationName' => 'customizedConfigurationId', ],
+            ],
+        ],
+        'UpdateCustomizedConfigurationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AssociateCustomizedConfigurationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateCustomizedConfigurationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeCustomizedConfigurationsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'customizedConfigurations' => [ 'type' => 'list', 'member' => [ 'shape' => 'CustomizedConfiguration', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'AssociateCustomizedConfigurationRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'customizedConfigurationId' => [ 'type' => 'string', 'locationName' => 'customizedConfigurationId', ],
             ],
         ],
         'UpdateListenerResultShape' => [
@@ -1148,8 +1739,10 @@ return [
                 'urlMapId' => [ 'type' => 'string', 'locationName' => 'urlMapId', ],
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'certificateSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'CertificateSpec', ], ],
+                'limitation' =>  [ 'shape' => 'LimitationSpec', ],
                 'connectionIdleTimeSeconds' => [ 'type' => 'integer', 'locationName' => 'connectionIdleTimeSeconds', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'securityPolicyId' => [ 'type' => 'string', 'locationName' => 'securityPolicyId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1214,10 +1807,12 @@ return [
                 'hstsEnable' => [ 'type' => 'boolean', 'locationName' => 'hstsEnable', ],
                 'hstsMaxAge' => [ 'type' => 'integer', 'locationName' => 'hstsMaxAge', ],
                 'certificateSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'CertificateSpec', ], ],
+                'limitation' =>  [ 'shape' => 'LimitationSpec', ],
                 'connectionIdleTimeSeconds' => [ 'type' => 'integer', 'locationName' => 'connectionIdleTimeSeconds', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
                 'urlMapId' => [ 'type' => 'string', 'locationName' => 'urlMapId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'securityPolicyId' => [ 'type' => 'string', 'locationName' => 'securityPolicyId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'listenerId' => [ 'type' => 'string', 'locationName' => 'listenerId', ],
             ],
@@ -1258,6 +1853,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
+                'deleteElasticIp' => [ 'type' => 'boolean', 'locationName' => 'deleteElasticIp', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
             ],
@@ -1294,6 +1890,13 @@ return [
                 'securityGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
+            ],
+        ],
+        'DescribeLoadBalancersBySecurityGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLoadBalancersBySecurityGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'AssociateElasticIpResultShape' => [
@@ -1358,6 +1961,7 @@ return [
         'DeleteLoadBalancerRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'deleteElasticIp' => [ 'type' => 'boolean', 'locationName' => 'deleteElasticIp', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
             ],
@@ -1395,6 +1999,15 @@ return [
             'members' => [
             ],
         ],
+        'DescribeLoadBalancersBySecurityGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'securityGroupId' => [ 'type' => 'string', 'locationName' => 'securityGroupId', ],
+            ],
+        ],
         'UpdateLoadBalancerRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1414,12 +2027,146 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeLoadBalancersBySecurityGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'loadBalancers' => [ 'type' => 'list', 'member' => [ 'shape' => 'LoadBalancer', ], ],
+            ],
+        ],
         'AssociateElasticIpRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
+            ],
+        ],
+        'DescribeSecurityPoliciesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'securityPolicies' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecurityPolicy', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DeleteSecurityPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateSecurityPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'securityPolicyName' => [ 'type' => 'string', 'locationName' => 'securityPolicyName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'protocols' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ciphers' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'UpdateSecurityPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'securityPolicyName' => [ 'type' => 'string', 'locationName' => 'securityPolicyName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'protocols' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ciphers' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'securityPolicyId' => [ 'type' => 'string', 'locationName' => 'securityPolicyId', ],
+            ],
+        ],
+        'UpdateSecurityPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSupportedCiphersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'supportedCiphers' => [ 'type' => 'list', 'member' => [ 'shape' => 'SupportedCipher', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeSecurityPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'securityPolicy' =>  [ 'shape' => 'SecurityPolicy', ],
+            ],
+        ],
+        'DescribeSupportedCiphersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSupportedCiphersResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateSecurityPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'securityPolicyId' => [ 'type' => 'string', 'locationName' => 'securityPolicyId', ],
+            ],
+        ],
+        'DescribeSecurityPoliciesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSecurityPoliciesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSecurityPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'securityPolicyId' => [ 'type' => 'string', 'locationName' => 'securityPolicyId', ],
+            ],
+        ],
+        'DescribeSecurityPoliciesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeSupportedCiphersRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateSecurityPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateSecurityPolicyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSecurityPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSecurityPolicyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteSecurityPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'securityPolicyId' => [ 'type' => 'string', 'locationName' => 'securityPolicyId', ],
+            ],
+        ],
+        'DeleteSecurityPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateSecurityPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'CreateTargetGroupResultShape' => [
