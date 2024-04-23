@@ -200,6 +200,15 @@ return [
             'input' => [ 'shape' => 'ListAvailablePageRuleSettingRequestShape', ],
             'output' => [ 'shape' => 'ListAvailablePageRuleSettingResponseShape', ],
         ],
+        'BotDateHistogram' => [
+            'name' => 'BotDateHistogram',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/zones/{zoneId}/analyticsBotDateHistogram',
+            ],
+            'input' => [ 'shape' => 'BotDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'BotDateHistogramResponseShape', ],
+        ],
         'ListCertificatePacks' => [
             'name' => 'ListCertificatePacks',
             'http' => [
@@ -469,6 +478,15 @@ return [
             ],
             'input' => [ 'shape' => 'IpsRequestShape', ],
             'output' => [ 'shape' => 'IpsResponseShape', ],
+        ],
+        'SubmitOrder' => [
+            'name' => 'SubmitOrder',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances:submitOrder',
+            ],
+            'input' => [ 'shape' => 'SubmitOrderRequestShape', ],
+            'output' => [ 'shape' => 'SubmitOrderResponseShape', ],
         ],
         'InstanceBandwidthAvg' => [
             'name' => 'InstanceBandwidthAvg',
@@ -749,6 +767,60 @@ return [
             'input' => [ 'shape' => 'DeletePageRuleRequestShape', ],
             'output' => [ 'shape' => 'DeletePageRuleResponseShape', ],
         ],
+        'InstanceTrafficDateHistogram4Pa' => [
+            'name' => 'InstanceTrafficDateHistogram4Pa',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/instances/{instanceId}/paTrafficDateHistogram',
+            ],
+            'input' => [ 'shape' => 'InstanceTrafficDateHistogram4PaRequestShape', ],
+            'output' => [ 'shape' => 'InstanceTrafficDateHistogram4PaResponseShape', ],
+        ],
+        'ZoneTrafficDateHistogram4Pa' => [
+            'name' => 'ZoneTrafficDateHistogram4Pa',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/instances/{instanceId}/zones/{zoneId}/paTrafficDateHistogram',
+            ],
+            'input' => [ 'shape' => 'ZoneTrafficDateHistogram4PaRequestShape', ],
+            'output' => [ 'shape' => 'ZoneTrafficDateHistogram4PaResponseShape', ],
+        ],
+        'SpectrumAppTrafficDateHistogram' => [
+            'name' => 'SpectrumAppTrafficDateHistogram',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/instances/{instanceId}/zones/{zoneId}/spectrumApps/{spectrumAppId}/paTrafficDateHistogram',
+            ],
+            'input' => [ 'shape' => 'SpectrumAppTrafficDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'SpectrumAppTrafficDateHistogramResponseShape', ],
+        ],
+        'InstanceBandwidthDateHistogram4Pa' => [
+            'name' => 'InstanceBandwidthDateHistogram4Pa',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/instances/{instanceId}/paBandwidthDateHistogram',
+            ],
+            'input' => [ 'shape' => 'InstanceBandwidthDateHistogram4PaRequestShape', ],
+            'output' => [ 'shape' => 'InstanceBandwidthDateHistogram4PaResponseShape', ],
+        ],
+        'ZoneBandwidthDateHistogram4Pa' => [
+            'name' => 'ZoneBandwidthDateHistogram4Pa',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/instances/{instanceId}/zones/{zoneId}/paBandwidthDateHistogram',
+            ],
+            'input' => [ 'shape' => 'ZoneBandwidthDateHistogram4PaRequestShape', ],
+            'output' => [ 'shape' => 'ZoneBandwidthDateHistogram4PaResponseShape', ],
+        ],
+        'SpectrumAppBandwidthDateHistogram' => [
+            'name' => 'SpectrumAppBandwidthDateHistogram',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/instances/{instanceId}/zones/{zoneId}/spectrumApps/{spectrumAppId}/paBandwidthDateHistogram',
+            ],
+            'input' => [ 'shape' => 'SpectrumAppBandwidthDateHistogramRequestShape', ],
+            'output' => [ 'shape' => 'SpectrumAppBandwidthDateHistogramResponseShape', ],
+        ],
         'UniversalSSLSettingsDetails' => [
             'name' => 'UniversalSSLSettingsDetails',
             'http' => [
@@ -946,6 +1018,15 @@ return [
             ],
             'input' => [ 'shape' => 'ZoneRequestMultiDateHistogramRequestShape', ],
             'output' => [ 'shape' => 'ZoneRequestMultiDateHistogramResponseShape', ],
+        ],
+        'ZoneSecurityReport' => [
+            'name' => 'ZoneSecurityReport',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_identifier}/zoneSecurityReport',
+            ],
+            'input' => [ 'shape' => 'ZoneSecurityReportRequestShape', ],
+            'output' => [ 'shape' => 'ZoneSecurityReportResponseShape', ],
         ],
         'ListZones' => [
             'name' => 'ListZones',
@@ -1847,6 +1928,21 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'ZoneSecurityReport' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'queryDate' => [ 'type' => 'string', 'locationName' => 'queryDate', ],
+                'requestSum' => [ 'type' => 'double', 'locationName' => 'requestSum', ],
+                'trafficSum' => [ 'type' => 'double', 'locationName' => 'trafficSum', ],
+                'cleanTrafficSum' => [ 'type' => 'double', 'locationName' => 'cleanTrafficSum', ],
+                'cachedPercentage' => [ 'type' => 'string', 'locationName' => 'cachedPercentage', ],
+                'attackSum' => [ 'type' => 'double', 'locationName' => 'attackSum', ],
+                'attackPercentage' => [ 'type' => 'string', 'locationName' => 'attackPercentage', ],
+                'webAttackDefenseTrends' => [ 'type' => 'list', 'member' => [ 'shape' => 'WebAttackDefenseTrends', ], ],
+                'attackInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'AttackInfo', ], ],
+            ],
+        ],
         'SimpleDateHistogram' => [
             'type' => 'structure',
             'members' => [
@@ -1893,6 +1989,14 @@ return [
                 'value' => [ 'type' => 'double', 'locationName' => 'value', ],
             ],
         ],
+        'WebAttackDefenseTrends' => [
+            'type' => 'structure',
+            'members' => [
+                'date' => [ 'type' => 'string', 'locationName' => 'date', ],
+                'allTrafficSum' => [ 'type' => 'double', 'locationName' => 'allTrafficSum', ],
+                'normalTrafficSum' => [ 'type' => 'double', 'locationName' => 'normalTrafficSum', ],
+            ],
+        ],
         'Totals' => [
             'type' => 'structure',
             'members' => [
@@ -1926,6 +2030,16 @@ return [
                 'timestamp' => [ 'type' => 'double', 'locationName' => 'timestamp', ],
             ],
         ],
+        'AttackInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'date' => [ 'type' => 'string', 'locationName' => 'date', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'group' => [ 'type' => 'string', 'locationName' => 'group', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'attackSum' => [ 'type' => 'double', 'locationName' => 'attackSum', ],
+            ],
+        ],
         'TopkAnalytics' => [
             'type' => 'structure',
             'members' => [
@@ -1951,6 +2065,37 @@ return [
             'members' => [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'properties' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'RequestBotGroup' => [
+            'type' => 'structure',
+            'members' => [
+                'verifiedBot' => [ 'type' => 'long', 'locationName' => 'verifiedBot', ],
+                'automated' => [ 'type' => 'long', 'locationName' => 'automated', ],
+                'likelyAutomated' => [ 'type' => 'long', 'locationName' => 'likelyAutomated', ],
+                'likelyHuman' => [ 'type' => 'long', 'locationName' => 'likelyHuman', ],
+            ],
+        ],
+        'BotFilter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'BotDateHistogram' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSeries' => [ 'type' => 'list', 'member' => [ 'shape' => 'RequestBotGroup', ], ],
+                'timeSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+            ],
+        ],
+        'BotScoreHistogram' => [
+            'type' => 'structure',
+            'members' => [
+                'scoreSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'countSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
         'CertificatePack' => [
@@ -2603,6 +2748,7 @@ return [
                 'firewalRegularRule' => [ 'type' => 'boolean', 'locationName' => 'firewalRegularRule', ],
                 'availableDnsRecordNum' => [ 'type' => 'integer', 'locationName' => 'availableDnsRecordNum', ],
                 'zoneAccessType' => [ 'type' => 'string', 'locationName' => 'zoneAccessType', ],
+                'spectrumIpNum' => [ 'type' => 'integer', 'locationName' => 'spectrumIpNum', ],
                 'rateLimit' => [ 'type' => 'integer', 'locationName' => 'rateLimit', ],
                 'logPush' => [ 'type' => 'boolean', 'locationName' => 'logPush', ],
                 'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
@@ -2612,6 +2758,8 @@ return [
                 'technicalSupport' => [ 'type' => 'string', 'locationName' => 'technicalSupport', ],
                 'zoneExtPack' => [ 'type' => 'boolean', 'locationName' => 'zoneExtPack', ],
                 'websocket' => [ 'type' => 'boolean', 'locationName' => 'websocket', ],
+                'transformRuleNum' => [ 'type' => 'integer', 'locationName' => 'transformRuleNum', ],
+                'isCreateZone' => [ 'type' => 'boolean', 'locationName' => 'isCreateZone', ],
             ],
         ],
         'DescribeInstancesRes' => [
@@ -2768,11 +2916,38 @@ return [
                 'chargeState' => [ 'type' => 'string', 'locationName' => 'chargeState', ],
                 'instanceExpireTime' => [ 'type' => 'string', 'locationName' => 'instanceExpireTime', ],
                 'bps' => [ 'type' => 'long', 'locationName' => 'bps', ],
+                'normalBps' => [ 'type' => 'long', 'locationName' => 'normalBps', ],
+                'mitigationBps' => [ 'type' => 'long', 'locationName' => 'mitigationBps', ],
                 'totalFlowStr' => [ 'type' => 'string', 'locationName' => 'totalFlowStr', ],
                 'usedFlowStr' => [ 'type' => 'string', 'locationName' => 'usedFlowStr', ],
                 'remainingFlowStr' => [ 'type' => 'string', 'locationName' => 'remainingFlowStr', ],
                 'instanceUsedStatus' => [ 'type' => 'string', 'locationName' => 'instanceUsedStatus', ],
                 'icpStatus' => [ 'type' => 'boolean', 'locationName' => 'icpStatus', ],
+            ],
+        ],
+        'OpInstancesRes' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'packType' => [ 'type' => 'string', 'locationName' => 'packType', ],
+                'chargeState' => [ 'type' => 'string', 'locationName' => 'chargeState', ],
+                'zonePackNum' => [ 'type' => 'integer', 'locationName' => 'zonePackNum', ],
+                'trafficExpansion' => [ 'type' => 'integer', 'locationName' => 'trafficExpansion', ],
+                'flowUsedCnt' => [ 'type' => 'long', 'locationName' => 'flowUsedCnt', ],
+                'flowRemain' => [ 'type' => 'double', 'locationName' => 'flowRemain', ],
+                'totalFlowStr' => [ 'type' => 'string', 'locationName' => 'totalFlowStr', ],
+                'usedFlowStr' => [ 'type' => 'string', 'locationName' => 'usedFlowStr', ],
+                'remainingFlowStr' => [ 'type' => 'string', 'locationName' => 'remainingFlowStr', ],
+                'packMode' => [ 'type' => 'string', 'locationName' => 'packMode', ],
+                'memo' => [ 'type' => 'string', 'locationName' => 'memo', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'expireTime' => [ 'type' => 'string', 'locationName' => 'expireTime', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'realName' => [ 'type' => 'boolean', 'locationName' => 'realName', ],
+                'zones' => [ 'type' => 'list', 'member' => [ 'shape' => 'OpInstanceZoneRes', ], ],
+                'zoneNum' => [ 'type' => 'integer', 'locationName' => 'zoneNum', ],
+                'zoneActiveNum' => [ 'type' => 'integer', 'locationName' => 'zoneActiveNum', ],
             ],
         ],
         'GetAllInstancesRes' => [
@@ -2821,6 +2996,48 @@ return [
                 'service_levels' => [ 'type' => 'object', 'locationName' => 'service_levels', ],
             ],
         ],
+        'OpInstanceZoneRes' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneId' => [ 'type' => 'string', 'locationName' => 'zoneId', ],
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'zoneStatus' => [ 'type' => 'string', 'locationName' => 'zoneStatus', ],
+            ],
+        ],
+        'DescribeUrlBlockRegulationResp' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
+                'regulationName' => [ 'type' => 'string', 'locationName' => 'regulationName', ],
+                'blockUrl' => [ 'type' => 'string', 'locationName' => 'blockUrl', ],
+                'zoneId' => [ 'type' => 'string', 'locationName' => 'zoneId', ],
+                'filterId' => [ 'type' => 'string', 'locationName' => 'filterId', ],
+                'firewallRuleId' => [ 'type' => 'string', 'locationName' => 'firewallRuleId', ],
+                'opType' => [ 'type' => 'integer', 'locationName' => 'opType', ],
+                'enableRegulation' => [ 'type' => 'integer', 'locationName' => 'enableRegulation', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'updateUser' => [ 'type' => 'string', 'locationName' => 'updateUser', ],
+            ],
+        ],
+        'ListAuditLogsRes' => [
+            'type' => 'structure',
+            'members' => [
+                'auditId' => [ 'type' => 'string', 'locationName' => 'auditId', ],
+                'auditWhen' => [ 'type' => 'string', 'locationName' => 'auditWhen', ],
+                'metadataId' => [ 'type' => 'string', 'locationName' => 'metadataId', ],
+                'metadataName' => [ 'type' => 'string', 'locationName' => 'metadataName', ],
+                'actionType' => [ 'type' => 'string', 'locationName' => 'actionType', ],
+                'actionResult' => [ 'type' => 'boolean', 'locationName' => 'actionResult', ],
+                'actorType' => [ 'type' => 'string', 'locationName' => 'actorType', ],
+                'actorUser' => [ 'type' => 'string', 'locationName' => 'actorUser', ],
+                'actorIp' => [ 'type' => 'string', 'locationName' => 'actorIp', ],
+                'oldValue' => [ 'type' => 'string', 'locationName' => 'oldValue', ],
+                'newValue' => [ 'type' => 'string', 'locationName' => 'newValue', ],
+            ],
+        ],
         'DescribeZonesRes' => [
             'type' => 'structure',
             'members' => [
@@ -2860,24 +3077,6 @@ return [
                 'ipv6' => [ 'type' => 'string', 'locationName' => 'ipv6', ],
             ],
         ],
-        'DescribeUrlBlockRegulationResp' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
-                'regulationName' => [ 'type' => 'string', 'locationName' => 'regulationName', ],
-                'blockUrl' => [ 'type' => 'string', 'locationName' => 'blockUrl', ],
-                'zoneId' => [ 'type' => 'string', 'locationName' => 'zoneId', ],
-                'filterId' => [ 'type' => 'string', 'locationName' => 'filterId', ],
-                'firewallRuleId' => [ 'type' => 'string', 'locationName' => 'firewallRuleId', ],
-                'opType' => [ 'type' => 'integer', 'locationName' => 'opType', ],
-                'enableRegulation' => [ 'type' => 'integer', 'locationName' => 'enableRegulation', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-                'updateUser' => [ 'type' => 'string', 'locationName' => 'updateUser', ],
-            ],
-        ],
         'ChangePoPStatusConfig' => [
             'type' => 'structure',
             'members' => [
@@ -2896,6 +3095,24 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'reason' => [ 'type' => 'integer', 'locationName' => 'reason', ],
+            ],
+        ],
+        'OpOrderRes' => [
+            'type' => 'structure',
+            'members' => [
+                'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'payer' => [ 'type' => 'string', 'locationName' => 'payer', ],
+                'payType' => [ 'type' => 'string', 'locationName' => 'payType', ],
+                'orderType' => [ 'type' => 'string', 'locationName' => 'orderType', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'payTime' => [ 'type' => 'string', 'locationName' => 'payTime', ],
+                'payNumber' => [ 'type' => 'string', 'locationName' => 'payNumber', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'totalFee' => [ 'type' => 'string', 'locationName' => 'totalFee', ],
+                'actualFee' => [ 'type' => 'string', 'locationName' => 'actualFee', ],
+                'instance' =>  [ 'shape' => 'OpInstancesRes', ],
             ],
         ],
         'OpZoneRecordDetails' => [
@@ -3129,6 +3346,26 @@ return [
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'action_parameters' =>  [ 'shape' => 'Action_parameters', ],
                 'ratelimit' =>  [ 'shape' => 'Ratelimit', ],
+                'logging' =>  [ 'shape' => 'Logging', ],
+                'last_updated' => [ 'type' => 'string', 'locationName' => 'last_updated', ],
+                'ref' => [ 'type' => 'string', 'locationName' => 'ref', ],
+                'categories' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'score_threshold' => [ 'type' => 'integer', 'locationName' => 'score_threshold', ],
+            ],
+        ],
+        'Position' => [
+            'type' => 'structure',
+            'members' => [
+                'index' => [ 'type' => 'integer', 'locationName' => 'index', ],
+            ],
+        ],
+        'RuleMinMeta' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'score_threshold' => [ 'type' => 'integer', 'locationName' => 'score_threshold', ],
             ],
         ],
         'Ratelimit' => [
@@ -3146,6 +3383,17 @@ return [
             'type' => 'structure',
             'members' => [
                 'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'content_type' => [ 'type' => 'string', 'locationName' => 'content_type', ],
+                'status_code' => [ 'type' => 'double', 'locationName' => 'status_code', ],
+            ],
+        ],
+        'Overrides' => [
+            'type' => 'structure',
+            'members' => [
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'categories' => [ 'type' => 'list', 'member' => [ 'shape' => 'OwaspCategory', ], ],
+                'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'RuleMinMeta', ], ],
             ],
         ],
         'RuleSet' => [
@@ -3160,6 +3408,32 @@ return [
                 'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'Rule', ], ],
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
                 'source' => [ 'type' => 'string', 'locationName' => 'source', ],
+            ],
+        ],
+        'WafMigrationStatus' => [
+            'type' => 'structure',
+            'members' => [
+                'old_waf_status' => [ 'type' => 'string', 'locationName' => 'old_waf_status', ],
+                'new_waf_status' => [ 'type' => 'string', 'locationName' => 'new_waf_status', ],
+            ],
+        ],
+        'OwaspCategory' => [
+            'type' => 'structure',
+            'members' => [
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+            ],
+        ],
+        'FirewallRulesMigration' => [
+            'type' => 'structure',
+            'members' => [
+                'is_migrated' => [ 'type' => 'boolean', 'locationName' => 'is_migrated', ],
+            ],
+        ],
+        'Logging' => [
+            'type' => 'structure',
+            'members' => [
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
             ],
         ],
         'SSLVerification' => [
@@ -3224,6 +3498,16 @@ return [
                 'origin_dns' =>  [ 'shape' => 'Origin_dns', ],
                 'origin_port' => [ 'type' => 'string', 'locationName' => 'origin_port', ],
                 'traffic_type' => [ 'type' => 'string', 'locationName' => 'traffic_type', ],
+            ],
+        ],
+        'PaDateHistogram' => [
+            'type' => 'structure',
+            'members' => [
+                'sum' => [ 'type' => 'double', 'locationName' => 'sum', ],
+                'max' => [ 'type' => 'double', 'locationName' => 'max', ],
+                'maxTimestamp' => [ 'type' => 'long', 'locationName' => 'maxTimestamp', ],
+                'dataSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'timeSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
             ],
         ],
         'UniversalSSLSetting' => [
@@ -3297,6 +3581,14 @@ return [
                 'modified_on' => [ 'type' => 'string', 'locationName' => 'modified_on', ],
                 'available_on_subdomain' => [ 'type' => 'boolean', 'locationName' => 'available_on_subdomain', ],
                 'requestCount' => [ 'type' => 'double', 'locationName' => 'requestCount', ],
+            ],
+        ],
+        'ZoneHold' => [
+            'type' => 'structure',
+            'members' => [
+                'hold' => [ 'type' => 'boolean', 'locationName' => 'hold', ],
+                'hold_after' => [ 'type' => 'string', 'locationName' => 'hold_after', ],
+                'include_subdomains' => [ 'type' => 'boolean', 'locationName' => 'include_subdomains', ],
             ],
         ],
         'Plan' => [
@@ -4312,6 +4604,29 @@ return [
                 'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
+        'BotDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'BotDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'BotDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dataSeries' => [ 'type' => 'list', 'member' => [ 'shape' => 'RequestBotGroup', ], ],
+                'timeSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+            ],
+        ],
+        'BotDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'BotFilter', ], ],
+                'zoneId' => [ 'type' => 'string', 'locationName' => 'zoneId', ],
+            ],
+        ],
         'DeleteAdvancedCertificateManagerCertificatePackResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -4850,6 +5165,14 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'SubmitOrderRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'buyId' => [ 'type' => 'string', 'locationName' => 'buyId', ],
+                'autoPay' => [ 'type' => 'boolean', 'locationName' => 'autoPay', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'IpsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -4874,6 +5197,14 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeInstancesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SubmitOrderResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
+                'autoPay' => [ 'type' => 'boolean', 'locationName' => 'autoPay', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'CreateInstanceRequestShape' => [
@@ -4940,6 +5271,13 @@ return [
         'CheckInstancesNameResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'SubmitOrderResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SubmitOrderResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateFlowPackRequestShape' => [
@@ -5688,6 +6026,162 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ZoneBandwidthDateHistogram4PaResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ZoneBandwidthDateHistogram4PaResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ZoneTrafficDateHistogram4PaRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'zoneId' => [ 'type' => 'string', 'locationName' => 'zoneId', ],
+            ],
+        ],
+        'ZoneTrafficDateHistogram4PaResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ZoneTrafficDateHistogram4PaResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'InstanceTrafficDateHistogram4PaResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'sum' => [ 'type' => 'double', 'locationName' => 'sum', ],
+                'max' => [ 'type' => 'double', 'locationName' => 'max', ],
+                'maxTimestamp' => [ 'type' => 'long', 'locationName' => 'maxTimestamp', ],
+                'dataSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'timeSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+            ],
+        ],
+        'SpectrumAppTrafficDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'sum' => [ 'type' => 'double', 'locationName' => 'sum', ],
+                'max' => [ 'type' => 'double', 'locationName' => 'max', ],
+                'maxTimestamp' => [ 'type' => 'long', 'locationName' => 'maxTimestamp', ],
+                'dataSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'timeSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+            ],
+        ],
+        'InstanceBandwidthDateHistogram4PaResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'InstanceBandwidthDateHistogram4PaResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SpectrumAppTrafficDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'zoneId' => [ 'type' => 'string', 'locationName' => 'zoneId', ],
+                'spectrumAppId' => [ 'type' => 'string', 'locationName' => 'spectrumAppId', ],
+            ],
+        ],
+        'ZoneBandwidthDateHistogram4PaResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'sum' => [ 'type' => 'double', 'locationName' => 'sum', ],
+                'max' => [ 'type' => 'double', 'locationName' => 'max', ],
+                'maxTimestamp' => [ 'type' => 'long', 'locationName' => 'maxTimestamp', ],
+                'dataSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'timeSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+            ],
+        ],
+        'SpectrumAppTrafficDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SpectrumAppTrafficDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SpectrumAppBandwidthDateHistogramResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SpectrumAppBandwidthDateHistogramResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ZoneTrafficDateHistogram4PaResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'sum' => [ 'type' => 'double', 'locationName' => 'sum', ],
+                'max' => [ 'type' => 'double', 'locationName' => 'max', ],
+                'maxTimestamp' => [ 'type' => 'long', 'locationName' => 'maxTimestamp', ],
+                'dataSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'timeSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+            ],
+        ],
+        'InstanceBandwidthDateHistogram4PaResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'sum' => [ 'type' => 'double', 'locationName' => 'sum', ],
+                'max' => [ 'type' => 'double', 'locationName' => 'max', ],
+                'maxTimestamp' => [ 'type' => 'long', 'locationName' => 'maxTimestamp', ],
+                'dataSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'timeSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+            ],
+        ],
+        'InstanceTrafficDateHistogram4PaRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'SpectrumAppBandwidthDateHistogramRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'zoneId' => [ 'type' => 'string', 'locationName' => 'zoneId', ],
+                'spectrumAppId' => [ 'type' => 'string', 'locationName' => 'spectrumAppId', ],
+            ],
+        ],
+        'InstanceBandwidthDateHistogram4PaRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ZoneBandwidthDateHistogram4PaRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'zoneId' => [ 'type' => 'string', 'locationName' => 'zoneId', ],
+            ],
+        ],
+        'InstanceTrafficDateHistogram4PaResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'InstanceTrafficDateHistogram4PaResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SpectrumAppBandwidthDateHistogramResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'sum' => [ 'type' => 'double', 'locationName' => 'sum', ],
+                'max' => [ 'type' => 'double', 'locationName' => 'max', ],
+                'maxTimestamp' => [ 'type' => 'long', 'locationName' => 'maxTimestamp', ],
+                'dataSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'timeSeries' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+            ],
+        ],
         'UniversalSSLSettingsDetailsResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -5944,6 +6438,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ZoneSecurityReportResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ZoneSecurityReportResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'ZoneRequestSumResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -5980,6 +6481,15 @@ return [
                 'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
             ],
         ],
+        'ZoneSecurityReportRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'since' => [ 'type' => 'string', 'locationName' => 'since', ],
+                'until' => [ 'type' => 'string', 'locationName' => 'until', ],
+                'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
         'ZoneBandwidthP95RequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -5988,6 +6498,21 @@ return [
                 'since' => [ 'type' => 'string', 'locationName' => 'since', ],
                 'until' => [ 'type' => 'string', 'locationName' => 'until', ],
                 'zone_identifier' => [ 'type' => 'string', 'locationName' => 'zone_identifier', ],
+            ],
+        ],
+        'ZoneSecurityReportResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zoneName' => [ 'type' => 'string', 'locationName' => 'zoneName', ],
+                'queryDate' => [ 'type' => 'string', 'locationName' => 'queryDate', ],
+                'requestSum' => [ 'type' => 'double', 'locationName' => 'requestSum', ],
+                'trafficSum' => [ 'type' => 'double', 'locationName' => 'trafficSum', ],
+                'cleanTrafficSum' => [ 'type' => 'double', 'locationName' => 'cleanTrafficSum', ],
+                'cachedPercentage' => [ 'type' => 'string', 'locationName' => 'cachedPercentage', ],
+                'attackSum' => [ 'type' => 'double', 'locationName' => 'attackSum', ],
+                'attackPercentage' => [ 'type' => 'string', 'locationName' => 'attackPercentage', ],
+                'webAttackDefenseTrends' => [ 'type' => 'list', 'member' => [ 'shape' => 'WebAttackDefenseTrends', ], ],
+                'attackInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'AttackInfo', ], ],
             ],
         ],
         'ZoneBandwidthAvgResultShape' => [
@@ -6210,6 +6735,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'dataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'Zone', ], ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
             ],
         ],
         'DeleteZoneResponseShape' => [
