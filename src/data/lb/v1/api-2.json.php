@@ -627,7 +627,7 @@ return [
                 'ipAddress' => [ 'type' => 'string', 'locationName' => 'ipAddress', ],
             ],
         ],
-        'TargetUpdateSpec' => [
+        'AgTargetUpdateSpec' => [
             'type' => 'structure',
             'members' => [
                 'targetId' => [ 'type' => 'string', 'locationName' => 'targetId', ],
@@ -1189,6 +1189,14 @@ return [
                 'ipAddress' => [ 'type' => 'string', 'locationName' => 'ipAddress', ],
             ],
         ],
+        'TargetUpdateSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'targetId' => [ 'type' => 'string', 'locationName' => 'targetId', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'weight' => [ 'type' => 'integer', 'locationName' => 'weight', ],
+            ],
+        ],
         'UpdateBackendSpec' => [
             'type' => 'structure',
             'members' => [
@@ -1353,7 +1361,7 @@ return [
         'UpdateAgTargetsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'targetUpdateSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'TargetUpdateSpec', ], ],
+                'targetUpdateSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgTargetUpdateSpec', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'backendId' => [ 'type' => 'string', 'locationName' => 'backendId', ],
             ],
