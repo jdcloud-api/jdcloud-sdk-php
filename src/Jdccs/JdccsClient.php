@@ -54,6 +54,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeRangetimeCabinetCurrentAsync(array $args = [])
  * @method \Jdcloud\Result describeRealtimeCabinetCurrent(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeRealtimeCabinetCurrentAsync(array $args = [])
+ * @method \Jdcloud\Result describeRangetimeCabinetOriCurrent(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeRangetimeCabinetOriCurrentAsync(array $args = [])
  * @method \Jdcloud\Result describeIdcs(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeIdcsAsync(array $args = [])
  * @method \Jdcloud\Result describeRooms(array $args = [])
