@@ -81,6 +81,7 @@ return [
         'Command' => [
             'type' => 'structure',
             'members' => [
+                'commandId' => [ 'type' => 'string', 'locationName' => 'commandId', ],
                 'commandName' => [ 'type' => 'string', 'locationName' => 'commandName', ],
                 'commandType' => [ 'type' => 'string', 'locationName' => 'commandType', ],
                 'commandContent' => [ 'type' => 'string', 'locationName' => 'commandContent', ],
