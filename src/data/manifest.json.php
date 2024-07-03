@@ -129,6 +129,10 @@ return [
         'namespace' => 'Refund',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'eid' => [
+        'namespace' => 'Eid',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'pod' => [
         'namespace' => 'Pod',
         'versions' => [ 'latest' => 'v1', ],
