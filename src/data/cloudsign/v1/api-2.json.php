@@ -182,6 +182,51 @@ return [
             'input' => [ 'shape' => 'SetKmsKeyIdRequestShape', ],
             'output' => [ 'shape' => 'SetKmsKeyIdResponseShape', ],
         ],
+        'ApplyCert' => [
+            'name' => 'ApplyCert',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/smqCert:applyCert',
+            ],
+            'input' => [ 'shape' => 'ApplyCertRequestShape', ],
+            'output' => [ 'shape' => 'ApplyCertResponseShape', ],
+        ],
+        'RenewCert' => [
+            'name' => 'RenewCert',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/smqCert:renewCert',
+            ],
+            'input' => [ 'shape' => 'RenewCertRequestShape', ],
+            'output' => [ 'shape' => 'RenewCertResponseShape', ],
+        ],
+        'UpdateCert' => [
+            'name' => 'UpdateCert',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/smqCert:updateCert',
+            ],
+            'input' => [ 'shape' => 'UpdateCertRequestShape', ],
+            'output' => [ 'shape' => 'UpdateCertResponseShape', ],
+        ],
+        'RevokeCert' => [
+            'name' => 'RevokeCert',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/smqCert:revokeCert',
+            ],
+            'input' => [ 'shape' => 'RevokeCertRequestShape', ],
+            'output' => [ 'shape' => 'RevokeCertResponseShape', ],
+        ],
+        'DescribeCertList' => [
+            'name' => 'DescribeCertList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/smqCert:list',
+            ],
+            'input' => [ 'shape' => 'DescribeCertListRequestShape', ],
+            'output' => [ 'shape' => 'DescribeCertListResponseShape', ],
+        ],
         'DescribeStampList' => [
             'name' => 'DescribeStampList',
             'http' => [
@@ -208,6 +253,15 @@ return [
             ],
             'input' => [ 'shape' => 'DownloadStampsRequestShape', ],
             'output' => [ 'shape' => 'DownloadStampsResponseShape', ],
+        ],
+        'DownloadStampsNew' => [
+            'name' => 'DownloadStampsNew',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/smqStampApi/{stampId}:downloadStamps',
+            ],
+            'input' => [ 'shape' => 'DownloadStampsNewRequestShape', ],
+            'output' => [ 'shape' => 'DownloadStampsNewResponseShape', ],
         ],
         'DeleteStamp' => [
             'name' => 'DeleteStamp',
@@ -262,6 +316,15 @@ return [
             ],
             'input' => [ 'shape' => 'DownloadTemplatesRequestShape', ],
             'output' => [ 'shape' => 'DownloadTemplatesResponseShape', ],
+        ],
+        'DownloadTemplatesNew' => [
+            'name' => 'DownloadTemplatesNew',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/smqTemplateApi/{templateId}:downloadTemplates',
+            ],
+            'input' => [ 'shape' => 'DownloadTemplatesNewRequestShape', ],
+            'output' => [ 'shape' => 'DownloadTemplatesNewResponseShape', ],
         ],
         'DeleteTemplate' => [
             'name' => 'DeleteTemplate',
@@ -810,6 +873,83 @@ return [
                 'evidenceFileList' => [ 'type' => 'list', 'member' => [ 'shape' => 'EvidenceFile', ], ],
             ],
         ],
+        'CertResp' => [
+            'type' => 'structure',
+            'members' => [
+                'certSerialNumber' => [ 'type' => 'string', 'locationName' => 'certSerialNumber', ],
+                'certNotafter' => [ 'type' => 'long', 'locationName' => 'certNotafter', ],
+                'certNotbefore' => [ 'type' => 'long', 'locationName' => 'certNotbefore', ],
+                'certIssueDn' => [ 'type' => 'string', 'locationName' => 'certIssueDn', ],
+                'certSubjectDn' => [ 'type' => 'string', 'locationName' => 'certSubjectDn', ],
+                'certSignBuf' => [ 'type' => 'string', 'locationName' => 'certSignBuf', ],
+                'certCn' => [ 'type' => 'string', 'locationName' => 'certCn', ],
+                'certSerialnumberKmc' => [ 'type' => 'string', 'locationName' => 'certSerialnumberKmc', ],
+                'certKmcRep1' => [ 'type' => 'string', 'locationName' => 'certKmcRep1', ],
+                'certSignBufKmc' => [ 'type' => 'string', 'locationName' => 'certSignBufKmc', ],
+                'parentCertSerialNumber' => [ 'type' => 'string', 'locationName' => 'parentCertSerialNumber', ],
+            ],
+        ],
+        'CertInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'serialNo' => [ 'type' => 'string', 'locationName' => 'serialNo', ],
+                'certStatus' => [ 'type' => 'string', 'locationName' => 'certStatus', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'userType' => [ 'type' => 'integer', 'locationName' => 'userType', ],
+                'identifyValue' => [ 'type' => 'string', 'locationName' => 'identifyValue', ],
+                'keyAlg' => [ 'type' => 'string', 'locationName' => 'keyAlg', ],
+                'notAfter' => [ 'type' => 'long', 'locationName' => 'notAfter', ],
+                'notBefore' => [ 'type' => 'string', 'locationName' => 'notBefore', ],
+                'caType' => [ 'type' => 'string', 'locationName' => 'caType', ],
+                'signCert' => [ 'type' => 'string', 'locationName' => 'signCert', ],
+                'encryptCert' => [ 'type' => 'string', 'locationName' => 'encryptCert', ],
+                'encryptCertSn' => [ 'type' => 'string', 'locationName' => 'encryptCertSn', ],
+                'certKmcRep' => [ 'type' => 'string', 'locationName' => 'certKmcRep', ],
+                'parentCertSerialNumber' => [ 'type' => 'string', 'locationName' => 'parentCertSerialNumber', ],
+            ],
+        ],
+        'CertSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'userType' => [ 'type' => 'integer', 'locationName' => 'userType', ],
+                'mail' => [ 'type' => 'string', 'locationName' => 'mail', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'identifyField' => [ 'type' => 'string', 'locationName' => 'identifyField', ],
+                'identifyValue' => [ 'type' => 'string', 'locationName' => 'identifyValue', ],
+                'caType' => [ 'type' => 'string', 'locationName' => 'caType', ],
+                'alg' => [ 'type' => 'string', 'locationName' => 'alg', ],
+                'certExpire' => [ 'type' => 'integer', 'locationName' => 'certExpire', ],
+                'certReqBuf' => [ 'type' => 'string', 'locationName' => 'certReqBuf', ],
+            ],
+        ],
+        'UpdateCertSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'userType' => [ 'type' => 'integer', 'locationName' => 'userType', ],
+                'mail' => [ 'type' => 'string', 'locationName' => 'mail', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'identifyField' => [ 'type' => 'string', 'locationName' => 'identifyField', ],
+                'identifyValue' => [ 'type' => 'string', 'locationName' => 'identifyValue', ],
+                'certReqBuf' => [ 'type' => 'string', 'locationName' => 'certReqBuf', ],
+                'certSerialNumber' => [ 'type' => 'string', 'locationName' => 'certSerialNumber', ],
+            ],
+        ],
+        'RenewCertSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'certSerialNumber' => [ 'type' => 'string', 'locationName' => 'certSerialNumber', ],
+                'certReqBuf' => [ 'type' => 'string', 'locationName' => 'certReqBuf', ],
+            ],
+        ],
+        'RevokeCertSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'certSerialNumber' => [ 'type' => 'string', 'locationName' => 'certSerialNumber', ],
+                'certRevokeReason' => [ 'type' => 'string', 'locationName' => 'certRevokeReason', ],
+            ],
+        ],
         'SmsSpec' => [
             'type' => 'structure',
             'members' => [
@@ -1278,6 +1418,119 @@ return [
             'members' => [
             ],
         ],
+        'ApplyCertRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certSpec' =>  [ 'shape' => 'CertSpec', ],
+            ],
+        ],
+        'ApplyCertResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ApplyCertResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RenewCertResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RenewCertResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RevokeCertResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RevokeCertResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeCertListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'certList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CertInfo', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'UpdateCertResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateCertResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateCertRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'updateCertSpec' =>  [ 'shape' => 'UpdateCertSpec', ],
+            ],
+        ],
+        'DescribeCertListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeCertListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateCertResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'data' =>  [ 'shape' => 'CertResp', ],
+            ],
+        ],
+        'DescribeCertListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'caType' => [ 'type' => 'string', 'locationName' => 'caType', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'serialNo' => [ 'type' => 'string', 'locationName' => 'serialNo', ],
+                'keyAlg' => [ 'type' => 'string', 'locationName' => 'keyAlg', ],
+                'certStatus' => [ 'type' => 'integer', 'locationName' => 'certStatus', ],
+            ],
+        ],
+        'RevokeCertRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'revokeCertSpec' =>  [ 'shape' => 'RevokeCertSpec', ],
+            ],
+        ],
+        'RevokeCertResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+            ],
+        ],
+        'RenewCertResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'data' =>  [ 'shape' => 'CertResp', ],
+            ],
+        ],
+        'ApplyCertResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'data' =>  [ 'shape' => 'CertResp', ],
+            ],
+        ],
+        'RenewCertRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'renewCertSpec' =>  [ 'shape' => 'RenewCertSpec', ],
+            ],
+        ],
         'DownloadStampsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1327,6 +1580,38 @@ return [
                 'stampName' => [ 'type' => 'string', 'locationName' => 'stampName', ],
             ],
         ],
+        'DownloadStampsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'stampId' => [ 'type' => 'string', 'locationName' => 'stampId', ],
+            ],
+        ],
+        'DeleteStampRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'stampId' => [ 'type' => 'string', 'locationName' => 'stampId', ],
+            ],
+        ],
+        'EditStampResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+            ],
+        ],
+        'UploadStampResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'stampId' => [ 'type' => 'string', 'locationName' => 'stampId', ],
+            ],
+        ],
+        'DeleteStampResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'EditStampResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1339,16 +1624,10 @@ return [
             'members' => [
             ],
         ],
-        'DownloadStampsRequestShape' => [
+        'DownloadStampsNewResultShape' => [
             'type' => 'structure',
             'members' => [
-                'stampId' => [ 'type' => 'string', 'locationName' => 'stampId', ],
-            ],
-        ],
-        'DeleteStampRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'stampId' => [ 'type' => 'string', 'locationName' => 'stampId', ],
+                'stampList' => [ 'type' => 'list', 'member' => [ 'shape' => 'StampInfo', ], ],
             ],
         ],
         'UploadStampResponseShape' => [
@@ -1373,15 +1652,7 @@ return [
                 'stampName' => [ 'type' => 'string', 'locationName' => 'stampName', ],
             ],
         ],
-        'EditStampResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-            ],
-        ],
-        'UploadStampResultShape' => [
+        'DownloadStampsNewRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'stampId' => [ 'type' => 'string', 'locationName' => 'stampId', ],
@@ -1396,10 +1667,11 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
         ],
-        'DeleteStampResponseShape' => [
+        'DownloadStampsNewResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DownloadStampsNewResultShape', ],
             ],
         ],
         'DescribeTemplateListRequestShape' => [
@@ -1409,6 +1681,12 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'templateNameOrTitle' => [ 'type' => 'string', 'locationName' => 'templateNameOrTitle', ],
                 'templateType' => [ 'type' => 'string', 'locationName' => 'templateType', ],
+            ],
+        ],
+        'DownloadTemplatesNewRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
             ],
         ],
         'PaddingTemplateResultShape' => [
@@ -1435,6 +1713,12 @@ return [
                 'templateId' => [ 'type' => 'string', 'locationName' => 'templateId', ],
             ],
         ],
+        'DownloadTemplatesNewResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'templateList' => [ 'type' => 'list', 'member' => [ 'shape' => 'TemplateInfo', ], ],
+            ],
+        ],
         'DownloadTemplatesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1453,6 +1737,13 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'PaddingTemplateResultShape', ],
+            ],
+        ],
+        'DownloadTemplatesNewResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DownloadTemplatesNewResultShape', ],
             ],
         ],
         'UploadTemplateRequestShape' => [
