@@ -695,6 +695,24 @@ return [
             'input' => [ 'shape' => 'BatchIpBlackListRequestShape', ],
             'output' => [ 'shape' => 'BatchIpBlackListResponseShape', ],
         ],
+        'ConfigBackSourceIpVersion' => [
+            'name' => 'ConfigBackSourceIpVersion',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/domain/{domain}/configBackSourceIpVersion',
+            ],
+            'input' => [ 'shape' => 'ConfigBackSourceIpVersionRequestShape', ],
+            'output' => [ 'shape' => 'ConfigBackSourceIpVersionResponseShape', ],
+        ],
+        'QueryBackSourceIpVersion' => [
+            'name' => 'QueryBackSourceIpVersion',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/domain/{domain}/queryBackSourceIpVersion',
+            ],
+            'input' => [ 'shape' => 'QueryBackSourceIpVersionRequestShape', ],
+            'output' => [ 'shape' => 'QueryBackSourceIpVersionResponseShape', ],
+        ],
         'QueryDomainGroupList' => [
             'name' => 'QueryDomainGroupList',
             'http' => [
@@ -3912,6 +3930,13 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
+        'ConfigBackSourceIpVersionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'backSourceIpVersion' => [ 'type' => 'string', 'locationName' => 'backSourceIpVersion', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
         'QueryBackSourcePathRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3957,6 +3982,13 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackSourceRule', ], ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryBackSourceIpVersionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryBackSourceIpVersionResultShape', ],
             ],
         ],
         'PreviewCertificateResultShape' => [
@@ -4178,6 +4210,12 @@ return [
             'members' => [
             ],
         ],
+        'QueryBackSourceIpVersionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'backSourceIpVersion' => [ 'type' => 'string', 'locationName' => 'backSourceIpVersion', ],
+            ],
+        ],
         'SetAccelerateRegionResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -4236,6 +4274,12 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'ConfigHttp2ResultShape', ],
+            ],
+        ],
+        'QueryBackSourceIpVersionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
         'SetGzipResultShape' => [
@@ -4675,6 +4719,13 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
+        'ConfigBackSourceIpVersionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'ConfigBackSourceIpVersionResultShape', ],
+            ],
+        ],
         'QueryExtraCacheTimeResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -4694,6 +4745,11 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'QueryBackSourceRuleResultShape', ],
+            ],
+        ],
+        'ConfigBackSourceIpVersionResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'OperateIpBlackListResultShape' => [
