@@ -200,6 +200,24 @@ return [
             'input' => [ 'shape' => 'GetAliveResultRequestShape', ],
             'output' => [ 'shape' => 'GetAliveResultResponseShape', ],
         ],
+        'GetAliveUrlNew' => [
+            'name' => 'GetAliveUrlNew',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/alive:getUrlNew',
+            ],
+            'input' => [ 'shape' => 'GetAliveUrlNewRequestShape', ],
+            'output' => [ 'shape' => 'GetAliveUrlNewResponseShape', ],
+        ],
+        'GetAliveResultNew' => [
+            'name' => 'GetAliveResultNew',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/alive:getResultNew',
+            ],
+            'input' => [ 'shape' => 'GetAliveResultNewRequestShape', ],
+            'output' => [ 'shape' => 'GetAliveResultNewResponseShape', ],
+        ],
         'OneClick' => [
             'name' => 'OneClick',
             'http' => [
@@ -208,6 +226,24 @@ return [
             ],
             'input' => [ 'shape' => 'OneClickRequestShape', ],
             'output' => [ 'shape' => 'OneClickResponseShape', ],
+        ],
+        'AddressInfo' => [
+            'name' => 'AddressInfo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/address:info',
+            ],
+            'input' => [ 'shape' => 'AddressInfoRequestShape', ],
+            'output' => [ 'shape' => 'AddressInfoResponseShape', ],
+        ],
+        'AddressDetail' => [
+            'name' => 'AddressDetail',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/address:detail',
+            ],
+            'input' => [ 'shape' => 'AddressDetailRequestShape', ],
+            'output' => [ 'shape' => 'AddressDetailResponseShape', ],
         ],
         'DescribeApplyStatus' => [
             'name' => 'DescribeApplyStatus',
@@ -358,6 +394,14 @@ return [
                 'idType' => [ 'type' => 'string', 'locationName' => 'idType', ],
             ],
         ],
+        'Data' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'comment' => [ 'type' => 'string', 'locationName' => 'comment', ],
+                'repairedAddressDetails' => [ 'type' => 'list', 'member' => [ 'shape' => 'RepairedAddressDetail', ], ],
+            ],
+        ],
         'AuthDetail' => [
             'type' => 'structure',
             'members' => [
@@ -370,6 +414,16 @@ return [
             'members' => [
                 'paymentAmount' => [ 'type' => 'string', 'locationName' => 'paymentAmount', ],
                 'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
+            ],
+        ],
+        'RepairedAddressDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'repairStatus' => [ 'type' => 'integer', 'locationName' => 'repairStatus', ],
+                'repairedId' => [ 'type' => 'long', 'locationName' => 'repairedId', ],
+                'reliability' => [ 'type' => 'string', 'locationName' => 'reliability', ],
+                'activeTime' => [ 'type' => 'string', 'locationName' => 'activeTime', ],
+                'addressType' => [ 'type' => 'string', 'locationName' => 'addressType', ],
             ],
         ],
         'PersonalSpec' => [
@@ -443,6 +497,26 @@ return [
                 'companyInfo' =>  [ 'shape' => 'CompanyInfo', ],
             ],
         ],
+        'AddressInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
+        'AddressDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'comment' => [ 'type' => 'string', 'locationName' => 'comment', ],
+                'repairedAddressDetails' => [ 'type' => 'list', 'member' => [ 'shape' => 'RepairedAddressDetail', ], ],
+            ],
+        ],
         'PersonalBankcard3DetailResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -506,6 +580,26 @@ return [
                 'accountInfo' =>  [ 'shape' => 'AccountInfoSimple', ],
             ],
         ],
+        'GetAliveUrlNewRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'idcard' => [ 'type' => 'string', 'locationName' => 'idcard', ],
+                'returnUrl' => [ 'type' => 'string', 'locationName' => 'returnUrl', ],
+            ],
+        ],
+        'GetAliveResultNewResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'faceImage' => [ 'type' => 'string', 'locationName' => 'faceImage', ],
+                'sceneImage' => [ 'type' => 'string', 'locationName' => 'sceneImage', ],
+                'h5Result' => [ 'type' => 'string', 'locationName' => 'h5Result', ],
+                'smResult' => [ 'type' => 'string', 'locationName' => 'smResult', ],
+                'rxResult' => [ 'type' => 'string', 'locationName' => 'rxResult', ],
+                'score' => [ 'type' => 'string', 'locationName' => 'score', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+            ],
+        ],
         'PersonalAuthResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -540,6 +634,21 @@ return [
             'type' => 'structure',
             'members' => [
                 'companyInfo3Spec' =>  [ 'shape' => 'CompanyInfo3Spec', ],
+            ],
+        ],
+        'AddressInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'phoneNumber' => [ 'type' => 'string', 'locationName' => 'phoneNumber', ],
+                'idNumber' => [ 'type' => 'string', 'locationName' => 'idNumber', ],
+                'address' => [ 'type' => 'string', 'locationName' => 'address', ],
+                'customerCode' => [ 'type' => 'string', 'locationName' => 'customerCode', ],
+            ],
+        ],
+        'GetAliveResultNewRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'token' => [ 'type' => 'string', 'locationName' => 'token', ],
             ],
         ],
         'CheckCompanyInfoResponseShape' => [
@@ -590,6 +699,16 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'QueryProvinceListResultShape', ],
+            ],
+        ],
+        'GetAliveUrlNewResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+                'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
             ],
         ],
         'CheckCompanyInfo3ResultShape' => [
@@ -695,6 +814,13 @@ return [
                 'provinceCode' => [ 'type' => 'string', 'locationName' => 'provinceCode', ],
             ],
         ],
+        'GetAliveUrlNewResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetAliveUrlNewResultShape', ],
+            ],
+        ],
         'QueryCompanyTransferResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -790,6 +916,13 @@ return [
                 'result' =>  [ 'shape' => 'PersonalBankcard4DetailResultShape', ],
             ],
         ],
+        'AddressInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AddressInfoResultShape', ],
+            ],
+        ],
         'CheckCompanyInfo3ResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -808,6 +941,20 @@ return [
             'type' => 'structure',
             'members' => [
                 'personalSpec' =>  [ 'shape' => 'PersonalSpec', ],
+            ],
+        ],
+        'AddressDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AddressDetailResultShape', ],
+            ],
+        ],
+        'GetAliveResultNewResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetAliveResultNewResultShape', ],
             ],
         ],
         'PersonalMobileResponseShape' => [
@@ -844,6 +991,13 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'OneClickResultShape', ],
+            ],
+        ],
+        'AddressDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'customerCode' => [ 'type' => 'string', 'locationName' => 'customerCode', ],
             ],
         ],
         'CheckLegalPersonResponseShape' => [
