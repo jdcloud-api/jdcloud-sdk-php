@@ -377,6 +377,7 @@ return [
             'members' => [
                 'faceImage' => [ 'type' => 'string', 'locationName' => 'faceImage', ],
                 'sceneImage' => [ 'type' => 'string', 'locationName' => 'sceneImage', ],
+                'video' => [ 'type' => 'string', 'locationName' => 'video', ],
                 'h5Result' => [ 'type' => 'string', 'locationName' => 'h5Result', ],
                 'smResult' => [ 'type' => 'string', 'locationName' => 'smResult', ],
                 'rxResult' => [ 'type' => 'string', 'locationName' => 'rxResult', ],
@@ -586,6 +587,7 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'idcard' => [ 'type' => 'string', 'locationName' => 'idcard', ],
                 'returnUrl' => [ 'type' => 'string', 'locationName' => 'returnUrl', ],
+                'actions' => [ 'type' => 'string', 'locationName' => 'actions', ],
             ],
         ],
         'GetAliveResultNewResultShape' => [
@@ -593,6 +595,7 @@ return [
             'members' => [
                 'faceImage' => [ 'type' => 'string', 'locationName' => 'faceImage', ],
                 'sceneImage' => [ 'type' => 'string', 'locationName' => 'sceneImage', ],
+                'video' => [ 'type' => 'string', 'locationName' => 'video', ],
                 'h5Result' => [ 'type' => 'string', 'locationName' => 'h5Result', ],
                 'smResult' => [ 'type' => 'string', 'locationName' => 'smResult', ],
                 'rxResult' => [ 'type' => 'string', 'locationName' => 'rxResult', ],
@@ -874,6 +877,7 @@ return [
             'members' => [
                 'faceImage' => [ 'type' => 'string', 'locationName' => 'faceImage', ],
                 'sceneImage' => [ 'type' => 'string', 'locationName' => 'sceneImage', ],
+                'video' => [ 'type' => 'string', 'locationName' => 'video', ],
                 'h5Result' => [ 'type' => 'string', 'locationName' => 'h5Result', ],
                 'smResult' => [ 'type' => 'string', 'locationName' => 'smResult', ],
                 'rxResult' => [ 'type' => 'string', 'locationName' => 'rxResult', ],
