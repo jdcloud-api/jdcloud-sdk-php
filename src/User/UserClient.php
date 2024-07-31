@@ -22,6 +22,8 @@ use Jdcloud\PresignUrlMiddleware;
  *
  * @method \Jdcloud\Result describeUser(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeUserAsync(array $args = [])
+ * @method \Jdcloud\Result createTicket(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createTicketAsync(array $args = [])
  */
 class UserClient extends JdCloudClient
 {
