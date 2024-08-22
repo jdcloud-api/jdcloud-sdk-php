@@ -461,6 +461,10 @@ return [
         'namespace' => 'Iotcloudgateway',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'invoice' => [
+        'namespace' => 'Invoice',
+        'versions' => [ 'latest' => 'v2', ],
+    ],
     'user' => [
         'namespace' => 'User',
         'versions' => [ 'latest' => 'v1', ],
