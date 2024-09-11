@@ -767,6 +767,51 @@ return [
             'input' => [ 'shape' => 'DeletePageRuleRequestShape', ],
             'output' => [ 'shape' => 'DeletePageRuleResponseShape', ],
         ],
+        'GetRuleSet' => [
+            'name' => 'GetRuleSet',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/zones/{zone_id}/rulesets$$phases/{phase}/entrypoint',
+            ],
+            'input' => [ 'shape' => 'GetRuleSetRequestShape', ],
+            'output' => [ 'shape' => 'GetRuleSetResponseShape', ],
+        ],
+        'CreateRuleSet' => [
+            'name' => 'CreateRuleSet',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/zones/{zone_id}/rulesets$$phases/{phase}/entrypoint',
+            ],
+            'input' => [ 'shape' => 'CreateRuleSetRequestShape', ],
+            'output' => [ 'shape' => 'CreateRuleSetResponseShape', ],
+        ],
+        'CreateRule' => [
+            'name' => 'CreateRule',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/zones/{zone_id}/rulesets/{ruleset_id}/rules',
+            ],
+            'input' => [ 'shape' => 'CreateRuleRequestShape', ],
+            'output' => [ 'shape' => 'CreateRuleResponseShape', ],
+        ],
+        'UpdateRule' => [
+            'name' => 'UpdateRule',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}',
+            ],
+            'input' => [ 'shape' => 'UpdateRuleRequestShape', ],
+            'output' => [ 'shape' => 'UpdateRuleResponseShape', ],
+        ],
+        'DeleteRule' => [
+            'name' => 'DeleteRule',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}',
+            ],
+            'input' => [ 'shape' => 'DeleteRuleRequestShape', ],
+            'output' => [ 'shape' => 'DeleteRuleResponseShape', ],
+        ],
         'InstanceTrafficDateHistogram4Pa' => [
             'name' => 'InstanceTrafficDateHistogram4Pa',
             'http' => [
@@ -3038,6 +3083,43 @@ return [
                 'newValue' => [ 'type' => 'string', 'locationName' => 'newValue', ],
             ],
         ],
+        'OpListIncomeSummaryResp' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'dataSourceId' => [ 'type' => 'string', 'locationName' => 'dataSourceId', ],
+                'opType' => [ 'type' => 'integer', 'locationName' => 'opType', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'billTime' => [ 'type' => 'string', 'locationName' => 'billTime', ],
+                'billFee' => [ 'type' => 'string', 'locationName' => 'billFee', ],
+                'actualFee' => [ 'type' => 'string', 'locationName' => 'actualFee', ],
+                'discountFee' => [ 'type' => 'string', 'locationName' => 'discountFee', ],
+                'amountType' => [ 'type' => 'integer', 'locationName' => 'amountType', ],
+                'payCurrency' => [ 'type' => 'string', 'locationName' => 'payCurrency', ],
+                'taxRate' => [ 'type' => 'string', 'locationName' => 'taxRate', ],
+                'payState' => [ 'type' => 'integer', 'locationName' => 'payState', ],
+                'payTime' => [ 'type' => 'string', 'locationName' => 'payTime', ],
+                'orgId' => [ 'type' => 'string', 'locationName' => 'orgId', ],
+                'orgName' => [ 'type' => 'string', 'locationName' => 'orgName', ],
+                'orderType' => [ 'type' => 'integer', 'locationName' => 'orderType', ],
+                'billType' => [ 'type' => 'integer', 'locationName' => 'billType', ],
+                'origDataSourceId' => [ 'type' => 'string', 'locationName' => 'origDataSourceId', ],
+                'salesContractNumber' => [ 'type' => 'string', 'locationName' => 'salesContractNumber', ],
+                'salesContractStatus' => [ 'type' => 'integer', 'locationName' => 'salesContractStatus', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'formulaDesc' => [ 'type' => 'string', 'locationName' => 'formulaDesc', ],
+                'ebsResultCode' => [ 'type' => 'string', 'locationName' => 'ebsResultCode', ],
+                'ebsResultMessage' => [ 'type' => 'string', 'locationName' => 'ebsResultMessage', ],
+                'billResultCode' => [ 'type' => 'string', 'locationName' => 'billResultCode', ],
+                'billResultMessage' => [ 'type' => 'string', 'locationName' => 'billResultMessage', ],
+                'ebsPush' => [ 'type' => 'boolean', 'locationName' => 'ebsPush', ],
+                'billPush' => [ 'type' => 'boolean', 'locationName' => 'billPush', ],
+            ],
+        ],
         'DescribeZonesRes' => [
             'type' => 'structure',
             'members' => [
@@ -3068,6 +3150,40 @@ return [
                 'jdc_free' => [ 'type' => 'string', 'locationName' => 'jdc_free', ],
                 'jdc_basic' => [ 'type' => 'string', 'locationName' => 'jdc_basic', ],
                 'jdc_flagship' => [ 'type' => 'string', 'locationName' => 'jdc_flagship', ],
+            ],
+        ],
+        'OpIncomeSummaryRes' => [
+            'type' => 'structure',
+            'members' => [
+                'batchPushIds' => [ 'type' => 'list', 'member' => [ 'type' => 'long', ], ],
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'ebsPush' => [ 'type' => 'boolean', 'locationName' => 'ebsPush', ],
+                'billPush' => [ 'type' => 'boolean', 'locationName' => 'billPush', ],
+                'dataSourceId' => [ 'type' => 'string', 'locationName' => 'dataSourceId', ],
+                'opType' => [ 'type' => 'integer', 'locationName' => 'opType', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'billingType' => [ 'type' => 'integer', 'locationName' => 'billingType', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'billTime' => [ 'type' => 'string', 'locationName' => 'billTime', ],
+                'billFee' => [ 'type' => 'string', 'locationName' => 'billFee', ],
+                'actualFee' => [ 'type' => 'string', 'locationName' => 'actualFee', ],
+                'discountFee' => [ 'type' => 'string', 'locationName' => 'discountFee', ],
+                'amountType' => [ 'type' => 'integer', 'locationName' => 'amountType', ],
+                'payCurrency' => [ 'type' => 'string', 'locationName' => 'payCurrency', ],
+                'taxRate' => [ 'type' => 'string', 'locationName' => 'taxRate', ],
+                'payState' => [ 'type' => 'integer', 'locationName' => 'payState', ],
+                'payTime' => [ 'type' => 'string', 'locationName' => 'payTime', ],
+                'orgId' => [ 'type' => 'string', 'locationName' => 'orgId', ],
+                'orgName' => [ 'type' => 'string', 'locationName' => 'orgName', ],
+                'orderType' => [ 'type' => 'integer', 'locationName' => 'orderType', ],
+                'billType' => [ 'type' => 'integer', 'locationName' => 'billType', ],
+                'origDataSourceId' => [ 'type' => 'string', 'locationName' => 'origDataSourceId', ],
+                'salesContractNumber' => [ 'type' => 'string', 'locationName' => 'salesContractNumber', ],
+                'salesContractStatus' => [ 'type' => 'integer', 'locationName' => 'salesContractStatus', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'formulaDesc' => [ 'type' => 'string', 'locationName' => 'formulaDesc', ],
             ],
         ],
         'RoutingModes' => [
@@ -6024,6 +6140,127 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'ListPageRulesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetRuleSetRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zone_id' => [ 'type' => 'string', 'locationName' => 'zone_id', ],
+                'phase' => [ 'type' => 'string', 'locationName' => 'phase', ],
+            ],
+        ],
+        'CreateRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'RuleSet', ],
+            ],
+        ],
+        'CreateRuleSetRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'Rule', ], ],
+                'zone_id' => [ 'type' => 'string', 'locationName' => 'zone_id', ],
+                'phase' => [ 'type' => 'string', 'locationName' => 'phase', ],
+            ],
+        ],
+        'UpdateRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'zone_id' => [ 'type' => 'string', 'locationName' => 'zone_id', ],
+                'ruleset_id' => [ 'type' => 'string', 'locationName' => 'ruleset_id', ],
+                'rule_id' => [ 'type' => 'string', 'locationName' => 'rule_id', ],
+            ],
+        ],
+        'UpdateRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'expression' => [ 'type' => 'string', 'locationName' => 'expression', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'action_parameters' =>  [ 'shape' => 'Action_parameters', ],
+                'ratelimit' =>  [ 'shape' => 'Ratelimit', ],
+                'logging' =>  [ 'shape' => 'Logging', ],
+                'position' =>  [ 'shape' => 'Position', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'last_updated' => [ 'type' => 'string', 'locationName' => 'last_updated', ],
+                'ref' => [ 'type' => 'string', 'locationName' => 'ref', ],
+                'zone_id' => [ 'type' => 'string', 'locationName' => 'zone_id', ],
+                'ruleset_id' => [ 'type' => 'string', 'locationName' => 'ruleset_id', ],
+                'rule_id' => [ 'type' => 'string', 'locationName' => 'rule_id', ],
+            ],
+        ],
+        'UpdateRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'RuleSet', ],
+            ],
+        ],
+        'CreateRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'expression' => [ 'type' => 'string', 'locationName' => 'expression', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'action_parameters' =>  [ 'shape' => 'Action_parameters', ],
+                'ratelimit' =>  [ 'shape' => 'Ratelimit', ],
+                'zone_id' => [ 'type' => 'string', 'locationName' => 'zone_id', ],
+                'ruleset_id' => [ 'type' => 'string', 'locationName' => 'ruleset_id', ],
+            ],
+        ],
+        'CreateRuleSetResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateRuleSetResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'RuleSet', ],
+            ],
+        ],
+        'GetRuleSetResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetRuleSetResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteRuleResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateRuleSetResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'RuleSet', ],
+            ],
+        ],
+        'GetRuleSetResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' =>  [ 'shape' => 'RuleSet', ],
             ],
         ],
         'ZoneBandwidthDateHistogram4PaResponseShape' => [
