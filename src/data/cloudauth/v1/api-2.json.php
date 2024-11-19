@@ -182,6 +182,24 @@ return [
             'input' => [ 'shape' => 'IDCardRequestShape', ],
             'output' => [ 'shape' => 'IDCardResponseShape', ],
         ],
+        'BankCardOCR' => [
+            'name' => 'BankCardOCR',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/ocr:BankCard',
+            ],
+            'input' => [ 'shape' => 'BankCardOCRRequestShape', ],
+            'output' => [ 'shape' => 'BankCardOCRResponseShape', ],
+        ],
+        'BusinessOCR' => [
+            'name' => 'BusinessOCR',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/ocr:Business',
+            ],
+            'input' => [ 'shape' => 'BusinessOCRRequestShape', ],
+            'output' => [ 'shape' => 'BusinessOCRResponseShape', ],
+        ],
         'GetAliveUrl' => [
             'name' => 'GetAliveUrl',
             'http' => [
@@ -277,6 +295,23 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'idCard' => [ 'type' => 'string', 'locationName' => 'idCard', ],
                 'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
+            ],
+        ],
+        'BusinessOCRInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'number' => [ 'type' => 'string', 'locationName' => 'number', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'companyType' => [ 'type' => 'string', 'locationName' => 'companyType', ],
+                'address' => [ 'type' => 'string', 'locationName' => 'address', ],
+                'legalPersonal' => [ 'type' => 'string', 'locationName' => 'legalPersonal', ],
+                'registeredCapital' => [ 'type' => 'string', 'locationName' => 'registeredCapital', ],
+                'date' => [ 'type' => 'string', 'locationName' => 'date', ],
+                'scope' => [ 'type' => 'string', 'locationName' => 'scope', ],
+                'registrationDate' => [ 'type' => 'string', 'locationName' => 'registrationDate', ],
+                'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
             ],
         ],
         'PersonalBankcard' => [
@@ -419,6 +454,19 @@ return [
             'members' => [
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
+            ],
+        ],
+        'BankCardOCRInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'number' => [ 'type' => 'string', 'locationName' => 'number', ],
+                'cardType' => [ 'type' => 'string', 'locationName' => 'cardType', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'bank' => [ 'type' => 'string', 'locationName' => 'bank', ],
+                'date' => [ 'type' => 'string', 'locationName' => 'date', ],
+                'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
             ],
         ],
         'CheckInfo' => [
@@ -577,6 +625,9 @@ return [
                 'idcard' => [ 'type' => 'string', 'locationName' => 'idcard', ],
                 'returnUrl' => [ 'type' => 'string', 'locationName' => 'returnUrl', ],
                 'actions' => [ 'type' => 'string', 'locationName' => 'actions', ],
+                'showFail' => [ 'type' => 'boolean', 'locationName' => 'showFail', ],
+                'photo' => [ 'type' => 'string', 'locationName' => 'photo', ],
+                'photoThresh' => [ 'type' => 'integer', 'locationName' => 'photoThresh', ],
             ],
         ],
         'GetAliveResultNewResultShape' => [
@@ -611,6 +662,19 @@ return [
                 'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
+        'BankCardOCRResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'number' => [ 'type' => 'string', 'locationName' => 'number', ],
+                'cardType' => [ 'type' => 'string', 'locationName' => 'cardType', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'bank' => [ 'type' => 'string', 'locationName' => 'bank', ],
+                'date' => [ 'type' => 'string', 'locationName' => 'date', ],
+                'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
+            ],
+        ],
         'CheckCompanyInfo3RequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -623,6 +687,23 @@ return [
                 'token' => [ 'type' => 'string', 'locationName' => 'token', ],
             ],
         ],
+        'BusinessOCRResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'number' => [ 'type' => 'string', 'locationName' => 'number', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'companyType' => [ 'type' => 'string', 'locationName' => 'companyType', ],
+                'address' => [ 'type' => 'string', 'locationName' => 'address', ],
+                'legalPersonal' => [ 'type' => 'string', 'locationName' => 'legalPersonal', ],
+                'registeredCapital' => [ 'type' => 'string', 'locationName' => 'registeredCapital', ],
+                'date' => [ 'type' => 'string', 'locationName' => 'date', ],
+                'scope' => [ 'type' => 'string', 'locationName' => 'scope', ],
+                'registrationDate' => [ 'type' => 'string', 'locationName' => 'registrationDate', ],
+                'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
+            ],
+        ],
         'CheckLegalPersonResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -631,6 +712,13 @@ return [
                 'code' => [ 'type' => 'string', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
+        'BusinessOCRResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'BusinessOCRResultShape', ],
             ],
         ],
         'QueryBankListResultShape' => [
@@ -843,6 +931,12 @@ return [
                 'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
+        'BankCardOCRRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imageData' => [ 'type' => 'string', 'locationName' => 'imageData', ],
+            ],
+        ],
         'CheckLegalPersonRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -915,6 +1009,13 @@ return [
                 'code' => [ 'type' => 'string', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
+        'BankCardOCRResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'BankCardOCRResultShape', ],
             ],
         ],
         'PersonalBankcard4OtherRequestShape' => [
@@ -1080,6 +1181,12 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'AddressDetailResultShape', ],
+            ],
+        ],
+        'BusinessOCRRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imageData' => [ 'type' => 'string', 'locationName' => 'imageData', ],
             ],
         ],
         'PersonalMobileResponseShape' => [
