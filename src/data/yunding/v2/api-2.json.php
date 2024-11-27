@@ -557,6 +557,7 @@ return [
                 'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
                 'primaryIp' =>  [ 'shape' => 'NetworkInterfacePrivateIp', ],
                 'secondaryIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterfacePrivateIp', ], ],
+                'ipv6Addresses' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterfaceIpv6Address', ], ],
             ],
         ],
         'DiskAttachment' => [
@@ -573,6 +574,7 @@ return [
         'NetworkInterfaceIpv6Address' => [
             'type' => 'structure',
             'members' => [
+                'ipv6Id' => [ 'type' => 'string', 'locationName' => 'ipv6Id', ],
                 'ipv6Address' => [ 'type' => 'string', 'locationName' => 'ipv6Address', ],
             ],
         ],
@@ -1722,6 +1724,7 @@ return [
                 'dedicatedPoolId' => [ 'type' => 'string', 'locationName' => 'dedicatedPoolId', ],
                 'dedicatedHostId' => [ 'type' => 'string', 'locationName' => 'dedicatedHostId', ],
                 'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
+                'isManaged' => [ 'type' => 'boolean', 'locationName' => 'isManaged', ],
                 'instanceTemplateId' => [ 'type' => 'string', 'locationName' => 'instanceTemplateId', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
@@ -1764,7 +1767,7 @@ return [
                 'cloudDiskCountLimit' => [ 'type' => 'integer', 'locationName' => 'cloudDiskCountLimit', ],
                 'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
                 'state' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceTypeState', ], ],
-                'gpu' =>  [ 'shape' => 'Gpu', ],
+                'rdma' =>  [ 'shape' => 'Rdma', ],
                 'localDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'LocalDisk', ], ],
                 'generation' => [ 'type' => 'integer', 'locationName' => 'generation', ],
                 'burstInfo' =>  [ 'shape' => 'InstanceTypeBurstInfo', ],
@@ -1789,6 +1792,13 @@ return [
                 'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
                 'limit' => [ 'type' => 'integer', 'locationName' => 'limit', ],
                 'used' => [ 'type' => 'integer', 'locationName' => 'used', ],
+            ],
+        ],
+        'Rdma' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'bandwidthGbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthGbps', ],
             ],
         ],
         'ChargeSpec' => [

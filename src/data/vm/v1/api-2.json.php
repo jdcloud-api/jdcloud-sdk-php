@@ -407,6 +407,33 @@ return [
             'input' => [ 'shape' => 'ModifyInstancePlacementRequestShape', ],
             'output' => [ 'shape' => 'ModifyInstancePlacementResponseShape', ],
         ],
+        'SuspendInstance' => [
+            'name' => 'SuspendInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:suspendInstance',
+            ],
+            'input' => [ 'shape' => 'SuspendInstanceRequestShape', ],
+            'output' => [ 'shape' => 'SuspendInstanceResponseShape', ],
+        ],
+        'ResumeInstance' => [
+            'name' => 'ResumeInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:resumeInstance',
+            ],
+            'input' => [ 'shape' => 'ResumeInstanceRequestShape', ],
+            'output' => [ 'shape' => 'ResumeInstanceResponseShape', ],
+        ],
+        'ModifyInstanceReleaseTime' => [
+            'name' => 'ModifyInstanceReleaseTime',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances:modifyInstanceReleaseTime',
+            ],
+            'input' => [ 'shape' => 'ModifyInstanceReleaseTimeRequestShape', ],
+            'output' => [ 'shape' => 'ModifyInstanceReleaseTimeResponseShape', ],
+        ],
         'DescribeInstanceTemplates' => [
             'name' => 'DescribeInstanceTemplates',
             'http' => [
@@ -631,12 +658,15 @@ return [
                 'secondaryNetworkInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'BriefInstanceNetworkInterfaceAttachment', ], ],
                 'launchTime' => [ 'type' => 'string', 'locationName' => 'launchTime', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'pAz' => [ 'type' => 'string', 'locationName' => 'pAz', ],
                 'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'faultDomain' => [ 'type' => 'string', 'locationName' => 'faultDomain', ],
                 'chargeOnStopped' => [ 'type' => 'string', 'locationName' => 'chargeOnStopped', ],
                 'dedicatedPoolId' => [ 'type' => 'string', 'locationName' => 'dedicatedPoolId', ],
                 'dedicatedHostId' => [ 'type' => 'string', 'locationName' => 'dedicatedHostId', ],
                 'cpuTopology' =>  [ 'shape' => 'CpuTopology', ],
+                'bootMode' => [ 'type' => 'string', 'locationName' => 'bootMode', ],
+                'autoReleaseTime' => [ 'type' => 'string', 'locationName' => 'autoReleaseTime', ],
             ],
         ],
         'Thread' => [
@@ -712,6 +742,14 @@ return [
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
+        'DataDiskSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'diskFormat' => [ 'type' => 'string', 'locationName' => 'diskFormat', ],
+                'dataDiskSizeGB' => [ 'type' => 'integer', 'locationName' => 'dataDiskSizeGB', ],
+                'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
+            ],
+        ],
         'DiskInfo' => [
             'type' => 'structure',
             'members' => [
@@ -733,6 +771,26 @@ return [
                 'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
             ],
         ],
+        'ChargeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
+                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
+                'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
+                'autoChangeChargeMode' => [ 'type' => 'boolean', 'locationName' => 'autoChangeChargeMode', ],
+                'autoChangeChargeModeDate' => [ 'type' => 'string', 'locationName' => 'autoChangeChargeModeDate', ],
+                'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
+            ],
+        ],
+        'ElasticIpSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+                'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
+            ],
+        ],
         'ExpiredImage' => [
             'type' => 'structure',
             'members' => [
@@ -752,11 +810,43 @@ return [
                 'launchPermission' => [ 'type' => 'string', 'locationName' => 'launchPermission', ],
             ],
         ],
+        'Rdma' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'bandwidthGbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthGbps', ],
+            ],
+        ],
         'Gpu' => [
             'type' => 'structure',
             'members' => [
                 'model' => [ 'type' => 'string', 'locationName' => 'model', ],
                 'number' => [ 'type' => 'integer', 'locationName' => 'number', ],
+            ],
+        ],
+        'Driver' => [
+            'type' => 'structure',
+            'members' => [
+                'gpuDriverId' => [ 'type' => 'string', 'locationName' => 'gpuDriverId', ],
+                'gpuModel' => [ 'type' => 'string', 'locationName' => 'gpuModel', ],
+                'osName' => [ 'type' => 'string', 'locationName' => 'osName', ],
+                'cudaVersion' => [ 'type' => 'string', 'locationName' => 'cudaVersion', ],
+                'driverVersion' => [ 'type' => 'string', 'locationName' => 'driverVersion', ],
+            ],
+        ],
+        'HostGroup' => [
+            'type' => 'structure',
+            'members' => [
+                'hostGroupId' => [ 'type' => 'string', 'locationName' => 'hostGroupId', ],
+                'hostGroupName' => [ 'type' => 'string', 'locationName' => 'hostGroupName', ],
+            ],
+        ],
+        'HostGroupWithTag' => [
+            'type' => 'structure',
+            'members' => [
+                'hostGroupId' => [ 'type' => 'string', 'locationName' => 'hostGroupId', ],
+                'hostGroupName' => [ 'type' => 'string', 'locationName' => 'hostGroupName', ],
+                'tag' => [ 'type' => 'string', 'locationName' => 'tag', ],
             ],
         ],
         'Tag' => [
@@ -801,6 +891,13 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'attachTime' => [ 'type' => 'string', 'locationName' => 'attachTime', ],
+            ],
+        ],
+        'ImageChargeInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'formula' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'Charge' => [
@@ -856,6 +953,7 @@ return [
                 'sizeMB' => [ 'type' => 'integer', 'locationName' => 'sizeMB', ],
                 'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
                 'ownerPin' => [ 'type' => 'string', 'locationName' => 'ownerPin', ],
+                'loginName' => [ 'type' => 'string', 'locationName' => 'loginName', ],
                 'launchPermission' => [ 'type' => 'string', 'locationName' => 'launchPermission', ],
                 'systemDisk' =>  [ 'shape' => 'InstanceDiskAttachment', ],
                 'dataDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceDiskAttachment', ], ],
@@ -866,6 +964,9 @@ return [
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'imported' => [ 'type' => 'boolean', 'locationName' => 'imported', ],
                 'expiredTime' => [ 'type' => 'string', 'locationName' => 'expiredTime', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'bootMode' => [ 'type' => 'string', 'locationName' => 'bootMode', ],
+                'chargeInfo' =>  [ 'shape' => 'ImageChargeInfo', ],
             ],
         ],
         'InstanceDiskAttachment' => [
@@ -877,6 +978,13 @@ return [
                 'cloudDisk' =>  [ 'shape' => 'Disk', ],
                 'deviceName' => [ 'type' => 'string', 'locationName' => 'deviceName', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'ImageCharge' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeInfo' =>  [ 'shape' => 'ImageChargeInfo', ],
+                'chargeConfig' =>  [ 'shape' => 'Charge', ],
             ],
         ],
         'ImageInstanceTypeConstraint' => [
@@ -893,32 +1001,12 @@ return [
                 'imageInstanceTypeConstraint' =>  [ 'shape' => 'ImageInstanceTypeConstraint', ],
             ],
         ],
-        'SecurityGroupSimple' => [
-            'type' => 'structure',
-            'members' => [
-                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
-                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
-            ],
-        ],
         'NetworkInterfacePrivateIp' => [
             'type' => 'structure',
             'members' => [
                 'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
                 'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
-            ],
-        ],
-        'InstanceNetworkInterface' => [
-            'type' => 'structure',
-            'members' => [
-                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
-                'macAddress' => [ 'type' => 'string', 'locationName' => 'macAddress', ],
-                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
-                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
-                'securityGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecurityGroupSimple', ], ],
-                'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
-                'primaryIp' =>  [ 'shape' => 'NetworkInterfacePrivateIp', ],
-                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterfacePrivateIp', ], ],
             ],
         ],
         'InstanceNetworkInterfaceAttachment' => [
@@ -942,7 +1030,36 @@ return [
         'NetworkInterfaceIpv6Address' => [
             'type' => 'structure',
             'members' => [
+                'ipv6Id' => [ 'type' => 'string', 'locationName' => 'ipv6Id', ],
                 'ipv6Address' => [ 'type' => 'string', 'locationName' => 'ipv6Address', ],
+            ],
+        ],
+        'SecurityGroupSimple' => [
+            'type' => 'structure',
+            'members' => [
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+            ],
+        ],
+        'RdmaNetworkInterface' => [
+            'type' => 'structure',
+            'members' => [
+                'macAddress' => [ 'type' => 'string', 'locationName' => 'macAddress', ],
+                'ipAddress' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'InstanceNetworkInterface' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+                'macAddress' => [ 'type' => 'string', 'locationName' => 'macAddress', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'securityGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecurityGroupSimple', ], ],
+                'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
+                'primaryIp' =>  [ 'shape' => 'NetworkInterfacePrivateIp', ],
+                'secondaryIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterfacePrivateIp', ], ],
+                'ipv6Addresses' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterfaceIpv6Address', ], ],
             ],
         ],
         'Instance' => [
@@ -964,10 +1081,12 @@ return [
                 'dataDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceDiskAttachment', ], ],
                 'primaryNetworkInterface' =>  [ 'shape' => 'InstanceNetworkInterfaceAttachment', ],
                 'secondaryNetworkInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceNetworkInterfaceAttachment', ], ],
+                'rdmaNetworkInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'RdmaNetworkInterface', ], ],
                 'launchTime' => [ 'type' => 'string', 'locationName' => 'launchTime', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'charge' =>  [ 'shape' => 'Charge', ],
+                'imageCharge' =>  [ 'shape' => 'ImageCharge', ],
                 'spotStatus' => [ 'type' => 'string', 'locationName' => 'spotStatus', ],
                 'ag' =>  [ 'shape' => 'Ag', ],
                 'faultDomain' => [ 'type' => 'string', 'locationName' => 'faultDomain', ],
@@ -983,6 +1102,9 @@ return [
                 'osVersion' => [ 'type' => 'string', 'locationName' => 'osVersion', ],
                 'platform' => [ 'type' => 'string', 'locationName' => 'platform', ],
                 'architecture' => [ 'type' => 'string', 'locationName' => 'architecture', ],
+                'hostGroup' =>  [ 'shape' => 'HostGroup', ],
+                'autoReleaseTime' => [ 'type' => 'string', 'locationName' => 'autoReleaseTime', ],
+                'bootMode' => [ 'type' => 'string', 'locationName' => 'bootMode', ],
             ],
         ],
         'Policy' => [
@@ -1010,18 +1132,6 @@ return [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'subnetName' => [ 'type' => 'string', 'locationName' => 'subnetName', ],
                 'securityGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'SecurityGroupSimple', ], ],
-            ],
-        ],
-        'ChargeSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
-                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
-                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
-                'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
-                'autoChangeChargeMode' => [ 'type' => 'boolean', 'locationName' => 'autoChangeChargeMode', ],
-                'autoChangeChargeModeDate' => [ 'type' => 'string', 'locationName' => 'autoChangeChargeModeDate', ],
-                'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
             ],
         ],
         'InstanceDiskAttachmentSpec' => [
@@ -1085,6 +1195,8 @@ return [
                 'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'ipv6Address' => [ 'type' => 'string', 'locationName' => 'ipv6Address', ],
+                'ipv6AddressCount' => [ 'type' => 'integer', 'locationName' => 'ipv6AddressCount', ],
             ],
         ],
         'InstanceNetworkInterfaceAttachmentSpec' => [
@@ -1108,6 +1220,7 @@ return [
                 'dedicatedPoolId' => [ 'type' => 'string', 'locationName' => 'dedicatedPoolId', ],
                 'dedicatedHostId' => [ 'type' => 'string', 'locationName' => 'dedicatedHostId', ],
                 'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
+                'isManaged' => [ 'type' => 'boolean', 'locationName' => 'isManaged', ],
                 'instanceTemplateId' => [ 'type' => 'string', 'locationName' => 'instanceTemplateId', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
@@ -1136,14 +1249,6 @@ return [
                 'imageInherit' => [ 'type' => 'string', 'locationName' => 'imageInherit', ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'cpuTopology' =>  [ 'shape' => 'CpuTopology', ],
-            ],
-        ],
-        'ElasticIpSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
-                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
-                'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
             ],
         ],
         'InstanceStatus' => [
@@ -1329,7 +1434,7 @@ return [
                 'cloudDiskCountLimit' => [ 'type' => 'integer', 'locationName' => 'cloudDiskCountLimit', ],
                 'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
                 'state' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceTypeState', ], ],
-                'gpu' =>  [ 'shape' => 'Gpu', ],
+                'rdma' =>  [ 'shape' => 'Rdma', ],
                 'localDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'LocalDisk', ], ],
                 'generation' => [ 'type' => 'integer', 'locationName' => 'generation', ],
                 'burstInfo' =>  [ 'shape' => 'InstanceTypeBurstInfo', ],
@@ -1367,6 +1472,7 @@ return [
                 'dataDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'BriefInstanceDiskAttachment', ], ],
                 'primaryNetworkInterface' =>  [ 'shape' => 'BriefInstanceNetworkInterfaceAttachment', ],
                 'secondaryNetworkInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'BriefInstanceNetworkInterfaceAttachment', ], ],
+                'rdmaNetworkInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'RdmaNetworkInterface', ], ],
                 'launchTime' => [ 'type' => 'string', 'locationName' => 'launchTime', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
@@ -1375,9 +1481,12 @@ return [
                 'dedicatedPoolId' => [ 'type' => 'string', 'locationName' => 'dedicatedPoolId', ],
                 'dedicatedHostId' => [ 'type' => 'string', 'locationName' => 'dedicatedHostId', ],
                 'cpuTopology' =>  [ 'shape' => 'CpuTopology', ],
+                'hostGroup' =>  [ 'shape' => 'HostGroup', ],
                 'hostIp' => [ 'type' => 'string', 'locationName' => 'hostIp', ],
                 'rack' => [ 'type' => 'string', 'locationName' => 'rack', ],
                 'tor' => [ 'type' => 'string', 'locationName' => 'tor', ],
+                'bootMode' => [ 'type' => 'string', 'locationName' => 'bootMode', ],
+                'autoReleaseTime' => [ 'type' => 'string', 'locationName' => 'autoReleaseTime', ],
             ],
         ],
         'Keypair' => [
@@ -1465,11 +1574,21 @@ return [
                 'flavors' => [ 'type' => 'string', 'locationName' => 'flavors', ],
             ],
         ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'CopyImagesRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'sourceImageIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'destinationRegion' => [ 'type' => 'string', 'locationName' => 'destinationRegion', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1548,6 +1667,7 @@ return [
                 'architecture' => [ 'type' => 'string', 'locationName' => 'architecture', ],
                 'cloudDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'CloudDiskSpec', ], ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'bootMode' => [ 'type' => 'string', 'locationName' => 'bootMode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1584,7 +1704,9 @@ return [
                 'imageName' => [ 'type' => 'string', 'locationName' => 'imageName', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'forceImport' => [ 'type' => 'boolean', 'locationName' => 'forceImport', ],
+                'dataDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataDiskSpec', ], ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'bootMode' => [ 'type' => 'string', 'locationName' => 'bootMode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1598,6 +1720,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'pins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'loginNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
             ],
@@ -1735,6 +1858,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'pins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'loginNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'ImportImageResponseShape' => [
@@ -1748,6 +1872,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'pins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'loginNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
             ],
@@ -1805,6 +1930,8 @@ return [
                 'architecture' => [ 'type' => 'string', 'locationName' => 'architecture', ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'bootMode' => [ 'type' => 'string', 'locationName' => 'bootMode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1921,6 +2048,11 @@ return [
             'members' => [
             ],
         ],
+        'ModifyInstanceReleaseTimeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DescribeInstanceResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1933,6 +2065,12 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ResumeInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DetachNetworkInterfaceRequestShape' => [
@@ -1964,6 +2102,12 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'ModifyInstanceReleaseTimeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeInstanceStatusResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1985,17 +2129,15 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'SuspendInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DetachNetworkInterfaceResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'Filter' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DeleteInstanceResultShape' => [
@@ -2003,9 +2145,24 @@ return [
             'members' => [
             ],
         ],
+        'ModifyInstanceReleaseTimeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'autoReleaseTime' => [ 'type' => 'string', 'locationName' => 'autoReleaseTime', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'DetachDiskResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ResumeInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'CreateInstancesResultShape' => [
@@ -2092,6 +2249,13 @@ return [
             'members' => [
             ],
         ],
+        'SuspendInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'AssociateElasticIpRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2124,7 +2288,6 @@ return [
                 'instanceSpec' =>  [ 'shape' => 'InstanceSpec', ],
                 'maxCount' => [ 'type' => 'integer', 'locationName' => 'maxCount', ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'isManaged' => [ 'type' => 'boolean', 'locationName' => 'isManaged', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -2199,6 +2362,11 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'SuspendInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'AssociateElasticIpResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2268,6 +2436,11 @@ return [
             'members' => [
                 'instances' => [ 'type' => 'list', 'member' => [ 'shape' => 'BriefInstance', ], ],
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'ResumeInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'ModifyInstanceAttributeRequestShape' => [
@@ -2355,6 +2528,7 @@ return [
             'members' => [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'assignIpv6' => [ 'type' => 'boolean', 'locationName' => 'assignIpv6', ],
+                'ipv6Address' => [ 'type' => 'string', 'locationName' => 'ipv6Address', ],
                 'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
                 'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
