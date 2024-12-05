@@ -11,6 +11,15 @@ return [
 //        'serviceId' => 'ossopenapi',
     ],
     'operations' => [
+        'GetBucketCapacity' => [
+            'name' => 'GetBucketCapacity',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/capacity/',
+            ],
+            'input' => [ 'shape' => 'GetBucketCapacityRequestShape', ],
+            'output' => [ 'shape' => 'GetBucketCapacityResponseShape', ],
+        ],
         'GetSingleBucketCapacity' => [
             'name' => 'GetSingleBucketCapacity',
             'http' => [
@@ -83,6 +92,15 @@ return [
             'input' => [ 'shape' => 'CreateHistoricalReplicatTaskRequestShape', ],
             'output' => [ 'shape' => 'CreateHistoricalReplicatTaskResponseShape', ],
         ],
+        'OpenService' => [
+            'name' => 'OpenService',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/users/{userId}/appCodes/{appCode}/serviceCodes/{serviceCode}/openService',
+            ],
+            'input' => [ 'shape' => 'OpenServiceRequestShape', ],
+            'output' => [ 'shape' => 'OpenServiceResponseShape', ],
+        ],
     ],
     'shapes' => [
         'BucketCapacityStatistic' => [
@@ -92,6 +110,25 @@ return [
                 'value' => [ 'type' => 'long', 'locationName' => 'value', ],
                 'time' => [ 'type' => 'string', 'locationName' => 'time', ],
                 'capacityType' => [ 'type' => 'integer', 'locationName' => 'capacityType', ],
+            ],
+        ],
+        'GetBucketCapacityRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'capacityTypes' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'beginTime' => [ 'type' => 'string', 'locationName' => 'beginTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'periodType' => [ 'type' => 'integer', 'locationName' => 'periodType', ],
+                'method' => [ 'type' => 'integer', 'locationName' => 'method', ],
+                'bucketNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetBucketCapacityResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetBucketCapacityResultShape', ],
             ],
         ],
         'GetSingleBucketCapacityRequestShape' => [
@@ -121,6 +158,12 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'periodType' => [ 'type' => 'integer', 'locationName' => 'periodType', ],
                 'method' => [ 'type' => 'integer', 'locationName' => 'method', ],
+            ],
+        ],
+        'GetBucketCapacityResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'resultList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BucketCapacityStatistic', ], ],
             ],
         ],
         'BucketCapacityCondition' => [
@@ -196,6 +239,12 @@ return [
                 'bucketId' => [ 'type' => 'long', 'locationName' => 'bucketId', ],
                 'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
                 'allowTagging' => [ 'type' => 'boolean', 'locationName' => 'allowTagging', ],
+            ],
+        ],
+        'GetAuthorizedBuckets' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BucketInfo', ], ],
             ],
         ],
         'BackSourceAddress' => [
@@ -506,6 +555,26 @@ return [
                 'authorization' => [ 'type' => 'string', 'locationName' => 'authorization', ],
             ],
         ],
+        'OpenServiceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+            ],
+        ],
+        'OpenServiceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'OpenServiceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'UserBillCode' => [
             'type' => 'structure',
             'members' => [
@@ -513,6 +582,12 @@ return [
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'storageResourceType' => [ 'type' => 'string', 'locationName' => 'storageResourceType', ],
                 'processResourceType' => [ 'type' => 'string', 'locationName' => 'processResourceType', ],
+            ],
+        ],
+        'VpcInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'updateType' => [ 'type' => 'integer', 'locationName' => 'updateType', ],
             ],
         ],
     ],
