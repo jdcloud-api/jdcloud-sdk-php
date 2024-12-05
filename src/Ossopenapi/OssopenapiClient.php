@@ -20,6 +20,8 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with ossopenapi.
  *
+ * @method \Jdcloud\Result getBucketCapacity(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getBucketCapacityAsync(array $args = [])
  * @method \Jdcloud\Result getSingleBucketCapacity(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getSingleBucketCapacityAsync(array $args = [])
  * @method \Jdcloud\Result getBackSourceConfiguration(array $args = [])
@@ -36,6 +38,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise listHistoricalReplicatTasksAsync(array $args = [])
  * @method \Jdcloud\Result createHistoricalReplicatTask(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createHistoricalReplicatTaskAsync(array $args = [])
+ * @method \Jdcloud\Result openService(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise openServiceAsync(array $args = [])
  */
 class OssopenapiClient extends JdCloudClient
 {
