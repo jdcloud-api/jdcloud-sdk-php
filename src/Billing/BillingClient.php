@@ -30,6 +30,12 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise describeBillDetailsAsync(array $args = [])
  * @method \Jdcloud\Result describeFormulaSummaryList(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeFormulaSummaryListAsync(array $args = [])
+ * @method \Jdcloud\Result querySplitItemDaySummary(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise querySplitItemDaySummaryAsync(array $args = [])
+ * @method \Jdcloud\Result querySplitItemMonthSummary(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise querySplitItemMonthSummaryAsync(array $args = [])
+ * @method \Jdcloud\Result queryBillDaySummary(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryBillDaySummaryAsync(array $args = [])
  * @method \Jdcloud\Result calculateTotalPrice(array $args = [])
  * @method \GuzzleHttp\Promise\Promise calculateTotalPriceAsync(array $args = [])
  */
