@@ -191,6 +191,15 @@ return [
             'input' => [ 'shape' => 'CreatePodsRequestShape', ],
             'output' => [ 'shape' => 'CreatePodsResponseShape', ],
         ],
+        'DescribePodsStatus' => [
+            'name' => 'DescribePodsStatus',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/podsStatus',
+            ],
+            'input' => [ 'shape' => 'DescribePodsStatusRequestShape', ],
+            'output' => [ 'shape' => 'DescribePodsStatusResponseShape', ],
+        ],
         'CheckPodName' => [
             'name' => 'CheckPodName',
             'http' => [
@@ -290,6 +299,60 @@ return [
             'input' => [ 'shape' => 'ResizePodRequestShape', ],
             'output' => [ 'shape' => 'ResizePodResponseShape', ],
         ],
+        'DescribePodTemplates' => [
+            'name' => 'DescribePodTemplates',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/podTemplates',
+            ],
+            'input' => [ 'shape' => 'DescribePodTemplatesRequestShape', ],
+            'output' => [ 'shape' => 'DescribePodTemplatesResponseShape', ],
+        ],
+        'CreatePodTemplate' => [
+            'name' => 'CreatePodTemplate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/podTemplates',
+            ],
+            'input' => [ 'shape' => 'CreatePodTemplateRequestShape', ],
+            'output' => [ 'shape' => 'CreatePodTemplateResponseShape', ],
+        ],
+        'DescribePodTemplate' => [
+            'name' => 'DescribePodTemplate',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/podTemplates/{podTemplateId}',
+            ],
+            'input' => [ 'shape' => 'DescribePodTemplateRequestShape', ],
+            'output' => [ 'shape' => 'DescribePodTemplateResponseShape', ],
+        ],
+        'UpdatePodTemplate' => [
+            'name' => 'UpdatePodTemplate',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/podTemplates/{podTemplateId}',
+            ],
+            'input' => [ 'shape' => 'UpdatePodTemplateRequestShape', ],
+            'output' => [ 'shape' => 'UpdatePodTemplateResponseShape', ],
+        ],
+        'DeletePodTemplate' => [
+            'name' => 'DeletePodTemplate',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/podTemplates/{podTemplateId}',
+            ],
+            'input' => [ 'shape' => 'DeletePodTemplateRequestShape', ],
+            'output' => [ 'shape' => 'DeletePodTemplateResponseShape', ],
+        ],
+        'VerifyPodTemplate' => [
+            'name' => 'VerifyPodTemplate',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/podTemplates/{podTemplateId}:verify',
+            ],
+            'input' => [ 'shape' => 'VerifyPodTemplateRequestShape', ],
+            'output' => [ 'shape' => 'VerifyPodTemplateResponseShape', ],
+        ],
         'DescribeQuota' => [
             'name' => 'DescribeQuota',
             'http' => [
@@ -337,6 +400,13 @@ return [
         ],
     ],
     'shapes' => [
+        'Ag' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+            ],
+        ],
         'AvailablityGroup' => [
             'type' => 'structure',
             'members' => [
@@ -351,18 +421,141 @@ return [
                 'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
             ],
         ],
-        'CFSVolumeSource' => [
+        'Hh' => [
             'type' => 'structure',
             'members' => [
-                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
-                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
-        'CFSVolumeSourceSpec' => [
+        'Request' => [
             'type' => 'structure',
             'members' => [
-                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'cpu' => [ 'type' => 'string', 'locationName' => 'cpu', ],
+                'memoryMB' => [ 'type' => 'string', 'locationName' => 'memoryMB', ],
+            ],
+        ],
+        'ContainerState' => [
+            'type' => 'structure',
+            'members' => [
+                'running' =>  [ 'shape' => 'ContainerStateRunning', ],
+                'terminated' =>  [ 'shape' => 'ContainerStateTerminated', ],
+                'waiting' =>  [ 'shape' => 'ContainerStateWaiting', ],
+            ],
+        ],
+        'ContainerStateWaiting' => [
+            'type' => 'structure',
+            'members' => [
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'Hg' => [
+            'type' => 'structure',
+            'members' => [
+                'scheme' => [ 'type' => 'string', 'locationName' => 'scheme', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
                 'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'httpHeader' => [ 'type' => 'list', 'member' => [ 'shape' => 'Hh', ], ],
+            ],
+        ],
+        'ContainerStatus' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'restartCount' => [ 'type' => 'integer', 'locationName' => 'restartCount', ],
+                'ready' => [ 'type' => 'boolean', 'locationName' => 'ready', ],
+                'state' =>  [ 'shape' => 'ContainerState', ],
+                'lastState' =>  [ 'shape' => 'ContainerState', ],
+            ],
+        ],
+        'ResourceRequests' => [
+            'type' => 'structure',
+            'members' => [
+                'requests' =>  [ 'shape' => 'Request', ],
+                'limits' =>  [ 'shape' => 'Request', ],
+            ],
+        ],
+        'BriefPodStatus' => [
+            'type' => 'structure',
+            'members' => [
+                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'ag' =>  [ 'shape' => 'AvailablityGroup', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'podStatus' =>  [ 'shape' => 'PodStatus', ],
+                'containers' => [ 'type' => 'list', 'member' => [ 'shape' => 'Container', ], ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'ContainerStateTerminated' => [
+            'type' => 'structure',
+            'members' => [
+                'signal' => [ 'type' => 'integer', 'locationName' => 'signal', ],
+                'exitCode' => [ 'type' => 'integer', 'locationName' => 'exitCode', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'finishedAt' => [ 'type' => 'string', 'locationName' => 'finishedAt', ],
+                'startedAt' => [ 'type' => 'string', 'locationName' => 'startedAt', ],
+            ],
+        ],
+        'Probe' => [
+            'type' => 'structure',
+            'members' => [
+                'initialDelaySeconds' => [ 'type' => 'integer', 'locationName' => 'initialDelaySeconds', ],
+                'periodSeconds' => [ 'type' => 'integer', 'locationName' => 'periodSeconds', ],
+                'timeoutSeconds' => [ 'type' => 'integer', 'locationName' => 'timeoutSeconds', ],
+                'failureThreshold' => [ 'type' => 'integer', 'locationName' => 'failureThreshold', ],
+                'successThreshold' => [ 'type' => 'integer', 'locationName' => 'successThreshold', ],
+                'exec' =>  [ 'shape' => 'Exec', ],
+                'httpGet' =>  [ 'shape' => 'Hg', ],
+                'tcpSocket' =>  [ 'shape' => 'TcpSocket', ],
+            ],
+        ],
+        'Exec' => [
+            'type' => 'structure',
+            'members' => [
+                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'VolumeMount' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+                'readOnly' => [ 'type' => 'boolean', 'locationName' => 'readOnly', ],
+                'subPath' => [ 'type' => 'string', 'locationName' => 'subPath', ],
+            ],
+        ],
+        'PodCondition' => [
+            'type' => 'structure',
+            'members' => [
+                'lastProbeTime' => [ 'type' => 'string', 'locationName' => 'lastProbeTime', ],
+                'lastTransitionTime' => [ 'type' => 'string', 'locationName' => 'lastTransitionTime', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'conditionType' => [ 'type' => 'string', 'locationName' => 'conditionType', ],
+            ],
+        ],
+        'TcpSocket' => [
+            'type' => 'structure',
+            'members' => [
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+            ],
+        ],
+        'PodStatus' => [
+            'type' => 'structure',
+            'members' => [
+                'phase' => [ 'type' => 'string', 'locationName' => 'phase', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'podIP' => [ 'type' => 'string', 'locationName' => 'podIP', ],
+                'conditions' => [ 'type' => 'list', 'member' => [ 'shape' => 'PodCondition', ], ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
             ],
         ],
         'CloudDisk' => [
@@ -376,6 +569,52 @@ return [
                 'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
                 'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
                 'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+            ],
+        ],
+        'Container' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'args' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'env' => [ 'type' => 'list', 'member' => [ 'shape' => 'Env', ], ],
+                'image' => [ 'type' => 'string', 'locationName' => 'image', ],
+                'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
+                'tty' => [ 'type' => 'boolean', 'locationName' => 'tty', ],
+                'workingDir' => [ 'type' => 'string', 'locationName' => 'workingDir', ],
+                'livenessProbe' =>  [ 'shape' => 'Probe', ],
+                'readinessProbe' =>  [ 'shape' => 'Probe', ],
+                'resources' =>  [ 'shape' => 'ResourceRequests', ],
+                'systemDisk' =>  [ 'shape' => 'CloudDisk', ],
+                'volumeMounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'VolumeMount', ], ],
+                'containerStatus' =>  [ 'shape' => 'ContainerStatus', ],
+            ],
+        ],
+        'Env' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'ContainerStateRunning' => [
+            'type' => 'structure',
+            'members' => [
+                'startedAt' => [ 'type' => 'string', 'locationName' => 'startedAt', ],
+            ],
+        ],
+        'CFSVolumeSource' => [
+            'type' => 'structure',
+            'members' => [
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+            ],
+        ],
+        'CFSVolumeSourceSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
             ],
         ],
         'CloudDiskSpec' => [
@@ -436,139 +675,6 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'defaultMode' => [ 'type' => 'string', 'locationName' => 'defaultMode', ],
                 'fileToPath' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigFileToPathSpec', ], ],
-            ],
-        ],
-        'Hh' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
-            ],
-        ],
-        'Request' => [
-            'type' => 'structure',
-            'members' => [
-                'cpu' => [ 'type' => 'string', 'locationName' => 'cpu', ],
-                'memoryMB' => [ 'type' => 'string', 'locationName' => 'memoryMB', ],
-            ],
-        ],
-        'ContainerState' => [
-            'type' => 'structure',
-            'members' => [
-                'running' =>  [ 'shape' => 'ContainerStateRunning', ],
-                'terminated' =>  [ 'shape' => 'ContainerStateTerminated', ],
-                'waiting' =>  [ 'shape' => 'ContainerStateWaiting', ],
-            ],
-        ],
-        'ContainerStateWaiting' => [
-            'type' => 'structure',
-            'members' => [
-                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-            ],
-        ],
-        'Hg' => [
-            'type' => 'structure',
-            'members' => [
-                'scheme' => [ 'type' => 'string', 'locationName' => 'scheme', ],
-                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
-                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
-                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
-                'httpHeader' => [ 'type' => 'list', 'member' => [ 'shape' => 'Hh', ], ],
-            ],
-        ],
-        'ContainerStatus' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'restartCount' => [ 'type' => 'integer', 'locationName' => 'restartCount', ],
-                'ready' => [ 'type' => 'boolean', 'locationName' => 'ready', ],
-                'state' =>  [ 'shape' => 'ContainerState', ],
-                'lastState' =>  [ 'shape' => 'ContainerState', ],
-            ],
-        ],
-        'ResourceRequests' => [
-            'type' => 'structure',
-            'members' => [
-                'requests' =>  [ 'shape' => 'Request', ],
-                'limits' =>  [ 'shape' => 'Request', ],
-            ],
-        ],
-        'ContainerStateTerminated' => [
-            'type' => 'structure',
-            'members' => [
-                'signal' => [ 'type' => 'integer', 'locationName' => 'signal', ],
-                'exitCode' => [ 'type' => 'integer', 'locationName' => 'exitCode', ],
-                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'finishedAt' => [ 'type' => 'string', 'locationName' => 'finishedAt', ],
-                'startedAt' => [ 'type' => 'string', 'locationName' => 'startedAt', ],
-            ],
-        ],
-        'Probe' => [
-            'type' => 'structure',
-            'members' => [
-                'initialDelaySeconds' => [ 'type' => 'integer', 'locationName' => 'initialDelaySeconds', ],
-                'periodSeconds' => [ 'type' => 'integer', 'locationName' => 'periodSeconds', ],
-                'timeoutSeconds' => [ 'type' => 'integer', 'locationName' => 'timeoutSeconds', ],
-                'failureThreshold' => [ 'type' => 'integer', 'locationName' => 'failureThreshold', ],
-                'successThreshold' => [ 'type' => 'integer', 'locationName' => 'successThreshold', ],
-                'exec' =>  [ 'shape' => 'Exec', ],
-                'httpGet' =>  [ 'shape' => 'Hg', ],
-                'tcpSocket' =>  [ 'shape' => 'TcpSocket', ],
-            ],
-        ],
-        'Exec' => [
-            'type' => 'structure',
-            'members' => [
-                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'VolumeMount' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
-                'readOnly' => [ 'type' => 'boolean', 'locationName' => 'readOnly', ],
-                'subPath' => [ 'type' => 'string', 'locationName' => 'subPath', ],
-            ],
-        ],
-        'TcpSocket' => [
-            'type' => 'structure',
-            'members' => [
-                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
-            ],
-        ],
-        'Container' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'args' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'env' => [ 'type' => 'list', 'member' => [ 'shape' => 'Env', ], ],
-                'image' => [ 'type' => 'string', 'locationName' => 'image', ],
-                'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
-                'tty' => [ 'type' => 'boolean', 'locationName' => 'tty', ],
-                'workingDir' => [ 'type' => 'string', 'locationName' => 'workingDir', ],
-                'livenessProbe' =>  [ 'shape' => 'Probe', ],
-                'readinessProbe' =>  [ 'shape' => 'Probe', ],
-                'resources' =>  [ 'shape' => 'ResourceRequests', ],
-                'systemDisk' =>  [ 'shape' => 'CloudDisk', ],
-                'volumeMounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'VolumeMount', ], ],
-                'containerStatus' =>  [ 'shape' => 'ContainerStatus', ],
-            ],
-        ],
-        'Env' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
-            ],
-        ],
-        'ContainerStateRunning' => [
-            'type' => 'structure',
-            'members' => [
-                'startedAt' => [ 'type' => 'string', 'locationName' => 'startedAt', ],
             ],
         ],
         'ResourceRequestsSpec' => [
@@ -636,6 +742,7 @@ return [
                 'env' => [ 'type' => 'list', 'member' => [ 'shape' => 'EnvSpec', ], ],
                 'image' => [ 'type' => 'string', 'locationName' => 'image', ],
                 'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
+                'imageCacheId' => [ 'type' => 'string', 'locationName' => 'imageCacheId', ],
                 'tty' => [ 'type' => 'boolean', 'locationName' => 'tty', ],
                 'workingDir' => [ 'type' => 'string', 'locationName' => 'workingDir', ],
                 'livenessProbe' =>  [ 'shape' => 'ProbeSpec', ],
@@ -643,7 +750,6 @@ return [
                 'resources' =>  [ 'shape' => 'ResourceRequestsSpec', ],
                 'systemDisk' =>  [ 'shape' => 'CloudDiskSpec', ],
                 'volumeMounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'VolumeMountSpec', ], ],
-                'imageCacheId' => [ 'type' => 'string', 'locationName' => 'imageCacheId', ],
             ],
         ],
         'ProbeSpec' => [
@@ -816,6 +922,14 @@ return [
                 'primaryIp' =>  [ 'shape' => 'NetworkInterfacePrivateIp', ],
                 'secondaryIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterfacePrivateIp', ], ],
                 'ipv6Addresses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ipv6AddressesInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterfaceIpv6Address', ], ],
+            ],
+        ],
+        'NetworkInterfaceIpv6Address' => [
+            'type' => 'structure',
+            'members' => [
+                'ipv6Id' => [ 'type' => 'string', 'locationName' => 'ipv6Id', ],
+                'ipv6Address' => [ 'type' => 'string', 'locationName' => 'ipv6Address', ],
             ],
         ],
         'NetworkInterfacePrivateIp' => [
@@ -922,6 +1036,8 @@ return [
                 'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'ipv6AddressCount' => [ 'type' => 'integer', 'locationName' => 'ipv6AddressCount', ],
+                'ipv6Address' => [ 'type' => 'string', 'locationName' => 'ipv6Address', ],
             ],
         ],
         'Charge' => [
@@ -939,17 +1055,6 @@ return [
             'members' => [
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
-            ],
-        ],
-        'PodCondition' => [
-            'type' => 'structure',
-            'members' => [
-                'lastProbeTime' => [ 'type' => 'string', 'locationName' => 'lastProbeTime', ],
-                'lastTransitionTime' => [ 'type' => 'string', 'locationName' => 'lastTransitionTime', ],
-                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'conditionType' => [ 'type' => 'string', 'locationName' => 'conditionType', ],
             ],
         ],
         'Pod' => [
@@ -990,15 +1095,27 @@ return [
                 'configFile' =>  [ 'shape' => 'ConfigFileVolumeSource', ],
             ],
         ],
-        'PodStatus' => [
+        'PodBrief' => [
             'type' => 'structure',
             'members' => [
-                'phase' => [ 'type' => 'string', 'locationName' => 'phase', ],
-                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'podIP' => [ 'type' => 'string', 'locationName' => 'podIP', ],
-                'conditions' => [ 'type' => 'list', 'member' => [ 'shape' => 'PodCondition', ], ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'hostname' => [ 'type' => 'string', 'locationName' => 'hostname', ],
+                'ag' =>  [ 'shape' => 'AvailablityGroup', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'restartPolicy' => [ 'type' => 'string', 'locationName' => 'restartPolicy', ],
+                'terminationGracePeriodSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGracePeriodSeconds', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
+                'dnsConfig' =>  [ 'shape' => 'DnsConfig', ],
+                'logConfig' =>  [ 'shape' => 'LogConfig', ],
+                'hostAliases' => [ 'type' => 'list', 'member' => [ 'shape' => 'HostAlias', ], ],
+                'podStatus' =>  [ 'shape' => 'PodStatus', ],
+                'primaryNetworkInterface' =>  [ 'shape' => 'NetworkInterfaceAttachment', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
         'PodSpec' => [
@@ -1011,6 +1128,7 @@ return [
                 'terminationGracePeriodSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGracePeriodSeconds', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
                 'dnsConfig' =>  [ 'shape' => 'DnsConfigSpec', ],
                 'logConfig' =>  [ 'shape' => 'LogConfigSpec', ],
                 'hostAliases' => [ 'type' => 'list', 'member' => [ 'shape' => 'HostAliasSpec', ], ],
@@ -1033,6 +1151,173 @@ return [
                 'jdcloudDisk' =>  [ 'shape' => 'JDCloudVolumeSourceSpec', ],
                 'cfs' =>  [ 'shape' => 'CFSVolumeSourceSpec', ],
                 'configFile' =>  [ 'shape' => 'ConfigFileVolumeSourceSpec', ],
+            ],
+        ],
+        'PodTemplateNetworkInterfaceAttachment' => [
+            'type' => 'structure',
+            'members' => [
+                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+                'networkInterface' =>  [ 'shape' => 'PodTemplateNetworkInterface', ],
+            ],
+        ],
+        'PodTemplateElasticIp' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+            ],
+        ],
+        'PodTemplateData' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'restartPolicy' => [ 'type' => 'string', 'locationName' => 'restartPolicy', ],
+                'terminationGracePeriodSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGracePeriodSeconds', ],
+                'dnsConfig' =>  [ 'shape' => 'DnsConfig', ],
+                'logConfig' =>  [ 'shape' => 'LogConfig', ],
+                'hostAliases' => [ 'type' => 'list', 'member' => [ 'shape' => 'HostAlias', ], ],
+                'containers' => [ 'type' => 'list', 'member' => [ 'shape' => 'PodTemplateContainer', ], ],
+                'elasticIp' =>  [ 'shape' => 'PodTemplateElasticIp', ],
+                'volumes' => [ 'type' => 'list', 'member' => [ 'shape' => 'PodTemplateVolume', ], ],
+                'primaryNetworkInterface' =>  [ 'shape' => 'PodTemplateNetworkInterfaceAttachment', ],
+                'secondaryNetworkInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'PodTemplateNetworkInterfaceAttachment', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+            ],
+        ],
+        'PodTemplate' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'podTemplateData' =>  [ 'shape' => 'PodTemplateData', ],
+                'ags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Ag', ], ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'PodTemplateNetworkInterface' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ipv6AddressCount' => [ 'type' => 'integer', 'locationName' => 'ipv6AddressCount', ],
+            ],
+        ],
+        'PodTemplateVolume' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'jdcloudDisk' =>  [ 'shape' => 'PodTemplateCloudDisk', ],
+            ],
+        ],
+        'PodTemplateCloudDisk' => [
+            'type' => 'structure',
+            'members' => [
+                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+                'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
+                'sizeGB' => [ 'type' => 'integer', 'locationName' => 'sizeGB', ],
+                'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
+                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
+                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+            ],
+        ],
+        'PodTemplateContainer' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'args' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'env' => [ 'type' => 'list', 'member' => [ 'shape' => 'Env', ], ],
+                'image' => [ 'type' => 'string', 'locationName' => 'image', ],
+                'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
+                'imageCacheId' => [ 'type' => 'string', 'locationName' => 'imageCacheId', ],
+                'tty' => [ 'type' => 'boolean', 'locationName' => 'tty', ],
+                'workingDir' => [ 'type' => 'string', 'locationName' => 'workingDir', ],
+                'livenessProbe' =>  [ 'shape' => 'Probe', ],
+                'readinessProbe' =>  [ 'shape' => 'Probe', ],
+                'resources' =>  [ 'shape' => 'ResourceRequests', ],
+                'systemDisk' =>  [ 'shape' => 'PodTemplateCloudDisk', ],
+                'volumeMounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'VolumeMount', ], ],
+            ],
+        ],
+        'PodTemplateCloudDiskSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+                'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
+                'sizeGB' => [ 'type' => 'integer', 'locationName' => 'sizeGB', ],
+                'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
+                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
+                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+            ],
+        ],
+        'PodTemplateContainerSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'args' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'env' => [ 'type' => 'list', 'member' => [ 'shape' => 'EnvSpec', ], ],
+                'image' => [ 'type' => 'string', 'locationName' => 'image', ],
+                'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
+                'imageCacheId' => [ 'type' => 'string', 'locationName' => 'imageCacheId', ],
+                'tty' => [ 'type' => 'boolean', 'locationName' => 'tty', ],
+                'workingDir' => [ 'type' => 'string', 'locationName' => 'workingDir', ],
+                'livenessProbe' =>  [ 'shape' => 'ProbeSpec', ],
+                'readinessProbe' =>  [ 'shape' => 'ProbeSpec', ],
+                'resources' =>  [ 'shape' => 'ResourceRequestsSpec', ],
+                'systemDisk' =>  [ 'shape' => 'PodTemplateCloudDiskSpec', ],
+                'volumeMounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'VolumeMountSpec', ], ],
+            ],
+        ],
+        'PodTemplateElasticIpSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+            ],
+        ],
+        'PodTemplateNetworkInterfaceSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ipv6AddressCount' => [ 'type' => 'integer', 'locationName' => 'ipv6AddressCount', ],
+            ],
+        ],
+        'PodTemplateNetworkInterfaceAttachmentSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+                'networkInterface' =>  [ 'shape' => 'PodTemplateNetworkInterfaceSpec', ],
+            ],
+        ],
+        'PodTemplateSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'restartPolicy' => [ 'type' => 'string', 'locationName' => 'restartPolicy', ],
+                'terminationGracePeriodSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGracePeriodSeconds', ],
+                'dnsConfig' =>  [ 'shape' => 'DnsConfigSpec', ],
+                'logConfig' =>  [ 'shape' => 'LogConfigSpec', ],
+                'hostAliases' => [ 'type' => 'list', 'member' => [ 'shape' => 'HostAliasSpec', ], ],
+                'volumes' => [ 'type' => 'list', 'member' => [ 'shape' => 'PodTemplateVolumeSpec', ], ],
+                'containers' => [ 'type' => 'list', 'member' => [ 'shape' => 'PodTemplateContainerSpec', ], ],
+                'elasticIp' =>  [ 'shape' => 'PodTemplateElasticIpSpec', ],
+                'primaryNetworkInterface' =>  [ 'shape' => 'PodTemplateNetworkInterfaceAttachmentSpec', ],
+                'secondaryNetworkInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'PodTemplateNetworkInterfaceAttachmentSpec', ], ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+            ],
+        ],
+        'PodTemplateVolumeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'jdcloudDisk' =>  [ 'shape' => 'PodTemplateCloudDiskSpec', ],
             ],
         ],
         'Quota' => [
@@ -1073,6 +1358,25 @@ return [
             'members' => [
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UpdatePodTemplateSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'restartPolicy' => [ 'type' => 'string', 'locationName' => 'restartPolicy', ],
+                'terminationGracePeriodSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGracePeriodSeconds', ],
+                'dnsConfig' =>  [ 'shape' => 'DnsConfigSpec', ],
+                'logConfig' =>  [ 'shape' => 'LogConfigSpec', ],
+                'hostAliases' => [ 'type' => 'list', 'member' => [ 'shape' => 'HostAliasSpec', ], ],
+                'volumes' => [ 'type' => 'list', 'member' => [ 'shape' => 'PodTemplateVolumeSpec', ], ],
+                'containers' => [ 'type' => 'list', 'member' => [ 'shape' => 'PodTemplateContainerSpec', ], ],
+                'elasticIp' =>  [ 'shape' => 'PodTemplateElasticIpSpec', ],
+                'noElasticIp' => [ 'type' => 'boolean', 'locationName' => 'noElasticIp', ],
+                'primaryNetworkInterface' =>  [ 'shape' => 'PodTemplateNetworkInterfaceAttachmentSpec', ],
+                'secondaryNetworkInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'PodTemplateNetworkInterfaceAttachmentSpec', ], ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'removeUserTags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'UserConfigure' => [
@@ -1597,6 +1901,13 @@ return [
                 'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
             ],
         ],
+        'DescribePodsStatusResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribePodsStatusResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DeletePodResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1650,6 +1961,22 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
+            ],
+        ],
+        'DescribePodsStatusResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'podsStatus' => [ 'type' => 'list', 'member' => [ 'shape' => 'BriefPodStatus', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribePodsStatusRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DescribePodResponseShape' => [
@@ -1738,6 +2065,128 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'podId' => [ 'type' => 'string', 'locationName' => 'podId', ],
+            ],
+        ],
+        'DescribePodTemplatesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribePodTemplatesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreatePodTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'podTemplateId' => [ 'type' => 'string', 'locationName' => 'podTemplateId', ],
+            ],
+        ],
+        'DeletePodTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'VerifyPodTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribePodTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'podTemplateId' => [ 'type' => 'string', 'locationName' => 'podTemplateId', ],
+            ],
+        ],
+        'CreatePodTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreatePodTemplateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdatePodTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeletePodTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'podTemplateId' => [ 'type' => 'string', 'locationName' => 'podTemplateId', ],
+            ],
+        ],
+        'UpdatePodTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'podTemplateSpec' =>  [ 'shape' => 'UpdatePodTemplateSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'podTemplateId' => [ 'type' => 'string', 'locationName' => 'podTemplateId', ],
+            ],
+        ],
+        'VerifyPodTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'podTemplateId' => [ 'type' => 'string', 'locationName' => 'podTemplateId', ],
+            ],
+        ],
+        'UpdatePodTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribePodTemplateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'podTemplate' =>  [ 'shape' => 'PodTemplate', ],
+            ],
+        ],
+        'DescribePodTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribePodTemplateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribePodTemplatesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribePodTemplatesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'podTemplates' => [ 'type' => 'list', 'member' => [ 'shape' => 'PodTemplate', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'VerifyPodTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreatePodTemplateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'podTemplateSpec' =>  [ 'shape' => 'PodTemplateSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeletePodTemplateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeQuotaResultShape' => [
