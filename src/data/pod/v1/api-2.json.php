@@ -575,6 +575,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
                 'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'args' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'env' => [ 'type' => 'list', 'member' => [ 'shape' => 'Env', ], ],
@@ -750,6 +751,7 @@ return [
                 'resources' =>  [ 'shape' => 'ResourceRequestsSpec', ],
                 'systemDisk' =>  [ 'shape' => 'CloudDiskSpec', ],
                 'volumeMounts' => [ 'type' => 'list', 'member' => [ 'shape' => 'VolumeMountSpec', ], ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
             ],
         ],
         'ProbeSpec' => [
@@ -839,6 +841,18 @@ return [
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
                 'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
+            ],
+        ],
+        'EmptyDirVolumeSource' => [
+            'type' => 'structure',
+            'members' => [
+                'sizeMB' => [ 'type' => 'integer', 'locationName' => 'sizeMB', ],
+            ],
+        ],
+        'EmptyDirVolumeSourceSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'sizeMB' => [ 'type' => 'integer', 'locationName' => 'sizeMB', ],
             ],
         ],
         'FileToPath' => [
@@ -1093,6 +1107,7 @@ return [
                 'jdcloudDisk' =>  [ 'shape' => 'JDCloudVolumeSource', ],
                 'cfs' =>  [ 'shape' => 'CFSVolumeSource', ],
                 'configFile' =>  [ 'shape' => 'ConfigFileVolumeSource', ],
+                'emptyDir' =>  [ 'shape' => 'EmptyDirVolumeSource', ],
             ],
         ],
         'PodBrief' => [
@@ -1151,6 +1166,7 @@ return [
                 'jdcloudDisk' =>  [ 'shape' => 'JDCloudVolumeSourceSpec', ],
                 'cfs' =>  [ 'shape' => 'CFSVolumeSourceSpec', ],
                 'configFile' =>  [ 'shape' => 'ConfigFileVolumeSourceSpec', ],
+                'emptyDir' =>  [ 'shape' => 'EmptyDirVolumeSourceSpec', ],
             ],
         ],
         'PodTemplateNetworkInterfaceAttachment' => [
