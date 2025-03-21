@@ -45,6 +45,10 @@ return [
         'namespace' => 'Billing',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'gcs' => [
+        'namespace' => 'Gcs',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'quota' => [
         'namespace' => 'Quota',
         'versions' => [ 'latest' => 'v2', ],
