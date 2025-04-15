@@ -193,6 +193,10 @@ return [
         'namespace' => 'Detection',
         'versions' => [ 'latest' => 'v3', ],
     ],
+    'rocketmq' => [
+        'namespace' => 'Rocketmq',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'renewal' => [
         'namespace' => 'Renewal',
         'versions' => [ 'latest' => 'v2', ],
