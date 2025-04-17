@@ -436,6 +436,41 @@ return [
         ],
     ],
     'shapes' => [
+        'AccessNetinfo' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'connectId' => [ 'type' => 'string', 'locationName' => 'connectId', ],
+                'networkType' => [ 'type' => 'string', 'locationName' => 'networkType', ],
+                'extranetIp' => [ 'type' => 'string', 'locationName' => 'extranetIp', ],
+                'location' => [ 'type' => 'string', 'locationName' => 'location', ],
+                'netScore' => [ 'type' => 'integer', 'locationName' => 'netScore', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'joinTime' => [ 'type' => 'string', 'locationName' => 'joinTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'InternalNetinfo' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'connectId' => [ 'type' => 'string', 'locationName' => 'connectId', ],
+                'networkType' => [ 'type' => 'string', 'locationName' => 'networkType', ],
+                'internalIp' => [ 'type' => 'string', 'locationName' => 'internalIp', ],
+                'extranetIp' => [ 'type' => 'string', 'locationName' => 'extranetIp', ],
+                'location' => [ 'type' => 'string', 'locationName' => 'location', ],
+                'netScore' => [ 'type' => 'integer', 'locationName' => 'netScore', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'joinTime' => [ 'type' => 'string', 'locationName' => 'joinTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
         'AppConentObject' => [
             'type' => 'structure',
             'members' => [
@@ -493,6 +528,14 @@ return [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
+        'Subtitle' => [
+            'type' => 'structure',
+            'members' => [
+                'enableTranslate' => [ 'type' => 'boolean', 'locationName' => 'enableTranslate', ],
+                'sourceLang' => [ 'type' => 'string', 'locationName' => 'sourceLang', ],
+                'targetLang' => [ 'type' => 'string', 'locationName' => 'targetLang', ],
+            ],
+        ],
         'StopAsrTask' => [
             'type' => 'structure',
             'members' => [
@@ -507,6 +550,9 @@ return [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
                 'asrTaskType' => [ 'type' => 'integer', 'locationName' => 'asrTaskType', ],
+                'aiModel' => [ 'type' => 'string', 'locationName' => 'aiModel', ],
+                'extInfo' => [ 'type' => 'string', 'locationName' => 'extInfo', ],
+                'subtitle' =>  [ 'shape' => 'Subtitle', ],
             ],
         ],
         'Filter' => [
@@ -515,6 +561,134 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ImMessage' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'msgId' => [ 'type' => 'string', 'locationName' => 'msgId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
+                'sendTime' => [ 'type' => 'string', 'locationName' => 'sendTime', ],
+            ],
+        ],
+        'ImMessageRecords' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImMessage', ], ],
+            ],
+        ],
+        'UserMetricsReq' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'interval' => [ 'type' => 'string', 'locationName' => 'interval', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'metricType' => [ 'type' => 'string', 'locationName' => 'metricType', ],
+                'metricNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UsersMetricsReq' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'interval' => [ 'type' => 'string', 'locationName' => 'interval', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'metricType' => [ 'type' => 'string', 'locationName' => 'metricType', ],
+                'metricNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UserMetricDatapoints' => [
+            'type' => 'structure',
+            'members' => [
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricDatapoints', ], ],
+            ],
+        ],
+        'MetricDatapoints' => [
+            'type' => 'structure',
+            'members' => [
+                'metricName' => [ 'type' => 'string', 'locationName' => 'metricName', ],
+                'datapoints' => [ 'type' => 'string', 'locationName' => 'datapoints', ],
+            ],
+        ],
+        'PacketLoss' => [
+            'type' => 'structure',
+            'members' => [
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'date' => [ 'type' => 'long', 'locationName' => 'date', ],
+                'maxPacketLoss' => [ 'type' => 'double', 'locationName' => 'maxPacketLoss', ],
+                'avgPacketLoss' => [ 'type' => 'double', 'locationName' => 'avgPacketLoss', ],
+            ],
+        ],
+        'Jitter' => [
+            'type' => 'structure',
+            'members' => [
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'date' => [ 'type' => 'long', 'locationName' => 'date', ],
+                'jitter' => [ 'type' => 'long', 'locationName' => 'jitter', ],
+            ],
+        ],
+        'FrameRate' => [
+            'type' => 'structure',
+            'members' => [
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'date' => [ 'type' => 'long', 'locationName' => 'date', ],
+                'frameRate' => [ 'type' => 'long', 'locationName' => 'frameRate', ],
+            ],
+        ],
+        'Resolution' => [
+            'type' => 'structure',
+            'members' => [
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'date' => [ 'type' => 'long', 'locationName' => 'date', ],
+                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+            ],
+        ],
+        'Utilization' => [
+            'type' => 'structure',
+            'members' => [
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'date' => [ 'type' => 'long', 'locationName' => 'date', ],
+                'avgRate' => [ 'type' => 'double', 'locationName' => 'avgRate', ],
+                'maxRate' => [ 'type' => 'double', 'locationName' => 'maxRate', ],
+            ],
+        ],
+        'BitRate' => [
+            'type' => 'structure',
+            'members' => [
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'date' => [ 'type' => 'long', 'locationName' => 'date', ],
+                'bitrate' => [ 'type' => 'double', 'locationName' => 'bitrate', ],
+            ],
+        ],
+        'NetDelay' => [
+            'type' => 'structure',
+            'members' => [
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'date' => [ 'type' => 'long', 'locationName' => 'date', ],
+                'delay' => [ 'type' => 'long', 'locationName' => 'delay', ],
+            ],
+        ],
+        'AudioLevel' => [
+            'type' => 'structure',
+            'members' => [
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'date' => [ 'type' => 'long', 'locationName' => 'date', ],
+                'level' => [ 'type' => 'long', 'locationName' => 'level', ],
             ],
         ],
         'RoomInfosObj' => [
@@ -609,7 +783,6 @@ return [
         'CallDurationByCodeRate' => [
             'type' => 'structure',
             'members' => [
-                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'date' => [ 'type' => 'long', 'locationName' => 'date', ],
                 'audio' => [ 'type' => 'long', 'locationName' => 'audio', ],
                 'lte_480' => [ 'type' => 'long', 'locationName' => 'lte_480', ],
@@ -716,6 +889,7 @@ return [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
                 'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'portraitUrl' => [ 'type' => 'string', 'locationName' => 'portraitUrl', ],
                 'temporary' => [ 'type' => 'boolean', 'locationName' => 'temporary', ],
             ],
         ],
@@ -726,11 +900,39 @@ return [
                 'cname' => [ 'type' => 'string', 'locationName' => 'cname', ],
             ],
         ],
+        'StartMcuTranscodeResp' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'RemoveMcuFocusUsers' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+            ],
+        ],
+        'RemoveSipMcuFocusUsers' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+            ],
+        ],
         'StopMcuTranscode' => [
             'type' => 'structure',
             'members' => [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'WaterMarkInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'waterMarkText' => [ 'type' => 'string', 'locationName' => 'waterMarkText', ],
+                'waterMarkType' => [ 'type' => 'integer', 'locationName' => 'waterMarkType', ],
             ],
         ],
         'StartMcuTranscode' => [
@@ -740,16 +942,42 @@ return [
                 'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
                 'layoutTemplate' => [ 'type' => 'integer', 'locationName' => 'layoutTemplate', ],
                 'mainUserId' => [ 'type' => 'string', 'locationName' => 'mainUserId', ],
+                'mainVideoStreamType' => [ 'type' => 'integer', 'locationName' => 'mainVideoStreamType', ],
+                'showAudioIcon' => [ 'type' => 'integer', 'locationName' => 'showAudioIcon', ],
+                'showNickName' => [ 'type' => 'integer', 'locationName' => 'showNickName', ],
                 'outputType' => [ 'type' => 'integer', 'locationName' => 'outputType', ],
                 'outputName' => [ 'type' => 'string', 'locationName' => 'outputName', ],
+                'outputRecordFormat' => [ 'type' => 'string', 'locationName' => 'outputRecordFormat', ],
+                'pushLiveUrl' => [ 'type' => 'string', 'locationName' => 'pushLiveUrl', ],
                 'mcuUserInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'McuUser', ], ],
                 'outputEncode' =>  [ 'shape' => 'OutputEncode', ],
+                'waterMarkInfo' =>  [ 'shape' => 'WaterMarkInfo', ],
             ],
         ],
         'McuUser' => [
             'type' => 'structure',
             'members' => [
                 'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'placeImageUrl' => [ 'type' => 'string', 'locationName' => 'placeImageUrl', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+                'keepOrder' => [ 'type' => 'integer', 'locationName' => 'keepOrder', ],
+            ],
+        ],
+        'AddSipMcuFocusUsers' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'AddMcuFocusUsers' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'OutputEncode' => [
@@ -891,6 +1119,50 @@ return [
                 'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'RecordRule', ], ],
             ],
         ],
+        'RoomConcurrency' => [
+            'type' => 'structure',
+            'members' => [
+                'concurrentRooms' => [ 'type' => 'integer', 'locationName' => 'concurrentRooms', ],
+                'concurrentUsers' => [ 'type' => 'integer', 'locationName' => 'concurrentUsers', ],
+                'dateTime' => [ 'type' => 'long', 'locationName' => 'dateTime', ],
+            ],
+        ],
+        'RoomRecordInfosObj' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'RecordInfoObj', ], ],
+            ],
+        ],
+        'RecordInfoObj' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'ossEndpoint' => [ 'type' => 'string', 'locationName' => 'ossEndpoint', ],
+                'ossBucket' => [ 'type' => 'string', 'locationName' => 'ossBucket', ],
+                'outputName' => [ 'type' => 'string', 'locationName' => 'outputName', ],
+                'format' => [ 'type' => 'string', 'locationName' => 'format', ],
+                'filePath' => [ 'type' => 'string', 'locationName' => 'filePath', ],
+                'md5' => [ 'type' => 'string', 'locationName' => 'md5', ],
+                'size' => [ 'type' => 'long', 'locationName' => 'size', ],
+                'duration' => [ 'type' => 'long', 'locationName' => 'duration', ],
+                'bitrate' => [ 'type' => 'long', 'locationName' => 'bitrate', ],
+                'videoCodec' => [ 'type' => 'string', 'locationName' => 'videoCodec', ],
+                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+                'videoFrameRate' => [ 'type' => 'float', 'locationName' => 'videoFrameRate', ],
+                'audioCodec' => [ 'type' => 'string', 'locationName' => 'audioCodec', ],
+                'audioProfile' => [ 'type' => 'string', 'locationName' => 'audioProfile', ],
+                'audioChannel' => [ 'type' => 'integer', 'locationName' => 'audioChannel', ],
+                'audioSampleRate' => [ 'type' => 'integer', 'locationName' => 'audioSampleRate', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
         'RoomUserInfoObj' => [
             'type' => 'structure',
             'members' => [
@@ -943,6 +1215,134 @@ return [
             'type' => 'structure',
             'members' => [
                 'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+            ],
+        ],
+        'UpdateRoomUserNicknameObj' => [
+            'type' => 'structure',
+            'members' => [
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+            ],
+        ],
+        'RoomUserEventInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'uuid' => [ 'type' => 'string', 'locationName' => 'uuid', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'eventName' => [ 'type' => 'string', 'locationName' => 'eventName', ],
+                'eventCode' => [ 'type' => 'string', 'locationName' => 'eventCode', ],
+                'eventLabel' => [ 'type' => 'string', 'locationName' => 'eventLabel', ],
+                'eventDetail' => [ 'type' => 'string', 'locationName' => 'eventDetail', ],
+                'eventTime' => [ 'type' => 'string', 'locationName' => 'eventTime', ],
+            ],
+        ],
+        'AbnormalEventInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'uuid' => [ 'type' => 'string', 'locationName' => 'uuid', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'abnormalCode' => [ 'type' => 'string', 'locationName' => 'abnormalCode', ],
+                'abnormalDescription' => [ 'type' => 'string', 'locationName' => 'abnormalDescription', ],
+                'abnormalDetail' => [ 'type' => 'string', 'locationName' => 'abnormalDetail', ],
+                'qualityLevel' => [ 'type' => 'string', 'locationName' => 'qualityLevel', ],
+                'eventTime' => [ 'type' => 'string', 'locationName' => 'eventTime', ],
+            ],
+        ],
+        'RoomUserRecordInfoContents' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'RoomUserRecordInfoContent', ], ],
+            ],
+        ],
+        'RoomUserRecordInfoContent' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'roomName' => [ 'type' => 'string', 'locationName' => 'roomName', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'deviceId' => [ 'type' => 'string', 'locationName' => 'deviceId', ],
+                'deviceName' => [ 'type' => 'string', 'locationName' => 'deviceName', ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
+                'deviceModel' => [ 'type' => 'string', 'locationName' => 'deviceModel', ],
+                'sdkVersion' => [ 'type' => 'string', 'locationName' => 'sdkVersion', ],
+                'internalIp' => [ 'type' => 'string', 'locationName' => 'internalIp', ],
+                'networkType' => [ 'type' => 'string', 'locationName' => 'networkType', ],
+                'extranetIp' => [ 'type' => 'string', 'locationName' => 'extranetIp', ],
+                'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
+                'city' => [ 'type' => 'string', 'locationName' => 'city', ],
+                'province' => [ 'type' => 'string', 'locationName' => 'province', ],
+                'country' => [ 'type' => 'string', 'locationName' => 'country', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'joinTime' => [ 'type' => 'string', 'locationName' => 'joinTime', ],
+                'leaveTime' => [ 'type' => 'string', 'locationName' => 'leaveTime', ],
+            ],
+        ],
+        'ExternalSipCallReq' => [
+            'type' => 'structure',
+            'members' => [
+                'destDomain' => [ 'type' => 'string', 'locationName' => 'destDomain', ],
+                'destNumber' => [ 'type' => 'string', 'locationName' => 'destNumber', ],
+                'roomDomain' => [ 'type' => 'string', 'locationName' => 'roomDomain', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'roomDisplay' => [ 'type' => 'string', 'locationName' => 'roomDisplay', ],
+                'destType' => [ 'type' => 'string', 'locationName' => 'destType', ],
+                'gateway' => [ 'type' => 'string', 'locationName' => 'gateway', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'holdon' => [ 'type' => 'boolean', 'locationName' => 'holdon', ],
+            ],
+        ],
+        'SipDomain' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'sipUserId' => [ 'type' => 'string', 'locationName' => 'sipUserId', ],
+                'passwd' => [ 'type' => 'string', 'locationName' => 'passwd', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'SipUserInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'sipUserId' => [ 'type' => 'string', 'locationName' => 'sipUserId', ],
+                'passwd' => [ 'type' => 'string', 'locationName' => 'passwd', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'RegisterSipUserReq' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'sipUserId' => [ 'type' => 'string', 'locationName' => 'sipUserId', ],
+                'passwd' => [ 'type' => 'string', 'locationName' => 'passwd', ],
+            ],
+        ],
+        'SipUserInfos' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'SipUserInfo', ], ],
             ],
         ],
         'RoomStreamContent' => [
@@ -1071,6 +1471,7 @@ return [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
                 'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'portraitUrl' => [ 'type' => 'string', 'locationName' => 'portraitUrl', ],
                 'temporary' => [ 'type' => 'boolean', 'locationName' => 'temporary', ],
             ],
         ],
@@ -1132,15 +1533,38 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
+        'UserIdRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'userIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'StartAsrTaskResult' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'asrTaskType' => [ 'type' => 'integer', 'locationName' => 'asrTaskType', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
+            ],
+        ],
         'StartAsrTaskResultShape' => [
             'type' => 'structure',
             'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'asrTaskType' => [ 'type' => 'integer', 'locationName' => 'asrTaskType', ],
+                'roomType' => [ 'type' => 'integer', 'locationName' => 'roomType', ],
             ],
         ],
         'StartAsrTaskResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'StartAsrTaskResultShape', ],
             ],
         ],
         'StopAsrTaskRequestShape' => [
@@ -1157,6 +1581,9 @@ return [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
                 'asrTaskType' => [ 'type' => 'integer', 'locationName' => 'asrTaskType', ],
+                'aiModel' => [ 'type' => 'string', 'locationName' => 'aiModel', ],
+                'extInfo' => [ 'type' => 'string', 'locationName' => 'extInfo', ],
+                'subtitle' =>  [ 'shape' => 'Subtitle', ],
             ],
         ],
         'StopAsrTaskResponseShape' => [
@@ -1569,6 +1996,7 @@ return [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
                 'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'portraitUrl' => [ 'type' => 'string', 'locationName' => 'portraitUrl', ],
                 'temporary' => [ 'type' => 'boolean', 'locationName' => 'temporary', ],
             ],
         ],
@@ -1592,10 +2020,16 @@ return [
                 'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
                 'layoutTemplate' => [ 'type' => 'integer', 'locationName' => 'layoutTemplate', ],
                 'mainUserId' => [ 'type' => 'string', 'locationName' => 'mainUserId', ],
+                'mainVideoStreamType' => [ 'type' => 'integer', 'locationName' => 'mainVideoStreamType', ],
+                'showAudioIcon' => [ 'type' => 'integer', 'locationName' => 'showAudioIcon', ],
+                'showNickName' => [ 'type' => 'integer', 'locationName' => 'showNickName', ],
                 'outputType' => [ 'type' => 'integer', 'locationName' => 'outputType', ],
                 'outputName' => [ 'type' => 'string', 'locationName' => 'outputName', ],
+                'outputRecordFormat' => [ 'type' => 'string', 'locationName' => 'outputRecordFormat', ],
+                'pushLiveUrl' => [ 'type' => 'string', 'locationName' => 'pushLiveUrl', ],
                 'mcuUserInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'McuUser', ], ],
                 'outputEncode' =>  [ 'shape' => 'OutputEncode', ],
+                'waterMarkInfo' =>  [ 'shape' => 'WaterMarkInfo', ],
             ],
         ],
         'StopMcuTranscodeRequestShape' => [
@@ -1603,6 +2037,7 @@ return [
             'members' => [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'userRoomId' => [ 'type' => 'string', 'locationName' => 'userRoomId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
             ],
         ],
         'StopMcuTranscodeResponseShape' => [
@@ -1615,11 +2050,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'StartMcuTranscodeResultShape', ],
             ],
         ],
         'StartMcuTranscodeResultShape' => [
             'type' => 'structure',
             'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
             ],
         ],
         'StopMcuTranscodeResultShape' => [
@@ -1761,6 +2198,7 @@ return [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
                 'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+                'portraitUrl' => [ 'type' => 'string', 'locationName' => 'portraitUrl', ],
                 'temporary' => [ 'type' => 'boolean', 'locationName' => 'temporary', ],
             ],
         ],
