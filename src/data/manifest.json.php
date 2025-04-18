@@ -369,6 +369,10 @@ return [
         'namespace' => 'Vm',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'shenhaiplatform' => [
+        'namespace' => 'Shenhaiplatform',
+        'versions' => [ 'latest' => 'v2', ],
+    ],
     'fc' => [
         'namespace' => 'Fc',
         'versions' => [ 'latest' => 'v1', ],
