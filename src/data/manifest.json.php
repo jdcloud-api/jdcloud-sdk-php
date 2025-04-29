@@ -469,6 +469,10 @@ return [
         'namespace' => 'Xdata',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'ydapp' => [
+        'namespace' => 'Ydapp',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'openjrtc' => [
         'namespace' => 'Openjrtc',
         'versions' => [ 'latest' => 'v1', ],
