@@ -209,6 +209,10 @@ return [
         'namespace' => 'Yunding',
         'versions' => [ 'latest' => 'v2', ],
     ],
+    'aisearch' => [
+        'namespace' => 'Aisearch',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'cp' => [
         'namespace' => 'Cp',
         'versions' => [ 'latest' => 'v1', ],
