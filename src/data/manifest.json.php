@@ -349,6 +349,10 @@ return [
         'namespace' => 'Httpdns',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'aisearchdata' => [
+        'namespace' => 'Aisearchdata',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'disk' => [
         'namespace' => 'Disk',
         'versions' => [ 'latest' => 'v1', ],
