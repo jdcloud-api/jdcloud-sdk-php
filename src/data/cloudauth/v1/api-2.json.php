@@ -200,6 +200,33 @@ return [
             'input' => [ 'shape' => 'BusinessOCRRequestShape', ],
             'output' => [ 'shape' => 'BusinessOCRResponseShape', ],
         ],
+        'GeneralPiaoJu' => [
+            'name' => 'GeneralPiaoJu',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/ocr:GeneralPiaoJu',
+            ],
+            'input' => [ 'shape' => 'GeneralPiaoJuRequestShape', ],
+            'output' => [ 'shape' => 'GeneralPiaoJuResponseShape', ],
+        ],
+        'GeneralYinShuaTi' => [
+            'name' => 'GeneralYinShuaTi',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/ocr:GeneralYinShuaTi',
+            ],
+            'input' => [ 'shape' => 'GeneralYinShuaTiRequestShape', ],
+            'output' => [ 'shape' => 'GeneralYinShuaTiResponseShape', ],
+        ],
+        'VerifyInvoice' => [
+            'name' => 'VerifyInvoice',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/ocr:VerifyInvoice',
+            ],
+            'input' => [ 'shape' => 'VerifyInvoiceRequestShape', ],
+            'output' => [ 'shape' => 'VerifyInvoiceResponseShape', ],
+        ],
         'GetAliveUrl' => [
             'name' => 'GetAliveUrl',
             'http' => [
@@ -289,14 +316,6 @@ return [
                 'personalUser' =>  [ 'shape' => 'PersonalMobile3', ],
             ],
         ],
-        'PersonalMobile3' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'idCard' => [ 'type' => 'string', 'locationName' => 'idCard', ],
-                'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
-            ],
-        ],
         'BusinessOCRInfo' => [
             'type' => 'structure',
             'members' => [
@@ -314,15 +333,6 @@ return [
                 'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
             ],
         ],
-        'PersonalBankcard' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'idCard' => [ 'type' => 'string', 'locationName' => 'idCard', ],
-                'bankCard' => [ 'type' => 'string', 'locationName' => 'bankCard', ],
-                'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
-            ],
-        ],
         'AccountInfo' => [
             'type' => 'structure',
             'members' => [
@@ -334,16 +344,6 @@ return [
                 'bankCode' => [ 'type' => 'string', 'locationName' => 'bankCode', ],
                 'cityCode' => [ 'type' => 'string', 'locationName' => 'cityCode', ],
                 'provinceCode' => [ 'type' => 'string', 'locationName' => 'provinceCode', ],
-            ],
-        ],
-        'LegalPersonSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'companyType' => [ 'type' => 'integer', 'locationName' => 'companyType', ],
-                'companyName' => [ 'type' => 'string', 'locationName' => 'companyName', ],
-                'idCode' => [ 'type' => 'string', 'locationName' => 'idCode', ],
-                'legalPersonName' => [ 'type' => 'string', 'locationName' => 'legalPersonName', ],
-                'legalPersonId' => [ 'type' => 'string', 'locationName' => 'legalPersonId', ],
             ],
         ],
         'OCRInfo' => [
@@ -362,12 +362,81 @@ return [
                 'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
             ],
         ],
+        'YinShuaTiPosition' => [
+            'type' => 'structure',
+            'members' => [
+                'left' => [ 'type' => 'integer', 'locationName' => 'left', ],
+                'top' => [ 'type' => 'integer', 'locationName' => 'top', ],
+                'width' => [ 'type' => 'integer', 'locationName' => 'width', ],
+                'height' => [ 'type' => 'integer', 'locationName' => 'height', ],
+            ],
+        ],
         'CompanyInfo' => [
             'type' => 'structure',
             'members' => [
                 'companyType' => [ 'type' => 'integer', 'locationName' => 'companyType', ],
                 'companyName' => [ 'type' => 'string', 'locationName' => 'companyName', ],
                 'idCode' => [ 'type' => 'string', 'locationName' => 'idCode', ],
+            ],
+        ],
+        'AuthInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
+        'AliveUrlInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+                'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
+            ],
+        ],
+        'PersonalMobile3' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'idCard' => [ 'type' => 'string', 'locationName' => 'idCard', ],
+                'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
+            ],
+        ],
+        'PersonalBankcard' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'idCard' => [ 'type' => 'string', 'locationName' => 'idCard', ],
+                'bankCard' => [ 'type' => 'string', 'locationName' => 'bankCard', ],
+                'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
+            ],
+        ],
+        'LegalPersonSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'companyType' => [ 'type' => 'integer', 'locationName' => 'companyType', ],
+                'companyName' => [ 'type' => 'string', 'locationName' => 'companyName', ],
+                'idCode' => [ 'type' => 'string', 'locationName' => 'idCode', ],
+                'legalPersonName' => [ 'type' => 'string', 'locationName' => 'legalPersonName', ],
+                'legalPersonId' => [ 'type' => 'string', 'locationName' => 'legalPersonId', ],
+            ],
+        ],
+        'VerifyInvoiceInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'error_code' => [ 'type' => 'integer', 'locationName' => 'error_code', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'request_id' => [ 'type' => 'string', 'locationName' => 'request_id', ],
+                'recognize_time' => [ 'type' => 'integer', 'locationName' => 'recognize_time', ],
+                'available_count' => [ 'type' => 'integer', 'locationName' => 'available_count', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'rotation' => [ 'type' => 'string', 'locationName' => 'rotation', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
             ],
         ],
         'PersonalUser' => [
@@ -396,24 +465,17 @@ return [
                 'legalPersonName' => [ 'type' => 'string', 'locationName' => 'legalPersonName', ],
             ],
         ],
-        'AuthInfo' => [
+        'YinShuaTiOCRInfo' => [
             'type' => 'structure',
             'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
-            ],
-        ],
-        'AliveUrlInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
-                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
-                'token' => [ 'type' => 'string', 'locationName' => 'token', ],
-                'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
+                'error_code' => [ 'type' => 'integer', 'locationName' => 'error_code', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'request_id' => [ 'type' => 'string', 'locationName' => 'request_id', ],
+                'recognize_time' => [ 'type' => 'integer', 'locationName' => 'recognize_time', ],
+                'available_count' => [ 'type' => 'integer', 'locationName' => 'available_count', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'rotation' => [ 'type' => 'string', 'locationName' => 'rotation', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'YinShuaTiItemResult', ], ],
             ],
         ],
         'AliveResultInfo' => [
@@ -439,6 +501,19 @@ return [
                 'bankCard' => [ 'type' => 'string', 'locationName' => 'bankCard', ],
                 'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
                 'idType' => [ 'type' => 'string', 'locationName' => 'idType', ],
+            ],
+        ],
+        'InvoiceOCRInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'error_code' => [ 'type' => 'integer', 'locationName' => 'error_code', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'request_id' => [ 'type' => 'string', 'locationName' => 'request_id', ],
+                'recognize_time' => [ 'type' => 'integer', 'locationName' => 'recognize_time', ],
+                'available_count' => [ 'type' => 'integer', 'locationName' => 'available_count', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'rotation' => [ 'type' => 'string', 'locationName' => 'rotation', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'InvoiceResult', ], ],
             ],
         ],
         'Data' => [
@@ -704,6 +779,16 @@ return [
                 'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
             ],
         ],
+        'VerifyInvoiceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'invoice_type' => [ 'type' => 'string', 'locationName' => 'invoice_type', ],
+                'invoice_no' => [ 'type' => 'string', 'locationName' => 'invoice_no', ],
+                'create_date' => [ 'type' => 'string', 'locationName' => 'create_date', ],
+                'total' => [ 'type' => 'string', 'locationName' => 'total', ],
+                'want_image' => [ 'type' => 'string', 'locationName' => 'want_image', ],
+            ],
+        ],
         'CheckLegalPersonResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -807,6 +892,19 @@ return [
                 'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
+        'GeneralPiaoJuResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'error_code' => [ 'type' => 'integer', 'locationName' => 'error_code', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'request_id' => [ 'type' => 'string', 'locationName' => 'request_id', ],
+                'recognize_time' => [ 'type' => 'integer', 'locationName' => 'recognize_time', ],
+                'available_count' => [ 'type' => 'integer', 'locationName' => 'available_count', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'rotation' => [ 'type' => 'string', 'locationName' => 'rotation', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'InvoiceResult', ], ],
+            ],
+        ],
         'QueryProvinceListRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -849,6 +947,12 @@ return [
                 'imageData' => [ 'type' => 'string', 'locationName' => 'imageData', ],
             ],
         ],
+        'GeneralYinShuaTiRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'image_base64' => [ 'type' => 'string', 'locationName' => 'image_base64', ],
+            ],
+        ],
         'CheckCompanyInfo3ResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -875,6 +979,13 @@ return [
                 'legalPersonSpec' =>  [ 'shape' => 'LegalPersonSpec', ],
             ],
         ],
+        'GeneralPiaoJuResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GeneralPiaoJuResultShape', ],
+            ],
+        ],
         'OneClickResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -887,6 +998,13 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'CheckLegalPersonResultShape', ],
+            ],
+        ],
+        'GeneralYinShuaTiResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GeneralYinShuaTiResultShape', ],
             ],
         ],
         'CompanyTransferResponseShape' => [
@@ -911,6 +1029,19 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'GetAliveUrlResultShape', ],
+            ],
+        ],
+        'VerifyInvoiceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'error_code' => [ 'type' => 'integer', 'locationName' => 'error_code', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'request_id' => [ 'type' => 'string', 'locationName' => 'request_id', ],
+                'recognize_time' => [ 'type' => 'integer', 'locationName' => 'recognize_time', ],
+                'available_count' => [ 'type' => 'integer', 'locationName' => 'available_count', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'rotation' => [ 'type' => 'string', 'locationName' => 'rotation', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
             ],
         ],
         'GetAliveUrlRequestShape' => [
@@ -1001,6 +1132,28 @@ return [
                 'result' =>  [ 'shape' => 'CheckCompanyInfoResultShape', ],
             ],
         ],
+        'InvoiceResult' => [
+            'type' => 'structure',
+            'members' => [
+                'page_no' => [ 'type' => 'long', 'locationName' => 'page_no', ],
+                'score' => [ 'type' => 'double', 'locationName' => 'score', ],
+                'page_name' => [ 'type' => 'string', 'locationName' => 'page_name', ],
+                'expense_type_msg' => [ 'type' => 'string', 'locationName' => 'expense_type_msg', ],
+                'error_msg' => [ 'type' => 'string', 'locationName' => 'error_msg', ],
+                'qrcode_warning' => [ 'type' => 'long', 'locationName' => 'qrcode_warning', ],
+                'invoice_no_warning' => [ 'type' => 'long', 'locationName' => 'invoice_no_warning', ],
+                'quad' => [ 'type' => 'list', 'member' => [ 'type' => 'double', ], ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'recognize_result' => [ 'type' => 'string', 'locationName' => 'recognize_result', ],
+                'expense_type' => [ 'type' => 'string', 'locationName' => 'expense_type', ],
+                'query_result' => [ 'type' => 'string', 'locationName' => 'query_result', ],
+                'type_msg' => [ 'type' => 'string', 'locationName' => 'type_msg', ],
+                'error_code' => [ 'type' => 'long', 'locationName' => 'error_code', ],
+                'image' => [ 'type' => 'string', 'locationName' => 'image', ],
+                'pass_fee' => [ 'type' => 'long', 'locationName' => 'pass_fee', ],
+                'merged_id' => [ 'type' => 'double', 'locationName' => 'merged_id', ],
+            ],
+        ],
         'CheckCompanyTransferResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1022,6 +1175,19 @@ return [
             'type' => 'structure',
             'members' => [
                 'personalSpec' =>  [ 'shape' => 'PersonalBankcardOther', ],
+            ],
+        ],
+        'GeneralYinShuaTiResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'error_code' => [ 'type' => 'integer', 'locationName' => 'error_code', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'request_id' => [ 'type' => 'string', 'locationName' => 'request_id', ],
+                'recognize_time' => [ 'type' => 'integer', 'locationName' => 'recognize_time', ],
+                'available_count' => [ 'type' => 'integer', 'locationName' => 'available_count', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'rotation' => [ 'type' => 'string', 'locationName' => 'rotation', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'YinShuaTiItemResult', ], ],
             ],
         ],
         'QueryProvinceListResponseShape' => [
@@ -1218,6 +1384,13 @@ return [
             'members' => [
             ],
         ],
+        'VerifyInvoiceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'VerifyInvoiceResultShape', ],
+            ],
+        ],
         'CheckLegalPersonDetailResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1242,6 +1415,17 @@ return [
                 'result' =>  [ 'shape' => 'IDCardResultShape', ],
             ],
         ],
+        'YinShuaTiItemResult' => [
+            'type' => 'structure',
+            'members' => [
+                'words' => [ 'type' => 'string', 'locationName' => 'words', ],
+                'quad' => [ 'type' => 'string', 'locationName' => 'quad', ],
+                'score' => [ 'type' => 'double', 'locationName' => 'score', ],
+                'position' =>  [ 'shape' => 'YinShuaTiPosition', ],
+                'page_no' => [ 'type' => 'long', 'locationName' => 'page_no', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+            ],
+        ],
         'GetAliveUrlResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1256,6 +1440,15 @@ return [
             'type' => 'structure',
             'members' => [
                 'personalMobileSpec' =>  [ 'shape' => 'PersonalMobileSpec', ],
+            ],
+        ],
+        'GeneralPiaoJuRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'image_base64' => [ 'type' => 'string', 'locationName' => 'image_base64', ],
+                'do_query' => [ 'type' => 'string', 'locationName' => 'do_query', ],
+                'crop_image' => [ 'type' => 'string', 'locationName' => 'crop_image', ],
+                'want_image' => [ 'type' => 'string', 'locationName' => 'want_image', ],
             ],
         ],
         'DescribeApplyStatusRequestShape' => [
