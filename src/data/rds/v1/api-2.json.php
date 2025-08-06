@@ -119,6 +119,15 @@ return [
             'input' => [ 'shape' => 'ModifyAccountForOpsRequestShape', ],
             'output' => [ 'shape' => 'ModifyAccountForOpsResponseShape', ],
         ],
+        'ModifyAccountComment' => [
+            'name' => 'ModifyAccountComment',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/accounts/{accountName}:modifyAccountComment',
+            ],
+            'input' => [ 'shape' => 'ModifyAccountCommentRequestShape', ],
+            'output' => [ 'shape' => 'ModifyAccountCommentResponseShape', ],
+        ],
         'DescribeAudit' => [
             'name' => 'DescribeAudit',
             'http' => [
@@ -406,6 +415,15 @@ return [
             ],
             'input' => [ 'shape' => 'ModifyDatabaseCommentRequestShape', ],
             'output' => [ 'shape' => 'ModifyDatabaseCommentResponseShape', ],
+        ],
+        'ModifyDatabaseOwner' => [
+            'name' => 'ModifyDatabaseOwner',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}/databases/{dbName}:modifyDatabaseOwner',
+            ],
+            'input' => [ 'shape' => 'ModifyDatabaseOwnerRequestShape', ],
+            'output' => [ 'shape' => 'ModifyDatabaseOwnerResponseShape', ],
         ],
         'DescribeErrorLogs' => [
             'name' => 'DescribeErrorLogs',
@@ -767,6 +785,51 @@ return [
             'input' => [ 'shape' => 'UpgradeEngineVersionRequestShape', ],
             'output' => [ 'shape' => 'UpgradeEngineVersionResponseShape', ],
         ],
+        'SwitchForMigrateAz' => [
+            'name' => 'SwitchForMigrateAz',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:switchForMigrateAz',
+            ],
+            'input' => [ 'shape' => 'SwitchForMigrateAzRequestShape', ],
+            'output' => [ 'shape' => 'SwitchForMigrateAzResponseShape', ],
+        ],
+        'UpgradeToMultiReplica' => [
+            'name' => 'UpgradeToMultiReplica',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:upgradeToMultiReplica',
+            ],
+            'input' => [ 'shape' => 'UpgradeToMultiReplicaRequestShape', ],
+            'output' => [ 'shape' => 'UpgradeToMultiReplicaResponseShape', ],
+        ],
+        'PerformMajorUpgradeAndSwitch' => [
+            'name' => 'PerformMajorUpgradeAndSwitch',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:performMajorUpgradeAndSwitch',
+            ],
+            'input' => [ 'shape' => 'PerformMajorUpgradeAndSwitchRequestShape', ],
+            'output' => [ 'shape' => 'PerformMajorUpgradeAndSwitchResponseShape', ],
+        ],
+        'ModifyInstanceEBSDiskConfig' => [
+            'name' => 'ModifyInstanceEBSDiskConfig',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:modifyInstanceEBSDiskConfig',
+            ],
+            'input' => [ 'shape' => 'ModifyInstanceEBSDiskConfigRequestShape', ],
+            'output' => [ 'shape' => 'ModifyInstanceEBSDiskConfigResponseShape', ],
+        ],
+        'DescribeInstanceEBSDiskConfig' => [
+            'name' => 'DescribeInstanceEBSDiskConfig',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instances/{instanceId}:describeInstanceEBSDiskConfig',
+            ],
+            'input' => [ 'shape' => 'DescribeInstanceEBSDiskConfigRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInstanceEBSDiskConfigResponseShape', ],
+        ],
         'EnableIntercept' => [
             'name' => 'EnableIntercept',
             'http' => [
@@ -1055,6 +1118,24 @@ return [
             'input' => [ 'shape' => 'DescribeTablesRequestShape', ],
             'output' => [ 'shape' => 'DescribeTablesResponseShape', ],
         ],
+        'DescribeTasks' => [
+            'name' => 'DescribeTasks',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/tasks',
+            ],
+            'input' => [ 'shape' => 'DescribeTasksRequestShape', ],
+            'output' => [ 'shape' => 'DescribeTasksResponseShape', ],
+        ],
+        'DescribeTask' => [
+            'name' => 'DescribeTask',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/tasks/{taskId}',
+            ],
+            'input' => [ 'shape' => 'DescribeTaskRequestShape', ],
+            'output' => [ 'shape' => 'DescribeTaskResponseShape', ],
+        ],
         'DescribeTde' => [
             'name' => 'DescribeTde',
             'http' => [
@@ -1125,6 +1206,14 @@ return [
                 'privilege' => [ 'type' => 'string', 'locationName' => 'privilege', ],
             ],
         ],
+        'InnerAccount' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'info' => [ 'type' => 'string', 'locationName' => 'info', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+            ],
+        ],
         'Account' => [
             'type' => 'structure',
             'members' => [
@@ -1134,6 +1223,9 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'notes' => [ 'type' => 'string', 'locationName' => 'notes', ],
+                'createDB' => [ 'type' => 'boolean', 'locationName' => 'createDB', ],
+                'createRole' => [ 'type' => 'boolean', 'locationName' => 'createRole', ],
+                'replication' => [ 'type' => 'boolean', 'locationName' => 'replication', ],
                 'accountPrivileges' => [ 'type' => 'list', 'member' => [ 'shape' => 'AccountPrivilege', ], ],
             ],
         ],
@@ -1232,6 +1324,7 @@ return [
                 'binlogBackupId' => [ 'type' => 'string', 'locationName' => 'binlogBackupId', ],
                 'binlogName' => [ 'type' => 'string', 'locationName' => 'binlogName', ],
                 'binlogSizeKB' => [ 'type' => 'long', 'locationName' => 'binlogSizeKB', ],
+                'binlogSizeByte' => [ 'type' => 'long', 'locationName' => 'binlogSizeByte', ],
                 'binlogStartTime' => [ 'type' => 'string', 'locationName' => 'binlogStartTime', ],
                 'binlogEndTime' => [ 'type' => 'string', 'locationName' => 'binlogEndTime', ],
                 'descriptionkey' => [ 'type' => 'string', 'locationName' => 'descriptionkey', ],
@@ -1284,6 +1377,8 @@ return [
                 'azType' => [ 'type' => 'integer', 'locationName' => 'azType', ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
+                'destroyTime' => [ 'type' => 'string', 'locationName' => 'destroyTime', ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
             ],
         ],
         'Charge' => [
@@ -1357,6 +1452,7 @@ return [
                 'azType' => [ 'type' => 'integer', 'locationName' => 'azType', ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
             ],
         ],
         'DBInstanceInternal' => [
@@ -1373,6 +1469,7 @@ return [
                 'vmId' => [ 'type' => 'string', 'locationName' => 'vmId', ],
                 'internalDomainName' => [ 'type' => 'string', 'locationName' => 'internalDomainName', ],
                 'instancePort' => [ 'type' => 'string', 'locationName' => 'instancePort', ],
+                'instanceStorageType' => [ 'type' => 'string', 'locationName' => 'instanceStorageType', ],
             ],
         ],
         'DBInstanceParameter' => [
@@ -1417,6 +1514,10 @@ return [
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'tagSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
+                'ebsDiskAutoScale' => [ 'type' => 'string', 'locationName' => 'ebsDiskAutoScale', ],
+                'ebsDiskThreshold' => [ 'type' => 'integer', 'locationName' => 'ebsDiskThreshold', ],
+                'ebsDiskUpperBound' => [ 'type' => 'integer', 'locationName' => 'ebsDiskUpperBound', ],
             ],
         ],
         'DBInstanceSpecWithoutCharge' => [
@@ -1434,6 +1535,7 @@ return [
                 'instanceStorageType' => [ 'type' => 'string', 'locationName' => 'instanceStorageType', ],
                 'storageEncrypted' => [ 'type' => 'boolean', 'locationName' => 'storageEncrypted', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
             ],
         ],
         'Database' => [
@@ -1444,6 +1546,9 @@ return [
                 'characterSetName' => [ 'type' => 'string', 'locationName' => 'characterSetName', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'comment' => [ 'type' => 'string', 'locationName' => 'comment', ],
+                'collate' => [ 'type' => 'string', 'locationName' => 'collate', ],
+                'ctype' => [ 'type' => 'string', 'locationName' => 'ctype', ],
+                'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
                 'accessPrivilege' => [ 'type' => 'list', 'member' => [ 'shape' => 'DBAccessPrivilege', ], ],
             ],
         ],
@@ -1553,13 +1658,27 @@ return [
                 'lastModified' => [ 'type' => 'string', 'locationName' => 'lastModified', ],
                 'publicURL' => [ 'type' => 'string', 'locationName' => 'publicURL', ],
                 'internalURL' => [ 'type' => 'string', 'locationName' => 'internalURL', ],
+                'logType' => [ 'type' => 'string', 'locationName' => 'logType', ],
             ],
         ],
         'OrderableAZ' => [
             'type' => 'structure',
             'members' => [
-                'azId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'azId' => [ 'type' => 'string', 'locationName' => 'azId', ],
                 'azStatus' => [ 'type' => 'integer', 'locationName' => 'azStatus', ],
+            ],
+        ],
+        'OrderableFlavor' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceClassStatus' => [ 'type' => 'integer', 'locationName' => 'instanceClassStatus', ],
+                'instanceClass' => [ 'type' => 'string', 'locationName' => 'instanceClass', ],
+                'instanceCluster' => [ 'type' => 'string', 'locationName' => 'instanceCluster', ],
+                'cpu' => [ 'type' => 'integer', 'locationName' => 'cpu', ],
+                'memoryMB' => [ 'type' => 'integer', 'locationName' => 'memoryMB', ],
+                'instanceStorageFieldType' => [ 'type' => 'integer', 'locationName' => 'instanceStorageFieldType', ],
+                'instanceStorageGB' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'priceCode' => [ 'type' => 'string', 'locationName' => 'priceCode', ],
             ],
         ],
         'OrderableInstanceClass' => [
@@ -1571,6 +1690,7 @@ return [
                 'memoryMB' => [ 'type' => 'integer', 'locationName' => 'memoryMB', ],
                 'instanceStorageFieldType' => [ 'type' => 'integer', 'locationName' => 'instanceStorageFieldType', ],
                 'instanceStorageGB' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'priceCode' => [ 'type' => 'string', 'locationName' => 'priceCode', ],
             ],
         ],
         'OrderableStorageType' => [
@@ -1579,6 +1699,7 @@ return [
                 'instanceStorageType' => [ 'type' => 'string', 'locationName' => 'instanceStorageType', ],
                 'storageTypeStatus' => [ 'type' => 'integer', 'locationName' => 'storageTypeStatus', ],
                 'orderableInstanceClasses' => [ 'type' => 'list', 'member' => [ 'shape' => 'OrderableInstanceClass', ], ],
+                'orderableStorageTypeAZs' => [ 'type' => 'list', 'member' => [ 'shape' => 'OrderableAZ', ], ],
             ],
         ],
         'OrderableInstanceType' => [
@@ -1702,6 +1823,10 @@ return [
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'tagSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
+                'ebsDiskAutoScale' => [ 'type' => 'string', 'locationName' => 'ebsDiskAutoScale', ],
+                'ebsDiskThreshold' => [ 'type' => 'integer', 'locationName' => 'ebsDiskThreshold', ],
+                'ebsDiskUpperBound' => [ 'type' => 'integer', 'locationName' => 'ebsDiskUpperBound', ],
             ],
         ],
         'Schema' => [
@@ -1763,6 +1888,23 @@ return [
                 'tdeStatus' => [ 'type' => 'string', 'locationName' => 'tdeStatus', ],
             ],
         ],
+        'SubTaskInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'sequence' => [ 'type' => 'integer', 'locationName' => 'sequence', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'statusDescription' => [ 'type' => 'string', 'locationName' => 'statusDescription', ],
+                'percent' => [ 'type' => 'integer', 'locationName' => 'percent', ],
+                'retry' => [ 'type' => 'integer', 'locationName' => 'retry', ],
+                'pause' => [ 'type' => 'integer', 'locationName' => 'pause', ],
+                'isPause' => [ 'type' => 'integer', 'locationName' => 'isPause', ],
+                'beginTime' => [ 'type' => 'string', 'locationName' => 'beginTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'estimatedTime' => [ 'type' => 'integer', 'locationName' => 'estimatedTime', ],
+            ],
+        ],
         'SwitchLog' => [
             'type' => 'structure',
             'members' => [
@@ -1771,6 +1913,69 @@ return [
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'causeCode' => [ 'type' => 'string', 'locationName' => 'causeCode', ],
                 'causeDetail' => [ 'type' => 'string', 'locationName' => 'causeDetail', ],
+            ],
+        ],
+        'TaskInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'instanceDeleted' => [ 'type' => 'integer', 'locationName' => 'instanceDeleted', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'statusDescription' => [ 'type' => 'string', 'locationName' => 'statusDescription', ],
+                'percent' => [ 'type' => 'integer', 'locationName' => 'percent', ],
+                'beginTime' => [ 'type' => 'string', 'locationName' => 'beginTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'subTasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubTaskInfo', ], ],
+                'extInfo' => [ 'type' => 'object', 'locationName' => 'extInfo', ],
+            ],
+        ],
+        'DetectedProblems' => [
+            'type' => 'structure',
+            'members' => [
+                'level' => [ 'type' => 'string', 'locationName' => 'level', ],
+                'dbObject' => [ 'type' => 'string', 'locationName' => 'dbObject', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'UpgradePreCheckRecord' => [
+            'type' => 'structure',
+            'members' => [
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'detectedProblems' => [ 'type' => 'list', 'member' => [ 'shape' => 'DetectedProblems', ], ],
+            ],
+        ],
+        'UpgradePreCheckTask' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'sourceVersion' => [ 'type' => 'string', 'locationName' => 'sourceVersion', ],
+                'targetVersion' => [ 'type' => 'string', 'locationName' => 'targetVersion', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'validTime' => [ 'type' => 'string', 'locationName' => 'validTime', ],
+            ],
+        ],
+        'UpgradeTask' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'sourceVersion' => [ 'type' => 'string', 'locationName' => 'sourceVersion', ],
+                'targetVersion' => [ 'type' => 'string', 'locationName' => 'targetVersion', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'cutoverMode' => [ 'type' => 'integer', 'locationName' => 'cutoverMode', ],
+                'cutoverTime' => [ 'type' => 'string', 'locationName' => 'cutoverTime', ],
+                'targetInstanceId' => [ 'type' => 'string', 'locationName' => 'targetInstanceId', ],
+                'updateExtensionMode' => [ 'type' => 'integer', 'locationName' => 'updateExtensionMode', ],
+                'analyzeMode' => [ 'type' => 'integer', 'locationName' => 'analyzeMode', ],
+                'switchType' => [ 'type' => 'string', 'locationName' => 'switchType', ],
             ],
         ],
         'WhiteList' => [
@@ -1800,6 +2005,7 @@ return [
                 'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
                 'accountPassword' => [ 'type' => 'string', 'locationName' => 'accountPassword', ],
                 'notes' => [ 'type' => 'string', 'locationName' => 'notes', ],
+                'accountType' => [ 'type' => 'string', 'locationName' => 'accountType', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -1838,6 +2044,15 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ModifyAccountCommentRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'notes' => [ 'type' => 'string', 'locationName' => 'notes', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
             ],
         ],
         'DescribeAccountPrivilegeRequestShape' => [
@@ -1944,6 +2159,16 @@ return [
             ],
         ],
         'ModifyAccountForOpsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyAccountCommentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyAccountCommentResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -2545,18 +2770,26 @@ return [
                 'result' =>  [ 'shape' => 'DescribePrivilegeResultShape', ],
             ],
         ],
+        'ModifyDatabaseOwnerRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+            ],
+        ],
         'CreateDatabaseRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
                 'characterSetName' => [ 'type' => 'string', 'locationName' => 'characterSetName', ],
+                'collate' => [ 'type' => 'string', 'locationName' => 'collate', ],
+                'ctype' => [ 'type' => 'string', 'locationName' => 'ctype', ],
+                'comment' => [ 'type' => 'string', 'locationName' => 'comment', ],
+                'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'CreateDatabaseResponseShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'RestoreDatabaseFromFileRequestShape' => [
@@ -2588,6 +2821,53 @@ return [
             'members' => [
             ],
         ],
+        'DeleteDatabaseResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteDatabaseRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+            ],
+        ],
+        'DeleteDatabaseResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'RestoreDatabaseFromOSSRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ossURL' => [ 'type' => 'string', 'locationName' => 'ossURL', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
+            ],
+        ],
+        'RestoreDatabaseFromBackupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyDatabaseCommentResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyDatabaseOwnerResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateDatabaseResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DescribeDatabasesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2596,11 +2876,6 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-            ],
-        ],
-        'DeleteDatabaseResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'RestoreDatabaseFromBackupResultShape' => [
@@ -2618,20 +2893,12 @@ return [
             'members' => [
             ],
         ],
-        'DeleteDatabaseRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
-            ],
-        ],
         'RestoreDatabaseFromOSSResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
         ],
-        'DeleteDatabaseResponseShape' => [
+        'ModifyDatabaseOwnerResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -2660,25 +2927,6 @@ return [
             ],
         ],
         'RestoreDatabaseFromFileResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'RestoreDatabaseFromOSSRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'ossURL' => [ 'type' => 'string', 'locationName' => 'ossURL', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
-                'dbName' => [ 'type' => 'string', 'locationName' => 'dbName', ],
-            ],
-        ],
-        'RestoreDatabaseFromBackupResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'ModifyDatabaseCommentResponseShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -2967,6 +3215,22 @@ return [
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
+        'ModifyInstanceEBSDiskConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ebsDiskAutoScale' => [ 'type' => 'string', 'locationName' => 'ebsDiskAutoScale', ],
+                'ebsDiskThreshold' => [ 'type' => 'integer', 'locationName' => 'ebsDiskThreshold', ],
+                'ebsDiskUpperBound' => [ 'type' => 'integer', 'locationName' => 'ebsDiskUpperBound', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'UpgradeToMultiReplicaResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpgradeToMultiReplicaResultShape', ],
+            ],
+        ],
         'SwitchForModifyingInstanceSpecRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3005,6 +3269,11 @@ return [
                 'binlogRetentionNumber' => [ 'type' => 'integer', 'locationName' => 'binlogRetentionNumber', ],
             ],
         ],
+        'ModifyInstanceEBSDiskConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DescribeBackupPolicyResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3029,6 +3298,12 @@ return [
                 'result' =>  [ 'shape' => 'DescribeBackupChargeResultShape', ],
             ],
         ],
+        'UpgradeToMultiReplicaResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
+            ],
+        ],
         'DescribeInstancesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3037,6 +3312,7 @@ return [
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'tagFilters' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'recycle' => [ 'type' => 'boolean', 'locationName' => 'recycle', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -3117,6 +3393,13 @@ return [
             'members' => [
             ],
         ],
+        'SwitchForMigrateAzRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'CreateInstanceFromBackupRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3132,6 +3415,16 @@ return [
                 'result' =>  [ 'shape' => 'DescribeSSLResultShape', ],
             ],
         ],
+        'UpgradeToMultiReplicaRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'syncMode' => [ 'type' => 'string', 'locationName' => 'syncMode', ],
+                'azId' => [ 'type' => 'string', 'locationName' => 'azId', ],
+                'azIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'UpgradeEngineVersionResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -3142,6 +3435,11 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'SwitchForMigrateAzResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'TagFilter' => [
@@ -3175,6 +3473,7 @@ return [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'effectiveTime' => [ 'type' => 'string', 'locationName' => 'effectiveTime', ],
                 'postponeTime' => [ 'type' => 'integer', 'locationName' => 'postponeTime', ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -3192,6 +3491,13 @@ return [
             ],
         ],
         'DescribeUpgradePlanRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'PerformMajorUpgradeAndSwitchRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -3251,6 +3557,11 @@ return [
                 'result' =>  [ 'shape' => 'DescribeBackupSpaceResultShape', ],
             ],
         ],
+        'SwitchForMigrateAzResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DescribeInstancesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -3305,6 +3616,18 @@ return [
             'type' => 'structure',
             'members' => [
                 'parameterGroupId' => [ 'type' => 'string', 'locationName' => 'parameterGroupId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'PerformMajorUpgradeAndSwitchResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeInstanceEBSDiskConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
@@ -3368,6 +3691,15 @@ return [
                 'result' =>  [ 'shape' => 'DescribeInstancesResultShape', ],
             ],
         ],
+        'DescribeInstanceEBSDiskConfigResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'ebsDiskAutoScale' => [ 'type' => 'string', 'locationName' => 'ebsDiskAutoScale', ],
+                'ebsDiskThreshold' => [ 'type' => 'integer', 'locationName' => 'ebsDiskThreshold', ],
+                'ebsDiskUpperBound' => [ 'type' => 'integer', 'locationName' => 'ebsDiskUpperBound', ],
+            ],
+        ],
         'EnableEnhancedBackupResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3391,6 +3723,12 @@ return [
                 'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
             ],
         ],
+        'DescribeInstanceEBSDiskConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceEBSDiskConfigResultShape', ],
+            ],
+        ],
         'CreateROInstanceRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3408,11 +3746,17 @@ return [
                 'tagSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],
         ],
         'ModifyConnectionModeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'PerformMajorUpgradeAndSwitchResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -3469,6 +3813,11 @@ return [
             'type' => 'structure',
             'members' => [
                 'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
+            ],
+        ],
+        'ModifyInstanceEBSDiskConfigResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'ModifyConnectionModeResponseShape' => [
@@ -3739,6 +4088,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -4233,6 +4583,47 @@ return [
             'members' => [
                 'tables' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeTasksRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'DescribeTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeTaskResultShape', ],
+            ],
+        ],
+        'DescribeTasksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeTasksResultShape', ],
+            ],
+        ],
+        'DescribeTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskInfo' =>  [ 'shape' => 'TaskInfo', ],
+            ],
+        ],
+        'DescribeTasksResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'taskInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskInfo', ], ],
             ],
         ],
         'DescribeTdeRequestShape' => [

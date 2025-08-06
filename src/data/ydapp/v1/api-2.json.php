@@ -15,7 +15,7 @@ return [
             'name' => 'DescribeApps',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/2.0.0/apps',
+                'requestUri' => '/v1/apps',
             ],
             'input' => [ 'shape' => 'DescribeAppsRequestShape', ],
             'output' => [ 'shape' => 'DescribeAppsResponseShape', ],
@@ -24,7 +24,7 @@ return [
             'name' => 'DeleteCustomImage',
             'http' => [
                 'method' => 'DELETE',
-                'requestUri' => '/2.0.0/app/{appId}/customImage/{imageDigest}',
+                'requestUri' => '/v1/app/{appId}/customImage/{imageDigest}',
             ],
             'input' => [ 'shape' => 'DeleteCustomImageRequestShape', ],
             'output' => [ 'shape' => 'DeleteCustomImageResponseShape', ],
@@ -33,7 +33,7 @@ return [
             'name' => 'DescribeCustomImages',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/2.0.0/app/{appId}/customImages',
+                'requestUri' => '/v1/app/{appId}/customImages',
             ],
             'input' => [ 'shape' => 'DescribeCustomImagesRequestShape', ],
             'output' => [ 'shape' => 'DescribeCustomImagesResponseShape', ],
@@ -42,7 +42,7 @@ return [
             'name' => 'DescribeCustomRegistryToken',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/2.0.0/app/{appId}:customRegistryToken',
+                'requestUri' => '/v1/app/{appId}:customRegistryToken',
             ],
             'input' => [ 'shape' => 'DescribeCustomRegistryTokenRequestShape', ],
             'output' => [ 'shape' => 'DescribeCustomRegistryTokenResponseShape', ],
@@ -51,7 +51,7 @@ return [
             'name' => 'Deploy',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/2.0.0/app/{appId}/group/{groupId}/deploy',
+                'requestUri' => '/v1/app/{appId}/group/{groupId}/deploy',
             ],
             'input' => [ 'shape' => 'DeployRequestShape', ],
             'output' => [ 'shape' => 'DeployResponseShape', ],
@@ -60,7 +60,7 @@ return [
             'name' => 'DescribeDeployTask',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/2.0.0/app/{appId}/group/{groupId}/deploy/{deployId}',
+                'requestUri' => '/v1/app/{appId}/group/{groupId}/deploy/{deployId}',
             ],
             'input' => [ 'shape' => 'DescribeDeployTaskRequestShape', ],
             'output' => [ 'shape' => 'DescribeDeployTaskResponseShape', ],
@@ -69,7 +69,7 @@ return [
             'name' => 'StopDeployTask',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/2.0.0/app/{appId}/group/{groupId}/deploy/{deployId}:stop',
+                'requestUri' => '/v1/app/{appId}/group/{groupId}/deploy/{deployId}:stop',
             ],
             'input' => [ 'shape' => 'StopDeployTaskRequestShape', ],
             'output' => [ 'shape' => 'StopDeployTaskResponseShape', ],
@@ -78,7 +78,7 @@ return [
             'name' => 'DescribeGroups',
             'http' => [
                 'method' => 'GET',
-                'requestUri' => '/2.0.0/app/{appId}/groups',
+                'requestUri' => '/v1/app/{appId}/groups',
             ],
             'input' => [ 'shape' => 'DescribeGroupsRequestShape', ],
             'output' => [ 'shape' => 'DescribeGroupsResponseShape', ],
