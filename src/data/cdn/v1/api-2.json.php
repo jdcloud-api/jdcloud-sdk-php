@@ -713,6 +713,78 @@ return [
             'input' => [ 'shape' => 'QueryBackSourceIpVersionRequestShape', ],
             'output' => [ 'shape' => 'QueryBackSourceIpVersionResponseShape', ],
         ],
+        'QueryResponseSpeedLimit' => [
+            'name' => 'QueryResponseSpeedLimit',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/domain/{domain}/responseSpeedLimit',
+            ],
+            'input' => [ 'shape' => 'QueryResponseSpeedLimitRequestShape', ],
+            'output' => [ 'shape' => 'QueryResponseSpeedLimitResponseShape', ],
+        ],
+        'CreateResponseSpeedLimit' => [
+            'name' => 'CreateResponseSpeedLimit',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/domain/{domain}/responseSpeedLimit',
+            ],
+            'input' => [ 'shape' => 'CreateResponseSpeedLimitRequestShape', ],
+            'output' => [ 'shape' => 'CreateResponseSpeedLimitResponseShape', ],
+        ],
+        'UpdateResponseSpeedLimit' => [
+            'name' => 'UpdateResponseSpeedLimit',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/domain/{domain}/responseSpeedLimit',
+            ],
+            'input' => [ 'shape' => 'UpdateResponseSpeedLimitRequestShape', ],
+            'output' => [ 'shape' => 'UpdateResponseSpeedLimitResponseShape', ],
+        ],
+        'DeleteResponseSpeedLimit' => [
+            'name' => 'DeleteResponseSpeedLimit',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/domain/{domain}/responseSpeedLimit',
+            ],
+            'input' => [ 'shape' => 'DeleteResponseSpeedLimitRequestShape', ],
+            'output' => [ 'shape' => 'DeleteResponseSpeedLimitResponseShape', ],
+        ],
+        'QueryDynamicGzip' => [
+            'name' => 'QueryDynamicGzip',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/domain/{domain}/dynamicGzip',
+            ],
+            'input' => [ 'shape' => 'QueryDynamicGzipRequestShape', ],
+            'output' => [ 'shape' => 'QueryDynamicGzipResponseShape', ],
+        ],
+        'ConfigDynamicGzip' => [
+            'name' => 'ConfigDynamicGzip',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/domain/{domain}/dynamicGzip',
+            ],
+            'input' => [ 'shape' => 'ConfigDynamicGzipRequestShape', ],
+            'output' => [ 'shape' => 'ConfigDynamicGzipResponseShape', ],
+        ],
+        'QueryDynamicBrotli' => [
+            'name' => 'QueryDynamicBrotli',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/domain/{domain}/dynamicBrotli',
+            ],
+            'input' => [ 'shape' => 'QueryDynamicBrotliRequestShape', ],
+            'output' => [ 'shape' => 'QueryDynamicBrotliResponseShape', ],
+        ],
+        'ConfigDynamicBrotli' => [
+            'name' => 'ConfigDynamicBrotli',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/domain/{domain}/dynamicBrotli',
+            ],
+            'input' => [ 'shape' => 'ConfigDynamicBrotliRequestShape', ],
+            'output' => [ 'shape' => 'ConfigDynamicBrotliResponseShape', ],
+        ],
         'QueryDomainGroupList' => [
             'name' => 'QueryDomainGroupList',
             'http' => [
@@ -1036,6 +1108,15 @@ return [
             ],
             'input' => [ 'shape' => 'QueryLiveDomainIpBlackWhiteListRequestShape', ],
             'output' => [ 'shape' => 'QueryLiveDomainIpBlackWhiteListResponseShape', ],
+        ],
+        'SetLiveDomainRtc' => [
+            'name' => 'SetLiveDomainRtc',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/liveDomain/{domain}/rtc',
+            ],
+            'input' => [ 'shape' => 'SetLiveDomainRtcRequestShape', ],
+            'output' => [ 'shape' => 'SetLiveDomainRtcResponseShape', ],
         ],
         'BatchCreateLiveDomain' => [
             'name' => 'BatchCreateLiveDomain',
@@ -2599,6 +2680,16 @@ return [
                 'urlId' => [ 'type' => 'long', 'locationName' => 'urlId', ],
             ],
         ],
+        'ResponseSpeedLimit' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'actionType' => [ 'type' => 'integer', 'locationName' => 'actionType', ],
+                'fileContent' => [ 'type' => 'string', 'locationName' => 'fileContent', ],
+                'timeRange' => [ 'type' => 'string', 'locationName' => 'timeRange', ],
+                'speedLimit' => [ 'type' => 'integer', 'locationName' => 'speedLimit', ],
+            ],
+        ],
         'FeeDomain' => [
             'type' => 'structure',
             'members' => [
@@ -3630,23 +3721,11 @@ return [
                 'result' =>  [ 'shape' => 'OperateShareCacheResultShape', ],
             ],
         ],
-        'SetHttpHeaderResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'ConfigUrlRuleResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'ConfigUrlRuleResultShape', ],
-            ],
-        ],
-        'SetCustomErrorPageRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'errorPageConfigs' => [ 'type' => 'list', 'member' => [ 'shape' => 'ErrorPageConfigs', ], ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
         'SetHttpHeaderRequestShape' => [
@@ -3659,23 +3738,11 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
-        'QueryBackSourceRulesResponseShape' => [
+        'DeleteResponseSpeedLimitResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryBackSourceRulesResultShape', ],
-            ],
-        ],
-        'StopMonitorResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'StopMonitorResultShape', ],
-            ],
-        ],
-        'SetExtraCacheTimeResultShape' => [
-            'type' => 'structure',
-            'members' => [
+                'result' =>  [ 'shape' => 'DeleteResponseSpeedLimitResultShape', ],
             ],
         ],
         'SetVideoDraftResponseShape' => [
@@ -3699,13 +3766,6 @@ return [
                 'result' =>  [ 'shape' => 'BatchIpBlackListResultShape', ],
             ],
         ],
-        'SetIgnoreQueryStringResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'SetIgnoreQueryStringResultShape', ],
-            ],
-        ],
         'SetFilterArgsResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3719,6 +3779,625 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'enable' => [ 'type' => 'string', 'locationName' => 'enable', ],
                 'customErrorPageInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'ErrorPageConfigs', ], ],
+            ],
+        ],
+        'QueryIpBlackListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'ips' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'whiteIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DeleteHttpHeaderResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateResponseSpeedLimitRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'actionType' => [ 'type' => 'integer', 'locationName' => 'actionType', ],
+                'fileContent' => [ 'type' => 'string', 'locationName' => 'fileContent', ],
+                'timeRange' => [ 'type' => 'string', 'locationName' => 'timeRange', ],
+                'speedLimit' => [ 'type' => 'integer', 'locationName' => 'speedLimit', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryHttp2ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'SetSourceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SetSourceResultShape', ],
+            ],
+        ],
+        'SetReferResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SetReferResultShape', ],
+            ],
+        ],
+        'QueryBackSourcePathResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryBackSourcePathResultShape', ],
+            ],
+        ],
+        'QueryDomainAllConfigClassifyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'configItems' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigItem', ], ],
+            ],
+        ],
+        'SetFilterArgsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'retainArgs' => [ 'type' => 'string', 'locationName' => 'retainArgs', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryUserAgentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'userAgentType' => [ 'type' => 'string', 'locationName' => 'userAgentType', ],
+                'userAgentList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'allowNoUserAgentHeader' => [ 'type' => 'string', 'locationName' => 'allowNoUserAgentHeader', ],
+            ],
+        ],
+        'ConfigBackSourceOssResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'BatchIpBlackListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetAccesskeyConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'accesskeyType' => [ 'type' => 'integer', 'locationName' => 'accesskeyType', ],
+                'accesskeyKey' => [ 'type' => 'string', 'locationName' => 'accesskeyKey', ],
+                'accesskeyKeep' => [ 'type' => 'integer', 'locationName' => 'accesskeyKeep', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'ConfigBackSourceIpVersionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'backSourceIpVersion' => [ 'type' => 'string', 'locationName' => 'backSourceIpVersion', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryBackSourcePathRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryFollowSourceProtocolResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'followProtocolStatus' => [ 'type' => 'string', 'locationName' => 'followProtocolStatus', ],
+            ],
+        ],
+        'QueryBackSourceRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'beforeRegex' => [ 'type' => 'string', 'locationName' => 'beforeRegex', ],
+                'afterRegex' => [ 'type' => 'string', 'locationName' => 'afterRegex', ],
+            ],
+        ],
+        'SetReferResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ExecuteDomainCopyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'ExecuteDomainCopyResultShape', ],
+            ],
+        ],
+        'SetCacheRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'cacheRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'CacheRuleVo', ], ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'DeleteHttpHeaderResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DeleteHttpHeaderResultShape', ],
+            ],
+        ],
+        'QueryIpBlackListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryMonitorResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'cycle' => [ 'type' => 'integer', 'locationName' => 'cycle', ],
+                'monitorPath' => [ 'type' => 'string', 'locationName' => 'monitorPath', ],
+                'httpRequestHeader' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'SetHttpTypeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'QueryDynamicBrotliRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryDomainAllConfigClassifyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryDomainAllConfigClassifyResultShape', ],
+            ],
+        ],
+        'SetGzipRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'gzipTypes' => [ 'type' => 'string', 'locationName' => 'gzipTypes', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryDynamicBrotliResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'enable' => [ 'type' => 'string', 'locationName' => 'enable', ],
+                'types' => [ 'type' => 'string', 'locationName' => 'types', ],
+            ],
+        ],
+        'SetCacheRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SetCacheRulesResultShape', ],
+            ],
+        ],
+        'QueryFilterArgsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryFilterArgsResultShape', ],
+            ],
+        ],
+        'ConfigHttp2ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'UpdateResponseSpeedLimitResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'UpdateResponseSpeedLimitResultShape', ],
+            ],
+        ],
+        'QueryFilterArgsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'retainArgs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ignoreQueryString' => [ 'type' => 'string', 'locationName' => 'ignoreQueryString', ],
+            ],
+        ],
+        'QueryDynamicGzipRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'SetUserAgentConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'userAgentType' => [ 'type' => 'string', 'locationName' => 'userAgentType', ],
+                'userAgentList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryExtraCacheTimeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryBackSourceRulesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'DeleteCacheRuleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'configId' => [ 'type' => 'long', 'locationName' => 'configId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'SetIgnoreQueryStringResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ConfigBackSourceRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetVideoDraftRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'SpeedLimitResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SpeedLimitResultShape', ],
+            ],
+        ],
+        'QueryFollowRedirectResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryFollowRedirectResultShape', ],
+            ],
+        ],
+        'ConfigHttp2ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'ConfigHttp2ResultShape', ],
+            ],
+        ],
+        'CreateResponseSpeedLimitResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateResponseSpeedLimitResultShape', ],
+            ],
+        ],
+        'ConfigBackSourcePathResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'ConfigBackSourcePathResultShape', ],
+            ],
+        ],
+        'ExecuteDomainCopyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'errorResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'ErrorEntity', ], ],
+            ],
+        ],
+        'SetFollowSourceProtocolRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'StopMonitorResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ConfigBackSourceOssResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'ConfigBackSourceOssResultShape', ],
+            ],
+        ],
+        'CreateCacheRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateCacheRuleResultShape', ],
+            ],
+        ],
+        'BatchSetExtraCacheTimeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'BatchSetExtraCacheTimeResultShape', ],
+            ],
+        ],
+        'QueryMonitorResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryMonitorResultShape', ],
+            ],
+        ],
+        'QueryBackSourceOssRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'SetIpBlackListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetCacheRulesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'CacheVo', ], ],
+            ],
+        ],
+        'QueryFollowSourceProtocolResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryFollowSourceProtocolResultShape', ],
+            ],
+        ],
+        'ConfigBackSourceRuleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'QueryHttpHeaderResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryHttpHeaderResultShape', ],
+            ],
+        ],
+        'QueryHttpHeaderResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'headers' => [ 'type' => 'list', 'member' => [ 'shape' => 'QueryHttpHeaderResp', ], ],
+            ],
+        ],
+        'QueryMonitorRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryIpBlackListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryIpBlackListResultShape', ],
+            ],
+        ],
+        'QueryHttpHeaderRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'edgeType' => [ 'type' => 'integer', 'locationName' => 'edgeType', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'DeleteResponseSpeedLimitRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'configId' => [ 'type' => 'string', 'locationName' => 'configId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryDefaultHttpHeaderKeyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'reqDefaultHttpHeaderKey' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'respDefaultHttpHeaderKey' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'QueryAccesskeyConfigResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'accesskeyType' => [ 'type' => 'integer', 'locationName' => 'accesskeyType', ],
+                'accesskeyKey' => [ 'type' => 'string', 'locationName' => 'accesskeyKey', ],
+                'accesskeyKeep' => [ 'type' => 'integer', 'locationName' => 'accesskeyKeep', ],
+            ],
+        ],
+        'UpdateResponseSpeedLimitRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'actionType' => [ 'type' => 'integer', 'locationName' => 'actionType', ],
+                'fileContent' => [ 'type' => 'string', 'locationName' => 'fileContent', ],
+                'timeRange' => [ 'type' => 'string', 'locationName' => 'timeRange', ],
+                'speedLimit' => [ 'type' => 'integer', 'locationName' => 'speedLimit', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'SetFollowRedirectResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'BatchSetExtraCacheTimeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'SpeedLimitResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'BatchIpBlackListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'operateDomainRange' => [ 'type' => 'string', 'locationName' => 'operateDomainRange', ],
+                'domains' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'ipList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'forbidTime' => [ 'type' => 'long', 'locationName' => 'forbidTime', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+            ],
+        ],
+        'UpdateCacheRuleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'UpdateCacheRuleResultShape', ],
+            ],
+        ],
+        'QueryBackSourceOssResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryBackSourceOssResultShape', ],
+            ],
+        ],
+        'SetDomainConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'httpType' => [ 'type' => 'string', 'locationName' => 'httpType', ],
+                'backSourceType' => [ 'type' => 'string', 'locationName' => 'backSourceType', ],
+                'jumpType' => [ 'type' => 'string', 'locationName' => 'jumpType', ],
+                'jcdnTimeAnti' => [ 'type' => 'string', 'locationName' => 'jcdnTimeAnti', ],
+                'hdrCtrl' => [ 'type' => 'string', 'locationName' => 'hdrCtrl', ],
+                'toutiaoHeader' => [ 'type' => 'string', 'locationName' => 'toutiaoHeader', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'PreviewCertificateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'PreviewCertificateResultShape', ],
+            ],
+        ],
+        'SetUserAgentConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SetUserAgentConfigResultShape', ],
+            ],
+        ],
+        'QueryResponseSpeedLimitRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryCustomErrorPageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryExtraCacheTimeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'extraCacheTimes' => [ 'type' => 'list', 'member' => [ 'shape' => 'ExtraCacheTime', ], ],
+            ],
+        ],
+        'OperateIpBlackListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'QueryCustomErrorPageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryCustomErrorPageResultShape', ],
+            ],
+        ],
+        'QueryHttp2ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryHttp2ResultShape', ],
+            ],
+        ],
+        'SetFollowRedirectResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SetFollowRedirectResultShape', ],
+            ],
+        ],
+        'QueryFollowSourceProtocolRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'SetHttpHeaderResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetCustomErrorPageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'errorPageConfigs' => [ 'type' => 'list', 'member' => [ 'shape' => 'ErrorPageConfigs', ], ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
+        'QueryBackSourceRulesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryBackSourceRulesResultShape', ],
+            ],
+        ],
+        'StopMonitorResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'StopMonitorResultShape', ],
+            ],
+        ],
+        'SetExtraCacheTimeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetIgnoreQueryStringResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SetIgnoreQueryStringResultShape', ],
+            ],
+        ],
+        'CreateResponseSpeedLimitResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'UpdateCacheRuleResultShape' => [
@@ -3740,15 +4419,6 @@ return [
                 'result' =>  [ 'shape' => 'SetIpBlackListResultShape', ],
             ],
         ],
-        'QueryIpBlackListResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'ips' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'whiteIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
         'SetDomainConfigResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3756,16 +4426,16 @@ return [
                 'result' =>  [ 'shape' => 'SetDomainConfigResultShape', ],
             ],
         ],
-        'DeleteHttpHeaderResultShape' => [
+        'QueryResponseSpeedLimitResultShape' => [
             'type' => 'structure',
             'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'responseSpeedLimits' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResponseSpeedLimit', ], ],
             ],
         ],
-        'QueryHttp2ResultShape' => [
+        'DeleteResponseSpeedLimitResultShape' => [
             'type' => 'structure',
             'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
         'QueryBackSourcePathResultShape' => [
@@ -3830,38 +4500,11 @@ return [
                 'afterRegex' => [ 'type' => 'string', 'locationName' => 'afterRegex', ],
             ],
         ],
-        'SetSourceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'SetSourceResultShape', ],
-            ],
-        ],
         'SetHttpHeaderResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'SetHttpHeaderResultShape', ],
-            ],
-        ],
-        'SetReferResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'SetReferResultShape', ],
-            ],
-        ],
-        'QueryBackSourcePathResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryBackSourcePathResultShape', ],
-            ],
-        ],
-        'QueryDomainAllConfigClassifyResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'configItems' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigItem', ], ],
             ],
         ],
         'QueryUrlRuleRequestShape' => [
@@ -3877,29 +4520,7 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
-        'SetFilterArgsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'retainArgs' => [ 'type' => 'string', 'locationName' => 'retainArgs', ],
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'QueryUserAgentResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'userAgentType' => [ 'type' => 'string', 'locationName' => 'userAgentType', ],
-                'userAgentList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'allowNoUserAgentHeader' => [ 'type' => 'string', 'locationName' => 'allowNoUserAgentHeader', ],
-            ],
-        ],
-        'ConfigBackSourceOssResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'BatchIpBlackListResultShape' => [
+        'UpdateResponseSpeedLimitResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -3915,58 +4536,16 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
-        'SetAccesskeyConfigRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'accesskeyType' => [ 'type' => 'integer', 'locationName' => 'accesskeyType', ],
-                'accesskeyKey' => [ 'type' => 'string', 'locationName' => 'accesskeyKey', ],
-                'accesskeyKeep' => [ 'type' => 'integer', 'locationName' => 'accesskeyKeep', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
         'QueryFilterArgsRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
-        'ConfigBackSourceIpVersionRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'backSourceIpVersion' => [ 'type' => 'string', 'locationName' => 'backSourceIpVersion', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'QueryBackSourcePathRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'QueryFollowSourceProtocolResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'followProtocolStatus' => [ 'type' => 'string', 'locationName' => 'followProtocolStatus', ],
-            ],
-        ],
         'QueryBackSourceRuleRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'QueryBackSourceRuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'beforeRegex' => [ 'type' => 'string', 'locationName' => 'beforeRegex', ],
-                'afterRegex' => [ 'type' => 'string', 'locationName' => 'afterRegex', ],
-            ],
-        ],
-        'SetReferResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'OperateShareCacheRequestShape' => [
@@ -4010,11 +4589,11 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
-        'ExecuteDomainCopyResponseShape' => [
+        'ConfigDynamicGzipResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'ExecuteDomainCopyResultShape', ],
+                'result' =>  [ 'shape' => 'ConfigDynamicGzipResultShape', ],
             ],
         ],
         'QueryBackSourceOssResultShape' => [
@@ -4026,13 +4605,6 @@ return [
                 'domain2' => [ 'type' => 'string', 'locationName' => 'domain2', ],
             ],
         ],
-        'SetCacheRulesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'cacheRules' => [ 'type' => 'list', 'member' => [ 'shape' => 'CacheRuleVo', ], ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
         'SetFollowSourceProtocolResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -4040,23 +4612,10 @@ return [
                 'result' =>  [ 'shape' => 'SetFollowSourceProtocolResultShape', ],
             ],
         ],
-        'DeleteHttpHeaderResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DeleteHttpHeaderResultShape', ],
-            ],
-        ],
         'SpeedLimitRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'limitRate' => [ 'type' => 'integer', 'locationName' => 'limitRate', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'QueryIpBlackListRequestShape' => [
-            'type' => 'structure',
-            'members' => [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
@@ -4095,61 +4654,12 @@ return [
             'members' => [
             ],
         ],
-        'QueryMonitorResultShape' => [
+        'ConfigDynamicBrotliRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'enable' => [ 'type' => 'string', 'locationName' => 'enable', ],
+                'types' => [ 'type' => 'string', 'locationName' => 'types', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'cycle' => [ 'type' => 'integer', 'locationName' => 'cycle', ],
-                'monitorPath' => [ 'type' => 'string', 'locationName' => 'monitorPath', ],
-                'httpRequestHeader' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'SetHttpTypeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
-            ],
-        ],
-        'QueryDomainAllConfigClassifyResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryDomainAllConfigClassifyResultShape', ],
-            ],
-        ],
-        'SetGzipRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'gzipTypes' => [ 'type' => 'string', 'locationName' => 'gzipTypes', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'SetCacheRulesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'SetCacheRulesResultShape', ],
-            ],
-        ],
-        'QueryFilterArgsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryFilterArgsResultShape', ],
-            ],
-        ],
-        'ConfigHttp2ResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'QueryFilterArgsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'retainArgs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'ignoreQueryString' => [ 'type' => 'string', 'locationName' => 'ignoreQueryString', ],
             ],
         ],
         'SetRangeResponseShape' => [
@@ -4165,36 +4675,11 @@ return [
                 'monitorId' => [ 'type' => 'long', 'locationName' => 'monitorId', ],
             ],
         ],
-        'SetUserAgentConfigRequestShape' => [
+        'QueryDynamicBrotliResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'userAgentType' => [ 'type' => 'string', 'locationName' => 'userAgentType', ],
-                'userAgentList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'QueryExtraCacheTimeRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'QueryBackSourceRulesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'DeleteCacheRuleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'configId' => [ 'type' => 'long', 'locationName' => 'configId', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'SetIgnoreQueryStringResultShape' => [
-            'type' => 'structure',
-            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryDynamicBrotliResultShape', ],
             ],
         ],
         'ExecuteDomainCopyRequestShape' => [
@@ -4203,11 +4688,6 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'copyDomains' => [ 'type' => 'string', 'locationName' => 'copyDomains', ],
                 'configKeys' => [ 'type' => 'string', 'locationName' => 'configKeys', ],
-            ],
-        ],
-        'ConfigBackSourceRulesResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'QueryBackSourceIpVersionResultShape' => [
@@ -4227,16 +4707,21 @@ return [
                 'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
             ],
         ],
+        'ConfigDynamicBrotliResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'ConfigDynamicBrotliResultShape', ],
+            ],
+        ],
         'SetCustomErrorPageResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
         ],
-        'SetVideoDraftRequestShape' => [
+        'ConfigDynamicBrotliResultShape' => [
             'type' => 'structure',
             'members' => [
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
         'SetAccelerateRegionResponseShape' => [
@@ -4246,13 +4731,6 @@ return [
                 'result' =>  [ 'shape' => 'SetAccelerateRegionResultShape', ],
             ],
         ],
-        'SpeedLimitResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'SpeedLimitResultShape', ],
-            ],
-        ],
         'DeleteHttpHeaderRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -4260,20 +4738,6 @@ return [
                 'headerType' => [ 'type' => 'string', 'locationName' => 'headerType', ],
                 'headerName' => [ 'type' => 'string', 'locationName' => 'headerName', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'QueryFollowRedirectResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryFollowRedirectResultShape', ],
-            ],
-        ],
-        'ConfigHttp2ResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'ConfigHttp2ResultShape', ],
             ],
         ],
         'QueryBackSourceIpVersionRequestShape' => [
@@ -4292,26 +4756,6 @@ return [
             'members' => [
             ],
         ],
-        'ConfigBackSourcePathResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'ConfigBackSourcePathResultShape', ],
-            ],
-        ],
-        'ExecuteDomainCopyResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'errorResult' => [ 'type' => 'list', 'member' => [ 'shape' => 'ErrorEntity', ], ],
-            ],
-        ],
-        'SetFollowSourceProtocolRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
         'DeleteExtraCacheTimeRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -4328,7 +4772,7 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
-        'StopMonitorResultShape' => [
+        'ConfigDynamicGzipResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -4347,39 +4791,11 @@ return [
                 'rules' => [ 'type' => 'list', 'member' => [ 'shape' => 'BackSourceRule', ], ],
             ],
         ],
-        'ConfigBackSourceOssResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'ConfigBackSourceOssResultShape', ],
-            ],
-        ],
         'SetHttpTypeResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'SetHttpTypeResultShape', ],
-            ],
-        ],
-        'CreateCacheRuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'CreateCacheRuleResultShape', ],
-            ],
-        ],
-        'BatchSetExtraCacheTimeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'BatchSetExtraCacheTimeResultShape', ],
-            ],
-        ],
-        'QueryMonitorResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryMonitorResultShape', ],
             ],
         ],
         'ConfigUrlRuleRequestShape' => [
@@ -4407,12 +4823,6 @@ return [
                 'result' =>  [ 'shape' => 'ConfigBackSourceRulesResultShape', ],
             ],
         ],
-        'QueryBackSourceOssRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
         'DeleteCacheRuleResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -4432,15 +4842,11 @@ return [
             'members' => [
             ],
         ],
-        'SetIpBlackListResultShape' => [
+        'QueryDynamicGzipResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'SetCacheRulesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'CacheVo', ], ],
+                'enable' => [ 'type' => 'string', 'locationName' => 'enable', ],
+                'types' => [ 'type' => 'string', 'locationName' => 'types', ],
             ],
         ],
         'SetExtraCacheTimeResponseShape' => [
@@ -4450,11 +4856,11 @@ return [
                 'result' =>  [ 'shape' => 'SetExtraCacheTimeResultShape', ],
             ],
         ],
-        'QueryFollowSourceProtocolResponseShape' => [
+        'QueryDynamicGzipResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryFollowSourceProtocolResultShape', ],
+                'result' =>  [ 'shape' => 'QueryDynamicGzipResultShape', ],
             ],
         ],
         'QueryUserAgentResponseShape' => [
@@ -4462,11 +4868,6 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'QueryUserAgentResultShape', ],
-            ],
-        ],
-        'ConfigBackSourceRuleResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'CreateCacheRuleRequestShape' => [
@@ -4504,13 +4905,6 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
-        'QueryHttpHeaderResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryHttpHeaderResultShape', ],
-            ],
-        ],
         'ConfigBackSourcePathRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -4539,13 +4933,6 @@ return [
                 'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
             ],
         ],
-        'QueryHttpHeaderResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'headers' => [ 'type' => 'list', 'member' => [ 'shape' => 'QueryHttpHeaderResp', ], ],
-            ],
-        ],
         'SetHttpTypeRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -4567,44 +4954,9 @@ return [
                 'result' =>  [ 'shape' => 'ConfigBackSourceRuleResultShape', ],
             ],
         ],
-        'QueryMonitorRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'QueryIpBlackListResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryIpBlackListResultShape', ],
-            ],
-        ],
-        'QueryHttpHeaderRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'edgeType' => [ 'type' => 'integer', 'locationName' => 'edgeType', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
         'OperateShareCacheResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'QueryDefaultHttpHeaderKeyResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'reqDefaultHttpHeaderKey' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'respDefaultHttpHeaderKey' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'QueryAccesskeyConfigResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'accesskeyType' => [ 'type' => 'integer', 'locationName' => 'accesskeyType', ],
-                'accesskeyKey' => [ 'type' => 'string', 'locationName' => 'accesskeyKey', ],
-                'accesskeyKeep' => [ 'type' => 'integer', 'locationName' => 'accesskeyKeep', ],
             ],
         ],
         'ConfigHttp2RequestShape' => [
@@ -4612,11 +4964,6 @@ return [
             'members' => [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'SetFollowRedirectResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'ConfigBackSourceRuleRequestShape' => [
@@ -4627,40 +4974,12 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
-        'BatchSetExtraCacheTimeRequestShape' => [
+        'ConfigDynamicGzipRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'enable' => [ 'type' => 'string', 'locationName' => 'enable', ],
+                'types' => [ 'type' => 'string', 'locationName' => 'types', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'SpeedLimitResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'BatchIpBlackListRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'operateDomainRange' => [ 'type' => 'string', 'locationName' => 'operateDomainRange', ],
-                'domains' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'ipList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'forbidTime' => [ 'type' => 'long', 'locationName' => 'forbidTime', ],
-                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
-            ],
-        ],
-        'UpdateCacheRuleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'UpdateCacheRuleResultShape', ],
-            ],
-        ],
-        'QueryBackSourceOssResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryBackSourceOssResultShape', ],
             ],
         ],
         'DeleteExtraCacheTimeResultShape' => [
@@ -4672,18 +4991,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'content' => [ 'type' => 'string', 'locationName' => 'content', ],
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'SetDomainConfigRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'httpType' => [ 'type' => 'string', 'locationName' => 'httpType', ],
-                'backSourceType' => [ 'type' => 'string', 'locationName' => 'backSourceType', ],
-                'jumpType' => [ 'type' => 'string', 'locationName' => 'jumpType', ],
-                'jcdnTimeAnti' => [ 'type' => 'string', 'locationName' => 'jcdnTimeAnti', ],
-                'hdrCtrl' => [ 'type' => 'string', 'locationName' => 'hdrCtrl', ],
-                'toutiaoHeader' => [ 'type' => 'string', 'locationName' => 'toutiaoHeader', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
@@ -4699,24 +5006,11 @@ return [
                 'result' =>  [ 'shape' => 'QueryExtraCacheTimeResultShape', ],
             ],
         ],
-        'PreviewCertificateResponseShape' => [
+        'QueryResponseSpeedLimitResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'PreviewCertificateResultShape', ],
-            ],
-        ],
-        'SetUserAgentConfigResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'SetUserAgentConfigResultShape', ],
-            ],
-        ],
-        'QueryCustomErrorPageRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'result' =>  [ 'shape' => 'QueryResponseSpeedLimitResultShape', ],
             ],
         ],
         'ConfigBackSourceIpVersionResponseShape' => [
@@ -4724,13 +5018,6 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'ConfigBackSourceIpVersionResultShape', ],
-            ],
-        ],
-        'QueryExtraCacheTimeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-                'extraCacheTimes' => [ 'type' => 'list', 'member' => [ 'shape' => 'ExtraCacheTime', ], ],
             ],
         ],
         'QueryUrlRuleResponseShape' => [
@@ -4752,11 +5039,6 @@ return [
             'members' => [
             ],
         ],
-        'OperateIpBlackListResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'SetSourceRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -4768,13 +5050,6 @@ return [
                 'ossSource' => [ 'type' => 'string', 'locationName' => 'ossSource', ],
                 'defaultSourceHost' => [ 'type' => 'string', 'locationName' => 'defaultSourceHost', ],
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'QueryCustomErrorPageResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryCustomErrorPageResultShape', ],
             ],
         ],
         'StopMonitorRequestShape' => [
@@ -4797,13 +5072,6 @@ return [
                 'result' =>  [ 'shape' => 'OperateIpBlackListResultShape', ],
             ],
         ],
-        'QueryHttp2ResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'QueryHttp2ResultShape', ],
-            ],
-        ],
         'SetAccesskeyConfigResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -4817,19 +5085,6 @@ return [
             ],
         ],
         'QueryAccesskeyConfigRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
-            ],
-        ],
-        'SetFollowRedirectResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'SetFollowRedirectResultShape', ],
-            ],
-        ],
-        'QueryFollowSourceProtocolRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
@@ -5466,6 +5721,13 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
+        'SetLiveDomainRtcResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'SetLiveDomainRtcResultShape', ],
+            ],
+        ],
         'QueryPushDomainORAppOrStreamResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -5491,6 +5753,13 @@ return [
         'SetLiveDomainReferResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'SetLiveDomainRtcRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'rtc' => [ 'type' => 'string', 'locationName' => 'rtc', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
             ],
         ],
         'SetLiveDomainAccessKeyResultShape' => [
@@ -5587,6 +5856,11 @@ return [
             ],
         ],
         'SetLiveDomainBackSourceHostResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetLiveDomainRtcResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -5772,6 +6046,7 @@ return [
                 'sslCertStartTime' => [ 'type' => 'string', 'locationName' => 'sslCertStartTime', ],
                 'sslCertEndTime' => [ 'type' => 'string', 'locationName' => 'sslCertEndTime', ],
                 'accelerateRegion' => [ 'type' => 'string', 'locationName' => 'accelerateRegion', ],
+                'rtc' => [ 'type' => 'string', 'locationName' => 'rtc', ],
             ],
         ],
         'QueryLiveDomainAppsRequestShape' => [
