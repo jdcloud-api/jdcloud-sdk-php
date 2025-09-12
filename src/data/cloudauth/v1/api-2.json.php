@@ -299,6 +299,15 @@ return [
             'input' => [ 'shape' => 'MobileStatusRequestShape', ],
             'output' => [ 'shape' => 'MobileStatusResponseShape', ],
         ],
+        'MobileZwsc' => [
+            'name' => 'MobileZwsc',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/mobile:zwsc',
+            ],
+            'input' => [ 'shape' => 'MobileZwscRequestShape', ],
+            'output' => [ 'shape' => 'MobileZwscResponseShape', ],
+        ],
         'DescribeApplyStatus' => [
             'name' => 'DescribeApplyStatus',
             'http' => [
@@ -816,6 +825,13 @@ return [
                 'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
+        'MobileZwscResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'MobileZwscResultShape', ],
+            ],
+        ],
         'GetAliveUrlNewResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -824,6 +840,19 @@ return [
                 'url' => [ 'type' => 'string', 'locationName' => 'url', ],
                 'token' => [ 'type' => 'string', 'locationName' => 'token', ],
                 'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
+            ],
+        ],
+        'MobileZwscResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'chargeFlag' => [ 'type' => 'string', 'locationName' => 'chargeFlag', ],
+                'orderNo' => [ 'type' => 'string', 'locationName' => 'orderNo', ],
+                'dataMsg' => [ 'type' => 'string', 'locationName' => 'dataMsg', ],
+                'rangeStart' => [ 'type' => 'integer', 'locationName' => 'rangeStart', ],
+                'rangeEnd' => [ 'type' => 'integer', 'locationName' => 'rangeEnd', ],
+                'provider' => [ 'type' => 'integer', 'locationName' => 'provider', ],
             ],
         ],
         'CheckCompanyTransferRequestShape' => [
@@ -1347,6 +1376,12 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'AddressDetailResultShape', ],
+            ],
+        ],
+        'MobileZwscRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'mobile' => [ 'type' => 'string', 'locationName' => 'mobile', ],
             ],
         ],
         'BusinessOCRRequestShape' => [

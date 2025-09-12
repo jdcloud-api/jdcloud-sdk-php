@@ -84,6 +84,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise addressDetailAsync(array $args = [])
  * @method \Jdcloud\Result mobileStatus(array $args = [])
  * @method \GuzzleHttp\Promise\Promise mobileStatusAsync(array $args = [])
+ * @method \Jdcloud\Result mobileZwsc(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise mobileZwscAsync(array $args = [])
  * @method \Jdcloud\Result describeApplyStatus(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeApplyStatusAsync(array $args = [])
  */

@@ -381,6 +381,10 @@ return [
         'namespace' => 'Shenhaiplatform',
         'versions' => [ 'latest' => 'v2', ],
     ],
+    'aicvm' => [
+        'namespace' => 'Aicvm',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'fc' => [
         'namespace' => 'Fc',
         'versions' => [ 'latest' => 'v1', ],
@@ -411,6 +415,10 @@ return [
     ],
     'vod' => [
         'namespace' => 'Vod',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'jdaip' => [
+        'namespace' => 'Jdaip',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'yundingdatapush' => [
@@ -488,6 +496,10 @@ return [
     'invoice' => [
         'namespace' => 'Invoice',
         'versions' => [ 'latest' => 'v2', ],
+    ],
+    'videosurveillance' => [
+        'namespace' => 'Videosurveillance',
+        'versions' => [ 'latest' => 'v1', ],
     ],
     'user' => [
         'namespace' => 'User',
