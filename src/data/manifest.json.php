@@ -269,6 +269,10 @@ return [
         'namespace' => 'Kubernetes',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'joygrid' => [
+        'namespace' => 'Joygrid',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'dh' => [
         'namespace' => 'Dh',
         'versions' => [ 'latest' => 'v1', ],
