@@ -58,11 +58,34 @@ return [
         ],
     ],
     'shapes' => [
+        'Apply' => [
+            'type' => 'structure',
+            'members' => [
+                'developerPin' => [ 'type' => 'string', 'locationName' => 'developerPin', ],
+                'developerName' => [ 'type' => 'string', 'locationName' => 'developerName', ],
+                'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'applicant' => [ 'type' => 'string', 'locationName' => 'applicant', ],
+                'telephone' => [ 'type' => 'string', 'locationName' => 'telephone', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'applyTime' => [ 'type' => 'string', 'locationName' => 'applyTime', ],
+                'auditor' => [ 'type' => 'string', 'locationName' => 'auditor', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'statusName' => [ 'type' => 'string', 'locationName' => 'statusName', ],
+                'opinion' => [ 'type' => 'string', 'locationName' => 'opinion', ],
+                'checkTime' => [ 'type' => 'string', 'locationName' => 'checkTime', ],
+                'modified' => [ 'type' => 'string', 'locationName' => 'modified', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+            ],
+        ],
         'OrderSyncSpec' => [
             'type' => 'structure',
             'members' => [
                 'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
                 'venderId' => [ 'type' => 'string', 'locationName' => 'venderId', ],
+                'venderType' => [ 'type' => 'string', 'locationName' => 'venderType', ],
                 'days' => [ 'type' => 'integer', 'locationName' => 'days', ],
             ],
         ],
@@ -91,6 +114,7 @@ return [
                 'appkey' => [ 'type' => 'string', 'locationName' => 'appkey', ],
                 'ydRdsInstanceId' => [ 'type' => 'string', 'locationName' => 'ydRdsInstanceId', ],
                 'venderId' => [ 'type' => 'string', 'locationName' => 'venderId', ],
+                'venderType' => [ 'type' => 'string', 'locationName' => 'venderType', ],
             ],
         ],
         'VenderShow' => [
@@ -197,6 +221,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'orderSyncSpec' =>  [ 'shape' => 'OrderSyncSpec', ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DeleteDatapushVenderResultShape' => [
