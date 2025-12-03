@@ -50,6 +50,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise deleteMemoryAsync(array $args = [])
  * @method \Jdcloud\Result describeEvents(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeEventsAsync(array $args = [])
+ * @method \Jdcloud\Result createEvent(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createEventAsync(array $args = [])
  * @method \Jdcloud\Result describeEvent(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeEventAsync(array $args = [])
  * @method \Jdcloud\Result deleteEvent(array $args = [])

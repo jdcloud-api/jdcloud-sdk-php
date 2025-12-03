@@ -140,11 +140,20 @@ return [
         'DescribeEvents' => [
             'name' => 'DescribeEvents',
             'http' => [
-                'method' => 'POST',
+                'method' => 'GET',
                 'requestUri' => '/v1/regions/{regionId}/memories/{memoryId}/events',
             ],
             'input' => [ 'shape' => 'DescribeEventsRequestShape', ],
             'output' => [ 'shape' => 'DescribeEventsResponseShape', ],
+        ],
+        'CreateEvent' => [
+            'name' => 'CreateEvent',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/memories/{memoryId}/events',
+            ],
+            'input' => [ 'shape' => 'CreateEventRequestShape', ],
+            'output' => [ 'shape' => 'CreateEventResponseShape', ],
         ],
         'DescribeEvent' => [
             'name' => 'DescribeEvent',
@@ -222,7 +231,7 @@ return [
             'name' => 'InvokeRuntime',
             'http' => [
                 'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/runtimes/{agentRuntimeId}/invocations/{proxyPath}',
+                'requestUri' => '/v1/regions/{regionId}/runtimes/{agentRuntimeId}/invocations',
             ],
             'input' => [ 'shape' => 'InvokeRuntimeRequestShape', ],
             'output' => [ 'shape' => 'InvokeRuntimeResponseShape', ],
@@ -451,7 +460,11 @@ return [
         'CreateCodeInterpreterRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'body' =>  [ 'shape' => 'CreateCodeInterpreterSpec', ],
+                'erpAccount' => [ 'type' => 'string', 'locationName' => 'erpAccount', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -466,7 +479,11 @@ return [
             'type' => 'structure',
             'members' => [
                 'codeInterpreterId' => [ 'type' => 'string', 'locationName' => 'codeInterpreterId', ],
-                'body' =>  [ 'shape' => 'UpdateCodeInterpreterSpec', ],
+                'erpAccount' => [ 'type' => 'string', 'locationName' => 'erpAccount', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -592,10 +609,20 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'CreateEventResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'events' => [ 'type' => 'list', 'member' => [ 'shape' => 'EventResponseSpec', ], ],
+            ],
+        ],
         'CreateMemoryRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'body' =>  [ 'shape' => 'CreateMemorySpec', ],
+                'erpAccount' => [ 'type' => 'string', 'locationName' => 'erpAccount', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -643,7 +670,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'memoryId' => [ 'type' => 'string', 'locationName' => 'memoryId', ],
-                'body' =>  [ 'shape' => 'SearchEventsSpec', ],
+                'actor' => [ 'type' => 'string', 'locationName' => 'actor', ],
+                'query' => [ 'type' => 'string', 'locationName' => 'query', ],
+                'sessionId' => [ 'type' => 'string', 'locationName' => 'sessionId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -664,11 +693,29 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'CreateEventRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'erpAccount' => [ 'type' => 'string', 'locationName' => 'erpAccount', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'actor' => [ 'type' => 'string', 'locationName' => 'actor', ],
+                'infer' => [ 'type' => 'boolean', 'locationName' => 'infer', ],
+                'memoryId' => [ 'type' => 'string', 'locationName' => 'memoryId', ],
+                'messages' => [ 'type' => 'list', 'member' => [ 'shape' => 'Message', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'sessionId' => [ 'type' => 'string', 'locationName' => 'sessionId', ],
+            ],
+        ],
         'UpdateMemoryRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'memoryId' => [ 'type' => 'string', 'locationName' => 'memoryId', ],
-                'body' =>  [ 'shape' => 'UpdateMemorySpec', ],
+                'erpAccount' => [ 'type' => 'string', 'locationName' => 'erpAccount', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -769,7 +816,9 @@ return [
         'CreateRuntimeRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'body' =>  [ 'shape' => 'CreateRuntimeSpec', ],
+                'agentRuntimeArtifact' =>  [ 'shape' => 'AgentRuntimeArtifact', ],
+                'agentRuntimeName' => [ 'type' => 'string', 'locationName' => 'agentRuntimeName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -789,7 +838,9 @@ return [
         'UpdateRuntimeRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'body' =>  [ 'shape' => 'CreateRuntimeSpec', ],
+                'agentRuntimeArtifact' =>  [ 'shape' => 'AgentRuntimeArtifact', ],
+                'agentRuntimeName' => [ 'type' => 'string', 'locationName' => 'agentRuntimeName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'agentRuntimeId' => [ 'type' => 'string', 'locationName' => 'agentRuntimeId', ],
             ],
@@ -845,7 +896,6 @@ return [
                 'body' => [ 'type' => '', 'locationName' => 'body', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'agentRuntimeId' => [ 'type' => 'string', 'locationName' => 'agentRuntimeId', ],
-                'proxyPath' => [ 'type' => 'string', 'locationName' => 'proxyPath', ],
             ],
         ],
     ],
