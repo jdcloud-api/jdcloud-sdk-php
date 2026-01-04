@@ -20,6 +20,15 @@ return [
             'input' => [ 'shape' => 'K8sAgentHeartbeatRequestShape', ],
             'output' => [ 'shape' => 'K8sAgentHeartbeatResponseShape', ],
         ],
+        'Analysis' => [
+            'name' => 'Analysis',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/analysis',
+            ],
+            'input' => [ 'shape' => 'AnalysisRequestShape', ],
+            'output' => [ 'shape' => 'AnalysisResponseShape', ],
+        ],
         'DescribeCollectInfo' => [
             'name' => 'DescribeCollectInfo',
             'http' => [
@@ -83,6 +92,42 @@ return [
             'input' => [ 'shape' => 'DescribeCollectInfoBatchRequestShape', ],
             'output' => [ 'shape' => 'DescribeCollectInfoBatchResponseShape', ],
         ],
+        'DescribeCPCollectInfo' => [
+            'name' => 'DescribeCPCollectInfo',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/cpCollectinfos/{collectInfoUID}',
+            ],
+            'input' => [ 'shape' => 'DescribeCPCollectInfoRequestShape', ],
+            'output' => [ 'shape' => 'DescribeCPCollectInfoResponseShape', ],
+        ],
+        'UpdateCPCollectInfo' => [
+            'name' => 'UpdateCPCollectInfo',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/cpCollectinfos/{collectInfoUID}',
+            ],
+            'input' => [ 'shape' => 'UpdateCPCollectInfoRequestShape', ],
+            'output' => [ 'shape' => 'UpdateCPCollectInfoResponseShape', ],
+        ],
+        'DeleteCPCollectInfo' => [
+            'name' => 'DeleteCPCollectInfo',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/cpCollectinfos/{collectInfoUID}',
+            ],
+            'input' => [ 'shape' => 'DeleteCPCollectInfoRequestShape', ],
+            'output' => [ 'shape' => 'DeleteCPCollectInfoResponseShape', ],
+        ],
+        'DescribeCPCollectInfoBatch' => [
+            'name' => 'DescribeCPCollectInfoBatch',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/cpCollectinfos/{collectInfoUIDs}:batch',
+            ],
+            'input' => [ 'shape' => 'DescribeCPCollectInfoBatchRequestShape', ],
+            'output' => [ 'shape' => 'DescribeCPCollectInfoBatchResponseShape', ],
+        ],
         'DescribeCollectInfos' => [
             'name' => 'DescribeCollectInfos',
             'http' => [
@@ -100,6 +145,24 @@ return [
             ],
             'input' => [ 'shape' => 'CreateCollectInfoRequestShape', ],
             'output' => [ 'shape' => 'CreateCollectInfoResponseShape', ],
+        ],
+        'DescribeCPCollectInfos' => [
+            'name' => 'DescribeCPCollectInfos',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/logtopics/{logtopicUID}/cpCollectinfos',
+            ],
+            'input' => [ 'shape' => 'DescribeCPCollectInfosRequestShape', ],
+            'output' => [ 'shape' => 'DescribeCPCollectInfosResponseShape', ],
+        ],
+        'CreateCPCollectInfo' => [
+            'name' => 'CreateCPCollectInfo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/logtopics/{logtopicUID}/cpCollectinfos',
+            ],
+            'input' => [ 'shape' => 'CreateCPCollectInfoRequestShape', ],
+            'output' => [ 'shape' => 'CreateCPCollectInfoResponseShape', ],
         ],
         'CreateParser' => [
             'name' => 'CreateParser',
@@ -254,6 +317,15 @@ return [
             'input' => [ 'shape' => 'GetLogDownloadTasksRequestShape', ],
             'output' => [ 'shape' => 'GetLogDownloadTasksResponseShape', ],
         ],
+        'DescribeLogsetsGlobal' => [
+            'name' => 'DescribeLogsetsGlobal',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLogsetsGlobal',
+            ],
+            'input' => [ 'shape' => 'DescribeLogsetsGlobalRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLogsetsGlobalResponseShape', ],
+        ],
         'DescribeLogsets' => [
             'name' => 'DescribeLogsets',
             'http' => [
@@ -299,6 +371,24 @@ return [
             'input' => [ 'shape' => 'DeleteLogsetRequestShape', ],
             'output' => [ 'shape' => 'DeleteLogsetResponseShape', ],
         ],
+        'DescribeLogtopicsGlobal' => [
+            'name' => 'DescribeLogtopicsGlobal',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/describeLogtopicsGlobal',
+            ],
+            'input' => [ 'shape' => 'DescribeLogtopicsGlobalRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLogtopicsGlobalResponseShape', ],
+        ],
+        'HasArrearageStoppedLogtopic' => [
+            'name' => 'HasArrearageStoppedLogtopic',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/hasArrearageStoppedLogtopic',
+            ],
+            'input' => [ 'shape' => 'HasArrearageStoppedLogtopicRequestShape', ],
+            'output' => [ 'shape' => 'HasArrearageStoppedLogtopicResponseShape', ],
+        ],
         'DescribeLogtopics' => [
             'name' => 'DescribeLogtopics',
             'http' => [
@@ -325,15 +415,6 @@ return [
             ],
             'input' => [ 'shape' => 'DeleteLogtopicRequestShape', ],
             'output' => [ 'shape' => 'DeleteLogtopicResponseShape', ],
-        ],
-        'DescribeLogtopicsGlobal' => [
-            'name' => 'DescribeLogtopicsGlobal',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/regions/{regionId}/logtopics',
-            ],
-            'input' => [ 'shape' => 'DescribeLogtopicsGlobalRequestShape', ],
-            'output' => [ 'shape' => 'DescribeLogtopicsGlobalResponseShape', ],
         ],
         'DescribeLogtopic' => [
             'name' => 'DescribeLogtopic',
@@ -551,6 +632,42 @@ return [
             'input' => [ 'shape' => 'UpdateSubscribeRequestShape', ],
             'output' => [ 'shape' => 'UpdateSubscribeResponseShape', ],
         ],
+        'UsageDailyDetail' => [
+            'name' => 'UsageDailyDetail',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/usageDailyDetail',
+            ],
+            'input' => [ 'shape' => 'UsageDailyDetailRequestShape', ],
+            'output' => [ 'shape' => 'UsageDailyDetailResponseShape', ],
+        ],
+        'UsageOverall' => [
+            'name' => 'UsageOverall',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/usageOverall',
+            ],
+            'input' => [ 'shape' => 'UsageOverallRequestShape', ],
+            'output' => [ 'shape' => 'UsageOverallResponseShape', ],
+        ],
+        'UsageTopN' => [
+            'name' => 'UsageTopN',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/usageTopN',
+            ],
+            'input' => [ 'shape' => 'UsageTopNRequestShape', ],
+            'output' => [ 'shape' => 'UsageTopNResponseShape', ],
+        ],
+        'UsageTrend' => [
+            'name' => 'UsageTrend',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/usageTrend',
+            ],
+            'input' => [ 'shape' => 'UsageTrendRequestShape', ],
+            'output' => [ 'shape' => 'UsageTrendResponseShape', ],
+        ],
     ],
     'shapes' => [
         'AgResource' => [
@@ -567,6 +684,40 @@ return [
                 'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
                 'agName' => [ 'type' => 'string', 'locationName' => 'agName', ],
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+            ],
+        ],
+        'K8SComponent' => [
+            'type' => 'structure',
+            'members' => [
+                'containerId' => [ 'type' => 'boolean', 'locationName' => 'containerId', ],
+                'containerName' => [ 'type' => 'boolean', 'locationName' => 'containerName', ],
+                'imagesName' => [ 'type' => 'boolean', 'locationName' => 'imagesName', ],
+                'namespace' => [ 'type' => 'boolean', 'locationName' => 'namespace', ],
+                'podIp' => [ 'type' => 'boolean', 'locationName' => 'podIp', ],
+                'podName' => [ 'type' => 'boolean', 'locationName' => 'podName', ],
+                'podUid' => [ 'type' => 'boolean', 'locationName' => 'podUid', ],
+            ],
+        ],
+        'AgentMeta' => [
+            'type' => 'structure',
+            'members' => [
+                'customMeta' => [ 'type' => 'list', 'member' => [ 'shape' => 'CustomMetaSpec', ], ],
+                'k8sComponent' =>  [ 'shape' => 'K8SComponent', ],
+                'k8sPodLabel' =>  [ 'shape' => 'K8SPodLabel', ],
+            ],
+        ],
+        'K8SPodLabel' => [
+            'type' => 'structure',
+            'members' => [
+                'all' => [ 'type' => 'boolean', 'locationName' => 'all', ],
+                'filter' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'CustomMetaSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'AnalysisMetaData' => [
@@ -625,11 +776,31 @@ return [
             'type' => 'structure',
             'members' => [
                 'collectTemplateUID' => [ 'type' => 'string', 'locationName' => 'collectTemplateUID', ],
+                'collectType' => [ 'type' => 'string', 'locationName' => 'collectType', ],
+                'destination' =>  [ 'shape' => 'DestConf', ],
+                'extSpec' => [ 'type' => 'object', 'locationName' => 'extSpec', ],
                 'file' => [ 'type' => 'string', 'locationName' => 'file', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
                 'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
                 'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'readFromHead' => [ 'type' => 'boolean', 'locationName' => 'readFromHead', ],
+                'regexpStr' => [ 'type' => 'string', 'locationName' => 'regexpStr', ],
+                'agentMeta' => [ 'type' => 'object', 'locationName' => 'agentMeta', ],
+            ],
+        ],
+        'DestConf' => [
+            'type' => 'structure',
+            'members' => [
+                'custom' => [ 'type' => 'list', 'member' => [ 'shape' => 'CustomConf', ], ],
+                'jcloud' => [ 'type' => 'boolean', 'locationName' => 'jcloud', ],
+            ],
+        ],
+        'CustomConf' => [
+            'type' => 'structure',
+            'members' => [
+                'conf' => [ 'type' => 'string', 'locationName' => 'conf', ],
+                'destType' => [ 'type' => 'string', 'locationName' => 'destType', ],
             ],
         ],
         'CollectInfoBasicEnd' => [
@@ -651,6 +822,7 @@ return [
             'members' => [
                 'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
                 'agResource' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgResourceEnd', ], ],
+                'agentMeta' => [ 'type' => 'object', 'locationName' => 'agentMeta', ],
                 'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
                 'binlogSpec' => [ 'type' => 'object', 'locationName' => 'binlogSpec', ],
                 'detail' =>  [ 'shape' => 'CollectTempalteEnd', ],
@@ -696,23 +868,6 @@ return [
                 'stdoutSpec' =>  [ 'shape' => 'K8sStdoutSpec', ],
             ],
         ],
-        'K8sHostFileSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'filePattern' => [ 'type' => 'string', 'locationName' => 'filePattern', ],
-                'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
-            ],
-        ],
-        'WorkLoadSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'container' => [ 'type' => 'string', 'locationName' => 'container', ],
-                'kind' => [ 'type' => 'string', 'locationName' => 'kind', ],
-                'labelSelectorSpec' =>  [ 'shape' => 'K8sLabelSelectorSpec', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
-            ],
-        ],
         'K8sNameSpaceSelectorSpec' => [
             'type' => 'structure',
             'members' => [
@@ -732,16 +887,6 @@ return [
                 'workLoads' => [ 'type' => 'list', 'member' => [ 'shape' => 'WorkLoadSpec', ], ],
             ],
         ],
-        'K8sStdoutSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'container' => [ 'type' => 'string', 'locationName' => 'container', ],
-                'labelSelectorSpec' =>  [ 'shape' => 'K8sLabelSelectorSpec', ],
-                'nameSpaceSelectorSpec' =>  [ 'shape' => 'K8sNameSpaceSelectorSpec', ],
-                'selectorType' => [ 'type' => 'string', 'locationName' => 'selectorType', ],
-                'workLoads' => [ 'type' => 'list', 'member' => [ 'shape' => 'WorkLoadSpec', ], ],
-            ],
-        ],
         'Resource' => [
             'type' => 'structure',
             'members' => [
@@ -753,6 +898,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'agResource' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgResource', ], ],
+                'agentMeta' =>  [ 'shape' => 'AgentMeta', ],
                 'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
                 'binlogSpec' =>  [ 'shape' => 'BinlogSpec', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
@@ -763,6 +909,7 @@ return [
                 'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
                 'logtopicEnabled' => [ 'type' => 'boolean', 'locationName' => 'logtopicEnabled', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'readFromHead' => [ 'type' => 'boolean', 'locationName' => 'readFromHead', ],
                 'regexpStr' => [ 'type' => 'string', 'locationName' => 'regexpStr', ],
                 'resourceMode' => [ 'type' => 'long', 'locationName' => 'resourceMode', ],
                 'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
@@ -778,6 +925,33 @@ return [
                 'container' => [ 'type' => 'string', 'locationName' => 'container', ],
                 'excludeLabels' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'includeLabels' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'K8sHostFileSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'filePattern' => [ 'type' => 'string', 'locationName' => 'filePattern', ],
+                'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
+            ],
+        ],
+        'WorkLoadSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'container' => [ 'type' => 'string', 'locationName' => 'container', ],
+                'kind' => [ 'type' => 'string', 'locationName' => 'kind', ],
+                'labelSelectorSpec' =>  [ 'shape' => 'K8sLabelSelectorSpec', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
+            ],
+        ],
+        'K8sStdoutSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'container' => [ 'type' => 'string', 'locationName' => 'container', ],
+                'labelSelectorSpec' =>  [ 'shape' => 'K8sLabelSelectorSpec', ],
+                'nameSpaceSelectorSpec' =>  [ 'shape' => 'K8sNameSpaceSelectorSpec', ],
+                'selectorType' => [ 'type' => 'string', 'locationName' => 'selectorType', ],
+                'workLoads' => [ 'type' => 'list', 'member' => [ 'shape' => 'WorkLoadSpec', ], ],
             ],
         ],
         'TagResource' => [
@@ -878,13 +1052,6 @@ return [
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
             ],
         ],
-        'CustomConf' => [
-            'type' => 'structure',
-            'members' => [
-                'conf' => [ 'type' => 'string', 'locationName' => 'conf', ],
-                'destType' => [ 'type' => 'string', 'locationName' => 'destType', ],
-            ],
-        ],
         'CustomLogSearchOut' => [
             'type' => 'structure',
             'members' => [
@@ -964,6 +1131,13 @@ return [
                 'logtopicEnabled' => [ 'type' => 'boolean', 'locationName' => 'logtopicEnabled', ],
             ],
         ],
+        'DataPoint' => [
+            'type' => 'structure',
+            'members' => [
+                'timestamp' => [ 'type' => 'long', 'locationName' => 'timestamp', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'DescribeInstanceCollectConfsEnd' => [
             'type' => 'structure',
             'members' => [
@@ -1007,13 +1181,6 @@ return [
                 'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
                 'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
-            ],
-        ],
-        'DestConf' => [
-            'type' => 'structure',
-            'members' => [
-                'custom' => [ 'type' => 'list', 'member' => [ 'shape' => 'CustomConf', ], ],
-                'jcloud' => [ 'type' => 'boolean', 'locationName' => 'jcloud', ],
             ],
         ],
         'DispatchConf' => [
@@ -1403,6 +1570,7 @@ return [
                 'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
                 'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'chargeStatus' => [ 'type' => 'string', 'locationName' => 'chargeStatus', ],
                 'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
@@ -1415,6 +1583,7 @@ return [
                 'prePattern' => [ 'type' => 'string', 'locationName' => 'prePattern', ],
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
         ],
@@ -1444,6 +1613,24 @@ return [
             'members' => [
                 'hit' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'miss' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'MetricInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'aggregator' => [ 'type' => 'string', 'locationName' => 'aggregator', ],
+                'calculateUnit' => [ 'type' => 'string', 'locationName' => 'calculateUnit', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'metricName' => [ 'type' => 'string', 'locationName' => 'metricName', ],
+                'period' => [ 'type' => 'string', 'locationName' => 'period', ],
+            ],
+        ],
+        'MetricData' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataPoint', ], ],
+                'metric' =>  [ 'shape' => 'MetricInfo', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'MetrictaskDetailEnd' => [
@@ -1663,6 +1850,7 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'specialMode' => [ 'type' => 'long', 'locationName' => 'specialMode', ],
+                'instanceDescription' => [ 'type' => 'string', 'locationName' => 'instanceDescription', ],
             ],
         ],
         'TestMetricTaskSpec' => [
@@ -1690,6 +1878,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'agResource' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgResource', ], ],
+                'agentMeta' =>  [ 'shape' => 'AgentMeta', ],
                 'binlogSpec' =>  [ 'shape' => 'BinlogSpec', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
                 'filterEnabled' => [ 'type' => 'boolean', 'locationName' => 'filterEnabled', ],
@@ -1699,6 +1888,7 @@ return [
                 'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
                 'logtopicEnabled' => [ 'type' => 'boolean', 'locationName' => 'logtopicEnabled', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'readFromHead' => [ 'type' => 'boolean', 'locationName' => 'readFromHead', ],
                 'regexpStr' => [ 'type' => 'string', 'locationName' => 'regexpStr', ],
                 'resourceMode' => [ 'type' => 'long', 'locationName' => 'resourceMode', ],
                 'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
@@ -1744,6 +1934,45 @@ return [
             'type' => 'structure',
             'members' => [
                 'status' => [ 'type' => 'long', 'locationName' => 'status', ],
+            ],
+        ],
+        'UsageDailyDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'readTrafficBytes' => [ 'type' => 'long', 'locationName' => 'readTrafficBytes', ],
+                'date' => [ 'type' => 'string', 'locationName' => 'date', ],
+                'indexStorageBytes' => [ 'type' => 'long', 'locationName' => 'indexStorageBytes', ],
+                'indexTrafficBytes' => [ 'type' => 'long', 'locationName' => 'indexTrafficBytes', ],
+                'logtopicId' => [ 'type' => 'string', 'locationName' => 'logtopicId', ],
+                'logtopicName' => [ 'type' => 'string', 'locationName' => 'logtopicName', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'writeTrafficBytes' => [ 'type' => 'long', 'locationName' => 'writeTrafficBytes', ],
+            ],
+        ],
+        'UsageDailyDetailResponseEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'UsageDailyDetail', ], ],
+                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
+                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'UsageOverallResponseEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'indexStorageBytes' => [ 'type' => 'long', 'locationName' => 'indexStorageBytes', ],
+                'indexTrafficBytes' => [ 'type' => 'long', 'locationName' => 'indexTrafficBytes', ],
+                'readTrafficBytes' => [ 'type' => 'long', 'locationName' => 'readTrafficBytes', ],
+                'topics' => [ 'type' => 'long', 'locationName' => 'topics', ],
+                'writeTrafficBytes' => [ 'type' => 'long', 'locationName' => 'writeTrafficBytes', ],
+            ],
+        ],
+        'UsageTrendResponseEnd' => [
+            'type' => 'structure',
+            'members' => [
+                'metricDatas' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricData', ], ],
             ],
         ],
         'ValidateParserEnd' => [
@@ -1809,10 +2038,48 @@ return [
             'members' => [
             ],
         ],
+        'AnalysisRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'expr' => [ 'type' => 'string', 'locationName' => 'expr', ],
+                'startTime' => [ 'type' => 'long', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'long', 'locationName' => 'endTime', ],
+                'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
+                'debug' => [ 'type' => 'string', 'locationName' => 'debug', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'AnalysisResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'array', ], ],
+                'fields' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'metadata' =>  [ 'shape' => 'AnalysisMetaData', ],
+            ],
+        ],
+        'AnalysisResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AnalysisResultShape', ],
+            ],
+        ],
         'CreateCollectInfoResultShape' => [
             'type' => 'structure',
             'members' => [
                 'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
+            ],
+        ],
+        'DescribeCPCollectInfosResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'CollectInfoBasicEnd', ], ],
+                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
+                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
             ],
         ],
         'DescribeCollectInfosRequestShape' => [
@@ -1853,6 +2120,13 @@ return [
                 'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
             ],
         ],
+        'CreateCPCollectInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateCPCollectInfoResultShape', ],
+            ],
+        ],
         'UpdateParserResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1885,6 +2159,23 @@ return [
                 'result' =>  [ 'shape' => 'DescribeCollectInfosResultShape', ],
             ],
         ],
+        'DescribeCPCollectInfoBatchResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'CollectInfoBasicEnd', ], ],
+                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
+                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'DeleteCPCollectInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
+            ],
+        ],
         'DescribeCollectInfoBatchResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1895,11 +2186,23 @@ return [
                 'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
             ],
         ],
+        'DescribeCPCollectInfosRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
         'DescribeCollectInfoResultShape' => [
             'type' => 'structure',
             'members' => [
                 'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
                 'agResource' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgResourceEnd', ], ],
+                'agentMeta' => [ 'type' => 'object', 'locationName' => 'agentMeta', ],
                 'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
                 'binlogSpec' => [ 'type' => 'object', 'locationName' => 'binlogSpec', ],
                 'detail' =>  [ 'shape' => 'CollectTempalteEnd', ],
@@ -1936,10 +2239,18 @@ return [
                 'result' =>  [ 'shape' => 'DescribeCollectInfoBatchResultShape', ],
             ],
         ],
+        'DescribeCPCollectInfoBatchResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeCPCollectInfoBatchResultShape', ],
+            ],
+        ],
         'CreateCollectInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'agResource' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgResource', ], ],
+                'agentMeta' =>  [ 'shape' => 'AgentMeta', ],
                 'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
                 'binlogSpec' =>  [ 'shape' => 'BinlogSpec', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
@@ -1950,6 +2261,7 @@ return [
                 'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
                 'logtopicEnabled' => [ 'type' => 'boolean', 'locationName' => 'logtopicEnabled', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'readFromHead' => [ 'type' => 'boolean', 'locationName' => 'readFromHead', ],
                 'regexpStr' => [ 'type' => 'string', 'locationName' => 'regexpStr', ],
                 'resourceMode' => [ 'type' => 'long', 'locationName' => 'resourceMode', ],
                 'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
@@ -1959,6 +2271,17 @@ return [
                 'templateUID' => [ 'type' => 'string', 'locationName' => 'templateUID', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'UpdateCPCollectInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteCPCollectInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'UpdateCollectResourcesResponseShape' => [
@@ -1979,6 +2302,13 @@ return [
             'members' => [
             ],
         ],
+        'DescribeCPCollectInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeCPCollectInfoResultShape', ],
+            ],
+        ],
         'UpdateCollectInfoResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1989,6 +2319,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'agResource' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgResource', ], ],
+                'agentMeta' =>  [ 'shape' => 'AgentMeta', ],
                 'binlogSpec' =>  [ 'shape' => 'BinlogSpec', ],
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
                 'filterEnabled' => [ 'type' => 'boolean', 'locationName' => 'filterEnabled', ],
@@ -1998,6 +2329,7 @@ return [
                 'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
                 'logtopicEnabled' => [ 'type' => 'boolean', 'locationName' => 'logtopicEnabled', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'readFromHead' => [ 'type' => 'boolean', 'locationName' => 'readFromHead', ],
                 'regexpStr' => [ 'type' => 'string', 'locationName' => 'regexpStr', ],
                 'resourceMode' => [ 'type' => 'long', 'locationName' => 'resourceMode', ],
                 'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
@@ -2046,6 +2378,29 @@ return [
                 'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
+            ],
+        ],
+        'DescribeCPCollectInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
+                'agResource' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgResourceEnd', ], ],
+                'agentMeta' => [ 'type' => 'object', 'locationName' => 'agentMeta', ],
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'binlogSpec' => [ 'type' => 'object', 'locationName' => 'binlogSpec', ],
+                'detail' =>  [ 'shape' => 'CollectTempalteEnd', ],
+                'enabled' => [ 'type' => 'long', 'locationName' => 'enabled', ],
+                'hasResource' => [ 'type' => 'boolean', 'locationName' => 'hasResource', ],
+                'k8sSpec' => [ 'type' => 'object', 'locationName' => 'k8sSpec', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'resourceMode' => [ 'type' => 'long', 'locationName' => 'resourceMode', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'tagResource' =>  [ 'shape' => 'TagResourceEnd', ],
+                'templateName' => [ 'type' => 'string', 'locationName' => 'templateName', ],
+                'templateUID' => [ 'type' => 'string', 'locationName' => 'templateUID', ],
             ],
         ],
         'DescribeCollectResourcesResultShape' => [
@@ -2108,6 +2463,12 @@ return [
                 'result' =>  [ 'shape' => 'CreateCollectInfoResultShape', ],
             ],
         ],
+        'DeleteCPCollectInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeCollectInfoResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -2139,9 +2500,92 @@ return [
                 'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
             ],
         ],
+        'DescribeCPCollectInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
+            ],
+        ],
         'UpdateCollectResourcesResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeCPCollectInfosResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeCPCollectInfosResultShape', ],
+            ],
+        ],
+        'UpdateCPCollectInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateCPCollectInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
+            ],
+        ],
+        'DescribeCPCollectInfoBatchRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'collectInfoUIDs' => [ 'type' => 'string', 'locationName' => 'collectInfoUIDs', ],
+            ],
+        ],
+        'CreateCPCollectInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'agResource' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgResource', ], ],
+                'agentMeta' =>  [ 'shape' => 'AgentMeta', ],
+                'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
+                'binlogSpec' =>  [ 'shape' => 'BinlogSpec', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'filterEnabled' => [ 'type' => 'boolean', 'locationName' => 'filterEnabled', ],
+                'k8sSpec' =>  [ 'shape' => 'K8sSpec', ],
+                'logFile' => [ 'type' => 'string', 'locationName' => 'logFile', ],
+                'logFilters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
+                'logtopicEnabled' => [ 'type' => 'boolean', 'locationName' => 'logtopicEnabled', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'readFromHead' => [ 'type' => 'boolean', 'locationName' => 'readFromHead', ],
+                'regexpStr' => [ 'type' => 'string', 'locationName' => 'regexpStr', ],
+                'resourceMode' => [ 'type' => 'long', 'locationName' => 'resourceMode', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'tagResource' =>  [ 'shape' => 'TagResource', ],
+                'templateUID' => [ 'type' => 'string', 'locationName' => 'templateUID', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'UpdateCPCollectInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'agResource' => [ 'type' => 'list', 'member' => [ 'shape' => 'AgResource', ], ],
+                'agentMeta' =>  [ 'shape' => 'AgentMeta', ],
+                'binlogSpec' =>  [ 'shape' => 'BinlogSpec', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'filterEnabled' => [ 'type' => 'boolean', 'locationName' => 'filterEnabled', ],
+                'k8sSpec' =>  [ 'shape' => 'K8sSpec', ],
+                'logFile' => [ 'type' => 'string', 'locationName' => 'logFile', ],
+                'logFilters' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'logPath' => [ 'type' => 'string', 'locationName' => 'logPath', ],
+                'logtopicEnabled' => [ 'type' => 'boolean', 'locationName' => 'logtopicEnabled', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'readFromHead' => [ 'type' => 'boolean', 'locationName' => 'readFromHead', ],
+                'regexpStr' => [ 'type' => 'string', 'locationName' => 'regexpStr', ],
+                'resourceMode' => [ 'type' => 'long', 'locationName' => 'resourceMode', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
+                'tagResource' =>  [ 'shape' => 'TagResource', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
             ],
         ],
         'SearchResultShape' => [
@@ -2506,6 +2950,13 @@ return [
                 'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
             ],
         ],
+        'DescribeLogsetsGlobalResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeLogsetsGlobalResultShape', ],
+            ],
+        ],
         'DescribeLogsetResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2563,6 +3014,16 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
+        'DescribeLogsetsGlobalResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'LogsetEnd', ], ],
+                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
+                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+            ],
+        ],
         'UpdateLogsetRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2586,6 +3047,14 @@ return [
             'members' => [
             ],
         ],
+        'DescribeLogsetsGlobalRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+            ],
+        ],
         'CreateLogsetResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -2606,6 +3075,7 @@ return [
                 'inOrder' => [ 'type' => 'boolean', 'locationName' => 'inOrder', ],
                 'lifeCycle' => [ 'type' => 'long', 'locationName' => 'lifeCycle', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'isPushedCustomLog' => [ 'type' => 'boolean', 'locationName' => 'isPushedCustomLog', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
             ],
@@ -2633,6 +3103,13 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
                 'logtopicUIDs' => [ 'type' => 'string', 'locationName' => 'logtopicUIDs', ],
+            ],
+        ],
+        'HasArrearageStoppedLogtopicResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'HasArrearageStoppedLogtopicResultShape', ],
             ],
         ],
         'DescribeLogtopicsRequestShape' => [
@@ -2683,6 +3160,7 @@ return [
                 'uID' => [ 'type' => 'string', 'locationName' => 'uID', ],
                 'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'chargeStatus' => [ 'type' => 'string', 'locationName' => 'chargeStatus', ],
                 'collectInfoUID' => [ 'type' => 'string', 'locationName' => 'collectInfoUID', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
@@ -2694,6 +3172,7 @@ return [
                 'prePattern' => [ 'type' => 'string', 'locationName' => 'prePattern', ],
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
         'UpdateLogtopicRequestShape' => [
@@ -2713,6 +3192,12 @@ return [
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'LogtopicBaseEnd', ], ],
             ],
         ],
+        'HasArrearageStoppedLogtopicResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'has' => [ 'type' => 'boolean', 'locationName' => 'has', ],
+            ],
+        ],
         'DescribeLogtopicRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2727,6 +3212,11 @@ return [
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'HasArrearageStoppedLogtopicRequestShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'DeleteLogtopicResponseShape' => [
@@ -3354,6 +3844,100 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UsageTrendResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'UsageTrendResultShape', ],
+            ],
+        ],
+        'UsageTrendResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'metricDatas' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricData', ], ],
+            ],
+        ],
+        'UsageDailyDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'UsageDailyDetail', ], ],
+                'numberPages' => [ 'type' => 'long', 'locationName' => 'numberPages', ],
+                'numberRecords' => [ 'type' => 'long', 'locationName' => 'numberRecords', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'UsageOverallResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'UsageOverallResultShape', ],
+            ],
+        ],
+        'UsageTopNResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'UsageTopNResultShape', ],
+            ],
+        ],
+        'UsageTrendRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+            ],
+        ],
+        'UsageOverallResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'indexStorageBytes' => [ 'type' => 'long', 'locationName' => 'indexStorageBytes', ],
+                'indexTrafficBytes' => [ 'type' => 'long', 'locationName' => 'indexTrafficBytes', ],
+                'readTrafficBytes' => [ 'type' => 'long', 'locationName' => 'readTrafficBytes', ],
+                'topics' => [ 'type' => 'long', 'locationName' => 'topics', ],
+                'writeTrafficBytes' => [ 'type' => 'long', 'locationName' => 'writeTrafficBytes', ],
+            ],
+        ],
+        'UsageDailyDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'logsetId' => [ 'type' => 'string', 'locationName' => 'logsetId', ],
+                'logtopicId' => [ 'type' => 'string', 'locationName' => 'logtopicId', ],
+            ],
+        ],
+        'UsageTopNResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'metricDatas' => [ 'type' => 'list', 'member' => [ 'shape' => 'MetricData', ], ],
+            ],
+        ],
+        'UsageTopNRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'metric' => [ 'type' => 'string', 'locationName' => 'metric', ],
+                'topN' => [ 'type' => 'long', 'locationName' => 'topN', ],
+            ],
+        ],
+        'UsageDailyDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'UsageDailyDetailResultShape', ],
+            ],
+        ],
+        'UsageOverallRequestShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
     ],
