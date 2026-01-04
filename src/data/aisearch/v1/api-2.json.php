@@ -11,6 +11,42 @@ return [
 //        'serviceId' => 'aisearch',
     ],
     'operations' => [
+        'ExternalSubmitVirtualTryOnTaskBase64' => [
+            'name' => 'ExternalSubmitVirtualTryOnTaskBase64',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/external:submitVirtualTryOnTaskBase64',
+            ],
+            'input' => [ 'shape' => 'ExternalSubmitVirtualTryOnTaskBase64RequestShape', ],
+            'output' => [ 'shape' => 'ExternalSubmitVirtualTryOnTaskBase64ResponseShape', ],
+        ],
+        'ExternalSubmitSquareToLongTaskBase64' => [
+            'name' => 'ExternalSubmitSquareToLongTaskBase64',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/external:submitSquareToLongTaskBase64',
+            ],
+            'input' => [ 'shape' => 'ExternalSubmitSquareToLongTaskBase64RequestShape', ],
+            'output' => [ 'shape' => 'ExternalSubmitSquareToLongTaskBase64ResponseShape', ],
+        ],
+        'ExternalQueryTaskStatus' => [
+            'name' => 'ExternalQueryTaskStatus',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/external:queryTaskStatus',
+            ],
+            'input' => [ 'shape' => 'ExternalQueryTaskStatusRequestShape', ],
+            'output' => [ 'shape' => 'ExternalQueryTaskStatusResponseShape', ],
+        ],
+        'ExternalDownloadImage' => [
+            'name' => 'ExternalDownloadImage',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/external:downloadImage',
+            ],
+            'input' => [ 'shape' => 'ExternalDownloadImageRequestShape', ],
+            'output' => [ 'shape' => 'ExternalDownloadImageResponseShape', ],
+        ],
         'ExternalWebSearch' => [
             'name' => 'ExternalWebSearch',
             'http' => [
@@ -29,6 +65,12 @@ return [
                 'todayCallCount' => [ 'type' => 'long', 'locationName' => 'todayCallCount', ],
                 'yesterdayCallCount' => [ 'type' => 'long', 'locationName' => 'yesterdayCallCount', ],
                 'thisMonthCallCount' => [ 'type' => 'long', 'locationName' => 'thisMonthCallCount', ],
+            ],
+        ],
+        'AccountIsActivatedRespVo' => [
+            'type' => 'structure',
+            'members' => [
+                'activated' => [ 'type' => 'string', 'locationName' => 'activated', ],
             ],
         ],
         'CallCountDataVo' => [
@@ -53,6 +95,25 @@ return [
                 'remainCallTimes' => [ 'type' => 'long', 'locationName' => 'remainCallTimes', ],
             ],
         ],
+        'CloudTaskSubmitResponseVo' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'CloudTaskStatusResponseVo' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'images' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'CloudImageDownloadResponseVo' => [
+            'type' => 'structure',
+            'members' => [
+                'imageBase64' => [ 'type' => 'string', 'locationName' => 'imageBase64', ],
+            ],
+        ],
         'UserApiKeyVo' => [
             'type' => 'structure',
             'members' => [
@@ -63,6 +124,15 @@ return [
                 'apiKeyName' => [ 'type' => 'string', 'locationName' => 'apiKeyName', ],
                 'createdDate' => [ 'type' => 'string', 'locationName' => 'createdDate', ],
                 'deletedFlag' => [ 'type' => 'integer', 'locationName' => 'deletedFlag', ],
+            ],
+        ],
+        'UserApiKeyPageVo' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserApiKeyVo', ], ],
             ],
         ],
         'ImageItemVo' => [
@@ -106,6 +176,104 @@ return [
                 'snippet' => [ 'type' => 'string', 'locationName' => 'snippet', ],
                 'summary' => [ 'type' => 'string', 'locationName' => 'summary', ],
                 'dateLastCrawled' => [ 'type' => 'string', 'locationName' => 'dateLastCrawled', ],
+            ],
+        ],
+        'ExternalSubmitVirtualTryOnTaskBase64ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ExternalSubmitVirtualTryOnTaskBase64ResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ExternalSubmitSquareToLongTaskBase64ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
+                'data' =>  [ 'shape' => 'CloudTaskSubmitResponseVo', ],
+            ],
+        ],
+        'ExternalSubmitSquareToLongTaskBase64ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ExternalSubmitSquareToLongTaskBase64ResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ExternalDownloadImageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
+                'data' =>  [ 'shape' => 'CloudImageDownloadResponseVo', ],
+            ],
+        ],
+        'ExternalSubmitVirtualTryOnTaskBase64RequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'apiKey' => [ 'type' => 'string', 'locationName' => 'apiKey', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'modelImageBase64' => [ 'type' => 'string', 'locationName' => 'modelImageBase64', ],
+                'clothesImageBase64' => [ 'type' => 'string', 'locationName' => 'clothesImageBase64', ],
+            ],
+        ],
+        'ExternalDownloadImageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'apiKey' => [ 'type' => 'string', 'locationName' => 'apiKey', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'ExternalSubmitVirtualTryOnTaskBase64ResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
+                'data' =>  [ 'shape' => 'CloudTaskSubmitResponseVo', ],
+            ],
+        ],
+        'ExternalQueryTaskStatusRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'apiKey' => [ 'type' => 'string', 'locationName' => 'apiKey', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'ExternalQueryTaskStatusResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
+                'data' =>  [ 'shape' => 'CloudTaskStatusResponseVo', ],
+            ],
+        ],
+        'ExternalQueryTaskStatusResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ExternalQueryTaskStatusResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ExternalSubmitSquareToLongTaskBase64RequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'apiKey' => [ 'type' => 'string', 'locationName' => 'apiKey', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'imageBase64' => [ 'type' => 'string', 'locationName' => 'imageBase64', ],
+            ],
+        ],
+        'ExternalDownloadImageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ExternalDownloadImageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ExternalWebSearchResultShape' => [

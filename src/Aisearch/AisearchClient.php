@@ -20,6 +20,14 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with aisearch.
  *
+ * @method \Jdcloud\Result externalSubmitVirtualTryOnTaskBase64(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise externalSubmitVirtualTryOnTaskBase64Async(array $args = [])
+ * @method \Jdcloud\Result externalSubmitSquareToLongTaskBase64(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise externalSubmitSquareToLongTaskBase64Async(array $args = [])
+ * @method \Jdcloud\Result externalQueryTaskStatus(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise externalQueryTaskStatusAsync(array $args = [])
+ * @method \Jdcloud\Result externalDownloadImage(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise externalDownloadImageAsync(array $args = [])
  * @method \Jdcloud\Result externalWebSearch(array $args = [])
  * @method \GuzzleHttp\Promise\Promise externalWebSearchAsync(array $args = [])
  */
