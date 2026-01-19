@@ -562,6 +562,7 @@ return [
                 'identifyValue' => [ 'type' => 'string', 'locationName' => 'identifyValue', ],
                 'stampStyle' => [ 'type' => 'string', 'locationName' => 'stampStyle', ],
                 'certExpire' => [ 'type' => 'integer', 'locationName' => 'certExpire', ],
+                'certType' => [ 'type' => 'integer', 'locationName' => 'certType', ],
                 'pageRange' => [ 'type' => 'string', 'locationName' => 'pageRange', ],
                 'positionPoint' => [ 'type' => 'string', 'locationName' => 'positionPoint', ],
                 'keywordCenter' => [ 'type' => 'boolean', 'locationName' => 'keywordCenter', ],
@@ -600,6 +601,7 @@ return [
                 'identifyValue' => [ 'type' => 'string', 'locationName' => 'identifyValue', ],
                 'stampStyle' => [ 'type' => 'string', 'locationName' => 'stampStyle', ],
                 'certExpire' => [ 'type' => 'integer', 'locationName' => 'certExpire', ],
+                'certType' => [ 'type' => 'integer', 'locationName' => 'certType', ],
                 'pageRange' => [ 'type' => 'string', 'locationName' => 'pageRange', ],
                 'positionPoint' => [ 'type' => 'string', 'locationName' => 'positionPoint', ],
                 'keywordCenter' => [ 'type' => 'boolean', 'locationName' => 'keywordCenter', ],
@@ -871,6 +873,12 @@ return [
                 'messageId' => [ 'type' => 'string', 'locationName' => 'messageId', ],
                 'evidenceMessageId' => [ 'type' => 'string', 'locationName' => 'evidenceMessageId', ],
                 'evidenceFileList' => [ 'type' => 'list', 'member' => [ 'shape' => 'EvidenceFile', ], ],
+            ],
+        ],
+        'CloseByPinSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
             ],
         ],
         'CertResp' => [
@@ -1346,12 +1354,6 @@ return [
                 'data' =>  [ 'shape' => 'SaveEvidenceResp', ],
             ],
         ],
-        'SetKmsKeyIdResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeApplyStatusRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1362,38 +1364,11 @@ return [
             'members' => [
             ],
         ],
-        'DisableContractSaveResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeApplyStatusResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'DescribeApplyStatusResultShape', ],
-            ],
-        ],
-        'DisableContractSaveRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'EnableContractSaveRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'EnableContractSaveResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'SetKmsKeyIdResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'DescribeApplyStatusResultShape' => [
@@ -1414,6 +1389,39 @@ return [
             ],
         ],
         'EnableContractSaveResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetKmsKeyIdResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisableContractSaveResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisableContractSaveRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableContractSaveRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'EnableContractSaveResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetKmsKeyIdResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
