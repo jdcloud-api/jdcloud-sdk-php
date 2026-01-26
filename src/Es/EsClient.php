@@ -20,6 +20,14 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with es.
  *
+ * @method \Jdcloud\Result describeAuthStatus(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeAuthStatusAsync(array $args = [])
+ * @method \Jdcloud\Result describeRoles(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeRolesAsync(array $args = [])
+ * @method \Jdcloud\Result describeUsers(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeUsersAsync(array $args = [])
+ * @method \Jdcloud\Result describeBillingInstances(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeBillingInstancesAsync(array $args = [])
  * @method \Jdcloud\Result disableDicts(array $args = [])
  * @method \GuzzleHttp\Promise\Promise disableDictsAsync(array $args = [])
  * @method \Jdcloud\Result describeInstances(array $args = [])
@@ -32,6 +40,14 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise deleteInstanceAsync(array $args = [])
  * @method \Jdcloud\Result modifyInstanceSpec(array $args = [])
  * @method \GuzzleHttp\Promise\Promise modifyInstanceSpecAsync(array $args = [])
+ * @method \Jdcloud\Result instanceChangeType(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise instanceChangeTypeAsync(array $args = [])
+ * @method \Jdcloud\Result instanceConfirmDelete(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise instanceConfirmDeleteAsync(array $args = [])
+ * @method \Jdcloud\Result modifyInstanceKibanaSpec(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise modifyInstanceKibanaSpecAsync(array $args = [])
+ * @method \Jdcloud\Result modifyInstanceExtendInfo(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise modifyInstanceExtendInfoAsync(array $args = [])
  */
 class EsClient extends JdCloudClient
 {
