@@ -267,6 +267,8 @@ return [
                 'apiKey' => [ 'type' => 'string', 'locationName' => 'apiKey', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'imageBase64' => [ 'type' => 'string', 'locationName' => 'imageBase64', ],
+                'taskType' => [ 'type' => 'integer', 'locationName' => 'taskType', ],
+                'hwType' => [ 'type' => 'integer', 'locationName' => 'hwType', ],
             ],
         ],
         'ExternalDownloadImageResponseShape' => [
