@@ -145,6 +145,10 @@ return [
         'namespace' => 'Jke',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'cmp' => [
+        'namespace' => 'Cmp',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'datastar' => [
         'namespace' => 'Datastar',
         'versions' => [ 'latest' => 'v1', ],
