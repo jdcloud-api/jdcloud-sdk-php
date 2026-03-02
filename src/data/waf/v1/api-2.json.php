@@ -20,6 +20,114 @@ return [
             'input' => [ 'shape' => 'DescribeLbOutIpRequestShape', ],
             'output' => [ 'shape' => 'DescribeLbOutIpResponseShape', ],
         ],
+        'ApiEnable' => [
+            'name' => 'ApiEnable',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/api:enable',
+            ],
+            'input' => [ 'shape' => 'ApiEnableRequestShape', ],
+            'output' => [ 'shape' => 'ApiEnableResponseShape', ],
+        ],
+        'GetApiEnable' => [
+            'name' => 'GetApiEnable',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/api:getEnable',
+            ],
+            'input' => [ 'shape' => 'GetApiEnableRequestShape', ],
+            'output' => [ 'shape' => 'GetApiEnableResponseShape', ],
+        ],
+        'GetApiUserCount' => [
+            'name' => 'GetApiUserCount',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/api:getUserCount',
+            ],
+            'input' => [ 'shape' => 'GetApiUserCountRequestShape', ],
+            'output' => [ 'shape' => 'GetApiUserCountResponseShape', ],
+        ],
+        'SetApiDetectUser' => [
+            'name' => 'SetApiDetectUser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/api:setDetectUser',
+            ],
+            'input' => [ 'shape' => 'SetApiDetectUserRequestShape', ],
+            'output' => [ 'shape' => 'SetApiDetectUserResponseShape', ],
+        ],
+        'SetApiSenUser' => [
+            'name' => 'SetApiSenUser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/api:setSenUser',
+            ],
+            'input' => [ 'shape' => 'SetApiSenUserRequestShape', ],
+            'output' => [ 'shape' => 'SetApiSenUserResponseShape', ],
+        ],
+        'SetApiTokenUser' => [
+            'name' => 'SetApiTokenUser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/api:setTokenUser',
+            ],
+            'input' => [ 'shape' => 'SetApiTokenUserRequestShape', ],
+            'output' => [ 'shape' => 'SetApiTokenUserResponseShape', ],
+        ],
+        'SetApiRiskUser' => [
+            'name' => 'SetApiRiskUser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/api:setRiskUser',
+            ],
+            'input' => [ 'shape' => 'SetApiRiskUserRequestShape', ],
+            'output' => [ 'shape' => 'SetApiRiskUserResponseShape', ],
+        ],
+        'ListApiDetectUser' => [
+            'name' => 'ListApiDetectUser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/api:listDetectUser',
+            ],
+            'input' => [ 'shape' => 'ListApiDetectUserRequestShape', ],
+            'output' => [ 'shape' => 'ListApiDetectUserResponseShape', ],
+        ],
+        'ListApiSenUser' => [
+            'name' => 'ListApiSenUser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/api:listSenUser',
+            ],
+            'input' => [ 'shape' => 'ListApiSenUserRequestShape', ],
+            'output' => [ 'shape' => 'ListApiSenUserResponseShape', ],
+        ],
+        'ListApiTokenUser' => [
+            'name' => 'ListApiTokenUser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/api:listTokenUser',
+            ],
+            'input' => [ 'shape' => 'ListApiTokenUserRequestShape', ],
+            'output' => [ 'shape' => 'ListApiTokenUserResponseShape', ],
+        ],
+        'ListApiRiskUser' => [
+            'name' => 'ListApiRiskUser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/api:listRiskUser',
+            ],
+            'input' => [ 'shape' => 'ListApiRiskUserRequestShape', ],
+            'output' => [ 'shape' => 'ListApiRiskUserResponseShape', ],
+        ],
+        'ApiOperateUser' => [
+            'name' => 'ApiOperateUser',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/api:operateUser',
+            ],
+            'input' => [ 'shape' => 'ApiOperateUserRequestShape', ],
+            'output' => [ 'shape' => 'ApiOperateUserResponseShape', ],
+        ],
         'UpgradeInstance' => [
             'name' => 'UpgradeInstance',
             'http' => [
@@ -254,6 +362,15 @@ return [
             'input' => [ 'shape' => 'ListWafRulesRequestShape', ],
             'output' => [ 'shape' => 'ListWafRulesResponseShape', ],
         ],
+        'ImportIpset' => [
+            'name' => 'ImportIpset',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/wafInstanceIds/{wafInstanceId}/userdefine:importIpset',
+            ],
+            'input' => [ 'shape' => 'ImportIpsetRequestShape', ],
+            'output' => [ 'shape' => 'ImportIpsetResponseShape', ],
+        ],
         'AddIps' => [
             'name' => 'AddIps',
             'http' => [
@@ -364,6 +481,121 @@ return [
         ],
     ],
     'shapes' => [
+        'ApiEnableReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'active' => [ 'type' => 'integer', 'locationName' => 'active', ],
+                'funcType' => [ 'type' => 'string', 'locationName' => 'funcType', ],
+            ],
+        ],
+        'TokenRuleDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'field' => [ 'type' => 'string', 'locationName' => 'field', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'logic' => [ 'type' => 'string', 'locationName' => 'logic', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'RiskRuleDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'field' => [ 'type' => 'string', 'locationName' => 'field', ],
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'logic' => [ 'type' => 'string', 'locationName' => 'logic', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'SetApiTokenUser' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'ruleId' => [ 'type' => 'string', 'locationName' => 'ruleId', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
+                'ruleDetail' => [ 'type' => 'list', 'member' => [ 'shape' => 'TokenRuleDetail', ], ],
+                'property' => [ 'type' => 'string', 'locationName' => 'property', ],
+                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
+                'updateTime' => [ 'type' => 'long', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'SetApiDetectUser' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'ruleId' => [ 'type' => 'string', 'locationName' => 'ruleId', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
+                'contentType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'httpStatus' => [ 'type' => 'integer', 'locationName' => 'httpStatus', ],
+                'property' => [ 'type' => 'string', 'locationName' => 'property', ],
+                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
+                'updateTime' => [ 'type' => 'long', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'SetApiRiskUser' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'ruleId' => [ 'type' => 'string', 'locationName' => 'ruleId', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
+                'ruleDetail' => [ 'type' => 'list', 'member' => [ 'shape' => 'RiskRuleDetail', ], ],
+                'riskLevel' => [ 'type' => 'string', 'locationName' => 'riskLevel', ],
+                'property' => [ 'type' => 'string', 'locationName' => 'property', ],
+                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
+                'updateTime' => [ 'type' => 'long', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'ListApiUserReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'ruleId' => [ 'type' => 'string', 'locationName' => 'ruleId', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
+                'property' => [ 'type' => 'string', 'locationName' => 'property', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'ApiOperateUserReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'funcType' => [ 'type' => 'string', 'locationName' => 'funcType', ],
+                'operate' => [ 'type' => 'integer', 'locationName' => 'operate', ],
+                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
+                'ruleIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'preRuleNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'SetApiSenUser' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'ruleId' => [ 'type' => 'string', 'locationName' => 'ruleId', ],
+                'ruleName' => [ 'type' => 'string', 'locationName' => 'ruleName', ],
+                'charType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'charLength' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'senLevel' => [ 'type' => 'string', 'locationName' => 'senLevel', ],
+                'property' => [ 'type' => 'string', 'locationName' => 'property', ],
+                'enable' => [ 'type' => 'integer', 'locationName' => 'enable', ],
+                'updateTime' => [ 'type' => 'long', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'GetApiEnableReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+            ],
+        ],
         'GetPriceReq' => [
             'type' => 'structure',
             'members' => [
@@ -375,6 +607,7 @@ return [
                 'packageType' => [ 'type' => 'integer', 'locationName' => 'packageType', ],
                 'extraDomainsNum' => [ 'type' => 'integer', 'locationName' => 'extraDomainsNum', ],
                 'extraBitsLimit' => [ 'type' => 'integer', 'locationName' => 'extraBitsLimit', ],
+                'extraPackage' => [ 'type' => 'integer', 'locationName' => 'extraPackage', ],
                 'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
             ],
@@ -393,6 +626,7 @@ return [
                 'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
                 'returnURL' => [ 'type' => 'string', 'locationName' => 'returnURL', ],
                 'extraBitsLimit' => [ 'type' => 'integer', 'locationName' => 'extraBitsLimit', ],
+                'extraPackage' => [ 'type' => 'integer', 'locationName' => 'extraPackage', ],
                 'appCode' => [ 'type' => 'string', 'locationName' => 'appCode', ],
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
                 'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
@@ -461,6 +695,17 @@ return [
                 'userPins' => [ 'type' => 'string', 'locationName' => 'userPins', ],
             ],
         ],
+        'SetApiSecTagReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'api' => [ 'type' => 'string', 'locationName' => 'api', ],
+                'operate' => [ 'type' => 'integer', 'locationName' => 'operate', ],
+                'follow' => [ 'type' => 'integer', 'locationName' => 'follow', ],
+                'tag' => [ 'type' => 'string', 'locationName' => 'tag', ],
+            ],
+        ],
         'AclTopN' => [
             'type' => 'structure',
             'members' => [
@@ -520,6 +765,17 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'logId' => [ 'type' => 'string', 'locationName' => 'logId', ],
                 'accessTime' => [ 'type' => 'long', 'locationName' => 'accessTime', ],
+            ],
+        ],
+        'GetApiSecChartReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'api' => [ 'type' => 'string', 'locationName' => 'api', ],
+                'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
+                'end' => [ 'type' => 'integer', 'locationName' => 'end', ],
+                'chartItems' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'TopN' => [
@@ -627,8 +883,8 @@ return [
                 'isWafRule' => [ 'type' => 'boolean', 'locationName' => 'isWafRule', ],
                 'isRs' => [ 'type' => 'boolean', 'locationName' => 'isRs', ],
                 'pieItem' => [ 'type' => 'string', 'locationName' => 'pieItem', ],
-                'statusCode' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'isStaCode' => [ 'type' => 'boolean', 'locationName' => 'isStaCode', ],
+                'chartItems' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'GetAntiEventReq' => [
@@ -662,6 +918,23 @@ return [
                 'downBps' =>  [ 'shape' => 'ChartItemValue', ],
             ],
         ],
+        'GetApiSecAssertLogReq' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
+                'end' => [ 'type' => 'integer', 'locationName' => 'end', ],
+                'searchType' => [ 'type' => 'string', 'locationName' => 'searchType', ],
+                'search' => [ 'type' => 'string', 'locationName' => 'search', ],
+                'token' => [ 'type' => 'integer', 'locationName' => 'token', ],
+                'reqSen' => [ 'type' => 'integer', 'locationName' => 'reqSen', ],
+                'respSen' => [ 'type' => 'integer', 'locationName' => 'respSen', ],
+                'follow' => [ 'type' => 'integer', 'locationName' => 'follow', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+            ],
+        ],
         'WafTopN' => [
             'type' => 'structure',
             'members' => [
@@ -680,10 +953,26 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'logType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'logId' => [ 'type' => 'string', 'locationName' => 'logId', ],
+                'upstreamErr' => [ 'type' => 'string', 'locationName' => 'upstreamErr', ],
                 'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
                 'end' => [ 'type' => 'integer', 'locationName' => 'end', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+            ],
+        ],
+        'ApiSecReqSample' => [
+            'type' => 'structure',
+            'members' => [
+                'antiRespRaw' => [ 'type' => 'string', 'locationName' => 'antiRespRaw', ],
+                'antiReqRaw' => [ 'type' => 'string', 'locationName' => 'antiReqRaw', ],
+                'time' => [ 'type' => 'string', 'locationName' => 'time', ],
+            ],
+        ],
+        'LogTypeResp' => [
+            'type' => 'structure',
+            'members' => [
+                'logType' => [ 'type' => 'string', 'locationName' => 'logType', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
         'GetWafDataReq' => [
@@ -692,6 +981,24 @@ return [
                 'userPin' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'startTime' => [ 'type' => 'long', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'long', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'ApiSecTopN' => [
+            'type' => 'structure',
+            'members' => [
+                'addr_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
+                'area_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
+                'ua_top10' => [ 'type' => 'list', 'member' => [ 'shape' => 'TopValue', ], ],
+            ],
+        ],
+        'ApiSecAssertMain' => [
+            'type' => 'structure',
+            'members' => [
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'active_count' => [ 'type' => 'integer', 'locationName' => 'active_count', ],
+                'inactive_count' => [ 'type' => 'integer', 'locationName' => 'inactive_count', ],
+                'today_register_count' => [ 'type' => 'integer', 'locationName' => 'today_register_count', ],
+                'week_register_count' => [ 'type' => 'integer', 'locationName' => 'week_register_count', ],
             ],
         ],
         'KVPair' => [
@@ -710,6 +1017,20 @@ return [
                 'aclAnti' => [ 'type' => 'long', 'locationName' => 'aclAnti', ],
                 'botAnti' => [ 'type' => 'long', 'locationName' => 'botAnti', ],
                 'cacheTotal' => [ 'type' => 'long', 'locationName' => 'cacheTotal', ],
+            ],
+        ],
+        'ApiSecParam' => [
+            'type' => 'structure',
+            'members' => [
+                'api' => [ 'type' => 'string', 'locationName' => 'api', ],
+                'detect' => [ 'type' => 'integer', 'locationName' => 'detect', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'req_arg' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'req_body' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'req_header' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'resp_header' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'resp_body' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'AntiValue' => [
@@ -743,6 +1064,31 @@ return [
                 'skipExist' => [ 'type' => 'integer', 'locationName' => 'skipExist', ],
                 'denyExist' => [ 'type' => 'integer', 'locationName' => 'denyExist', ],
                 'antiReqRaw' => [ 'type' => 'string', 'locationName' => 'antiReqRaw', ],
+            ],
+        ],
+        'ApiSecAssertLog' => [
+            'type' => 'structure',
+            'members' => [
+                'active' => [ 'type' => 'string', 'locationName' => 'active', ],
+                'api' => [ 'type' => 'string', 'locationName' => 'api', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'requestMethod' => [ 'type' => 'string', 'locationName' => 'requestMethod', ],
+                'senLevel' => [ 'type' => 'string', 'locationName' => 'senLevel', ],
+                'reqSens' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'respSens' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'risk' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'token' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'follow' => [ 'type' => 'integer', 'locationName' => 'follow', ],
+                'tag' => [ 'type' => 'string', 'locationName' => 'tag', ],
+            ],
+        ],
+        'ApiSecTraffic' => [
+            'type' => 'structure',
+            'members' => [
+                'api_traffic' =>  [ 'shape' => 'ChartItemValue', ],
             ],
         ],
         'UserDefPageConf' => [
@@ -779,6 +1125,7 @@ return [
                 'enableUnderscores' => [ 'type' => 'integer', 'locationName' => 'enableUnderscores', ],
                 'disableHealthCheck' => [ 'type' => 'integer', 'locationName' => 'disableHealthCheck', ],
                 'proxyConnectTimeout' => [ 'type' => 'integer', 'locationName' => 'proxyConnectTimeout', ],
+                'sse' => [ 'type' => 'integer', 'locationName' => 'sse', ],
             ],
         ],
         'DomainRegionInfo' => [
@@ -1173,6 +1520,7 @@ return [
             'members' => [
                 'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
                 'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
             ],
         ],
         'UserPolicySetReq' => [
@@ -1237,6 +1585,7 @@ return [
                 'maxBodySize' => [ 'type' => 'string', 'locationName' => 'maxBodySize', ],
                 'disableHealthCheck' => [ 'type' => 'integer', 'locationName' => 'disableHealthCheck', ],
                 'proxyConnectTimeout' => [ 'type' => 'integer', 'locationName' => 'proxyConnectTimeout', ],
+                'sse' => [ 'type' => 'integer', 'locationName' => 'sse', ],
             ],
         ],
         'EnableConf' => [
@@ -1596,6 +1945,7 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
                 'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'contentType' => [ 'type' => 'string', 'locationName' => 'contentType', ],
                 'checkStatus' => [ 'type' => 'integer', 'locationName' => 'checkStatus', ],
             ],
         ],
@@ -2269,6 +2619,7 @@ return [
                 'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'contentType' => [ 'type' => 'string', 'locationName' => 'contentType', ],
             ],
         ],
         'AntiSpiderConfReq' => [
@@ -2652,6 +3003,13 @@ return [
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
             ],
         ],
+        'TagInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'FuncList' => [
             'type' => 'structure',
             'members' => [
@@ -2680,6 +3038,13 @@ return [
                 'region' => [ 'type' => 'string', 'locationName' => 'region', ],
             ],
         ],
+        'InstanceTag' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagInfo', ], ],
+            ],
+        ],
         'SetSslConfigReq' => [
             'type' => 'structure',
             'members' => [
@@ -2699,10 +3064,15 @@ return [
                 'sourceId' => [ 'type' => 'string', 'locationName' => 'sourceId', ],
                 'domainPackages' => [ 'type' => 'integer', 'locationName' => 'domainPackages', ],
                 'extraBitsLimit' => [ 'type' => 'integer', 'locationName' => 'extraBitsLimit', ],
+                'extraPackage' => [ 'type' => 'integer', 'locationName' => 'extraPackage', ],
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
                 'releaseingTime' => [ 'type' => 'string', 'locationName' => 'releaseingTime', ],
+                'expiringDays' => [ 'type' => 'integer', 'locationName' => 'expiringDays', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
                 'valid' => [ 'type' => 'integer', 'locationName' => 'valid', ],
+                'tag' =>  [ 'shape' => 'InstanceTag', ],
+                'vips' => [ 'type' => 'object', 'locationName' => 'vips', ],
             ],
         ],
         'HandlePackReq' => [
@@ -2741,13 +3111,13 @@ return [
                 'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
                 'mode' => [ 'type' => 'integer', 'locationName' => 'mode', ],
                 'userPinScdn' => [ 'type' => 'string', 'locationName' => 'userPinScdn', ],
+                'userPinExternal' => [ 'type' => 'string', 'locationName' => 'userPinExternal', ],
             ],
         ],
         'WarningCfg' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
                 'domains' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
@@ -2784,6 +3154,7 @@ return [
             'members' => [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'ruleType' => [ 'type' => 'string', 'locationName' => 'ruleType', ],
+                'userPinExternal' => [ 'type' => 'string', 'locationName' => 'userPinExternal', ],
                 'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
@@ -2831,6 +3202,276 @@ return [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'SetApiSenUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListApiDetectUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ListApiUserReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'ListApiTokenUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ListApiUserReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'ApiOperateUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ApiEnableRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ApiEnableReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'SetApiDetectUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ApiEnableResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetApiSenUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'SetApiSenUser', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'GetApiEnableResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'apiDetectPreActive' => [ 'type' => 'integer', 'locationName' => 'apiDetectPreActive', ],
+                'apiDetectUserActive' => [ 'type' => 'integer', 'locationName' => 'apiDetectUserActive', ],
+                'apiTokenPreActive' => [ 'type' => 'integer', 'locationName' => 'apiTokenPreActive', ],
+                'apiTokenUserActive' => [ 'type' => 'integer', 'locationName' => 'apiTokenUserActive', ],
+                'apiRiskPreActive' => [ 'type' => 'integer', 'locationName' => 'apiRiskPreActive', ],
+                'apiRiskUserActive' => [ 'type' => 'integer', 'locationName' => 'apiRiskUserActive', ],
+                'apiSenPreActive' => [ 'type' => 'integer', 'locationName' => 'apiSenPreActive', ],
+                'apiSenUserActive' => [ 'type' => 'integer', 'locationName' => 'apiSenUserActive', ],
+            ],
+        ],
+        'SetApiTokenUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'SetApiTokenUser', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'SetApiRiskUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetApiSenUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetApiTokenUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'GetApiEnableRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'GetApiEnableReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'ListApiDetectUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'SetApiDetectUser', ], ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'ListApiSenUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListApiSenUserResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListApiTokenUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListApiTokenUserResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetApiUserCountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'detectUser' => [ 'type' => 'long', 'locationName' => 'detectUser', ],
+                'tokenUser' => [ 'type' => 'long', 'locationName' => 'tokenUser', ],
+                'riskUser' => [ 'type' => 'long', 'locationName' => 'riskUser', ],
+                'senUser' => [ 'type' => 'long', 'locationName' => 'senUser', ],
+                'detectPre' => [ 'type' => 'long', 'locationName' => 'detectPre', ],
+                'tokenPre' => [ 'type' => 'long', 'locationName' => 'tokenPre', ],
+                'riskPre' => [ 'type' => 'long', 'locationName' => 'riskPre', ],
+                'senPre' => [ 'type' => 'long', 'locationName' => 'senPre', ],
+            ],
+        ],
+        'ApiEnableResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListApiRiskUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListApiRiskUserResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListApiRiskUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ListApiUserReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'SetApiDetectUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'SetApiDetectUser', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'ListApiTokenUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'SetApiTokenUser', ], ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'ApiOperateUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetApiUserCountResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetApiUserCountResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListApiSenUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ListApiUserReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'SetApiDetectUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetApiTokenUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListApiDetectUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ListApiDetectUserResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ApiOperateUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ApiOperateUserReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'GetApiUserCountRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'GetApiEnableReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'SetApiRiskUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetApiRiskUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'SetApiRiskUser', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
+            ],
+        ],
+        'GetApiEnableResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetApiEnableResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListApiSenUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'SetApiSenUser', ], ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'ListApiRiskUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'SetApiRiskUser', ], ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
         'CreateInstanceResponseShape' => [
@@ -2943,8 +3584,8 @@ return [
                 'action' => [ 'type' => 'string', 'locationName' => 'action', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'logType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'logId' => [ 'type' => 'string', 'locationName' => 'logId', ],
                 'request_id' => [ 'type' => 'string', 'locationName' => 'request_id', ],
+                'upstreamErr' => [ 'type' => 'string', 'locationName' => 'upstreamErr', ],
                 'start' => [ 'type' => 'integer', 'locationName' => 'start', ],
                 'end' => [ 'type' => 'integer', 'locationName' => 'end', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
@@ -2957,20 +3598,6 @@ return [
             'members' => [
                 'req' =>  [ 'shape' => 'GetChartReq', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetEsLogDetailResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetEsLogDetailResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetBpsDataResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'GetBpsDataResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'GetMainAntiInfoNewResultShape' => [
@@ -3000,26 +3627,11 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'GetStatusCodeInfoResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'statusCodeData' =>  [ 'shape' => 'StatusCodeData', ],
-            ],
-        ],
         'GetMainAntiInfoNewRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'req' =>  [ 'shape' => 'GetChartReq', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'GetEsLogDetailResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
-                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
-                'events' => [ 'type' => 'list', 'member' => [ 'shape' => 'EsLogEvent', ], ],
             ],
         ],
         'GetStatusCodeInfoRequestShape' => [
@@ -3057,6 +3669,42 @@ return [
                 'qps' =>  [ 'shape' => 'Qps', ],
             ],
         ],
+        'GetQpsDataRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'GetChartReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetEsLogDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetEsLogDetailResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetBpsDataResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetBpsDataResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetStatusCodeInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'statusCodeData' =>  [ 'shape' => 'StatusCodeData', ],
+            ],
+        ],
+        'GetEsLogDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageIndex' => [ 'type' => 'integer', 'locationName' => 'pageIndex', ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'events' => [ 'type' => 'list', 'member' => [ 'shape' => 'EsLogEvent', ], ],
+            ],
+        ],
         'GetAntiEventResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -3071,13 +3719,6 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'GetQpsDataResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'GetQpsDataRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'req' =>  [ 'shape' => 'GetChartReq', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'GetDomainLbConfigRequestShape' => [
@@ -3441,6 +4082,11 @@ return [
                 'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
+        'ImportIpsetResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'ListWafRulesResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3507,6 +4153,12 @@ return [
         'EnableWafResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ImportIpsetResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'ListWafRulesResultShape' => [
@@ -3653,6 +4305,14 @@ return [
         'RefreshUrlCacheResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ImportIpsetRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'req' =>  [ 'shape' => 'ImportIpsetReq', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'wafInstanceId' => [ 'type' => 'string', 'locationName' => 'wafInstanceId', ],
             ],
         ],
         'DelWafConditionResultShape' => [
