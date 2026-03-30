@@ -189,6 +189,10 @@ return [
         'namespace' => 'Ias',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'hpc' => [
+        'namespace' => 'Hpc',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'jdfusion' => [
         'namespace' => 'Jdfusion',
         'versions' => [ 'latest' => 'v1', ],
@@ -336,6 +340,10 @@ return [
     'iotedge' => [
         'namespace' => 'Iotedge',
         'versions' => [ 'latest' => 'v2', ],
+    ],
+    'conversationalai' => [
+        'namespace' => 'Conversationalai',
+        'versions' => [ 'latest' => 'v1', ],
     ],
     'cps' => [
         'namespace' => 'Cps',
