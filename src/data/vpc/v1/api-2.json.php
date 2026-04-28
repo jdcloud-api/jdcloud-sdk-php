@@ -263,6 +263,78 @@ return [
             'input' => [ 'shape' => 'DisassociateElasticIpsRequestShape', ],
             'output' => [ 'shape' => 'DisassociateElasticIpsResponseShape', ],
         ],
+        'DescribeNatIpCidrs' => [
+            'name' => 'DescribeNatIpCidrs',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/natGateways/{natGatewayId}/natIpCidrs',
+            ],
+            'input' => [ 'shape' => 'DescribeNatIpCidrsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeNatIpCidrsResponseShape', ],
+        ],
+        'AddNatIpCidr' => [
+            'name' => 'AddNatIpCidr',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/natGateways/{natGatewayId}/natIpCidrs',
+            ],
+            'input' => [ 'shape' => 'AddNatIpCidrRequestShape', ],
+            'output' => [ 'shape' => 'AddNatIpCidrResponseShape', ],
+        ],
+        'ModifyNatIpCidr' => [
+            'name' => 'ModifyNatIpCidr',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/natGateways/{natGatewayId}/natIpCidrs',
+            ],
+            'input' => [ 'shape' => 'ModifyNatIpCidrRequestShape', ],
+            'output' => [ 'shape' => 'ModifyNatIpCidrResponseShape', ],
+        ],
+        'RemoveNatIpCidr' => [
+            'name' => 'RemoveNatIpCidr',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/natGateways/{natGatewayId}/natIpCidrs:removeNatIpCidr',
+            ],
+            'input' => [ 'shape' => 'RemoveNatIpCidrRequestShape', ],
+            'output' => [ 'shape' => 'RemoveNatIpCidrResponseShape', ],
+        ],
+        'DescribeNatIps' => [
+            'name' => 'DescribeNatIps',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/natGateways/{natGatewayId}/natIps',
+            ],
+            'input' => [ 'shape' => 'DescribeNatIpsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeNatIpsResponseShape', ],
+        ],
+        'AllocateNatIp' => [
+            'name' => 'AllocateNatIp',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/natGateways/{natGatewayId}/natIps',
+            ],
+            'input' => [ 'shape' => 'AllocateNatIpRequestShape', ],
+            'output' => [ 'shape' => 'AllocateNatIpResponseShape', ],
+        ],
+        'ModifyNatIp' => [
+            'name' => 'ModifyNatIp',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/natGateways/{natGatewayId}/natIps',
+            ],
+            'input' => [ 'shape' => 'ModifyNatIpRequestShape', ],
+            'output' => [ 'shape' => 'ModifyNatIpResponseShape', ],
+        ],
+        'ReleaseNatIps' => [
+            'name' => 'ReleaseNatIps',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/natGateways/{natGatewayId}/natIps:releaseNatIps',
+            ],
+            'input' => [ 'shape' => 'ReleaseNatIpsRequestShape', ],
+            'output' => [ 'shape' => 'ReleaseNatIpsResponseShape', ],
+        ],
         'DescribeNetworkAcls' => [
             'name' => 'DescribeNetworkAcls',
             'http' => [
@@ -864,6 +936,7 @@ return [
             'members' => [
                 'ipAddress' => [ 'type' => 'string', 'locationName' => 'ipAddress', ],
                 'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'code' => [ 'type' => 'double', 'locationName' => 'code', ],
             ],
         ],
         'AddNetworkAclRulesSpec' => [
@@ -971,6 +1044,7 @@ return [
                 'secondaryIpCount' => [ 'type' => 'double', 'locationName' => 'secondaryIpCount', ],
                 'secondaryIpMaskLen' => [ 'type' => 'integer', 'locationName' => 'secondaryIpMaskLen', ],
                 'secondaryIpAddress' => [ 'type' => 'string', 'locationName' => 'secondaryIpAddress', ],
+                'secondaryIpSubnetId' => [ 'type' => 'string', 'locationName' => 'secondaryIpSubnetId', ],
             ],
         ],
         'AssociateElasticIpSpec' => [
@@ -1064,6 +1138,8 @@ return [
                 'guaranteedRatio' => [ 'type' => 'integer', 'locationName' => 'guaranteedRatio', ],
                 'guaranteedBandwidth' => [ 'type' => 'float32', 'locationName' => 'guaranteedBandwidth', ],
                 'adminStatus' => [ 'type' => 'string', 'locationName' => 'adminStatus', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'bandwidthPackageType' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageType', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
@@ -1074,6 +1150,18 @@ return [
                 'publicIpId' => [ 'type' => 'string', 'locationName' => 'publicIpId', ],
                 'addedTime' => [ 'type' => 'string', 'locationName' => 'addedTime', ],
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+            ],
+        ],
+        'BwpCharge' => [
+            'type' => 'structure',
+            'members' => [
+                'standard95' => [ 'type' => 'string', 'locationName' => 'standard95', ],
+                'standard95Ex' => [ 'type' => 'string', 'locationName' => 'standard95Ex', ],
+                'enhance95' => [ 'type' => 'string', 'locationName' => 'enhance95', ],
+                'enhance95Ex' => [ 'type' => 'string', 'locationName' => 'enhance95Ex', ],
+                'mainTraffic' => [ 'type' => 'string', 'locationName' => 'mainTraffic', ],
+                'billItem' => [ 'type' => 'string', 'locationName' => 'billItem', ],
+                'ratio' => [ 'type' => 'double', 'locationName' => 'ratio', ],
             ],
         ],
         'CancelBandwidthPackageIpBandwidthSpec' => [
@@ -1103,9 +1191,23 @@ return [
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
                 'chargeType' => [ 'type' => 'integer', 'locationName' => 'chargeType', ],
                 'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+                'bandwidthPackageType' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageType', ],
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+            ],
+        ],
+        'CreateDnatRuleSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'externalIpAddress' => [ 'type' => 'string', 'locationName' => 'externalIpAddress', ],
+                'externalPortStart' => [ 'type' => 'integer', 'locationName' => 'externalPortStart', ],
+                'externalPortEnd' => [ 'type' => 'integer', 'locationName' => 'externalPortEnd', ],
+                'internalIpAddress' => [ 'type' => 'string', 'locationName' => 'internalIpAddress', ],
+                'internalPortStart' => [ 'type' => 'integer', 'locationName' => 'internalPortStart', ],
+                'internalPortEnd' => [ 'type' => 'integer', 'locationName' => 'internalPortEnd', ],
             ],
         ],
         'CreateElasticIpPoolSpec' => [
@@ -1142,6 +1244,7 @@ return [
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'resourceTag' => [ 'type' => 'string', 'locationName' => 'resourceTag', ],
                 'dryRun' => [ 'type' => 'boolean', 'locationName' => 'dryRun', ],
             ],
         ],
@@ -1180,6 +1283,9 @@ return [
                 'sourceCidr' => [ 'type' => 'string', 'locationName' => 'sourceCidr', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'snatElasticIpAddresses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'snatIpAddresses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'intelliDstISP' => [ 'type' => 'string', 'locationName' => 'intelliDstISP', ],
+                'ipAffinity' => [ 'type' => 'string', 'locationName' => 'ipAffinity', ],
             ],
         ],
         'CreateVpcPeeringSpec' => [
@@ -1227,6 +1333,22 @@ return [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
             ],
         ],
+        'DnatRule' => [
+            'type' => 'structure',
+            'members' => [
+                'dnatRuleId' => [ 'type' => 'string', 'locationName' => 'dnatRuleId', ],
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'externalIpAddress' => [ 'type' => 'string', 'locationName' => 'externalIpAddress', ],
+                'externalPortStart' => [ 'type' => 'integer', 'locationName' => 'externalPortStart', ],
+                'externalPortEnd' => [ 'type' => 'integer', 'locationName' => 'externalPortEnd', ],
+                'internalIpAddress' => [ 'type' => 'string', 'locationName' => 'internalIpAddress', ],
+                'internalPortStart' => [ 'type' => 'integer', 'locationName' => 'internalPortStart', ],
+                'internalPortEnd' => [ 'type' => 'integer', 'locationName' => 'internalPortEnd', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'updatedTime' => [ 'type' => 'string', 'locationName' => 'updatedTime', ],
+            ],
+        ],
         'EdgeIpProvider' => [
             'type' => 'structure',
             'members' => [
@@ -1235,6 +1357,7 @@ return [
                 'associationScope' => [ 'type' => 'string', 'locationName' => 'associationScope', ],
                 'serviceType' => [ 'type' => 'string', 'locationName' => 'serviceType', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'productCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'FipSpec' => [
@@ -1435,6 +1558,17 @@ return [
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
             ],
         ],
+        'HostGroup' => [
+            'type' => 'structure',
+            'members' => [
+                'hostGroupId' => [ 'type' => 'string', 'locationName' => 'hostGroupId', ],
+                'hostGroupName' => [ 'type' => 'string', 'locationName' => 'hostGroupName', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'bindResourceCount' => [ 'type' => 'integer', 'locationName' => 'bindResourceCount', ],
+            ],
+        ],
         'InatInfo' => [
             'type' => 'structure',
             'members' => [
@@ -1519,6 +1653,8 @@ return [
             'members' => [
                 'loadBalancerId' => [ 'type' => 'string', 'locationName' => 'loadBalancerId', ],
                 'loadBalancerName' => [ 'type' => 'string', 'locationName' => 'loadBalancerName', ],
+                'loadBalancerAz' => [ 'type' => 'string', 'locationName' => 'loadBalancerAz', ],
+                'loadBalancerAzType' => [ 'type' => 'string', 'locationName' => 'loadBalancerAzType', ],
             ],
         ],
         'AddTrafficMirrorSourceSpec' => [
@@ -1559,6 +1695,20 @@ return [
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'ModifyDnatRuleSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'dnatRuleId' => [ 'type' => 'string', 'locationName' => 'dnatRuleId', ],
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'externalIpAddress' => [ 'type' => 'string', 'locationName' => 'externalIpAddress', ],
+                'externalPortStart' => [ 'type' => 'integer', 'locationName' => 'externalPortStart', ],
+                'externalPortEnd' => [ 'type' => 'integer', 'locationName' => 'externalPortEnd', ],
+                'internalIpAddress' => [ 'type' => 'string', 'locationName' => 'internalIpAddress', ],
+                'internalPortStart' => [ 'type' => 'integer', 'locationName' => 'internalPortStart', ],
+                'internalPortEnd' => [ 'type' => 'integer', 'locationName' => 'internalPortEnd', ],
             ],
         ],
         'ModifyElasticIpPoolSpec' => [
@@ -1642,6 +1792,12 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'macAddress' => [ 'type' => 'string', 'locationName' => 'macAddress', ],
+                'connectionTrackingConfiguration' =>  [ 'shape' => 'NetworkInterfaceConnectionTrackingConfiguration', ],
+            ],
+        ],
+        'NetworkInterfaceConnectionTrackingConfiguration' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'ModifySecurityGroupRuleSpec' => [
@@ -1727,6 +1883,9 @@ return [
                 'snatRuleId' => [ 'type' => 'string', 'locationName' => 'snatRuleId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'snatElasticIpAddresses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'snatIpAddresses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'intelliDstISP' => [ 'type' => 'string', 'locationName' => 'intelliDstISP', ],
+                'ipAffinity' => [ 'type' => 'string', 'locationName' => 'ipAffinity', ],
             ],
         ],
         'ModifySubnetSpec' => [
@@ -1812,12 +1971,28 @@ return [
                 'addressPrefix' => [ 'type' => 'string', 'locationName' => 'addressPrefix', ],
             ],
         ],
+        'NatGatewayNatIp' => [
+            'type' => 'structure',
+            'members' => [
+                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
+                'natIpId' => [ 'type' => 'string', 'locationName' => 'natIpId', ],
+                'natIp' => [ 'type' => 'string', 'locationName' => 'natIp', ],
+                'isDefault' => [ 'type' => 'boolean', 'locationName' => 'isDefault', ],
+                'natIpCidrId' => [ 'type' => 'string', 'locationName' => 'natIpCidrId', ],
+                'natIpCidr' => [ 'type' => 'string', 'locationName' => 'natIpCidr', ],
+                'natIpDescription' => [ 'type' => 'string', 'locationName' => 'natIpDescription', ],
+                'relatedSnatRuleCount' => [ 'type' => 'integer', 'locationName' => 'relatedSnatRuleCount', ],
+                'relatedDnatRuleCount' => [ 'type' => 'integer', 'locationName' => 'relatedDnatRuleCount', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+            ],
+        ],
         'NatGateway' => [
             'type' => 'structure',
             'members' => [
                 'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
                 'natGatewayName' => [ 'type' => 'string', 'locationName' => 'natGatewayName', ],
                 'natGatewaySpec' => [ 'type' => 'string', 'locationName' => 'natGatewaySpec', ],
+                'networkType' => [ 'type' => 'string', 'locationName' => 'networkType', ],
                 'state' =>  [ 'shape' => 'NatGatewayState', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'natGatewayCharge' =>  [ 'shape' => 'Charge', ],
@@ -1826,6 +2001,7 @@ return [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
                 'elasticIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'NatGatewayElasticIp', ], ],
+                'natIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'NatGatewayNatIp', ], ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
@@ -1855,11 +2031,60 @@ return [
                 'deleteElasticIp' => [ 'type' => 'boolean', 'locationName' => 'deleteElasticIp', ],
             ],
         ],
+        'AllocateNatGatewayNatIpSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'natIpDescription' => [ 'type' => 'string', 'locationName' => 'natIpDescription', ],
+                'natIpCidrId' => [ 'type' => 'string', 'locationName' => 'natIpCidrId', ],
+                'natIp' => [ 'type' => 'string', 'locationName' => 'natIp', ],
+            ],
+        ],
+        'ModifyNatGatewayNatIpSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'natIpId' => [ 'type' => 'string', 'locationName' => 'natIpId', ],
+                'natIpDescription' => [ 'type' => 'string', 'locationName' => 'natIpDescription', ],
+            ],
+        ],
+        'NatGatewayNatIpCidr' => [
+            'type' => 'structure',
+            'members' => [
+                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
+                'natIpCidrId' => [ 'type' => 'string', 'locationName' => 'natIpCidrId', ],
+                'natIpCidrDescription' => [ 'type' => 'string', 'locationName' => 'natIpCidrDescription', ],
+                'natIpCidr' => [ 'type' => 'string', 'locationName' => 'natIpCidr', ],
+                'isDefault' => [ 'type' => 'boolean', 'locationName' => 'isDefault', ],
+                'availableIpCount' => [ 'type' => 'integer', 'locationName' => 'availableIpCount', ],
+                'allocatedIpCount' => [ 'type' => 'integer', 'locationName' => 'allocatedIpCount', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+            ],
+        ],
+        'ModifyNatGatewayNatIpCidrSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'natIpCidrId' => [ 'type' => 'string', 'locationName' => 'natIpCidrId', ],
+                'natIpCidrDescription' => [ 'type' => 'string', 'locationName' => 'natIpCidrDescription', ],
+            ],
+        ],
+        'AddNatGatewayNatIpCidrSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'natIpCidrDescription' => [ 'type' => 'string', 'locationName' => 'natIpCidrDescription', ],
+                'natIpCidr' => [ 'type' => 'string', 'locationName' => 'natIpCidr', ],
+            ],
+        ],
+        'RemoveNatGatewayNatIpCidrSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'natIpCidrId' => [ 'type' => 'string', 'locationName' => 'natIpCidrId', ],
+            ],
+        ],
         'NatGatewaySpec' => [
             'type' => 'structure',
             'members' => [
                 'natGatewayName' => [ 'type' => 'string', 'locationName' => 'natGatewayName', ],
                 'natGatewaySpec' => [ 'type' => 'string', 'locationName' => 'natGatewaySpec', ],
+                'networkType' => [ 'type' => 'string', 'locationName' => 'networkType', ],
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
@@ -1870,6 +2095,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'resourceTag' => [ 'type' => 'string', 'locationName' => 'resourceTag', ],
             ],
         ],
         'NatgatewayElasticIpStatusSpec' => [
@@ -1932,6 +2158,7 @@ return [
                 'primaryIp' =>  [ 'shape' => 'NetworkInterfacePrivateIp', ],
                 'secondaryIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterfacePrivateIp', ], ],
                 'secondaryCidrs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'secondaryCidrsEx' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetworkInterfaceCidr', ], ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
                 'instanceOwnerId' => [ 'type' => 'string', 'locationName' => 'instanceOwnerId', ],
@@ -1942,6 +2169,7 @@ return [
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'connectionTrackingConfiguration' =>  [ 'shape' => 'NetworkInterfaceConnectionTrackingConfiguration', ],
             ],
         ],
         'NetworkInterfacePrivateIp' => [
@@ -1950,6 +2178,14 @@ return [
                 'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
                 'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+            ],
+        ],
+        'NetworkInterfaceCidr' => [
+            'type' => 'structure',
+            'members' => [
+                'secondaryCidr' => [ 'type' => 'string', 'locationName' => 'secondaryCidr', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
             ],
         ],
         'IpInfos' => [
@@ -1961,6 +2197,7 @@ return [
                 'elasticIpId' => [ 'type' => 'string', 'locationName' => 'elasticIpId', ],
                 'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
                 'bindMode' => [ 'type' => 'string', 'locationName' => 'bindMode', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
             ],
         ],
         'NetworkInterfaceCidrs' => [
@@ -2004,11 +2241,13 @@ return [
                 'primaryIpAddress' => [ 'type' => 'string', 'locationName' => 'primaryIpAddress', ],
                 'secondaryIpAddresses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'secondaryIpCount' => [ 'type' => 'integer', 'locationName' => 'secondaryIpCount', ],
+                'secondaryIpSubnetId' => [ 'type' => 'string', 'locationName' => 'secondaryIpSubnetId', ],
                 'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'connectionTrackingConfiguration' =>  [ 'shape' => 'NetworkInterfaceConnectionTrackingConfiguration', ],
             ],
         ],
         'SecurityGroupRule' => [
@@ -2217,6 +2456,7 @@ return [
                 'flowType' => [ 'type' => 'string', 'locationName' => 'flowType', ],
                 'configType' => [ 'type' => 'string', 'locationName' => 'configType', ],
                 'billItem' => [ 'type' => 'string', 'locationName' => 'billItem', ],
+                'bwpCharge' =>  [ 'shape' => 'BwpCharge', ],
                 'ccProvider' => [ 'type' => 'string', 'locationName' => 'ccProvider', ],
                 'providerType' => [ 'type' => 'string', 'locationName' => 'providerType', ],
                 'providerNameCN' => [ 'type' => 'string', 'locationName' => 'providerNameCN', ],
@@ -2236,6 +2476,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'bandwidthPackageIPSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'RemoveBandwidthPackageIPSpec', ], ],
+            ],
+        ],
+        'ClusterInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
             ],
         ],
         'ResourceInfo' => [
@@ -2344,9 +2592,12 @@ return [
                 'snatRuleId' => [ 'type' => 'string', 'locationName' => 'snatRuleId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'snatElasticIpAddresses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'snatIpAddresses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'sourceCidr' => [ 'type' => 'string', 'locationName' => 'sourceCidr', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'snatRuleStatus' => [ 'type' => 'string', 'locationName' => 'snatRuleStatus', ],
+                'intelliDstISP' => [ 'type' => 'string', 'locationName' => 'intelliDstISP', ],
+                'ipAffinity' => [ 'type' => 'string', 'locationName' => 'ipAffinity', ],
                 'snatRuleType' => [ 'type' => 'string', 'locationName' => 'snatRuleType', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'updatedTime' => [ 'type' => 'string', 'locationName' => 'updatedTime', ],
@@ -2369,6 +2620,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'clusterName' => [ 'type' => 'string', 'locationName' => 'clusterName', ],
             ],
         ],
         'Subnet' => [
@@ -2394,6 +2648,8 @@ return [
                 'publicSubnet' => [ 'type' => 'boolean', 'locationName' => 'publicSubnet', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'hpcClusterId' => [ 'type' => 'string', 'locationName' => 'hpcClusterId', ],
             ],
         ],
         'IpSubnetInfos' => [
@@ -2430,6 +2686,8 @@ return [
                 'dryRun' => [ 'type' => 'boolean', 'locationName' => 'dryRun', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'hpcClusterId' => [ 'type' => 'string', 'locationName' => 'hpcClusterId', ],
             ],
         ],
         'TagFilter' => [
@@ -2547,6 +2805,12 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
         ],
+        'ValidateSubnetIpsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'ips' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'Vpc' => [
             'type' => 'structure',
             'members' => [
@@ -2602,6 +2866,23 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'resourceTag' => [ 'type' => 'string', 'locationName' => 'resourceTag', ],
+            ],
+        ],
+        'UnAttachNetworInterfaceSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'AttachNetworkInterfaceSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'deviceIndex' => [ 'type' => 'integer', 'locationName' => 'deviceIndex', ],
+                'deviceType' => [ 'type' => 'string', 'locationName' => 'deviceType', ],
+                'deviceOwnerPin' => [ 'type' => 'string', 'locationName' => 'deviceOwnerPin', ],
+                'hostIp' => [ 'type' => 'string', 'locationName' => 'hostIp', ],
             ],
         ],
         'AddBandwidthPackageIPRequestShape' => [
@@ -2639,6 +2920,7 @@ return [
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
                 'chargeType' => [ 'type' => 'integer', 'locationName' => 'chargeType', ],
                 'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+                'bandwidthPackageType' => [ 'type' => 'string', 'locationName' => 'bandwidthPackageType', ],
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
@@ -2950,6 +3232,7 @@ return [
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'ipType' => [ 'type' => 'string', 'locationName' => 'ipType', ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'resourceTag' => [ 'type' => 'string', 'locationName' => 'resourceTag', ],
                 'dryRun' => [ 'type' => 'boolean', 'locationName' => 'dryRun', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
@@ -3031,28 +3314,10 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'StartNatGatewayResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'ModifyNatGatewayResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeNatGatewaysResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'natGateways' => [ 'type' => 'list', 'member' => [ 'shape' => 'NatGateway', ], ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'DeleteNatGatewayResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'failedList' => [ 'type' => 'list', 'member' => [ 'shape' => 'FailedIp', ], ],
             ],
         ],
         'DescribeNatGatewaysRequestShape' => [
@@ -3066,31 +3331,7 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DeleteNatGatewayResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DeleteNatGatewayResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'ModifyNatGatewayResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'StartNatGatewayResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateNatGatewayResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
-            ],
-        ],
-        'StopNatGatewayResultShape' => [
             'type' => 'structure',
             'members' => [
             ],
@@ -3100,6 +3341,7 @@ return [
             'members' => [
                 'natGatewayName' => [ 'type' => 'string', 'locationName' => 'natGatewayName', ],
                 'natGatewaySpec' => [ 'type' => 'string', 'locationName' => 'natGatewaySpec', ],
+                'networkType' => [ 'type' => 'string', 'locationName' => 'networkType', ],
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
                 'azIpSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'AzIpSpec', ], ],
@@ -3111,32 +3353,8 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'resourceTag' => [ 'type' => 'string', 'locationName' => 'resourceTag', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'AssociateElasticIpsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'elasticIpIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
-            ],
-        ],
-        'CreateNatGatewayResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateNatGatewayResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModifyNatGatewayRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'natGatewayName' => [ 'type' => 'string', 'locationName' => 'natGatewayName', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'natGatewaySpec' => [ 'type' => 'string', 'locationName' => 'natGatewaySpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
             ],
         ],
         'StartNatGatewayRequestShape' => [
@@ -3175,6 +3393,93 @@ return [
                 'failedList' => [ 'type' => 'list', 'member' => [ 'shape' => 'FailedIp', ], ],
             ],
         ],
+        'StopNatGatewayRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
+            ],
+        ],
+        'AssociateElasticIpsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeNatGatewayResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeNatGatewayResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StartNatGatewayResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeNatGatewaysResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'natGateways' => [ 'type' => 'list', 'member' => [ 'shape' => 'NatGateway', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DeleteNatGatewayResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'failedList' => [ 'type' => 'list', 'member' => [ 'shape' => 'FailedIp', ], ],
+            ],
+        ],
+        'DeleteNatGatewayResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteNatGatewayResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StartNatGatewayResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateNatGatewayResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
+            ],
+        ],
+        'StopNatGatewayResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'AssociateElasticIpsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'elasticIpIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
+            ],
+        ],
+        'CreateNatGatewayResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateNatGatewayResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyNatGatewayRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'natGatewayName' => [ 'type' => 'string', 'locationName' => 'natGatewayName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'natGatewaySpec' => [ 'type' => 'string', 'locationName' => 'natGatewaySpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
+            ],
+        ],
         'DeleteNatGatewayRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -3196,22 +3501,9 @@ return [
                 'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
             ],
         ],
-        'StopNatGatewayRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
-            ],
-        ],
         'AssociateElasticIpsResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'AssociateElasticIpsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeNatGatewayResultShape' => [
@@ -3220,11 +3512,175 @@ return [
                 'natGateway' =>  [ 'shape' => 'NatGateway', ],
             ],
         ],
-        'DescribeNatGatewayResponseShape' => [
+        'ModifyNatIpResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeNatGatewayResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyNatIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeNatIpCidrsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeNatIpCidrsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddNatIpCidrRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'natIpCidrDescription' => [ 'type' => 'string', 'locationName' => 'natIpCidrDescription', ],
+                'natIpCidr' => [ 'type' => 'string', 'locationName' => 'natIpCidr', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
+            ],
+        ],
+        'AddNatIpCidrResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AddNatIpCidrResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyNatIpCidrRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'natIpCidrId' => [ 'type' => 'string', 'locationName' => 'natIpCidrId', ],
+                'natIpCidrDescription' => [ 'type' => 'string', 'locationName' => 'natIpCidrDescription', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
+            ],
+        ],
+        'AllocateNatIpRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'natIpDescription' => [ 'type' => 'string', 'locationName' => 'natIpDescription', ],
+                'natIpCidrId' => [ 'type' => 'string', 'locationName' => 'natIpCidrId', ],
+                'natIp' => [ 'type' => 'string', 'locationName' => 'natIp', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
+            ],
+        ],
+        'AllocateNatIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'natIpId' => [ 'type' => 'string', 'locationName' => 'natIpId', ],
+            ],
+        ],
+        'ReleaseNatIpsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ReleaseNatIpsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'natIpIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
+            ],
+        ],
+        'DescribeNatIpsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeNatIpsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeNatIpsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'natIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'NatGatewayNatIp', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'RemoveNatIpCidrResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeNatIpCidrsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'natIpCidrs' => [ 'type' => 'list', 'member' => [ 'shape' => 'NatGatewayNatIpCidr', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeNatIpsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
+            ],
+        ],
+        'AllocateNatIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AllocateNatIpResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RemoveNatIpCidrResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeNatIpCidrsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
+            ],
+        ],
+        'ModifyNatIpCidrResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyNatIpRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'natIpId' => [ 'type' => 'string', 'locationName' => 'natIpId', ],
+                'natIpDescription' => [ 'type' => 'string', 'locationName' => 'natIpDescription', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
+            ],
+        ],
+        'ReleaseNatIpsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddNatIpCidrResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'natIpCidrId' => [ 'type' => 'string', 'locationName' => 'natIpCidrId', ],
+            ],
+        ],
+        'ModifyNatIpCidrResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RemoveNatIpCidrRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'natIpCidrId' => [ 'type' => 'string', 'locationName' => 'natIpCidrId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'natGatewayId' => [ 'type' => 'string', 'locationName' => 'natGatewayId', ],
             ],
         ],
         'ModifyNetworkAclRequestShape' => [
@@ -3449,6 +3905,84 @@ return [
                 'networkAclId' => [ 'type' => 'string', 'locationName' => 'networkAclId', ],
             ],
         ],
+        'ModifyNetworkInterfaceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DisassociateElasticIpResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UnassignSecondaryIpsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeNetworkInterfaceCidrIpsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeNetworkInterfaceCidrIpsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeNetworkInterfaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterface' =>  [ 'shape' => 'NetworkInterface', ],
+            ],
+        ],
+        'CreateNetworkInterfaceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateNetworkInterfaceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteNetworkInterfaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyNetworkInterfaceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterfaceName' => [ 'type' => 'string', 'locationName' => 'networkInterfaceName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'macAddress' => [ 'type' => 'string', 'locationName' => 'macAddress', ],
+                'connectionTrackingConfiguration' =>  [ 'shape' => 'NetworkInterfaceConnectionTrackingConfiguration', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+            ],
+        ],
+        'CreateNetworkInterfaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+            ],
+        ],
+        'DeleteNetworkInterfaceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AssociateElasticIpResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteNetworkInterfaceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
+            ],
+        ],
         'DescribeNetworkInterfacesResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3464,14 +3998,9 @@ return [
                 'secondaryIpCount' => [ 'type' => 'double', 'locationName' => 'secondaryIpCount', ],
                 'secondaryIpMaskLen' => [ 'type' => 'integer', 'locationName' => 'secondaryIpMaskLen', ],
                 'secondaryIpAddress' => [ 'type' => 'string', 'locationName' => 'secondaryIpAddress', ],
+                'secondaryIpSubnetId' => [ 'type' => 'string', 'locationName' => 'secondaryIpSubnetId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
-            ],
-        ],
-        'ModifyNetworkInterfaceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'UnassignSecondaryIpsRequestShape' => [
@@ -3513,12 +4042,14 @@ return [
                 'primaryIpAddress' => [ 'type' => 'string', 'locationName' => 'primaryIpAddress', ],
                 'secondaryIpAddresses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'secondaryIpCount' => [ 'type' => 'integer', 'locationName' => 'secondaryIpCount', ],
+                'secondaryIpSubnetId' => [ 'type' => 'string', 'locationName' => 'secondaryIpSubnetId', ],
                 'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'sanityCheck' => [ 'type' => 'integer', 'locationName' => 'sanityCheck', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'ipv6Addresses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'connectionTrackingConfiguration' =>  [ 'shape' => 'NetworkInterfaceConnectionTrackingConfiguration', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -3531,12 +4062,6 @@ return [
                 'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
             ],
         ],
-        'DisassociateElasticIpResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeNetworkInterfacesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -3544,29 +4069,11 @@ return [
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
             ],
         ],
-        'UnassignSecondaryIpsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DescribeNetworkInterfaceCidrIpsResultShape' => [
             'type' => 'structure',
             'members' => [
                 'networkInterfaceCidrIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'IpInfos', ], ],
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'DescribeNetworkInterfaceCidrIpsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeNetworkInterfaceCidrIpsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeNetworkInterfaceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'networkInterface' =>  [ 'shape' => 'NetworkInterface', ],
             ],
         ],
         'DescribeNetworkInterfaceCidrIpsRequestShape' => [
@@ -3577,13 +4084,6 @@ return [
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
-            ],
-        ],
-        'CreateNetworkInterfaceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateNetworkInterfaceResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DisassociateElasticIpResultShape' => [
@@ -3623,50 +4123,10 @@ return [
             'members' => [
             ],
         ],
-        'DeleteNetworkInterfaceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'ModifyNetworkInterfaceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'networkInterfaceName' => [ 'type' => 'string', 'locationName' => 'networkInterfaceName', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'securityGroups' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'macAddress' => [ 'type' => 'string', 'locationName' => 'macAddress', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
-            ],
-        ],
         'UnassignSecondaryIpsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateNetworkInterfaceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
-            ],
-        ],
-        'DeleteNetworkInterfaceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AssociateElasticIpResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeleteNetworkInterfaceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'networkInterfaceId' => [ 'type' => 'string', 'locationName' => 'networkInterfaceId', ],
             ],
         ],
         'AssignSecondaryIpsResultShape' => [
@@ -4226,6 +4686,8 @@ return [
                 'dryRun' => [ 'type' => 'boolean', 'locationName' => 'dryRun', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'hpcClusterId' => [ 'type' => 'string', 'locationName' => 'hpcClusterId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -4306,6 +4768,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'resourceTag' => [ 'type' => 'string', 'locationName' => 'resourceTag', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],

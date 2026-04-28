@@ -24,6 +24,12 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise queryConvoAgentStatusAsync(array $args = [])
  * @method \Jdcloud\Result queryConvoAgentList(array $args = [])
  * @method \GuzzleHttp\Promise\Promise queryConvoAgentListAsync(array $args = [])
+ * @method \Jdcloud\Result startConvoAgent(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise startConvoAgentAsync(array $args = [])
+ * @method \Jdcloud\Result stopConvoAgent(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise stopConvoAgentAsync(array $args = [])
+ * @method \Jdcloud\Result speakCustomeText(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise speakCustomeTextAsync(array $args = [])
  */
 class ConversationalaiClient extends JdCloudClient
 {

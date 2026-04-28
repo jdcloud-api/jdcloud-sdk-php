@@ -29,6 +29,33 @@ return [
             'input' => [ 'shape' => 'QueryConvoAgentListRequestShape', ],
             'output' => [ 'shape' => 'QueryConvoAgentListResponseShape', ],
         ],
+        'StartConvoAgent' => [
+            'name' => 'StartConvoAgent',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/startConvoAgent',
+            ],
+            'input' => [ 'shape' => 'StartConvoAgentRequestShape', ],
+            'output' => [ 'shape' => 'StartConvoAgentResponseShape', ],
+        ],
+        'StopConvoAgent' => [
+            'name' => 'StopConvoAgent',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/stopConvoAgent',
+            ],
+            'input' => [ 'shape' => 'StopConvoAgentRequestShape', ],
+            'output' => [ 'shape' => 'StopConvoAgentResponseShape', ],
+        ],
+        'SpeakCustomeText' => [
+            'name' => 'SpeakCustomeText',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/speakCustomeText',
+            ],
+            'input' => [ 'shape' => 'SpeakCustomeTextRequestShape', ],
+            'output' => [ 'shape' => 'SpeakCustomeTextResponseShape', ],
+        ],
     ],
     'shapes' => [
         'Filter' => [
@@ -126,6 +153,56 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
+        'QueryConvoAgentListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
+                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
+                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConvoAgentStatusInfo', ], ],
+            ],
+        ],
+        'StartConvoAgentRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'agentName' => [ 'type' => 'string', 'locationName' => 'agentName', ],
+                'agentJoinRoomParams' =>  [ 'shape' => 'AgentJoinRoomParams', ],
+                'greetingMessage' => [ 'type' => 'string', 'locationName' => 'greetingMessage', ],
+                'enableAsr' => [ 'type' => 'integer', 'locationName' => 'enableAsr', ],
+                'asrVendor' => [ 'type' => 'string', 'locationName' => 'asrVendor', ],
+                'asrParams' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'enableLlm' => [ 'type' => 'integer', 'locationName' => 'enableLlm', ],
+                'llmVendor' => [ 'type' => 'string', 'locationName' => 'llmVendor', ],
+                'llmParams' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'enableTts' => [ 'type' => 'integer', 'locationName' => 'enableTts', ],
+                'ttsVendor' => [ 'type' => 'string', 'locationName' => 'ttsVendor', ],
+                'ttsParams' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'vadParams' =>  [ 'shape' => 'VadParams', ],
+                'silenceParams' =>  [ 'shape' => 'SilenceParams', ],
+                'agentParams' => [ 'type' => 'object', 'locationName' => 'agentParams', ],
+            ],
+        ],
+        'StartConvoAgentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'agentId' => [ 'type' => 'string', 'locationName' => 'agentId', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+            ],
+        ],
+        'StartConvoAgentResult' => [
+            'type' => 'structure',
+            'members' => [
+                'agentId' => [ 'type' => 'string', 'locationName' => 'agentId', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+            ],
+        ],
+        'SpeakCustomeTextResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'QueryConvoAgentStatusResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -140,6 +217,11 @@ return [
                 'result' =>  [ 'shape' => 'QueryConvoAgentListResultShape', ],
             ],
         ],
+        'StopConvoAgentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'QueryConvoAgentListRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -148,14 +230,24 @@ return [
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
             ],
         ],
-        'QueryConvoAgentListResultShape' => [
+        'StopConvoAgentResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'totalElements' => [ 'type' => 'integer', 'locationName' => 'totalElements', ],
-                'totalPages' => [ 'type' => 'integer', 'locationName' => 'totalPages', ],
-                'content' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConvoAgentStatusInfo', ], ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StopConvoAgentRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'agentId' => [ 'type' => 'string', 'locationName' => 'agentId', ],
+            ],
+        ],
+        'StartConvoAgentResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'StartConvoAgentResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'QueryConvoAgentStatusRequestShape' => [
@@ -179,11 +271,17 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
-        'StartConvoAgentResult' => [
+        'SpeakCustomeTextRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'agentId' => [ 'type' => 'string', 'locationName' => 'agentId', ],
-                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'priority' => [ 'type' => 'string', 'locationName' => 'priority', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+            ],
+        ],
+        'SpeakCustomeTextResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
     ],

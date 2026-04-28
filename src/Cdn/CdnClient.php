@@ -244,6 +244,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise checkWhetherIpBelongToJCloudAsync(array $args = [])
  * @method \Jdcloud\Result queryServiceIp(array $args = [])
  * @method \GuzzleHttp\Promise\Promise queryServiceIpAsync(array $args = [])
+ * @method \Jdcloud\Result queryServiceIpWithAreaIsp(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise queryServiceIpWithAreaIspAsync(array $args = [])
  * @method \Jdcloud\Result setLiveDomainBackSource(array $args = [])
  * @method \GuzzleHttp\Promise\Promise setLiveDomainBackSourceAsync(array $args = [])
  * @method \Jdcloud\Result setLiveDomainIpBlackList(array $args = [])

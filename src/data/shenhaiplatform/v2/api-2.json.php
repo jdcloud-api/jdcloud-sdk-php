@@ -92,6 +92,24 @@ return [
             'input' => [ 'shape' => 'CopilotVerifyRequestShape', ],
             'output' => [ 'shape' => 'CopilotVerifyResponseShape', ],
         ],
+        'JtlasForeignTableList' => [
+            'name' => 'JtlasForeignTableList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/jtlasForeignTableList',
+            ],
+            'input' => [ 'shape' => 'JtlasForeignTableListRequestShape', ],
+            'output' => [ 'shape' => 'JtlasForeignTableListResponseShape', ],
+        ],
+        'JtlasForeignTableDetail' => [
+            'name' => 'JtlasForeignTableDetail',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/jtlasForeignTableDetail',
+            ],
+            'input' => [ 'shape' => 'JtlasForeignTableDetailRequestShape', ],
+            'output' => [ 'shape' => 'JtlasForeignTableDetailResponseShape', ],
+        ],
         'JtlasSubscribeTable' => [
             'name' => 'JtlasSubscribeTable',
             'http' => [
@@ -974,6 +992,150 @@ return [
             'input' => [ 'shape' => 'GravityParticleConfigUserMatchUserRequestShape', ],
             'output' => [ 'shape' => 'GravityParticleConfigUserMatchUserResponseShape', ],
         ],
+        'ManageHubClusterCreate' => [
+            'name' => 'ManageHubClusterCreate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/manageHubClusterCreate',
+            ],
+            'input' => [ 'shape' => 'ManageHubClusterCreateRequestShape', ],
+            'output' => [ 'shape' => 'ManageHubClusterCreateResponseShape', ],
+        ],
+        'ManageHubClusterDelete' => [
+            'name' => 'ManageHubClusterDelete',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/manageHubClusterDelete',
+            ],
+            'input' => [ 'shape' => 'ManageHubClusterDeleteRequestShape', ],
+            'output' => [ 'shape' => 'ManageHubClusterDeleteResponseShape', ],
+        ],
+        'ManageHubClusterUpdate' => [
+            'name' => 'ManageHubClusterUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/manageHubClusterUpdate',
+            ],
+            'input' => [ 'shape' => 'ManageHubClusterUpdateRequestShape', ],
+            'output' => [ 'shape' => 'ManageHubClusterUpdateResponseShape', ],
+        ],
+        'ManageHubClusterGet' => [
+            'name' => 'ManageHubClusterGet',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/manageHubClusterGet',
+            ],
+            'input' => [ 'shape' => 'ManageHubClusterGetRequestShape', ],
+            'output' => [ 'shape' => 'ManageHubClusterGetResponseShape', ],
+        ],
+        'ManageHubClusterList' => [
+            'name' => 'ManageHubClusterList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/manageHubClusterList',
+            ],
+            'input' => [ 'shape' => 'ManageHubClusterListRequestShape', ],
+            'output' => [ 'shape' => 'ManageHubClusterListResponseShape', ],
+        ],
+        'ManageHubClusterMetaList' => [
+            'name' => 'ManageHubClusterMetaList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/manageHubClusterMetaList',
+            ],
+            'input' => [ 'shape' => 'ManageHubClusterMetaListRequestShape', ],
+            'output' => [ 'shape' => 'ManageHubClusterMetaListResponseShape', ],
+        ],
+        'ManageHubClusterMetaAdd' => [
+            'name' => 'ManageHubClusterMetaAdd',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/manageHubClusterMetaAdd',
+            ],
+            'input' => [ 'shape' => 'ManageHubClusterMetaAddRequestShape', ],
+            'output' => [ 'shape' => 'ManageHubClusterMetaAddResponseShape', ],
+        ],
+        'ManageHubClusterMetaDelete' => [
+            'name' => 'ManageHubClusterMetaDelete',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/manageHubClusterMetaDelete',
+            ],
+            'input' => [ 'shape' => 'ManageHubClusterMetaDeleteRequestShape', ],
+            'output' => [ 'shape' => 'ManageHubClusterMetaDeleteResponseShape', ],
+        ],
+        'ManageHubClusterMetaReplace' => [
+            'name' => 'ManageHubClusterMetaReplace',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/manageHubClusterMetaReplace',
+            ],
+            'input' => [ 'shape' => 'ManageHubClusterMetaReplaceRequestShape', ],
+            'output' => [ 'shape' => 'ManageHubClusterMetaReplaceResponseShape', ],
+        ],
+        'RotorDictTaskScheduleCycles' => [
+            'name' => 'RotorDictTaskScheduleCycles',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorDictTaskScheduleCycles',
+            ],
+            'input' => [ 'shape' => 'RotorDictTaskScheduleCyclesRequestShape', ],
+            'output' => [ 'shape' => 'RotorDictTaskScheduleCyclesResponseShape', ],
+        ],
+        'RotorDictTaskTypes' => [
+            'name' => 'RotorDictTaskTypes',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorDictTaskTypes',
+            ],
+            'input' => [ 'shape' => 'RotorDictTaskTypesRequestShape', ],
+            'output' => [ 'shape' => 'RotorDictTaskTypesResponseShape', ],
+        ],
+        'RotorDictTaskScheduleStates' => [
+            'name' => 'RotorDictTaskScheduleStates',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorDictTaskScheduleStates',
+            ],
+            'input' => [ 'shape' => 'RotorDictTaskScheduleStatesRequestShape', ],
+            'output' => [ 'shape' => 'RotorDictTaskScheduleStatesResponseShape', ],
+        ],
+        'RotorDictInstanceDisplayStates' => [
+            'name' => 'RotorDictInstanceDisplayStates',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorDictInstanceDisplayStates',
+            ],
+            'input' => [ 'shape' => 'RotorDictInstanceDisplayStatesRequestShape', ],
+            'output' => [ 'shape' => 'RotorDictInstanceDisplayStatesResponseShape', ],
+        ],
+        'RotorDictSupplementMethod' => [
+            'name' => 'RotorDictSupplementMethod',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorDictSupplementMethod',
+            ],
+            'input' => [ 'shape' => 'RotorDictSupplementMethodRequestShape', ],
+            'output' => [ 'shape' => 'RotorDictSupplementMethodResponseShape', ],
+        ],
+        'RotorDictSupplementOrder' => [
+            'name' => 'RotorDictSupplementOrder',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorDictSupplementOrder',
+            ],
+            'input' => [ 'shape' => 'RotorDictSupplementOrderRequestShape', ],
+            'output' => [ 'shape' => 'RotorDictSupplementOrderResponseShape', ],
+        ],
+        'RotorDictSupplementResourceGroupStrategy' => [
+            'name' => 'RotorDictSupplementResourceGroupStrategy',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorDictSupplementResourceGroupStrategy',
+            ],
+            'input' => [ 'shape' => 'RotorDictSupplementResourceGroupStrategyRequestShape', ],
+            'output' => [ 'shape' => 'RotorDictSupplementResourceGroupStrategyResponseShape', ],
+        ],
         'ManageHubDutyListRoster' => [
             'name' => 'ManageHubDutyListRoster',
             'http' => [
@@ -1181,6 +1343,249 @@ return [
             'input' => [ 'shape' => 'ManageHubGravityOneClickRerunResubmitRequestShape', ],
             'output' => [ 'shape' => 'ManageHubGravityOneClickRerunResubmitResponseShape', ],
         ],
+        'RotorInstances' => [
+            'name' => 'RotorInstances',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorInstances',
+            ],
+            'input' => [ 'shape' => 'RotorInstancesRequestShape', ],
+            'output' => [ 'shape' => 'RotorInstancesResponseShape', ],
+        ],
+        'RotorInstanceDependency' => [
+            'name' => 'RotorInstanceDependency',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorInstanceDependency',
+            ],
+            'input' => [ 'shape' => 'RotorInstanceDependencyRequestShape', ],
+            'output' => [ 'shape' => 'RotorInstanceDependencyResponseShape', ],
+        ],
+        'RotorInstanceDetail' => [
+            'name' => 'RotorInstanceDetail',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorInstanceDetail',
+            ],
+            'input' => [ 'shape' => 'RotorInstanceDetailRequestShape', ],
+            'output' => [ 'shape' => 'RotorInstanceDetailResponseShape', ],
+        ],
+        'RotorInstanceHistories' => [
+            'name' => 'RotorInstanceHistories',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorInstanceHistories',
+            ],
+            'input' => [ 'shape' => 'RotorInstanceHistoriesRequestShape', ],
+            'output' => [ 'shape' => 'RotorInstanceHistoriesResponseShape', ],
+        ],
+        'RotorKillInstance' => [
+            'name' => 'RotorKillInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorKillInstance',
+            ],
+            'input' => [ 'shape' => 'RotorKillInstanceRequestShape', ],
+            'output' => [ 'shape' => 'RotorKillInstanceResponseShape', ],
+        ],
+        'RotorRerunInstance' => [
+            'name' => 'RotorRerunInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorRerunInstance',
+            ],
+            'input' => [ 'shape' => 'RotorRerunInstanceRequestShape', ],
+            'output' => [ 'shape' => 'RotorRerunInstanceResponseShape', ],
+        ],
+        'RotorResetInstance' => [
+            'name' => 'RotorResetInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorResetInstance',
+            ],
+            'input' => [ 'shape' => 'RotorResetInstanceRequestShape', ],
+            'output' => [ 'shape' => 'RotorResetInstanceResponseShape', ],
+        ],
+        'RotorInstanceOperationLogs' => [
+            'name' => 'RotorInstanceOperationLogs',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorInstanceOperationLogs',
+            ],
+            'input' => [ 'shape' => 'RotorInstanceOperationLogsRequestShape', ],
+            'output' => [ 'shape' => 'RotorInstanceOperationLogsResponseShape', ],
+        ],
+        'RotorRerunDownstream' => [
+            'name' => 'RotorRerunDownstream',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorRerunDownstream',
+            ],
+            'input' => [ 'shape' => 'RotorRerunDownstreamRequestShape', ],
+            'output' => [ 'shape' => 'RotorRerunDownstreamResponseShape', ],
+        ],
+        'RotorInstanceScheduleLogs' => [
+            'name' => 'RotorInstanceScheduleLogs',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorInstanceScheduleLogs',
+            ],
+            'input' => [ 'shape' => 'RotorInstanceScheduleLogsRequestShape', ],
+            'output' => [ 'shape' => 'RotorInstanceScheduleLogsResponseShape', ],
+        ],
+        'RotorInstanceRunLogs' => [
+            'name' => 'RotorInstanceRunLogs',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorInstanceRunLogs',
+            ],
+            'input' => [ 'shape' => 'RotorInstanceRunLogsRequestShape', ],
+            'output' => [ 'shape' => 'RotorInstanceRunLogsResponseShape', ],
+        ],
+        'StatusPercentageToday' => [
+            'name' => 'StatusPercentageToday',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/statusPercentageToday',
+            ],
+            'input' => [ 'shape' => 'StatusPercentageTodayRequestShape', ],
+            'output' => [ 'shape' => 'StatusPercentageTodayResponseShape', ],
+        ],
+        'HistorySuccessInstanceAvgPerHour' => [
+            'name' => 'HistorySuccessInstanceAvgPerHour',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/historySuccessInstanceAvgPerHour',
+            ],
+            'input' => [ 'shape' => 'HistorySuccessInstanceAvgPerHourRequestShape', ],
+            'output' => [ 'shape' => 'HistorySuccessInstanceAvgPerHourResponseShape', ],
+        ],
+        'SuccessInstancePerHour' => [
+            'name' => 'SuccessInstancePerHour',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/successInstancePerHour',
+            ],
+            'input' => [ 'shape' => 'SuccessInstancePerHourRequestShape', ],
+            'output' => [ 'shape' => 'SuccessInstancePerHourResponseShape', ],
+        ],
+        'HistoryFailedInstanceAvgPerHour' => [
+            'name' => 'HistoryFailedInstanceAvgPerHour',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/historyFailedInstanceAvgPerHour',
+            ],
+            'input' => [ 'shape' => 'HistoryFailedInstanceAvgPerHourRequestShape', ],
+            'output' => [ 'shape' => 'HistoryFailedInstanceAvgPerHourResponseShape', ],
+        ],
+        'FailedInstancePerHour' => [
+            'name' => 'FailedInstancePerHour',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/failedInstancePerHour',
+            ],
+            'input' => [ 'shape' => 'FailedInstancePerHourRequestShape', ],
+            'output' => [ 'shape' => 'FailedInstancePerHourResponseShape', ],
+        ],
+        'JobPendingInstanceRanking' => [
+            'name' => 'JobPendingInstanceRanking',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/jobPendingInstanceRanking',
+            ],
+            'input' => [ 'shape' => 'JobPendingInstanceRankingRequestShape', ],
+            'output' => [ 'shape' => 'JobPendingInstanceRankingResponseShape', ],
+        ],
+        'JobFailedInstanceRanking' => [
+            'name' => 'JobFailedInstanceRanking',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/jobFailedInstanceRanking',
+            ],
+            'input' => [ 'shape' => 'JobFailedInstanceRankingRequestShape', ],
+            'output' => [ 'shape' => 'JobFailedInstanceRankingResponseShape', ],
+        ],
+        'AwaitingInstance' => [
+            'name' => 'AwaitingInstance',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/awaitingInstance',
+            ],
+            'input' => [ 'shape' => 'AwaitingInstanceRequestShape', ],
+            'output' => [ 'shape' => 'AwaitingInstanceResponseShape', ],
+        ],
+        'RunningInstance' => [
+            'name' => 'RunningInstance',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/runningInstance',
+            ],
+            'input' => [ 'shape' => 'RunningInstanceRequestShape', ],
+            'output' => [ 'shape' => 'RunningInstanceResponseShape', ],
+        ],
+        'FailedHistories' => [
+            'name' => 'FailedHistories',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/failedHistories',
+            ],
+            'input' => [ 'shape' => 'FailedHistoriesRequestShape', ],
+            'output' => [ 'shape' => 'FailedHistoriesResponseShape', ],
+        ],
+        'QueryStatisticsInSelectTime' => [
+            'name' => 'QueryStatisticsInSelectTime',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/queryStatisticsInSelectTime',
+            ],
+            'input' => [ 'shape' => 'QueryStatisticsInSelectTimeRequestShape', ],
+            'output' => [ 'shape' => 'QueryStatisticsInSelectTimeResponseShape', ],
+        ],
+        'GetScheduledInstancesCountPerHour' => [
+            'name' => 'GetScheduledInstancesCountPerHour',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getScheduledInstancesCountPerHour',
+            ],
+            'input' => [ 'shape' => 'GetScheduledInstancesCountPerHourRequestShape', ],
+            'output' => [ 'shape' => 'GetScheduledInstancesCountPerHourResponseShape', ],
+        ],
+        'GetFailedInstancesReason' => [
+            'name' => 'GetFailedInstancesReason',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getFailedInstancesReason',
+            ],
+            'input' => [ 'shape' => 'GetFailedInstancesReasonRequestShape', ],
+            'output' => [ 'shape' => 'GetFailedInstancesReasonResponseShape', ],
+        ],
+        'GetTaskStateStatistics' => [
+            'name' => 'GetTaskStateStatistics',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getTaskStateStatistics',
+            ],
+            'input' => [ 'shape' => 'GetTaskStateStatisticsRequestShape', ],
+            'output' => [ 'shape' => 'GetTaskStateStatisticsResponseShape', ],
+        ],
+        'GetTaskTypeStatistics' => [
+            'name' => 'GetTaskTypeStatistics',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getTaskTypeStatistics',
+            ],
+            'input' => [ 'shape' => 'GetTaskTypeStatisticsRequestShape', ],
+            'output' => [ 'shape' => 'GetTaskTypeStatisticsResponseShape', ],
+        ],
+        'RotorInstances' => [
+            'name' => 'RotorInstances',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorInstances',
+            ],
+            'input' => [ 'shape' => 'RotorInstancesRequestShape', ],
+            'output' => [ 'shape' => 'RotorInstancesResponseShape', ],
+        ],
         'ManageHubStorageSummary' => [
             'name' => 'ManageHubStorageSummary',
             'http' => [
@@ -1225,6 +1630,42 @@ return [
             ],
             'input' => [ 'shape' => 'ManageHubStoragePartitionListRequestShape', ],
             'output' => [ 'shape' => 'ManageHubStoragePartitionListResponseShape', ],
+        ],
+        'RotorTasks' => [
+            'name' => 'RotorTasks',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorTasks',
+            ],
+            'input' => [ 'shape' => 'RotorTasksRequestShape', ],
+            'output' => [ 'shape' => 'RotorTasksResponseShape', ],
+        ],
+        'RotorTaskDetail' => [
+            'name' => 'RotorTaskDetail',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorTaskDetail',
+            ],
+            'input' => [ 'shape' => 'RotorTaskDetailRequestShape', ],
+            'output' => [ 'shape' => 'RotorTaskDetailResponseShape', ],
+        ],
+        'RotorTaskDependency' => [
+            'name' => 'RotorTaskDependency',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorTaskDependency',
+            ],
+            'input' => [ 'shape' => 'RotorTaskDependencyRequestShape', ],
+            'output' => [ 'shape' => 'RotorTaskDependencyResponseShape', ],
+        ],
+        'RotorUpdateTaskScheduleState' => [
+            'name' => 'RotorUpdateTaskScheduleState',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorUpdateTaskScheduleState',
+            ],
+            'input' => [ 'shape' => 'RotorUpdateTaskScheduleStateRequestShape', ],
+            'output' => [ 'shape' => 'RotorUpdateTaskScheduleStateResponseShape', ],
         ],
         'DescribePublishObjs' => [
             'name' => 'DescribePublishObjs',
@@ -1306,6 +1747,348 @@ return [
             ],
             'input' => [ 'shape' => 'PublishPkgRequestShape', ],
             'output' => [ 'shape' => 'PublishPkgResponseShape', ],
+        ],
+        'QueryStatisticsInSelectTime' => [
+            'name' => 'QueryStatisticsInSelectTime',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/queryStatisticsInSelectTime',
+            ],
+            'input' => [ 'shape' => 'QueryStatisticsInSelectTimeRequestShape', ],
+            'output' => [ 'shape' => 'QueryStatisticsInSelectTimeResponseShape', ],
+        ],
+        'GetScheduledInstancesCountPerHour' => [
+            'name' => 'GetScheduledInstancesCountPerHour',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getScheduledInstancesCountPerHour',
+            ],
+            'input' => [ 'shape' => 'GetScheduledInstancesCountPerHourRequestShape', ],
+            'output' => [ 'shape' => 'GetScheduledInstancesCountPerHourResponseShape', ],
+        ],
+        'GetFailedInstancesReason' => [
+            'name' => 'GetFailedInstancesReason',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getFailedInstancesReason',
+            ],
+            'input' => [ 'shape' => 'GetFailedInstancesReasonRequestShape', ],
+            'output' => [ 'shape' => 'GetFailedInstancesReasonResponseShape', ],
+        ],
+        'GetTaskStateStatistics' => [
+            'name' => 'GetTaskStateStatistics',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getTaskStateStatistics',
+            ],
+            'input' => [ 'shape' => 'GetTaskStateStatisticsRequestShape', ],
+            'output' => [ 'shape' => 'GetTaskStateStatisticsResponseShape', ],
+        ],
+        'GetTaskTypeStatistics' => [
+            'name' => 'GetTaskTypeStatistics',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getTaskTypeStatistics',
+            ],
+            'input' => [ 'shape' => 'GetTaskTypeStatisticsRequestShape', ],
+            'output' => [ 'shape' => 'GetTaskTypeStatisticsResponseShape', ],
+        ],
+        'GetLongTimeRunningInstances' => [
+            'name' => 'GetLongTimeRunningInstances',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getLongTimeRunningInstances',
+            ],
+            'input' => [ 'shape' => 'GetLongTimeRunningInstancesRequestShape', ],
+            'output' => [ 'shape' => 'GetLongTimeRunningInstancesResponseShape', ],
+        ],
+        'GetMostFailedTimesInstances' => [
+            'name' => 'GetMostFailedTimesInstances',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getMostFailedTimesInstances',
+            ],
+            'input' => [ 'shape' => 'GetMostFailedTimesInstancesRequestShape', ],
+            'output' => [ 'shape' => 'GetMostFailedTimesInstancesResponseShape', ],
+        ],
+        'RotorDictTaskScheduleCycles' => [
+            'name' => 'RotorDictTaskScheduleCycles',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorDictTaskScheduleCycles',
+            ],
+            'input' => [ 'shape' => 'RotorDictTaskScheduleCyclesRequestShape', ],
+            'output' => [ 'shape' => 'RotorDictTaskScheduleCyclesResponseShape', ],
+        ],
+        'RotorDictTaskTypes' => [
+            'name' => 'RotorDictTaskTypes',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorDictTaskTypes',
+            ],
+            'input' => [ 'shape' => 'RotorDictTaskTypesRequestShape', ],
+            'output' => [ 'shape' => 'RotorDictTaskTypesResponseShape', ],
+        ],
+        'RotorDictTaskScheduleStates' => [
+            'name' => 'RotorDictTaskScheduleStates',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorDictTaskScheduleStates',
+            ],
+            'input' => [ 'shape' => 'RotorDictTaskScheduleStatesRequestShape', ],
+            'output' => [ 'shape' => 'RotorDictTaskScheduleStatesResponseShape', ],
+        ],
+        'RotorDictInstanceDisplayStates' => [
+            'name' => 'RotorDictInstanceDisplayStates',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorDictInstanceDisplayStates',
+            ],
+            'input' => [ 'shape' => 'RotorDictInstanceDisplayStatesRequestShape', ],
+            'output' => [ 'shape' => 'RotorDictInstanceDisplayStatesResponseShape', ],
+        ],
+        'RotorDictSupplementMethod' => [
+            'name' => 'RotorDictSupplementMethod',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorDictSupplementMethod',
+            ],
+            'input' => [ 'shape' => 'RotorDictSupplementMethodRequestShape', ],
+            'output' => [ 'shape' => 'RotorDictSupplementMethodResponseShape', ],
+        ],
+        'RotorDictSupplementOrder' => [
+            'name' => 'RotorDictSupplementOrder',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorDictSupplementOrder',
+            ],
+            'input' => [ 'shape' => 'RotorDictSupplementOrderRequestShape', ],
+            'output' => [ 'shape' => 'RotorDictSupplementOrderResponseShape', ],
+        ],
+        'RotorDictSupplementResourceGroupStrategy' => [
+            'name' => 'RotorDictSupplementResourceGroupStrategy',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorDictSupplementResourceGroupStrategy',
+            ],
+            'input' => [ 'shape' => 'RotorDictSupplementResourceGroupStrategyRequestShape', ],
+            'output' => [ 'shape' => 'RotorDictSupplementResourceGroupStrategyResponseShape', ],
+        ],
+        'RotorDictSupplementPlanStates' => [
+            'name' => 'RotorDictSupplementPlanStates',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorDictSupplementPlanStates',
+            ],
+            'input' => [ 'shape' => 'RotorDictSupplementPlanStatesRequestShape', ],
+            'output' => [ 'shape' => 'RotorDictSupplementPlanStatesResponseShape', ],
+        ],
+        'RotorInstances' => [
+            'name' => 'RotorInstances',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorInstances',
+            ],
+            'input' => [ 'shape' => 'RotorInstancesRequestShape', ],
+            'output' => [ 'shape' => 'RotorInstancesResponseShape', ],
+        ],
+        'RotorInstanceDependency' => [
+            'name' => 'RotorInstanceDependency',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorInstanceDependency',
+            ],
+            'input' => [ 'shape' => 'RotorInstanceDependencyRequestShape', ],
+            'output' => [ 'shape' => 'RotorInstanceDependencyResponseShape', ],
+        ],
+        'RotorInstanceDetail' => [
+            'name' => 'RotorInstanceDetail',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorInstanceDetail',
+            ],
+            'input' => [ 'shape' => 'RotorInstanceDetailRequestShape', ],
+            'output' => [ 'shape' => 'RotorInstanceDetailResponseShape', ],
+        ],
+        'RotorInstanceHistories' => [
+            'name' => 'RotorInstanceHistories',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorInstanceHistories',
+            ],
+            'input' => [ 'shape' => 'RotorInstanceHistoriesRequestShape', ],
+            'output' => [ 'shape' => 'RotorInstanceHistoriesResponseShape', ],
+        ],
+        'RotorKillInstance' => [
+            'name' => 'RotorKillInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorKillInstance',
+            ],
+            'input' => [ 'shape' => 'RotorKillInstanceRequestShape', ],
+            'output' => [ 'shape' => 'RotorKillInstanceResponseShape', ],
+        ],
+        'RotorRerunInstance' => [
+            'name' => 'RotorRerunInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorRerunInstance',
+            ],
+            'input' => [ 'shape' => 'RotorRerunInstanceRequestShape', ],
+            'output' => [ 'shape' => 'RotorRerunInstanceResponseShape', ],
+        ],
+        'RotorResetInstance' => [
+            'name' => 'RotorResetInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorResetInstance',
+            ],
+            'input' => [ 'shape' => 'RotorResetInstanceRequestShape', ],
+            'output' => [ 'shape' => 'RotorResetInstanceResponseShape', ],
+        ],
+        'RotorInstanceOperationLogs' => [
+            'name' => 'RotorInstanceOperationLogs',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorInstanceOperationLogs',
+            ],
+            'input' => [ 'shape' => 'RotorInstanceOperationLogsRequestShape', ],
+            'output' => [ 'shape' => 'RotorInstanceOperationLogsResponseShape', ],
+        ],
+        'RotorRerunDownstream' => [
+            'name' => 'RotorRerunDownstream',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorRerunDownstream',
+            ],
+            'input' => [ 'shape' => 'RotorRerunDownstreamRequestShape', ],
+            'output' => [ 'shape' => 'RotorRerunDownstreamResponseShape', ],
+        ],
+        'RotorInstanceScheduleLogs' => [
+            'name' => 'RotorInstanceScheduleLogs',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorInstanceScheduleLogs',
+            ],
+            'input' => [ 'shape' => 'RotorInstanceScheduleLogsRequestShape', ],
+            'output' => [ 'shape' => 'RotorInstanceScheduleLogsResponseShape', ],
+        ],
+        'RotorInstanceRunLogs' => [
+            'name' => 'RotorInstanceRunLogs',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorInstanceRunLogs',
+            ],
+            'input' => [ 'shape' => 'RotorInstanceRunLogsRequestShape', ],
+            'output' => [ 'shape' => 'RotorInstanceRunLogsResponseShape', ],
+        ],
+        'RotorSupplementPlanCreate' => [
+            'name' => 'RotorSupplementPlanCreate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorSupplementPlanCreate',
+            ],
+            'input' => [ 'shape' => 'RotorSupplementPlanCreateRequestShape', ],
+            'output' => [ 'shape' => 'RotorSupplementPlanCreateResponseShape', ],
+        ],
+        'RotorSupplementPlanList' => [
+            'name' => 'RotorSupplementPlanList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorSupplementPlanList',
+            ],
+            'input' => [ 'shape' => 'RotorSupplementPlanListRequestShape', ],
+            'output' => [ 'shape' => 'RotorSupplementPlanListResponseShape', ],
+        ],
+        'RotorSupplementPlanInfo' => [
+            'name' => 'RotorSupplementPlanInfo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorSupplementPlanInfo',
+            ],
+            'input' => [ 'shape' => 'RotorSupplementPlanInfoRequestShape', ],
+            'output' => [ 'shape' => 'RotorSupplementPlanInfoResponseShape', ],
+        ],
+        'RotorSupplementInstances' => [
+            'name' => 'RotorSupplementInstances',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorSupplementInstances',
+            ],
+            'input' => [ 'shape' => 'RotorSupplementInstancesRequestShape', ],
+            'output' => [ 'shape' => 'RotorSupplementInstancesResponseShape', ],
+        ],
+        'RotorSupplementPlanDelete' => [
+            'name' => 'RotorSupplementPlanDelete',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorSupplementPlanDelete',
+            ],
+            'input' => [ 'shape' => 'RotorSupplementPlanDeleteRequestShape', ],
+            'output' => [ 'shape' => 'RotorSupplementPlanDeleteResponseShape', ],
+        ],
+        'RotorSupplementPlanCancel' => [
+            'name' => 'RotorSupplementPlanCancel',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorSupplementPlanCancel',
+            ],
+            'input' => [ 'shape' => 'RotorSupplementPlanCancelRequestShape', ],
+            'output' => [ 'shape' => 'RotorSupplementPlanCancelResponseShape', ],
+        ],
+        'RotorTasks' => [
+            'name' => 'RotorTasks',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorTasks',
+            ],
+            'input' => [ 'shape' => 'RotorTasksRequestShape', ],
+            'output' => [ 'shape' => 'RotorTasksResponseShape', ],
+        ],
+        'RotorTaskDetail' => [
+            'name' => 'RotorTaskDetail',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorTaskDetail',
+            ],
+            'input' => [ 'shape' => 'RotorTaskDetailRequestShape', ],
+            'output' => [ 'shape' => 'RotorTaskDetailResponseShape', ],
+        ],
+        'RotorTaskDependency' => [
+            'name' => 'RotorTaskDependency',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorTaskDependency',
+            ],
+            'input' => [ 'shape' => 'RotorTaskDependencyRequestShape', ],
+            'output' => [ 'shape' => 'RotorTaskDependencyResponseShape', ],
+        ],
+        'RotorRunManualTaskInstance' => [
+            'name' => 'RotorRunManualTaskInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorRunManualTaskInstance',
+            ],
+            'input' => [ 'shape' => 'RotorRunManualTaskInstanceRequestShape', ],
+            'output' => [ 'shape' => 'RotorRunManualTaskInstanceResponseShape', ],
+        ],
+        'RotorRunManualTaskInstanceExternal' => [
+            'name' => 'RotorRunManualTaskInstanceExternal',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorRunManualTaskInstanceExternal',
+            ],
+            'input' => [ 'shape' => 'RotorRunManualTaskInstanceExternalRequestShape', ],
+            'output' => [ 'shape' => 'RotorRunManualTaskInstanceExternalResponseShape', ],
+        ],
+        'RotorUpdateTaskScheduleState' => [
+            'name' => 'RotorUpdateTaskScheduleState',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/rotorUpdateTaskScheduleState',
+            ],
+            'input' => [ 'shape' => 'RotorUpdateTaskScheduleStateRequestShape', ],
+            'output' => [ 'shape' => 'RotorUpdateTaskScheduleStateResponseShape', ],
         ],
         'UranusCatalogDelete' => [
             'name' => 'UranusCatalogDelete',
@@ -1477,6 +2260,24 @@ return [
             ],
             'input' => [ 'shape' => 'UranusExtraRunnerParamParseRequestShape', ],
             'output' => [ 'shape' => 'UranusExtraRunnerParamParseResponseShape', ],
+        ],
+        'UranusTaskExtraRunnerLog' => [
+            'name' => 'UranusTaskExtraRunnerLog',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskExtraRunnerLog',
+            ],
+            'input' => [ 'shape' => 'UranusTaskExtraRunnerLogRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskExtraRunnerLogResponseShape', ],
+        ],
+        'UranusTaskExtraRunnerDetail' => [
+            'name' => 'UranusTaskExtraRunnerDetail',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskExtraRunnerDetail',
+            ],
+            'input' => [ 'shape' => 'UranusTaskExtraRunnerDetailRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskExtraRunnerDetailResponseShape', ],
         ],
         'UranusQueryJarManagementTree' => [
             'name' => 'UranusQueryJarManagementTree',
@@ -1847,6 +2648,474 @@ return [
             'input' => [ 'shape' => 'UranusTableDDLRequestShape', ],
             'output' => [ 'shape' => 'UranusTableDDLResponseShape', ],
         ],
+        'UranusTableSources' => [
+            'name' => 'UranusTableSources',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTableSources',
+            ],
+            'input' => [ 'shape' => 'UranusTableSourcesRequestShape', ],
+            'output' => [ 'shape' => 'UranusTableSourcesResponseShape', ],
+        ],
+        'UranusTableDefaultSource' => [
+            'name' => 'UranusTableDefaultSource',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTableDefaultSource',
+            ],
+            'input' => [ 'shape' => 'UranusTableDefaultSourceRequestShape', ],
+            'output' => [ 'shape' => 'UranusTableDefaultSourceResponseShape', ],
+        ],
+        'UranusTaskCatalogExisted' => [
+            'name' => 'UranusTaskCatalogExisted',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskCatalogExisted',
+            ],
+            'input' => [ 'shape' => 'UranusTaskCatalogExistedRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskCatalogExistedResponseShape', ],
+        ],
+        'UranusTaskCatalogCreate' => [
+            'name' => 'UranusTaskCatalogCreate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskCatalogCreate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskCatalogCreateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskCatalogCreateResponseShape', ],
+        ],
+        'UranusTaskCatalogList' => [
+            'name' => 'UranusTaskCatalogList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskCatalogList',
+            ],
+            'input' => [ 'shape' => 'UranusTaskCatalogListRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskCatalogListResponseShape', ],
+        ],
+        'UranusTaskCatalogDelete' => [
+            'name' => 'UranusTaskCatalogDelete',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskCatalogDelete',
+            ],
+            'input' => [ 'shape' => 'UranusTaskCatalogDeleteRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskCatalogDeleteResponseShape', ],
+        ],
+        'UranusTaskCatalogQuery' => [
+            'name' => 'UranusTaskCatalogQuery',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskCatalogQuery',
+            ],
+            'input' => [ 'shape' => 'UranusTaskCatalogQueryRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskCatalogQueryResponseShape', ],
+        ],
+        'UranusTaskCatalogUpdate' => [
+            'name' => 'UranusTaskCatalogUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskCatalogUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskCatalogUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskCatalogUpdateResponseShape', ],
+        ],
+        'UranusTaskObjectMove' => [
+            'name' => 'UranusTaskObjectMove',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskObjectMove',
+            ],
+            'input' => [ 'shape' => 'UranusTaskObjectMoveRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskObjectMoveResponseShape', ],
+        ],
+        'UranusTaskCatalogListAllBiz' => [
+            'name' => 'UranusTaskCatalogListAllBiz',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskCatalogListAllBiz',
+            ],
+            'input' => [ 'shape' => 'UranusTaskCatalogListAllBizRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskCatalogListAllBizResponseShape', ],
+        ],
+        'UranusTaskGetTaskStatus' => [
+            'name' => 'UranusTaskGetTaskStatus',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskGetTaskStatus',
+            ],
+            'input' => [ 'shape' => 'UranusTaskGetTaskStatusRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskGetTaskStatusResponseShape', ],
+        ],
+        'UranusTaskPublicListFlatCatalog' => [
+            'name' => 'UranusTaskPublicListFlatCatalog',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicListFlatCatalog',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicListFlatCatalogRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicListFlatCatalogResponseShape', ],
+        ],
+        'UranusTaskAllInfo' => [
+            'name' => 'UranusTaskAllInfo',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskAllInfo',
+            ],
+            'input' => [ 'shape' => 'UranusTaskAllInfoRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskAllInfoResponseShape', ],
+        ],
+        'UranusTaskImageList' => [
+            'name' => 'UranusTaskImageList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskImageList',
+            ],
+            'input' => [ 'shape' => 'UranusTaskImageListRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskImageListResponseShape', ],
+        ],
+        'UranusTaskBaseInfoUpdate' => [
+            'name' => 'UranusTaskBaseInfoUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskBaseInfoUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskBaseInfoUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskBaseInfoUpdateResponseShape', ],
+        ],
+        'UranusTaskScheduleInfoUpdate' => [
+            'name' => 'UranusTaskScheduleInfoUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskScheduleInfoUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskScheduleInfoUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskScheduleInfoUpdateResponseShape', ],
+        ],
+        'UranusTaskAlarmInfoUpdate' => [
+            'name' => 'UranusTaskAlarmInfoUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskAlarmInfoUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskAlarmInfoUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskAlarmInfoUpdateResponseShape', ],
+        ],
+        'UranusTaskDependInfoUpdate' => [
+            'name' => 'UranusTaskDependInfoUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskDependInfoUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskDependInfoUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskDependInfoUpdateResponseShape', ],
+        ],
+        'UranusTaskInputParamInfoUpdate' => [
+            'name' => 'UranusTaskInputParamInfoUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskInputParamInfoUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskInputParamInfoUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskInputParamInfoUpdateResponseShape', ],
+        ],
+        'UranusTaskOutputParamInfoUpdate' => [
+            'name' => 'UranusTaskOutputParamInfoUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskOutputParamInfoUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskOutputParamInfoUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskOutputParamInfoUpdateResponseShape', ],
+        ],
+        'UranusTaskRunParamInfoUpdate' => [
+            'name' => 'UranusTaskRunParamInfoUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskRunParamInfoUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskRunParamInfoUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskRunParamInfoUpdateResponseShape', ],
+        ],
+        'UranusTaskDatasourceParamInfoUpdate' => [
+            'name' => 'UranusTaskDatasourceParamInfoUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskDatasourceParamInfoUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskDatasourceParamInfoUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskDatasourceParamInfoUpdateResponseShape', ],
+        ],
+        'UranusTaskImageParamInfoUpdate' => [
+            'name' => 'UranusTaskImageParamInfoUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskImageParamInfoUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskImageParamInfoUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskImageParamInfoUpdateResponseShape', ],
+        ],
+        'UranusTaskSparkJarParamInfoUpdate' => [
+            'name' => 'UranusTaskSparkJarParamInfoUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskSparkJarParamInfoUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskSparkJarParamInfoUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskSparkJarParamInfoUpdateResponseShape', ],
+        ],
+        'UranusTaskLoopParamInfoUpdate' => [
+            'name' => 'UranusTaskLoopParamInfoUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskLoopParamInfoUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskLoopParamInfoUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskLoopParamInfoUpdateResponseShape', ],
+        ],
+        'UranusTaskPipeParamInfoUpdate' => [
+            'name' => 'UranusTaskPipeParamInfoUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPipeParamInfoUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPipeParamInfoUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPipeParamInfoUpdateResponseShape', ],
+        ],
+        'UranusTaskScriptContentUpdate' => [
+            'name' => 'UranusTaskScriptContentUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskScriptContentUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskScriptContentUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskScriptContentUpdateResponseShape', ],
+        ],
+        'UranusTaskDependableListFuzz' => [
+            'name' => 'UranusTaskDependableListFuzz',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskDependableListFuzz',
+            ],
+            'input' => [ 'shape' => 'UranusTaskDependableListFuzzRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskDependableListFuzzResponseShape', ],
+        ],
+        'UranusSparkTaskSparkVersion' => [
+            'name' => 'UranusSparkTaskSparkVersion',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusSparkTaskSparkVersion',
+            ],
+            'input' => [ 'shape' => 'UranusSparkTaskSparkVersionRequestShape', ],
+            'output' => [ 'shape' => 'UranusSparkTaskSparkVersionResponseShape', ],
+        ],
+        'UranusSparkTaskParameterKeys' => [
+            'name' => 'UranusSparkTaskParameterKeys',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusSparkTaskParameterKeys',
+            ],
+            'input' => [ 'shape' => 'UranusSparkTaskParameterKeysRequestShape', ],
+            'output' => [ 'shape' => 'UranusSparkTaskParameterKeysResponseShape', ],
+        ],
+        'UranusLoopTaskElementDelimiters' => [
+            'name' => 'UranusLoopTaskElementDelimiters',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusLoopTaskElementDelimiters',
+            ],
+            'input' => [ 'shape' => 'UranusLoopTaskElementDelimitersRequestShape', ],
+            'output' => [ 'shape' => 'UranusLoopTaskElementDelimitersResponseShape', ],
+        ],
+        'UranusTaskDeployAndEnable' => [
+            'name' => 'UranusTaskDeployAndEnable',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskDeployAndEnable',
+            ],
+            'input' => [ 'shape' => 'UranusTaskDeployAndEnableRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskDeployAndEnableResponseShape', ],
+        ],
+        'UranusTaskOffline' => [
+            'name' => 'UranusTaskOffline',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskOffline',
+            ],
+            'input' => [ 'shape' => 'UranusTaskOfflineRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskOfflineResponseShape', ],
+        ],
+        'UranusTaskHistoryList' => [
+            'name' => 'UranusTaskHistoryList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskHistoryList',
+            ],
+            'input' => [ 'shape' => 'UranusTaskHistoryListRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskHistoryListResponseShape', ],
+        ],
+        'UranusTaskHistoryDetail' => [
+            'name' => 'UranusTaskHistoryDetail',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskHistoryDetail',
+            ],
+            'input' => [ 'shape' => 'UranusTaskHistoryDetailRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskHistoryDetailResponseShape', ],
+        ],
+        'UranusTaskRedeployAndEnable' => [
+            'name' => 'UranusTaskRedeployAndEnable',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskRedeployAndEnable',
+            ],
+            'input' => [ 'shape' => 'UranusTaskRedeployAndEnableRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskRedeployAndEnableResponseShape', ],
+        ],
+        'UranusTaskPipeShowCreateTable' => [
+            'name' => 'UranusTaskPipeShowCreateTable',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPipeShowCreateTable',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPipeShowCreateTableRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPipeShowCreateTableResponseShape', ],
+        ],
+        'UranusTaskPipeCreateTable' => [
+            'name' => 'UranusTaskPipeCreateTable',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPipeCreateTable',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPipeCreateTableRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPipeCreateTableResponseShape', ],
+        ],
+        'UranusTaskDependOutputParamList' => [
+            'name' => 'UranusTaskDependOutputParamList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskDependOutputParamList',
+            ],
+            'input' => [ 'shape' => 'UranusTaskDependOutputParamListRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskDependOutputParamListResponseShape', ],
+        ],
+        'UranusFlowInternalTaskHistoryTopo' => [
+            'name' => 'UranusFlowInternalTaskHistoryTopo',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusFlowInternalTaskHistoryTopo',
+            ],
+            'input' => [ 'shape' => 'UranusFlowInternalTaskHistoryTopoRequestShape', ],
+            'output' => [ 'shape' => 'UranusFlowInternalTaskHistoryTopoResponseShape', ],
+        ],
+        'UranusTaskSpecialParamUpdate' => [
+            'name' => 'UranusTaskSpecialParamUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskSpecialParamUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskSpecialParamUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskSpecialParamUpdateResponseShape', ],
+        ],
+        'UranusTaskDebugParamSync' => [
+            'name' => 'UranusTaskDebugParamSync',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskDebugParamSync',
+            ],
+            'input' => [ 'shape' => 'UranusTaskDebugParamSyncRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskDebugParamSyncResponseShape', ],
+        ],
+        'UranusTaskDebugParamInfoUpdate' => [
+            'name' => 'UranusTaskDebugParamInfoUpdate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskDebugParamInfoUpdate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskDebugParamInfoUpdateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskDebugParamInfoUpdateResponseShape', ],
+        ],
+        'UranusTaskParseScriptContentSystemParam' => [
+            'name' => 'UranusTaskParseScriptContentSystemParam',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskParseScriptContentSystemParam',
+            ],
+            'input' => [ 'shape' => 'UranusTaskParseScriptContentSystemParamRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskParseScriptContentSystemParamResponseShape', ],
+        ],
+        'UranusTaskDebug' => [
+            'name' => 'UranusTaskDebug',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskDebug',
+            ],
+            'input' => [ 'shape' => 'UranusTaskDebugRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskDebugResponseShape', ],
+        ],
+        'UranusTaskKill' => [
+            'name' => 'UranusTaskKill',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskKill',
+            ],
+            'input' => [ 'shape' => 'UranusTaskKillRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskKillResponseShape', ],
+        ],
+        'UranusTaskDebugResultList' => [
+            'name' => 'UranusTaskDebugResultList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskDebugResultList',
+            ],
+            'input' => [ 'shape' => 'UranusTaskDebugResultListRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskDebugResultListResponseShape', ],
+        ],
+        'UranusTaskDebugResultContent' => [
+            'name' => 'UranusTaskDebugResultContent',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskDebugResultContent',
+            ],
+            'input' => [ 'shape' => 'UranusTaskDebugResultContentRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskDebugResultContentResponseShape', ],
+        ],
+        'UranusTaskDebugLog' => [
+            'name' => 'UranusTaskDebugLog',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskDebugLog',
+            ],
+            'input' => [ 'shape' => 'UranusTaskDebugLogRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskDebugLogResponseShape', ],
+        ],
+        'UranusTaskDebugHistoryList' => [
+            'name' => 'UranusTaskDebugHistoryList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskDebugHistoryList',
+            ],
+            'input' => [ 'shape' => 'UranusTaskDebugHistoryListRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskDebugHistoryListResponseShape', ],
+        ],
+        'UranusTaskDebugDetail' => [
+            'name' => 'UranusTaskDebugDetail',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskDebugDetail',
+            ],
+            'input' => [ 'shape' => 'UranusTaskDebugDetailRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskDebugDetailResponseShape', ],
+        ],
+        'UranusTaskDebugSyntaxCheck' => [
+            'name' => 'UranusTaskDebugSyntaxCheck',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskDebugSyntaxCheck',
+            ],
+            'input' => [ 'shape' => 'UranusTaskDebugSyntaxCheckRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskDebugSyntaxCheckResponseShape', ],
+        ],
         'UranusTaskFlowUpdate' => [
             'name' => 'UranusTaskFlowUpdate',
             'http' => [
@@ -1918,6 +3187,15 @@ return [
             ],
             'input' => [ 'shape' => 'UranusTaskFlowDetailRequestShape', ],
             'output' => [ 'shape' => 'UranusTaskFlowDetailResponseShape', ],
+        ],
+        'UranusTaskFullTextQuery' => [
+            'name' => 'UranusTaskFullTextQuery',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskFullTextQuery',
+            ],
+            'input' => [ 'shape' => 'UranusTaskFullTextQueryRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskFullTextQueryResponseShape', ],
         ],
         'UranusTaskInfoGetTaskCode' => [
             'name' => 'UranusTaskInfoGetTaskCode',
@@ -2216,6 +3494,267 @@ return [
             'input' => [ 'shape' => 'UranusTaskDetailRequestShape', ],
             'output' => [ 'shape' => 'UranusTaskDetailResponseShape', ],
         ],
+        'UranusTaskNameExisted' => [
+            'name' => 'UranusTaskNameExisted',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskNameExisted',
+            ],
+            'input' => [ 'shape' => 'UranusTaskNameExistedRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskNameExistedResponseShape', ],
+        ],
+        'UranusTaskTypeList' => [
+            'name' => 'UranusTaskTypeList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskTypeList',
+            ],
+            'input' => [ 'shape' => 'UranusTaskTypeListRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskTypeListResponseShape', ],
+        ],
+        'UranusFlowNodeCreate' => [
+            'name' => 'UranusFlowNodeCreate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusFlowNodeCreate',
+            ],
+            'input' => [ 'shape' => 'UranusFlowNodeCreateRequestShape', ],
+            'output' => [ 'shape' => 'UranusFlowNodeCreateResponseShape', ],
+        ],
+        'UranusTaskNodeCreate' => [
+            'name' => 'UranusTaskNodeCreate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskNodeCreate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskNodeCreateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskNodeCreateResponseShape', ],
+        ],
+        'UranusTaskOrFlowNodeDelete' => [
+            'name' => 'UranusTaskOrFlowNodeDelete',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskOrFlowNodeDelete',
+            ],
+            'input' => [ 'shape' => 'UranusTaskOrFlowNodeDeleteRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskOrFlowNodeDeleteResponseShape', ],
+        ],
+        'UranusTaskNodeSnatchLock' => [
+            'name' => 'UranusTaskNodeSnatchLock',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskNodeSnatchLock',
+            ],
+            'input' => [ 'shape' => 'UranusTaskNodeSnatchLockRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskNodeSnatchLockResponseShape', ],
+        ],
+        'UranusFlowListNode' => [
+            'name' => 'UranusFlowListNode',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusFlowListNode',
+            ],
+            'input' => [ 'shape' => 'UranusFlowListNodeRequestShape', ],
+            'output' => [ 'shape' => 'UranusFlowListNodeResponseShape', ],
+        ],
+        'UranusFlowSearchNode' => [
+            'name' => 'UranusFlowSearchNode',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusFlowSearchNode',
+            ],
+            'input' => [ 'shape' => 'UranusFlowSearchNodeRequestShape', ],
+            'output' => [ 'shape' => 'UranusFlowSearchNodeResponseShape', ],
+        ],
+        'UranusFlowUpdateAllCanvas' => [
+            'name' => 'UranusFlowUpdateAllCanvas',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusFlowUpdateAllCanvas',
+            ],
+            'input' => [ 'shape' => 'UranusFlowUpdateAllCanvasRequestShape', ],
+            'output' => [ 'shape' => 'UranusFlowUpdateAllCanvasResponseShape', ],
+        ],
+        'UranusFlowPrepublishNodesSort' => [
+            'name' => 'UranusFlowPrepublishNodesSort',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusFlowPrepublishNodesSort',
+            ],
+            'input' => [ 'shape' => 'UranusFlowPrepublishNodesSortRequestShape', ],
+            'output' => [ 'shape' => 'UranusFlowPrepublishNodesSortResponseShape', ],
+        ],
+        'UranusTaskNodeLockStatus' => [
+            'name' => 'UranusTaskNodeLockStatus',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskNodeLockStatus',
+            ],
+            'input' => [ 'shape' => 'UranusTaskNodeLockStatusRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskNodeLockStatusResponseShape', ],
+        ],
+        'UranusFlowListHistoryNode' => [
+            'name' => 'UranusFlowListHistoryNode',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusFlowListHistoryNode',
+            ],
+            'input' => [ 'shape' => 'UranusFlowListHistoryNodeRequestShape', ],
+            'output' => [ 'shape' => 'UranusFlowListHistoryNodeResponseShape', ],
+        ],
+        'UranusTaskPublicCreate' => [
+            'name' => 'UranusTaskPublicCreate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicCreate',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicCreateRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicCreateResponseShape', ],
+        ],
+        'UranusTaskPublicUpdateDatasource' => [
+            'name' => 'UranusTaskPublicUpdateDatasource',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicUpdateDatasource',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicUpdateDatasourceRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicUpdateDatasourceResponseShape', ],
+        ],
+        'UranusTaskPublicUpdateScript' => [
+            'name' => 'UranusTaskPublicUpdateScript',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicUpdateScript',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicUpdateScriptRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicUpdateScriptResponseShape', ],
+        ],
+        'UranusTaskPublicDebug' => [
+            'name' => 'UranusTaskPublicDebug',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicDebug',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicDebugRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicDebugResponseShape', ],
+        ],
+        'UranusTaskPublicDebugLog' => [
+            'name' => 'UranusTaskPublicDebugLog',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicDebugLog',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicDebugLogRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicDebugLogResponseShape', ],
+        ],
+        'UranusTaskPublicDebugResult' => [
+            'name' => 'UranusTaskPublicDebugResult',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicDebugResult',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicDebugResultRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicDebugResultResponseShape', ],
+        ],
+        'UranusTaskPublicConfigBaseInfo' => [
+            'name' => 'UranusTaskPublicConfigBaseInfo',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicConfigBaseInfo',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicConfigBaseInfoRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicConfigBaseInfoResponseShape', ],
+        ],
+        'UranusTaskPublicConfigSchedule' => [
+            'name' => 'UranusTaskPublicConfigSchedule',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicConfigSchedule',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicConfigScheduleRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicConfigScheduleResponseShape', ],
+        ],
+        'UranusTaskPublicConfigAlarm' => [
+            'name' => 'UranusTaskPublicConfigAlarm',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicConfigAlarm',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicConfigAlarmRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicConfigAlarmResponseShape', ],
+        ],
+        'UranusTaskPublicListDependable' => [
+            'name' => 'UranusTaskPublicListDependable',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicListDependable',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicListDependableRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicListDependableResponseShape', ],
+        ],
+        'UranusTaskPublicConfigDepend' => [
+            'name' => 'UranusTaskPublicConfigDepend',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicConfigDepend',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicConfigDependRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicConfigDependResponseShape', ],
+        ],
+        'UranusTaskPublicPublish' => [
+            'name' => 'UranusTaskPublicPublish',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicPublish',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicPublishRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicPublishResponseShape', ],
+        ],
+        'UranusTaskPublicListDatasources' => [
+            'name' => 'UranusTaskPublicListDatasources',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicListDatasources',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicListDatasourcesRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicListDatasourcesResponseShape', ],
+        ],
+        'UranusTaskPublicListImages' => [
+            'name' => 'UranusTaskPublicListImages',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicListImages',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicListImagesRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicListImagesResponseShape', ],
+        ],
+        'UranusTaskPublicListResources' => [
+            'name' => 'UranusTaskPublicListResources',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicListResources',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicListResourcesRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicListResourcesResponseShape', ],
+        ],
+        'UranusTaskPublicDetail' => [
+            'name' => 'UranusTaskPublicDetail',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicDetail',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicDetailRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicDetailResponseShape', ],
+        ],
+        'UranusTaskPublicConfigStartParams' => [
+            'name' => 'UranusTaskPublicConfigStartParams',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicConfigStartParams',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicConfigStartParamsRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicConfigStartParamsResponseShape', ],
+        ],
         'UranusUdfListFunction' => [
             'name' => 'UranusUdfListFunction',
             'http' => [
@@ -2432,6 +3971,15 @@ return [
             'input' => [ 'shape' => 'WorkspaceBundleOrUnBundleResourceRequestShape', ],
             'output' => [ 'shape' => 'WorkspaceBundleOrUnBundleResourceResponseShape', ],
         ],
+        'WorkspaceForceUnBundleResource' => [
+            'name' => 'WorkspaceForceUnBundleResource',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/workspaceForceUnBundleResource',
+            ],
+            'input' => [ 'shape' => 'WorkspaceForceUnBundleResourceRequestShape', ],
+            'output' => [ 'shape' => 'WorkspaceForceUnBundleResourceResponseShape', ],
+        ],
         'WorkspaceGetList' => [
             'name' => 'WorkspaceGetList',
             'http' => [
@@ -2521,6 +4069,24 @@ return [
             ],
             'input' => [ 'shape' => 'WorkspaceExpiredInfoRequestShape', ],
             'output' => [ 'shape' => 'WorkspaceExpiredInfoResponseShape', ],
+        ],
+        'WorkspaceGetByResource' => [
+            'name' => 'WorkspaceGetByResource',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/workspaceGetByResource',
+            ],
+            'input' => [ 'shape' => 'WorkspaceGetByResourceRequestShape', ],
+            'output' => [ 'shape' => 'WorkspaceGetByResourceResponseShape', ],
+        ],
+        'WorkspaceGetProductRegionInfo' => [
+            'name' => 'WorkspaceGetProductRegionInfo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/workspaceGetProductRegionInfo',
+            ],
+            'input' => [ 'shape' => 'WorkspaceGetProductRegionInfoRequestShape', ],
+            'output' => [ 'shape' => 'WorkspaceGetProductRegionInfoResponseShape', ],
         ],
         'WorkspaceGetMembers' => [
             'name' => 'WorkspaceGetMembers',
@@ -3047,6 +4613,14 @@ return [
                 'code' => [ 'type' => 'string', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'JtlasWarehouseTable', ], ],
+            ],
+        ],
+        'JtlasWarehouseStringListResp' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'JtlasWarehouseTable' => [
@@ -5045,6 +6619,133 @@ return [
                 'organizationName' => [ 'type' => 'string', 'locationName' => 'organizationName', ],
             ],
         ],
+        'GetClusterParam' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'long', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'ReplaceClusterMetaParam' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterCode' => [ 'type' => 'string', 'locationName' => 'clusterCode', ],
+                'metaList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterMetaParam', ], ],
+            ],
+        ],
+        'CreateClusterParam' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterCode' => [ 'type' => 'string', 'locationName' => 'clusterCode', ],
+                'clusterName' => [ 'type' => 'string', 'locationName' => 'clusterName', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+            ],
+        ],
+        'QueryClusterParam' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'clusterCode' => [ 'type' => 'string', 'locationName' => 'clusterCode', ],
+                'clusterName' => [ 'type' => 'string', 'locationName' => 'clusterName', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+            ],
+        ],
+        'ClusterMetaParam' => [
+            'type' => 'structure',
+            'members' => [
+                'metaKey' => [ 'type' => 'string', 'locationName' => 'metaKey', ],
+                'metaValue' => [ 'type' => 'string', 'locationName' => 'metaValue', ],
+            ],
+        ],
+        'QueryClusterMetaParam' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'clusterCode' => [ 'type' => 'string', 'locationName' => 'clusterCode', ],
+            ],
+        ],
+        'DeleteClusterMetaParam' => [
+            'type' => 'structure',
+            'members' => [
+                'metaIdList' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+            ],
+        ],
+        'AddClusterMetaParam' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterCode' => [ 'type' => 'string', 'locationName' => 'clusterCode', ],
+                'metaList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterMetaParam', ], ],
+            ],
+        ],
+        'DeleteClusterParam' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'long', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'UpdateClusterParam' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'long', 'locationName' => 'clusterId', ],
+                'clusterCode' => [ 'type' => 'string', 'locationName' => 'clusterCode', ],
+                'clusterName' => [ 'type' => 'string', 'locationName' => 'clusterName', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+            ],
+        ],
+        'ClusterMetaPageVo' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterMetaVo', ], ],
+            ],
+        ],
+        'ClusterMetaVo' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterCode' => [ 'type' => 'string', 'locationName' => 'clusterCode', ],
+                'metaId' => [ 'type' => 'long', 'locationName' => 'metaId', ],
+                'metaKey' => [ 'type' => 'string', 'locationName' => 'metaKey', ],
+                'metaValue' => [ 'type' => 'string', 'locationName' => 'metaValue', ],
+                'createTimestamp' => [ 'type' => 'long', 'locationName' => 'createTimestamp', ],
+                'updateTimestamp' => [ 'type' => 'long', 'locationName' => 'updateTimestamp', ],
+            ],
+        ],
+        'ClusterPageOverviewVo' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterOverviewVo', ], ],
+            ],
+        ],
+        'ClusterOverviewVo' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'long', 'locationName' => 'clusterId', ],
+                'clusterCode' => [ 'type' => 'string', 'locationName' => 'clusterCode', ],
+                'clusterName' => [ 'type' => 'string', 'locationName' => 'clusterName', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'createTimeStamp' => [ 'type' => 'long', 'locationName' => 'createTimeStamp', ],
+                'updateTimeStamp' => [ 'type' => 'long', 'locationName' => 'updateTimeStamp', ],
+            ],
+        ],
+        'ClusterDetailVo' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'long', 'locationName' => 'clusterId', ],
+                'clusterCode' => [ 'type' => 'string', 'locationName' => 'clusterCode', ],
+                'clusterName' => [ 'type' => 'string', 'locationName' => 'clusterName', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'createTimeStamp' => [ 'type' => 'long', 'locationName' => 'createTimeStamp', ],
+                'updateTimeStamp' => [ 'type' => 'long', 'locationName' => 'updateTimeStamp', ],
+            ],
+        ],
         'UpdateRosterParam' => [
             'type' => 'structure',
             'members' => [
@@ -5577,6 +7278,119 @@ return [
                 'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'JobRelationVo', ], ],
             ],
         ],
+        'ListInstancesParam' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'displayStateList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'resourceGroupCode' => [ 'type' => 'string', 'locationName' => 'resourceGroupCode', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'cycle' => [ 'type' => 'string', 'locationName' => 'cycle', ],
+                'txDateTimestampStart' => [ 'type' => 'long', 'locationName' => 'txDateTimestampStart', ],
+                'txDateTimestampEnd' => [ 'type' => 'long', 'locationName' => 'txDateTimestampEnd', ],
+                'updateTimestampStart' => [ 'type' => 'long', 'locationName' => 'updateTimestampStart', ],
+                'updateTimestampEnd' => [ 'type' => 'long', 'locationName' => 'updateTimestampEnd', ],
+                'createTimestampStart' => [ 'type' => 'long', 'locationName' => 'createTimestampStart', ],
+                'createTimestampEnd' => [ 'type' => 'long', 'locationName' => 'createTimestampEnd', ],
+                'ownerPin' => [ 'type' => 'string', 'locationName' => 'ownerPin', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+            ],
+        ],
+        'ListTasksParam' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'ownerOrCollaboratorPin' => [ 'type' => 'string', 'locationName' => 'ownerOrCollaboratorPin', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'cycle' => [ 'type' => 'string', 'locationName' => 'cycle', ],
+                'updateTimestampStart' => [ 'type' => 'long', 'locationName' => 'updateTimestampStart', ],
+                'updateTimestampEnd' => [ 'type' => 'long', 'locationName' => 'updateTimestampEnd', ],
+                'createTimestampStart' => [ 'type' => 'long', 'locationName' => 'createTimestampStart', ],
+                'createTimestampEnd' => [ 'type' => 'long', 'locationName' => 'createTimestampEnd', ],
+                'scheduleState' => [ 'type' => 'string', 'locationName' => 'scheduleState', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+            ],
+        ],
+        'HourData' => [
+            'type' => 'structure',
+            'members' => [
+                'hour' => [ 'type' => 'integer', 'locationName' => 'hour', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+            ],
+        ],
+        'JobCountData' => [
+            'type' => 'structure',
+            'members' => [
+                'jobName' => [ 'type' => 'string', 'locationName' => 'jobName', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+            ],
+        ],
+        'DictVo' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
+            ],
+        ],
+        'FailedInstanceVo' => [
+            'type' => 'structure',
+            'members' => [
+                'jobName' => [ 'type' => 'string', 'locationName' => 'jobName', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'applicationId' => [ 'type' => 'string', 'locationName' => 'applicationId', ],
+                'jobType' => [ 'type' => 'string', 'locationName' => 'jobType', ],
+                'txDate' => [ 'type' => 'string', 'locationName' => 'txDate', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'StatusPercentageData' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'percentage' => [ 'type' => 'double', 'locationName' => 'percentage', ],
+            ],
+        ],
+        'AwaitingInstanceVo' => [
+            'type' => 'structure',
+            'members' => [
+                'jobName' => [ 'type' => 'string', 'locationName' => 'jobName', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'jobType' => [ 'type' => 'string', 'locationName' => 'jobType', ],
+                'txDate' => [ 'type' => 'string', 'locationName' => 'txDate', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'RunningInstanceVo' => [
+            'type' => 'structure',
+            'members' => [
+                'jobName' => [ 'type' => 'string', 'locationName' => 'jobName', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'applicationId' => [ 'type' => 'string', 'locationName' => 'applicationId', ],
+                'jobType' => [ 'type' => 'string', 'locationName' => 'jobType', ],
+                'txDate' => [ 'type' => 'string', 'locationName' => 'txDate', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
         'JcwSpaceIncreUsedByDayVo' => [
             'type' => 'structure',
             'members' => [
@@ -5789,6 +7603,527 @@ return [
                 'submitTimestamp' => [ 'type' => 'long', 'locationName' => 'submitTimestamp', ],
             ],
         ],
+        'RerunInstanceParam' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'InstanceDependencyParam' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'relation' => [ 'type' => 'string', 'locationName' => 'relation', ],
+                'depth' => [ 'type' => 'integer', 'locationName' => 'depth', ],
+            ],
+        ],
+        'QuerySupplementInstanceParam' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'planId' => [ 'type' => 'long', 'locationName' => 'planId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'displayStateList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'ownerPin' => [ 'type' => 'string', 'locationName' => 'ownerPin', ],
+                'runStartTimestampBegin' => [ 'type' => 'long', 'locationName' => 'runStartTimestampBegin', ],
+                'runStartTimestampEnd' => [ 'type' => 'long', 'locationName' => 'runStartTimestampEnd', ],
+                'runEndTimestampBegin' => [ 'type' => 'long', 'locationName' => 'runEndTimestampBegin', ],
+                'runEndTimestampBeginEnd' => [ 'type' => 'long', 'locationName' => 'runEndTimestampBeginEnd', ],
+                'txDateTimestampStart' => [ 'type' => 'long', 'locationName' => 'txDateTimestampStart', ],
+                'txDateTimestampEnd' => [ 'type' => 'long', 'locationName' => 'txDateTimestampEnd', ],
+            ],
+        ],
+        'CreateSupplementPlanParam' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'method' => [ 'type' => 'string', 'locationName' => 'method', ],
+                'txDateRanges' => [ 'type' => 'list', 'member' => [ 'shape' => 'TxDateRangeParam', ], ],
+                'groupNums' => [ 'type' => 'integer', 'locationName' => 'groupNums', ],
+                'timeRangeStart' => [ 'type' => 'string', 'locationName' => 'timeRangeStart', ],
+                'timeRangeEnd' => [ 'type' => 'string', 'locationName' => 'timeRangeEnd', ],
+                'order' => [ 'type' => 'string', 'locationName' => 'order', ],
+                'resourceGroupStrategy' => [ 'type' => 'string', 'locationName' => 'resourceGroupStrategy', ],
+                'calculateTaskResourceGroup' => [ 'type' => 'string', 'locationName' => 'calculateTaskResourceGroup', ],
+                'integrationTaskResourceGroup' => [ 'type' => 'string', 'locationName' => 'integrationTaskResourceGroup', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'rootTaskId' => [ 'type' => 'string', 'locationName' => 'rootTaskId', ],
+                'downStreamTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'QuerySupplementPlanParam' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'stateList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'creator' => [ 'type' => 'string', 'locationName' => 'creator', ],
+                'createTimestampStart' => [ 'type' => 'long', 'locationName' => 'createTimestampStart', ],
+                'createTimestampEnd' => [ 'type' => 'long', 'locationName' => 'createTimestampEnd', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'TaskDetailParam' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'KillInstanceParam' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'ResetInstanceParam' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+            ],
+        ],
+        'RerunDownstreamParam' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'downstreamInstanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'TxDateRangeParam' => [
+            'type' => 'structure',
+            'members' => [
+                'startTimestamp' => [ 'type' => 'long', 'locationName' => 'startTimestamp', ],
+                'endTimestamp' => [ 'type' => 'long', 'locationName' => 'endTimestamp', ],
+            ],
+        ],
+        'CancelSupplementPlanParam' => [
+            'type' => 'structure',
+            'members' => [
+                'planId' => [ 'type' => 'long', 'locationName' => 'planId', ],
+            ],
+        ],
+        'InstanceDetailParam' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'UpdateTaskScheduleStateParam' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+            ],
+        ],
+        'TaskDependencyParam' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'relation' => [ 'type' => 'string', 'locationName' => 'relation', ],
+                'depth' => [ 'type' => 'integer', 'locationName' => 'depth', ],
+            ],
+        ],
+        'ScheduledInstancesParam' => [
+            'type' => 'structure',
+            'members' => [
+                'offset' => [ 'type' => 'integer', 'locationName' => 'offset', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+            ],
+        ],
+        'InstanceRunLogParam' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'historyId' => [ 'type' => 'integer', 'locationName' => 'historyId', ],
+            ],
+        ],
+        'GetSupplementPlanParam' => [
+            'type' => 'structure',
+            'members' => [
+                'planId' => [ 'type' => 'long', 'locationName' => 'planId', ],
+            ],
+        ],
+        'DeleteSupplementPlanParam' => [
+            'type' => 'structure',
+            'members' => [
+                'planId' => [ 'type' => 'long', 'locationName' => 'planId', ],
+            ],
+        ],
+        'RunManualTaskParam' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+            ],
+        ],
+        'ListInstanceOperationParam' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'InstanceHistoryParam' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'InstanceStatisticsInfoVo' => [
+            'type' => 'structure',
+            'members' => [
+                'totalInstances' => [ 'type' => 'integer', 'locationName' => 'totalInstances', ],
+                'successInstances' => [ 'type' => 'integer', 'locationName' => 'successInstances', ],
+                'failedInstances' => [ 'type' => 'integer', 'locationName' => 'failedInstances', ],
+                'pendingInstances' => [ 'type' => 'integer', 'locationName' => 'pendingInstances', ],
+                'awaitingInstances' => [ 'type' => 'string', 'locationName' => 'awaitingInstances', ],
+                'killedInstances' => [ 'type' => 'integer', 'locationName' => 'killedInstances', ],
+                'runningInstances' => [ 'type' => 'integer', 'locationName' => 'runningInstances', ],
+            ],
+        ],
+        'TaskInfoVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'scheduleState' => [ 'type' => 'string', 'locationName' => 'scheduleState', ],
+                'scheduleStateLabel' => [ 'type' => 'string', 'locationName' => 'scheduleStateLabel', ],
+                'createTimestamp' => [ 'type' => 'long', 'locationName' => 'createTimestamp', ],
+                'updateTimestamp' => [ 'type' => 'long', 'locationName' => 'updateTimestamp', ],
+                'taskKind' => [ 'type' => 'string', 'locationName' => 'taskKind', ],
+                'taskKindLabel' => [ 'type' => 'string', 'locationName' => 'taskKindLabel', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskTypeLabel' => [ 'type' => 'string', 'locationName' => 'taskTypeLabel', ],
+                'owners' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserInfoVo', ], ],
+                'cycle' => [ 'type' => 'string', 'locationName' => 'cycle', ],
+                'cycleLabel' => [ 'type' => 'string', 'locationName' => 'cycleLabel', ],
+                'priority' => [ 'type' => 'integer', 'locationName' => 'priority', ],
+                'priorityLabel' => [ 'type' => 'string', 'locationName' => 'priorityLabel', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'resourceGroupLabel' => [ 'type' => 'string', 'locationName' => 'resourceGroupLabel', ],
+            ],
+        ],
+        'InstancesRunningLongTimeOrderVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskOwner' => [ 'type' => 'string', 'locationName' => 'taskOwner', ],
+                'runTime' => [ 'type' => 'string', 'locationName' => 'runTime', ],
+            ],
+        ],
+        'AlarmTimingVo' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
+            ],
+        ],
+        'SupplementPlanInfoVO' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'stateCode' => [ 'type' => 'string', 'locationName' => 'stateCode', ],
+                'stateLabel' => [ 'type' => 'string', 'locationName' => 'stateLabel', ],
+                'txDateRanges' => [ 'type' => 'list', 'member' => [ 'shape' => 'TxDateRangeVO', ], ],
+                'taskNums' => [ 'type' => 'integer', 'locationName' => 'taskNums', ],
+                'instanceNums' => [ 'type' => 'integer', 'locationName' => 'instanceNums', ],
+                'successRate' => [ 'type' => 'double', 'locationName' => 'successRate', ],
+                'failedRate' => [ 'type' => 'double', 'locationName' => 'failedRate', ],
+                'killRate' => [ 'type' => 'double', 'locationName' => 'killRate', ],
+                'awaitingAndRunningNum' => [ 'type' => 'integer', 'locationName' => 'awaitingAndRunningNum', ],
+                'pendingNum' => [ 'type' => 'integer', 'locationName' => 'pendingNum', ],
+                'creator' =>  [ 'shape' => 'UserInfoVo', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'createTimestamp' => [ 'type' => 'long', 'locationName' => 'createTimestamp', ],
+            ],
+        ],
+        'MostFailedTimesInstancesVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskOwner' => [ 'type' => 'string', 'locationName' => 'taskOwner', ],
+                'failedTimes' => [ 'type' => 'integer', 'locationName' => 'failedTimes', ],
+            ],
+        ],
+        'LogPageVo' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'AlarmMethodVo' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'label' => [ 'type' => 'string', 'locationName' => 'label', ],
+            ],
+        ],
+        'SupplementPlanConfigVo' => [
+            'type' => 'structure',
+            'members' => [
+                'method' => [ 'type' => 'string', 'locationName' => 'method', ],
+                'txDateRanges' => [ 'type' => 'list', 'member' => [ 'shape' => 'TxDateRangeVO', ], ],
+                'timeRangeStart' => [ 'type' => 'string', 'locationName' => 'timeRangeStart', ],
+                'timeRangeEnd' => [ 'type' => 'string', 'locationName' => 'timeRangeEnd', ],
+                'groupNums' => [ 'type' => 'integer', 'locationName' => 'groupNums', ],
+                'order' => [ 'type' => 'string', 'locationName' => 'order', ],
+                'resourceGroupStrategy' => [ 'type' => 'string', 'locationName' => 'resourceGroupStrategy', ],
+                'calculateTaskResourceGroup' => [ 'type' => 'string', 'locationName' => 'calculateTaskResourceGroup', ],
+                'integrationTaskResourceGroup' => [ 'type' => 'string', 'locationName' => 'integrationTaskResourceGroup', ],
+                'tasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'SupplementPlanTaskVo', ], ],
+                'rootTask' =>  [ 'shape' => 'SupplementPlanTaskVo', ],
+                'downStreamTasks' => [ 'type' => 'list', 'member' => [ 'shape' => 'SupplementPlanTaskVo', ], ],
+            ],
+        ],
+        'InstanceDetailVo' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'displayState' => [ 'type' => 'string', 'locationName' => 'displayState', ],
+                'displayStateLabel' => [ 'type' => 'string', 'locationName' => 'displayStateLabel', ],
+                'stateDetail' => [ 'type' => 'string', 'locationName' => 'stateDetail', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskTypeLabel' => [ 'type' => 'string', 'locationName' => 'taskTypeLabel', ],
+                'cycle' => [ 'type' => 'string', 'locationName' => 'cycle', ],
+                'cycleLabel' => [ 'type' => 'string', 'locationName' => 'cycleLabel', ],
+                'owners' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserInfoVo', ], ],
+                'collaborators' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserInfoVo', ], ],
+                'planStartTimestamp' => [ 'type' => 'long', 'locationName' => 'planStartTimestamp', ],
+                'txDate' => [ 'type' => 'long', 'locationName' => 'txDate', ],
+                'delay' => [ 'type' => 'integer', 'locationName' => 'delay', ],
+                'runStartTimestamp' => [ 'type' => 'long', 'locationName' => 'runStartTimestamp', ],
+                'runEndTimestamp' => [ 'type' => 'long', 'locationName' => 'runEndTimestamp', ],
+                'priority' => [ 'type' => 'integer', 'locationName' => 'priority', ],
+                'priorityLabel' => [ 'type' => 'string', 'locationName' => 'priorityLabel', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'resourceLabel' => [ 'type' => 'string', 'locationName' => 'resourceLabel', ],
+                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
+                'internalInstanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'belongsWorkflowTaskId' => [ 'type' => 'string', 'locationName' => 'belongsWorkflowTaskId', ],
+                'belongsWorkflowTaskName' => [ 'type' => 'string', 'locationName' => 'belongsWorkflowTaskName', ],
+            ],
+        ],
+        'InstanceInfoPageVo' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceInfoVo', ], ],
+            ],
+        ],
+        'InstanceHistoryStatisticsVo' => [
+            'type' => 'structure',
+            'members' => [
+                'displayState' => [ 'type' => 'string', 'locationName' => 'displayState', ],
+                'instancesNum' => [ 'type' => 'integer', 'locationName' => 'instancesNum', ],
+                'percent' => [ 'type' => 'string', 'locationName' => 'percent', ],
+            ],
+        ],
+        'SupplementInstancePageVO' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'SupplementInstanceVO', ], ],
+            ],
+        ],
+        'HourDataStatisticsVo' => [
+            'type' => 'structure',
+            'members' => [
+                'avgHourDataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'HourData', ], ],
+                'todayHourDataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'HourData', ], ],
+                'yesterdayHourDataList' => [ 'type' => 'list', 'member' => [ 'shape' => 'HourData', ], ],
+            ],
+        ],
+        'SupplementPlanInfoPageVo' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'SupplementPlanInfoVO', ], ],
+            ],
+        ],
+        'TaskInfoPageVo' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskInfoVo', ], ],
+            ],
+        ],
+        'TaskScheduleStatisticVo' => [
+            'type' => 'structure',
+            'members' => [
+                'taskScheduleState' => [ 'type' => 'string', 'locationName' => 'taskScheduleState', ],
+                'percent' => [ 'type' => 'string', 'locationName' => 'percent', ],
+            ],
+        ],
+        'InstanceDependencyVo' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'txDate' => [ 'type' => 'long', 'locationName' => 'txDate', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskTypeLabel' => [ 'type' => 'string', 'locationName' => 'taskTypeLabel', ],
+                'displayState' => [ 'type' => 'string', 'locationName' => 'displayState', ],
+                'displayStateLabel' => [ 'type' => 'string', 'locationName' => 'displayStateLabel', ],
+                'stateDetail' => [ 'type' => 'string', 'locationName' => 'stateDetail', ],
+                'planStartTimestamp' => [ 'type' => 'long', 'locationName' => 'planStartTimestamp', ],
+                'canRerunDownstream' => [ 'type' => 'boolean', 'locationName' => 'canRerunDownstream', ],
+                'internalInstanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'hasMore' => [ 'type' => 'boolean', 'locationName' => 'hasMore', ],
+                'moreList' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceDependencyVo', ], ],
+            ],
+        ],
+        'SupplementPlanTaskVo' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'cycle' => [ 'type' => 'string', 'locationName' => 'cycle', ],
+                'cycleLabel' => [ 'type' => 'string', 'locationName' => 'cycleLabel', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskTypeLabel' => [ 'type' => 'string', 'locationName' => 'taskTypeLabel', ],
+                'owners' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserInfoVo', ], ],
+            ],
+        ],
+        'TaskDetailVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskTypeLabel' => [ 'type' => 'string', 'locationName' => 'taskTypeLabel', ],
+                'owners' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserInfoVo', ], ],
+                'collaborators' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserInfoVo', ], ],
+                'createTimestamp' => [ 'type' => 'long', 'locationName' => 'createTimestamp', ],
+                'updateTimestamp' => [ 'type' => 'long', 'locationName' => 'updateTimestamp', ],
+                'expireTimestamp' => [ 'type' => 'long', 'locationName' => 'expireTimestamp', ],
+                'priority' => [ 'type' => 'integer', 'locationName' => 'priority', ],
+                'priorityLabel' => [ 'type' => 'string', 'locationName' => 'priorityLabel', ],
+                'cycle' => [ 'type' => 'string', 'locationName' => 'cycle', ],
+                'cycleLabel' => [ 'type' => 'string', 'locationName' => 'cycleLabel', ],
+                'cronExpression' => [ 'type' => 'string', 'locationName' => 'cronExpression', ],
+                'delay' => [ 'type' => 'integer', 'locationName' => 'delay', ],
+                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
+                'retryTimes' => [ 'type' => 'integer', 'locationName' => 'retryTimes', ],
+                'retryInterval' => [ 'type' => 'integer', 'locationName' => 'retryInterval', ],
+                'alarmMethods' => [ 'type' => 'list', 'member' => [ 'shape' => 'AlarmMethodVo', ], ],
+                'alarmTimings' => [ 'type' => 'list', 'member' => [ 'shape' => 'AlarmTimingVo', ], ],
+                'alarmReceivers' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserInfoVo', ], ],
+                'startDelayAlarmTime' => [ 'type' => 'string', 'locationName' => 'startDelayAlarmTime', ],
+                'finishDelayAlarmTime' => [ 'type' => 'string', 'locationName' => 'finishDelayAlarmTime', ],
+                'internalTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'InstanceInfoVo' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'planStartTimestamp' => [ 'type' => 'long', 'locationName' => 'planStartTimestamp', ],
+                'txDate' => [ 'type' => 'long', 'locationName' => 'txDate', ],
+                'displayState' => [ 'type' => 'string', 'locationName' => 'displayState', ],
+                'displayStateLabel' => [ 'type' => 'string', 'locationName' => 'displayStateLabel', ],
+                'stateDetail' => [ 'type' => 'string', 'locationName' => 'stateDetail', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'typeLabel' => [ 'type' => 'string', 'locationName' => 'typeLabel', ],
+                'duration' => [ 'type' => 'long', 'locationName' => 'duration', ],
+                'runStartTimestamp' => [ 'type' => 'long', 'locationName' => 'runStartTimestamp', ],
+                'runEndTimestamp' => [ 'type' => 'long', 'locationName' => 'runEndTimestamp', ],
+                'createTimestamp' => [ 'type' => 'long', 'locationName' => 'createTimestamp', ],
+                'updateTimestamp' => [ 'type' => 'long', 'locationName' => 'updateTimestamp', ],
+                'owners' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserInfoVo', ], ],
+                'priority' => [ 'type' => 'integer', 'locationName' => 'priority', ],
+                'priorityLabel' => [ 'type' => 'string', 'locationName' => 'priorityLabel', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'resourceLabel' => [ 'type' => 'string', 'locationName' => 'resourceLabel', ],
+                'canRerunDownstream' => [ 'type' => 'boolean', 'locationName' => 'canRerunDownstream', ],
+            ],
+        ],
+        'TaskDependencyVo' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'internalTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'hasMore' => [ 'type' => 'boolean', 'locationName' => 'hasMore', ],
+                'moreList' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskDependencyVo', ], ],
+            ],
+        ],
+        'InstanceHistoryVo' => [
+            'type' => 'structure',
+            'members' => [
+                'sort' => [ 'type' => 'integer', 'locationName' => 'sort', ],
+                'planStartTimestamp' => [ 'type' => 'long', 'locationName' => 'planStartTimestamp', ],
+                'historyId' => [ 'type' => 'long', 'locationName' => 'historyId', ],
+                'displayState' => [ 'type' => 'string', 'locationName' => 'displayState', ],
+                'displayStateLabel' => [ 'type' => 'string', 'locationName' => 'displayStateLabel', ],
+                'stateDetail' => [ 'type' => 'string', 'locationName' => 'stateDetail', ],
+            ],
+        ],
+        'TaskStatisticVo' => [
+            'type' => 'structure',
+            'members' => [
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskNum' => [ 'type' => 'integer', 'locationName' => 'taskNum', ],
+                'percent' => [ 'type' => 'string', 'locationName' => 'percent', ],
+            ],
+        ],
+        'UserInfoVo' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'InstanceOperationVo' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'operation' => [ 'type' => 'string', 'locationName' => 'operation', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'operateTimestamp' => [ 'type' => 'long', 'locationName' => 'operateTimestamp', ],
+            ],
+        ],
+        'TxDateRangeVO' => [
+            'type' => 'structure',
+            'members' => [
+                'startTimestamp' => [ 'type' => 'long', 'locationName' => 'startTimestamp', ],
+                'endTimestamp' => [ 'type' => 'long', 'locationName' => 'endTimestamp', ],
+            ],
+        ],
+        'SupplementInstanceVO' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'txDateTimestamp' => [ 'type' => 'long', 'locationName' => 'txDateTimestamp', ],
+                'displayStatus' => [ 'type' => 'string', 'locationName' => 'displayStatus', ],
+                'displayStatusLabel' => [ 'type' => 'string', 'locationName' => 'displayStatusLabel', ],
+                'groupNumber' => [ 'type' => 'integer', 'locationName' => 'groupNumber', ],
+                'duration' => [ 'type' => 'long', 'locationName' => 'duration', ],
+                'runStartTimestamp' => [ 'type' => 'long', 'locationName' => 'runStartTimestamp', ],
+                'runEndTimestamp' => [ 'type' => 'long', 'locationName' => 'runEndTimestamp', ],
+                'owners' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserInfoVo', ], ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskTypeLabel' => [ 'type' => 'string', 'locationName' => 'taskTypeLabel', ],
+            ],
+        ],
         'UranusUploaderPartETag' => [
             'type' => 'structure',
             'members' => [
@@ -5861,6 +8196,16 @@ return [
                 'mainClass' => [ 'type' => 'string', 'locationName' => 'mainClass', ],
                 'dependentResources' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceBriefInfoVo', ], ],
                 'params' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'TableSourceVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'sourceType' => [ 'type' => 'string', 'locationName' => 'sourceType', ],
+                'sourceName' => [ 'type' => 'string', 'locationName' => 'sourceName', ],
+                'sort' => [ 'type' => 'integer', 'locationName' => 'sort', ],
+                'isDefault' => [ 'type' => 'boolean', 'locationName' => 'isDefault', ],
             ],
         ],
         'UranusTaskNodeRes' => [
@@ -6069,6 +8414,17 @@ return [
                 'taskCode' => [ 'type' => 'string', 'locationName' => 'taskCode', ],
             ],
         ],
+        'UranusResultListTableSourceVo' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TableSourceVo', ], ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
+            ],
+        ],
         'UranusTaskInfoPrePublishRes' => [
             'type' => 'structure',
             'members' => [
@@ -6106,6 +8462,7 @@ return [
                 'args' =>  [ 'shape' => 'UranusTaskParamReq', ],
                 'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
                 'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'jcwSQLRunParams' =>  [ 'shape' => 'JcwSQLRunParams', ],
             ],
         ],
         'UranusColumnSaveOrUpdate' => [
@@ -6135,6 +8492,7 @@ return [
                 'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
                 'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
                 'loopInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskInfoLoopReq', ], ],
+                'jcwSQLRunParams' =>  [ 'shape' => 'JcwSQLRunParams', ],
             ],
         ],
         'UranusTaskInfoRePublishReq' => [
@@ -6443,6 +8801,13 @@ return [
                 'datasourceName' => [ 'type' => 'string', 'locationName' => 'datasourceName', ],
                 'datasourceUseEnvType' => [ 'type' => 'string', 'locationName' => 'datasourceUseEnvType', ],
                 'loopInfo' =>  [ 'shape' => 'TaskInfoLoopReq', ],
+            ],
+        ],
+        'JcwSQLRunParams' => [
+            'type' => 'structure',
+            'members' => [
+                'cu' => [ 'type' => 'integer', 'locationName' => 'cu', ],
+                'parallelism' => [ 'type' => 'integer', 'locationName' => 'parallelism', ],
             ],
         ],
         'UranusTaskInfoPublishReq' => [
@@ -7314,6 +9679,7 @@ return [
                 'fromGravity' => [ 'type' => 'boolean', 'locationName' => 'fromGravity', ],
                 'datasourcePrimaryId' => [ 'type' => 'string', 'locationName' => 'datasourcePrimaryId', ],
                 'datasourceUseEnvType' => [ 'type' => 'string', 'locationName' => 'datasourceUseEnvType', ],
+                'runParams' =>  [ 'shape' => 'JcwSQLRunParams', ],
             ],
         ],
         'UranusTaskInfoNodeReq' => [
@@ -7564,6 +9930,1317 @@ return [
                 'applicationId' => [ 'type' => 'string', 'locationName' => 'applicationId', ],
             ],
         ],
+        'TaskFavoriteReq' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'flowId' => [ 'type' => 'string', 'locationName' => 'flowId', ],
+            ],
+        ],
+        'TaskRepublishReq' => [
+            'type' => 'structure',
+            'members' => [
+                'historyId' => [ 'type' => 'string', 'locationName' => 'historyId', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'enable' => [ 'type' => 'boolean', 'locationName' => 'enable', ],
+            ],
+        ],
+        'FlowPrepublishNodesReq' => [
+            'type' => 'structure',
+            'members' => [
+                'flowDraftId' => [ 'type' => 'string', 'locationName' => 'flowDraftId', ],
+                'taskDraftIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'TaskParseSystemParamReq' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'currentTime' => [ 'type' => 'string', 'locationName' => 'currentTime', ],
+            ],
+        ],
+        'TaskCanvasInfoReq' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'graphData' => [ 'type' => 'string', 'locationName' => 'graphData', ],
+                'parentDraftIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'TaskPipeCreateTableReq' => [
+            'type' => 'structure',
+            'members' => [
+                'createTableSql' => [ 'type' => 'string', 'locationName' => 'createTableSql', ],
+                'environment' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'sinkType' => [ 'type' => 'string', 'locationName' => 'sinkType', ],
+                'sinkId' => [ 'type' => 'string', 'locationName' => 'sinkId', ],
+                'sourceId' => [ 'type' => 'string', 'locationName' => 'sourceId', ],
+                'sourceTableName' => [ 'type' => 'string', 'locationName' => 'sourceTableName', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'tableMatchingType' => [ 'type' => 'string', 'locationName' => 'tableMatchingType', ],
+                'schema' => [ 'type' => 'string', 'locationName' => 'schema', ],
+            ],
+        ],
+        'FlowNodeCreateReq' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'flowName' => [ 'type' => 'string', 'locationName' => 'flowName', ],
+                'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
+                'collaborators' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+            ],
+        ],
+        'TaskFuzzListDependableReq' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'taskNameFuzz' => [ 'type' => 'string', 'locationName' => 'taskNameFuzz', ],
+                'dependTaskId' => [ 'type' => 'string', 'locationName' => 'dependTaskId', ],
+            ],
+        ],
+        'TaskHistoryVersionListReq' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'TaskDebugResultListReq' => [
+            'type' => 'structure',
+            'members' => [
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'pos' => [ 'type' => 'integer', 'locationName' => 'pos', ],
+                'lines' => [ 'type' => 'integer', 'locationName' => 'lines', ],
+                'debugId' => [ 'type' => 'integer', 'locationName' => 'debugId', ],
+            ],
+        ],
+        'TaskNodeDeleteReq' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+            ],
+        ],
+        'TaskCatalogCreateReq' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'catalogName' => [ 'type' => 'string', 'locationName' => 'catalogName', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'parentId' => [ 'type' => 'string', 'locationName' => 'parentId', ],
+            ],
+        ],
+        'TaskCatalogDeleteReq' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+            ],
+        ],
+        'TaskFullTextQueryReq' => [
+            'type' => 'structure',
+            'members' => [
+                'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
+                'taskType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'updateTimeFrom' => [ 'type' => 'string', 'locationName' => 'updateTimeFrom', ],
+                'updateTimeTo' => [ 'type' => 'string', 'locationName' => 'updateTimeTo', ],
+                'sortType' => [ 'type' => 'string', 'locationName' => 'sortType', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'TaskDebugHistoryListReq' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'startTimeFrom' => [ 'type' => 'string', 'locationName' => 'startTimeFrom', ],
+                'startTimeEnd' => [ 'type' => 'string', 'locationName' => 'startTimeEnd', ],
+                'endTimeFrom' => [ 'type' => 'string', 'locationName' => 'endTimeFrom', ],
+                'endTimeEnd' => [ 'type' => 'string', 'locationName' => 'endTimeEnd', ],
+                'statuses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'TaskOfflineReq' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'flowDraftId' => [ 'type' => 'string', 'locationName' => 'flowDraftId', ],
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'batchId' => [ 'type' => 'string', 'locationName' => 'batchId', ],
+            ],
+        ],
+        'TaskDebugReq' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'selected' => [ 'type' => 'boolean', 'locationName' => 'selected', ],
+                'selectedContent' => [ 'type' => 'string', 'locationName' => 'selectedContent', ],
+            ],
+        ],
+        'TaskCatalogMoveReq' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'targetBizId' => [ 'type' => 'string', 'locationName' => 'targetBizId', ],
+                'objectId' => [ 'type' => 'string', 'locationName' => 'objectId', ],
+            ],
+        ],
+        'TaskCatalogListReq' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'unfoldType' => [ 'type' => 'string', 'locationName' => 'unfoldType', ],
+                'listType' => [ 'type' => 'string', 'locationName' => 'listType', ],
+            ],
+        ],
+        'TaskPublishReq' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'batchId' => [ 'type' => 'string', 'locationName' => 'batchId', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'enable' => [ 'type' => 'boolean', 'locationName' => 'enable', ],
+            ],
+        ],
+        'TaskCatalogUpdateReq' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'bizId' => [ 'type' => 'string', 'locationName' => 'bizId', ],
+                'catalogName' => [ 'type' => 'string', 'locationName' => 'catalogName', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+            ],
+        ],
+        'TaskNodeInFlowSearchReq' => [
+            'type' => 'structure',
+            'members' => [
+                'flowDraftId' => [ 'type' => 'string', 'locationName' => 'flowDraftId', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'createTimeFrom' => [ 'type' => 'string', 'locationName' => 'createTimeFrom', ],
+                'createTimeEnd' => [ 'type' => 'string', 'locationName' => 'createTimeEnd', ],
+                'updateTimeFrom' => [ 'type' => 'string', 'locationName' => 'updateTimeFrom', ],
+                'updateTimeEnd' => [ 'type' => 'string', 'locationName' => 'updateTimeEnd', ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'taskClassify' => [ 'type' => 'string', 'locationName' => 'taskClassify', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+            ],
+        ],
+        'TaskCatalogQueryReq' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'fuzzName' => [ 'type' => 'string', 'locationName' => 'fuzzName', ],
+            ],
+        ],
+        'FlowCanvasInfoReq' => [
+            'type' => 'structure',
+            'members' => [
+                'flowDraftId' => [ 'type' => 'string', 'locationName' => 'flowDraftId', ],
+                'taskNodes' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCanvasInfoReq', ], ],
+            ],
+        ],
+        'TaskNodeCreateReq' => [
+            'type' => 'structure',
+            'members' => [
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'flowId' => [ 'type' => 'string', 'locationName' => 'flowId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
+                'collaborators' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+            ],
+        ],
+        'TaskFuzzListDependablePublicReq' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'taskNameFuzz' => [ 'type' => 'string', 'locationName' => 'taskNameFuzz', ],
+                'dependTaskId' => [ 'type' => 'string', 'locationName' => 'dependTaskId', ],
+            ],
+        ],
+        'TaskCreatePublicReq' => [
+            'type' => 'structure',
+            'members' => [
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+            ],
+        ],
+        'TaskDebugPublicReq' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+            ],
+        ],
+        'TaskPublishPublicReq' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+            ],
+        ],
+        'TaskDependInfosPublicReq' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'dependsTaskDraftId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UranusResultTaskParamInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskParamInfoRes', ],
+            ],
+        ],
+        'TaskSparkJarParam' => [
+            'type' => 'structure',
+            'members' => [
+                'sparkVersion' => [ 'type' => 'string', 'locationName' => 'sparkVersion', ],
+                'language' => [ 'type' => 'string', 'locationName' => 'language', ],
+                'mainJar' =>  [ 'shape' => 'SparkJarResourceBriefInfoVo', ],
+                'mainClass' => [ 'type' => 'string', 'locationName' => 'mainClass', ],
+                'dependentResources' => [ 'type' => 'list', 'member' => [ 'shape' => 'SparkJarResourceBriefInfoVo', ], ],
+                'params' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
+            ],
+        ],
+        'UranusResultTaskPublishRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskPublishRes', ],
+            ],
+        ],
+        'UranusResultPageTaskFullTextQueryRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'PageTaskFullTextQueryRes', ],
+            ],
+        ],
+        'TaskInfoRes2' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'lockedUser' => [ 'type' => 'string', 'locationName' => 'lockedUser', ],
+                'lockedStatus' => [ 'type' => 'string', 'locationName' => 'lockedStatus', ],
+                'baseInfoRes' =>  [ 'shape' => 'TaskBaseInfoRes', ],
+                'fileInfoRes' =>  [ 'shape' => 'TaskFileInfoRes', ],
+                'paramInfoRes' =>  [ 'shape' => 'TaskParamInfoRes', ],
+                'scheduleInfoRes' =>  [ 'shape' => 'TaskScheduleInfoRes', ],
+                'alarmInfoRes' =>  [ 'shape' => 'TaskAlarmInfoRes', ],
+                'dependInfoRes' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskDependInfoRes', ], ],
+            ],
+        ],
+        'UranusResultTaskImageRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskImageParam', ], ],
+            ],
+        ],
+        'TaskCanvasInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'bizId' => [ 'type' => 'string', 'locationName' => 'bizId', ],
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'flowDraftId' => [ 'type' => 'string', 'locationName' => 'flowDraftId', ],
+                'flowName' => [ 'type' => 'string', 'locationName' => 'flowName', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskClassify' => [ 'type' => 'string', 'locationName' => 'taskClassify', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+                'nodeIcon' => [ 'type' => 'string', 'locationName' => 'nodeIcon', ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'graphData' => [ 'type' => 'string', 'locationName' => 'graphData', ],
+                'parent' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCanvasInfoRes', ], ],
+                'lockStatus' => [ 'type' => 'string', 'locationName' => 'lockStatus', ],
+                'lockUser' => [ 'type' => 'string', 'locationName' => 'lockUser', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'taskHistoryId' => [ 'type' => 'integer', 'locationName' => 'taskHistoryId', ],
+                'taskVersion' => [ 'type' => 'integer', 'locationName' => 'taskVersion', ],
+                'flowHistoryId' => [ 'type' => 'integer', 'locationName' => 'flowHistoryId', ],
+                'flowVersion' => [ 'type' => 'integer', 'locationName' => 'flowVersion', ],
+            ],
+        ],
+        'PageResultTaskCanvasInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+                'totalRecords' => [ 'type' => 'integer', 'locationName' => 'totalRecords', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCanvasInfoRes', ], ],
+            ],
+        ],
+        'TaskLoopElementDelimiterVo2' => [
+            'type' => 'structure',
+            'members' => [
+                'delimName' => [ 'type' => 'string', 'locationName' => 'delimName', ],
+                'delimDesc' => [ 'type' => 'string', 'locationName' => 'delimDesc', ],
+                'delimValue' => [ 'type' => 'string', 'locationName' => 'delimValue', ],
+            ],
+        ],
+        'TaskPipeSplColumn' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+                'columnName' => [ 'type' => 'string', 'locationName' => 'columnName', ],
+                'columnType' => [ 'type' => 'string', 'locationName' => 'columnType', ],
+                'comment' => [ 'type' => 'string', 'locationName' => 'comment', ],
+            ],
+        ],
+        'UranusResultListTaskCanvasInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCanvasInfoRes', ], ],
+            ],
+        ],
+        'PageResultContentTaskHistory' => [
+            'type' => 'structure',
+            'members' => [
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+                'totalRecords' => [ 'type' => 'integer', 'locationName' => 'totalRecords', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskHistoryVersionInfoRes', ], ],
+            ],
+        ],
+        'UranusResultListObject2' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+            ],
+        ],
+        'TaskDatasourceParam' => [
+            'type' => 'structure',
+            'members' => [
+                'datasourceName' => [ 'type' => 'string', 'locationName' => 'datasourceName', ],
+                'datasourceType' => [ 'type' => 'string', 'locationName' => 'datasourceType', ],
+                'datasourcePrimaryId' => [ 'type' => 'string', 'locationName' => 'datasourcePrimaryId', ],
+                'datasourceId' => [ 'type' => 'string', 'locationName' => 'datasourceId', ],
+                'datasourceEnvType' => [ 'type' => 'string', 'locationName' => 'datasourceEnvType', ],
+            ],
+        ],
+        'UranusResultListDebugHistoryPage' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'PageResultContentDebugHistory', ],
+            ],
+        ],
+        'TaskOutputParamRes' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'paramSort' => [ 'type' => 'integer', 'locationName' => 'paramSort', ],
+                'paramKey' => [ 'type' => 'string', 'locationName' => 'paramKey', ],
+                'paramValue' => [ 'type' => 'string', 'locationName' => 'paramValue', ],
+                'paramDesc' => [ 'type' => 'string', 'locationName' => 'paramDesc', ],
+                'paramType' => [ 'type' => 'string', 'locationName' => 'paramType', ],
+            ],
+        ],
+        'UranusResultTaskInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskInfoRes2', ],
+            ],
+        ],
+        'PageTaskFullTextQueryRes' => [
+            'type' => 'structure',
+            'members' => [
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+                'totalRecords' => [ 'type' => 'integer', 'locationName' => 'totalRecords', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskFullTextQueryRes', ], ],
+            ],
+        ],
+        'TaskScheduleInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'cronExpression' => [ 'type' => 'string', 'locationName' => 'cronExpression', ],
+                'effectiveDateStart' => [ 'type' => 'string', 'locationName' => 'effectiveDateStart', ],
+                'effectiveDateEnd' => [ 'type' => 'string', 'locationName' => 'effectiveDateEnd', ],
+                'delay' => [ 'type' => 'integer', 'locationName' => 'delay', ],
+                'priority' => [ 'type' => 'string', 'locationName' => 'priority', ],
+                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+                'retryTimes' => [ 'type' => 'integer', 'locationName' => 'retryTimes', ],
+                'retryInterval' => [ 'type' => 'integer', 'locationName' => 'retryInterval', ],
+                'resourceGroup' => [ 'type' => 'string', 'locationName' => 'resourceGroup', ],
+                'crossCycleDependType' => [ 'type' => 'string', 'locationName' => 'crossCycleDependType', ],
+                'scheduleCycle' => [ 'type' => 'string', 'locationName' => 'scheduleCycle', ],
+            ],
+        ],
+        'TaskImageParam' => [
+            'type' => 'structure',
+            'members' => [
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+                'imageName' => [ 'type' => 'string', 'locationName' => 'imageName', ],
+                'imageRepoTag' => [ 'type' => 'string', 'locationName' => 'imageRepoTag', ],
+                'imageType' => [ 'type' => 'string', 'locationName' => 'imageType', ],
+                'imageFunctionType' => [ 'type' => 'string', 'locationName' => 'imageFunctionType', ],
+                'ossInputPath' => [ 'type' => 'string', 'locationName' => 'ossInputPath', ],
+                'ossOutputPath' => [ 'type' => 'string', 'locationName' => 'ossOutputPath', ],
+                'deDuplicationScore' => [ 'type' => 'string', 'locationName' => 'deDuplicationScore', ],
+                'invokeModelApiKey' => [ 'type' => 'string', 'locationName' => 'invokeModelApiKey', ],
+                'captionParams' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'startCmdParams' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'envParams' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UranusResultListString2' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'TaskCatalogNodeVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'bizId' => [ 'type' => 'string', 'locationName' => 'bizId', ],
+                'flowId' => [ 'type' => 'string', 'locationName' => 'flowId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'classifyId' => [ 'type' => 'string', 'locationName' => 'classifyId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'viewName' => [ 'type' => 'string', 'locationName' => 'viewName', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'nodeKind' => [ 'type' => 'string', 'locationName' => 'nodeKind', ],
+                'nodeIcon' => [ 'type' => 'string', 'locationName' => 'nodeIcon', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'hasChildren' => [ 'type' => 'boolean', 'locationName' => 'hasChildren', ],
+                'childrenNum' => [ 'type' => 'integer', 'locationName' => 'childrenNum', ],
+                'children' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCatalogNodeVo', ], ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'collaborators' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'lockStatus' => [ 'type' => 'string', 'locationName' => 'lockStatus', ],
+                'lockUser' => [ 'type' => 'string', 'locationName' => 'lockUser', ],
+            ],
+        ],
+        'TaskHistoryVersionInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'historyId' => [ 'type' => 'long', 'locationName' => 'historyId', ],
+                'sortId' => [ 'type' => 'integer', 'locationName' => 'sortId', ],
+                'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'commitTime' => [ 'type' => 'string', 'locationName' => 'commitTime', ],
+                'committer' => [ 'type' => 'string', 'locationName' => 'committer', ],
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+            ],
+        ],
+        'TaskLockStatusInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'lockStatus' => [ 'type' => 'string', 'locationName' => 'lockStatus', ],
+                'lockUser' => [ 'type' => 'string', 'locationName' => 'lockUser', ],
+            ],
+        ],
+        'LoopParam2' => [
+            'type' => 'structure',
+            'members' => [
+                'elementName' => [ 'type' => 'string', 'locationName' => 'elementName', ],
+                'elementValues' => [ 'type' => 'string', 'locationName' => 'elementValues', ],
+                'delimiter' =>  [ 'shape' => 'TaskLoopElementDelimiterVo2', ],
+            ],
+        ],
+        'PageResultContentDebugHistory' => [
+            'type' => 'structure',
+            'members' => [
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+                'totalRecords' => [ 'type' => 'integer', 'locationName' => 'totalRecords', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskDebugHistoryRes', ], ],
+            ],
+        ],
+        'TaskBaseParam' => [
+            'type' => 'structure',
+            'members' => [
+                'paramSort' => [ 'type' => 'integer', 'locationName' => 'paramSort', ],
+                'paramKey' => [ 'type' => 'string', 'locationName' => 'paramKey', ],
+                'paramValue' => [ 'type' => 'string', 'locationName' => 'paramValue', ],
+                'paramDesc' => [ 'type' => 'string', 'locationName' => 'paramDesc', ],
+                'paramType' => [ 'type' => 'string', 'locationName' => 'paramType', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+            ],
+        ],
+        'TaskAlarmInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'method' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'timing' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'startdelayTime' => [ 'type' => 'string', 'locationName' => 'startdelayTime', ],
+                'finishdelayTime' => [ 'type' => 'string', 'locationName' => 'finishdelayTime', ],
+                'receiver' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'TaskDependInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'dependTaskName' => [ 'type' => 'string', 'locationName' => 'dependTaskName', ],
+                'dependDraftId' => [ 'type' => 'string', 'locationName' => 'dependDraftId', ],
+                'dependTaskId' => [ 'type' => 'string', 'locationName' => 'dependTaskId', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+                'cycle' => [ 'type' => 'string', 'locationName' => 'cycle', ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'taskKind' => [ 'type' => 'string', 'locationName' => 'taskKind', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'necessary' => [ 'type' => 'boolean', 'locationName' => 'necessary', ],
+            ],
+        ],
+        'UranusResultTaskDependInfoResList' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskDependInfoRes', ], ],
+            ],
+        ],
+        'UranusResultBoolean2' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'TaskCatalogNodeBriefVO' => [
+            'type' => 'structure',
+            'members' => [
+                'bizId' => [ 'type' => 'string', 'locationName' => 'bizId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'hasChildren' => [ 'type' => 'boolean', 'locationName' => 'hasChildren', ],
+                'children' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCatalogNodeBriefVO', ], ],
+            ],
+        ],
+        'TaskRunParam' => [
+            'type' => 'structure',
+            'members' => [
+                'cu' => [ 'type' => 'integer', 'locationName' => 'cu', ],
+                'parallelism' => [ 'type' => 'integer', 'locationName' => 'parallelism', ],
+            ],
+        ],
+        'UranusResultListCatalogNodeBriefVO' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCatalogNodeBriefVO', ], ],
+            ],
+        ],
+        'UranusResultTaskLockStatus' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskLockStatusInfoRes', ],
+            ],
+        ],
+        'UranusResultTaskDebugDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskDebugHistoryRes', ],
+            ],
+        ],
+        'TaskPipeBasicInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'workId' => [ 'type' => 'string', 'locationName' => 'workId', ],
+                'workName' => [ 'type' => 'string', 'locationName' => 'workName', ],
+                'workDesc' => [ 'type' => 'string', 'locationName' => 'workDesc', ],
+                'workMaster' => [ 'type' => 'string', 'locationName' => 'workMaster', ],
+                'sourceType' => [ 'type' => 'string', 'locationName' => 'sourceType', ],
+                'sourceId' => [ 'type' => 'string', 'locationName' => 'sourceId', ],
+                'sourceTableName' => [ 'type' => 'string', 'locationName' => 'sourceTableName', ],
+                'sinkType' => [ 'type' => 'string', 'locationName' => 'sinkType', ],
+                'sinkId' => [ 'type' => 'string', 'locationName' => 'sinkId', ],
+                'sinkTableName' => [ 'type' => 'string', 'locationName' => 'sinkTableName', ],
+                'writeMode' => [ 'type' => 'string', 'locationName' => 'writeMode', ],
+                'collaboratorPin' => [ 'type' => 'string', 'locationName' => 'collaboratorPin', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'isShardingDatabase' => [ 'type' => 'boolean', 'locationName' => 'isShardingDatabase', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'editType' => [ 'type' => 'string', 'locationName' => 'editType', ],
+                'userDefinedJson' => [ 'type' => 'string', 'locationName' => 'userDefinedJson', ],
+            ],
+        ],
+        'TaskPipePreDebugRes' => [
+            'type' => 'structure',
+            'members' => [
+                'validateDatasourceResult' => [ 'type' => 'string', 'locationName' => 'validateDatasourceResult', ],
+                'validateFieldResult' => [ 'type' => 'string', 'locationName' => 'validateFieldResult', ],
+                'connectResult' => [ 'type' => 'string', 'locationName' => 'connectResult', ],
+                'privilegeResult' => [ 'type' => 'string', 'locationName' => 'privilegeResult', ],
+            ],
+        ],
+        'UranusResultObject' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'object', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusResultListTaskNodeTypeVo' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskNodeTypeVo', ], ],
+            ],
+        ],
+        'TaskDebugHistoryRes' => [
+            'type' => 'structure',
+            'members' => [
+                'debugId' => [ 'type' => 'long', 'locationName' => 'debugId', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'filePath' => [ 'type' => 'string', 'locationName' => 'filePath', ],
+                'scriptContent' => [ 'type' => 'string', 'locationName' => 'scriptContent', ],
+                'execMode' => [ 'type' => 'string', 'locationName' => 'execMode', ],
+                'args' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'execEngine' => [ 'type' => 'string', 'locationName' => 'execEngine', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'resultPath' => [ 'type' => 'string', 'locationName' => 'resultPath', ],
+                'loopInfo' =>  [ 'shape' => 'TaskLoopParam', ],
+                'datasourceInfo' =>  [ 'shape' => 'TaskDatasourceParam', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'applicationId' => [ 'type' => 'string', 'locationName' => 'applicationId', ],
+                'sparkJarInfo' =>  [ 'shape' => 'TaskSparkJarParam', ],
+                'runInfo' =>  [ 'shape' => 'TaskRunParam', ],
+            ],
+        ],
+        'UranusResultListTaskHistoryRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskHistoryVersionInfoRes', ], ],
+            ],
+        ],
+        'UranusResultPageTaskCanvasInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'PageResultTaskCanvasInfoRes', ],
+            ],
+        ],
+        'TaskPipeInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'basicInfo' =>  [ 'shape' => 'TaskPipeBasicInfoRes', ],
+                'datasourceInfo' =>  [ 'shape' => 'TaskPipeDatasourceInfoRes', ],
+                'settingInfo' =>  [ 'shape' => 'TaskPipeSettingInfoRes', ],
+                'executeJson' => [ 'type' => 'string', 'locationName' => 'executeJson', ],
+            ],
+        ],
+        'TaskPipeSettingInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'workId' => [ 'type' => 'string', 'locationName' => 'workId', ],
+                'jobManagerCu' => [ 'type' => 'integer', 'locationName' => 'jobManagerCu', ],
+                'taskManagerCu' => [ 'type' => 'integer', 'locationName' => 'taskManagerCu', ],
+                'speedChannel' => [ 'type' => 'integer', 'locationName' => 'speedChannel', ],
+                'individualChannelEnable' => [ 'type' => 'integer', 'locationName' => 'individualChannelEnable', ],
+                'speedReaderChannel' => [ 'type' => 'integer', 'locationName' => 'speedReaderChannel', ],
+                'speedWriterChannel' => [ 'type' => 'integer', 'locationName' => 'speedWriterChannel', ],
+                'speedBytes' => [ 'type' => 'long', 'locationName' => 'speedBytes', ],
+                'speedLimitEnable' => [ 'type' => 'integer', 'locationName' => 'speedLimitEnable', ],
+                'checkpointEnable' => [ 'type' => 'integer', 'locationName' => 'checkpointEnable', ],
+                'checkpointType' => [ 'type' => 'integer', 'locationName' => 'checkpointType', ],
+                'checkpointInterval' => [ 'type' => 'integer', 'locationName' => 'checkpointInterval', ],
+                'checkpointIntervalType' => [ 'type' => 'string', 'locationName' => 'checkpointIntervalType', ],
+                'checkpointTimeout' => [ 'type' => 'integer', 'locationName' => 'checkpointTimeout', ],
+                'checkpointTimeoutType' => [ 'type' => 'string', 'locationName' => 'checkpointTimeoutType', ],
+                'errorEnable' => [ 'type' => 'integer', 'locationName' => 'errorEnable', ],
+                'errorDeal' => [ 'type' => 'string', 'locationName' => 'errorDeal', ],
+                'errorThreshold' => [ 'type' => 'long', 'locationName' => 'errorThreshold', ],
+                'warnTime' => [ 'type' => 'string', 'locationName' => 'warnTime', ],
+                'warnType' => [ 'type' => 'string', 'locationName' => 'warnType', ],
+                'warnCycle' => [ 'type' => 'string', 'locationName' => 'warnCycle', ],
+                'warnInterval' => [ 'type' => 'integer', 'locationName' => 'warnInterval', ],
+                'warnIntervalType' => [ 'type' => 'string', 'locationName' => 'warnIntervalType', ],
+                'warnNotify' => [ 'type' => 'string', 'locationName' => 'warnNotify', ],
+                'slots' => [ 'type' => 'integer', 'locationName' => 'slots', ],
+                'flinkRunParams' => [ 'type' => 'string', 'locationName' => 'flinkRunParams', ],
+                'restartEnable' => [ 'type' => 'integer', 'locationName' => 'restartEnable', ],
+                'restartTimes' => [ 'type' => 'integer', 'locationName' => 'restartTimes', ],
+                'schedulerParams' => [ 'type' => 'string', 'locationName' => 'schedulerParams', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+            ],
+        ],
+        'TaskDependInfoResList' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'dependencies' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskDependInfoRes', ], ],
+            ],
+        ],
+        'TaskBaseInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'workId' => [ 'type' => 'string', 'locationName' => 'workId', ],
+                'taskKind' => [ 'type' => 'string', 'locationName' => 'taskKind', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskClassify' => [ 'type' => 'string', 'locationName' => 'taskClassify', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'collaborators' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
+                'bizId' => [ 'type' => 'string', 'locationName' => 'bizId', ],
+                'bizName' => [ 'type' => 'string', 'locationName' => 'bizName', ],
+                'flowDraftId' => [ 'type' => 'string', 'locationName' => 'flowDraftId', ],
+                'flowName' => [ 'type' => 'string', 'locationName' => 'flowName', ],
+                'nodeIcon' => [ 'type' => 'string', 'locationName' => 'nodeIcon', ],
+            ],
+        ],
+        'TaskFullTextQueryRes' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'nodeIcon' => [ 'type' => 'string', 'locationName' => 'nodeIcon', ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'catalog' => [ 'type' => 'string', 'locationName' => 'catalog', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'score' => [ 'type' => 'double', 'locationName' => 'score', ],
+                'lines' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskFullTextLineResult', ], ],
+            ],
+        ],
+        'UranusResultListDependOutputParam' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskOutputParamRes', ], ],
+            ],
+        ],
+        'UranusResultListTaskHistoryPage' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'PageResultContentTaskHistory', ],
+            ],
+        ],
+        'TaskPublishRes' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'batchId' => [ 'type' => 'string', 'locationName' => 'batchId', ],
+            ],
+        ],
+        'SparkJarResourceBriefInfoVo' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'relativePath' => [ 'type' => 'string', 'locationName' => 'relativePath', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+            ],
+        ],
+        'TaskParamInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'inputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'outputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'runParams' =>  [ 'shape' => 'TaskRunParam', ],
+                'debugParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'loopParams' =>  [ 'shape' => 'TaskLoopParam', ],
+                'sparkJarParams' =>  [ 'shape' => 'TaskSparkJarParam', ],
+                'datasourceParams' =>  [ 'shape' => 'TaskDatasourceParam', ],
+                'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
+                'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
+                'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+            ],
+        ],
+        'UranusResultString2' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+            ],
+        ],
+        'TaskNodeTypeVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'drag' => [ 'type' => 'boolean', 'locationName' => 'drag', ],
+                'nodeDesc' => [ 'type' => 'string', 'locationName' => 'nodeDesc', ],
+                'nodeName' => [ 'type' => 'string', 'locationName' => 'nodeName', ],
+                'nodeIcon' => [ 'type' => 'string', 'locationName' => 'nodeIcon', ],
+                'children' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskNodeTypeVo', ], ],
+            ],
+        ],
+        'TaskPipeDatasourceInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'workId' => [ 'type' => 'string', 'locationName' => 'workId', ],
+                'sourceName' => [ 'type' => 'string', 'locationName' => 'sourceName', ],
+                'sourceType' => [ 'type' => 'string', 'locationName' => 'sourceType', ],
+                'sourceTableName' => [ 'type' => 'string', 'locationName' => 'sourceTableName', ],
+                'sourceProperties' => [ 'type' => 'string', 'locationName' => 'sourceProperties', ],
+                'sinkName' => [ 'type' => 'string', 'locationName' => 'sinkName', ],
+                'sinkType' => [ 'type' => 'string', 'locationName' => 'sinkType', ],
+                'sinkTableName' => [ 'type' => 'string', 'locationName' => 'sinkTableName', ],
+                'sinkColumn' => [ 'type' => 'string', 'locationName' => 'sinkColumn', ],
+                'sinkProperties' => [ 'type' => 'string', 'locationName' => 'sinkProperties', ],
+                'allColumn' => [ 'type' => 'string', 'locationName' => 'allColumn', ],
+                'splColumnConf' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskPipeSplColumn', ], ],
+                'tableMatchingType' => [ 'type' => 'string', 'locationName' => 'tableMatchingType', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+            ],
+        ],
+        'TaskFileInfoRes' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+            ],
+        ],
+        'UranusResultTaskCatalogList' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCatalogNodeVo', ], ],
+            ],
+        ],
+        'TaskLoopParam' => [
+            'type' => 'structure',
+            'members' => [
+                'loopType' => [ 'type' => 'string', 'locationName' => 'loopType', ],
+                'loopParamList' => [ 'type' => 'list', 'member' => [ 'shape' => 'LoopParam2', ], ],
+                'loopTimes' => [ 'type' => 'integer', 'locationName' => 'loopTimes', ],
+                'loopBatchSize' => [ 'type' => 'integer', 'locationName' => 'loopBatchSize', ],
+                'loopBatchInterval' => [ 'type' => 'integer', 'locationName' => 'loopBatchInterval', ],
+            ],
+        ],
+        'UranusResultListElementDelimiters2' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskLoopElementDelimiterVo2', ], ],
+            ],
+        ],
+        'TaskAlarmInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'method' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'timing' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'receiver' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UranusResultListTaskDependInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskDependInfoPublicRes', ], ],
+            ],
+        ],
+        'TaskDependInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'dependTaskName' => [ 'type' => 'string', 'locationName' => 'dependTaskName', ],
+                'dependDraftId' => [ 'type' => 'string', 'locationName' => 'dependDraftId', ],
+                'dependTaskId' => [ 'type' => 'string', 'locationName' => 'dependTaskId', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'cycle' => [ 'type' => 'string', 'locationName' => 'cycle', ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'kind' => [ 'type' => 'string', 'locationName' => 'kind', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+            ],
+        ],
+        'TaskCreatePublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+            ],
+        ],
+        'UranusResultTaskCatalogNodePublicVo' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCatalogNodePublicVo', ], ],
+            ],
+        ],
+        'UranusResultTaskCreatePublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskCreatePublicRes', ],
+            ],
+        ],
+        'ImageStartParamInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'startCmdParam' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseParamInfoPublicRes', ], ],
+                'envParam' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseParamInfoPublicRes', ], ],
+            ],
+        ],
+        'UranusResultTaskDebugResultPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskDebugResultPublicRes', ],
+            ],
+        ],
+        'UranusResultListImageInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageInfoPublicRes', ], ],
+            ],
+        ],
+        'TaskScriptInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+            ],
+        ],
+        'TaskCatalogNodePublicVo' => [
+            'type' => 'structure',
+            'members' => [
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'catalogName' => [ 'type' => 'string', 'locationName' => 'catalogName', ],
+                'absolutePath' => [ 'type' => 'string', 'locationName' => 'absolutePath', ],
+            ],
+        ],
+        'TaskDebugLogPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'debugId' => [ 'type' => 'long', 'locationName' => 'debugId', ],
+                'logContent' => [ 'type' => 'string', 'locationName' => 'logContent', ],
+                'runStatus' => [ 'type' => 'string', 'locationName' => 'runStatus', ],
+            ],
+        ],
+        'UranusResultTaskDebugLogPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskDebugLogPublicRes', ],
+            ],
+        ],
+        'UranusResultTaskInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskInfoPublicRes', ],
+            ],
+        ],
+        'BaseParamInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'paramName' => [ 'type' => 'string', 'locationName' => 'paramName', ],
+                'paramValue' => [ 'type' => 'string', 'locationName' => 'paramValue', ],
+            ],
+        ],
+        'UranusResultTaskDebugPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskDebugPublicRes', ],
+            ],
+        ],
+        'ImageInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+                'imageName' => [ 'type' => 'string', 'locationName' => 'imageName', ],
+                'imageRepoTag' => [ 'type' => 'string', 'locationName' => 'imageRepoTag', ],
+                'imageFunctionType' => [ 'type' => 'string', 'locationName' => 'imageFunctionType', ],
+            ],
+        ],
+        'ResourceInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'resourceFlag' => [ 'type' => 'string', 'locationName' => 'resourceFlag', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+            ],
+        ],
+        'TaskDebugPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'debugId' => [ 'type' => 'long', 'locationName' => 'debugId', ],
+                'runStatus' => [ 'type' => 'string', 'locationName' => 'runStatus', ],
+            ],
+        ],
+        'TaskParamInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'datasourceParams' =>  [ 'shape' => 'DataSourceInfoPublicRes', ],
+            ],
+        ],
+        'UranusResultListDataSourceInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataSourceInfoPublicRes', ], ],
+            ],
+        ],
+        'DataSourceInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'datasourceId' => [ 'type' => 'string', 'locationName' => 'datasourceId', ],
+                'datasourceName' => [ 'type' => 'string', 'locationName' => 'datasourceName', ],
+                'datasourceType' => [ 'type' => 'string', 'locationName' => 'datasourceType', ],
+            ],
+        ],
+        'UranusResultListResourceInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceInfoPublicRes', ], ],
+            ],
+        ],
+        'TaskDebugResultPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'debugId' => [ 'type' => 'string', 'locationName' => 'debugId', ],
+                'results' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'TaskScheduleInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'cronExpression' => [ 'type' => 'string', 'locationName' => 'cronExpression', ],
+                'priority' => [ 'type' => 'string', 'locationName' => 'priority', ],
+                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
+                'retryTimes' => [ 'type' => 'integer', 'locationName' => 'retryTimes', ],
+                'retryInterval' => [ 'type' => 'integer', 'locationName' => 'retryInterval', ],
+                'isCrossCycleDepend' => [ 'type' => 'boolean', 'locationName' => 'isCrossCycleDepend', ],
+                'cu' => [ 'type' => 'integer', 'locationName' => 'cu', ],
+                'parallelism' => [ 'type' => 'integer', 'locationName' => 'parallelism', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'imageId' => [ 'type' => 'long', 'locationName' => 'imageId', ],
+            ],
+        ],
+        'TaskBaseInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskKind' => [ 'type' => 'string', 'locationName' => 'taskKind', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskClassify' => [ 'type' => 'string', 'locationName' => 'taskClassify', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'collaborators' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'catalogName' => [ 'type' => 'string', 'locationName' => 'catalogName', ],
+            ],
+        ],
+        'TaskInfoPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'baseInfo' =>  [ 'shape' => 'TaskBaseInfoPublicRes', ],
+                'scriptInfo' =>  [ 'shape' => 'TaskScriptInfoPublicRes', ],
+                'scheduleInfo' =>  [ 'shape' => 'TaskScheduleInfoPublicRes', ],
+                'alarmInfo' =>  [ 'shape' => 'TaskAlarmInfoPublicRes', ],
+                'paramInfo' =>  [ 'shape' => 'TaskParamInfoPublicRes', ],
+                'dependInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskDependInfoPublicRes', ], ],
+                'imageStartInfo' =>  [ 'shape' => 'ImageStartParamInfoPublicRes', ],
+            ],
+        ],
         'BundleOrUnBundleResourceReq' => [
             'type' => 'structure',
             'members' => [
@@ -7583,6 +11260,7 @@ return [
                 'manager' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'workspaceDescription' => [ 'type' => 'string', 'locationName' => 'workspaceDescription', ],
                 'workspaceModel' => [ 'type' => 'string', 'locationName' => 'workspaceModel', ],
+                'workspaceLabel' => [ 'type' => 'string', 'locationName' => 'workspaceLabel', ],
                 'engineType' => [ 'type' => 'string', 'locationName' => 'engineType', ],
                 'calculateResourceCode' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'integrationResourceCode' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
@@ -7643,6 +11321,13 @@ return [
                 'workspaceId' => [ 'type' => 'long', 'locationName' => 'workspaceId', ],
             ],
         ],
+        'UnbundleResourceReq' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
+            ],
+        ],
         'WorkspaceUserReq' => [
             'type' => 'structure',
             'members' => [
@@ -7686,6 +11371,8 @@ return [
                 'purchaseDuration' => [ 'type' => 'integer', 'locationName' => 'purchaseDuration', ],
                 'projectResourceReq' =>  [ 'shape' => 'CreateProjectResourceParam', ],
                 'returnUrl' => [ 'type' => 'string', 'locationName' => 'returnUrl', ],
+                'bizResourceKey' => [ 'type' => 'string', 'locationName' => 'bizResourceKey', ],
+                'bizTagInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'BizTagInfo', ], ],
             ],
         ],
         'OrderUniqueKey' => [
@@ -7723,6 +11410,14 @@ return [
                 'orderUniqueKey' =>  [ 'shape' => 'OrderUniqueKey', ],
             ],
         ],
+        'BizTagInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'bizTagType' => [ 'type' => 'string', 'locationName' => 'bizTagType', ],
+                'bizTagKey' => [ 'type' => 'string', 'locationName' => 'bizTagKey', ],
+                'bizTagValue' => [ 'type' => 'string', 'locationName' => 'bizTagValue', ],
+            ],
+        ],
         'AddMemberReq' => [
             'type' => 'structure',
             'members' => [
@@ -7737,6 +11432,7 @@ return [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
             ],
         ],
         'OwnerIntegrationResource' => [
@@ -7901,6 +11597,8 @@ return [
                 'id' => [ 'type' => 'long', 'locationName' => 'id', ],
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'workspaceName' => [ 'type' => 'string', 'locationName' => 'workspaceName', ],
+                'workspaceModel' => [ 'type' => 'string', 'locationName' => 'workspaceModel', ],
+                'workspaceLabel' => [ 'type' => 'string', 'locationName' => 'workspaceLabel', ],
                 'roles' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
@@ -7913,6 +11611,14 @@ return [
                 'workspaceModel' => [ 'type' => 'string', 'locationName' => 'workspaceModel', ],
                 'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
                 'accountId' => [ 'type' => 'string', 'locationName' => 'accountId', ],
+                'workspaceLabel' => [ 'type' => 'string', 'locationName' => 'workspaceLabel', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'ProductRegionListResp' => [
+            'type' => 'structure',
+            'members' => [
+                'regionIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'ProjectResp' => [
@@ -8127,6 +11833,51 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'CopilotUtteranceRecommendResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'JtlasForeignTableDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'JtlasForeignTableDetailResultShape', ],
+            ],
+        ],
+        'JtlasForeignTableDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'JtlasWarehouseTable', ],
+            ],
+        ],
+        'JtlasForeignTableDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'JtlasForeignTableListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'JtlasForeignTableListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'JtlasForeignTableListResultShape', ],
+            ],
+        ],
+        'JtlasForeignTableListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
         'JtlasDownloadTableColumnsResponseShape' => [
@@ -10987,6 +14738,375 @@ return [
                 '_REQ_SEQ_NO_' => [ 'type' => 'string', 'locationName' => '_REQ_SEQ_NO_', ],
             ],
         ],
+        'ManageHubClusterGetResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ManageHubClusterGetResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ManageHubClusterCreateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ManageHubClusterCreateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ManageHubClusterDeleteResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ManageHubClusterDeleteResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ManageHubClusterCreateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ManageHubClusterUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ManageHubClusterUpdateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ManageHubClusterUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'long', 'locationName' => 'clusterId', ],
+                'clusterCode' => [ 'type' => 'string', 'locationName' => 'clusterCode', ],
+                'clusterName' => [ 'type' => 'string', 'locationName' => 'clusterName', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'ManageHubClusterGetRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'long', 'locationName' => 'clusterId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'ManageHubClusterCreateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterCode' => [ 'type' => 'string', 'locationName' => 'clusterCode', ],
+                'clusterName' => [ 'type' => 'string', 'locationName' => 'clusterName', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'ManageHubClusterDeleteResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ManageHubClusterUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ManageHubClusterGetResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'ClusterDetailVo', ],
+            ],
+        ],
+        'ManageHubClusterListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'clusterCode' => [ 'type' => 'string', 'locationName' => 'clusterCode', ],
+                'clusterName' => [ 'type' => 'string', 'locationName' => 'clusterName', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'ManageHubClusterListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'ClusterPageOverviewVo', ],
+            ],
+        ],
+        'ManageHubClusterDeleteRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'long', 'locationName' => 'clusterId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'ManageHubClusterListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ManageHubClusterListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ManageHubClusterMetaReplaceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterCode' => [ 'type' => 'string', 'locationName' => 'clusterCode', ],
+                'metaList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterMetaParam', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'ManageHubClusterMetaDeleteResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ManageHubClusterMetaReplaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ManageHubClusterMetaListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'ClusterMetaPageVo', ],
+            ],
+        ],
+        'ManageHubClusterMetaAddResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ManageHubClusterMetaAddResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ManageHubClusterMetaDeleteRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'metaIdList' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'ManageHubClusterMetaAddRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterCode' => [ 'type' => 'string', 'locationName' => 'clusterCode', ],
+                'metaList' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterMetaParam', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'ManageHubClusterMetaAddResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ManageHubClusterMetaReplaceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ManageHubClusterMetaReplaceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ManageHubClusterMetaListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'clusterCode' => [ 'type' => 'string', 'locationName' => 'clusterCode', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'ManageHubClusterMetaListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ManageHubClusterMetaListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ManageHubClusterMetaDeleteResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ManageHubClusterMetaDeleteResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorDictTaskScheduleCyclesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorDictSupplementMethodResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorDictSupplementMethodResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorDictSupplementOrderResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DictVo', ], ],
+            ],
+        ],
+        'RotorDictInstanceDisplayStatesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorDictSupplementResourceGroupStrategyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DictVo', ], ],
+            ],
+        ],
+        'RotorDictSupplementResourceGroupStrategyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorDictSupplementResourceGroupStrategyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorDictTaskScheduleCyclesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorDictTaskScheduleCyclesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorDictTaskTypesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorDictTaskScheduleStatesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorDictTaskScheduleStatesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorDictSupplementResourceGroupStrategyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorDictInstanceDisplayStatesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DictVo', ], ],
+            ],
+        ],
+        'RotorDictTaskScheduleStatesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorDictSupplementOrderResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorDictSupplementOrderResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorDictTaskTypesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorDictTaskTypesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorDictTaskScheduleStatesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DictVo', ], ],
+            ],
+        ],
+        'RotorDictInstanceDisplayStatesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorDictInstanceDisplayStatesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorDictTaskScheduleCyclesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DictVo', ], ],
+            ],
+        ],
+        'RotorDictSupplementMethodRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorDictSupplementMethodResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DictVo', ], ],
+            ],
+        ],
+        'RotorDictSupplementOrderRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorDictTaskTypesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DictVo', ], ],
+            ],
+        ],
         'ManageHubDutyListRosterResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -11580,6 +15700,638 @@ return [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
+        'RotorInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceInfoPageVo', ], ],
+            ],
+        ],
+        'RotorInstanceDependencyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'relation' => [ 'type' => 'string', 'locationName' => 'relation', ],
+                'depth' => [ 'type' => 'integer', 'locationName' => 'depth', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorInstanceDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceDetailVo', ], ],
+            ],
+        ],
+        'RotorInstanceHistoriesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorInstanceHistoriesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorInstancesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorInstanceDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorInstanceDetailResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorInstanceHistoriesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorInstanceDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorInstanceDependencyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceDependencyVo', ], ],
+            ],
+        ],
+        'RotorInstanceHistoriesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceHistoryVo', ], ],
+            ],
+        ],
+        'RotorInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'displayStateList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'resourceGroupCode' => [ 'type' => 'string', 'locationName' => 'resourceGroupCode', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'cycle' => [ 'type' => 'string', 'locationName' => 'cycle', ],
+                'txDateTimestampStart' => [ 'type' => 'long', 'locationName' => 'txDateTimestampStart', ],
+                'txDateTimestampEnd' => [ 'type' => 'long', 'locationName' => 'txDateTimestampEnd', ],
+                'updateTimestampStart' => [ 'type' => 'long', 'locationName' => 'updateTimestampStart', ],
+                'updateTimestampEnd' => [ 'type' => 'long', 'locationName' => 'updateTimestampEnd', ],
+                'createTimestampStart' => [ 'type' => 'long', 'locationName' => 'createTimestampStart', ],
+                'createTimestampEnd' => [ 'type' => 'long', 'locationName' => 'createTimestampEnd', ],
+                'ownerPin' => [ 'type' => 'string', 'locationName' => 'ownerPin', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorInstanceDependencyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorInstanceDependencyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorRerunInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorInstanceOperationLogsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceOperationVo', ], ],
+            ],
+        ],
+        'RotorKillInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorKillInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorRerunInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorRerunInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorRerunInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'RotorRerunDownstreamResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorRerunDownstreamResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorResetInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'RotorKillInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'RotorRerunDownstreamRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'downstreamInstanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorInstanceOperationLogsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorResetInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorResetInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorRerunDownstreamResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'RotorKillInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorResetInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorInstanceOperationLogsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorInstanceOperationLogsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorInstanceScheduleLogsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'historyId' => [ 'type' => 'integer', 'locationName' => 'historyId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorInstanceScheduleLogsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorInstanceScheduleLogsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorInstanceRunLogsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'historyId' => [ 'type' => 'integer', 'locationName' => 'historyId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorInstanceScheduleLogsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'LogPageVo', ], ],
+            ],
+        ],
+        'RotorInstanceRunLogsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'LogPageVo', ], ],
+            ],
+        ],
+        'RotorInstanceRunLogsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorInstanceRunLogsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RunningInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RunningInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AwaitingInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'GetTaskTypeStatisticsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'offset' => [ 'type' => 'integer', 'locationName' => 'offset', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'GetScheduledInstancesCountPerHourRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'offset' => [ 'type' => 'integer', 'locationName' => 'offset', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'HistorySuccessInstanceAvgPerHourResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'HourData', ],
+            ],
+        ],
+        'RunningInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'HistoryFailedInstanceAvgPerHourResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'HourData', ],
+            ],
+        ],
+        'JobPendingInstanceRankingRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'StatusPercentageTodayResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'StatusPercentageTodayResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'HistoryFailedInstanceAvgPerHourRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'GetFailedInstancesReasonRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'offset' => [ 'type' => 'integer', 'locationName' => 'offset', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'HistorySuccessInstanceAvgPerHourRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'JobPendingInstanceRankingResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'JobCountData', ],
+            ],
+        ],
+        'FailedHistoriesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'FailedInstanceVo', ],
+            ],
+        ],
+        'FailedHistoriesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'JobFailedInstanceRankingResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'JobFailedInstanceRankingResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetScheduledInstancesCountPerHourResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'HourDataStatisticsVo', ],
+            ],
+        ],
+        'GetTaskStateStatisticsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetTaskStateStatisticsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'HistorySuccessInstanceAvgPerHourResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'HistorySuccessInstanceAvgPerHourResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetFailedInstancesReasonResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceHistoryStatisticsVo', ], ],
+            ],
+        ],
+        'GetTaskTypeStatisticsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskStatisticVo', ], ],
+            ],
+        ],
+        'FailedHistoriesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'FailedHistoriesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetTaskTypeStatisticsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetTaskTypeStatisticsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SuccessInstancePerHourResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SuccessInstancePerHourResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'JobFailedInstanceRankingRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'QueryStatisticsInSelectTimeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'displayStateList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'resourceGroupCode' => [ 'type' => 'string', 'locationName' => 'resourceGroupCode', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'cycle' => [ 'type' => 'string', 'locationName' => 'cycle', ],
+                'txDateTimestampStart' => [ 'type' => 'long', 'locationName' => 'txDateTimestampStart', ],
+                'txDateTimestampEnd' => [ 'type' => 'long', 'locationName' => 'txDateTimestampEnd', ],
+                'updateTimestampStart' => [ 'type' => 'long', 'locationName' => 'updateTimestampStart', ],
+                'updateTimestampEnd' => [ 'type' => 'long', 'locationName' => 'updateTimestampEnd', ],
+                'createTimestampStart' => [ 'type' => 'long', 'locationName' => 'createTimestampStart', ],
+                'createTimestampEnd' => [ 'type' => 'long', 'locationName' => 'createTimestampEnd', ],
+                'ownerPin' => [ 'type' => 'string', 'locationName' => 'ownerPin', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'JobFailedInstanceRankingResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'JobCountData', ],
+            ],
+        ],
+        'QueryStatisticsInSelectTimeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryStatisticsInSelectTimeResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetFailedInstancesReasonResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetFailedInstancesReasonResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'StatusPercentageTodayRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'FailedInstancePerHourResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'HourData', ],
+            ],
+        ],
+        'AwaitingInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'AwaitingInstanceVo', ],
+            ],
+        ],
+        'SuccessInstancePerHourRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'offset' => [ 'type' => 'integer', 'locationName' => 'offset', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'FailedInstancePerHourResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'FailedInstancePerHourResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'HistoryFailedInstanceAvgPerHourResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'HistoryFailedInstanceAvgPerHourResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AwaitingInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AwaitingInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SuccessInstancePerHourResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'HourData', ],
+            ],
+        ],
+        'QueryStatisticsInSelectTimeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'InstanceStatisticsInfoVo', ],
+            ],
+        ],
+        'StatusPercentageTodayResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'StatusPercentageData', ],
+            ],
+        ],
+        'GetTaskStateStatisticsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskScheduleStatisticVo', ], ],
+            ],
+        ],
+        'RunningInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'RunningInstanceVo', ],
+            ],
+        ],
+        'GetScheduledInstancesCountPerHourResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetScheduledInstancesCountPerHourResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetTaskStateStatisticsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'offset' => [ 'type' => 'integer', 'locationName' => 'offset', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'FailedInstancePerHourRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'offset' => [ 'type' => 'integer', 'locationName' => 'offset', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'JobPendingInstanceRankingResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'JobPendingInstanceRankingResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'ManageHubStorageTableDDLResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -11720,6 +16472,114 @@ return [
                 'code' => [ 'type' => 'string', 'locationName' => 'code', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
                 'result' =>  [ 'shape' => 'JcwSpaceIncreUsedByDayVo', ],
+            ],
+        ],
+        'RotorTaskDependencyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskDependencyVo', ], ],
+            ],
+        ],
+        'RotorTasksResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskInfoPageVo', ], ],
+            ],
+        ],
+        'RotorTaskDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskDetailVo', ], ],
+            ],
+        ],
+        'RotorTaskDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorTaskDetailResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorTaskDependencyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorTaskDependencyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorTaskDependencyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'relation' => [ 'type' => 'string', 'locationName' => 'relation', ],
+                'depth' => [ 'type' => 'integer', 'locationName' => 'depth', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorTaskDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorTasksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorTasksResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorTasksRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'ownerOrCollaboratorPin' => [ 'type' => 'string', 'locationName' => 'ownerOrCollaboratorPin', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'cycle' => [ 'type' => 'string', 'locationName' => 'cycle', ],
+                'updateTimestampStart' => [ 'type' => 'long', 'locationName' => 'updateTimestampStart', ],
+                'updateTimestampEnd' => [ 'type' => 'long', 'locationName' => 'updateTimestampEnd', ],
+                'createTimestampStart' => [ 'type' => 'long', 'locationName' => 'createTimestampStart', ],
+                'createTimestampEnd' => [ 'type' => 'long', 'locationName' => 'createTimestampEnd', ],
+                'scheduleState' => [ 'type' => 'string', 'locationName' => 'scheduleState', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorUpdateTaskScheduleStateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorUpdateTaskScheduleStateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorUpdateTaskScheduleStateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorUpdateTaskScheduleStateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'PreviewPackageResultShape' => [
@@ -11946,6 +16806,290 @@ return [
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'GetMostFailedTimesInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetMostFailedTimesInstancesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetLongTimeRunningInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetLongTimeRunningInstancesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetLongTimeRunningInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'offset' => [ 'type' => 'integer', 'locationName' => 'offset', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'GetLongTimeRunningInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstancesRunningLongTimeOrderVo', ], ],
+            ],
+        ],
+        'GetMostFailedTimesInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'MostFailedTimesInstancesVo', ], ],
+            ],
+        ],
+        'GetMostFailedTimesInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'offset' => [ 'type' => 'integer', 'locationName' => 'offset', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorDictSupplementPlanStatesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorDictSupplementPlanStatesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorDictSupplementPlanStatesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorDictSupplementPlanStatesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DictVo', ], ],
+            ],
+        ],
+        'RotorSupplementPlanDeleteResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+            ],
+        ],
+        'RotorSupplementInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorSupplementInstancesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorSupplementPlanListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'stateList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'creator' => [ 'type' => 'string', 'locationName' => 'creator', ],
+                'createTimestampStart' => [ 'type' => 'long', 'locationName' => 'createTimestampStart', ],
+                'createTimestampEnd' => [ 'type' => 'long', 'locationName' => 'createTimestampEnd', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorSupplementInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'SupplementInstancePageVO', ], ],
+            ],
+        ],
+        'RotorSupplementPlanDeleteRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'planId' => [ 'type' => 'long', 'locationName' => 'planId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorSupplementPlanInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorSupplementPlanInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorSupplementPlanDeleteResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorSupplementPlanDeleteResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorSupplementPlanInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'SupplementPlanConfigVo', ], ],
+            ],
+        ],
+        'RotorSupplementPlanCancelResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorSupplementPlanCancelResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorSupplementPlanInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'planId' => [ 'type' => 'long', 'locationName' => 'planId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorSupplementPlanCreateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'RotorSupplementPlanCreateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'method' => [ 'type' => 'string', 'locationName' => 'method', ],
+                'txDateRanges' => [ 'type' => 'list', 'member' => [ 'shape' => 'TxDateRangeParam', ], ],
+                'groupNums' => [ 'type' => 'integer', 'locationName' => 'groupNums', ],
+                'timeRangeStart' => [ 'type' => 'string', 'locationName' => 'timeRangeStart', ],
+                'timeRangeEnd' => [ 'type' => 'string', 'locationName' => 'timeRangeEnd', ],
+                'order' => [ 'type' => 'string', 'locationName' => 'order', ],
+                'resourceGroupStrategy' => [ 'type' => 'string', 'locationName' => 'resourceGroupStrategy', ],
+                'calculateTaskResourceGroup' => [ 'type' => 'string', 'locationName' => 'calculateTaskResourceGroup', ],
+                'integrationTaskResourceGroup' => [ 'type' => 'string', 'locationName' => 'integrationTaskResourceGroup', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'taskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'rootTaskId' => [ 'type' => 'string', 'locationName' => 'rootTaskId', ],
+                'downStreamTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorSupplementPlanListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorSupplementPlanListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorSupplementInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'planId' => [ 'type' => 'long', 'locationName' => 'planId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'displayStateList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'ownerPin' => [ 'type' => 'string', 'locationName' => 'ownerPin', ],
+                'runStartTimestampBegin' => [ 'type' => 'long', 'locationName' => 'runStartTimestampBegin', ],
+                'runStartTimestampEnd' => [ 'type' => 'long', 'locationName' => 'runStartTimestampEnd', ],
+                'runEndTimestampBegin' => [ 'type' => 'long', 'locationName' => 'runEndTimestampBegin', ],
+                'runEndTimestampBeginEnd' => [ 'type' => 'long', 'locationName' => 'runEndTimestampBeginEnd', ],
+                'txDateTimestampStart' => [ 'type' => 'long', 'locationName' => 'txDateTimestampStart', ],
+                'txDateTimestampEnd' => [ 'type' => 'long', 'locationName' => 'txDateTimestampEnd', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorSupplementPlanCancelResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+            ],
+        ],
+        'RotorSupplementPlanCreateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorSupplementPlanCreateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorSupplementPlanListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'SupplementPlanInfoPageVo', ], ],
+            ],
+        ],
+        'RotorSupplementPlanCancelRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'planId' => [ 'type' => 'long', 'locationName' => 'planId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorRunManualTaskInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorRunManualTaskInstanceExternalResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorRunManualTaskInstanceExternalResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorRunManualTaskInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RotorRunManualTaskInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RotorRunManualTaskInstanceExternalRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'RotorRunManualTaskInstanceExternalResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'RotorRunManualTaskInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'UranusQueryListResponseShape' => [
@@ -12328,6 +17472,62 @@ return [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
+        'UranusExtraRunnerStartRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'flowCode' => [ 'type' => 'string', 'locationName' => 'flowCode', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'execEngine' => [ 'type' => 'string', 'locationName' => 'execEngine', ],
+                'args' =>  [ 'shape' => 'UranusTaskParamReq', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'jcwSQLRunParams' =>  [ 'shape' => 'JcwSQLRunParams', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusExtraRunnerResultListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
+            ],
+        ],
+        'UranusExtraRunnerStopRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'runId' => [ 'type' => 'integer', 'locationName' => 'runId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusExtraRunnerStopResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
+            ],
+        ],
+        'UranusExtraRunnerResultListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusExtraRunnerResultListResultShape', ],
+            ],
+        ],
+        'UranusExtraRunnerStartResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusExtraRunnerStartResultShape', ],
+            ],
+        ],
         'UranusExtraRunnerStopResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -12338,19 +17538,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'runId' => [ 'type' => 'integer', 'locationName' => 'runId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-            ],
-        ],
-        'UranusExtraRunnerStartRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'flowCode' => [ 'type' => 'string', 'locationName' => 'flowCode', ],
-                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
-                'execEngine' => [ 'type' => 'string', 'locationName' => 'execEngine', ],
-                'args' =>  [ 'shape' => 'UranusTaskParamReq', ],
-                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
-                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -12372,18 +17559,13 @@ return [
                 'result' =>  [ 'shape' => 'UranusExtraRunnerParamParseResultShape', ],
             ],
         ],
-        'UranusExtraRunnerResultListResultShape' => [
+        'UranusTaskExtraRunnerDetailResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
-                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
-                'result' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
-                'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
+                'result' =>  [ 'shape' => 'UranusTaskExtraRunnerDetailResultShape', ],
             ],
         ],
-        'UranusExtraRunnerStopRequestShape' => [
+        'UranusTaskExtraRunnerDetailRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'runId' => [ 'type' => 'integer', 'locationName' => 'runId', ],
@@ -12411,21 +17593,28 @@ return [
                 'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
             ],
         ],
-        'UranusExtraRunnerStopResultShape' => [
+        'UranusTaskExtraRunnerLogResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskExtraRunnerLogResultShape', ],
+            ],
+        ],
+        'UranusTaskExtraRunnerDetailResultShape' => [
             'type' => 'structure',
             'members' => [
                 'code' => [ 'type' => 'string', 'locationName' => 'code', ],
                 'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
                 'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
-                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
                 'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
-                'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
+                'result' =>  [ 'shape' => 'TaskDebugHistoryRes', ],
             ],
         ],
-        'UranusExtraRunnerResultListResponseShape' => [
+        'UranusTaskExtraRunnerLogRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'UranusExtraRunnerResultListResultShape', ],
+                'runId' => [ 'type' => 'integer', 'locationName' => 'runId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
         'UranusExtraRunnerResultResponseShape' => [
@@ -12434,10 +17623,14 @@ return [
                 'result' =>  [ 'shape' => 'UranusExtraRunnerResultResultShape', ],
             ],
         ],
-        'UranusExtraRunnerStartResponseShape' => [
+        'UranusTaskExtraRunnerLogResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'UranusExtraRunnerStartResultShape', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
             ],
         ],
         'UranusExtraRunnerParamParseResultShape' => [
@@ -12902,6 +18095,7 @@ return [
                 'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
                 'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
                 'loopInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskInfoLoopReq', ], ],
+                'jcwSQLRunParams' =>  [ 'shape' => 'JcwSQLRunParams', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -13013,6 +18207,7 @@ return [
                 'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
                 'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
                 'loopInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskInfoLoopReq', ], ],
+                'jcwSQLRunParams' =>  [ 'shape' => 'JcwSQLRunParams', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -13280,10 +18475,15 @@ return [
                 'result' =>  [ 'shape' => 'UranusTableDdlAnalyzeResultShape', ],
             ],
         ],
-        'UranusTableAlterSqlViewResponseShape' => [
+        'UranusTableDefaultSourceResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'UranusTableAlterSqlViewResultShape', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
             ],
         ],
         'UranusTablePublishRequestShape' => [
@@ -13306,39 +18506,10 @@ return [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
-        'UranusTableDdlAnalyzeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
-                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
-                'result' =>  [ 'shape' => 'UranusTableSaveOrUpdate', ],
-                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
-                'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
-            ],
-        ],
-        'UranusTableCheckTableNameResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'UranusTableCheckTableNameResultShape', ],
-            ],
-        ],
         'UranusTableColumnResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'UranusTableColumnResultShape', ],
-            ],
-        ],
-        'UranusTableDeleteResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'UranusTableDeleteResultShape', ],
-            ],
-        ],
-        'UranusTablePublishToPublishCenterResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'UranusTablePublishToPublishCenterResultShape', ],
             ],
         ],
         'UranusTablePublishToPublishCenterResultShape' => [
@@ -13369,15 +18540,6 @@ return [
                 'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
             ],
         ],
-        'UranusTableCheckTableNameRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
-                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-            ],
-        ],
         'UranusTableDdlAnalyzeRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -13386,15 +18548,10 @@ return [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
-        'UranusTableColumnResultShape' => [
+        'UranusTableDefaultSourceResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
-                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
-                'result' =>  [ 'shape' => 'UranusTableQuery', ],
-                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
-                'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
+                'result' =>  [ 'shape' => 'UranusTableDefaultSourceResultShape', ],
             ],
         ],
         'UranusTablePublishResponseShape' => [
@@ -13410,17 +18567,6 @@ return [
                 'env' => [ 'type' => 'string', 'locationName' => 'env', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-            ],
-        ],
-        'UranusTableAlterSqlViewResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
-                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
-                'result' => [ 'type' => 'object', 'locationName' => 'result', ],
-                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
-                'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
             ],
         ],
         'UranusTableUnpublishedInfoRequestShape' => [
@@ -13465,6 +18611,135 @@ return [
                 'result' =>  [ 'shape' => 'UranusTableLikeResultShape', ],
             ],
         ],
+        'UranusTableDelimitersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'result' =>  [ 'shape' => 'TableDelimitersVo', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
+            ],
+        ],
+        'UranusTableColumnRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'table' => [ 'type' => 'string', 'locationName' => 'table', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTablePublishToPublishCenterRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTableDeleteRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'table' => [ 'type' => 'string', 'locationName' => 'table', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTableSourcesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TableSourceVo', ], ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
+            ],
+        ],
+        'UranusTableAlterSqlViewResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTableAlterSqlViewResultShape', ],
+            ],
+        ],
+        'UranusTableDdlAnalyzeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'result' =>  [ 'shape' => 'UranusTableSaveOrUpdate', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
+            ],
+        ],
+        'UranusTableCheckTableNameResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTableCheckTableNameResultShape', ],
+            ],
+        ],
+        'UranusTableDeleteResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTableDeleteResultShape', ],
+            ],
+        ],
+        'UranusTablePublishToPublishCenterResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTablePublishToPublishCenterResultShape', ],
+            ],
+        ],
+        'UranusTableCheckTableNameRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTableColumnResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'result' =>  [ 'shape' => 'UranusTableQuery', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
+            ],
+        ],
+        'UranusTableSourcesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTableDefaultSourceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'sourceType' => [ 'type' => 'string', 'locationName' => 'sourceType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTableAlterSqlViewResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'result' => [ 'type' => 'object', 'locationName' => 'result', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
+            ],
+        ],
         'UranusTableDeleteResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -13474,6 +18749,12 @@ return [
                 'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
                 'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
                 'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
+            ],
+        ],
+        'UranusTableSourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTableSourcesResultShape', ],
             ],
         ],
         'UranusTablePublishResultShape' => [
@@ -13505,17 +18786,6 @@ return [
                 'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
             ],
         ],
-        'UranusTableDelimitersResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
-                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
-                'result' =>  [ 'shape' => 'TableDelimitersVo', ],
-                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
-                'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
-            ],
-        ],
         'UranusTableUnpublishedInfoResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -13531,32 +18801,6 @@ return [
                 'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TableBriefInfo', ], ],
                 'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
                 'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
-            ],
-        ],
-        'UranusTableColumnRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'table' => [ 'type' => 'string', 'locationName' => 'table', ],
-                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-            ],
-        ],
-        'UranusTablePublishToPublishCenterRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'tableName' => [ 'type' => 'string', 'locationName' => 'tableName', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-            ],
-        ],
-        'UranusTableDeleteRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'table' => [ 'type' => 'string', 'locationName' => 'table', ],
-                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
         'UranusTableAlterSqlViewRequestShape' => [
@@ -13577,6 +18821,1415 @@ return [
                 'bucketNum' => [ 'type' => 'integer', 'locationName' => 'bucketNum', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskCatalogListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskCatalogListResultShape', ],
+            ],
+        ],
+        'UranusTaskObjectMoveResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskObjectMoveResultShape', ],
+            ],
+        ],
+        'UranusTaskCatalogDeleteResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskCatalogQueryResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskCatalogQueryResultShape', ],
+            ],
+        ],
+        'UranusTaskGetTaskStatusRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskCatalogCreateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'catalogName' => [ 'type' => 'string', 'locationName' => 'catalogName', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'parentId' => [ 'type' => 'string', 'locationName' => 'parentId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskCatalogListAllBizResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCatalogNodeBriefVO', ], ],
+            ],
+        ],
+        'UranusTaskCatalogExistedResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskCatalogExistedResultShape', ],
+            ],
+        ],
+        'UranusTaskCatalogExistedResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskCatalogExistedRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'catalogName' => [ 'type' => 'string', 'locationName' => 'catalogName', ],
+                'parentBizId' => [ 'type' => 'string', 'locationName' => 'parentBizId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskCatalogQueryResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCatalogNodeVo', ], ],
+            ],
+        ],
+        'UranusTaskCatalogCreateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskCatalogCreateResultShape', ],
+            ],
+        ],
+        'UranusTaskCatalogQueryRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'fuzzName' => [ 'type' => 'string', 'locationName' => 'fuzzName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskCatalogListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCatalogNodeVo', ], ],
+            ],
+        ],
+        'UranusTaskCatalogUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskCatalogUpdateResultShape', ],
+            ],
+        ],
+        'UranusTaskCatalogListAllBizRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskObjectMoveResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskGetTaskStatusResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskCatalogUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'bizId' => [ 'type' => 'string', 'locationName' => 'bizId', ],
+                'catalogName' => [ 'type' => 'string', 'locationName' => 'catalogName', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskObjectMoveRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'targetBizId' => [ 'type' => 'string', 'locationName' => 'targetBizId', ],
+                'objectId' => [ 'type' => 'string', 'locationName' => 'objectId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskCatalogDeleteRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskCatalogUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskCatalogDeleteResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskCatalogDeleteResultShape', ],
+            ],
+        ],
+        'UranusTaskCatalogCreateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskCatalogListAllBizResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskCatalogListAllBizResultShape', ],
+            ],
+        ],
+        'UranusTaskCatalogListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'unfoldType' => [ 'type' => 'string', 'locationName' => 'unfoldType', ],
+                'listType' => [ 'type' => 'string', 'locationName' => 'listType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskGetTaskStatusResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskGetTaskStatusResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicListFlatCatalogResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicListFlatCatalogResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicListFlatCatalogRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicListFlatCatalogResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCatalogNodePublicVo', ], ],
+            ],
+        ],
+        'UranusTaskSparkJarParamInfoUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskRedeployAndEnableResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusSparkTaskSparkVersionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusSparkTaskSparkVersionResultShape', ],
+            ],
+        ],
+        'UranusTaskLoopParamInfoUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'inputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'outputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'runParams' =>  [ 'shape' => 'TaskRunParam', ],
+                'debugParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'loopParams' =>  [ 'shape' => 'TaskLoopParam', ],
+                'sparkJarParams' =>  [ 'shape' => 'TaskSparkJarParam', ],
+                'datasourceParams' =>  [ 'shape' => 'TaskDatasourceParam', ],
+                'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
+                'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
+                'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskDependableListFuzzResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskDependInfoRes', ], ],
+            ],
+        ],
+        'UranusFlowInternalTaskHistoryTopoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskHistoryVersionInfoRes', ], ],
+            ],
+        ],
+        'UranusTaskDependOutputParamListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskDependOutputParamListResultShape', ],
+            ],
+        ],
+        'UranusTaskScheduleInfoUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskScheduleInfoUpdateResultShape', ],
+            ],
+        ],
+        'UranusTaskSparkJarParamInfoUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskSparkJarParamInfoUpdateResultShape', ],
+            ],
+        ],
+        'UranusFlowInternalTaskHistoryTopoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusFlowInternalTaskHistoryTopoResultShape', ],
+            ],
+        ],
+        'UranusTaskRunParamInfoUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskRunParamInfoUpdateResultShape', ],
+            ],
+        ],
+        'UranusTaskPipeShowCreateTableResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPipeShowCreateTableResultShape', ],
+            ],
+        ],
+        'UranusTaskRunParamInfoUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'inputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'outputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'runParams' =>  [ 'shape' => 'TaskRunParam', ],
+                'debugParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'loopParams' =>  [ 'shape' => 'TaskLoopParam', ],
+                'sparkJarParams' =>  [ 'shape' => 'TaskSparkJarParam', ],
+                'datasourceParams' =>  [ 'shape' => 'TaskDatasourceParam', ],
+                'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
+                'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
+                'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskSpecialParamUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskSpecialParamUpdateResultShape', ],
+            ],
+        ],
+        'UranusTaskImageParamInfoUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPipeCreateTableResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPipeCreateTableResultShape', ],
+            ],
+        ],
+        'UranusSparkTaskSparkVersionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UranusTaskAllInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskAllInfoResultShape', ],
+            ],
+        ],
+        'UranusTaskDependOutputParamListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskImageParamInfoUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'inputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'outputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'runParams' =>  [ 'shape' => 'TaskRunParam', ],
+                'debugParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'loopParams' =>  [ 'shape' => 'TaskLoopParam', ],
+                'sparkJarParams' =>  [ 'shape' => 'TaskSparkJarParam', ],
+                'datasourceParams' =>  [ 'shape' => 'TaskDatasourceParam', ],
+                'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
+                'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
+                'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPipeCreateTableRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'createTableSql' => [ 'type' => 'string', 'locationName' => 'createTableSql', ],
+                'environment' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'sinkType' => [ 'type' => 'string', 'locationName' => 'sinkType', ],
+                'sinkId' => [ 'type' => 'string', 'locationName' => 'sinkId', ],
+                'sourceId' => [ 'type' => 'string', 'locationName' => 'sourceId', ],
+                'sourceTableName' => [ 'type' => 'string', 'locationName' => 'sourceTableName', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'tableMatchingType' => [ 'type' => 'string', 'locationName' => 'tableMatchingType', ],
+                'schema' => [ 'type' => 'string', 'locationName' => 'schema', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPipeParamInfoUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPipeParamInfoUpdateResultShape', ],
+            ],
+        ],
+        'UranusTaskDependInfoUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskDeployAndEnableRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'batchId' => [ 'type' => 'string', 'locationName' => 'batchId', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'enable' => [ 'type' => 'boolean', 'locationName' => 'enable', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPipeParamInfoUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskDependableListFuzzRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'taskNameFuzz' => [ 'type' => 'string', 'locationName' => 'taskNameFuzz', ],
+                'dependTaskId' => [ 'type' => 'string', 'locationName' => 'dependTaskId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskInputParamInfoUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskInputParamInfoUpdateResultShape', ],
+            ],
+        ],
+        'UranusTaskScriptContentUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPipeParamInfoUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'inputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'outputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'runParams' =>  [ 'shape' => 'TaskRunParam', ],
+                'debugParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'loopParams' =>  [ 'shape' => 'TaskLoopParam', ],
+                'sparkJarParams' =>  [ 'shape' => 'TaskSparkJarParam', ],
+                'datasourceParams' =>  [ 'shape' => 'TaskDatasourceParam', ],
+                'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
+                'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
+                'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskOfflineRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'flowDraftId' => [ 'type' => 'string', 'locationName' => 'flowDraftId', ],
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'batchId' => [ 'type' => 'string', 'locationName' => 'batchId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskHistoryDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskInfoRes2', ],
+            ],
+        ],
+        'UranusTaskHistoryListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'PageResultContentTaskHistory', ],
+            ],
+        ],
+        'UranusTaskLoopParamInfoUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskLoopParamInfoUpdateResultShape', ],
+            ],
+        ],
+        'UranusTaskRedeployAndEnableResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskRedeployAndEnableResultShape', ],
+            ],
+        ],
+        'UranusTaskOutputParamInfoUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskOutputParamInfoUpdateResultShape', ],
+            ],
+        ],
+        'UranusTaskDatasourceParamInfoUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'inputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'outputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'runParams' =>  [ 'shape' => 'TaskRunParam', ],
+                'debugParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'loopParams' =>  [ 'shape' => 'TaskLoopParam', ],
+                'sparkJarParams' =>  [ 'shape' => 'TaskSparkJarParam', ],
+                'datasourceParams' =>  [ 'shape' => 'TaskDatasourceParam', ],
+                'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
+                'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
+                'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskDependInfoUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'dependencies' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskDependInfoRes', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskDependOutputParamListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskOutputParamRes', ], ],
+            ],
+        ],
+        'UranusTaskBaseInfoUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskBaseInfoUpdateResultShape', ],
+            ],
+        ],
+        'UranusTaskDeployAndEnableResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskDeployAndEnableResultShape', ],
+            ],
+        ],
+        'UranusTaskOutputParamInfoUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'inputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'outputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'runParams' =>  [ 'shape' => 'TaskRunParam', ],
+                'debugParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'loopParams' =>  [ 'shape' => 'TaskLoopParam', ],
+                'sparkJarParams' =>  [ 'shape' => 'TaskSparkJarParam', ],
+                'datasourceParams' =>  [ 'shape' => 'TaskDatasourceParam', ],
+                'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
+                'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
+                'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskOfflineResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskPublishRes', ],
+            ],
+        ],
+        'UranusTaskImageListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskDatasourceParamInfoUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskDatasourceParamInfoUpdateResultShape', ],
+            ],
+        ],
+        'UranusTaskPipeShowCreateTableRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'createTableSql' => [ 'type' => 'string', 'locationName' => 'createTableSql', ],
+                'environment' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'sinkType' => [ 'type' => 'string', 'locationName' => 'sinkType', ],
+                'sinkId' => [ 'type' => 'string', 'locationName' => 'sinkId', ],
+                'sourceId' => [ 'type' => 'string', 'locationName' => 'sourceId', ],
+                'sourceTableName' => [ 'type' => 'string', 'locationName' => 'sourceTableName', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'tableMatchingType' => [ 'type' => 'string', 'locationName' => 'tableMatchingType', ],
+                'schema' => [ 'type' => 'string', 'locationName' => 'schema', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusFlowInternalTaskHistoryTopoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'historyId' => [ 'type' => 'integer', 'locationName' => 'historyId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskAllInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskInfoRes2', ],
+            ],
+        ],
+        'UranusTaskAlarmInfoUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'method' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'timing' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'startdelayTime' => [ 'type' => 'string', 'locationName' => 'startdelayTime', ],
+                'finishdelayTime' => [ 'type' => 'string', 'locationName' => 'finishdelayTime', ],
+                'receiver' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskRedeployAndEnableRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'historyId' => [ 'type' => 'string', 'locationName' => 'historyId', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'enable' => [ 'type' => 'boolean', 'locationName' => 'enable', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskInputParamInfoUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'inputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'outputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'runParams' =>  [ 'shape' => 'TaskRunParam', ],
+                'debugParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'loopParams' =>  [ 'shape' => 'TaskLoopParam', ],
+                'sparkJarParams' =>  [ 'shape' => 'TaskSparkJarParam', ],
+                'datasourceParams' =>  [ 'shape' => 'TaskDatasourceParam', ],
+                'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
+                'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
+                'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskImageListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskImageListResultShape', ],
+            ],
+        ],
+        'UranusLoopTaskElementDelimitersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusLoopTaskElementDelimitersResultShape', ],
+            ],
+        ],
+        'UranusTaskScriptContentUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskScriptContentUpdateResultShape', ],
+            ],
+        ],
+        'UranusTaskSpecialParamUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'inputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'outputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'runParams' =>  [ 'shape' => 'TaskRunParam', ],
+                'debugParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'loopParams' =>  [ 'shape' => 'TaskLoopParam', ],
+                'sparkJarParams' =>  [ 'shape' => 'TaskSparkJarParam', ],
+                'datasourceParams' =>  [ 'shape' => 'TaskDatasourceParam', ],
+                'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
+                'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
+                'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskRunParamInfoUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskOutputParamInfoUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusLoopTaskElementDelimitersRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskLoopParamInfoUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskHistoryDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskHistoryDetailResultShape', ],
+            ],
+        ],
+        'UranusTaskHistoryListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskHistoryListResultShape', ],
+            ],
+        ],
+        'UranusTaskHistoryDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'historyId' => [ 'type' => 'integer', 'locationName' => 'historyId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskScheduleInfoUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskHistoryListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskScriptContentUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskDeployAndEnableResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskPublishRes', ],
+            ],
+        ],
+        'UranusTaskBaseInfoUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskOfflineResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskOfflineResultShape', ],
+            ],
+        ],
+        'UranusTaskDependInfoUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskDependInfoUpdateResultShape', ],
+            ],
+        ],
+        'UranusTaskDependableListFuzzResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskDependableListFuzzResultShape', ],
+            ],
+        ],
+        'UranusSparkTaskParameterKeysResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+            ],
+        ],
+        'UranusTaskBaseInfoUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'workId' => [ 'type' => 'string', 'locationName' => 'workId', ],
+                'taskKind' => [ 'type' => 'string', 'locationName' => 'taskKind', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskClassify' => [ 'type' => 'string', 'locationName' => 'taskClassify', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'collaborators' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
+                'bizId' => [ 'type' => 'string', 'locationName' => 'bizId', ],
+                'bizName' => [ 'type' => 'string', 'locationName' => 'bizName', ],
+                'flowDraftId' => [ 'type' => 'string', 'locationName' => 'flowDraftId', ],
+                'flowName' => [ 'type' => 'string', 'locationName' => 'flowName', ],
+                'nodeIcon' => [ 'type' => 'string', 'locationName' => 'nodeIcon', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskScheduleInfoUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'cronExpression' => [ 'type' => 'string', 'locationName' => 'cronExpression', ],
+                'effectiveDateStart' => [ 'type' => 'string', 'locationName' => 'effectiveDateStart', ],
+                'effectiveDateEnd' => [ 'type' => 'string', 'locationName' => 'effectiveDateEnd', ],
+                'delay' => [ 'type' => 'integer', 'locationName' => 'delay', ],
+                'priority' => [ 'type' => 'string', 'locationName' => 'priority', ],
+                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+                'retryTimes' => [ 'type' => 'integer', 'locationName' => 'retryTimes', ],
+                'retryInterval' => [ 'type' => 'integer', 'locationName' => 'retryInterval', ],
+                'resourceGroup' => [ 'type' => 'string', 'locationName' => 'resourceGroup', ],
+                'crossCycleDependType' => [ 'type' => 'string', 'locationName' => 'crossCycleDependType', ],
+                'scheduleCycle' => [ 'type' => 'string', 'locationName' => 'scheduleCycle', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskImageParamInfoUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskImageParamInfoUpdateResultShape', ],
+            ],
+        ],
+        'UranusSparkTaskParameterKeysRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskAllInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPipeShowCreateTableResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskSpecialParamUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPipeCreateTableResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskInputParamInfoUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskDatasourceParamInfoUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskImageListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskImageParam', ], ],
+            ],
+        ],
+        'UranusTaskSparkJarParamInfoUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'inputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'outputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'runParams' =>  [ 'shape' => 'TaskRunParam', ],
+                'debugParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'loopParams' =>  [ 'shape' => 'TaskLoopParam', ],
+                'sparkJarParams' =>  [ 'shape' => 'TaskSparkJarParam', ],
+                'datasourceParams' =>  [ 'shape' => 'TaskDatasourceParam', ],
+                'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
+                'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
+                'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskAlarmInfoUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskAlarmInfoUpdateResultShape', ],
+            ],
+        ],
+        'UranusLoopTaskElementDelimitersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskLoopElementDelimiterVo2', ], ],
+            ],
+        ],
+        'UranusSparkTaskParameterKeysResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusSparkTaskParameterKeysResultShape', ],
+            ],
+        ],
+        'UranusTaskAlarmInfoUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusSparkTaskSparkVersionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskKillResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskDebugHistoryListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'PageResultContentDebugHistory', ],
+            ],
+        ],
+        'UranusTaskParseScriptContentSystemParamResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskParseScriptContentSystemParamResultShape', ],
+            ],
+        ],
+        'UranusTaskDebugParamInfoUpdateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'inputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'outputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'runParams' =>  [ 'shape' => 'TaskRunParam', ],
+                'debugParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'loopParams' =>  [ 'shape' => 'TaskLoopParam', ],
+                'sparkJarParams' =>  [ 'shape' => 'TaskSparkJarParam', ],
+                'datasourceParams' =>  [ 'shape' => 'TaskDatasourceParam', ],
+                'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
+                'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
+                'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskDebugSyntaxCheckResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskDebugSyntaxCheckResultShape', ],
+            ],
+        ],
+        'UranusTaskDebugParamSyncResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskDebugParamSyncResultShape', ],
+            ],
+        ],
+        'UranusTaskDebugLogResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskDebugLogResultShape', ],
+            ],
+        ],
+        'UranusTaskDebugResultListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UranusTaskDebugSyntaxCheckResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UranusTaskKillResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskKillResultShape', ],
+            ],
+        ],
+        'UranusTaskDebugResultContentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'object', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskDebugLogResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskDebugResultContentRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'pos' => [ 'type' => 'integer', 'locationName' => 'pos', ],
+                'lines' => [ 'type' => 'integer', 'locationName' => 'lines', ],
+                'debugId' => [ 'type' => 'integer', 'locationName' => 'debugId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskDebugResultListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'debugId' => [ 'type' => 'integer', 'locationName' => 'debugId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskDebugResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskDebugResultShape', ],
+            ],
+        ],
+        'UranusTaskDebugRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'selected' => [ 'type' => 'boolean', 'locationName' => 'selected', ],
+                'selectedContent' => [ 'type' => 'string', 'locationName' => 'selectedContent', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskDebugResultListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskDebugResultListResultShape', ],
+            ],
+        ],
+        'UranusTaskDebugHistoryListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'startTimeFrom' => [ 'type' => 'string', 'locationName' => 'startTimeFrom', ],
+                'startTimeEnd' => [ 'type' => 'string', 'locationName' => 'startTimeEnd', ],
+                'endTimeFrom' => [ 'type' => 'string', 'locationName' => 'endTimeFrom', ],
+                'endTimeEnd' => [ 'type' => 'string', 'locationName' => 'endTimeEnd', ],
+                'statuses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskDebugDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskDebugDetailResultShape', ],
+            ],
+        ],
+        'UranusTaskParseScriptContentSystemParamRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'currentTime' => [ 'type' => 'string', 'locationName' => 'currentTime', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskKillRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'debugId' => [ 'type' => 'integer', 'locationName' => 'debugId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskParseScriptContentSystemParamResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskParamInfoRes', ],
+            ],
+        ],
+        'UranusTaskDebugResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'integer', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskDebugResultContentResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskDebugResultContentResultShape', ],
+            ],
+        ],
+        'UranusTaskDebugDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'debugId' => [ 'type' => 'integer', 'locationName' => 'debugId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskDebugParamSyncRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'integer', 'locationName' => 'taskDraftId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskDebugDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskDebugHistoryRes', ],
+            ],
+        ],
+        'UranusTaskDebugParamSyncResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskParamInfoRes', ],
+            ],
+        ],
+        'UranusTaskDebugHistoryListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskDebugHistoryListResultShape', ],
+            ],
+        ],
+        'UranusTaskDebugParamInfoUpdateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskDebugLogRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'debugId' => [ 'type' => 'integer', 'locationName' => 'debugId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskDebugSyntaxCheckRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskDebugParamInfoUpdateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskDebugParamInfoUpdateResultShape', ],
             ],
         ],
         'UranusTaskFlowSaveResultShape' => [
@@ -13787,6 +20440,44 @@ return [
             'type' => 'structure',
             'members' => [
                 'flowCodes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskFullTextQueryResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'PageTaskFullTextQueryRes', ],
+            ],
+        ],
+        'UranusTaskFullTextQueryResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskFullTextQueryResultShape', ],
+            ],
+        ],
+        'TaskFullTextLineResult' => [
+            'type' => 'structure',
+            'members' => [
+                'lineNumber' => [ 'type' => 'integer', 'locationName' => 'lineNumber', ],
+                'lineContent' => [ 'type' => 'string', 'locationName' => 'lineContent', ],
+            ],
+        ],
+        'UranusTaskFullTextQueryRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
+                'taskType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'updateTimeFrom' => [ 'type' => 'string', 'locationName' => 'updateTimeFrom', ],
+                'updateTimeTo' => [ 'type' => 'string', 'locationName' => 'updateTimeTo', ],
+                'sortType' => [ 'type' => 'string', 'locationName' => 'sortType', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -14704,6 +21395,769 @@ return [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
+        'UranusTaskNodeSnatchLockResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskInfoRes2', ],
+            ],
+        ],
+        'UranusFlowListNodeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCanvasInfoRes', ], ],
+            ],
+        ],
+        'UranusFlowListHistoryNodeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'flowHistoryId' => [ 'type' => 'integer', 'locationName' => 'flowHistoryId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusFlowUpdateAllCanvasRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'flowDraftId' => [ 'type' => 'string', 'locationName' => 'flowDraftId', ],
+                'taskNodes' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCanvasInfoReq', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusFlowListHistoryNodeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusFlowListHistoryNodeResultShape', ],
+            ],
+        ],
+        'UranusFlowPrepublishNodesSortResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusFlowPrepublishNodesSortResultShape', ],
+            ],
+        ],
+        'UranusTaskOrFlowNodeDeleteResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskOrFlowNodeDeleteResultShape', ],
+            ],
+        ],
+        'UranusFlowListNodeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusFlowListNodeResultShape', ],
+            ],
+        ],
+        'UranusFlowNodeCreateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'flowName' => [ 'type' => 'string', 'locationName' => 'flowName', ],
+                'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
+                'collaborators' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskNodeLockStatusResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskLockStatusInfoRes', ],
+            ],
+        ],
+        'UranusFlowNodeCreateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskOrFlowNodeDeleteResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusFlowUpdateAllCanvasResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusFlowUpdateAllCanvasResultShape', ],
+            ],
+        ],
+        'UranusTaskNameExistedRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusFlowNodeCreateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusFlowNodeCreateResultShape', ],
+            ],
+        ],
+        'UranusTaskNameExistedResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskNameExistedResultShape', ],
+            ],
+        ],
+        'UranusTaskNodeCreateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskNodeCreateResultShape', ],
+            ],
+        ],
+        'UranusTaskTypeListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskNodeTypeVo', ], ],
+            ],
+        ],
+        'UranusTaskNodeCreateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'flowId' => [ 'type' => 'string', 'locationName' => 'flowId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
+                'collaborators' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusFlowPrepublishNodesSortResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UranusTaskNodeCreateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusFlowSearchNodeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'flowDraftId' => [ 'type' => 'string', 'locationName' => 'flowDraftId', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'createTimeFrom' => [ 'type' => 'string', 'locationName' => 'createTimeFrom', ],
+                'createTimeEnd' => [ 'type' => 'string', 'locationName' => 'createTimeEnd', ],
+                'updateTimeFrom' => [ 'type' => 'string', 'locationName' => 'updateTimeFrom', ],
+                'updateTimeEnd' => [ 'type' => 'string', 'locationName' => 'updateTimeEnd', ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskType' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'taskClassify' => [ 'type' => 'string', 'locationName' => 'taskClassify', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskNodeLockStatusResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskNodeLockStatusResultShape', ],
+            ],
+        ],
+        'UranusFlowSearchNodeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusFlowSearchNodeResultShape', ],
+            ],
+        ],
+        'UranusFlowSearchNodeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'PageResultTaskCanvasInfoRes', ],
+            ],
+        ],
+        'UranusTaskTypeListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskNodeSnatchLockRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusFlowListNodeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'flowDraftId' => [ 'type' => 'string', 'locationName' => 'flowDraftId', ],
+                'purpose' => [ 'type' => 'string', 'locationName' => 'purpose', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusFlowUpdateAllCanvasResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskNameExistedResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusFlowListHistoryNodeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskCanvasInfoRes', ], ],
+            ],
+        ],
+        'UranusFlowPrepublishNodesSortRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'flowDraftId' => [ 'type' => 'string', 'locationName' => 'flowDraftId', ],
+                'taskDraftIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskNodeLockStatusRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskOrFlowNodeDeleteRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskNodeSnatchLockResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskNodeSnatchLockResultShape', ],
+            ],
+        ],
+        'UranusTaskTypeListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskTypeListResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicListDependableResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicListDependableResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicDebugResultResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicDebugResultResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicConfigStartParamsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicConfigStartParamsResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicListResourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicListResourcesResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskInfoPublicRes', ],
+            ],
+        ],
+        'UranusTaskPublicPublishResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicPublishResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicConfigScheduleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'cronExpression' => [ 'type' => 'string', 'locationName' => 'cronExpression', ],
+                'priority' => [ 'type' => 'string', 'locationName' => 'priority', ],
+                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
+                'retryTimes' => [ 'type' => 'integer', 'locationName' => 'retryTimes', ],
+                'retryInterval' => [ 'type' => 'integer', 'locationName' => 'retryInterval', ],
+                'isCrossCycleDepend' => [ 'type' => 'boolean', 'locationName' => 'isCrossCycleDepend', ],
+                'cu' => [ 'type' => 'integer', 'locationName' => 'cu', ],
+                'parallelism' => [ 'type' => 'integer', 'locationName' => 'parallelism', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'imageId' => [ 'type' => 'long', 'locationName' => 'imageId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicConfigScheduleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicConfigScheduleResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicDebugResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskDebugPublicRes', ],
+            ],
+        ],
+        'UranusTaskPublicListImagesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicConfigStartParamsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'startCmdParam' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseParamInfoPublicRes', ], ],
+                'envParam' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseParamInfoPublicRes', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicDebugLogRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'debugId' => [ 'type' => 'long', 'locationName' => 'debugId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicConfigAlarmResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicConfigAlarmResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicPublishResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPublicConfigBaseInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicConfigBaseInfoResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicUpdateDatasourceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicUpdateDatasourceResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicPublishRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicUpdateScriptRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicListImagesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicListImagesResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicListResourcesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceInfoPublicRes', ], ],
+            ],
+        ],
+        'UranusTaskPublicConfigAlarmResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPublicUpdateDatasourceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPublicConfigStartParamsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPublicUpdateScriptResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicUpdateScriptResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicConfigBaseInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskKind' => [ 'type' => 'string', 'locationName' => 'taskKind', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskClassify' => [ 'type' => 'string', 'locationName' => 'taskClassify', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'collaborators' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'catalogName' => [ 'type' => 'string', 'locationName' => 'catalogName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicUpdateScriptResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPublicListResourcesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicListImagesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageInfoPublicRes', ], ],
+            ],
+        ],
+        'UranusTaskPublicCreateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskCreatePublicRes', ],
+            ],
+        ],
+        'UranusTaskPublicListDatasourcesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicDetailResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicConfigDependResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPublicDebugResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicDebugResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicListDatasourcesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataSourceInfoPublicRes', ], ],
+            ],
+        ],
+        'UranusTaskPublicDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicCreateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicCreateResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicConfigDependRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'dependsTaskDraftId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicListDependableRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'taskNameFuzz' => [ 'type' => 'string', 'locationName' => 'taskNameFuzz', ],
+                'dependTaskId' => [ 'type' => 'string', 'locationName' => 'dependTaskId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicConfigScheduleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPublicDebugResultResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskDebugResultPublicRes', ],
+            ],
+        ],
+        'UranusTaskPublicConfigBaseInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPublicListDependableResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskDependInfoPublicRes', ], ],
+            ],
+        ],
+        'UranusTaskPublicDebugLogResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicDebugLogResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicConfigDependResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicConfigDependResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicConfigAlarmRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'method' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'timing' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'receiver' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicDebugLogResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskDebugLogPublicRes', ],
+            ],
+        ],
+        'UranusTaskPublicCreateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicDebugResultRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'debugId' => [ 'type' => 'long', 'locationName' => 'debugId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicDebugRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicUpdateDatasourceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'datasourceId' => [ 'type' => 'string', 'locationName' => 'datasourceId', ],
+                'datasourceName' => [ 'type' => 'string', 'locationName' => 'datasourceName', ],
+                'datasourceType' => [ 'type' => 'string', 'locationName' => 'datasourceType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicListDatasourcesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicListDatasourcesResultShape', ],
+            ],
+        ],
         'UranusFunctionDeleteCatalogResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -15212,6 +22666,18 @@ return [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'WorkspaceGetByResourceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -15241,6 +22707,8 @@ return [
                 'purchaseDuration' => [ 'type' => 'integer', 'locationName' => 'purchaseDuration', ],
                 'projectResourceReq' =>  [ 'shape' => 'CreateProjectResourceParam', ],
                 'returnUrl' => [ 'type' => 'string', 'locationName' => 'returnUrl', ],
+                'bizResourceKey' => [ 'type' => 'string', 'locationName' => 'bizResourceKey', ],
+                'bizTagInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'BizTagInfo', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -15266,6 +22734,11 @@ return [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
+        'WorkspaceForceUnBundleResourceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'WorkspaceSaveInfoResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -15275,6 +22748,21 @@ return [
         'WorkspaceCreateResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'WorkspaceGetProductRegionInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ProductRegionListResp', ], ],
+            ],
+        ],
+        'WorkspaceGetProductRegionInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'WorkspaceGetProductRegionInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'WorkspaceSyncRechargeResultShape' => [
@@ -15333,6 +22821,7 @@ return [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -15352,6 +22841,13 @@ return [
             'members' => [
             ],
         ],
+        'WorkspaceGetByResourceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'WorkspaceGetByResourceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'WorkspaceSyncRechargeRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -15367,6 +22863,12 @@ return [
                 'orderUniqueKey' =>  [ 'shape' => 'OrderUniqueKey', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'WorkspaceForceUnBundleResourceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'WorkspaceSyncRechargeResponseShape' => [
@@ -15417,6 +22919,7 @@ return [
                 'manager' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'workspaceDescription' => [ 'type' => 'string', 'locationName' => 'workspaceDescription', ],
                 'workspaceModel' => [ 'type' => 'string', 'locationName' => 'workspaceModel', ],
+                'workspaceLabel' => [ 'type' => 'string', 'locationName' => 'workspaceLabel', ],
                 'engineType' => [ 'type' => 'string', 'locationName' => 'engineType', ],
                 'calculateResourceCode' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'integrationResourceCode' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
@@ -15474,6 +22977,14 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'WorkspaceCreatProductResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'WorkspaceGetByResourceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'WorkspaceListResp', ], ],
             ],
         ],
         'WorkspaceHadCreatWsProductResultShape' => [
@@ -15580,6 +23091,15 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'WorkspaceForceUnBundleResourceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
         'WorkspaceGetResourcesResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -15602,12 +23122,20 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'WorkspaceGetProductRegionInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
         'WorkspaceGetInfoRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],

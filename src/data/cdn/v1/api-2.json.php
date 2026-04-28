@@ -1019,6 +1019,15 @@ return [
             'input' => [ 'shape' => 'QueryServiceIpRequestShape', ],
             'output' => [ 'shape' => 'QueryServiceIpResponseShape', ],
         ],
+        'QueryServiceIpWithAreaIsp' => [
+            'name' => 'QueryServiceIpWithAreaIsp',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/ip:queryServiceIpWithAreaIsp',
+            ],
+            'input' => [ 'shape' => 'QueryServiceIpWithAreaIspRequestShape', ],
+            'output' => [ 'shape' => 'QueryServiceIpWithAreaIspResponseShape', ],
+        ],
         'SetLiveDomainBackSource' => [
             'name' => 'SetLiveDomainBackSource',
             'http' => [
@@ -2764,6 +2773,27 @@ return [
                 'province' => [ 'type' => 'string', 'locationName' => 'province', ],
                 'city' => [ 'type' => 'string', 'locationName' => 'city', ],
                 'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
+            ],
+        ],
+        'AreaSchedResultItem' => [
+            'type' => 'structure',
+            'members' => [
+                'area' => [ 'type' => 'string', 'locationName' => 'area', ],
+                'ipList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'IspSchedResultItem' => [
+            'type' => 'structure',
+            'members' => [
+                'isp' => [ 'type' => 'string', 'locationName' => 'isp', ],
+                'areaSchedResultItemList' => [ 'type' => 'list', 'member' => [ 'shape' => 'AreaSchedResultItem', ], ],
+            ],
+        ],
+        'DomainSchedResultWithAreaIspItem' => [
+            'type' => 'structure',
+            'members' => [
+                'domain' => [ 'type' => 'string', 'locationName' => 'domain', ],
+                'ispSchedResultItemList' => [ 'type' => 'list', 'member' => [ 'shape' => 'IspSchedResultItem', ], ],
             ],
         ],
         'DomainSchedResultItem' => [
@@ -5670,10 +5700,23 @@ return [
                 'instProInfoMap' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
             ],
         ],
-        'CheckWhetherIpBelongToJCloudResultShape' => [
+        'QueryServiceIpWithAreaIspRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'ipList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CheckWhetherIpBelongToJCloudItem', ], ],
+                'domainList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'QueryServiceIpWithAreaIspResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryServiceIpWithAreaIspResultShape', ],
+            ],
+        ],
+        'QueryServiceIpWithAreaIspResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'domainSchedResultItemList' => [ 'type' => 'list', 'member' => [ 'shape' => 'DomainSchedResultWithAreaIspItem', ], ],
             ],
         ],
         'CheckWhetherIpBelongToJCloudRequestShape' => [
@@ -5687,6 +5730,12 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'QueryServiceIpResultShape', ],
+            ],
+        ],
+        'CheckWhetherIpBelongToJCloudResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'ipList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CheckWhetherIpBelongToJCloudItem', ], ],
             ],
         ],
         'CheckWhetherIpBelongToJCloudResponseShape' => [

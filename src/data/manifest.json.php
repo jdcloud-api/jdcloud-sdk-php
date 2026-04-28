@@ -417,6 +417,10 @@ return [
         'namespace' => 'Iotcore',
         'versions' => [ 'latest' => 'v2', ],
     ],
+    'jdstarrocks' => [
+        'namespace' => 'Jdstarrocks',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'ams' => [
         'namespace' => 'Ams',
         'versions' => [ 'latest' => 'v1', ],
