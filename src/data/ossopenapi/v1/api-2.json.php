@@ -56,6 +56,60 @@ return [
             'input' => [ 'shape' => 'DeleteBackSourceConfigurationRequestShape', ],
             'output' => [ 'shape' => 'DeleteBackSourceConfigurationResponseShape', ],
         ],
+        'ListClouds' => [
+            'name' => 'ListClouds',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/clouds',
+            ],
+            'input' => [ 'shape' => 'ListCloudsRequestShape', ],
+            'output' => [ 'shape' => 'ListCloudsResponseShape', ],
+        ],
+        'CreateCloud' => [
+            'name' => 'CreateCloud',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/clouds',
+            ],
+            'input' => [ 'shape' => 'CreateCloudRequestShape', ],
+            'output' => [ 'shape' => 'CreateCloudResponseShape', ],
+        ],
+        'GetCloud' => [
+            'name' => 'GetCloud',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/clouds/{cloudName}/region/{regionName}',
+            ],
+            'input' => [ 'shape' => 'GetCloudRequestShape', ],
+            'output' => [ 'shape' => 'GetCloudResponseShape', ],
+        ],
+        'UpdateCloud' => [
+            'name' => 'UpdateCloud',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/clouds/{cloudName}/region/{regionName}',
+            ],
+            'input' => [ 'shape' => 'UpdateCloudRequestShape', ],
+            'output' => [ 'shape' => 'UpdateCloudResponseShape', ],
+        ],
+        'DeleteCloud' => [
+            'name' => 'DeleteCloud',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/clouds/{cloudName}/region/{regionName}',
+            ],
+            'input' => [ 'shape' => 'DeleteCloudRequestShape', ],
+            'output' => [ 'shape' => 'DeleteCloudResponseShape', ],
+        ],
+        'ListCNames' => [
+            'name' => 'ListCNames',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/buckets/{bucketName}/cname/',
+            ],
+            'input' => [ 'shape' => 'ListCNamesRequestShape', ],
+            'output' => [ 'shape' => 'ListCNamesResponseShape', ],
+        ],
         'GetHistoricalReplicatTask' => [
             'name' => 'GetHistoricalReplicatTask',
             'http' => [
@@ -100,6 +154,33 @@ return [
             ],
             'input' => [ 'shape' => 'OpenServiceRequestShape', ],
             'output' => [ 'shape' => 'OpenServiceResponseShape', ],
+        ],
+        'GetBucketMaxCount' => [
+            'name' => 'GetBucketMaxCount',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/users/{userId}/bucketMaxCount',
+            ],
+            'input' => [ 'shape' => 'GetBucketMaxCountRequestShape', ],
+            'output' => [ 'shape' => 'GetBucketMaxCountResponseShape', ],
+        ],
+        'PutBucketMaxCount' => [
+            'name' => 'PutBucketMaxCount',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/regions/{regionId}/users/{userId}/bucketMaxCount',
+            ],
+            'input' => [ 'shape' => 'PutBucketMaxCountRequestShape', ],
+            'output' => [ 'shape' => 'PutBucketMaxCountResponseShape', ],
+        ],
+        'DeleteBucketMaxCount' => [
+            'name' => 'DeleteBucketMaxCount',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/users/{userId}/bucketMaxCount',
+            ],
+            'input' => [ 'shape' => 'DeleteBucketMaxCountRequestShape', ],
+            'output' => [ 'shape' => 'DeleteBucketMaxCountResponseShape', ],
         ],
     ],
     'shapes' => [
@@ -189,6 +270,32 @@ return [
                 'resultList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BucketCapacityStatistic', ], ],
             ],
         ],
+        'SetQuotaInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'quotaType' => [ 'type' => 'integer', 'locationName' => 'quotaType', ],
+                'quotaValue' => [ 'type' => 'long', 'locationName' => 'quotaValue', ],
+            ],
+        ],
+        'QuotaInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'bucketId' => [ 'type' => 'integer', 'locationName' => 'bucketId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'bucketRange' => [ 'type' => 'string', 'locationName' => 'bucketRange', ],
+                'quotaType' => [ 'type' => 'integer', 'locationName' => 'quotaType', ],
+                'quotaValue' => [ 'type' => 'long', 'locationName' => 'quotaValue', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'modifyTime' => [ 'type' => 'string', 'locationName' => 'modifyTime', ],
+            ],
+        ],
+        'CommonResult' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'BucketSpaceStatisticQueryResult' => [
             'type' => 'structure',
             'members' => [
@@ -216,6 +323,22 @@ return [
             'members' => [
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
                 'queryList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BucketMonitorStatistic', ], ],
+            ],
+        ],
+        'BucketDedicatedZoneInfoResult' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketDedicatedZoneInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'BucketDedicatedZoneInfo', ], ],
+            ],
+        ],
+        'BucketDedicatedZoneInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'bucketId' => [ 'type' => 'string', 'locationName' => 'bucketId', ],
+                'dedicatedZoneName' => [ 'type' => 'string', 'locationName' => 'dedicatedZoneName', ],
+                'dedicatedResourceName' => [ 'type' => 'string', 'locationName' => 'dedicatedResourceName', ],
+                'creationDate' => [ 'type' => 'string', 'locationName' => 'creationDate', ],
             ],
         ],
         'GetBucketsTaggingInfoResult' => [
@@ -347,6 +470,193 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'CertificateBind' => [
+            'type' => 'structure',
+            'members' => [
+                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
+            ],
+        ],
+        'CertificateReplace' => [
+            'type' => 'structure',
+            'members' => [
+                'oldCertId' => [ 'type' => 'string', 'locationName' => 'oldCertId', ],
+                'newCertId' => [ 'type' => 'string', 'locationName' => 'newCertId', ],
+            ],
+        ],
+        'DeleteCloudRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cloudName' => [ 'type' => 'string', 'locationName' => 'cloudName', ],
+                'regionName' => [ 'type' => 'string', 'locationName' => 'regionName', ],
+            ],
+        ],
+        'CreateCloudResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CreateCloudResultShape', ],
+            ],
+        ],
+        'UpdateCloudResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'RemoteCloud', ],
+                'error' =>  [ 'shape' => 'Error', ],
+            ],
+        ],
+        'RemoteCloudUpdate' => [
+            'type' => 'structure',
+            'members' => [
+                'cloudNameCn' => [ 'type' => 'string', 'locationName' => 'cloudNameCn', ],
+                's3Domain' => [ 'type' => 'string', 'locationName' => 's3Domain', ],
+                'proxyAk' => [ 'type' => 'string', 'locationName' => 'proxyAk', ],
+                'proxySk' => [ 'type' => 'string', 'locationName' => 'proxySk', ],
+            ],
+        ],
+        'ListCloudsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'RemoteCloud', ], ],
+                'error' =>  [ 'shape' => 'Error', ],
+            ],
+        ],
+        'RemoteCloud' => [
+            'type' => 'structure',
+            'members' => [
+                'cloudName' => [ 'type' => 'string', 'locationName' => 'cloudName', ],
+                'regionName' => [ 'type' => 'string', 'locationName' => 'regionName', ],
+                'cloudNameCn' => [ 'type' => 'string', 'locationName' => 'cloudNameCn', ],
+                's3Domain' => [ 'type' => 'string', 'locationName' => 's3Domain', ],
+                'proxyAk' => [ 'type' => 'string', 'locationName' => 'proxyAk', ],
+                'proxySk' => [ 'type' => 'string', 'locationName' => 'proxySk', ],
+            ],
+        ],
+        'UpdateCloudResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'UpdateCloudResultShape', ],
+            ],
+        ],
+        'CreateCloudResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'RemoteCloud', ],
+                'error' =>  [ 'shape' => 'Error', ],
+            ],
+        ],
+        'ResponseMessageBoolean' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+                'error' =>  [ 'shape' => 'Error', ],
+            ],
+        ],
+        'GetCloudResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'RemoteCloud', ],
+                'error' =>  [ 'shape' => 'Error', ],
+            ],
+        ],
+        'DeleteCloudResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+                'error' =>  [ 'shape' => 'Error', ],
+            ],
+        ],
+        'CreateCloudRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'remoteCloud' =>  [ 'shape' => 'RemoteCloud', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'GetCloudResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetCloudResultShape', ],
+            ],
+        ],
+        'UpdateCloudRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'remoteCloud' =>  [ 'shape' => 'RemoteCloudUpdate', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cloudName' => [ 'type' => 'string', 'locationName' => 'cloudName', ],
+                'regionName' => [ 'type' => 'string', 'locationName' => 'regionName', ],
+            ],
+        ],
+        'ResponseMessageRemoteCloud' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'RemoteCloud', ],
+                'error' =>  [ 'shape' => 'Error', ],
+            ],
+        ],
+        'ListCloudsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'ListCloudsResultShape', ],
+            ],
+        ],
+        'GetCloudRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'cloudName' => [ 'type' => 'string', 'locationName' => 'cloudName', ],
+                'regionName' => [ 'type' => 'string', 'locationName' => 'regionName', ],
+            ],
+        ],
+        'ResponseMessageRemoteCloudList' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'RemoteCloud', ], ],
+                'error' =>  [ 'shape' => 'Error', ],
+            ],
+        ],
+        'ListCloudsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'Error' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'details' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+            ],
+        ],
+        'DeleteCloudResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DeleteCloudResultShape', ],
+            ],
+        ],
+        'ListCNamesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+            ],
+        ],
         'CNameQueryResult' => [
             'type' => 'structure',
             'members' => [
@@ -366,6 +676,16 @@ return [
                 'isCName' => [ 'type' => 'integer', 'locationName' => 'isCName', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'protoType' => [ 'type' => 'integer', 'locationName' => 'protoType', ],
+                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
+                'certStatus' => [ 'type' => 'string', 'locationName' => 'certStatus', ],
+                'domainOperationStatus' => [ 'type' => 'string', 'locationName' => 'domainOperationStatus', ],
+            ],
+        ],
+        'ListCNamesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'ListCNamesResultShape', ],
             ],
         ],
         'CNameInfo' => [
@@ -375,6 +695,14 @@ return [
                 'protoType' => [ 'type' => 'integer', 'locationName' => 'protoType', ],
                 'endPoint' => [ 'type' => 'string', 'locationName' => 'endPoint', ],
                 'internal' => [ 'type' => 'string', 'locationName' => 'internal', ],
+                'certId' => [ 'type' => 'string', 'locationName' => 'certId', ],
+            ],
+        ],
+        'ListCNamesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'resultList' => [ 'type' => 'list', 'member' => [ 'shape' => 'CName', ], ],
             ],
         ],
         'ListHistoricalReplicatTasksResultShape' => [
@@ -430,6 +758,13 @@ return [
                 'bucketRegion' => [ 'type' => 'string', 'locationName' => 'bucketRegion', ],
                 'targetBucketName' => [ 'type' => 'string', 'locationName' => 'targetBucketName', ],
                 'targetBucketRegion' => [ 'type' => 'string', 'locationName' => 'targetBucketRegion', ],
+                'sourceBucketCloud' => [ 'type' => 'string', 'locationName' => 'sourceBucketCloud', ],
+                'targetBucketCloudEndpoint' => [ 'type' => 'string', 'locationName' => 'targetBucketCloudEndpoint', ],
+                'targetBucketCloudAk' => [ 'type' => 'string', 'locationName' => 'targetBucketCloudAk', ],
+                'targetBucketCloudSk' => [ 'type' => 'string', 'locationName' => 'targetBucketCloudSk', ],
+                'targetBucketUserPin' => [ 'type' => 'string', 'locationName' => 'targetBucketUserPin', ],
+                'targetBucketUserId' => [ 'type' => 'string', 'locationName' => 'targetBucketUserId', ],
+                'targetBucketCloud' => [ 'type' => 'string', 'locationName' => 'targetBucketCloud', ],
                 'storageClass' => [ 'type' => 'string', 'locationName' => 'storageClass', ],
                 'prefixSet' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
@@ -512,6 +847,13 @@ return [
                 'bucketRegion' => [ 'type' => 'string', 'locationName' => 'bucketRegion', ],
                 'targetBucketName' => [ 'type' => 'string', 'locationName' => 'targetBucketName', ],
                 'targetBucketRegion' => [ 'type' => 'string', 'locationName' => 'targetBucketRegion', ],
+                'sourceBucketCloud' => [ 'type' => 'string', 'locationName' => 'sourceBucketCloud', ],
+                'targetBucketCloudEndpoint' => [ 'type' => 'string', 'locationName' => 'targetBucketCloudEndpoint', ],
+                'targetBucketCloudAk' => [ 'type' => 'string', 'locationName' => 'targetBucketCloudAk', ],
+                'targetBucketCloudSk' => [ 'type' => 'string', 'locationName' => 'targetBucketCloudSk', ],
+                'targetBucketUserPin' => [ 'type' => 'string', 'locationName' => 'targetBucketUserPin', ],
+                'targetBucketUserId' => [ 'type' => 'string', 'locationName' => 'targetBucketUserId', ],
+                'targetBucketCloud' => [ 'type' => 'string', 'locationName' => 'targetBucketCloud', ],
                 'storageClass' => [ 'type' => 'string', 'locationName' => 'storageClass', ],
                 'prefixSet' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -527,6 +869,60 @@ return [
             'type' => 'structure',
             'members' => [
                 'imageExtensions' => [ 'type' => 'string', 'locationName' => 'imageExtensions', ],
+            ],
+        ],
+        'BucketQosLimitInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'rate' => [ 'type' => 'long', 'locationName' => 'rate', ],
+            ],
+        ],
+        'BucketQosInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'readBucketQps' => [ 'type' => 'long', 'locationName' => 'readBucketQps', ],
+                'writeBucketQps' => [ 'type' => 'long', 'locationName' => 'writeBucketQps', ],
+                'bandwidthUploadBps' => [ 'type' => 'long', 'locationName' => 'bandwidthUploadBps', ],
+                'bandwidthDownloadBps' => [ 'type' => 'long', 'locationName' => 'bandwidthDownloadBps', ],
+                'bandwidthUploadExternalBps' => [ 'type' => 'long', 'locationName' => 'bandwidthUploadExternalBps', ],
+                'bandwidthDownloadExternalBps' => [ 'type' => 'long', 'locationName' => 'bandwidthDownloadExternalBps', ],
+            ],
+        ],
+        'QosPinQueryResult' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketNum' => [ 'type' => 'integer', 'locationName' => 'bucketNum', ],
+                'bandwidthUploadBps' => [ 'type' => 'long', 'locationName' => 'bandwidthUploadBps', ],
+                'bandwidthDownloadBps' => [ 'type' => 'long', 'locationName' => 'bandwidthDownloadBps', ],
+                'bandwidthUploadExternalBps' => [ 'type' => 'long', 'locationName' => 'bandwidthUploadExternalBps', ],
+                'bandwidthDownloadExternalBps' => [ 'type' => 'long', 'locationName' => 'bandwidthDownloadExternalBps', ],
+            ],
+        ],
+        'QosBucketQueryResult' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'bucketNum' => [ 'type' => 'integer', 'locationName' => 'bucketNum', ],
+                'bucketQosInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'BucketQosInfo', ], ],
+            ],
+        ],
+        'QosInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'bandwidthUploadPinGbps' => [ 'type' => 'long', 'locationName' => 'bandwidthUploadPinGbps', ],
+                'bandwidthDownloadPinGbps' => [ 'type' => 'long', 'locationName' => 'bandwidthDownloadPinGbps', ],
+                'bandwidthUploadExternalPinGbps' => [ 'type' => 'long', 'locationName' => 'bandwidthUploadExternalPinGbps', ],
+                'bandwidthDownloadExternalPinGbps' => [ 'type' => 'long', 'locationName' => 'bandwidthDownloadExternalPinGbps', ],
+                'bandwidthUploadBucketGbps' =>  [ 'shape' => 'BucketQosLimitInfo', ],
+                'bandwidthDownloadBucketGbps' =>  [ 'shape' => 'BucketQosLimitInfo', ],
+                'bandwidthUploadExternalBucketGbps' =>  [ 'shape' => 'BucketQosLimitInfo', ],
+                'bandwidthDownloadExternalBucketGbps' =>  [ 'shape' => 'BucketQosLimitInfo', ],
+                'readBucketQps' =>  [ 'shape' => 'BucketQosLimitInfo', ],
+                'writeBucketQps' =>  [ 'shape' => 'BucketQosLimitInfo', ],
             ],
         ],
         'SignatureInfo' => [
@@ -555,6 +951,47 @@ return [
                 'authorization' => [ 'type' => 'string', 'locationName' => 'authorization', ],
             ],
         ],
+        'PutBucketMaxCountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'PutBucketMaxCountResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetBucketMaxCountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketMaxCount' => [ 'type' => 'integer', 'locationName' => 'bucketMaxCount', ],
+            ],
+        ],
+        'OpenServiceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetBucketMaxCount' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketMaxCount' => [ 'type' => 'integer', 'locationName' => 'bucketMaxCount', ],
+            ],
+        ],
+        'DeleteBucketMaxCountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'PutBucketMaxCountRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketMaxCount' => [ 'type' => 'integer', 'locationName' => 'bucketMaxCount', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+            ],
+        ],
         'OpenServiceRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -564,9 +1001,31 @@ return [
                 'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
             ],
         ],
-        'OpenServiceResultShape' => [
+        'DeleteBucketMaxCountRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+            ],
+        ],
+        'GetBucketMaxCountRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'userId' => [ 'type' => 'string', 'locationName' => 'userId', ],
+            ],
+        ],
+        'DeleteBucketMaxCountResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetBucketMaxCountResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetBucketMaxCountResultShape', ],
             ],
         ],
         'OpenServiceResponseShape' => [

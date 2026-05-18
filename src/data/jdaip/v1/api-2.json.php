@@ -65,6 +65,33 @@ return [
             'input' => [ 'shape' => 'DeleteExperimentRequestShape', ],
             'output' => [ 'shape' => 'DeleteExperimentResponseShape', ],
         ],
+        'AdminDescribeJobs' => [
+            'name' => 'AdminDescribeJobs',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/train/{regionId}/api/{apiType}/jobs',
+            ],
+            'input' => [ 'shape' => 'AdminDescribeJobsRequestShape', ],
+            'output' => [ 'shape' => 'AdminDescribeJobsResponseShape', ],
+        ],
+        'AdminDescribeJobsCount' => [
+            'name' => 'AdminDescribeJobsCount',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/train/{regionId}/api/{apiType}/jobs:count',
+            ],
+            'input' => [ 'shape' => 'AdminDescribeJobsCountRequestShape', ],
+            'output' => [ 'shape' => 'AdminDescribeJobsCountResponseShape', ],
+        ],
+        'AdminDescribeJobList' => [
+            'name' => 'AdminDescribeJobList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/train/{regionId}/api/{apiType}/jobList',
+            ],
+            'input' => [ 'shape' => 'AdminDescribeJobListRequestShape', ],
+            'output' => [ 'shape' => 'AdminDescribeJobListResponseShape', ],
+        ],
         'DescribeJobTypes' => [
             'name' => 'DescribeJobTypes',
             'http' => [
@@ -101,6 +128,15 @@ return [
             'input' => [ 'shape' => 'DescribeJobRequestShape', ],
             'output' => [ 'shape' => 'DescribeJobResponseShape', ],
         ],
+        'UpdateJob' => [
+            'name' => 'UpdateJob',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/train/{regionId}/workspaces/{workspaceId}/jobs/{jobId}',
+            ],
+            'input' => [ 'shape' => 'UpdateJobRequestShape', ],
+            'output' => [ 'shape' => 'UpdateJobResponseShape', ],
+        ],
         'DeleteJob' => [
             'name' => 'DeleteJob',
             'http' => [
@@ -128,6 +164,15 @@ return [
             'input' => [ 'shape' => 'GetJobEventsRequestShape', ],
             'output' => [ 'shape' => 'GetJobEventsResponseShape', ],
         ],
+        'GetJobRestartHistory' => [
+            'name' => 'GetJobRestartHistory',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/train/{regionId}/workspaces/{workspaceId}/jobs/{jobId}:restartHistory',
+            ],
+            'input' => [ 'shape' => 'GetJobRestartHistoryRequestShape', ],
+            'output' => [ 'shape' => 'GetJobRestartHistoryResponseShape', ],
+        ],
         'GetPodLogs' => [
             'name' => 'GetPodLogs',
             'http' => [
@@ -136,6 +181,51 @@ return [
             ],
             'input' => [ 'shape' => 'GetPodLogsRequestShape', ],
             'output' => [ 'shape' => 'GetPodLogsResponseShape', ],
+        ],
+        'DescribeInstances' => [
+            'name' => 'DescribeInstances',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/train/{regionId}/workspaces/{workspaceId}/jobs/{jobId}:instances',
+            ],
+            'input' => [ 'shape' => 'DescribeInstancesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInstancesResponseShape', ],
+        ],
+        'GetInstanceEvents' => [
+            'name' => 'GetInstanceEvents',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/train/{regionId}/workspaces/{workspaceId}/jobs/{jobId}/instances/{instanceName}:events',
+            ],
+            'input' => [ 'shape' => 'GetInstanceEventsRequestShape', ],
+            'output' => [ 'shape' => 'GetInstanceEventsResponseShape', ],
+        ],
+        'AdminDescribeRuns' => [
+            'name' => 'AdminDescribeRuns',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/train/{regionId}/api/{apiType}/runs',
+            ],
+            'input' => [ 'shape' => 'AdminDescribeRunsRequestShape', ],
+            'output' => [ 'shape' => 'AdminDescribeRunsResponseShape', ],
+        ],
+        'AdminDescribeRunsCount' => [
+            'name' => 'AdminDescribeRunsCount',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/train/{regionId}/api/{apiType}/runs:count',
+            ],
+            'input' => [ 'shape' => 'AdminDescribeRunsCountRequestShape', ],
+            'output' => [ 'shape' => 'AdminDescribeRunsCountResponseShape', ],
+        ],
+        'AdminDescribeRunList' => [
+            'name' => 'AdminDescribeRunList',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/train/{regionId}/api/{apiType}/runList',
+            ],
+            'input' => [ 'shape' => 'AdminDescribeRunListRequestShape', ],
+            'output' => [ 'shape' => 'AdminDescribeRunListResponseShape', ],
         ],
         'DescribeRunConfigs' => [
             'name' => 'DescribeRunConfigs',
@@ -163,24 +253,6 @@ return [
             ],
             'input' => [ 'shape' => 'CreateRunRequestShape', ],
             'output' => [ 'shape' => 'CreateRunResponseShape', ],
-        ],
-        'DescribeRun' => [
-            'name' => 'DescribeRun',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/train/{regionId}/workspaces/{workspaceId}/experiments/{experimentId}/runs/{runId}',
-            ],
-            'input' => [ 'shape' => 'DescribeRunRequestShape', ],
-            'output' => [ 'shape' => 'DescribeRunResponseShape', ],
-        ],
-        'UpdateRun' => [
-            'name' => 'UpdateRun',
-            'http' => [
-                'method' => 'PUT',
-                'requestUri' => '/v1/train/{regionId}/workspaces/{workspaceId}/experiments/{experimentId}/runs/{runId}',
-            ],
-            'input' => [ 'shape' => 'UpdateRunRequestShape', ],
-            'output' => [ 'shape' => 'UpdateRunResponseShape', ],
         ],
         'DeleteRun' => [
             'name' => 'DeleteRun',
@@ -299,6 +371,15 @@ return [
             'input' => [ 'shape' => 'DeleteDatasetVersionRequestShape', ],
             'output' => [ 'shape' => 'DeleteDatasetVersionResponseShape', ],
         ],
+        'AdminDescribeDistillTasks' => [
+            'name' => 'AdminDescribeDistillTasks',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/dt-regions/{regionId}/api/{apiType}/dttasks',
+            ],
+            'input' => [ 'shape' => 'AdminDescribeDistillTasksRequestShape', ],
+            'output' => [ 'shape' => 'AdminDescribeDistillTasksResponseShape', ],
+        ],
         'DescribeImages' => [
             'name' => 'DescribeImages',
             'http' => [
@@ -352,6 +433,15 @@ return [
             ],
             'input' => [ 'shape' => 'GetPodLogsRequestShape', ],
             'output' => [ 'shape' => 'GetPodLogsResponseShape', ],
+        ],
+        'DescribePublicImages' => [
+            'name' => 'DescribePublicImages',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/img-regions/{regionId}/publicImage',
+            ],
+            'input' => [ 'shape' => 'DescribePublicImagesRequestShape', ],
+            'output' => [ 'shape' => 'DescribePublicImagesResponseShape', ],
         ],
         'RolloutInference' => [
             'name' => 'RolloutInference',
@@ -488,6 +578,15 @@ return [
             'input' => [ 'shape' => 'DeleteServiceRequestShape', ],
             'output' => [ 'shape' => 'DeleteServiceResponseShape', ],
         ],
+        'UpdateServiceQPS' => [
+            'name' => 'UpdateServiceQPS',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/infer-regions/{regionId}/workspace/{workspaceId}/services/{serviceName}/updateQPS',
+            ],
+            'input' => [ 'shape' => 'UpdateServiceQPSRequestShape', ],
+            'output' => [ 'shape' => 'UpdateServiceQPSResponseShape', ],
+        ],
         'DescribeInferencePods' => [
             'name' => 'DescribeInferencePods',
             'http' => [
@@ -532,6 +631,24 @@ return [
             ],
             'input' => [ 'shape' => 'DeleteInferenceScaleRequestShape', ],
             'output' => [ 'shape' => 'DeleteInferenceScaleResponseShape', ],
+        ],
+        'AdminDescribeInferences' => [
+            'name' => 'AdminDescribeInferences',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/infer-regions/{regionId}/api/{apiType}/inferences',
+            ],
+            'input' => [ 'shape' => 'AdminDescribeInferencesRequestShape', ],
+            'output' => [ 'shape' => 'AdminDescribeInferencesResponseShape', ],
+        ],
+        'AdminDescribeInferenceCount' => [
+            'name' => 'AdminDescribeInferenceCount',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/infer-regions/{regionId}/api/{apiType}/inferenceCount',
+            ],
+            'input' => [ 'shape' => 'AdminDescribeInferenceCountRequestShape', ],
+            'output' => [ 'shape' => 'AdminDescribeInferenceCountResponseShape', ],
         ],
         'DescribeNodeInstances' => [
             'name' => 'DescribeNodeInstances',
@@ -794,6 +911,24 @@ return [
             'input' => [ 'shape' => 'DeleteNotebookLogCollectConfigRequestShape', ],
             'output' => [ 'shape' => 'DeleteNotebookLogCollectConfigResponseShape', ],
         ],
+        'AdminDescribeNotebooks' => [
+            'name' => 'AdminDescribeNotebooks',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/nb-regions/{regionId}/api/{apiType}/notebook',
+            ],
+            'input' => [ 'shape' => 'AdminDescribeNotebooksRequestShape', ],
+            'output' => [ 'shape' => 'AdminDescribeNotebooksResponseShape', ],
+        ],
+        'AdminDescribeNotebookCount' => [
+            'name' => 'AdminDescribeNotebookCount',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/nb-regions/{regionId}/api/{apiType}/notebook:count',
+            ],
+            'input' => [ 'shape' => 'AdminDescribeNotebookCountRequestShape', ],
+            'output' => [ 'shape' => 'AdminDescribeNotebookCountResponseShape', ],
+        ],
         'DescribeCodeRepoConfigs' => [
             'name' => 'DescribeCodeRepoConfigs',
             'http' => [
@@ -839,51 +974,6 @@ return [
             'input' => [ 'shape' => 'DeleteCodeRepoConfigRequestShape', ],
             'output' => [ 'shape' => 'DeleteCodeRepoConfigResponseShape', ],
         ],
-        'DescribeTensorBoards' => [
-            'name' => 'DescribeTensorBoards',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/tb-regions/{regionId}/workspace/{workspaceId}/tensorBoard',
-            ],
-            'input' => [ 'shape' => 'DescribeTensorBoardsRequestShape', ],
-            'output' => [ 'shape' => 'DescribeTensorBoardsResponseShape', ],
-        ],
-        'CreateTensorBoard' => [
-            'name' => 'CreateTensorBoard',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/tb-regions/{regionId}/workspace/{workspaceId}/tensorBoard',
-            ],
-            'input' => [ 'shape' => 'CreateTensorBoardRequestShape', ],
-            'output' => [ 'shape' => 'CreateTensorBoardResponseShape', ],
-        ],
-        'DeleteTensorBoard' => [
-            'name' => 'DeleteTensorBoard',
-            'http' => [
-                'method' => 'DELETE',
-                'requestUri' => '/v1/tb-regions/{regionId}/workspace/{workspaceId}/tensorBoard/{tensorBoardId}',
-            ],
-            'input' => [ 'shape' => 'DeleteTensorBoardRequestShape', ],
-            'output' => [ 'shape' => 'DeleteTensorBoardResponseShape', ],
-        ],
-        'StartTensorBoard' => [
-            'name' => 'StartTensorBoard',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/tb-regions/{regionId}/workspace/{workspaceId}/tensorBoard/{tensorBoardId}:start',
-            ],
-            'input' => [ 'shape' => 'StartTensorBoardRequestShape', ],
-            'output' => [ 'shape' => 'StartTensorBoardResponseShape', ],
-        ],
-        'StopTensorBoard' => [
-            'name' => 'StopTensorBoard',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/tb-regions/{regionId}/workspace/{workspaceId}/tensorBoard/{tensorBoardId}:stop',
-            ],
-            'input' => [ 'shape' => 'StopTensorBoardRequestShape', ],
-            'output' => [ 'shape' => 'StopTensorBoardResponseShape', ],
-        ],
         'CreateWorkspace' => [
             'name' => 'CreateWorkspace',
             'http' => [
@@ -919,33 +1009,6 @@ return [
             ],
             'input' => [ 'shape' => 'RemoveQueuesRequestShape', ],
             'output' => [ 'shape' => 'RemoveQueuesResponseShape', ],
-        ],
-        'CreateBindWorkspace' => [
-            'name' => 'CreateBindWorkspace',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/ws-regions/{regionId}/workspace/{workspaceId}/resources',
-            ],
-            'input' => [ 'shape' => 'CreateBindWorkspaceRequestShape', ],
-            'output' => [ 'shape' => 'CreateBindWorkspaceResponseShape', ],
-        ],
-        'UnbindWorkspaceResources' => [
-            'name' => 'UnbindWorkspaceResources',
-            'http' => [
-                'method' => 'DELETE',
-                'requestUri' => '/v1/ws-regions/{regionId}/workspace/{workspaceId}/resources',
-            ],
-            'input' => [ 'shape' => 'UnbindWorkspaceResourcesRequestShape', ],
-            'output' => [ 'shape' => 'UnbindWorkspaceResourcesResponseShape', ],
-        ],
-        'DescribeWorkspaceResources' => [
-            'name' => 'DescribeWorkspaceResources',
-            'http' => [
-                'method' => 'GET',
-                'requestUri' => '/v1/ws-regions/{regionId}/resources',
-            ],
-            'input' => [ 'shape' => 'DescribeWorkspaceResourcesRequestShape', ],
-            'output' => [ 'shape' => 'DescribeWorkspaceResourcesResponseShape', ],
         ],
     ],
     'shapes' => [
@@ -1004,6 +1067,7 @@ return [
                 'baseModelName' => [ 'type' => 'string', 'locationName' => 'baseModelName', ],
                 'baseModelVersion' => [ 'type' => 'string', 'locationName' => 'baseModelVersion', ],
                 'permission' => [ 'type' => 'string', 'locationName' => 'permission', ],
+                'schedulePriority' =>  [ 'shape' => 'SchedulePriority', ],
                 'ownerUserPin' => [ 'type' => 'string', 'locationName' => 'ownerUserPin', ],
                 'ownerUser' => [ 'type' => 'string', 'locationName' => 'ownerUser', ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
@@ -1027,6 +1091,7 @@ return [
                 'baseModelName' => [ 'type' => 'string', 'locationName' => 'baseModelName', ],
                 'baseModelVersion' => [ 'type' => 'string', 'locationName' => 'baseModelVersion', ],
                 'permission' => [ 'type' => 'string', 'locationName' => 'permission', ],
+                'schedulePriority' =>  [ 'shape' => 'SchedulePriority', ],
                 'ownerUserPin' => [ 'type' => 'string', 'locationName' => 'ownerUserPin', ],
                 'ownerUser' => [ 'type' => 'string', 'locationName' => 'ownerUser', ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
@@ -1034,6 +1099,15 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateUser' => [ 'type' => 'string', 'locationName' => 'updateUser', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'SchedulePriority' => [
+            'type' => 'structure',
+            'members' => [
+                'priorityType' => [ 'type' => 'string', 'locationName' => 'priorityType', ],
+                'priorityName' => [ 'type' => 'string', 'locationName' => 'priorityName', ],
+                'priorityCNName' => [ 'type' => 'string', 'locationName' => 'priorityCNName', ],
+                'priorityValue' => [ 'type' => 'integer', 'locationName' => 'priorityValue', ],
             ],
         ],
         'ExperimentParam' => [
@@ -1288,6 +1362,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'imageVisibility' => [ 'type' => 'string', 'locationName' => 'imageVisibility', ],
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+                'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
                 'jobType' => [ 'type' => 'string', 'locationName' => 'jobType', ],
                 'command' => [ 'type' => 'string', 'locationName' => 'command', ],
                 'replica' => [ 'type' => 'integer', 'locationName' => 'replica', ],
@@ -1305,6 +1380,7 @@ return [
                 'codes' => [ 'type' => 'list', 'member' => [ 'shape' => 'CodeParam', ], ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'JobTag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'schedulePriority' =>  [ 'shape' => 'SchedulePriority', ],
             ],
         ],
         'RestartPolicyParamForJob' => [
@@ -1324,15 +1400,6 @@ return [
                 'logSetName' => [ 'type' => 'string', 'locationName' => 'logSetName', ],
                 'logTopicId' => [ 'type' => 'string', 'locationName' => 'logTopicId', ],
                 'logTopicName' => [ 'type' => 'string', 'locationName' => 'logTopicName', ],
-                'standardLogConfig' =>  [ 'shape' => 'StandardLogConfig', ],
-                'customLogConfig' =>  [ 'shape' => 'CustomLogConfig', ],
-            ],
-        ],
-        'LogCollectConfig' => [
-            'type' => 'structure',
-            'members' => [
-                'logSetId' => [ 'type' => 'string', 'locationName' => 'logSetId', ],
-                'logTopicId' => [ 'type' => 'string', 'locationName' => 'logTopicId', ],
                 'standardLogConfig' =>  [ 'shape' => 'StandardLogConfig', ],
                 'customLogConfig' =>  [ 'shape' => 'CustomLogConfig', ],
             ],
@@ -1366,6 +1433,7 @@ return [
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'JobTag', ], ],
+                'schedulePriority' =>  [ 'shape' => 'SchedulePriority', ],
                 'ownerUserPin' => [ 'type' => 'string', 'locationName' => 'ownerUserPin', ],
                 'ownerUser' => [ 'type' => 'string', 'locationName' => 'ownerUser', ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
@@ -1533,6 +1601,7 @@ return [
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'JobTag', ], ],
+                'schedulePriority' =>  [ 'shape' => 'SchedulePriority', ],
                 'ownerUserPin' => [ 'type' => 'string', 'locationName' => 'ownerUserPin', ],
                 'ownerUser' => [ 'type' => 'string', 'locationName' => 'ownerUser', ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
@@ -1564,16 +1633,16 @@ return [
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
             ],
         ],
-        'StandardLogConfig' => [
-            'type' => 'structure',
-            'members' => [
-                'stdout' => [ 'type' => 'boolean', 'locationName' => 'stdout', ],
-            ],
-        ],
         'GpuInfo' => [
             'type' => 'structure',
             'members' => [
                 'gpuDeviceModel' => [ 'type' => 'string', 'locationName' => 'gpuDeviceModel', ],
+            ],
+        ],
+        'StandardLogConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'stdout' => [ 'type' => 'boolean', 'locationName' => 'stdout', ],
             ],
         ],
         'RestartPolicyInfoForJob' => [
@@ -1732,6 +1801,7 @@ return [
                 'resourceState' => [ 'type' => 'string', 'locationName' => 'resourceState', ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
+                'schedulePriority' =>  [ 'shape' => 'SchedulePriority', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'RunTag', ], ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
@@ -1825,6 +1895,7 @@ return [
                 'resource' =>  [ 'shape' => 'ResourceParamForExperiment', ],
                 'storageSpace' =>  [ 'shape' => 'StorageSpaceParamForExperiment', ],
                 'nodeAffinities' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeAffinityForExperiment', ], ],
+                'schedulePriority' =>  [ 'shape' => 'SchedulePriority', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'RunTag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
@@ -1849,6 +1920,7 @@ return [
                 'nodeAffinities' =>  [ 'shape' => 'NodeAffinityForExperiment', ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
+                'schedulePriority' =>  [ 'shape' => 'SchedulePriority', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'RunTag', ], ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
@@ -2303,6 +2375,7 @@ return [
                 'modelVersion' => [ 'type' => 'string', 'locationName' => 'modelVersion', ],
                 'modelName' => [ 'type' => 'string', 'locationName' => 'modelName', ],
                 'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'permission' => [ 'type' => 'string', 'locationName' => 'permission', ],
             ],
         ],
         'AdminDistillTaskListInfo' => [
@@ -2327,18 +2400,11 @@ return [
                 'updateUserPin' => [ 'type' => 'string', 'locationName' => 'updateUserPin', ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
-                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'DistillTag', ], ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'outputModel' =>  [ 'shape' => 'DistillStorageInfo', ],
                 'autoDeploy' =>  [ 'shape' => 'AutoDeployStillModel', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'progress' =>  [ 'shape' => 'DistillLog', ],
-            ],
-        ],
-        'DistillTag' => [
-            'type' => 'structure',
-            'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'DistillJpfsInfo' => [
@@ -2355,6 +2421,13 @@ return [
                 'logLevel' => [ 'type' => 'string', 'locationName' => 'logLevel', ],
                 'taskState' => [ 'type' => 'string', 'locationName' => 'taskState', ],
                 'log' => [ 'type' => 'string', 'locationName' => 'log', ],
+            ],
+        ],
+        'Tag' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'DistillCfsInfo' => [
@@ -2441,7 +2514,7 @@ return [
                 'updateUserPin' => [ 'type' => 'string', 'locationName' => 'updateUserPin', ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
-                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'DistillTag', ], ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'outputModel' =>  [ 'shape' => 'DistillStorageInfo', ],
                 'autoDeploy' =>  [ 'shape' => 'AutoDeployStillModel', ],
                 'distillStage' =>  [ 'shape' => 'DistillStageInfo', ],
@@ -2512,7 +2585,7 @@ return [
                 'updateUserPin' => [ 'type' => 'string', 'locationName' => 'updateUserPin', ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
-                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'DistillTag', ], ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'outputModel' =>  [ 'shape' => 'DistillStorageInfo', ],
                 'autoDeploy' =>  [ 'shape' => 'AutoDeployStillModel', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
@@ -2585,13 +2658,6 @@ return [
                 'outputDsId' => [ 'type' => 'string', 'locationName' => 'outputDsId', ],
                 'outputDsPath' => [ 'type' => 'string', 'locationName' => 'outputDsPath', ],
                 'dataValidation' => [ 'type' => 'string', 'locationName' => 'dataValidation', ],
-            ],
-        ],
-        'DistillTagFilter' => [
-            'type' => 'structure',
-            'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'TraningStageArgs' => [
@@ -2883,6 +2949,14 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'ImageLabelsObject' => [
+            'type' => 'structure',
+            'members' => [
+                'jobtype' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'protocol' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'distributed' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'PublicImageWhitelist' => [
             'type' => 'structure',
             'members' => [
@@ -2963,6 +3037,7 @@ return [
                 'sourceType' => [ 'type' => 'string', 'locationName' => 'sourceType', ],
                 'labels' => [ 'type' => 'string', 'locationName' => 'labels', ],
                 'labelList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'labelsObject' =>  [ 'shape' => 'ImageLabelsObject', ],
                 'command' => [ 'type' => 'string', 'locationName' => 'command', ],
                 'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
@@ -3028,8 +3103,10 @@ return [
                 'serviceId' => [ 'type' => 'string', 'locationName' => 'serviceId', ],
                 'address' => [ 'type' => 'string', 'locationName' => 'address', ],
                 'innerAddress' => [ 'type' => 'string', 'locationName' => 'innerAddress', ],
+                'resourceState' => [ 'type' => 'string', 'locationName' => 'resourceState', ],
                 'vpcAddress' => [ 'type' => 'string', 'locationName' => 'vpcAddress', ],
                 'accessToken' => [ 'type' => 'string', 'locationName' => 'accessToken', ],
+                'qps' => [ 'type' => 'integer', 'locationName' => 'qps', ],
                 'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
             ],
         ],
@@ -3157,6 +3234,7 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'deployType' => [ 'type' => 'string', 'locationName' => 'deployType', ],
                 'queueId' => [ 'type' => 'string', 'locationName' => 'queueId', ],
+                'qps' => [ 'type' => 'integer', 'locationName' => 'qps', ],
                 'service' =>  [ 'shape' => 'ServiceInfo', ],
                 'metadata' =>  [ 'shape' => 'Metadata', ],
                 'models' => [ 'type' => 'list', 'member' => [ 'shape' => 'Model', ], ],
@@ -3169,6 +3247,7 @@ return [
                 'failedPods' => [ 'type' => 'integer', 'locationName' => 'failedPods', ],
                 'resourceState' => [ 'type' => 'string', 'locationName' => 'resourceState', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserTag', ], ],
+                'schedulePriority' =>  [ 'shape' => 'SchedulePriority', ],
                 'resourceGroupInfo' =>  [ 'shape' => 'ResourceGroupInfo', ],
             ],
         ],
@@ -3210,6 +3289,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'deployType' => [ 'type' => 'string', 'locationName' => 'deployType', ],
+                'qps' => [ 'type' => 'integer', 'locationName' => 'qps', ],
                 'metadata' =>  [ 'shape' => 'Metadata', ],
                 'models' => [ 'type' => 'list', 'member' => [ 'shape' => 'Model', ], ],
                 'resource' =>  [ 'shape' => 'Resource', ],
@@ -3327,12 +3407,15 @@ return [
         'InferenceSpec' => [
             'type' => 'structure',
             'members' => [
+                'qps' => [ 'type' => 'integer', 'locationName' => 'qps', ],
+                'enableLimit' => [ 'type' => 'boolean', 'locationName' => 'enableLimit', ],
                 'deployType' => [ 'type' => 'string', 'locationName' => 'deployType', ],
                 'metadata' =>  [ 'shape' => 'Metadata', ],
                 'models' => [ 'type' => 'list', 'member' => [ 'shape' => 'Model', ], ],
                 'resource' =>  [ 'shape' => 'Resource', ],
                 'runtime' =>  [ 'shape' => 'Runtime', ],
                 'roleSet' =>  [ 'shape' => 'RoleSet', ],
+                'schedulePriority' =>  [ 'shape' => 'SchedulePriority', ],
             ],
         ],
         'Code' => [
@@ -3444,6 +3527,8 @@ return [
                 'azs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Az', ], ],
                 'retain' => [ 'type' => 'boolean', 'locationName' => 'retain', ],
                 'reclaimPolicy' => [ 'type' => 'string', 'locationName' => 'reclaimPolicy', ],
+                'enableLimit' => [ 'type' => 'boolean', 'locationName' => 'enableLimit', ],
+                'qps' => [ 'type' => 'integer', 'locationName' => 'qps', ],
             ],
         ],
         'CronScale' => [
@@ -3477,8 +3562,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'permission' => [ 'type' => 'string', 'locationName' => 'permission', ],
-                'ownerUser' => [ 'type' => 'string', 'locationName' => 'ownerUser', ],
                 'ownerUserPin' => [ 'type' => 'string', 'locationName' => 'ownerUserPin', ],
+            ],
+        ],
+        'UpdateServiceQpsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'qps' => [ 'type' => 'integer', 'locationName' => 'qps', ],
+                'enableLimit' => [ 'type' => 'boolean', 'locationName' => 'enableLimit', ],
             ],
         ],
         'ModelGPUResourceFloat' => [
@@ -4137,19 +4228,20 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
-        'Tag' => [
-            'type' => 'structure',
-            'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
-            ],
-        ],
         'NodeLoad' => [
             'type' => 'structure',
             'members' => [
                 'nodeName' => [ 'type' => 'string', 'locationName' => 'nodeName', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'load' => [ 'type' => 'integer', 'locationName' => 'load', ],
+            ],
+        ],
+        'UnHealthReason' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
             ],
         ],
         'GpuQuota' => [
@@ -4192,6 +4284,7 @@ return [
                 'cpuQuota' =>  [ 'shape' => 'CpuQuota', ],
                 'nodeLabels' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeLabel', ], ],
                 'deviceBrand' => [ 'type' => 'string', 'locationName' => 'deviceBrand', ],
+                'unhealthReasons' => [ 'type' => 'list', 'member' => [ 'shape' => 'UnHealthReason', ], ],
             ],
         ],
         'NodePoolOverview' => [
@@ -4240,6 +4333,15 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'NodePoolTagDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+                'validity' => [ 'type' => 'boolean', 'locationName' => 'validity', ],
+            ],
+        ],
         'Status' => [
             'type' => 'structure',
             'members' => [
@@ -4256,7 +4358,7 @@ return [
         'SelectDetailListResp' => [
             'type' => 'structure',
             'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'Resource', ], ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodePoolTagDetail', ], ],
             ],
         ],
         'SchedulingPolicy' => [
@@ -4321,6 +4423,15 @@ return [
                 'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
             ],
         ],
+        'SchedulePolicy' => [
+            'type' => 'structure',
+            'members' => [
+                'schedulePolicy' => [ 'type' => 'string', 'locationName' => 'schedulePolicy', ],
+                'preemptionPolicy' => [ 'type' => 'string', 'locationName' => 'preemptionPolicy', ],
+                'borrowPolicy' => [ 'type' => 'string', 'locationName' => 'borrowPolicy', ],
+                'reclaimPolicy' => [ 'type' => 'string', 'locationName' => 'reclaimPolicy', ],
+            ],
+        ],
         'QueueWithDeleted' => [
             'type' => 'structure',
             'members' => [
@@ -4377,6 +4488,15 @@ return [
                 'schedulerPassed' => [ 'type' => 'boolean', 'locationName' => 'schedulerPassed', ],
                 'availableCount' => [ 'type' => 'long', 'locationName' => 'availableCount', ],
                 'hostpathResourcePassed' => [ 'type' => 'boolean', 'locationName' => 'hostpathResourcePassed', ],
+            ],
+        ],
+        'LogCollectConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'logSetId' => [ 'type' => 'string', 'locationName' => 'logSetId', ],
+                'logTopicId' => [ 'type' => 'string', 'locationName' => 'logTopicId', ],
+                'standardLogConfig' =>  [ 'shape' => 'StandardLogConfig', ],
+                'customLogConfig' =>  [ 'shape' => 'CustomLogConfig', ],
             ],
         ],
         'Metrics' => [
@@ -4738,13 +4858,6 @@ return [
                 'readonly' => [ 'type' => 'boolean', 'locationName' => 'readonly', ],
             ],
         ],
-        'NbTag' => [
-            'type' => 'structure',
-            'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
-            ],
-        ],
         'ImageTask' => [
             'type' => 'structure',
             'members' => [
@@ -4810,8 +4923,9 @@ return [
                 'nodeAffinities' => [ 'type' => 'list', 'member' => [ 'shape' => 'NotebookNodeAffinity', ], ],
                 'codes' => [ 'type' => 'list', 'member' => [ 'shape' => 'NbCodeConfig', ], ],
                 'sshSpec' =>  [ 'shape' => 'SshSpec', ],
-                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'NbTag', ], ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'schedulePriority' =>  [ 'shape' => 'SchedulePriority', ],
             ],
         ],
         'NbCodeConfig' => [
@@ -4841,13 +4955,6 @@ return [
                 'gpuPercentThreshold' => [ 'type' => 'string', 'locationName' => 'gpuPercentThreshold', ],
                 'idleStartTime' => [ 'type' => 'string', 'locationName' => 'idleStartTime', ],
                 'idleTimeInMinutes' => [ 'type' => 'integer', 'locationName' => 'idleTimeInMinutes', ],
-            ],
-        ],
-        'NbTagFilter' => [
-            'type' => 'structure',
-            'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'NotebookEvent' => [
@@ -4906,7 +5013,8 @@ return [
                 'shutdownPolicy' =>  [ 'shape' => 'NbShutdownPolicy', ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
-                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'NbTag', ], ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'schedulePriority' =>  [ 'shape' => 'SchedulePriority', ],
                 'nodeAffinities' => [ 'type' => 'list', 'member' => [ 'shape' => 'NotebookNodeAffinity', ], ],
             ],
         ],
@@ -4962,7 +5070,8 @@ return [
                 'shutdownPolicy' =>  [ 'shape' => 'NbShutdownPolicy', ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
-                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'NbTag', ], ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'schedulePriority' =>  [ 'shape' => 'SchedulePriority', ],
                 'nodeAffinities' => [ 'type' => 'list', 'member' => [ 'shape' => 'NotebookNodeAffinity', ], ],
             ],
         ],
@@ -5137,6 +5246,18 @@ return [
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
                 'updateUser' => [ 'type' => 'string', 'locationName' => 'updateUser', ],
+            ],
+        ],
+        'ResFlavor' => [
+            'type' => 'structure',
+            'members' => [
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
+                'flavorId' => [ 'type' => 'string', 'locationName' => 'flavorId', ],
+                'flavorName' => [ 'type' => 'string', 'locationName' => 'flavorName', ],
+                'cpuM' => [ 'type' => 'integer', 'locationName' => 'cpuM', ],
+                'memoryMiB' => [ 'type' => 'integer', 'locationName' => 'memoryMiB', ],
+                'gpu' =>  [ 'shape' => 'Gpu', ],
+                'rdma' =>  [ 'shape' => 'Rdma', ],
             ],
         ],
         'Rdma' => [
@@ -5328,17 +5449,6 @@ return [
                 'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
             ],
         ],
-        'UpdateNotebookOffPolicy' => [
-            'type' => 'structure',
-            'members' => [
-                'maxRunningDuration' => [ 'type' => 'integer', 'locationName' => 'maxRunningDuration', ],
-                'maxIdleDuration' => [ 'type' => 'integer', 'locationName' => 'maxIdleDuration', ],
-                'minCpuUsageRate' => [ 'type' => 'double', 'locationName' => 'minCpuUsageRate', ],
-                'minGpuUsageRate' => [ 'type' => 'double', 'locationName' => 'minGpuUsageRate', ],
-                'minMemoryUsageRate' => [ 'type' => 'double', 'locationName' => 'minMemoryUsageRate', ],
-                'excludedNotebookIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
         'WorkspaceInfoWithRole' => [
             'type' => 'structure',
             'members' => [
@@ -5363,6 +5473,26 @@ return [
                 'usages' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'UpdateIdlePolicy' => [
+            'type' => 'structure',
+            'members' => [
+                'maxIdleTimeHour' => [ 'type' => 'integer', 'locationName' => 'maxIdleTimeHour', ],
+                'cpuPercentThreshold' => [ 'type' => 'double', 'locationName' => 'cpuPercentThreshold', ],
+                'gpuPercentThreshold' => [ 'type' => 'double', 'locationName' => 'gpuPercentThreshold', ],
+                'memoryPercentThreshold' => [ 'type' => 'double', 'locationName' => 'memoryPercentThreshold', ],
+                'queueIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'WorkspaceShutdownPolicy' => [
+            'type' => 'structure',
+            'members' => [
+                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
+                'runtimePolicys' => [ 'type' => 'list', 'member' => [ 'shape' => 'WorkspaceRuntimePolicy', ], ],
+                'idlePolicys' => [ 'type' => 'list', 'member' => [ 'shape' => 'WorkspaceIdlePolicy', ], ],
+                'excludedNotebookIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+            ],
+        ],
         'WorkspaceRelatedQueue' => [
             'type' => 'structure',
             'members' => [
@@ -5370,6 +5500,7 @@ return [
                 'allModuleSupported' => [ 'type' => 'boolean', 'locationName' => 'allModuleSupported', ],
                 'queueModules' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'allMemberSupported' => [ 'type' => 'boolean', 'locationName' => 'allMemberSupported', ],
+                'schedulePolicy' =>  [ 'shape' => 'SchedulePolicy', ],
                 'queueMemberPins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
@@ -5378,6 +5509,30 @@ return [
             'members' => [
                 'memberUser' => [ 'type' => 'string', 'locationName' => 'memberUser', ],
                 'memberPin' => [ 'type' => 'string', 'locationName' => 'memberPin', ],
+            ],
+        ],
+        'WorkspaceShutdownPolicyVersion' => [
+            'type' => 'structure',
+            'members' => [
+                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+            ],
+        ],
+        'WorkspaceIdlePolicy' => [
+            'type' => 'structure',
+            'members' => [
+                'maxIdleTimeHour' => [ 'type' => 'integer', 'locationName' => 'maxIdleTimeHour', ],
+                'cpuPercentThreshold' => [ 'type' => 'double', 'locationName' => 'cpuPercentThreshold', ],
+                'gpuPercentThreshold' => [ 'type' => 'double', 'locationName' => 'gpuPercentThreshold', ],
+                'memoryPercentThreshold' => [ 'type' => 'double', 'locationName' => 'memoryPercentThreshold', ],
+                'queueIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UpdateRuntimePolicy' => [
+            'type' => 'structure',
+            'members' => [
+                'runtimeHour' => [ 'type' => 'integer', 'locationName' => 'runtimeHour', ],
+                'queueIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'WorkspaceMemberQueue' => [
@@ -5413,6 +5568,7 @@ return [
                 'queueModules' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'allMemberSupported' => [ 'type' => 'boolean', 'locationName' => 'allMemberSupported', ],
                 'queueMemberPins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'schedulePolicy' =>  [ 'shape' => 'SchedulePolicy', ],
             ],
         ],
         'CreateLogConfigs' => [
@@ -5420,18 +5576,6 @@ return [
             'members' => [
                 'updateMethod' => [ 'type' => 'string', 'locationName' => 'updateMethod', ],
                 'logConfigs' => [ 'type' => 'list', 'member' => [ 'shape' => 'UpdateLogConfigs', ], ],
-            ],
-        ],
-        'WorkspaceNotebookOffPolicy' => [
-            'type' => 'structure',
-            'members' => [
-                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
-                'maxRunningDuration' => [ 'type' => 'double', 'locationName' => 'maxRunningDuration', ],
-                'maxIdleDuration' => [ 'type' => 'double', 'locationName' => 'maxIdleDuration', ],
-                'minCpuUsageRate' => [ 'type' => 'double', 'locationName' => 'minCpuUsageRate', ],
-                'minGpuUsageRate' => [ 'type' => 'double', 'locationName' => 'minGpuUsageRate', ],
-                'minMemoryUsageRate' => [ 'type' => 'double', 'locationName' => 'minMemoryUsageRate', ],
-                'excludedNotebookIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'MemberWorkspace' => [
@@ -5452,6 +5596,13 @@ return [
                 'usages' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'WorkspaceRuntimePolicy' => [
+            'type' => 'structure',
+            'members' => [
+                'runtimeHour' => [ 'type' => 'integer', 'locationName' => 'runtimeHour', ],
+                'queueIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'WorkspaceMember' => [
             'type' => 'structure',
             'members' => [
@@ -5468,6 +5619,15 @@ return [
                 'queueModules' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'allMemberSupported' => [ 'type' => 'boolean', 'locationName' => 'allMemberSupported', ],
                 'queueMemberPins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'schedulePolicy' =>  [ 'shape' => 'SchedulePolicy', ],
+            ],
+        ],
+        'UpdateShutdownPolicy' => [
+            'type' => 'structure',
+            'members' => [
+                'runtimePolicys' => [ 'type' => 'list', 'member' => [ 'shape' => 'UpdateRuntimePolicy', ], ],
+                'idlePolicys' => [ 'type' => 'list', 'member' => [ 'shape' => 'UpdateIdlePolicy', ], ],
+                'excludedNotebookIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'WorkspaceSpec' => [
@@ -5612,6 +5772,79 @@ return [
                 'experimentId' => [ 'type' => 'string', 'locationName' => 'experimentId', ],
             ],
         ],
+        'AdminDescribeJobsCountResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AdminDescribeJobsCountResultShape', ],
+            ],
+        ],
+        'AdminDescribeJobsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'apiType' => [ 'type' => 'string', 'locationName' => 'apiType', ],
+            ],
+        ],
+        'AdminDescribeJobsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jobListInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'AdminJobListInfo', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'AdminDescribeJobListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AdminDescribeJobListResultShape', ],
+            ],
+        ],
+        'AdminDescribeJobsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AdminDescribeJobsResultShape', ],
+            ],
+        ],
+        'AdminDescribeJobListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'apiType' => [ 'type' => 'string', 'locationName' => 'apiType', ],
+            ],
+        ],
+        'AdminDescribeJobListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jobListInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'AdminJobListInfo', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'AdminDescribeJobsCountRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'apiType' => [ 'type' => 'string', 'locationName' => 'apiType', ],
+            ],
+        ],
+        'AdminDescribeJobsCountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'stateCount' => [ 'type' => 'list', 'member' => [ 'shape' => 'AdminJobStateCount', ], ],
+            ],
+        ],
         'DescribeJobRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -5624,6 +5857,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'jobDetailInfo' =>  [ 'shape' => 'JobDetailInfoForJob', ],
+            ],
+        ],
+        'DescribeInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribeInstancesResultShape', ],
             ],
         ],
         'DescribeJobsResponseShape' => [
@@ -5676,9 +5916,40 @@ return [
                 'jobTypes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'UpdateJobResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DeleteJobResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'DescribeInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'anomalyFirst' => [ 'type' => 'boolean', 'locationName' => 'anomalyFirst', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
+                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
+            ],
+        ],
+        'GetInstanceEventsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetInstanceEventsResultShape', ],
+            ],
+        ],
+        'GetInstanceEventsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'eventInfoList' => [ 'type' => 'list', 'member' => [ 'shape' => 'EventInfoListForInstance', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
             ],
         ],
         'DescribeJobsRequestShape' => [
@@ -5686,7 +5957,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'JobTagFilter', ], ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -5712,11 +5983,40 @@ return [
                 'result' =>  [ 'shape' => 'CreateJobResultShape', ],
             ],
         ],
+        'GetJobRestartHistoryRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
+                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
+            ],
+        ],
         'GetJobEventsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'GetJobEventsResultShape', ],
+            ],
+        ],
+        'UpdateJobRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'permission' => [ 'type' => 'string', 'locationName' => 'permission', ],
+                'ownerUserPin' => [ 'type' => 'string', 'locationName' => 'ownerUserPin', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
+                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
+            ],
+        ],
+        'GetJobRestartHistoryResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetJobRestartHistoryResultShape', ],
             ],
         ],
         'StopJobRequestShape' => [
@@ -5727,7 +6027,33 @@ return [
                 'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
             ],
         ],
+        'GetInstanceEventsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
+                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+            ],
+        ],
+        'DescribeInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'podListInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceListInfoForJob', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
         'DeleteJobResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateJobResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
@@ -5773,6 +6099,13 @@ return [
             'members' => [
             ],
         ],
+        'GetJobRestartHistoryResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'restartHistoryList' => [ 'type' => 'list', 'member' => [ 'shape' => 'RestartHistoryListForJob', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
         'GetJobEventsRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -5786,6 +6119,79 @@ return [
                 'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
             ],
         ],
+        'AdminDescribeRunListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AdminDescribeRunListResultShape', ],
+            ],
+        ],
+        'AdminDescribeRunsCountRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'apiType' => [ 'type' => 'string', 'locationName' => 'apiType', ],
+            ],
+        ],
+        'AdminDescribeRunsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'apiType' => [ 'type' => 'string', 'locationName' => 'apiType', ],
+            ],
+        ],
+        'AdminDescribeRunsCountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'stateCount' => [ 'type' => 'list', 'member' => [ 'shape' => 'AdminRunStateCount', ], ],
+            ],
+        ],
+        'AdminDescribeRunsCountResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AdminDescribeRunsCountResultShape', ],
+            ],
+        ],
+        'AdminDescribeRunListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'runListInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'AdminRunListInfo', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'AdminDescribeRunsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'runListInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'AdminRunListInfo', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'AdminDescribeRunsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AdminDescribeRunsResultShape', ],
+            ],
+        ],
+        'AdminDescribeRunListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'apiType' => [ 'type' => 'string', 'locationName' => 'apiType', ],
+            ],
+        ],
         'DescribeRunConfigsRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -5794,22 +6200,11 @@ return [
                 'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
             ],
         ],
-        'UpdateRunResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'GetRunEventsResultShape' => [
             'type' => 'structure',
             'members' => [
                 'runEventInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'EventInfoListForExperiment', ], ],
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'UpdateRunResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DeleteRunResultShape' => [
@@ -5829,7 +6224,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'RunTagFilter', ], ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -5888,15 +6283,6 @@ return [
                 'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
             ],
         ],
-        'DescribeRunRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
-                'experimentId' => [ 'type' => 'string', 'locationName' => 'experimentId', ],
-                'runId' => [ 'type' => 'string', 'locationName' => 'runId', ],
-            ],
-        ],
         'StopRunRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -5924,19 +6310,6 @@ return [
             'members' => [
             ],
         ],
-        'DescribeRunResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'runDetailInfo' =>  [ 'shape' => 'RunDetailInfoForExperiment', ],
-            ],
-        ],
-        'DescribeRunResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeRunResultShape', ],
-            ],
-        ],
         'DescribeRunConfigsResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -5948,17 +6321,6 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'DescribeRunsResultShape', ],
-            ],
-        ],
-        'UpdateRunRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
-                'experimentId' => [ 'type' => 'string', 'locationName' => 'experimentId', ],
-                'runId' => [ 'type' => 'string', 'locationName' => 'runId', ],
             ],
         ],
         'CreateRunResultShape' => [
@@ -6161,6 +6523,32 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'AdminDescribeDistillTasksResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'runListInfo' => [ 'type' => 'list', 'member' => [ 'shape' => 'AdminDistillTaskListInfo', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'AdminDescribeDistillTasksRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'apiType' => [ 'type' => 'string', 'locationName' => 'apiType', ],
+            ],
+        ],
+        'AdminDescribeDistillTasksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AdminDescribeDistillTasksResultShape', ],
+            ],
+        ],
         'DescribeImageResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -6209,6 +6597,13 @@ return [
                 'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
             ],
         ],
+        'DescribePublicImagesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'DescribePublicImagesResultShape', ],
+            ],
+        ],
         'DescribeImageRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -6236,6 +6631,15 @@ return [
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
             ],
         ],
+        'DescribePublicImagesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
         'DeleteImageResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -6254,6 +6658,13 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'CreateImageResultShape', ],
+            ],
+        ],
+        'DescribePublicImagesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'PublicImageInfo', ], ],
             ],
         ],
         'DescribeImagesRequestShape' => [
@@ -6453,6 +6864,8 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
@@ -6526,6 +6939,7 @@ return [
                 'deployType' => [ 'type' => 'string', 'locationName' => 'deployType', ],
                 'trafficPercent' => [ 'type' => 'integer', 'locationName' => 'trafficPercent', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'qps' => [ 'type' => 'integer', 'locationName' => 'qps', ],
                 'service' =>  [ 'shape' => 'ServiceInfo', ],
                 'metadata' =>  [ 'shape' => 'Metadata', ],
                 'models' => [ 'type' => 'list', 'member' => [ 'shape' => 'Model', ], ],
@@ -6537,6 +6951,7 @@ return [
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'logCollectConfig' =>  [ 'shape' => 'LogCollectConfigDetail', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserTag', ], ],
+                'schedulePriority' =>  [ 'shape' => 'SchedulePriority', ],
                 'resourceGroupInfo' =>  [ 'shape' => 'ResourceGroupInfo', ],
                 'rolloutInfo' =>  [ 'shape' => 'RolloutInfo', ],
             ],
@@ -6563,6 +6978,11 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateServiceQPSResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'CreateInferenceScaleResponseShape' => [
@@ -6609,6 +7029,15 @@ return [
                 'result' =>  [ 'shape' => 'DescribeInferenceScaleResultShape', ],
             ],
         ],
+        'UpdateServiceQPSRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'limit' =>  [ 'shape' => 'UpdateServiceQpsSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+            ],
+        ],
         'UpdateInferenceResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -6632,6 +7061,8 @@ return [
                 'address' => [ 'type' => 'string', 'locationName' => 'address', ],
                 'accessToken' => [ 'type' => 'string', 'locationName' => 'accessToken', ],
                 'gatewayType' => [ 'type' => 'string', 'locationName' => 'gatewayType', ],
+                'qps' => [ 'type' => 'integer', 'locationName' => 'qps', ],
+                'enableLimit' => [ 'type' => 'boolean', 'locationName' => 'enableLimit', ],
                 'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
                 'ownerUser' => [ 'type' => 'string', 'locationName' => 'ownerUser', ],
                 'ownerUserPin' => [ 'type' => 'string', 'locationName' => 'ownerUserPin', ],
@@ -6722,6 +7153,12 @@ return [
                 'inferenceId' => [ 'type' => 'string', 'locationName' => 'inferenceId', ],
             ],
         ],
+        'UpdateServiceQPSResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateServiceQPSResultShape', ],
+            ],
+        ],
         'DeleteServiceResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -6748,6 +7185,51 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AdminDescribeInferencesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'inferences' => [ 'type' => 'list', 'member' => [ 'shape' => 'AdminInferenceInfo', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'AdminDescribeInferenceCountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'stateCount' => [ 'type' => 'list', 'member' => [ 'shape' => 'InferenceStateCount', ], ],
+            ],
+        ],
+        'AdminDescribeInferenceCountResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AdminDescribeInferenceCountResultShape', ],
+            ],
+        ],
+        'AdminDescribeInferencesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'apiType' => [ 'type' => 'string', 'locationName' => 'apiType', ],
+            ],
+        ],
+        'AdminDescribeInferencesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AdminDescribeInferencesResultShape', ],
+            ],
+        ],
+        'AdminDescribeInferenceCountRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'apiType' => [ 'type' => 'string', 'locationName' => 'apiType', ],
             ],
         ],
         'PatchClusterNodeLabelsRequest' => [
@@ -7410,7 +7892,7 @@ return [
             'members' => [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'NbTagFilter', ], ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -7481,6 +7963,53 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'GetNotebookEventsResultShape', ],
+            ],
+        ],
+        'AdminDescribeNotebookCountRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'apiType' => [ 'type' => 'string', 'locationName' => 'apiType', ],
+            ],
+        ],
+        'AdminDescribeNotebooksRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'apiType' => [ 'type' => 'string', 'locationName' => 'apiType', ],
+            ],
+        ],
+        'AdminDescribeNotebooksResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'notebooks' => [ 'type' => 'list', 'member' => [ 'shape' => 'NotebookInfo', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'AdminDescribeNotebooksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AdminDescribeNotebooksResultShape', ],
+            ],
+        ],
+        'AdminDescribeNotebookCountResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'stateCount' => [ 'type' => 'list', 'member' => [ 'shape' => 'NotebookStateCount', ], ],
+            ],
+        ],
+        'AdminDescribeNotebookCountResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AdminDescribeNotebookCountResultShape', ],
             ],
         ],
         'DeleteCodeRepoConfigResultShape' => [
@@ -7588,116 +8117,6 @@ return [
                 'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
             ],
         ],
-        'CreateTensorBoardResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'CreateTensorBoardResultShape', ],
-            ],
-        ],
-        'DescribeTensorBoardsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-                'result' =>  [ 'shape' => 'DescribeTensorBoardsResultShape', ],
-            ],
-        ],
-        'StartTensorBoardRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
-                'tensorBoardId' => [ 'type' => 'string', 'locationName' => 'tensorBoardId', ],
-            ],
-        ],
-        'DescribeTensorBoardsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'tensorBoards' => [ 'type' => 'list', 'member' => [ 'shape' => 'TensorBoardInfo', ], ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'StopTensorBoardResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeleteTensorBoardResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'StartTensorBoardResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'StopTensorBoardRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
-                'tensorBoardId' => [ 'type' => 'string', 'locationName' => 'tensorBoardId', ],
-            ],
-        ],
-        'DeleteTensorBoardRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
-                'tensorBoardId' => [ 'type' => 'string', 'locationName' => 'tensorBoardId', ],
-            ],
-        ],
-        'DescribeTensorBoardsRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
-            ],
-        ],
-        'CreateTensorBoardResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'tensorBoardId' => [ 'type' => 'string', 'locationName' => 'tensorBoardId', ],
-            ],
-        ],
-        'CreateTensorBoardRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
-                'tensorBoardSpec' =>  [ 'shape' => 'TensorBoardSpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
-            ],
-        ],
-        'StopTensorBoardResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeleteTensorBoardResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'StartTensorBoardResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DescribeWorkspaceResourcesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'resourceInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'BoundResourceInfo', ], ],
-            ],
-        ],
         'AddQueuesResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -7731,39 +8150,7 @@ return [
             'members' => [
             ],
         ],
-        'UnbindWorkspaceResourcesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'CreateBindWorkspaceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeWorkspaceResourcesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeWorkspaceResourcesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'UpdateWorkspaceResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateBindWorkspaceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'resourceInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'BindResourceInfo', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
-            ],
-        ],
-        'UnbindWorkspaceResourcesResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
@@ -7777,15 +8164,6 @@ return [
                 'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
             ],
         ],
-        'UnbindWorkspaceResourcesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
-                'resourceIdVals' => [ 'type' => 'string', 'locationName' => 'resourceIdVals', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
-            ],
-        ],
         'UpdateWorkspaceResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -7795,15 +8173,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeWorkspaceResourcesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
-                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
-                'resourceIdVals' => [ 'type' => 'string', 'locationName' => 'resourceIdVals', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'CreateWorkspaceRequestShape' => [
@@ -7827,11 +8196,6 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'CreateWorkspaceResultShape', ],
-            ],
-        ],
-        'CreateBindWorkspaceResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
     ],
