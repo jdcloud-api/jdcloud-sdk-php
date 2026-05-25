@@ -506,6 +506,24 @@ return [
             'input' => [ 'shape' => 'CreateSubUserInnerRequestShape', ],
             'output' => [ 'shape' => 'CreateSubUserInnerResponseShape', ],
         ],
+        'QueryDeletedSubUsers' => [
+            'name' => 'QueryDeletedSubUsers',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/subUsers:deleted',
+            ],
+            'input' => [ 'shape' => 'QueryDeletedSubUsersRequestShape', ],
+            'output' => [ 'shape' => 'QueryDeletedSubUsersResponseShape', ],
+        ],
+        'RestoreSubUser' => [
+            'name' => 'RestoreSubUser',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/subUser:restore',
+            ],
+            'input' => [ 'shape' => 'RestoreSubUserRequestShape', ],
+            'output' => [ 'shape' => 'RestoreSubUserResponseShape', ],
+        ],
         'DescribeUserAccessKeys' => [
             'name' => 'DescribeUserAccessKeys',
             'http' => [
@@ -574,6 +592,14 @@ return [
                 'terResourceType' => [ 'type' => 'string', 'locationName' => 'terResourceType', ],
             ],
         ],
+        'AccessKeyRecentStatus' => [
+            'type' => 'structure',
+            'members' => [
+                'hasAccessInSevenDays' => [ 'type' => 'boolean', 'locationName' => 'hasAccessInSevenDays', ],
+                'lastAccessTime' => [ 'type' => 'string', 'locationName' => 'lastAccessTime', ],
+                'latestAccessAk' => [ 'type' => 'string', 'locationName' => 'latestAccessAk', ],
+            ],
+        ],
         'AccessKeyRemarkInfo' => [
             'type' => 'structure',
             'members' => [
@@ -591,6 +617,22 @@ return [
                 'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'AddActionCondition' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'actions' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'conditionNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'postProcess' => [ 'type' => 'integer', 'locationName' => 'postProcess', ],
+            ],
+        ],
+        'AddApiInfos' => [
+            'type' => 'structure',
+            'members' => [
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
             ],
         ],
         'ApiInfoShowRule' => [
@@ -622,10 +664,26 @@ return [
                 'tagResourceLevel' => [ 'type' => 'integer', 'locationName' => 'tagResourceLevel', ],
             ],
         ],
+        'AddCondition' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'qualifier' => [ 'type' => 'integer', 'locationName' => 'qualifier', ],
+                'exists' => [ 'type' => 'integer', 'locationName' => 'exists', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+            ],
+        ],
         'AddPermissionsInfo' => [
             'type' => 'structure',
             'members' => [
                 'permissionIds' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+            ],
+        ],
+        'AddPolicyCollection' => [
+            'type' => 'structure',
+            'members' => [
+                'policyCollection' => [ 'type' => 'list', 'member' => [ 'shape' => 'PolicyCollection', ], ],
             ],
         ],
         'PolicyCollection' => [
@@ -634,6 +692,21 @@ return [
                 'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+            ],
+        ],
+        'AddSysPermission' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'AttachSystemAccessKeyPolicy' => [
+            'type' => 'structure',
+            'members' => [
+                'systemAccessKey' => [ 'type' => 'string', 'locationName' => 'systemAccessKey', ],
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
             ],
         ],
         'AttachedPolicyInfo' => [
@@ -709,6 +782,13 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'CheckApiInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'actionName' => [ 'type' => 'string', 'locationName' => 'actionName', ],
             ],
         ],
         'ConditionMappingVo' => [
@@ -815,6 +895,14 @@ return [
                 'maxSessionDuration' => [ 'type' => 'integer', 'locationName' => 'maxSessionDuration', ],
             ],
         ],
+        'CreateSensitiveAction' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
         'CreateServiceInfo' => [
             'type' => 'structure',
             'members' => [
@@ -832,6 +920,17 @@ return [
                 'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'updateUser' => [ 'type' => 'string', 'locationName' => 'updateUser', ],
+            ],
+        ],
+        'ReateServiceLinkedRoleTemplate' => [
+            'type' => 'structure',
+            'members' => [
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+                'assumeRolePolicyDocument' => [ 'type' => 'string', 'locationName' => 'assumeRolePolicyDocument', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'maxSessionDuration' => [ 'type' => 'integer', 'locationName' => 'maxSessionDuration', ],
+                'invisible' => [ 'type' => 'boolean', 'locationName' => 'invisible', ],
             ],
         ],
         'CreateSubUserWithOrgInfo' => [
@@ -863,7 +962,6 @@ return [
         'CreateSubUserInfoInner' => [
             'type' => 'structure',
             'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
                 'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
@@ -873,6 +971,9 @@ return [
                 'needResetPassword' => [ 'type' => 'boolean', 'locationName' => 'needResetPassword', ],
                 'consoleLogin' => [ 'type' => 'boolean', 'locationName' => 'consoleLogin', ],
                 'autoGeneratePassword' => [ 'type' => 'boolean', 'locationName' => 'autoGeneratePassword', ],
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+                'createType' => [ 'type' => 'integer', 'locationName' => 'createType', ],
             ],
         ],
         'CreateSubUserRes' => [
@@ -887,6 +988,50 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+            ],
+        ],
+        'DeleteActionCondition' => [
+            'type' => 'structure',
+            'members' => [
+                'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+            ],
+        ],
+        'DeleteCondition' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+            ],
+        ],
+        'DeletePolicyCollection' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+            ],
+        ],
+        'DescribeByPinsInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'createType' => [ 'type' => 'string', 'locationName' => 'createType', ],
+                'orgId' => [ 'type' => 'string', 'locationName' => 'orgId', ],
+                'orgName' => [ 'type' => 'string', 'locationName' => 'orgName', ],
+                'orgPath' => [ 'type' => 'string', 'locationName' => 'orgPath', ],
+            ],
+        ],
+        'DetachSystemAccessKeyPolicy' => [
+            'type' => 'structure',
+            'members' => [
+                'systemAccessKey' => [ 'type' => 'string', 'locationName' => 'systemAccessKey', ],
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
             ],
         ],
         'EmailSmsInfo' => [
@@ -954,6 +1099,22 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
+        'GroupGenVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'jrn' => [ 'type' => 'string', 'locationName' => 'jrn', ],
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'createBy' => [ 'type' => 'long', 'locationName' => 'createBy', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'updateBy' => [ 'type' => 'long', 'locationName' => 'updateBy', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+            ],
+        ],
         'GroupInfo' => [
             'type' => 'structure',
             'members' => [
@@ -975,6 +1136,183 @@ return [
                 'metadata' => [ 'type' => 'string', 'locationName' => 'metadata', ],
                 'jrn' => [ 'type' => 'string', 'locationName' => 'jrn', ],
                 'forwardIdPUrl' => [ 'type' => 'string', 'locationName' => 'forwardIdPUrl', ],
+            ],
+        ],
+        'CrossTenantInviteConfigRes' => [
+            'type' => 'structure',
+            'members' => [
+                'loginType' => [ 'type' => 'string', 'locationName' => 'loginType', ],
+                'accoutId' => [ 'type' => 'string', 'locationName' => 'accoutId', ],
+                'accountPin' => [ 'type' => 'string', 'locationName' => 'accountPin', ],
+                'accountName' => [ 'type' => 'string', 'locationName' => 'accountName', ],
+                'permissionDetails' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigDetailsPermissionDetail', ], ],
+            ],
+        ],
+        'CreateInviteShortUrlReq' => [
+            'type' => 'structure',
+            'members' => [
+                'realUrl' => [ 'type' => 'string', 'locationName' => 'realUrl', ],
+            ],
+        ],
+        'ConfigDetailsPermissionDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'UpdateInviteConfigStatusReq' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'inviteConfigStatus' => [ 'type' => 'string', 'locationName' => 'inviteConfigStatus', ],
+            ],
+        ],
+        'CreateInviteShortUrlRes' => [
+            'type' => 'structure',
+            'members' => [
+                'shortUrl' => [ 'type' => 'string', 'locationName' => 'shortUrl', ],
+                'inviteCode' => [ 'type' => 'string', 'locationName' => 'inviteCode', ],
+                'loginType' => [ 'type' => 'string', 'locationName' => 'loginType', ],
+            ],
+        ],
+        'InviteConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'inviteCode' => [ 'type' => 'string', 'locationName' => 'inviteCode', ],
+                'shortUrl' => [ 'type' => 'string', 'locationName' => 'shortUrl', ],
+                'realUrl' => [ 'type' => 'string', 'locationName' => 'realUrl', ],
+                'userLimit' => [ 'type' => 'integer', 'locationName' => 'userLimit', ],
+                'inviteDuration' => [ 'type' => 'integer', 'locationName' => 'inviteDuration', ],
+                'loginType' => [ 'type' => 'string', 'locationName' => 'loginType', ],
+                'expireAt' => [ 'type' => 'string', 'locationName' => 'expireAt', ],
+                'inviteConfigStatus' => [ 'type' => 'string', 'locationName' => 'inviteConfigStatus', ],
+                'deleted' => [ 'type' => 'integer', 'locationName' => 'deleted', ],
+                'accountPin' => [ 'type' => 'string', 'locationName' => 'accountPin', ],
+                'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateUser' => [ 'type' => 'string', 'locationName' => 'updateUser', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'createDisplayName' => [ 'type' => 'string', 'locationName' => 'createDisplayName', ],
+                'configDetails' =>  [ 'shape' => 'ConfigDetails', ],
+            ],
+        ],
+        'InviteConfigExt' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'inviteCode' => [ 'type' => 'string', 'locationName' => 'inviteCode', ],
+                'shortUrl' => [ 'type' => 'string', 'locationName' => 'shortUrl', ],
+                'realUrl' => [ 'type' => 'string', 'locationName' => 'realUrl', ],
+                'userLimit' => [ 'type' => 'integer', 'locationName' => 'userLimit', ],
+                'inviteDuration' => [ 'type' => 'integer', 'locationName' => 'inviteDuration', ],
+                'loginType' => [ 'type' => 'string', 'locationName' => 'loginType', ],
+                'expireAt' => [ 'type' => 'string', 'locationName' => 'expireAt', ],
+                'inviteConfigStatus' => [ 'type' => 'string', 'locationName' => 'inviteConfigStatus', ],
+                'deleted' => [ 'type' => 'integer', 'locationName' => 'deleted', ],
+                'accountPin' => [ 'type' => 'string', 'locationName' => 'accountPin', ],
+                'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateUser' => [ 'type' => 'string', 'locationName' => 'updateUser', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'createDisplayName' => [ 'type' => 'string', 'locationName' => 'createDisplayName', ],
+                'configDetails' =>  [ 'shape' => 'ConfigDetails', ],
+                'approvedCount' => [ 'type' => 'integer', 'locationName' => 'approvedCount', ],
+            ],
+        ],
+        'ConfigDetails' => [
+            'type' => 'structure',
+            'members' => [
+                'accessTypes' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'permissionDetails' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigDetailsPermissionDetail', ], ],
+            ],
+        ],
+        'ApplyJoinSubUserReq' => [
+            'type' => 'structure',
+            'members' => [
+                'subUserName' => [ 'type' => 'string', 'locationName' => 'subUserName', ],
+                'subUserNickname' => [ 'type' => 'string', 'locationName' => 'subUserNickname', ],
+                'subUserPhone' => [ 'type' => 'string', 'locationName' => 'subUserPhone', ],
+                'nickname' => [ 'type' => 'string', 'locationName' => 'nickname', ],
+                'loginType' => [ 'type' => 'string', 'locationName' => 'loginType', ],
+                'loginId' => [ 'type' => 'string', 'locationName' => 'loginId', ],
+                'inviteCode' => [ 'type' => 'string', 'locationName' => 'inviteCode', ],
+            ],
+        ],
+        'UpdateInviteRequestStatusRes' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'secretAccessKey' => [ 'type' => 'string', 'locationName' => 'secretAccessKey', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'IpRule' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'whitelist' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'blacklist' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'LinkedLoginBinding' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'loginType' => [ 'type' => 'string', 'locationName' => 'loginType', ],
+                'loginId' => [ 'type' => 'string', 'locationName' => 'loginId', ],
+                'accountPin' => [ 'type' => 'string', 'locationName' => 'accountPin', ],
+                'subUserPin' => [ 'type' => 'string', 'locationName' => 'subUserPin', ],
+                'subUserName' => [ 'type' => 'string', 'locationName' => 'subUserName', ],
+                'nickname' => [ 'type' => 'string', 'locationName' => 'nickname', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'LinkedLoginBindingVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'loginType' => [ 'type' => 'string', 'locationName' => 'loginType', ],
+                'loginId' => [ 'type' => 'string', 'locationName' => 'loginId', ],
+                'accountPin' => [ 'type' => 'string', 'locationName' => 'accountPin', ],
+                'subUserPin' => [ 'type' => 'string', 'locationName' => 'subUserPin', ],
+                'subUserName' => [ 'type' => 'string', 'locationName' => 'subUserName', ],
+                'nickname' => [ 'type' => 'string', 'locationName' => 'nickname', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'subUserNickname' => [ 'type' => 'string', 'locationName' => 'subUserNickname', ],
+            ],
+        ],
+        'PageResultExt' => [
+            'type' => 'structure',
+            'members' => [
+                'paged' => [ 'type' => 'boolean', 'locationName' => 'paged', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'LinkedLoginBindingVo', ], ],
+            ],
+        ],
+        'LinkedLoginConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'wxDisabled' => [ 'type' => 'boolean', 'locationName' => 'wxDisabled', ],
+                'jdDisabled' => [ 'type' => 'boolean', 'locationName' => 'jdDisabled', ],
+                'accountPin' => [ 'type' => 'string', 'locationName' => 'accountPin', ],
+                'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateUser' => [ 'type' => 'string', 'locationName' => 'updateUser', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
         'ListRoleInfo' => [
@@ -1004,11 +1342,56 @@ return [
                 'mFABindRequired' => [ 'type' => 'boolean', 'locationName' => 'mFABindRequired', ],
             ],
         ],
+        'LoginSetting' => [
+            'type' => 'structure',
+            'members' => [
+                'accountPin' => [ 'type' => 'string', 'locationName' => 'accountPin', ],
+                'loginExpireSeconds' => [ 'type' => 'integer', 'locationName' => 'loginExpireSeconds', ],
+                'maxConcurrentDevices' => [ 'type' => 'integer', 'locationName' => 'maxConcurrentDevices', ],
+                'allowedStartDate' => [ 'type' => 'string', 'locationName' => 'allowedStartDate', ],
+                'allowedEndDate' => [ 'type' => 'string', 'locationName' => 'allowedEndDate', ],
+                'allowedStartTime' => [ 'type' => 'string', 'locationName' => 'allowedStartTime', ],
+                'allowedEndTime' => [ 'type' => 'string', 'locationName' => 'allowedEndTime', ],
+                'ipRule' =>  [ 'shape' => 'IpRule', ],
+            ],
+        ],
         'MFAInfo' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'secret' => [ 'type' => 'string', 'locationName' => 'secret', ],
+            ],
+        ],
+        'MfaConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'accountPin' => [ 'type' => 'string', 'locationName' => 'accountPin', ],
+                'mfaDevice' => [ 'type' => 'string', 'locationName' => 'mfaDevice', ],
+                'loginMfaRequirementMode' => [ 'type' => 'string', 'locationName' => 'loginMfaRequirementMode', ],
+                'operationProtectionMode' => [ 'type' => 'string', 'locationName' => 'operationProtectionMode', ],
+            ],
+        ],
+        'MfaConfigReq' => [
+            'type' => 'structure',
+            'members' => [
+                'mfaDevice' => [ 'type' => 'string', 'locationName' => 'mfaDevice', ],
+                'loginMfaRequirementMode' => [ 'type' => 'string', 'locationName' => 'loginMfaRequirementMode', ],
+                'operationProtectionMode' => [ 'type' => 'string', 'locationName' => 'operationProtectionMode', ],
+            ],
+        ],
+        'OpenApiVo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'hasRegion' => [ 'type' => 'boolean', 'locationName' => 'hasRegion', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'actionName' => [ 'type' => 'string', 'locationName' => 'actionName', ],
+                'actionDescription' => [ 'type' => 'string', 'locationName' => 'actionDescription', ],
+                'actionType' => [ 'type' => 'string', 'locationName' => 'actionType', ],
+                'resourceLevel' => [ 'type' => 'integer', 'locationName' => 'resourceLevel', ],
+                'method' => [ 'type' => 'string', 'locationName' => 'method', ],
+                'imported' => [ 'type' => 'boolean', 'locationName' => 'imported', ],
             ],
         ],
         'RemoveOrganizationUserRelationInfo' => [
@@ -1087,6 +1470,33 @@ return [
                 'permissionDetailList' => [ 'type' => 'list', 'member' => [ 'shape' => 'PermissionDetail', ], ],
             ],
         ],
+        'PermissionGenVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'jrn' => [ 'type' => 'string', 'locationName' => 'jrn', ],
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'createBy' => [ 'type' => 'long', 'locationName' => 'createBy', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'updateBy' => [ 'type' => 'long', 'locationName' => 'updateBy', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
+                'ext' => [ 'type' => 'string', 'locationName' => 'ext', ],
+                'defaultEdition' => [ 'type' => 'integer', 'locationName' => 'defaultEdition', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'scope' => [ 'type' => 'int8', 'locationName' => 'scope', ],
+                'scopeTypeStr' => [ 'type' => 'string', 'locationName' => 'scopeTypeStr', ],
+                'scopeId' => [ 'type' => 'string', 'locationName' => 'scopeId', ],
+                'creator' => [ 'type' => 'string', 'locationName' => 'creator', ],
+                'updater' => [ 'type' => 'string', 'locationName' => 'updater', ],
+                'selected' => [ 'type' => 'boolean', 'locationName' => 'selected', ],
+            ],
+        ],
         'Policy' => [
             'type' => 'structure',
             'members' => [
@@ -1124,7 +1534,7 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'jrn' => [ 'type' => 'string', 'locationName' => 'jrn', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'policyType' => [ 'type' => 'string', 'locationName' => 'policyType', ],
+                'policyType' => [ 'type' => 'integer', 'locationName' => 'policyType', ],
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
                 'currentDefaultEdition' => [ 'type' => 'string', 'locationName' => 'currentDefaultEdition', ],
                 'content' => [ 'type' => 'string', 'locationName' => 'content', ],
@@ -1207,6 +1617,33 @@ return [
                 'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
             ],
         ],
+        'RoleGenVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'roleId' => [ 'type' => 'string', 'locationName' => 'roleId', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'jrn' => [ 'type' => 'string', 'locationName' => 'jrn', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'trustedEntity' => [ 'type' => 'string', 'locationName' => 'trustedEntity', ],
+                'assumeRolePolicyDocument' => [ 'type' => 'string', 'locationName' => 'assumeRolePolicyDocument', ],
+                'maxSessionDuration' => [ 'type' => 'integer', 'locationName' => 'maxSessionDuration', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'externalId' => [ 'type' => 'string', 'locationName' => 'externalId', ],
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'consoleLogin' => [ 'type' => 'integer', 'locationName' => 'consoleLogin', ],
+                'creator' => [ 'type' => 'string', 'locationName' => 'creator', ],
+                'updater' => [ 'type' => 'string', 'locationName' => 'updater', ],
+                'scopeTypeStr' => [ 'type' => 'string', 'locationName' => 'scopeTypeStr', ],
+                'scopeId' => [ 'type' => 'string', 'locationName' => 'scopeId', ],
+                'selected' => [ 'type' => 'boolean', 'locationName' => 'selected', ],
+            ],
+        ],
         'RoleInfo' => [
             'type' => 'structure',
             'members' => [
@@ -1240,6 +1677,15 @@ return [
                 'smsMessageSource' => [ 'type' => 'string', 'locationName' => 'smsMessageSource', ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'mobileNumSet' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'SendDetails' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'retryAfterSeconds' => [ 'type' => 'integer', 'locationName' => 'retryAfterSeconds', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'verificationSessionId' => [ 'type' => 'string', 'locationName' => 'verificationSessionId', ],
             ],
         ],
         'SendOutSiteNotice' => [
@@ -1284,6 +1730,32 @@ return [
                 'canDelete' => [ 'type' => 'boolean', 'locationName' => 'canDelete', ],
             ],
         ],
+        'ServiceInfoGenVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'cnName' => [ 'type' => 'string', 'locationName' => 'cnName', ],
+                'enName' => [ 'type' => 'string', 'locationName' => 'enName', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
+                'updateUser' => [ 'type' => 'string', 'locationName' => 'updateUser', ],
+                'apiCount' => [ 'type' => 'integer', 'locationName' => 'apiCount', ],
+                'policyCount' => [ 'type' => 'integer', 'locationName' => 'policyCount', ],
+                'systemAkCount' => [ 'type' => 'integer', 'locationName' => 'systemAkCount', ],
+                'serviceLinkRoleTemplateCount' => [ 'type' => 'integer', 'locationName' => 'serviceLinkRoleTemplateCount', ],
+            ],
+        ],
+        'SimpleServiceInfoGenVo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'cnName' => [ 'type' => 'string', 'locationName' => 'cnName', ],
+            ],
+        ],
         'SubUser' => [
             'type' => 'structure',
             'members' => [
@@ -1296,6 +1768,10 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
                 'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'createType' => [ 'type' => 'string', 'locationName' => 'createType', ],
+                'orgId' => [ 'type' => 'string', 'locationName' => 'orgId', ],
+                'orgName' => [ 'type' => 'string', 'locationName' => 'orgName', ],
+                'orgPath' => [ 'type' => 'string', 'locationName' => 'orgPath', ],
             ],
         ],
         'SubUserAccessKey' => [
@@ -1316,6 +1792,33 @@ return [
             'members' => [
                 'lastVisitTime' => [ 'type' => 'string', 'locationName' => 'lastVisitTime', ],
                 'lastVisitEvent' => [ 'type' => 'string', 'locationName' => 'lastVisitEvent', ],
+            ],
+        ],
+        'DescribeSubUserListByPinsResInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'subAccountPin' => [ 'type' => 'string', 'locationName' => 'subAccountPin', ],
+                'masterAccountPin' => [ 'type' => 'string', 'locationName' => 'masterAccountPin', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'DescribeSubUserListByPinsReqInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'subAccountPinList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribePinListByAnyPermIdsReqInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'masterAccountPin' => [ 'type' => 'string', 'locationName' => 'masterAccountPin', ],
+                'subAccountPinList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'permissionIdList' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
             ],
         ],
         'SysPermissionMenuVo' => [
@@ -1345,6 +1848,44 @@ return [
                 'erp' => [ 'type' => 'string', 'locationName' => 'erp', ],
             ],
         ],
+        'SystemAccessKey' => [
+            'type' => 'structure',
+            'members' => [
+                'akType' => [ 'type' => 'string', 'locationName' => 'akType', ],
+                'erp' => [ 'type' => 'string', 'locationName' => 'erp', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'policyContent' => [ 'type' => 'string', 'locationName' => 'policyContent', ],
+                'systemAccessKey' => [ 'type' => 'string', 'locationName' => 'systemAccessKey', ],
+                'attachDefaultPolicy' => [ 'type' => 'boolean', 'locationName' => 'attachDefaultPolicy', ],
+            ],
+        ],
+        'SystemAccessKeyPolicy' => [
+            'type' => 'structure',
+            'members' => [
+                'systemAccessKey' => [ 'type' => 'string', 'locationName' => 'systemAccessKey', ],
+                'permissionId' => [ 'type' => 'long', 'locationName' => 'permissionId', ],
+            ],
+        ],
+        'SystemAkGenVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'systemCode' => [ 'type' => 'string', 'locationName' => 'systemCode', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateUser' => [ 'type' => 'string', 'locationName' => 'updateUser', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
+                'source' => [ 'type' => 'string', 'locationName' => 'source', ],
+                'selected' => [ 'type' => 'boolean', 'locationName' => 'selected', ],
+                'statusCode' => [ 'type' => 'string', 'locationName' => 'statusCode', ],
+                'deleteFlag' => [ 'type' => 'string', 'locationName' => 'deleteFlag', ],
+                'trustRelationship' => [ 'type' => 'string', 'locationName' => 'trustRelationship', ],
+            ],
+        ],
         'TPaasUser' => [
             'type' => 'structure',
             'members' => [
@@ -1359,17 +1900,59 @@ return [
                 'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
             ],
         ],
+        'UpdateActionCondition' => [
+            'type' => 'structure',
+            'members' => [
+                'actionCondition' => [ 'type' => 'list', 'member' => [ 'shape' => 'ActionConditionVo', ], ],
+            ],
+        ],
         'UpdateApiInfo' => [
             'type' => 'structure',
             'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
-                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'serviceNameCN' => [ 'type' => 'string', 'locationName' => 'serviceNameCN', ],
+                'serviceOldCode' => [ 'type' => 'string', 'locationName' => 'serviceOldCode', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'actionName' => [ 'type' => 'string', 'locationName' => 'actionName', ],
+                'actionType' => [ 'type' => 'string', 'locationName' => 'actionType', ],
+                'actionDescription' => [ 'type' => 'string', 'locationName' => 'actionDescription', ],
+                'region' => [ 'type' => 'integer', 'locationName' => 'region', ],
+                'method' => [ 'type' => 'string', 'locationName' => 'method', ],
+                'accessLevel' => [ 'type' => 'integer', 'locationName' => 'accessLevel', ],
+                'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'showRule' => [ 'type' => 'list', 'member' => [ 'shape' => 'ApiInfoShowRule', ], ],
+                'supply' => [ 'type' => 'integer', 'locationName' => 'supply', ],
+                'ignoreDeny' => [ 'type' => 'integer', 'locationName' => 'ignoreDeny', ],
+                'tagResourceLevel' => [ 'type' => 'integer', 'locationName' => 'tagResourceLevel', ],
+                'showType' => [ 'type' => 'integer', 'locationName' => 'showType', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'updateUser' => [ 'type' => 'string', 'locationName' => 'updateUser', ],
             ],
         ],
         'UpdateAssumeRolePolicyInfo' => [
             'type' => 'structure',
             'members' => [
                 'assumeRolePolicyDocument' => [ 'type' => 'string', 'locationName' => 'assumeRolePolicyDocument', ],
+            ],
+        ],
+        'UpdateCondition' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'qualifier' => [ 'type' => 'integer', 'locationName' => 'qualifier', ],
+                'exists' => [ 'type' => 'integer', 'locationName' => 'exists', ],
+                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
+            ],
+        ],
+        'UpdateEntityObjectLimits' => [
+            'type' => 'structure',
+            'members' => [
+                'entityObjectLimits' => [ 'type' => 'list', 'member' => [ 'shape' => 'EntityObjectLimits', ], ],
             ],
         ],
         'UpdateGroupInfo' => [
@@ -1421,6 +2004,24 @@ return [
                 'maxSessionDuration' => [ 'type' => 'integer', 'locationName' => 'maxSessionDuration', ],
             ],
         ],
+        'UpdateSensitiveAction' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'UpdateServiceLinkedRoleTemplate' => [
+            'type' => 'structure',
+            'members' => [
+                'roleId' => [ 'type' => 'string', 'locationName' => 'roleId', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'assumeRolePolicyDocument' => [ 'type' => 'string', 'locationName' => 'assumeRolePolicyDocument', ],
+                'maxSessionDuration' => [ 'type' => 'integer', 'locationName' => 'maxSessionDuration', ],
+            ],
+        ],
         'UpdateSubUserInfo' => [
             'type' => 'structure',
             'members' => [
@@ -1442,6 +2043,33 @@ return [
                 'state' => [ 'type' => 'integer', 'locationName' => 'state', ],
                 'yn' => [ 'type' => 'integer', 'locationName' => 'yn', ],
                 'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
+            ],
+        ],
+        'UserAccountGenVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'createBy' => [ 'type' => 'long', 'locationName' => 'createBy', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'updateBy' => [ 'type' => 'long', 'locationName' => 'updateBy', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'salt' => [ 'type' => 'string', 'locationName' => 'salt', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'referId' => [ 'type' => 'string', 'locationName' => 'referId', ],
+                'createType' => [ 'type' => 'integer', 'locationName' => 'createType', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'identification' => [ 'type' => 'string', 'locationName' => 'identification', ],
+                'orgPath' => [ 'type' => 'string', 'locationName' => 'orgPath', ],
+                'orgPathName' => [ 'type' => 'string', 'locationName' => 'orgPathName', ],
+                'orgId' => [ 'type' => 'string', 'locationName' => 'orgId', ],
+                'orgName' => [ 'type' => 'string', 'locationName' => 'orgName', ],
             ],
         ],
         'UserAttachment' => [
@@ -1502,6 +2130,12 @@ return [
                 'attachment' =>  [ 'shape' => 'UserAttachment', ],
             ],
         ],
+        'VerifyDetails' => [
+            'type' => 'structure',
+            'members' => [
+                'verified' => [ 'type' => 'boolean', 'locationName' => 'verified', ],
+            ],
+        ],
         'VirtualMFADevice' => [
             'type' => 'structure',
             'members' => [
@@ -1532,19 +2166,6 @@ return [
             'members' => [
             ],
         ],
-        'EnableSubUserAccessKeyRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
-                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
-            ],
-        ],
-        'EnableSubUserAccessKeyResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DisableSubUserAccessKeyRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1563,137 +2184,27 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CreateSensitiveActionRequest' => [
+        'EnableSubUserAccessKeyRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
-                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
             ],
         ],
-        'CreateServiceLinkedRoleTemplateRequest' => [
+        'EnableSubUserAccessKeyResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
-                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
-                'assumeRolePolicyDocument' => [ 'type' => 'string', 'locationName' => 'assumeRolePolicyDocument', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'maxSessionDuration' => [ 'type' => 'integer', 'locationName' => 'maxSessionDuration', ],
-                'invisible' => [ 'type' => 'boolean', 'locationName' => 'invisible', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'UpdateConditionRequest' => [
+        'PageResult' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'qualifier' => [ 'type' => 'integer', 'locationName' => 'qualifier', ],
-                'exists' => [ 'type' => 'integer', 'locationName' => 'exists', ],
-                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
-            ],
-        ],
-        'DeletePolicyCollectionRequest' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-            ],
-        ],
-        'UpdateServiceLinkedRoleTemplateRequest' => [
-            'type' => 'structure',
-            'members' => [
-                'roleId' => [ 'type' => 'string', 'locationName' => 'roleId', ],
-                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'assumeRolePolicyDocument' => [ 'type' => 'string', 'locationName' => 'assumeRolePolicyDocument', ],
-                'maxSessionDuration' => [ 'type' => 'integer', 'locationName' => 'maxSessionDuration', ],
-            ],
-        ],
-        'AddConditionRequest' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'qualifier' => [ 'type' => 'integer', 'locationName' => 'qualifier', ],
-                'exists' => [ 'type' => 'integer', 'locationName' => 'exists', ],
-                'type' => [ 'type' => 'integer', 'locationName' => 'type', ],
-            ],
-        ],
-        'UpdateEntityObjectLimitsRequest' => [
-            'type' => 'structure',
-            'members' => [
-                'entityObjectLimits' => [ 'type' => 'list', 'member' => [ 'shape' => 'EntityObjectLimits', ], ],
-            ],
-        ],
-        'UpdateActionConditionRequest' => [
-            'type' => 'structure',
-            'members' => [
-                'actionCondition' => [ 'type' => 'list', 'member' => [ 'shape' => 'ActionConditionVo', ], ],
-            ],
-        ],
-        'AttachSystemAccessKeyPolicyRequest' => [
-            'type' => 'structure',
-            'members' => [
-                'systemAccessKey' => [ 'type' => 'string', 'locationName' => 'systemAccessKey', ],
-                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
-            ],
-        ],
-        'AddApiInfosRequest' => [
-            'type' => 'structure',
-            'members' => [
-                'apiInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'ApiInfoVo', ], ],
-            ],
-        ],
-        'DeleteConditionRequest' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-            ],
-        ],
-        'AddPolicyCollectionRequest' => [
-            'type' => 'structure',
-            'members' => [
-                'policyCollection' => [ 'type' => 'list', 'member' => [ 'shape' => 'PolicyCollection', ], ],
-            ],
-        ],
-        'AddActionConditionRequest' => [
-            'type' => 'structure',
-            'members' => [
-                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
-                'actions' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'conditionNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'postProcess' => [ 'type' => 'integer', 'locationName' => 'postProcess', ],
-            ],
-        ],
-        'UpdateSensitiveActionRequest' => [
-            'type' => 'structure',
-            'members' => [
-                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
-                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-            ],
-        ],
-        'SystemAccessKeyRequest' => [
-            'type' => 'structure',
-            'members' => [
-                'akType' => [ 'type' => 'string', 'locationName' => 'akType', ],
-                'erp' => [ 'type' => 'string', 'locationName' => 'erp', ],
-                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
-                'policyContent' => [ 'type' => 'string', 'locationName' => 'policyContent', ],
-                'systemAccessKey' => [ 'type' => 'string', 'locationName' => 'systemAccessKey', ],
-                'attachDefaultPolicy' => [ 'type' => 'boolean', 'locationName' => 'attachDefaultPolicy', ],
-            ],
-        ],
-        'DeleteActionConditionRequest' => [
-            'type' => 'structure',
-            'members' => [
-                'ids' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
-            ],
-        ],
-        'DetachSystemAccessKeyPolicyRequest' => [
-            'type' => 'structure',
-            'members' => [
-                'systemAccessKey' => [ 'type' => 'string', 'locationName' => 'systemAccessKey', ],
-                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'paged' => [ 'type' => 'boolean', 'locationName' => 'paged', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'PermissionGenVo', ], ],
             ],
         ],
         'DescribeAttachedGroupPoliciesScopeResultShape' => [
@@ -1833,6 +2344,8 @@ return [
         'DescribeAttachedGroupPoliciesRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
             ],
         ],
@@ -1930,6 +2443,25 @@ return [
         'UpdateGroupResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'InviteRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'inviteCode' => [ 'type' => 'string', 'locationName' => 'inviteCode', ],
+                'loginType' => [ 'type' => 'string', 'locationName' => 'loginType', ],
+                'loginId' => [ 'type' => 'string', 'locationName' => 'loginId', ],
+                'accountPin' => [ 'type' => 'string', 'locationName' => 'accountPin', ],
+                'subUserPin' => [ 'type' => 'string', 'locationName' => 'subUserPin', ],
+                'subUserName' => [ 'type' => 'string', 'locationName' => 'subUserName', ],
+                'subUserNickname' => [ 'type' => 'string', 'locationName' => 'subUserNickname', ],
+                'subUserPhone' => [ 'type' => 'string', 'locationName' => 'subUserPhone', ],
+                'nickname' => [ 'type' => 'string', 'locationName' => 'nickname', ],
+                'inviteStatus' => [ 'type' => 'string', 'locationName' => 'inviteStatus', ],
+                'inviteResult' => [ 'type' => 'string', 'locationName' => 'inviteResult', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
         'DescribeVirtualMFARequestShape' => [
@@ -2283,6 +2815,7 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
                 'queryType' => [ 'type' => 'integer', 'locationName' => 'queryType', ],
+                'types' => [ 'type' => 'string', 'locationName' => 'types', ],
                 'sort' => [ 'type' => 'integer', 'locationName' => 'sort', ],
             ],
         ],
@@ -2509,12 +3042,6 @@ return [
                 'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
             ],
         ],
-        'DescribeAttachedSubUserPoliciesRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
-            ],
-        ],
         'DetachSubUserPolicyResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -2532,15 +3059,16 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
             ],
         ],
-        'DetachSubUserPolicyRequestShape' => [
+        'QueryDeletedSubUsersRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
-                'scopeId' => [ 'type' => 'string', 'locationName' => 'scopeId', ],
-                'allowDetachAddPolicy' => [ 'type' => 'string', 'locationName' => 'allowDetachAddPolicy', ],
-                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
         'DescribeSubUserResultShape' => [
@@ -2552,7 +3080,16 @@ return [
         'CreateSubUserInnerResultShape' => [
             'type' => 'structure',
             'members' => [
-                'subUser' =>  [ 'shape' => 'CreateSubUserRes', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'secretAccessKey' => [ 'type' => 'string', 'locationName' => 'secretAccessKey', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
             ],
         ],
         'CreateSubUserResultShape' => [
@@ -2566,18 +3103,6 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeSubUsersResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'AttachSubUserPolicyResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateSubUserRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'createSubUserInfo' =>  [ 'shape' => 'CreateSubUserInfo', ],
             ],
         ],
         'DescribeAttachedSubUserPoliciesResultShape' => [
@@ -2594,11 +3119,111 @@ return [
                 'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
             ],
         ],
+        'QueryDeletedSubUsersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'QueryDeletedSubUsersResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSubUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+            ],
+        ],
+        'CreateSubUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateSubUserResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateSubUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'updateSubUserInfo' =>  [ 'shape' => 'UpdateSubUserInfo', ],
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+            ],
+        ],
+        'DeleteSubUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'QueryDeletedSubUsersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUsers' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubUser', ], ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+            ],
+        ],
+        'AttachSubUserPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'scopeId' => [ 'type' => 'string', 'locationName' => 'scopeId', ],
+                'allowAddPolicy' => [ 'type' => 'string', 'locationName' => 'allowAddPolicy', ],
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+            ],
+        ],
+        'AttachSubUserPolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateSubUserInnerResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateSubUserInnerResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'RestoreSubUserResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' =>  [ 'shape' => 'SubUser', ],
+            ],
+        ],
+        'DescribeAttachedSubUserPoliciesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+            ],
+        ],
+        'DetachSubUserPolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
+                'scopeId' => [ 'type' => 'string', 'locationName' => 'scopeId', ],
+                'allowDetachAddPolicy' => [ 'type' => 'string', 'locationName' => 'allowDetachAddPolicy', ],
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+            ],
+        ],
+        'AttachSubUserPolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateSubUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'createSubUserInfo' =>  [ 'shape' => 'CreateSubUserInfo', ],
+            ],
+        ],
         'DescribeAttachedSubUserPoliciesScopeResultShape' => [
             'type' => 'structure',
             'members' => [
                 'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
                 'policies' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceGroup', ], ],
+            ],
+        ],
+        'RestoreSubUserRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'subUserPin' => [ 'type' => 'string', 'locationName' => 'subUserPin', ],
             ],
         ],
         'DescribeAttachedSubUserPoliciesScopeResponseShape' => [
@@ -2642,12 +3267,6 @@ return [
                 'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
             ],
         ],
-        'DescribeSubUserRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
-            ],
-        ],
         'DescribeSubUserGroupsRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2660,39 +3279,11 @@ return [
                 'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
             ],
         ],
-        'CreateSubUserResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateSubUserResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeSubUserResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeSubUserResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UpdateSubUserRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'updateSubUserInfo' =>  [ 'shape' => 'UpdateSubUserInfo', ],
-                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
-            ],
-        ],
-        'DeleteSubUserResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'AttachSubUserPolicyRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'policyName' => [ 'type' => 'string', 'locationName' => 'policyName', ],
-                'scopeId' => [ 'type' => 'string', 'locationName' => 'scopeId', ],
-                'allowAddPolicy' => [ 'type' => 'string', 'locationName' => 'allowAddPolicy', ],
-                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
             ],
         ],
         'DetachSubUserPolicyResponseShape' => [
@@ -2701,28 +3292,34 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'AttachSubUserPolicyResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'CreateSubUserInnerRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'createSubUserInfo' =>  [ 'shape' => 'CreateSubUserInfoInner', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'phone' => [ 'type' => 'string', 'locationName' => 'phone', ],
+                'email' => [ 'type' => 'string', 'locationName' => 'email', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'createAk' => [ 'type' => 'boolean', 'locationName' => 'createAk', ],
+                'needResetPassword' => [ 'type' => 'boolean', 'locationName' => 'needResetPassword', ],
+                'consoleLogin' => [ 'type' => 'boolean', 'locationName' => 'consoleLogin', ],
+                'autoGeneratePassword' => [ 'type' => 'boolean', 'locationName' => 'autoGeneratePassword', ],
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+                'createType' => [ 'type' => 'integer', 'locationName' => 'createType', ],
+            ],
+        ],
+        'RestoreSubUserResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'RestoreSubUserResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeSubUserGroupsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeSubUserGroupsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateSubUserInnerResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateSubUserInnerResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],

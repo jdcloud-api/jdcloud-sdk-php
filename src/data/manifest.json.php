@@ -229,6 +229,10 @@ return [
         'namespace' => 'Cr',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'agentgrid' => [
+        'namespace' => 'Agentgrid',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'pipeline' => [
         'namespace' => 'Pipeline',
         'versions' => [ 'latest' => 'v1', ],
