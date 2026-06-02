@@ -20,6 +20,10 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with iam.
  *
+ * @method \Jdcloud\Result getSubUserAccessKeys(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getSubUserAccessKeysAsync(array $args = [])
+ * @method \Jdcloud\Result createSubUserAccessKey(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createSubUserAccessKeyAsync(array $args = [])
  * @method \Jdcloud\Result enableSubUserAccessKey(array $args = [])
  * @method \GuzzleHttp\Promise\Promise enableSubUserAccessKeyAsync(array $args = [])
  * @method \Jdcloud\Result disableSubUserAccessKey(array $args = [])

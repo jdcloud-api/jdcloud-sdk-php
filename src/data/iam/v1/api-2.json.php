@@ -11,6 +11,24 @@ return [
 //        'serviceId' => 'iam',
     ],
     'operations' => [
+        'GetSubUserAccessKeys' => [
+            'name' => 'GetSubUserAccessKeys',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/subUser/{subUser}/getSubUserAccessKeys',
+            ],
+            'input' => [ 'shape' => 'GetSubUserAccessKeysRequestShape', ],
+            'output' => [ 'shape' => 'GetSubUserAccessKeysResponseShape', ],
+        ],
+        'CreateSubUserAccessKey' => [
+            'name' => 'CreateSubUserAccessKey',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/subUser/{subUser}/accessKey',
+            ],
+            'input' => [ 'shape' => 'CreateSubUserAccessKeyRequestShape', ],
+            'output' => [ 'shape' => 'CreateSubUserAccessKeyResponseShape', ],
+        ],
         'EnableSubUserAccessKey' => [
             'name' => 'EnableSubUserAccessKey',
             'http' => [
@@ -518,7 +536,7 @@ return [
         'RestoreSubUser' => [
             'name' => 'RestoreSubUser',
             'http' => [
-                'method' => 'GET',
+                'method' => 'PUT',
                 'requestUri' => '/v1/subUser:restore',
             ],
             'input' => [ 'shape' => 'RestoreSubUserRequestShape', ],
@@ -1610,6 +1628,14 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
+        'RestoreSubUser' => [
+            'type' => 'structure',
+            'members' => [
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'subUserPin' => [ 'type' => 'string', 'locationName' => 'subUserPin', ],
+                'accessKeyList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'ResultMsg' => [
             'type' => 'structure',
             'members' => [
@@ -1783,7 +1809,6 @@ return [
                 'lastVisitTime' => [ 'type' => 'string', 'locationName' => 'lastVisitTime', ],
                 'lastVisitEvent' => [ 'type' => 'string', 'locationName' => 'lastVisitEvent', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
-                'yn' => [ 'type' => 'integer', 'locationName' => 'yn', ],
                 'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
             ],
         ],
@@ -2178,10 +2203,23 @@ return [
             'members' => [
             ],
         ],
+        'GetSubUserAccessKeysResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetSubUserAccessKeysResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DisableSubUserAccessKeyResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateSubUserAccessKeyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
             ],
         ],
         'EnableSubUserAccessKeyRequestShape' => [
@@ -2195,6 +2233,31 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateSubUserAccessKeyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+            ],
+        ],
+        'CreateSubUserAccessKeyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateSubUserAccessKeyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetSubUserAccessKeysResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'userAccessKeys' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubUserAccessKey', ], ],
+            ],
+        ],
+        'GetSubUserAccessKeysRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
             ],
         ],
         'PageResult' => [
@@ -3069,6 +3132,7 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'account' => [ 'type' => 'string', 'locationName' => 'account', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
             ],
         ],
         'DescribeSubUserResultShape' => [
@@ -3224,6 +3288,7 @@ return [
             'members' => [
                 'account' => [ 'type' => 'string', 'locationName' => 'account', ],
                 'subUserPin' => [ 'type' => 'string', 'locationName' => 'subUserPin', ],
+                'accessKeyList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeAttachedSubUserPoliciesScopeResponseShape' => [
