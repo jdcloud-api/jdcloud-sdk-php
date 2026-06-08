@@ -1798,6 +1798,7 @@ return [
                 'orgId' => [ 'type' => 'string', 'locationName' => 'orgId', ],
                 'orgName' => [ 'type' => 'string', 'locationName' => 'orgName', ],
                 'orgPath' => [ 'type' => 'string', 'locationName' => 'orgPath', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
             ],
         ],
         'SubUserAccessKey' => [
@@ -2238,7 +2239,7 @@ return [
         'CreateSubUserAccessKeyResultShape' => [
             'type' => 'structure',
             'members' => [
-                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'userAccessKey' =>  [ 'shape' => 'SubUserAccessKey', ],
             ],
         ],
         'CreateSubUserAccessKeyResponseShape' => [
