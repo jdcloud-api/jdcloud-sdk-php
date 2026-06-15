@@ -56,6 +56,15 @@ return [
             'input' => [ 'shape' => 'DeleteSubUserAccessKeyRequestShape', ],
             'output' => [ 'shape' => 'DeleteSubUserAccessKeyResponseShape', ],
         ],
+        'DescribeSubUserAccessKeyAuditRecords' => [
+            'name' => 'DescribeSubUserAccessKeyAuditRecords',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/subUser/{subUser}/accessKey/{accessKey}:auditRecords',
+            ],
+            'input' => [ 'shape' => 'DescribeSubUserAccessKeyAuditRecordsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSubUserAccessKeyAuditRecordsResponseShape', ],
+        ],
         'CreateGroup' => [
             'name' => 'CreateGroup',
             'http' => [
@@ -2192,6 +2201,12 @@ return [
             'members' => [
             ],
         ],
+        'DescribeSubUserAccessKeyAuditRecordsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'auditRecords' => [ 'type' => 'list', 'member' => [ 'shape' => 'SubUserAuditRecord', ], ],
+            ],
+        ],
         'DisableSubUserAccessKeyRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -2214,6 +2229,13 @@ return [
         'DisableSubUserAccessKeyResponseShape' => [
             'type' => 'structure',
             'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSubUserAccessKeyAuditRecordsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSubUserAccessKeyAuditRecordsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -2240,6 +2262,13 @@ return [
             'type' => 'structure',
             'members' => [
                 'userAccessKey' =>  [ 'shape' => 'SubUserAccessKey', ],
+            ],
+        ],
+        'DescribeSubUserAccessKeyAuditRecordsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
             ],
         ],
         'CreateSubUserAccessKeyResponseShape' => [

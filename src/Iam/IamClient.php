@@ -30,6 +30,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise disableSubUserAccessKeyAsync(array $args = [])
  * @method \Jdcloud\Result deleteSubUserAccessKey(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteSubUserAccessKeyAsync(array $args = [])
+ * @method \Jdcloud\Result describeSubUserAccessKeyAuditRecords(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeSubUserAccessKeyAuditRecordsAsync(array $args = [])
  * @method \Jdcloud\Result createGroup(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createGroupAsync(array $args = [])
  * @method \Jdcloud\Result describeGroup(array $args = [])
