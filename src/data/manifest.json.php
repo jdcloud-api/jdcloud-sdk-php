@@ -361,10 +361,6 @@ return [
         'namespace' => 'Hufu',
         'versions' => [ 'latest' => 'v1', ],
     ],
-    'es' => [
-        'namespace' => 'Es',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
     'httpdns' => [
         'namespace' => 'Httpdns',
         'versions' => [ 'latest' => 'v1', ],
@@ -441,10 +437,6 @@ return [
         'namespace' => 'Vod',
         'versions' => [ 'latest' => 'v1', ],
     ],
-    'jdaip' => [
-        'namespace' => 'Jdaip',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
     'yundingdatapush' => [
         'namespace' => 'Yundingdatapush',
         'versions' => [ 'latest' => 'v1', ],
@@ -484,10 +476,6 @@ return [
     'jdworkspace' => [
         'namespace' => 'Jdworkspace',
         'versions' => [ 'latest' => 'v1', ],
-    ],
-    'dts' => [
-        'namespace' => 'Dts',
-        'versions' => [ 'latest' => 'v2', ],
     ],
     'assistant' => [
         'namespace' => 'Assistant',
