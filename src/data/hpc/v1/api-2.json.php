@@ -38,6 +38,42 @@ return [
             'input' => [ 'shape' => 'DescribeDiagnosticResultRequestShape', ],
             'output' => [ 'shape' => 'DescribeDiagnosticResultResponseShape', ],
         ],
+        'DeleteDiagnosticTask' => [
+            'name' => 'DeleteDiagnosticTask',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/diagnosis/{diagnosticId}',
+            ],
+            'input' => [ 'shape' => 'DeleteDiagnosticTaskRequestShape', ],
+            'output' => [ 'shape' => 'DeleteDiagnosticTaskResponseShape', ],
+        ],
+        'DeleteHpcNetDiagnose' => [
+            'name' => 'DeleteHpcNetDiagnose',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/hpcNetDiagnose/{hpcNetworkDiagnoseId}',
+            ],
+            'input' => [ 'shape' => 'DeleteHpcNetDiagnoseRequestShape', ],
+            'output' => [ 'shape' => 'DeleteHpcNetDiagnoseResponseShape', ],
+        ],
+        'DescribeHpcNetDiagnoses' => [
+            'name' => 'DescribeHpcNetDiagnoses',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/hpcNetDiagnose/',
+            ],
+            'input' => [ 'shape' => 'DescribeHpcNetDiagnosesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeHpcNetDiagnosesResponseShape', ],
+        ],
+        'CreateHpcNetDiagnose' => [
+            'name' => 'CreateHpcNetDiagnose',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/hpcNetDiagnose/',
+            ],
+            'input' => [ 'shape' => 'CreateHpcNetDiagnoseRequestShape', ],
+            'output' => [ 'shape' => 'CreateHpcNetDiagnoseResponseShape', ],
+        ],
         'DescribeInstanceTypes' => [
             'name' => 'DescribeInstanceTypes',
             'http' => [
@@ -353,26 +389,136 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
-        'DiagnosticResultDetail' => [
+        'CreateHpcNetDiagnoseSpec' => [
             'type' => 'structure',
             'members' => [
-                'diagnosticId' => [ 'type' => 'string', 'locationName' => 'diagnosticId', ],
-                'nodeIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-                'diagnosticType' => [ 'type' => 'string', 'locationName' => 'diagnosticType', ],
-                'diagnosticState' => [ 'type' => 'string', 'locationName' => 'diagnosticState', ],
-                'diagnosticResults' => [ 'type' => 'object', 'locationName' => 'diagnosticResults', ],
-                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'hpcClusterName' => [ 'type' => 'string', 'locationName' => 'hpcClusterName', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'traffic' => [ 'type' => 'string', 'locationName' => 'traffic', ],
+                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
+                'qp' => [ 'type' => 'integer', 'locationName' => 'qp', ],
+                'gdr' => [ 'type' => 'boolean', 'locationName' => 'gdr', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'instances' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetNodeSpec', ], ],
+            ],
+        ],
+        'NetNodeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'nic' => [ 'type' => 'string', 'locationName' => 'nic', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+            ],
+        ],
+        'HardwareStaticCheckSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'scopeType' => [ 'type' => 'string', 'locationName' => 'scopeType', ],
+            ],
+        ],
+        'OneClickDiagnosisSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'scopeType' => [ 'type' => 'string', 'locationName' => 'scopeType', ],
+            ],
+        ],
+        'NetworkNcclTestSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'communicationModel' => [ 'type' => 'string', 'locationName' => 'communicationModel', ],
+                'gpuCount' => [ 'type' => 'integer', 'locationName' => 'gpuCount', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'scopeType' => [ 'type' => 'string', 'locationName' => 'scopeType', ],
+            ],
+        ],
+        'DiagnosticCompareDistributionItem' => [
+            'type' => 'structure',
+            'members' => [
+                'checkValue' => [ 'type' => 'string', 'locationName' => 'checkValue', ],
+                'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DiagnosticTaskSpec' => [
             'type' => 'structure',
             'members' => [
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-                'nodeIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'clusterName' => [ 'type' => 'string', 'locationName' => 'clusterName', ],
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'diagnosticType' => [ 'type' => 'string', 'locationName' => 'diagnosticType', ],
-                'params' => [ 'type' => 'object', 'locationName' => 'params', ],
+                'hardwareStaticCheckSpec' =>  [ 'shape' => 'HardwareStaticCheckSpec', ],
+                'networkNcclTestSpec' =>  [ 'shape' => 'NetworkNcclTestSpec', ],
+                'oneClickDiagnosisSpec' =>  [ 'shape' => 'OneClickDiagnosisSpec', ],
+            ],
+        ],
+        'DiagnosticCompareItem' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+                'distribution' => [ 'type' => 'list', 'member' => [ 'shape' => 'DiagnosticCompareDistributionItem', ], ],
+            ],
+        ],
+        'DiagnosticResultDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'diagnosticId' => [ 'type' => 'string', 'locationName' => 'diagnosticId', ],
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'clusterName' => [ 'type' => 'string', 'locationName' => 'clusterName', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'scopeDisplay' => [ 'type' => 'string', 'locationName' => 'scopeDisplay', ],
+                'diagnosticType' => [ 'type' => 'string', 'locationName' => 'diagnosticType', ],
+                'diagnosticState' => [ 'type' => 'string', 'locationName' => 'diagnosticState', ],
+                'diagnosticStateDisplay' => [ 'type' => 'string', 'locationName' => 'diagnosticStateDisplay', ],
+                'hardwareStaticCheckSpec' =>  [ 'shape' => 'HardwareStaticCheckSpec', ],
+                'hardwareStaticCheckResult' =>  [ 'shape' => 'HardwareStaticCheckResult', ],
+                'networkNcclTestSpec' =>  [ 'shape' => 'NetworkNcclTestSpec', ],
+                'networkNcclTestResult' =>  [ 'shape' => 'NetworkNcclTestResult', ],
+                'oneClickDiagnosisSpec' =>  [ 'shape' => 'OneClickDiagnosisSpec', ],
+                'oneClickDiagnosisResult' =>  [ 'shape' => 'OneClickDiagnosisResult', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+            ],
+        ],
+        'HardwareStaticCheckNodeSummary' => [
+            'type' => 'structure',
+            'members' => [
+                'nodeName' => [ 'type' => 'string', 'locationName' => 'nodeName', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
+                'publicIpAddress' => [ 'type' => 'string', 'locationName' => 'publicIpAddress', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'operatingSystem' => [ 'type' => 'string', 'locationName' => 'operatingSystem', ],
+                'checkResult' => [ 'type' => 'string', 'locationName' => 'checkResult', ],
+            ],
+        ],
+        'DiagnosticTaskSummary' => [
+            'type' => 'structure',
+            'members' => [
+                'diagnosticId' => [ 'type' => 'string', 'locationName' => 'diagnosticId', ],
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'clusterName' => [ 'type' => 'string', 'locationName' => 'clusterName', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'scopeDisplay' => [ 'type' => 'string', 'locationName' => 'scopeDisplay', ],
+                'diagnosticType' => [ 'type' => 'string', 'locationName' => 'diagnosticType', ],
+                'diagnosticState' => [ 'type' => 'string', 'locationName' => 'diagnosticState', ],
+                'diagnosticStateDisplay' => [ 'type' => 'string', 'locationName' => 'diagnosticStateDisplay', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'hardwareStaticCheckSpec' =>  [ 'shape' => 'HardwareStaticCheckSpec', ],
+                'networkNcclTestSpec' =>  [ 'shape' => 'NetworkNcclTestSpec', ],
+                'oneClickDiagnosisSpec' =>  [ 'shape' => 'OneClickDiagnosisSpec', ],
             ],
         ],
         'Gpu' => [
@@ -383,6 +529,49 @@ return [
                 'vram' => [ 'type' => 'integer', 'locationName' => 'vram', ],
             ],
         ],
+        'HpcNetDiagnoses' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'clientNum' => [ 'type' => 'integer', 'locationName' => 'clientNum', ],
+                'serverNum' => [ 'type' => 'integer', 'locationName' => 'serverNum', ],
+                'nodeNum' => [ 'type' => 'integer', 'locationName' => 'nodeNum', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'Result' => [
+            'type' => 'structure',
+            'members' => [
+                'srcId' => [ 'type' => 'string', 'locationName' => 'srcId', ],
+                'dstId' => [ 'type' => 'string', 'locationName' => 'dstId', ],
+                'value' => [ 'type' => 'float', 'locationName' => 'value', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+            ],
+        ],
+        'HpcNetDiagnose' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'hpcClusterName' => [ 'type' => 'string', 'locationName' => 'hpcClusterName', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'traffic' => [ 'type' => 'string', 'locationName' => 'traffic', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
+                'qp' => [ 'type' => 'integer', 'locationName' => 'qp', ],
+                'gdr' => [ 'type' => 'boolean', 'locationName' => 'gdr', ],
+                'results' => [ 'type' => 'list', 'member' => [ 'shape' => 'Result', ], ],
+            ],
+        ],
         'RdmaNetworkInterface' => [
             'type' => 'structure',
             'members' => [
@@ -390,6 +579,7 @@ return [
                 'portId' => [ 'type' => 'string', 'locationName' => 'portId', ],
                 'guid' => [ 'type' => 'string', 'locationName' => 'guid', ],
                 'macAddress' => [ 'type' => 'string', 'locationName' => 'macAddress', ],
+                'logicMacAddress' => [ 'type' => 'string', 'locationName' => 'logicMacAddress', ],
                 'ipAddress' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'scene' => [ 'type' => 'string', 'locationName' => 'scene', ],
             ],
@@ -428,6 +618,13 @@ return [
                 'bind' => [ 'type' => 'list', 'member' => [ 'shape' => 'BindInfo', ], ],
             ],
         ],
+        'Tag' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'InstanceNetworkInterface' => [
             'type' => 'structure',
             'members' => [
@@ -435,6 +632,7 @@ return [
                 'macAddress' => [ 'type' => 'string', 'locationName' => 'macAddress', ],
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'secondaryIpMaskLen' => [ 'type' => 'integer', 'locationName' => 'secondaryIpMaskLen', ],
                 'primaryIp' =>  [ 'shape' => 'NetworkInterfacePrivateIp', ],
             ],
         ],
@@ -453,6 +651,8 @@ return [
                 'osType' => [ 'type' => 'string', 'locationName' => 'osType', ],
                 'osVersion' => [ 'type' => 'string', 'locationName' => 'osVersion', ],
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'systemDisk' =>  [ 'shape' => 'InstanceDiskAttachment', ],
                 'dataDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceDiskAttachment', ], ],
                 'rdmaNetworkInterfaces' => [ 'type' => 'list', 'member' => [ 'shape' => 'RdmaNetworkInterface', ], ],
@@ -531,6 +731,8 @@ return [
                 'su' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'hpcClusterId' => [ 'type' => 'string', 'locationName' => 'hpcClusterId', ],
                 'hpcClusterName' => [ 'type' => 'string', 'locationName' => 'hpcClusterName', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
             ],
         ],
         'Metadata' => [
@@ -639,6 +841,13 @@ return [
                 'limited' => [ 'type' => 'integer', 'locationName' => 'limited', ],
             ],
         ],
+        'TagFilter' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'TaskFinishedSpec' => [
             'type' => 'structure',
             'members' => [
@@ -651,24 +860,40 @@ return [
                 'userVars' => [ 'type' => 'object', 'locationName' => 'userVars', ],
             ],
         ],
+        'OneClickDiagnosisResult' => [
+            'type' => 'structure',
+            'members' => [
+                'compareItems' => [ 'type' => 'list', 'member' => [ 'shape' => 'DiagnosticCompareItem', ], ],
+                'instanceResults' => [ 'type' => 'list', 'member' => [ 'shape' => 'OneClickDiagnosisInstanceResult', ], ],
+                'failureReason' => [ 'type' => 'string', 'locationName' => 'failureReason', ],
+                'summary' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'DescribeDiagnosticResultsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'diagnosticResults' => [ 'type' => 'list', 'member' => [ 'shape' => 'DiagnosticResult', ], ],
+                'diagnosticResults' => [ 'type' => 'list', 'member' => [ 'shape' => 'DiagnosticTaskSummary', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
-        'DescribeDiagnosticResultRequestShape' => [
+        'OneClickDiagnosisInstanceResult' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'diagnosticId' => [ 'type' => 'string', 'locationName' => 'diagnosticId', ],
+                'nodeName' => [ 'type' => 'string', 'locationName' => 'nodeName', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
+                'publicIpAddress' => [ 'type' => 'string', 'locationName' => 'publicIpAddress', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'operatingSystem' => [ 'type' => 'string', 'locationName' => 'operatingSystem', ],
+                'checkResult' => [ 'type' => 'string', 'locationName' => 'checkResult', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+                'failureReason' => [ 'type' => 'string', 'locationName' => 'failureReason', ],
             ],
         ],
         'DescribeDiagnosticResultsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'diagnosticType' => [ 'type' => 'string', 'locationName' => 'diagnosticType', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -688,11 +913,15 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CreateDiagnosticTaskResult' => [
+        'DeleteDiagnosticTaskResultShape' => [
             'type' => 'structure',
             'members' => [
-                'diagnosticId' => [ 'type' => 'string', 'locationName' => 'diagnosticId', ],
-                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+            ],
+        ],
+        'NetworkNcclTestResult' => [
+            'type' => 'structure',
+            'members' => [
+                'ncclTestCheckResult' => [ 'type' => 'string', 'locationName' => 'ncclTestCheckResult', ],
             ],
         ],
         'CreateDiagnosticTaskResponseShape' => [
@@ -708,29 +937,143 @@ return [
                 'diagnosticResultDetail' =>  [ 'shape' => 'DiagnosticResultDetail', ],
             ],
         ],
-        'CreateDiagnosticTaskRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'diagnosticTaskSpec' =>  [ 'shape' => 'DiagnosticTaskSpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
         'CreateDiagnosticTaskResultShape' => [
             'type' => 'structure',
             'members' => [
-                'createDiagnosticTaskResult' =>  [ 'shape' => 'CreateDiagnosticTaskResult', ],
+                'diagnosticId' => [ 'type' => 'string', 'locationName' => 'diagnosticId', ],
             ],
         ],
-        'DiagnosticResult' => [
+        'DiagnosticCheckResult' => [
             'type' => 'structure',
             'members' => [
+                'serialNumber' => [ 'type' => 'integer', 'locationName' => 'serialNumber', ],
+                'diagnosticItem' => [ 'type' => 'string', 'locationName' => 'diagnosticItem', ],
+                'diagnosticResult' => [ 'type' => 'string', 'locationName' => 'diagnosticResult', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'passCondition' => [ 'type' => 'string', 'locationName' => 'passCondition', ],
+                'priority' => [ 'type' => 'string', 'locationName' => 'priority', ],
+                'node' => [ 'type' => 'string', 'locationName' => 'node', ],
+                'checkValue' => [ 'type' => 'object', 'locationName' => 'checkValue', ],
+                'diagnosticStatus' => [ 'type' => 'string', 'locationName' => 'diagnosticStatus', ],
+                'failureReason' => [ 'type' => 'string', 'locationName' => 'failureReason', ],
+            ],
+        ],
+        'DescribeDiagnosticResultRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'diagnosticId' => [ 'type' => 'string', 'locationName' => 'diagnosticId', ],
-                'nodeIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'DeleteDiagnosticTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DeleteDiagnosticTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'diagnosticId' => [ 'type' => 'string', 'locationName' => 'diagnosticId', ],
+            ],
+        ],
+        'CreateDiagnosticTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterName' => [ 'type' => 'string', 'locationName' => 'clusterName', ],
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'diagnosticType' => [ 'type' => 'string', 'locationName' => 'diagnosticType', ],
-                'diagnosticState' => [ 'type' => 'string', 'locationName' => 'diagnosticState', ],
-                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
-                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'hardwareStaticCheckSpec' =>  [ 'shape' => 'HardwareStaticCheckSpec', ],
+                'networkNcclTestSpec' =>  [ 'shape' => 'NetworkNcclTestSpec', ],
+                'oneClickDiagnosisSpec' =>  [ 'shape' => 'OneClickDiagnosisSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'HardwareStaticCheckResult' => [
+            'type' => 'structure',
+            'members' => [
+                'compareItems' => [ 'type' => 'list', 'member' => [ 'shape' => 'DiagnosticCompareItem', ], ],
+                'nodeResults' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'nodeSummary' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeHpcNetDiagnosesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteHpcNetDiagnoseResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateHpcNetDiagnoseResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateHpcNetDiagnoseResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateHpcNetDiagnoseRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'hpcClusterName' => [ 'type' => 'string', 'locationName' => 'hpcClusterName', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'traffic' => [ 'type' => 'string', 'locationName' => 'traffic', ],
+                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
+                'qp' => [ 'type' => 'integer', 'locationName' => 'qp', ],
+                'gdr' => [ 'type' => 'boolean', 'locationName' => 'gdr', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'instances' => [ 'type' => 'list', 'member' => [ 'shape' => 'NetNodeSpec', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteHpcNetDiagnoseResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteHpcNetDiagnoseRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'hpcNetworkDiagnoseId' => [ 'type' => 'string', 'locationName' => 'hpcNetworkDiagnoseId', ],
+            ],
+        ],
+        'DescribeHpcNetDiagnosesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeHpcNetDiagnosesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeHpcNetDiagnosesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'hpcNetworkDiagnoseViews' => [ 'type' => 'list', 'member' => [ 'shape' => 'HpcNetDiagnoses', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'CreateHpcNetDiagnoseResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'hpcNetworkDiagnoseId' => [ 'type' => 'string', 'locationName' => 'hpcNetworkDiagnoseId', ],
             ],
         ],
         'DescribeInstanceTypesResponseShape' => [
@@ -745,14 +1088,6 @@ return [
             'members' => [
                 'instanceTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceType', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'Filter' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeInstanceTypesRequestShape' => [
@@ -882,6 +1217,7 @@ return [
                 'startPage' => [ 'type' => 'integer', 'locationName' => 'startPage', ],
                 'endPage' => [ 'type' => 'integer', 'locationName' => 'endPage', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'columns' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'networkTopologyOrder' => [ 'type' => 'boolean', 'locationName' => 'networkTopologyOrder', ],
@@ -915,6 +1251,7 @@ return [
         'DescribeInstancesRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
@@ -998,6 +1335,7 @@ return [
                 'metadata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Metadata', ], ],
                 'userdata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Userdata', ], ],
                 'clearDataDisks' => [ 'type' => 'boolean', 'locationName' => 'clearDataDisks', ],
+                'secondaryIpMaskLen' => [ 'type' => 'integer', 'locationName' => 'secondaryIpMaskLen', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
             ],

@@ -119,6 +119,33 @@ return [
             'input' => [ 'shape' => 'DeleteRuntimeEndpointRequestShape', ],
             'output' => [ 'shape' => 'DeleteRuntimeEndpointResponseShape', ],
         ],
+        'IngestTraces' => [
+            'name' => 'IngestTraces',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/traces',
+            ],
+            'input' => [ 'shape' => 'IngestTracesRequestShape', ],
+            'output' => [ 'shape' => 'IngestTracesResponseShape', ],
+        ],
+        'IngestMetrics' => [
+            'name' => 'IngestMetrics',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/metrics',
+            ],
+            'input' => [ 'shape' => 'IngestMetricsRequestShape', ],
+            'output' => [ 'shape' => 'IngestMetricsResponseShape', ],
+        ],
+        'IngestLogs' => [
+            'name' => 'IngestLogs',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/logs',
+            ],
+            'input' => [ 'shape' => 'IngestLogsRequestShape', ],
+            'output' => [ 'shape' => 'IngestLogsResponseShape', ],
+        ],
         'DescribeRuntimes' => [
             'name' => 'DescribeRuntimes',
             'http' => [
@@ -478,6 +505,34 @@ return [
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
+        'OssAccessPointConfiguration' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'bucketPath' => [ 'type' => 'string', 'locationName' => 'bucketPath', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+            ],
+        ],
+        'FilesystemConfiguration' => [
+            'type' => 'structure',
+            'members' => [
+                'ossAccessPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'OssAccessPointConfiguration', ], ],
+            ],
+        ],
+        'FilesystemView' => [
+            'type' => 'structure',
+            'members' => [
+                'ossAccessPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'OssAccessPointView', ], ],
+            ],
+        ],
+        'OssAccessPointView' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'bucketPath' => [ 'type' => 'string', 'locationName' => 'bucketPath', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+            ],
+        ],
         'Filter' => [
             'type' => 'structure',
             'members' => [
@@ -533,6 +588,7 @@ return [
                 'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
                 'lifecycle' =>  [ 'shape' => 'LifecycleView', ],
                 'envs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Env', ], ],
+                'fileSystem' =>  [ 'shape' => 'FilesystemView', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
@@ -547,6 +603,7 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'versionView' =>  [ 'shape' => 'RuntimeVersionView', ],
                 'apiKey' => [ 'type' => 'string', 'locationName' => 'apiKey', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
@@ -861,19 +918,55 @@ return [
                 'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
             ],
         ],
-        'CreateRuntimeResultShape' => [
+        'IngestMetricsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
-                'runtimeVersion' => [ 'type' => 'string', 'locationName' => 'runtimeVersion', ],
+                'body' => [ 'type' => '', 'locationName' => 'body', ],
             ],
         ],
-        'DescribeRuntimeVersionsResultShape' => [
+        'IngestMetricsResultShape' => [
             'type' => 'structure',
             'members' => [
-                'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'runtimeVersionViews' => [ 'type' => 'list', 'member' => [ 'shape' => 'RuntimeVersionView', ], ],
+            ],
+        ],
+        'IngestLogsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'IngestTracesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'IngestTracesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'IngestLogsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'body' => [ 'type' => '', 'locationName' => 'body', ],
+            ],
+        ],
+        'IngestTracesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'body' => [ 'type' => '', 'locationName' => 'body', ],
+            ],
+        ],
+        'IngestMetricsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'IngestLogsResultShape' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'GetRuntimeSessionsResponseShape' => [
@@ -894,16 +987,12 @@ return [
                 'authorizerConfiguration' =>  [ 'shape' => 'AuthorizerConfiguration', ],
                 'lifecycleConfiguration' =>  [ 'shape' => 'LifecycleConfiguration', ],
                 'networkConfiguration' =>  [ 'shape' => 'NetworkConfiguration', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
                 'envs' => [ 'type' => 'list', 'member' => [ 'shape' => 'EnvConfiguration', ], ],
+                'filesystemConfiguration' =>  [ 'shape' => 'FilesystemConfiguration', ],
                 'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'UpdateRuntimeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'UpdateRuntimeAttributesRequestShape' => [
@@ -912,13 +1001,6 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
-            ],
-        ],
-        'DescribeRuntimeVersionsResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeRuntimeVersionsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'UpdateRuntimeAttributesResponseShape' => [
@@ -930,13 +1012,6 @@ return [
         'UpdateRuntimeAttributesResultShape' => [
             'type' => 'structure',
             'members' => [
-            ],
-        ],
-        'DescribeRuntimesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
-                'runtimes' => [ 'type' => 'list', 'member' => [ 'shape' => 'RuntimeView', ], ],
             ],
         ],
         'ModifyRuntimeVersionResultShape' => [
@@ -953,44 +1028,23 @@ return [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DeleteRuntimeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeRuntimeResultShape' => [
             'type' => 'structure',
             'members' => [
                 'runtimeView' =>  [ 'shape' => 'RuntimeView', ],
             ],
         ],
-        'DescribeRuntimesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeRuntimesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'UpdateRuntimeResultShape' => [
             'type' => 'structure',
             'members' => [
+                'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
+                'runtimeVersion' => [ 'type' => 'string', 'locationName' => 'runtimeVersion', ],
             ],
         ],
         'DeleteRuntimeVersionResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeleteRuntimeResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeleteRuntimeVersionResultShape' => [
-            'type' => 'structure',
-            'members' => [
             ],
         ],
         'GetRuntimeSessionsResultShape' => [
@@ -1010,7 +1064,9 @@ return [
                 'networkConfiguration' =>  [ 'shape' => 'NetworkConfiguration', ],
                 'warmSession' => [ 'type' => 'integer', 'locationName' => 'warmSession', ],
                 'maxSession' => [ 'type' => 'integer', 'locationName' => 'maxSession', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
                 'envs' => [ 'type' => 'list', 'member' => [ 'shape' => 'EnvConfiguration', ], ],
+                'filesystemConfiguration' =>  [ 'shape' => 'FilesystemConfiguration', ],
                 'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
                 'lifecycleConfiguration' =>  [ 'shape' => 'LifecycleConfiguration', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -1032,6 +1088,86 @@ return [
                 'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
             ],
         ],
+        'CreateRuntimeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateRuntimeResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ModifyRuntimeVersionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeRuntimeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
+            ],
+        ],
+        'CreateRuntimeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
+                'runtimeVersion' => [ 'type' => 'string', 'locationName' => 'runtimeVersion', ],
+            ],
+        ],
+        'DescribeRuntimeVersionsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'runtimeVersionViews' => [ 'type' => 'list', 'member' => [ 'shape' => 'RuntimeVersionView', ], ],
+            ],
+        ],
+        'UpdateRuntimeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateRuntimeResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeRuntimeVersionsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRuntimeVersionsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeRuntimesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'runtimes' => [ 'type' => 'list', 'member' => [ 'shape' => 'RuntimeView', ], ],
+            ],
+        ],
+        'DeleteRuntimeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeRuntimesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRuntimesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteRuntimeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DeleteRuntimeVersionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DeleteRuntimeRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1047,19 +1183,6 @@ return [
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
             ],
         ],
-        'CreateRuntimeResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'CreateRuntimeResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModifyRuntimeVersionResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'DescribeRuntimeResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1070,14 +1193,6 @@ return [
         'GetRuntimeSessionsRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
-            ],
-        ],
-        'DescribeRuntimeRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
             ],
