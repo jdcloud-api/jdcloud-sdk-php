@@ -74,6 +74,33 @@ return [
             'input' => [ 'shape' => 'CompanyTransferRequestShape', ],
             'output' => [ 'shape' => 'CompanyTransferResponseShape', ],
         ],
+        'CompanyTransferNew' => [
+            'name' => 'CompanyTransferNew',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/company:transferNew',
+            ],
+            'input' => [ 'shape' => 'CompanyTransferNewRequestShape', ],
+            'output' => [ 'shape' => 'CompanyTransferNewResponseShape', ],
+        ],
+        'CheckCompanyTransferNew' => [
+            'name' => 'CheckCompanyTransferNew',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/company:checkNew',
+            ],
+            'input' => [ 'shape' => 'CheckCompanyTransferNewRequestShape', ],
+            'output' => [ 'shape' => 'CheckCompanyTransferNewResponseShape', ],
+        ],
+        'QueryCompanyTransferNew' => [
+            'name' => 'QueryCompanyTransferNew',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/company:transferStatusNew',
+            ],
+            'input' => [ 'shape' => 'QueryCompanyTransferNewRequestShape', ],
+            'output' => [ 'shape' => 'QueryCompanyTransferNewResponseShape', ],
+        ],
         'CheckCompanyTransfer' => [
             'name' => 'CheckCompanyTransfer',
             'http' => [
@@ -388,6 +415,16 @@ return [
                 'idCode' => [ 'type' => 'string', 'locationName' => 'idCode', ],
             ],
         ],
+        'AccountInfoNew' => [
+            'type' => 'structure',
+            'members' => [
+                'accountNo' => [ 'type' => 'string', 'locationName' => 'accountNo', ],
+                'accountBank' => [ 'type' => 'string', 'locationName' => 'accountBank', ],
+                'keyName' => [ 'type' => 'string', 'locationName' => 'keyName', ],
+                'subBank' => [ 'type' => 'string', 'locationName' => 'subBank', ],
+                'payCallbackUrl' => [ 'type' => 'string', 'locationName' => 'payCallbackUrl', ],
+            ],
+        ],
         'AuthInfo' => [
             'type' => 'structure',
             'members' => [
@@ -675,6 +712,13 @@ return [
                 'result' =>  [ 'shape' => 'CompanyTransferSimpleResultShape', ],
             ],
         ],
+        'QueryCompanyTransferNewResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'QueryCompanyTransferNewResultShape', ],
+            ],
+        ],
         'PersonalBankcard4DetailResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -736,6 +780,16 @@ return [
                 'result' =>  [ 'shape' => 'PersonalAuthResultShape', ],
             ],
         ],
+        'QueryCompanyTransferNewResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+            ],
+        ],
         'QueryProvinceListResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -769,6 +823,23 @@ return [
             'type' => 'structure',
             'members' => [
                 'token' => [ 'type' => 'string', 'locationName' => 'token', ],
+            ],
+        ],
+        'CompanyTransferNewResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CompanyTransferNewResultShape', ],
+            ],
+        ],
+        'CompanyTransferNewResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
         'BusinessOCRResultShape' => [
@@ -982,6 +1053,12 @@ return [
                 'image_base64' => [ 'type' => 'string', 'locationName' => 'image_base64', ],
             ],
         ],
+        'CheckCompanyTransferNewRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'checkInfo' =>  [ 'shape' => 'CheckInfo', ],
+            ],
+        ],
         'CheckCompanyInfo3ResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1116,6 +1193,13 @@ return [
                 'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
             ],
         ],
+        'CheckCompanyTransferNewResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'CheckCompanyTransferNewResultShape', ],
+            ],
+        ],
         'CompanyTransferResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1136,6 +1220,22 @@ return [
             'type' => 'structure',
             'members' => [
                 'accountInfo' =>  [ 'shape' => 'AccountInfo', ],
+            ],
+        ],
+        'QueryCompanyTransferNewRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
+            ],
+        ],
+        'CheckCompanyTransferNewResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'hasException' => [ 'type' => 'boolean', 'locationName' => 'hasException', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
             ],
         ],
         'QueryCityListResponseShape' => [
@@ -1412,6 +1512,12 @@ return [
             'members' => [
                 'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
                 'customerCode' => [ 'type' => 'string', 'locationName' => 'customerCode', ],
+            ],
+        ],
+        'CompanyTransferNewRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'accountInfo' =>  [ 'shape' => 'AccountInfoNew', ],
             ],
         ],
         'QueryBankListRequestShape' => [

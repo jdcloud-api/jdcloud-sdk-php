@@ -345,6 +345,10 @@ return [
         'namespace' => 'Iotedge',
         'versions' => [ 'latest' => 'v2', ],
     ],
+    'jpfs' => [
+        'namespace' => 'Jpfs',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'conversationalai' => [
         'namespace' => 'Conversationalai',
         'versions' => [ 'latest' => 'v1', ],
