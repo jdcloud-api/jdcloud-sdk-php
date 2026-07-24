@@ -386,6 +386,24 @@ return [
                 'location' =>  [ 'shape' => 'CertificateLocation', ],
             ],
         ],
+        'CfsAccessPointConfiguration' => [
+            'type' => 'structure',
+            'members' => [
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+                'readOnly' => [ 'type' => 'boolean', 'locationName' => 'readOnly', ],
+            ],
+        ],
+        'CfsAccessPointView' => [
+            'type' => 'structure',
+            'members' => [
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+                'readOnly' => [ 'type' => 'boolean', 'locationName' => 'readOnly', ],
+            ],
+        ],
         'OssLocationConfiguration' => [
             'type' => 'structure',
             'members' => [
@@ -517,12 +535,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'ossAccessPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'OssAccessPointConfiguration', ], ],
+                'cfsAccessPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'CfsAccessPointConfiguration', ], ],
             ],
         ],
         'FilesystemView' => [
             'type' => 'structure',
             'members' => [
                 'ossAccessPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'OssAccessPointView', ], ],
+                'cfsAccessPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'CfsAccessPointView', ], ],
             ],
         ],
         'OssAccessPointView' => [
