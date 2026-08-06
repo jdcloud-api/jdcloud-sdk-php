@@ -802,6 +802,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise uranusFlowNodeCreateAsync(array $args = [])
  * @method \Jdcloud\Result uranusTaskNodeCreate(array $args = [])
  * @method \GuzzleHttp\Promise\Promise uranusTaskNodeCreateAsync(array $args = [])
+ * @method \Jdcloud\Result uranusTaskNodeBatchImport(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise uranusTaskNodeBatchImportAsync(array $args = [])
  * @method \Jdcloud\Result uranusTaskOrFlowNodeDelete(array $args = [])
  * @method \GuzzleHttp\Promise\Promise uranusTaskOrFlowNodeDeleteAsync(array $args = [])
  * @method \Jdcloud\Result uranusTaskNodeSnatchLock(array $args = [])
