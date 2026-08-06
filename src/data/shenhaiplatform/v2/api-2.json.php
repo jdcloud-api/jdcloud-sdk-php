@@ -3530,6 +3530,15 @@ return [
             'input' => [ 'shape' => 'UranusTaskNodeCreateRequestShape', ],
             'output' => [ 'shape' => 'UranusTaskNodeCreateResponseShape', ],
         ],
+        'UranusTaskNodeBatchImport' => [
+            'name' => 'UranusTaskNodeBatchImport',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskNodeBatchImport',
+            ],
+            'input' => [ 'shape' => 'UranusTaskNodeBatchImportRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskNodeBatchImportResponseShape', ],
+        ],
         'UranusTaskOrFlowNodeDelete' => [
             'name' => 'UranusTaskOrFlowNodeDelete',
             'http' => [
@@ -7805,6 +7814,7 @@ return [
                 'priorityLabel' => [ 'type' => 'string', 'locationName' => 'priorityLabel', ],
                 'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
                 'resourceGroupLabel' => [ 'type' => 'string', 'locationName' => 'resourceGroupLabel', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
             ],
         ],
         'InstancesRunningLongTimeOrderVo' => [
@@ -7915,6 +7925,8 @@ return [
                 'internalInstanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'belongsWorkflowTaskId' => [ 'type' => 'string', 'locationName' => 'belongsWorkflowTaskId', ],
                 'belongsWorkflowTaskName' => [ 'type' => 'string', 'locationName' => 'belongsWorkflowTaskName', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'workspaceName' => [ 'type' => 'string', 'locationName' => 'workspaceName', ],
             ],
         ],
         'InstanceInfoPageVo' => [
@@ -7984,6 +7996,7 @@ return [
                 'internalInstanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'hasMore' => [ 'type' => 'boolean', 'locationName' => 'hasMore', ],
                 'moreList' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceDependencyVo', ], ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
             ],
         ],
         'SupplementPlanTaskVo' => [
@@ -8026,6 +8039,8 @@ return [
                 'startDelayAlarmTime' => [ 'type' => 'string', 'locationName' => 'startDelayAlarmTime', ],
                 'finishDelayAlarmTime' => [ 'type' => 'string', 'locationName' => 'finishDelayAlarmTime', ],
                 'internalTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'workspaceName' => [ 'type' => 'string', 'locationName' => 'workspaceName', ],
             ],
         ],
         'InstanceInfoVo' => [
@@ -8062,6 +8077,7 @@ return [
                 'internalTaskIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'hasMore' => [ 'type' => 'boolean', 'locationName' => 'hasMore', ],
                 'moreList' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskDependencyVo', ], ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
             ],
         ],
         'InstanceHistoryVo' => [
@@ -9999,11 +10015,27 @@ return [
                 'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
             ],
         ],
+        'AlcGeneralTaskImportParam' => [
+            'type' => 'structure',
+            'members' => [
+                'alcTaskId' => [ 'type' => 'string', 'locationName' => 'alcTaskId', ],
+                'alcTaskType' => [ 'type' => 'string', 'locationName' => 'alcTaskType', ],
+                'alcWorkspaceCode' => [ 'type' => 'string', 'locationName' => 'alcWorkspaceCode', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'flowId' => [ 'type' => 'string', 'locationName' => 'flowId', ],
+                'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
+                'collaborators' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'TaskFuzzListDependableReq' => [
             'type' => 'structure',
             'members' => [
                 'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
                 'taskNameFuzz' => [ 'type' => 'string', 'locationName' => 'taskNameFuzz', ],
                 'dependTaskId' => [ 'type' => 'string', 'locationName' => 'dependTaskId', ],
@@ -10091,6 +10123,12 @@ return [
                 'flowDraftId' => [ 'type' => 'string', 'locationName' => 'flowDraftId', ],
                 'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
                 'batchId' => [ 'type' => 'string', 'locationName' => 'batchId', ],
+            ],
+        ],
+        'AlcGeneralTaskImportListParam' => [
+            'type' => 'structure',
+            'members' => [
+                'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'AlcGeneralTaskImportParam', ], ],
             ],
         ],
         'TaskDebugReq' => [
@@ -10590,6 +10628,8 @@ return [
                 'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
                 'taskKind' => [ 'type' => 'string', 'locationName' => 'taskKind', ],
                 'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'workspaceName' => [ 'type' => 'string', 'locationName' => 'workspaceName', ],
                 'necessary' => [ 'type' => 'boolean', 'locationName' => 'necessary', ],
             ],
         ],
@@ -10613,6 +10653,16 @@ return [
                 'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
             ],
         ],
+        'UranusResultListAlcGeneralTaskImportItemRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'AlcGeneralTaskImportItemRes', ], ],
+            ],
+        ],
         'TaskCatalogNodeBriefVO' => [
             'type' => 'structure',
             'members' => [
@@ -10628,6 +10678,15 @@ return [
             'members' => [
                 'cu' => [ 'type' => 'integer', 'locationName' => 'cu', ],
                 'parallelism' => [ 'type' => 'integer', 'locationName' => 'parallelism', ],
+            ],
+        ],
+        'TaskAlcGeneralParam' => [
+            'type' => 'structure',
+            'members' => [
+                'alcTaskId' => [ 'type' => 'string', 'locationName' => 'alcTaskId', ],
+                'alcTaskType' => [ 'type' => 'string', 'locationName' => 'alcTaskType', ],
+                'originalName' => [ 'type' => 'string', 'locationName' => 'originalName', ],
+                'alcWorkspaceCode' => [ 'type' => 'string', 'locationName' => 'alcWorkspaceCode', ],
             ],
         ],
         'UranusResultListCatalogNodeBriefVO' => [
@@ -10754,6 +10813,18 @@ return [
                 'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
                 'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
                 'result' =>  [ 'shape' => 'PageResultTaskCanvasInfoRes', ],
+            ],
+        ],
+        'AlcGeneralTaskImportItemRes' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'alcTaskId' => [ 'type' => 'string', 'locationName' => 'alcTaskId', ],
+                'alcTaskType' => [ 'type' => 'string', 'locationName' => 'alcTaskType', ],
+                'originalName' => [ 'type' => 'string', 'locationName' => 'originalName', ],
+                'alcWorkspaceCode' => [ 'type' => 'string', 'locationName' => 'alcWorkspaceCode', ],
+                'finalName' => [ 'type' => 'string', 'locationName' => 'finalName', ],
             ],
         ],
         'TaskPipeInfoRes' => [
@@ -10897,6 +10968,7 @@ return [
                 'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
                 'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
                 'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'alcGeneralParams' =>  [ 'shape' => 'TaskAlcGeneralParam', ],
             ],
         ],
         'UranusResultString2' => [
@@ -11010,6 +11082,8 @@ return [
                 'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
                 'kind' => [ 'type' => 'string', 'locationName' => 'kind', ],
                 'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'workspaceName' => [ 'type' => 'string', 'locationName' => 'workspaceName', ],
             ],
         ],
         'TaskCreatePublicRes' => [
@@ -19127,6 +19201,7 @@ return [
                 'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
                 'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
                 'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'alcGeneralParams' =>  [ 'shape' => 'TaskAlcGeneralParam', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -19201,6 +19276,7 @@ return [
                 'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
                 'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
                 'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'alcGeneralParams' =>  [ 'shape' => 'TaskAlcGeneralParam', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -19265,6 +19341,7 @@ return [
                 'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
                 'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
                 'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'alcGeneralParams' =>  [ 'shape' => 'TaskAlcGeneralParam', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -19330,10 +19407,11 @@ return [
             'members' => [
                 'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
                 'taskNameFuzz' => [ 'type' => 'string', 'locationName' => 'taskNameFuzz', ],
                 'dependTaskId' => [ 'type' => 'string', 'locationName' => 'dependTaskId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
@@ -19367,6 +19445,7 @@ return [
                 'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
                 'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
                 'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'alcGeneralParams' =>  [ 'shape' => 'TaskAlcGeneralParam', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -19436,6 +19515,7 @@ return [
                 'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
                 'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
                 'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'alcGeneralParams' =>  [ 'shape' => 'TaskAlcGeneralParam', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -19485,6 +19565,7 @@ return [
                 'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
                 'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
                 'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'alcGeneralParams' =>  [ 'shape' => 'TaskAlcGeneralParam', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -19585,6 +19666,7 @@ return [
                 'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
                 'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
                 'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'alcGeneralParams' =>  [ 'shape' => 'TaskAlcGeneralParam', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -19621,6 +19703,7 @@ return [
                 'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
                 'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
                 'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'alcGeneralParams' =>  [ 'shape' => 'TaskAlcGeneralParam', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -19900,6 +19983,7 @@ return [
                 'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
                 'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
                 'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'alcGeneralParams' =>  [ 'shape' => 'TaskAlcGeneralParam', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -19983,6 +20067,7 @@ return [
                 'pipeInfoRes' =>  [ 'shape' => 'TaskPipeInfoRes', ],
                 'imageParams' =>  [ 'shape' => 'TaskImageParam', ],
                 'specialParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParam', ], ],
+                'alcGeneralParams' =>  [ 'shape' => 'TaskAlcGeneralParam', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -21501,6 +21586,12 @@ return [
                 'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
             ],
         ],
+        'UranusTaskNodeBatchImportResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskNodeBatchImportResultShape', ],
+            ],
+        ],
         'UranusFlowUpdateAllCanvasResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -21511,6 +21602,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskNodeBatchImportRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'AlcGeneralTaskImportParam', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -21568,6 +21667,16 @@ return [
                 'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
                 'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
                 'result' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UranusTaskNodeBatchImportResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'AlcGeneralTaskImportItemRes', ], ],
             ],
         ],
         'UranusTaskNodeCreateResultShape' => [

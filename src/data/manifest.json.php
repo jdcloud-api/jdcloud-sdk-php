@@ -1,6 +1,10 @@
 <?php
 // This file was auto-generated
 return [
+    'jdrabbitmq' => [
+        'namespace' => 'Jdrabbitmq',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'rdts' => [
         'namespace' => 'Rdts',
         'versions' => [ 'latest' => 'v2', ],
@@ -455,6 +459,10 @@ return [
     ],
     'cloudsign' => [
         'namespace' => 'Cloudsign',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'aifactory' => [
+        'namespace' => 'Aifactory',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'baseanti' => [
