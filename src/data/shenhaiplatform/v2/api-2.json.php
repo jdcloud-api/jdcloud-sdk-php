@@ -3764,6 +3764,69 @@ return [
             'input' => [ 'shape' => 'UranusTaskPublicConfigStartParamsRequestShape', ],
             'output' => [ 'shape' => 'UranusTaskPublicConfigStartParamsResponseShape', ],
         ],
+        'UranusTaskPublicSnatchLock' => [
+            'name' => 'UranusTaskPublicSnatchLock',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicSnatchLock',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicSnatchLockRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicSnatchLockResponseShape', ],
+        ],
+        'UranusTaskPublicCreateFlow' => [
+            'name' => 'UranusTaskPublicCreateFlow',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicCreateFlow',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicCreateFlowRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicCreateFlowResponseShape', ],
+        ],
+        'UranusTaskPublicPageList' => [
+            'name' => 'UranusTaskPublicPageList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicPageList',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicPageListRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicPageListResponseShape', ],
+        ],
+        'UranusTaskPublicCatalogExistedByPath' => [
+            'name' => 'UranusTaskPublicCatalogExistedByPath',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicCatalogExistedByPath',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicCatalogExistedByPathRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicCatalogExistedByPathResponseShape', ],
+        ],
+        'UranusTaskPublicUpdateInputParam' => [
+            'name' => 'UranusTaskPublicUpdateInputParam',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicUpdateInputParam',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicUpdateInputParamRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicUpdateInputParamResponseShape', ],
+        ],
+        'UranusTaskPublicUpdateOutputParam' => [
+            'name' => 'UranusTaskPublicUpdateOutputParam',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicUpdateOutputParam',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicUpdateOutputParamRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicUpdateOutputParamResponseShape', ],
+        ],
+        'UranusTaskPublicStopDebug' => [
+            'name' => 'UranusTaskPublicStopDebug',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/uranusTaskPublicStopDebug',
+            ],
+            'input' => [ 'shape' => 'UranusTaskPublicStopDebugRequestShape', ],
+            'output' => [ 'shape' => 'UranusTaskPublicStopDebugResponseShape', ],
+        ],
         'UranusUdfListFunction' => [
             'name' => 'UranusUdfListFunction',
             'http' => [
@@ -3916,6 +3979,78 @@ return [
             ],
             'input' => [ 'shape' => 'UranusWorkSpaceDownRequestShape', ],
             'output' => [ 'shape' => 'UranusWorkSpaceDownResponseShape', ],
+        ],
+        'EngineCreate' => [
+            'name' => 'EngineCreate',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/engineCreate',
+            ],
+            'input' => [ 'shape' => 'EngineCreateRequestShape', ],
+            'output' => [ 'shape' => 'EngineCreateResponseShape', ],
+        ],
+        'GetEngineByWorkspaceCode' => [
+            'name' => 'GetEngineByWorkspaceCode',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getEngineByWorkspaceCode',
+            ],
+            'input' => [ 'shape' => 'GetEngineByWorkspaceCodeRequestShape', ],
+            'output' => [ 'shape' => 'GetEngineByWorkspaceCodeResponseShape', ],
+        ],
+        'GetByProjectCode' => [
+            'name' => 'GetByProjectCode',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getByProjectCode',
+            ],
+            'input' => [ 'shape' => 'GetByProjectCodeRequestShape', ],
+            'output' => [ 'shape' => 'GetByProjectCodeResponseShape', ],
+        ],
+        'GetEngineDetailsByWorkspaceCode' => [
+            'name' => 'GetEngineDetailsByWorkspaceCode',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getEngineDetailsByWorkspaceCode',
+            ],
+            'input' => [ 'shape' => 'GetEngineDetailsByWorkspaceCodeRequestShape', ],
+            'output' => [ 'shape' => 'GetEngineDetailsByWorkspaceCodeResponseShape', ],
+        ],
+        'GetInstances' => [
+            'name' => 'GetInstances',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getInstances',
+            ],
+            'input' => [ 'shape' => 'GetInstancesRequestShape', ],
+            'output' => [ 'shape' => 'GetInstancesResponseShape', ],
+        ],
+        'BindInstance' => [
+            'name' => 'BindInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/bindInstance',
+            ],
+            'input' => [ 'shape' => 'BindInstanceRequestShape', ],
+            'output' => [ 'shape' => 'BindInstanceResponseShape', ],
+        ],
+        'UnbindInstance' => [
+            'name' => 'UnbindInstance',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/unbindInstance',
+            ],
+            'input' => [ 'shape' => 'UnbindInstanceRequestShape', ],
+            'output' => [ 'shape' => 'UnbindInstanceResponseShape', ],
+        ],
+        'BindWorkspaceEngine' => [
+            'name' => 'BindWorkspaceEngine',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/bindWorkspaceEngine',
+            ],
+            'input' => [ 'shape' => 'BindWorkspaceEngineRequestShape', ],
+            'output' => [ 'shape' => 'BindWorkspaceEngineResponseShape', ],
         ],
         'WorkspaceCreate' => [
             'name' => 'WorkspaceCreate',
@@ -4096,6 +4231,42 @@ return [
             ],
             'input' => [ 'shape' => 'WorkspaceGetProductRegionInfoRequestShape', ],
             'output' => [ 'shape' => 'WorkspaceGetProductRegionInfoResponseShape', ],
+        ],
+        'ParamList' => [
+            'name' => 'ParamList',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/paramList',
+            ],
+            'input' => [ 'shape' => 'ParamListRequestShape', ],
+            'output' => [ 'shape' => 'ParamListResponseShape', ],
+        ],
+        'ParamBatchSave' => [
+            'name' => 'ParamBatchSave',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/paramBatchSave',
+            ],
+            'input' => [ 'shape' => 'ParamBatchSaveRequestShape', ],
+            'output' => [ 'shape' => 'ParamBatchSaveResponseShape', ],
+        ],
+        'ParamDelete' => [
+            'name' => 'ParamDelete',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/paramDelete',
+            ],
+            'input' => [ 'shape' => 'ParamDeleteRequestShape', ],
+            'output' => [ 'shape' => 'ParamDeleteResponseShape', ],
+        ],
+        'ParamTypes' => [
+            'name' => 'ParamTypes',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/paramTypes',
+            ],
+            'input' => [ 'shape' => 'ParamTypesRequestShape', ],
+            'output' => [ 'shape' => 'ParamTypesResponseShape', ],
         ],
         'WorkspaceGetMembers' => [
             'name' => 'WorkspaceGetMembers',
@@ -10232,6 +10403,15 @@ return [
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
             ],
         ],
+        'FlowCreatePublicReq' => [
+            'type' => 'structure',
+            'members' => [
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'flowName' => [ 'type' => 'string', 'locationName' => 'flowName', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'collaborators' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'TaskFuzzListDependablePublicReq' => [
             'type' => 'structure',
             'members' => [
@@ -10244,9 +10424,44 @@ return [
             'type' => 'structure',
             'members' => [
                 'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'flowId' => [ 'type' => 'string', 'locationName' => 'flowId', ],
                 'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
                 'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
                 'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+            ],
+        ],
+        'TaskListPublicReq' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'taskNameFuzz' => [ 'type' => 'string', 'locationName' => 'taskNameFuzz', ],
+            ],
+        ],
+        'TaskBaseParamPublicReq' => [
+            'type' => 'structure',
+            'members' => [
+                'paramSort' => [ 'type' => 'integer', 'locationName' => 'paramSort', ],
+                'paramKey' => [ 'type' => 'string', 'locationName' => 'paramKey', ],
+                'paramValue' => [ 'type' => 'string', 'locationName' => 'paramValue', ],
+                'paramDesc' => [ 'type' => 'string', 'locationName' => 'paramDesc', ],
+                'paramType' => [ 'type' => 'string', 'locationName' => 'paramType', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+            ],
+        ],
+        'TaskInputParamInfoPublicReq' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'inputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParamPublicReq', ], ],
+            ],
+        ],
+        'TaskOutputParamInfoPublicReq' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'outputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParamPublicReq', ], ],
             ],
         ],
         'TaskDebugPublicReq' => [
@@ -11060,6 +11275,16 @@ return [
                 'receiver' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'UranusResultFlowCreatePublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'FlowCreatePublicRes', ],
+            ],
+        ],
         'UranusResultListTaskDependInfoPublicRes' => [
             'type' => 'structure',
             'members' => [
@@ -11068,6 +11293,16 @@ return [
                 'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
                 'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
                 'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskDependInfoPublicRes', ], ],
+            ],
+        ],
+        'PageResultContentTaskListItemPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'totalPage' => [ 'type' => 'integer', 'locationName' => 'totalPage', ],
+                'totalRecords' => [ 'type' => 'integer', 'locationName' => 'totalRecords', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskListItemPublicRes', ], ],
             ],
         ],
         'TaskDependInfoPublicRes' => [
@@ -11084,6 +11319,21 @@ return [
                 'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'workspaceName' => [ 'type' => 'string', 'locationName' => 'workspaceName', ],
+            ],
+        ],
+        'TaskListItemPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskKind' => [ 'type' => 'string', 'locationName' => 'taskKind', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'catalogName' => [ 'type' => 'string', 'locationName' => 'catalogName', ],
+                'parentFlowDraftId' => [ 'type' => 'string', 'locationName' => 'parentFlowDraftId', ],
+                'parentFlowName' => [ 'type' => 'string', 'locationName' => 'parentFlowName', ],
+                'publishStatus' => [ 'type' => 'string', 'locationName' => 'publishStatus', ],
             ],
         ],
         'TaskCreatePublicRes' => [
@@ -11147,6 +11397,16 @@ return [
                 'content' => [ 'type' => 'string', 'locationName' => 'content', ],
             ],
         ],
+        'UranusResultPageResultContentTaskListItemPublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'PageResultContentTaskListItemPublicRes', ],
+            ],
+        ],
         'TaskCatalogNodePublicVo' => [
             'type' => 'structure',
             'members' => [
@@ -11171,6 +11431,12 @@ return [
                 'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
                 'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
                 'result' =>  [ 'shape' => 'TaskDebugLogPublicRes', ],
+            ],
+        ],
+        'FlowCreatePublicRes' => [
+            'type' => 'structure',
+            'members' => [
+                'flowDraftId' => [ 'type' => 'string', 'locationName' => 'flowDraftId', ],
             ],
         ],
         'UranusResultTaskInfoPublicRes' => [
@@ -11325,24 +11591,6 @@ return [
                 'bundleResource' => [ 'type' => 'boolean', 'locationName' => 'bundleResource', ],
             ],
         ],
-        'WorkspaceCreateReq' => [
-            'type' => 'structure',
-            'members' => [
-                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
-                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
-                'workspaceName' => [ 'type' => 'string', 'locationName' => 'workspaceName', ],
-                'manager' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'workspaceDescription' => [ 'type' => 'string', 'locationName' => 'workspaceDescription', ],
-                'workspaceModel' => [ 'type' => 'string', 'locationName' => 'workspaceModel', ],
-                'workspaceLabel' => [ 'type' => 'string', 'locationName' => 'workspaceLabel', ],
-                'engineType' => [ 'type' => 'string', 'locationName' => 'engineType', ],
-                'calculateResourceCode' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'integrationResourceCode' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'needBundleProject' => [ 'type' => 'boolean', 'locationName' => 'needBundleProject', ],
-                'bundleDevProjectReq' =>  [ 'shape' => 'BundleProjectReq', ],
-                'bundleProdProjectReq' =>  [ 'shape' => 'BundleProjectReq', ],
-            ],
-        ],
         'BundleProjectReq' => [
             'type' => 'structure',
             'members' => [
@@ -11352,18 +11600,21 @@ return [
                 'env' => [ 'type' => 'string', 'locationName' => 'env', ],
             ],
         ],
+        'QueryWorkspaceParamReq' => [
+            'type' => 'structure',
+            'members' => [
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'paramType' => [ 'type' => 'string', 'locationName' => 'paramType', ],
+                'paramName' => [ 'type' => 'string', 'locationName' => 'paramName', ],
+                'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
+            ],
+        ],
         'EditWorkspaceReq' => [
             'type' => 'structure',
             'members' => [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'workspaceName' => [ 'type' => 'string', 'locationName' => 'workspaceName', ],
                 'workspaceDescription' => [ 'type' => 'string', 'locationName' => 'workspaceDescription', ],
-            ],
-        ],
-        'ChangeWorkspaceStatusReq' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
             ],
         ],
         'CreateProjectResourceParam' => [
@@ -11388,13 +11639,6 @@ return [
                 'updateRoleReq' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserRoleInfo', ], ],
             ],
         ],
-        'DeleteMemberReq' => [
-            'type' => 'structure',
-            'members' => [
-                'userPinList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'workspaceId' => [ 'type' => 'long', 'locationName' => 'workspaceId', ],
-            ],
-        ],
         'UnbundleResourceReq' => [
             'type' => 'structure',
             'members' => [
@@ -11402,17 +11646,14 @@ return [
                 'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
             ],
         ],
-        'WorkspaceUserReq' => [
+        'WorkspaceParamReq' => [
             'type' => 'structure',
             'members' => [
-                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
-                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
-                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
-                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
-                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
-                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'paramCode' => [ 'type' => 'string', 'locationName' => 'paramCode', ],
+                'paramName' => [ 'type' => 'string', 'locationName' => 'paramName', ],
+                'paramType' => [ 'type' => 'string', 'locationName' => 'paramType', ],
+                'paramValue' => [ 'type' => 'string', 'locationName' => 'paramValue', ],
+                'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
             ],
         ],
         'UnbundleProjectReq' => [
@@ -11423,13 +11664,15 @@ return [
                 'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
             ],
         ],
-        'WorkspaceBundleProjectReq' => [
+        'BindEngineInstanceReq' => [
             'type' => 'structure',
             'members' => [
-                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
-                'engineType' => [ 'type' => 'string', 'locationName' => 'engineType', ],
-                'bundleDevProjectReq' =>  [ 'shape' => 'BundleProjectReq', ],
-                'bundleProdProjectReq' =>  [ 'shape' => 'BundleProjectReq', ],
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
+                'instanceCode' => [ 'type' => 'string', 'locationName' => 'instanceCode', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
             ],
         ],
         'CreateWorkspaceProductParam' => [
@@ -11458,17 +11701,6 @@ return [
                 'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
             ],
         ],
-        'StopExpireOrDeleteReq' => [
-            'type' => 'structure',
-            'members' => [
-                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
-                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
-                'handleStatus' => [ 'type' => 'string', 'locationName' => 'handleStatus', ],
-                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
-                'sourceId' => [ 'type' => 'string', 'locationName' => 'sourceId', ],
-                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
-            ],
-        ],
         'SyncWsProductOrderReq' => [
             'type' => 'structure',
             'members' => [
@@ -11484,29 +11716,12 @@ return [
                 'orderUniqueKey' =>  [ 'shape' => 'OrderUniqueKey', ],
             ],
         ],
-        'BizTagInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'bizTagType' => [ 'type' => 'string', 'locationName' => 'bizTagType', ],
-                'bizTagKey' => [ 'type' => 'string', 'locationName' => 'bizTagKey', ],
-                'bizTagValue' => [ 'type' => 'string', 'locationName' => 'bizTagValue', ],
-            ],
-        ],
         'AddMemberReq' => [
             'type' => 'structure',
             'members' => [
                 'workspaceId' => [ 'type' => 'long', 'locationName' => 'workspaceId', ],
                 'userPinList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'roleCodeList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'QueryWorkspaceInfoReq' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
-                'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
-                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
             ],
         ],
         'OwnerIntegrationResource' => [
@@ -11524,6 +11739,119 @@ return [
                 'payResourceNum' => [ 'type' => 'integer', 'locationName' => 'payResourceNum', ],
             ],
         ],
+        'UserRoleInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
+                'userRole' => [ 'type' => 'string', 'locationName' => 'userRole', ],
+            ],
+        ],
+        'BatchSaveWorkspaceParamReq' => [
+            'type' => 'structure',
+            'members' => [
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'params' => [ 'type' => 'list', 'member' => [ 'shape' => 'WorkspaceParamReq', ], ],
+            ],
+        ],
+        'WorkspaceCreateReq' => [
+            'type' => 'structure',
+            'members' => [
+                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
+                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
+                'workspaceName' => [ 'type' => 'string', 'locationName' => 'workspaceName', ],
+                'manager' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'workspaceDescription' => [ 'type' => 'string', 'locationName' => 'workspaceDescription', ],
+                'workspaceModel' => [ 'type' => 'string', 'locationName' => 'workspaceModel', ],
+                'workspaceLabel' => [ 'type' => 'string', 'locationName' => 'workspaceLabel', ],
+                'engineType' => [ 'type' => 'string', 'locationName' => 'engineType', ],
+                'calculateResourceCode' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'integrationResourceCode' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'needBundleProject' => [ 'type' => 'boolean', 'locationName' => 'needBundleProject', ],
+                'bundleDevProjectReq' =>  [ 'shape' => 'BundleProjectReq', ],
+                'bundleProdProjectReq' =>  [ 'shape' => 'BundleProjectReq', ],
+            ],
+        ],
+        'ChangeWorkspaceStatusReq' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+            ],
+        ],
+        'DeleteMemberReq' => [
+            'type' => 'structure',
+            'members' => [
+                'userPinList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'workspaceId' => [ 'type' => 'long', 'locationName' => 'workspaceId', ],
+            ],
+        ],
+        'WorkspaceUserReq' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'userName' => [ 'type' => 'string', 'locationName' => 'userName', ],
+                'nickName' => [ 'type' => 'string', 'locationName' => 'nickName', ],
+                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+            ],
+        ],
+        'WorkspaceBundleProjectReq' => [
+            'type' => 'structure',
+            'members' => [
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'engineType' => [ 'type' => 'string', 'locationName' => 'engineType', ],
+                'bundleDevProjectReq' =>  [ 'shape' => 'BundleProjectReq', ],
+                'bundleProdProjectReq' =>  [ 'shape' => 'BundleProjectReq', ],
+            ],
+        ],
+        'StopExpireOrDeleteReq' => [
+            'type' => 'structure',
+            'members' => [
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'handleStatus' => [ 'type' => 'string', 'locationName' => 'handleStatus', ],
+                'region' => [ 'type' => 'string', 'locationName' => 'region', ],
+                'sourceId' => [ 'type' => 'string', 'locationName' => 'sourceId', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+            ],
+        ],
+        'BizTagInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'bizTagType' => [ 'type' => 'string', 'locationName' => 'bizTagType', ],
+                'bizTagKey' => [ 'type' => 'string', 'locationName' => 'bizTagKey', ],
+                'bizTagValue' => [ 'type' => 'string', 'locationName' => 'bizTagValue', ],
+            ],
+        ],
+        'QueryWorkspaceInfoReq' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+            ],
+        ],
+        'CreateEngineReq' => [
+            'type' => 'structure',
+            'members' => [
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'engineName' => [ 'type' => 'string', 'locationName' => 'engineName', ],
+                'engineType' => [ 'type' => 'string', 'locationName' => 'engineType', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'EngineEnvConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
+                'projectName' => [ 'type' => 'string', 'locationName' => 'projectName', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+            ],
+        ],
         'QueryWorkspaceListReq' => [
             'type' => 'structure',
             'members' => [
@@ -11536,14 +11864,6 @@ return [
                 'imInProject' => [ 'type' => 'boolean', 'locationName' => 'imInProject', ],
             ],
         ],
-        'UserRoleInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
-                'userPin' => [ 'type' => 'string', 'locationName' => 'userPin', ],
-                'userRole' => [ 'type' => 'string', 'locationName' => 'userRole', ],
-            ],
-        ],
         'WorkspaceResourcesReq' => [
             'type' => 'structure',
             'members' => [
@@ -11554,6 +11874,16 @@ return [
                 'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
             ],
         ],
+        'BindWorkspaceEngineReq' => [
+            'type' => 'structure',
+            'members' => [
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'engineName' => [ 'type' => 'string', 'locationName' => 'engineName', ],
+                'engineType' => [ 'type' => 'string', 'locationName' => 'engineType', ],
+                'devConfig' =>  [ 'shape' => 'EngineEnvConfig', ],
+                'prodConfig' =>  [ 'shape' => 'EngineEnvConfig', ],
+            ],
+        ],
         'PageInfoUcUsersResp' => [
             'type' => 'structure',
             'members' => [
@@ -11561,6 +11891,16 @@ return [
                 'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'UcUsersResp', ], ],
+            ],
+        ],
+        'JmrInstanceResp' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceCode' => [ 'type' => 'string', 'locationName' => 'instanceCode', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
             ],
         ],
         'ResourceInfo' => [
@@ -11620,6 +11960,22 @@ return [
                 'isAccount' => [ 'type' => 'boolean', 'locationName' => 'isAccount', ],
             ],
         ],
+        'EngineWorkspaceDetailResp' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceCode' => [ 'type' => 'string', 'locationName' => 'instanceCode', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
+                'engineName' => [ 'type' => 'string', 'locationName' => 'engineName', ],
+                'engineType' => [ 'type' => 'string', 'locationName' => 'engineType', ],
+                'engineStatus' => [ 'type' => 'string', 'locationName' => 'engineStatus', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'workspaceName' => [ 'type' => 'string', 'locationName' => 'workspaceName', ],
+                'companyCode' => [ 'type' => 'string', 'locationName' => 'companyCode', ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'createdDate' => [ 'type' => 'string', 'locationName' => 'createdDate', ],
+            ],
+        ],
         'WorkspaceListResp' => [
             'type' => 'structure',
             'members' => [
@@ -11665,6 +12021,30 @@ return [
                 'list' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceResp', ], ],
             ],
         ],
+        'WorkspaceParamResp' => [
+            'type' => 'structure',
+            'members' => [
+                'paramCode' => [ 'type' => 'string', 'locationName' => 'paramCode', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'paramName' => [ 'type' => 'string', 'locationName' => 'paramName', ],
+                'paramType' => [ 'type' => 'string', 'locationName' => 'paramType', ],
+                'paramTypeDesc' => [ 'type' => 'string', 'locationName' => 'paramTypeDesc', ],
+                'paramValue' => [ 'type' => 'string', 'locationName' => 'paramValue', ],
+                'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
+                'creator' => [ 'type' => 'string', 'locationName' => 'creator', ],
+                'modifier' => [ 'type' => 'string', 'locationName' => 'modifier', ],
+                'createdDate' => [ 'type' => 'string', 'locationName' => 'createdDate', ],
+                'modifiedDate' => [ 'type' => 'string', 'locationName' => 'modifiedDate', ],
+            ],
+        ],
+        'EngineBoundInstancesResp' => [
+            'type' => 'structure',
+            'members' => [
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
+                'cloudProjects' => [ 'type' => 'list', 'member' => [ 'shape' => 'ProjectResp', ], ],
+                'jmrInstances' => [ 'type' => 'list', 'member' => [ 'shape' => 'JmrInstanceResp', ], ],
+            ],
+        ],
         'WorkspaceUserRoleResp' => [
             'type' => 'structure',
             'members' => [
@@ -11674,6 +12054,21 @@ return [
                 'workspaceModel' => [ 'type' => 'string', 'locationName' => 'workspaceModel', ],
                 'workspaceLabel' => [ 'type' => 'string', 'locationName' => 'workspaceLabel', ],
                 'roles' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'WorkspaceEngineResp' => [
+            'type' => 'structure',
+            'members' => [
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
+                'engineName' => [ 'type' => 'string', 'locationName' => 'engineName', ],
+                'engineType' => [ 'type' => 'string', 'locationName' => 'engineType', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'creator' => [ 'type' => 'string', 'locationName' => 'creator', ],
+                'modifier' => [ 'type' => 'string', 'locationName' => 'modifier', ],
+                'createdDate' => [ 'type' => 'string', 'locationName' => 'createdDate', ],
+                'modifiedDate' => [ 'type' => 'string', 'locationName' => 'modifiedDate', ],
             ],
         ],
         'WorkspaceInfoResp' => [
@@ -11687,6 +12082,18 @@ return [
                 'accountId' => [ 'type' => 'string', 'locationName' => 'accountId', ],
                 'workspaceLabel' => [ 'type' => 'string', 'locationName' => 'workspaceLabel', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'WorkspaceEngineDetailResp' => [
+            'type' => 'structure',
+            'members' => [
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
+                'engineName' => [ 'type' => 'string', 'locationName' => 'engineName', ],
+                'engineType' => [ 'type' => 'string', 'locationName' => 'engineType', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'cloudProjects' => [ 'type' => 'list', 'member' => [ 'shape' => 'ProjectResp', ], ],
+                'jmrInstances' => [ 'type' => 'list', 'member' => [ 'shape' => 'JmrInstanceResp', ], ],
             ],
         ],
         'ProductRegionListResp' => [
@@ -21824,16 +22231,24 @@ return [
                 'result' =>  [ 'shape' => 'UranusTaskTypeListResultShape', ],
             ],
         ],
-        'UranusTaskPublicListDependableResponseShape' => [
+        'UranusTaskPublicStopDebugResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'UranusTaskPublicListDependableResultShape', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
             ],
         ],
-        'UranusTaskPublicDebugResultResponseShape' => [
+        'UranusTaskPublicPageListRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'UranusTaskPublicDebugResultResultShape', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'taskNameFuzz' => [ 'type' => 'string', 'locationName' => 'taskNameFuzz', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
         'UranusTaskPublicConfigStartParamsResponseShape' => [
@@ -21848,44 +22263,16 @@ return [
                 'result' =>  [ 'shape' => 'UranusTaskPublicListResourcesResultShape', ],
             ],
         ],
-        'UranusTaskPublicDetailResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
-                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
-                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
-                'result' =>  [ 'shape' => 'TaskInfoPublicRes', ],
-            ],
-        ],
         'UranusTaskPublicPublishResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'UranusTaskPublicPublishResultShape', ],
             ],
         ],
-        'UranusTaskPublicConfigScheduleRequestShape' => [
+        'UranusTaskPublicPageListResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
-                'cronExpression' => [ 'type' => 'string', 'locationName' => 'cronExpression', ],
-                'priority' => [ 'type' => 'string', 'locationName' => 'priority', ],
-                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
-                'retryTimes' => [ 'type' => 'integer', 'locationName' => 'retryTimes', ],
-                'retryInterval' => [ 'type' => 'integer', 'locationName' => 'retryInterval', ],
-                'isCrossCycleDepend' => [ 'type' => 'boolean', 'locationName' => 'isCrossCycleDepend', ],
-                'cu' => [ 'type' => 'integer', 'locationName' => 'cu', ],
-                'parallelism' => [ 'type' => 'integer', 'locationName' => 'parallelism', ],
-                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
-                'imageId' => [ 'type' => 'long', 'locationName' => 'imageId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-            ],
-        ],
-        'UranusTaskPublicConfigScheduleResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'UranusTaskPublicConfigScheduleResultShape', ],
+                'result' =>  [ 'shape' => 'UranusTaskPublicPageListResultShape', ],
             ],
         ],
         'UranusTaskPublicDebugResultShape' => [
@@ -21915,6 +22302,12 @@ return [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
+        'UranusTaskPublicUpdateOutputParamResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicUpdateOutputParamResultShape', ],
+            ],
+        ],
         'UranusTaskPublicDebugLogRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -21939,10 +22332,14 @@ return [
                 'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
             ],
         ],
-        'UranusTaskPublicConfigBaseInfoResponseShape' => [
+        'UranusTaskPublicCatalogExistedByPathResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'UranusTaskPublicConfigBaseInfoResultShape', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
             ],
         ],
         'UranusTaskPublicUpdateDatasourceResponseShape' => [
@@ -21951,22 +22348,24 @@ return [
                 'result' =>  [ 'shape' => 'UranusTaskPublicUpdateDatasourceResultShape', ],
             ],
         ],
-        'UranusTaskPublicPublishRequestShape' => [
+        'UranusTaskPublicSnatchLockResultShape' => [
             'type' => 'structure',
             'members' => [
-                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
-                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskInfoRes2', ],
             ],
         ],
-        'UranusTaskPublicUpdateScriptRequestShape' => [
+        'UranusTaskPublicUpdateOutputParamResultShape' => [
             'type' => 'structure',
             'members' => [
-                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
-                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
             ],
         ],
         'UranusTaskPublicListImagesResponseShape' => [
@@ -21975,44 +22374,21 @@ return [
                 'result' =>  [ 'shape' => 'UranusTaskPublicListImagesResultShape', ],
             ],
         ],
-        'UranusTaskPublicListResourcesResultShape' => [
+        'UranusTaskPublicCatalogExistedByPathRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
-                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
-                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
-                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceInfoPublicRes', ], ],
+                'absolutePath' => [ 'type' => 'string', 'locationName' => 'absolutePath', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
-        'UranusTaskPublicConfigAlarmResultShape' => [
+        'UranusTaskPublicUpdateOutputParamRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
-                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
-                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
-                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
-            ],
-        ],
-        'UranusTaskPublicUpdateDatasourceResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
-                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
-                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
-                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
-            ],
-        ],
-        'UranusTaskPublicConfigStartParamsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
-                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
-                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
-                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'outputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParamPublicReq', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
         'UranusTaskPublicUpdateScriptResponseShape' => [
@@ -22021,51 +22397,11 @@ return [
                 'result' =>  [ 'shape' => 'UranusTaskPublicUpdateScriptResultShape', ],
             ],
         ],
-        'UranusTaskPublicConfigBaseInfoRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
-                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
-                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
-                'taskKind' => [ 'type' => 'string', 'locationName' => 'taskKind', ],
-                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
-                'taskClassify' => [ 'type' => 'string', 'locationName' => 'taskClassify', ],
-                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
-                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
-                'collaborators' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
-                'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
-                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
-                'catalogName' => [ 'type' => 'string', 'locationName' => 'catalogName', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-            ],
-        ],
-        'UranusTaskPublicUpdateScriptResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
-                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
-                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
-                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
-            ],
-        ],
         'UranusTaskPublicListResourcesRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-            ],
-        ],
-        'UranusTaskPublicListImagesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
-                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
-                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
-                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageInfoPublicRes', ], ],
             ],
         ],
         'UranusTaskPublicCreateResultShape' => [
@@ -22078,6 +22414,12 @@ return [
                 'result' =>  [ 'shape' => 'TaskCreatePublicRes', ],
             ],
         ],
+        'UranusTaskPublicSnatchLockResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicSnatchLockResultShape', ],
+            ],
+        ],
         'UranusTaskPublicListDatasourcesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -22085,36 +22427,10 @@ return [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
-        'UranusTaskPublicDetailResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'UranusTaskPublicDetailResultShape', ],
-            ],
-        ],
-        'UranusTaskPublicConfigDependResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
-                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
-                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
-                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
-            ],
-        ],
         'UranusTaskPublicDebugResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'UranusTaskPublicDebugResultShape', ],
-            ],
-        ],
-        'UranusTaskPublicListDatasourcesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
-                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
-                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
-                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataSourceInfoPublicRes', ], ],
             ],
         ],
         'UranusTaskPublicDetailRequestShape' => [
@@ -22125,17 +22441,26 @@ return [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
+        'UranusTaskPublicPageListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'PageResultContentTaskListItemPublicRes', ],
+            ],
+        ],
         'UranusTaskPublicCreateResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'UranusTaskPublicCreateResultShape', ],
             ],
         ],
-        'UranusTaskPublicConfigDependRequestShape' => [
+        'UranusTaskPublicSnatchLockRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
-                'dependsTaskDraftId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -22180,6 +22505,277 @@ return [
                 'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
             ],
         ],
+        'UranusTaskPublicCatalogExistedByPathResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicCatalogExistedByPathResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicConfigAlarmRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'method' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'timing' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'receiver' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicDebugResultRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'debugId' => [ 'type' => 'long', 'locationName' => 'debugId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicUpdateDatasourceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'datasourceId' => [ 'type' => 'string', 'locationName' => 'datasourceId', ],
+                'datasourceName' => [ 'type' => 'string', 'locationName' => 'datasourceName', ],
+                'datasourceType' => [ 'type' => 'string', 'locationName' => 'datasourceType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicListDependableResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicListDependableResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicDebugResultResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicDebugResultResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicCreateFlowResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicCreateFlowResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicCreateFlowRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'flowName' => [ 'type' => 'string', 'locationName' => 'flowName', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'collaborators' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'TaskInfoPublicRes', ],
+            ],
+        ],
+        'UranusTaskPublicConfigScheduleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'cronExpression' => [ 'type' => 'string', 'locationName' => 'cronExpression', ],
+                'priority' => [ 'type' => 'string', 'locationName' => 'priority', ],
+                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
+                'retryTimes' => [ 'type' => 'integer', 'locationName' => 'retryTimes', ],
+                'retryInterval' => [ 'type' => 'integer', 'locationName' => 'retryInterval', ],
+                'isCrossCycleDepend' => [ 'type' => 'boolean', 'locationName' => 'isCrossCycleDepend', ],
+                'cu' => [ 'type' => 'integer', 'locationName' => 'cu', ],
+                'parallelism' => [ 'type' => 'integer', 'locationName' => 'parallelism', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'imageId' => [ 'type' => 'long', 'locationName' => 'imageId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicConfigScheduleResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicConfigScheduleResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicConfigBaseInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicConfigBaseInfoResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicPublishRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicUpdateScriptRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
+                'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicListResourcesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ResourceInfoPublicRes', ], ],
+            ],
+        ],
+        'UranusTaskPublicConfigAlarmResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPublicUpdateDatasourceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPublicConfigStartParamsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPublicUpdateInputParamRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'inputParams' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskBaseParamPublicReq', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicConfigBaseInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'taskId' => [ 'type' => 'string', 'locationName' => 'taskId', ],
+                'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
+                'taskKind' => [ 'type' => 'string', 'locationName' => 'taskKind', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'taskClassify' => [ 'type' => 'string', 'locationName' => 'taskClassify', ],
+                'taskStatus' => [ 'type' => 'string', 'locationName' => 'taskStatus', ],
+                'manager' => [ 'type' => 'string', 'locationName' => 'manager', ],
+                'collaborators' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
+                'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'catalogName' => [ 'type' => 'string', 'locationName' => 'catalogName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicUpdateScriptResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPublicUpdateInputParamResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPublicListImagesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageInfoPublicRes', ], ],
+            ],
+        ],
+        'UranusTaskPublicDetailResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicDetailResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicConfigDependResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'boolean', 'locationName' => 'result', ],
+            ],
+        ],
+        'UranusTaskPublicListDatasourcesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataSourceInfoPublicRes', ], ],
+            ],
+        ],
+        'UranusTaskPublicUpdateInputParamResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UranusTaskPublicUpdateInputParamResultShape', ],
+            ],
+        ],
+        'UranusTaskPublicStopDebugRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'debugId' => [ 'type' => 'long', 'locationName' => 'debugId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UranusTaskPublicConfigDependRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
+                'dependsTaskDraftId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
         'UranusTaskPublicListDependableResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -22202,15 +22798,10 @@ return [
                 'result' =>  [ 'shape' => 'UranusTaskPublicConfigDependResultShape', ],
             ],
         ],
-        'UranusTaskPublicConfigAlarmRequestShape' => [
+        'UranusTaskPublicStopDebugResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
-                'method' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'timing' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'receiver' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'result' =>  [ 'shape' => 'UranusTaskPublicStopDebugResultShape', ],
             ],
         ],
         'UranusTaskPublicDebugLogResultShape' => [
@@ -22227,6 +22818,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'catalogId' => [ 'type' => 'string', 'locationName' => 'catalogId', ],
+                'flowId' => [ 'type' => 'string', 'locationName' => 'flowId', ],
                 'taskName' => [ 'type' => 'string', 'locationName' => 'taskName', ],
                 'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
                 'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
@@ -22234,29 +22826,20 @@ return [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
-        'UranusTaskPublicDebugResultRequestShape' => [
+        'UranusTaskPublicCreateFlowResultShape' => [
             'type' => 'structure',
             'members' => [
-                'debugId' => [ 'type' => 'long', 'locationName' => 'debugId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'errorTitle' => [ 'type' => 'string', 'locationName' => 'errorTitle', ],
+                'errorMsg' => [ 'type' => 'string', 'locationName' => 'errorMsg', ],
+                'subCode' => [ 'type' => 'string', 'locationName' => 'subCode', ],
+                'result' =>  [ 'shape' => 'FlowCreatePublicRes', ],
             ],
         ],
         'UranusTaskPublicDebugRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
-            ],
-        ],
-        'UranusTaskPublicUpdateDatasourceRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'taskDraftId' => [ 'type' => 'string', 'locationName' => 'taskDraftId', ],
-                'datasourceId' => [ 'type' => 'string', 'locationName' => 'datasourceId', ],
-                'datasourceName' => [ 'type' => 'string', 'locationName' => 'datasourceName', ],
-                'datasourceType' => [ 'type' => 'string', 'locationName' => 'datasourceType', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -22757,6 +23340,214 @@ return [
                 'successed' => [ 'type' => 'boolean', 'locationName' => 'successed', ],
             ],
         ],
+        'GetEngineByWorkspaceCodeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'EngineCreateResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'WorkspaceEngineResp', ],
+            ],
+        ],
+        'BindInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
+                'instanceCode' => [ 'type' => 'string', 'locationName' => 'instanceCode', ],
+                'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'BindInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'BindWorkspaceEngineResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'WorkspaceEngineResp', ],
+            ],
+        ],
+        'EngineCreateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'engineName' => [ 'type' => 'string', 'locationName' => 'engineName', ],
+                'engineType' => [ 'type' => 'string', 'locationName' => 'engineType', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UnbindInstanceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
+                'instanceCode' => [ 'type' => 'string', 'locationName' => 'instanceCode', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'GetByProjectCodeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetByProjectCodeResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'BindWorkspaceEngineResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'BindWorkspaceEngineResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetInstancesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UnbindInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UnbindInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetEngineDetailsByWorkspaceCodeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'GetEngineDetailsByWorkspaceCodeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'WorkspaceEngineDetailResp', ], ],
+            ],
+        ],
+        'GetEngineDetailsByWorkspaceCodeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetEngineDetailsByWorkspaceCodeResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'EngineBoundInstancesResp', ],
+            ],
+        ],
+        'BindInstanceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'BindInstanceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetEngineByWorkspaceCodeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetEngineByWorkspaceCodeResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'EngineCreateResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'EngineCreateResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetByProjectCodeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'UnbindInstanceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'BindWorkspaceEngineRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'engineName' => [ 'type' => 'string', 'locationName' => 'engineName', ],
+                'engineType' => [ 'type' => 'string', 'locationName' => 'engineType', ],
+                'devConfig' =>  [ 'shape' => 'EngineEnvConfig', ],
+                'prodConfig' =>  [ 'shape' => 'EngineEnvConfig', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'GetEngineByWorkspaceCodeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'WorkspaceEngineResp', ], ],
+            ],
+        ],
+        'GetByProjectCodeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' =>  [ 'shape' => 'EngineWorkspaceDetailResp', ],
+            ],
+        ],
+        'GetInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
         'WorkspaceBundleOrUnBundleResourceRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -23247,6 +24038,99 @@ return [
                 'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'ParamBatchSaveResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ParamBatchSaveResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ParamBatchSaveRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'params' => [ 'type' => 'list', 'member' => [ 'shape' => 'WorkspaceParamReq', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'ParamDeleteResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ParamDeleteResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ParamDeleteResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ParamDeleteRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'paramCode' => [ 'type' => 'string', 'locationName' => 'paramCode', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'ParamTypesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'ParamBatchSaveResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ParamListResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'WorkspaceParamResp', ], ],
+            ],
+        ],
+        'ParamTypesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ParamTypesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ParamListRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'paramType' => [ 'type' => 'string', 'locationName' => 'paramType', ],
+                'paramName' => [ 'type' => 'string', 'locationName' => 'paramName', ],
+                'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'ParamTypesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+            ],
+        ],
+        'ParamListResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ParamListResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'WorkspaceGetUcUsersResultShape' => [
