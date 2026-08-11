@@ -445,6 +445,10 @@ return [
         'namespace' => 'Vod',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'jdaip' => [
+        'namespace' => 'Jdaip',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'yundingdatapush' => [
         'namespace' => 'Yundingdatapush',
         'versions' => [ 'latest' => 'v1', ],
