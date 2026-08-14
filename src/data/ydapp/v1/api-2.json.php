@@ -20,6 +20,123 @@ return [
             'input' => [ 'shape' => 'DescribeAppsRequestShape', ],
             'output' => [ 'shape' => 'DescribeAppsResponseShape', ],
         ],
+        'LinkPackage' => [
+            'name' => 'LinkPackage',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/app/{appId}:linkPackage',
+            ],
+            'input' => [ 'shape' => 'LinkPackageRequestShape', ],
+            'output' => [ 'shape' => 'LinkPackageResponseShape', ],
+        ],
+        'ScanPackage' => [
+            'name' => 'ScanPackage',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/app/{appId}/package/{packageId}:scan',
+            ],
+            'input' => [ 'shape' => 'ScanPackageRequestShape', ],
+            'output' => [ 'shape' => 'ScanPackageResponseShape', ],
+        ],
+        'GenerateUploadUrl' => [
+            'name' => 'GenerateUploadUrl',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/app/{appId}/package:uploadUrl',
+            ],
+            'input' => [ 'shape' => 'GenerateUploadUrlRequestShape', ],
+            'output' => [ 'shape' => 'GenerateUploadUrlResponseShape', ],
+        ],
+        'GetPackageDownloadInfo' => [
+            'name' => 'GetPackageDownloadInfo',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/app/{appId}/package/{packageId}:downloadInfo',
+            ],
+            'input' => [ 'shape' => 'GetPackageDownloadInfoRequestShape', ],
+            'output' => [ 'shape' => 'GetPackageDownloadInfoResponseShape', ],
+        ],
+        'DescribePackages' => [
+            'name' => 'DescribePackages',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/app/{appId}/packages',
+            ],
+            'input' => [ 'shape' => 'DescribePackagesRequestShape', ],
+            'output' => [ 'shape' => 'DescribePackagesResponseShape', ],
+        ],
+        'DeletePackage' => [
+            'name' => 'DeletePackage',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/app/{appId}/package/{packageId}',
+            ],
+            'input' => [ 'shape' => 'DeletePackageRequestShape', ],
+            'output' => [ 'shape' => 'DeletePackageResponseShape', ],
+        ],
+        'DescribeAutoDeletePolicy' => [
+            'name' => 'DescribeAutoDeletePolicy',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/app/{appId}/imageRepo:autoDeletePolicy',
+            ],
+            'input' => [ 'shape' => 'DescribeAutoDeletePolicyRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAutoDeletePolicyResponseShape', ],
+        ],
+        'OpenAutoDeleteRepo' => [
+            'name' => 'OpenAutoDeleteRepo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/app/{appId}/imageRepo:openAutoDelete',
+            ],
+            'input' => [ 'shape' => 'OpenAutoDeleteRepoRequestShape', ],
+            'output' => [ 'shape' => 'OpenAutoDeleteRepoResponseShape', ],
+        ],
+        'CloseAutoDeleteRepo' => [
+            'name' => 'CloseAutoDeleteRepo',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/app/{appId}/imageRepo:closeAutoDelete',
+            ],
+            'input' => [ 'shape' => 'CloseAutoDeleteRepoRequestShape', ],
+            'output' => [ 'shape' => 'CloseAutoDeleteRepoResponseShape', ],
+        ],
+        'CreatePipelineTask' => [
+            'name' => 'CreatePipelineTask',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/pipelinetask',
+            ],
+            'input' => [ 'shape' => 'CreatePipelineTaskRequestShape', ],
+            'output' => [ 'shape' => 'CreatePipelineTaskResponseShape', ],
+        ],
+        'DescribeImageRecords' => [
+            'name' => 'DescribeImageRecords',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/imageRecords:page',
+            ],
+            'input' => [ 'shape' => 'DescribeImageRecordsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeImageRecordsResponseShape', ],
+        ],
+        'DeleteImageRecord' => [
+            'name' => 'DeleteImageRecord',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/imageRecord/{uid}',
+            ],
+            'input' => [ 'shape' => 'DeleteImageRecordRequestShape', ],
+            'output' => [ 'shape' => 'DeleteImageRecordResponseShape', ],
+        ],
+        'DescribeBaseImages' => [
+            'name' => 'DescribeBaseImages',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/baseImages',
+            ],
+            'input' => [ 'shape' => 'DescribeBaseImagesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBaseImagesResponseShape', ],
+        ],
         'DeleteCustomImage' => [
             'name' => 'DeleteCustomImage',
             'http' => [
@@ -248,6 +365,20 @@ return [
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
             ],
         ],
+        'BaseImage' => [
+            'type' => 'structure',
+            'members' => [
+                'uid' => [ 'type' => 'string', 'locationName' => 'uid', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'imgDigest' => [ 'type' => 'string', 'locationName' => 'imgDigest', ],
+                'imgType' => [ 'type' => 'string', 'locationName' => 'imgType', ],
+                'imgSecondType' => [ 'type' => 'string', 'locationName' => 'imgSecondType', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
         'ConfigInfo' => [
             'type' => 'structure',
             'members' => [
@@ -371,6 +502,58 @@ return [
                 'totalPullTimes' => [ 'type' => 'integer', 'locationName' => 'totalPullTimes', ],
             ],
         ],
+        'ImageRepoRecord' => [
+            'type' => 'structure',
+            'members' => [
+                'uid' => [ 'type' => 'string', 'locationName' => 'uid', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'pipelineTaskId' => [ 'type' => 'string', 'locationName' => 'pipelineTaskId', ],
+                'packageId' => [ 'type' => 'long', 'locationName' => 'packageId', ],
+                'packageName' => [ 'type' => 'string', 'locationName' => 'packageName', ],
+                'baseImageId' => [ 'type' => 'long', 'locationName' => 'baseImageId', ],
+                'baseImageName' => [ 'type' => 'string', 'locationName' => 'baseImageName', ],
+                'packageVersion' => [ 'type' => 'string', 'locationName' => 'packageVersion', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'size' => [ 'type' => 'float', 'locationName' => 'size', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'PackageDetailInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'downUrl' => [ 'type' => 'string', 'locationName' => 'downUrl', ],
+                'createTime' => [ 'type' => 'integer', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'createdBy' => [ 'type' => 'string', 'locationName' => 'createdBy', ],
+                'updatedBy' => [ 'type' => 'string', 'locationName' => 'updatedBy', ],
+                'tenantId' => [ 'type' => 'string', 'locationName' => 'tenantId', ],
+                'securityTaskId' => [ 'type' => 'long', 'locationName' => 'securityTaskId', ],
+                'securityScanResult' => [ 'type' => 'string', 'locationName' => 'securityScanResult', ],
+                'reportUrl' => [ 'type' => 'string', 'locationName' => 'reportUrl', ],
+                'vulCountHigh' => [ 'type' => 'long', 'locationName' => 'vulCountHigh', ],
+                'vulCountMedium' => [ 'type' => 'long', 'locationName' => 'vulCountMedium', ],
+                'vulCountLow' => [ 'type' => 'long', 'locationName' => 'vulCountLow', ],
+            ],
+        ],
+        'PackageInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'rawFilename' => [ 'type' => 'string', 'locationName' => 'rawFilename', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'preSignedUrl' => [ 'type' => 'string', 'locationName' => 'preSignedUrl', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+            ],
+        ],
         'Pod' => [
             'type' => 'structure',
             'members' => [
@@ -400,6 +583,318 @@ return [
             'members' => [
                 'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'CloseAutoDeleteRepoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'DescribeImageRecordsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageRepoRecord', ], ],
+                'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DeletePackageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'packageId' => [ 'type' => 'long', 'locationName' => 'packageId', ],
+            ],
+        ],
+        'DeleteImageRecordRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'uid' => [ 'type' => 'string', 'locationName' => 'uid', ],
+            ],
+        ],
+        'GetPackageDownloadInfoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'packageId' => [ 'type' => 'long', 'locationName' => 'packageId', ],
+            ],
+        ],
+        'DescribeImageRecordsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'uid' => [ 'type' => 'string', 'locationName' => 'uid', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'pipelineTaskId' => [ 'type' => 'string', 'locationName' => 'pipelineTaskId', ],
+                'packageId' => [ 'type' => 'long', 'locationName' => 'packageId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'page' => [ 'type' => 'object', 'locationName' => 'page', ],
+            ],
+        ],
+        'DeletePackageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeletePackageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeImageRecordsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeImageRecordsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'OpenAutoDeleteRepoRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'limit' => [ 'type' => 'integer', 'locationName' => 'limit', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'DeleteImageRecordResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteImageRecordResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'LinkPackageRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+            ],
+        ],
+        'DescribePackagesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribePackagesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ScanPackageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ScanPackageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteImageRecordResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'GetPackageDownloadInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetPackageDownloadInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeBaseImagesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'BaseImage', ], ],
+                'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeAutoDeletePolicyResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAutoDeletePolicyResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribePackagesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'long', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'nameLike' => [ 'type' => 'string', 'locationName' => 'nameLike', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'ImageRecordPageRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'uid' => [ 'type' => 'string', 'locationName' => 'uid', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'pipelineTaskId' => [ 'type' => 'string', 'locationName' => 'pipelineTaskId', ],
+                'packageId' => [ 'type' => 'long', 'locationName' => 'packageId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'page' => [ 'type' => 'object', 'locationName' => 'page', ],
+            ],
+        ],
+        'DescribeAutoDeletePolicyResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'quota' => [ 'type' => 'integer', 'locationName' => 'quota', ],
+                'extraRetainCount' => [ 'type' => 'integer', 'locationName' => 'extraRetainCount', ],
+                'autoDelete' => [ 'type' => 'string', 'locationName' => 'autoDelete', ],
+                'autoDeleteLatestDate' => [ 'type' => 'string', 'locationName' => 'autoDeleteLatestDate', ],
+            ],
+        ],
+        'CloseAutoDeleteRepoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'GenerateUploadUrlResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'presignedPutUrl' => [ 'type' => 'string', 'locationName' => 'presignedPutUrl', ],
+                'finalUrl' => [ 'type' => 'string', 'locationName' => 'finalUrl', ],
+                'objectName' => [ 'type' => 'string', 'locationName' => 'objectName', ],
+            ],
+        ],
+        'ScanPackageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'GenerateUploadUrlResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GenerateUploadUrlResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'LinkPackageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'value' => [ 'type' => 'long', 'locationName' => 'value', ],
+            ],
+        ],
+        'DescribeBaseImagesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imageType' => [ 'type' => 'string', 'locationName' => 'imageType', ],
+            ],
+        ],
+        'ScanPackageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'packageId' => [ 'type' => 'long', 'locationName' => 'packageId', ],
+            ],
+        ],
+        'GetPackageDownloadInfoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'rawFilename' => [ 'type' => 'string', 'locationName' => 'rawFilename', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'preSignedUrl' => [ 'type' => 'string', 'locationName' => 'preSignedUrl', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+            ],
+        ],
+        'DescribeBaseImagesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBaseImagesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'OpenAutoDeleteRepoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'OpenAutoDeleteRepoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GenerateUploadUrlRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'fileName' => [ 'type' => 'string', 'locationName' => 'fileName', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'LinkPackageRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'url' => [ 'type' => 'string', 'locationName' => 'url', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'LinkPackageResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'LinkPackageResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAutoDeletePolicyRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'OpenAutoDeleteRepoResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'DescribePackagesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'PackageDetailInfo', ], ],
+                'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'CreatePipelineTaskResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'PipelineTaskRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'baseImageUid' => [ 'type' => 'string', 'locationName' => 'baseImageUid', ],
+                'packageId' => [ 'type' => 'long', 'locationName' => 'packageId', ],
+                'args' => [ 'type' => 'string', 'locationName' => 'args', ],
+            ],
+        ],
+        'CreatePipelineTaskRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'baseImageUid' => [ 'type' => 'string', 'locationName' => 'baseImageUid', ],
+                'packageId' => [ 'type' => 'long', 'locationName' => 'packageId', ],
+                'args' => [ 'type' => 'string', 'locationName' => 'args', ],
+            ],
+        ],
+        'CloseAutoDeleteRepoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CloseAutoDeleteRepoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeletePackageResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'CreatePipelineTaskResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreatePipelineTaskResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DeleteCustomImageResultShape' => [
