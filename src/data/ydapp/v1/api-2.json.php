@@ -20,6 +20,42 @@ return [
             'input' => [ 'shape' => 'DescribeAppsRequestShape', ],
             'output' => [ 'shape' => 'DescribeAppsResponseShape', ],
         ],
+        'CreateApp' => [
+            'name' => 'CreateApp',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/app',
+            ],
+            'input' => [ 'shape' => 'CreateAppRequestShape', ],
+            'output' => [ 'shape' => 'CreateAppResponseShape', ],
+        ],
+        'DescribeApp' => [
+            'name' => 'DescribeApp',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/app/{appId}',
+            ],
+            'input' => [ 'shape' => 'DescribeAppRequestShape', ],
+            'output' => [ 'shape' => 'DescribeAppResponseShape', ],
+        ],
+        'UpdateApp' => [
+            'name' => 'UpdateApp',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/app/{appId}',
+            ],
+            'input' => [ 'shape' => 'UpdateAppRequestShape', ],
+            'output' => [ 'shape' => 'UpdateAppResponseShape', ],
+        ],
+        'DeleteApp' => [
+            'name' => 'DeleteApp',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/app/{appId}',
+            ],
+            'input' => [ 'shape' => 'DeleteAppRequestShape', ],
+            'output' => [ 'shape' => 'DeleteAppResponseShape', ],
+        ],
         'LinkPackage' => [
             'name' => 'LinkPackage',
             'http' => [
@@ -137,6 +173,15 @@ return [
             'input' => [ 'shape' => 'DescribeBaseImagesRequestShape', ],
             'output' => [ 'shape' => 'DescribeBaseImagesResponseShape', ],
         ],
+        'DescribeClusters' => [
+            'name' => 'DescribeClusters',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/clusters:page',
+            ],
+            'input' => [ 'shape' => 'DescribeClustersRequestShape', ],
+            'output' => [ 'shape' => 'DescribeClustersResponseShape', ],
+        ],
         'DeleteCustomImage' => [
             'name' => 'DeleteCustomImage',
             'http' => [
@@ -244,6 +289,33 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeGroupConfigRequestShape', ],
             'output' => [ 'shape' => 'DescribeGroupConfigResponseShape', ],
+        ],
+        'DeleteAppGroup' => [
+            'name' => 'DeleteAppGroup',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/app/{appId}/group/{groupId}',
+            ],
+            'input' => [ 'shape' => 'DeleteAppGroupRequestShape', ],
+            'output' => [ 'shape' => 'DeleteAppGroupResponseShape', ],
+        ],
+        'CreateAppGroup' => [
+            'name' => 'CreateAppGroup',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/app/{appId}/group',
+            ],
+            'input' => [ 'shape' => 'CreateAppGroupRequestShape', ],
+            'output' => [ 'shape' => 'CreateAppGroupResponseShape', ],
+        ],
+        'CopyAppGroup' => [
+            'name' => 'CopyAppGroup',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/app/{appId}/group/{groupId}:copy',
+            ],
+            'input' => [ 'shape' => 'CopyAppGroupRequestShape', ],
+            'output' => [ 'shape' => 'CopyAppGroupResponseShape', ],
         ],
         'UpdateBaseInfo' => [
             'name' => 'UpdateBaseInfo',
@@ -353,6 +425,60 @@ return [
             'input' => [ 'shape' => 'RebuildRequestShape', ],
             'output' => [ 'shape' => 'RebuildResponseShape', ],
         ],
+        'CreateSystem' => [
+            'name' => 'CreateSystem',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/system',
+            ],
+            'input' => [ 'shape' => 'CreateSystemRequestShape', ],
+            'output' => [ 'shape' => 'CreateSystemResponseShape', ],
+        ],
+        'DescribeJosApps' => [
+            'name' => 'DescribeJosApps',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/josapps',
+            ],
+            'input' => [ 'shape' => 'DescribeJosAppsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeJosAppsResponseShape', ],
+        ],
+        'DescribeSystems' => [
+            'name' => 'DescribeSystems',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/systems:page',
+            ],
+            'input' => [ 'shape' => 'DescribeSystemsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSystemsResponseShape', ],
+        ],
+        'DescribeSystem' => [
+            'name' => 'DescribeSystem',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/system/{systemId}',
+            ],
+            'input' => [ 'shape' => 'DescribeSystemRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSystemResponseShape', ],
+        ],
+        'UpdateSystem' => [
+            'name' => 'UpdateSystem',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/system/{systemId}',
+            ],
+            'input' => [ 'shape' => 'UpdateSystemRequestShape', ],
+            'output' => [ 'shape' => 'UpdateSystemResponseShape', ],
+        ],
+        'DeleteSystem' => [
+            'name' => 'DeleteSystem',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/system/{systemId}',
+            ],
+            'input' => [ 'shape' => 'DeleteSystemRequestShape', ],
+            'output' => [ 'shape' => 'DeleteSystemResponseShape', ],
+        ],
     ],
     'shapes' => [
         'App' => [
@@ -363,6 +489,40 @@ return [
                 'systemId' => [ 'type' => 'string', 'locationName' => 'systemId', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'AppMembers' => [
+            'type' => 'structure',
+            'members' => [
+                'manager' => [ 'type' => 'list', 'member' => [ 'shape' => 'BusinessSubUser', ], ],
+                'read_only' => [ 'type' => 'list', 'member' => [ 'shape' => 'BusinessSubUser', ], ],
+                'read_write' => [ 'type' => 'list', 'member' => [ 'shape' => 'BusinessSubUser', ], ],
+            ],
+        ],
+        'UpdateAppSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'appLevel' => [ 'type' => 'string', 'locationName' => 'appLevel', ],
+                'language' => [ 'type' => 'string', 'locationName' => 'language', ],
+                'appMembers' =>  [ 'shape' => 'AppMember', ],
+            ],
+        ],
+        'AppMember' => [
+            'type' => 'structure',
+            'members' => [
+                'manager' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'read_only' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'read_write' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'BusinessSubUser' => [
+            'type' => 'structure',
+            'members' => [
+                'mainPin' => [ 'type' => 'string', 'locationName' => 'mainPin', ],
+                'subUserPin' => [ 'type' => 'string', 'locationName' => 'subUserPin', ],
+                'subUserName' => [ 'type' => 'string', 'locationName' => 'subUserName', ],
             ],
         ],
         'BaseImage' => [
@@ -422,6 +582,172 @@ return [
                 'count' => [ 'type' => 'integer', 'locationName' => 'count', ],
             ],
         ],
+        'ContainerInfoStruct' => [
+            'type' => 'structure',
+            'members' => [
+                'cpu' => [ 'type' => 'string', 'locationName' => 'cpu', ],
+                'memory' => [ 'type' => 'string', 'locationName' => 'memory', ],
+                'requestCpu' => [ 'type' => 'string', 'locationName' => 'requestCpu', ],
+                'requestMemory' => [ 'type' => 'string', 'locationName' => 'requestMemory', ],
+                'deployStrategy' =>  [ 'shape' => 'DeployStrategyStruct', ],
+                'podCount' => [ 'type' => 'integer', 'locationName' => 'podCount', ],
+                'startCmdStruct' =>  [ 'shape' => 'StartCmdStruct', ],
+                'ports' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskPort', ], ],
+                'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
+            ],
+        ],
+        'StartCmdStruct' => [
+            'type' => 'structure',
+            'members' => [
+                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'args' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'TaskPort' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'containerPort' => [ 'type' => 'integer', 'locationName' => 'containerPort', ],
+                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+            ],
+        ],
+        'AddGroup' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
+                'groupKey' => [ 'type' => 'string', 'locationName' => 'groupKey', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'stateful' => [ 'type' => 'boolean', 'locationName' => 'stateful', ],
+                'clusterId' => [ 'type' => 'long', 'locationName' => 'clusterId', ],
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
+                'imagePullPolicy' => [ 'type' => 'string', 'locationName' => 'imagePullPolicy', ],
+                'deployStrategy' => [ 'type' => 'string', 'locationName' => 'deployStrategy', ],
+                'healthCheck' => [ 'type' => 'string', 'locationName' => 'healthCheck', ],
+                'readyCheck' => [ 'type' => 'string', 'locationName' => 'readyCheck', ],
+                'lifecycle' => [ 'type' => 'string', 'locationName' => 'lifecycle', ],
+                'podCount' => [ 'type' => 'integer', 'locationName' => 'podCount', ],
+                'cpu' => [ 'type' => 'string', 'locationName' => 'cpu', ],
+                'requestCpu' => [ 'type' => 'string', 'locationName' => 'requestCpu', ],
+                'disk' => [ 'type' => 'string', 'locationName' => 'disk', ],
+                'gpu' => [ 'type' => 'string', 'locationName' => 'gpu', ],
+                'startCmd' => [ 'type' => 'string', 'locationName' => 'startCmd', ],
+                'memory' => [ 'type' => 'string', 'locationName' => 'memory', ],
+                'requestMemory' => [ 'type' => 'string', 'locationName' => 'requestMemory', ],
+                'tenant' => [ 'type' => 'string', 'locationName' => 'tenant', ],
+                'configChange' => [ 'type' => 'boolean', 'locationName' => 'configChange', ],
+                'opconfigChange' => [ 'type' => 'boolean', 'locationName' => 'opconfigChange', ],
+                'terminationGraceSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGraceSeconds', ],
+                'ports' => [ 'type' => 'string', 'locationName' => 'ports', ],
+                'hpaEnabled' => [ 'type' => 'boolean', 'locationName' => 'hpaEnabled', ],
+                'createTime' => [ 'type' => 'integer', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'createdBy' => [ 'type' => 'string', 'locationName' => 'createdBy', ],
+                'updatedBy' => [ 'type' => 'string', 'locationName' => 'updatedBy', ],
+                'tenantId' => [ 'type' => 'string', 'locationName' => 'tenantId', ],
+                'deployStrategyStruct' =>  [ 'shape' => 'DeployStrategyStruct', ],
+                'healthCheckStruct' =>  [ 'shape' => 'HealthCheckStruct', ],
+                'readyCheckStruct' =>  [ 'shape' => 'ReadyCheckStruct', ],
+                'lifecycleStruct' =>  [ 'shape' => 'LifecycleStruct', ],
+                'failedConfigs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'warningMessage' => [ 'type' => 'string', 'locationName' => 'warningMessage', ],
+            ],
+        ],
+        'LifecycleHook' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'scheme' => [ 'type' => 'string', 'locationName' => 'scheme', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
+                'header' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskHeader', ], ],
+            ],
+        ],
+        'GroupVolume' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'createTime' => [ 'type' => 'integer', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'createdBy' => [ 'type' => 'string', 'locationName' => 'createdBy', ],
+                'updatedBy' => [ 'type' => 'string', 'locationName' => 'updatedBy', ],
+                'tenantId' => [ 'type' => 'string', 'locationName' => 'tenantId', ],
+                'volumeType' => [ 'type' => 'string', 'locationName' => 'volumeType', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+                'subpath' => [ 'type' => 'string', 'locationName' => 'subpath', ],
+                'accessMode' => [ 'type' => 'string', 'locationName' => 'accessMode', ],
+                'disk' => [ 'type' => 'string', 'locationName' => 'disk', ],
+                'pvcName' => [ 'type' => 'string', 'locationName' => 'pvcName', ],
+                'hpPath' => [ 'type' => 'string', 'locationName' => 'hpPath', ],
+                'hpType' => [ 'type' => 'string', 'locationName' => 'hpType', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'DeployStrategyDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'concurrency' => [ 'type' => 'integer', 'locationName' => 'concurrency', ],
+                'maxSurge' => [ 'type' => 'integer', 'locationName' => 'maxSurge', ],
+                'pauseStrategy' => [ 'type' => 'string', 'locationName' => 'pauseStrategy', ],
+                'interval' => [ 'type' => 'integer', 'locationName' => 'interval', ],
+                'batchCount' => [ 'type' => 'integer', 'locationName' => 'batchCount', ],
+            ],
+        ],
+        'LifecycleStruct' => [
+            'type' => 'structure',
+            'members' => [
+                'postStart' =>  [ 'shape' => 'LifecycleHook', ],
+                'preStop' =>  [ 'shape' => 'LifecycleHook', ],
+            ],
+        ],
+        'ReadyCheckStruct' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'initialDelaySeconds' => [ 'type' => 'integer', 'locationName' => 'initialDelaySeconds', ],
+                'timeoutSeconds' => [ 'type' => 'integer', 'locationName' => 'timeoutSeconds', ],
+                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'scheme' => [ 'type' => 'string', 'locationName' => 'scheme', ],
+            ],
+        ],
+        'TaskHeader' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'HealthCheckStruct' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'initialDelaySeconds' => [ 'type' => 'integer', 'locationName' => 'initialDelaySeconds', ],
+                'timeoutSeconds' => [ 'type' => 'integer', 'locationName' => 'timeoutSeconds', ],
+                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'scheme' => [ 'type' => 'string', 'locationName' => 'scheme', ],
+            ],
+        ],
+        'DeployStrategyStruct' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'detail' =>  [ 'shape' => 'DeployStrategyDetail', ],
+            ],
+        ],
         'Group' => [
             'type' => 'structure',
             'members' => [
@@ -431,6 +757,45 @@ return [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'GroupConfigInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'deleted' => [ 'type' => 'boolean', 'locationName' => 'deleted', ],
+                'itemKey' => [ 'type' => 'string', 'locationName' => 'itemKey', ],
+                'itemValue' => [ 'type' => 'string', 'locationName' => 'itemValue', ],
+                'encrypted' => [ 'type' => 'boolean', 'locationName' => 'encrypted', ],
+                'itemValueEncrypt' => [ 'type' => 'string', 'locationName' => 'itemValueEncrypt', ],
+                'encode' => [ 'type' => 'string', 'locationName' => 'encode', ],
+                'md5' => [ 'type' => 'string', 'locationName' => 'md5', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'updatedTime' => [ 'type' => 'string', 'locationName' => 'updatedTime', ],
+                'createdBy' => [ 'type' => 'string', 'locationName' => 'createdBy', ],
+                'updatedBy' => [ 'type' => 'string', 'locationName' => 'updatedBy', ],
+                'opType' => [ 'type' => 'string', 'locationName' => 'opType', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'released' => [ 'type' => 'boolean', 'locationName' => 'released', ],
+                'tplId' => [ 'type' => 'integer', 'locationName' => 'tplId', ],
+                'replaceFinish' => [ 'type' => 'boolean', 'locationName' => 'replaceFinish', ],
+                'itemResultValue' => [ 'type' => 'string', 'locationName' => 'itemResultValue', ],
+            ],
+        ],
+        'BaseInfoStruct' => [
+            'type' => 'structure',
+            'members' => [
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+            ],
+        ],
+        'TagInfo' => [
+            'type' => 'structure',
+            'members' => [
+                '_uid' => [ 'type' => 'integer', 'locationName' => '_uid', ],
+                'tagKey' => [ 'type' => 'string', 'locationName' => 'tagKey', ],
+                'tagValue' => [ 'type' => 'string', 'locationName' => 'tagValue', ],
             ],
         ],
         'GroupConfig' => [
@@ -520,6 +885,39 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
             ],
         ],
+        'OpenapiDeployClusterRespVo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'clusterId' => [ 'type' => 'long', 'locationName' => 'clusterId', ],
+                'clusterName' => [ 'type' => 'string', 'locationName' => 'clusterName', ],
+                'clusterUser' => [ 'type' => 'string', 'locationName' => 'clusterUser', ],
+                'clusterEnvironment' => [ 'type' => 'string', 'locationName' => 'clusterEnvironment', ],
+                'clusterType' => [ 'type' => 'string', 'locationName' => 'clusterType', ],
+                'clusterIp' => [ 'type' => 'string', 'locationName' => 'clusterIp', ],
+                'k8sClusterId' => [ 'type' => 'string', 'locationName' => 'k8sClusterId', ],
+                'k8sClusterRegion' => [ 'type' => 'string', 'locationName' => 'k8sClusterRegion', ],
+                'k8sClusterVpcId' => [ 'type' => 'string', 'locationName' => 'k8sClusterVpcId', ],
+                'k8sClusterWorkerNodeCount' => [ 'type' => 'integer', 'locationName' => 'k8sClusterWorkerNodeCount', ],
+                'k8sVersion' => [ 'type' => 'string', 'locationName' => 'k8sVersion', ],
+                'k8sClusterState' => [ 'type' => 'string', 'locationName' => 'k8sClusterState', ],
+                'k8sClusterStateMessage' => [ 'type' => 'string', 'locationName' => 'k8sClusterStateMessage', ],
+                'k8sClusterCreateTime' => [ 'type' => 'string', 'locationName' => 'k8sClusterCreateTime', ],
+                'k8sClusterUpdateTime' => [ 'type' => 'string', 'locationName' => 'k8sClusterUpdateTime', ],
+                'clusterStatus' => [ 'type' => 'string', 'locationName' => 'clusterStatus', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'apiServerIpWhitelistEnabled' => [ 'type' => 'integer', 'locationName' => 'apiServerIpWhitelistEnabled', ],
+                'apiServerIpWhitelist' => [ 'type' => 'string', 'locationName' => 'apiServerIpWhitelist', ],
+            ],
+        ],
+        'OpenapiPageReqVo' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
         'PackageDetailInfo' => [
             'type' => 'structure',
             'members' => [
@@ -564,11 +962,70 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
+        'AddSystem' => [
+            'type' => 'structure',
+            'members' => [
+                'systemId' => [ 'type' => 'string', 'locationName' => 'systemId', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+            ],
+        ],
+        'UpdateSystemSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'systemName' => [ 'type' => 'string', 'locationName' => 'systemName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
+        'WukongSystem' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'systemId' => [ 'type' => 'string', 'locationName' => 'systemId', ],
+                'systemKey' => [ 'type' => 'string', 'locationName' => 'systemKey', ],
+                'systemName' => [ 'type' => 'string', 'locationName' => 'systemName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'josBizType' => [ 'type' => 'string', 'locationName' => 'josBizType', ],
+                'josAppName' => [ 'type' => 'string', 'locationName' => 'josAppName', ],
+                'josAppKey' => [ 'type' => 'string', 'locationName' => 'josAppKey', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'CreateSystemSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'systemKey' => [ 'type' => 'string', 'locationName' => 'systemKey', ],
+                'systemName' => [ 'type' => 'string', 'locationName' => 'systemName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'josAppKey' => [ 'type' => 'string', 'locationName' => 'josAppKey', ],
+            ],
+        ],
+        'JosApp' => [
+            'type' => 'structure',
+            'members' => [
+                'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
+                'boundSystem' => [ 'type' => 'boolean', 'locationName' => 'boundSystem', ],
+            ],
+        ],
+        'OpenapiString' => [
+            'type' => 'structure',
+            'members' => [
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'DescribeAppsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeAppsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAppRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
             ],
         ],
         'DescribeAppsResultShape' => [
@@ -578,11 +1035,116 @@ return [
                 'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
             ],
         ],
+        'CreateAppResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateAppResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateAppRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'appLevel' => [ 'type' => 'string', 'locationName' => 'appLevel', ],
+                'language' => [ 'type' => 'string', 'locationName' => 'language', ],
+                'appMembers' =>  [ 'shape' => 'AppMember', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
+        'DeleteAppRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+            ],
+        ],
         'DescribeAppsRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'UpdateAppResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateAppResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeAppResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeAppResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateAppResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'DeleteAppResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteAppResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateAppResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'DescribeAppResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'appLevel' => [ 'type' => 'string', 'locationName' => 'appLevel', ],
+                'stateful' => [ 'type' => 'boolean', 'locationName' => 'stateful', ],
+                'language' => [ 'type' => 'string', 'locationName' => 'language', ],
+                'appMembers' =>  [ 'shape' => 'AppMembers', ],
+                'systemId' => [ 'type' => 'string', 'locationName' => 'systemId', ],
+                'systemKey' => [ 'type' => 'string', 'locationName' => 'systemKey', ],
+                'systemName' => [ 'type' => 'string', 'locationName' => 'systemName', ],
+            ],
+        ],
+        'AddAppRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'systemId' => [ 'type' => 'string', 'locationName' => 'systemId', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'appLevel' => [ 'type' => 'string', 'locationName' => 'appLevel', ],
+                'stateful' => [ 'type' => 'boolean', 'locationName' => 'stateful', ],
+                'language' => [ 'type' => 'string', 'locationName' => 'language', ],
+                'appMembers' =>  [ 'shape' => 'AppMember', ],
+            ],
+        ],
+        'CreateAppRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+                'systemId' => [ 'type' => 'string', 'locationName' => 'systemId', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'appLevel' => [ 'type' => 'string', 'locationName' => 'appLevel', ],
+                'stateful' => [ 'type' => 'boolean', 'locationName' => 'stateful', ],
+                'language' => [ 'type' => 'string', 'locationName' => 'language', ],
+                'appMembers' =>  [ 'shape' => 'AppMember', ],
+            ],
+        ],
+        'DeleteAppResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
             ],
         ],
         'CloseAutoDeleteRepoRequestShape' => [
@@ -627,7 +1189,8 @@ return [
                 'packageId' => [ 'type' => 'long', 'locationName' => 'packageId', ],
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'page' => [ 'type' => 'object', 'locationName' => 'page', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
         ],
         'DeletePackageResponseShape' => [
@@ -712,8 +1275,8 @@ return [
         'DescribePackagesRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'pageNum' => [ 'type' => 'long', 'locationName' => 'pageNum', ],
-                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'nameLike' => [ 'type' => 'string', 'locationName' => 'nameLike', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
             ],
@@ -727,7 +1290,8 @@ return [
                 'packageId' => [ 'type' => 'long', 'locationName' => 'packageId', ],
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
-                'page' => [ 'type' => 'object', 'locationName' => 'page', ],
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
             ],
         ],
         'DescribeAutoDeletePolicyResultShape' => [
@@ -895,6 +1459,27 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'CreatePipelineTaskResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeClustersRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'DescribeClustersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeClustersResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeClustersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'OpenapiDeployClusterRespVo', ], ],
+                'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
             ],
         ],
         'DeleteCustomImageResultShape' => [
@@ -1123,22 +1708,11 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeGroupsResponseShape' => [
+        'CreateAppGroupResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeGroupsResultShape', ],
+                'result' =>  [ 'shape' => 'CreateAppGroupResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DeleteConfigFileRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'fileEncrypted' => [ 'type' => 'boolean', 'locationName' => 'fileEncrypted', ],
-                'fileItemKey' => [ 'type' => 'string', 'locationName' => 'fileItemKey', ],
-                'fileItemValue' => [ 'type' => 'string', 'locationName' => 'fileItemValue', ],
-                'deleteFilePaths' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
             ],
         ],
         'DeleteConfigFileResultShape' => [
@@ -1147,23 +1721,40 @@ return [
                 'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
             ],
         ],
-        'UpdateLifeCycleResultShape' => [
+        'CreateAppGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'groupKey' => [ 'type' => 'string', 'locationName' => 'groupKey', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'clusterId' => [ 'type' => 'integer', 'locationName' => 'clusterId', ],
+                'podCount' => [ 'type' => 'integer', 'locationName' => 'podCount', ],
+                'cpu' => [ 'type' => 'string', 'locationName' => 'cpu', ],
+                'memory' => [ 'type' => 'string', 'locationName' => 'memory', ],
+                'requestCpu' => [ 'type' => 'string', 'locationName' => 'requestCpu', ],
+                'requestMemory' => [ 'type' => 'string', 'locationName' => 'requestMemory', ],
+                'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
+                'terminationGraceSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGraceSeconds', ],
+                'deployStrategyStruct' =>  [ 'shape' => 'DeployStrategyStruct', ],
+                'healthCheckStruct' =>  [ 'shape' => 'HealthCheckStruct', ],
+                'readyCheckStruct' =>  [ 'shape' => 'ReadyCheckStruct', ],
+                'lifecycleStruct' =>  [ 'shape' => 'LifecycleStruct', ],
+                'containerInfo' =>  [ 'shape' => 'ContainerInfoStruct', ],
+                'baseInfo' =>  [ 'shape' => 'BaseInfoStruct', ],
+                'configFiles' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupConfigInfo', ], ],
+                'ports' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskPort', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagInfo', ], ],
+                'annotations' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagInfo', ], ],
+                'startCmdStruct' =>  [ 'shape' => 'StartCmdStruct', ],
+                'volumeBases' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupVolume', ], ],
             ],
         ],
-        'UpdateGroupEnvironmentResponseShape' => [
+        'DeleteAppGroupResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'UpdateGroupEnvironmentResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UpdateHealthCheckResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'UpdateHealthCheckResultShape', ],
+                'result' =>  [ 'shape' => 'DeleteAppGroupResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -1191,55 +1782,6 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeGroupConfigRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
-            ],
-        ],
-        'UpdateLifeCycleRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
-                'cpu' => [ 'type' => 'float', 'locationName' => 'cpu', ],
-                'memory' => [ 'type' => 'float', 'locationName' => 'memory', ],
-                'requestCpu' => [ 'type' => 'float', 'locationName' => 'requestCpu', ],
-                'requestMemory' => [ 'type' => 'float', 'locationName' => 'requestMemory', ],
-                'startCommand' => [ 'type' => 'string', 'locationName' => 'startCommand', ],
-                'healthCheckType' => [ 'type' => 'string', 'locationName' => 'healthCheckType', ],
-                'healthCheckInitialDelaySeconds' => [ 'type' => 'integer', 'locationName' => 'healthCheckInitialDelaySeconds', ],
-                'healthCheckTimeoutSeconds' => [ 'type' => 'integer', 'locationName' => 'healthCheckTimeoutSeconds', ],
-                'healthCheckCommand' => [ 'type' => 'string', 'locationName' => 'healthCheckCommand', ],
-                'healthCheckPath' => [ 'type' => 'string', 'locationName' => 'healthCheckPath', ],
-                'healthCheckPort' => [ 'type' => 'integer', 'locationName' => 'healthCheckPort', ],
-                'healthCheckScheme' => [ 'type' => 'string', 'locationName' => 'healthCheckScheme', ],
-                'lifecyclePostStartType' => [ 'type' => 'string', 'locationName' => 'lifecyclePostStartType', ],
-                'lifecyclePostStartCommand' => [ 'type' => 'string', 'locationName' => 'lifecyclePostStartCommand', ],
-                'lifecyclePostStartPath' => [ 'type' => 'string', 'locationName' => 'lifecyclePostStartPath', ],
-                'lifecyclePostStartPort' => [ 'type' => 'integer', 'locationName' => 'lifecyclePostStartPort', ],
-                'lifecyclePostStartScheme' => [ 'type' => 'string', 'locationName' => 'lifecyclePostStartScheme', ],
-                'lifecyclePostStartHost' => [ 'type' => 'string', 'locationName' => 'lifecyclePostStartHost', ],
-                'lifecyclePostStartHeader' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
-                'lifecyclePreStopType' => [ 'type' => 'string', 'locationName' => 'lifecyclePreStopType', ],
-                'lifecyclePreStopCommand' => [ 'type' => 'string', 'locationName' => 'lifecyclePreStopCommand', ],
-                'lifecyclePreStopPath' => [ 'type' => 'string', 'locationName' => 'lifecyclePreStopPath', ],
-                'lifecyclePreStopPort' => [ 'type' => 'integer', 'locationName' => 'lifecyclePreStopPort', ],
-                'lifecyclePreStopScheme' => [ 'type' => 'string', 'locationName' => 'lifecyclePreStopScheme', ],
-                'lifecyclePreStopHost' => [ 'type' => 'string', 'locationName' => 'lifecyclePreStopHost', ],
-                'lifecyclePreStopHeader' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
-                'readyCheckType' => [ 'type' => 'string', 'locationName' => 'readyCheckType', ],
-                'readyCheckInitialDelaySeconds' => [ 'type' => 'integer', 'locationName' => 'readyCheckInitialDelaySeconds', ],
-                'readyCheckTimeoutSeconds' => [ 'type' => 'integer', 'locationName' => 'readyCheckTimeoutSeconds', ],
-                'readyCheckCommand' => [ 'type' => 'string', 'locationName' => 'readyCheckCommand', ],
-                'readyCheckPath' => [ 'type' => 'string', 'locationName' => 'readyCheckPath', ],
-                'readyCheckPort' => [ 'type' => 'integer', 'locationName' => 'readyCheckPort', ],
-                'readyCheckScheme' => [ 'type' => 'string', 'locationName' => 'readyCheckScheme', ],
-                'terminationGraceSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGraceSeconds', ],
-                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
-            ],
-        ],
         'DescribeGroupsRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1248,17 +1790,53 @@ return [
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
             ],
         ],
-        'UpdateBaseInfoResponseShape' => [
+        'CopyAppGroupResultShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'UpdateBaseInfoResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UpdateGroupEnvironmentResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
+                'groupKey' => [ 'type' => 'string', 'locationName' => 'groupKey', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'stateful' => [ 'type' => 'boolean', 'locationName' => 'stateful', ],
+                'clusterId' => [ 'type' => 'long', 'locationName' => 'clusterId', ],
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
+                'imagePullPolicy' => [ 'type' => 'string', 'locationName' => 'imagePullPolicy', ],
+                'deployStrategy' => [ 'type' => 'string', 'locationName' => 'deployStrategy', ],
+                'healthCheck' => [ 'type' => 'string', 'locationName' => 'healthCheck', ],
+                'readyCheck' => [ 'type' => 'string', 'locationName' => 'readyCheck', ],
+                'lifecycle' => [ 'type' => 'string', 'locationName' => 'lifecycle', ],
+                'podCount' => [ 'type' => 'integer', 'locationName' => 'podCount', ],
+                'cpu' => [ 'type' => 'string', 'locationName' => 'cpu', ],
+                'requestCpu' => [ 'type' => 'string', 'locationName' => 'requestCpu', ],
+                'disk' => [ 'type' => 'string', 'locationName' => 'disk', ],
+                'gpu' => [ 'type' => 'string', 'locationName' => 'gpu', ],
+                'startCmd' => [ 'type' => 'string', 'locationName' => 'startCmd', ],
+                'memory' => [ 'type' => 'string', 'locationName' => 'memory', ],
+                'requestMemory' => [ 'type' => 'string', 'locationName' => 'requestMemory', ],
+                'tenant' => [ 'type' => 'string', 'locationName' => 'tenant', ],
+                'configChange' => [ 'type' => 'boolean', 'locationName' => 'configChange', ],
+                'opconfigChange' => [ 'type' => 'boolean', 'locationName' => 'opconfigChange', ],
+                'terminationGraceSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGraceSeconds', ],
+                'ports' => [ 'type' => 'string', 'locationName' => 'ports', ],
+                'hpaEnabled' => [ 'type' => 'boolean', 'locationName' => 'hpaEnabled', ],
+                'createTime' => [ 'type' => 'integer', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'createdBy' => [ 'type' => 'string', 'locationName' => 'createdBy', ],
+                'updatedBy' => [ 'type' => 'string', 'locationName' => 'updatedBy', ],
+                'tenantId' => [ 'type' => 'string', 'locationName' => 'tenantId', ],
+                'deployStrategyStruct' =>  [ 'shape' => 'DeployStrategyStruct', ],
+                'healthCheckStruct' =>  [ 'shape' => 'HealthCheckStruct', ],
+                'readyCheckStruct' =>  [ 'shape' => 'ReadyCheckStruct', ],
+                'lifecycleStruct' =>  [ 'shape' => 'LifecycleStruct', ],
+                'failedConfigs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'warningMessage' => [ 'type' => 'string', 'locationName' => 'warningMessage', ],
             ],
         ],
         'UpdateStartCmdResultShape' => [
@@ -1271,20 +1849,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeGroupEnvironmentsResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'UpdateConfigFileResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'UpdateConfigFileResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ContainerAntiAffinityResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'ContainerAntiAffinityResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
@@ -1315,19 +1879,41 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'ContainerAntiAffinityRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'open' => [ 'type' => 'boolean', 'locationName' => 'open', ],
-                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
-                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
-            ],
-        ],
         'DescribeGroupsResultShape' => [
             'type' => 'structure',
             'members' => [
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'Group', ], ],
                 'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'CopyGroupRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'groupKey' => [ 'type' => 'string', 'locationName' => 'groupKey', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'clusterId' => [ 'type' => 'integer', 'locationName' => 'clusterId', ],
+                'podCount' => [ 'type' => 'integer', 'locationName' => 'podCount', ],
+                'cpu' => [ 'type' => 'string', 'locationName' => 'cpu', ],
+                'memory' => [ 'type' => 'string', 'locationName' => 'memory', ],
+                'requestCpu' => [ 'type' => 'string', 'locationName' => 'requestCpu', ],
+                'requestMemory' => [ 'type' => 'string', 'locationName' => 'requestMemory', ],
+                'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
+                'terminationGraceSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGraceSeconds', ],
+                'deployStrategyStruct' =>  [ 'shape' => 'DeployStrategyStruct', ],
+                'healthCheckStruct' =>  [ 'shape' => 'HealthCheckStruct', ],
+                'readyCheckStruct' =>  [ 'shape' => 'ReadyCheckStruct', ],
+                'lifecycleStruct' =>  [ 'shape' => 'LifecycleStruct', ],
+                'containerInfo' =>  [ 'shape' => 'ContainerInfoStruct', ],
+                'baseInfo' =>  [ 'shape' => 'BaseInfoStruct', ],
+                'configFiles' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupConfigInfo', ], ],
+                'ports' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskPort', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagInfo', ], ],
+                'annotations' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagInfo', ], ],
+                'startCmdStruct' =>  [ 'shape' => 'StartCmdStruct', ],
+                'volumeBases' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupVolume', ], ],
             ],
         ],
         'UpdateHealthCheckRequestShape' => [
@@ -1370,13 +1956,6 @@ return [
                 'terminationGraceSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGraceSeconds', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
-            ],
-        ],
-        'DescribeGroupConfigFilesResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'result' =>  [ 'shape' => 'DescribeGroupConfigFilesResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'UpdateBaseInfoRequestShape' => [
@@ -1428,18 +2007,11 @@ return [
                 'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
             ],
         ],
-        'DescribeGroupConfigResponseShape' => [
+        'DeleteAppGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeGroupConfigResultShape', ],
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'DescribeGroupConfigFilesResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigInfo', ], ],
-                'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
             ],
         ],
         'UpdateHealthCheckResultShape' => [
@@ -1488,11 +2060,34 @@ return [
                 'terminationGraceSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGraceSeconds', ],
             ],
         ],
-        'DescribeGroupEnvironmentsResultShape' => [
+        'AddGroupRequest' => [
             'type' => 'structure',
             'members' => [
-                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigInfo', ], ],
-                'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'groupKey' => [ 'type' => 'string', 'locationName' => 'groupKey', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'clusterId' => [ 'type' => 'integer', 'locationName' => 'clusterId', ],
+                'podCount' => [ 'type' => 'integer', 'locationName' => 'podCount', ],
+                'cpu' => [ 'type' => 'string', 'locationName' => 'cpu', ],
+                'memory' => [ 'type' => 'string', 'locationName' => 'memory', ],
+                'requestCpu' => [ 'type' => 'string', 'locationName' => 'requestCpu', ],
+                'requestMemory' => [ 'type' => 'string', 'locationName' => 'requestMemory', ],
+                'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
+                'terminationGraceSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGraceSeconds', ],
+                'deployStrategyStruct' =>  [ 'shape' => 'DeployStrategyStruct', ],
+                'healthCheckStruct' =>  [ 'shape' => 'HealthCheckStruct', ],
+                'readyCheckStruct' =>  [ 'shape' => 'ReadyCheckStruct', ],
+                'lifecycleStruct' =>  [ 'shape' => 'LifecycleStruct', ],
+                'containerInfo' =>  [ 'shape' => 'ContainerInfoStruct', ],
+                'baseInfo' =>  [ 'shape' => 'BaseInfoStruct', ],
+                'configFiles' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupConfigInfo', ], ],
+                'ports' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskPort', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagInfo', ], ],
+                'annotations' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagInfo', ], ],
+                'startCmdStruct' =>  [ 'shape' => 'StartCmdStruct', ],
+                'volumeBases' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupVolume', ], ],
             ],
         ],
         'UpdateGroupEnvironmentRequestShape' => [
@@ -1502,6 +2097,249 @@ return [
                 'deleteEnvKeys' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+            ],
+        ],
+        'CopyAppGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CopyAppGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeGroupsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeGroupsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteConfigFileRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'fileEncrypted' => [ 'type' => 'boolean', 'locationName' => 'fileEncrypted', ],
+                'fileItemKey' => [ 'type' => 'string', 'locationName' => 'fileItemKey', ],
+                'fileItemValue' => [ 'type' => 'string', 'locationName' => 'fileItemValue', ],
+                'deleteFilePaths' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+            ],
+        ],
+        'UpdateLifeCycleResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'UpdateGroupEnvironmentResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateGroupEnvironmentResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateHealthCheckResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateHealthCheckResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CopyAppGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'groupKey' => [ 'type' => 'string', 'locationName' => 'groupKey', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'clusterId' => [ 'type' => 'integer', 'locationName' => 'clusterId', ],
+                'podCount' => [ 'type' => 'integer', 'locationName' => 'podCount', ],
+                'cpu' => [ 'type' => 'string', 'locationName' => 'cpu', ],
+                'memory' => [ 'type' => 'string', 'locationName' => 'memory', ],
+                'requestCpu' => [ 'type' => 'string', 'locationName' => 'requestCpu', ],
+                'requestMemory' => [ 'type' => 'string', 'locationName' => 'requestMemory', ],
+                'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
+                'terminationGraceSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGraceSeconds', ],
+                'deployStrategyStruct' =>  [ 'shape' => 'DeployStrategyStruct', ],
+                'healthCheckStruct' =>  [ 'shape' => 'HealthCheckStruct', ],
+                'readyCheckStruct' =>  [ 'shape' => 'ReadyCheckStruct', ],
+                'lifecycleStruct' =>  [ 'shape' => 'LifecycleStruct', ],
+                'containerInfo' =>  [ 'shape' => 'ContainerInfoStruct', ],
+                'baseInfo' =>  [ 'shape' => 'BaseInfoStruct', ],
+                'configFiles' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupConfigInfo', ], ],
+                'ports' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaskPort', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagInfo', ], ],
+                'annotations' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagInfo', ], ],
+                'startCmdStruct' =>  [ 'shape' => 'StartCmdStruct', ],
+                'volumeBases' => [ 'type' => 'list', 'member' => [ 'shape' => 'GroupVolume', ], ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+            ],
+        ],
+        'DescribeGroupConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+            ],
+        ],
+        'UpdateLifeCycleRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'cpu' => [ 'type' => 'float', 'locationName' => 'cpu', ],
+                'memory' => [ 'type' => 'float', 'locationName' => 'memory', ],
+                'requestCpu' => [ 'type' => 'float', 'locationName' => 'requestCpu', ],
+                'requestMemory' => [ 'type' => 'float', 'locationName' => 'requestMemory', ],
+                'startCommand' => [ 'type' => 'string', 'locationName' => 'startCommand', ],
+                'healthCheckType' => [ 'type' => 'string', 'locationName' => 'healthCheckType', ],
+                'healthCheckInitialDelaySeconds' => [ 'type' => 'integer', 'locationName' => 'healthCheckInitialDelaySeconds', ],
+                'healthCheckTimeoutSeconds' => [ 'type' => 'integer', 'locationName' => 'healthCheckTimeoutSeconds', ],
+                'healthCheckCommand' => [ 'type' => 'string', 'locationName' => 'healthCheckCommand', ],
+                'healthCheckPath' => [ 'type' => 'string', 'locationName' => 'healthCheckPath', ],
+                'healthCheckPort' => [ 'type' => 'integer', 'locationName' => 'healthCheckPort', ],
+                'healthCheckScheme' => [ 'type' => 'string', 'locationName' => 'healthCheckScheme', ],
+                'lifecyclePostStartType' => [ 'type' => 'string', 'locationName' => 'lifecyclePostStartType', ],
+                'lifecyclePostStartCommand' => [ 'type' => 'string', 'locationName' => 'lifecyclePostStartCommand', ],
+                'lifecyclePostStartPath' => [ 'type' => 'string', 'locationName' => 'lifecyclePostStartPath', ],
+                'lifecyclePostStartPort' => [ 'type' => 'integer', 'locationName' => 'lifecyclePostStartPort', ],
+                'lifecyclePostStartScheme' => [ 'type' => 'string', 'locationName' => 'lifecyclePostStartScheme', ],
+                'lifecyclePostStartHost' => [ 'type' => 'string', 'locationName' => 'lifecyclePostStartHost', ],
+                'lifecyclePostStartHeader' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'lifecyclePreStopType' => [ 'type' => 'string', 'locationName' => 'lifecyclePreStopType', ],
+                'lifecyclePreStopCommand' => [ 'type' => 'string', 'locationName' => 'lifecyclePreStopCommand', ],
+                'lifecyclePreStopPath' => [ 'type' => 'string', 'locationName' => 'lifecyclePreStopPath', ],
+                'lifecyclePreStopPort' => [ 'type' => 'integer', 'locationName' => 'lifecyclePreStopPort', ],
+                'lifecyclePreStopScheme' => [ 'type' => 'string', 'locationName' => 'lifecyclePreStopScheme', ],
+                'lifecyclePreStopHost' => [ 'type' => 'string', 'locationName' => 'lifecyclePreStopHost', ],
+                'lifecyclePreStopHeader' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'readyCheckType' => [ 'type' => 'string', 'locationName' => 'readyCheckType', ],
+                'readyCheckInitialDelaySeconds' => [ 'type' => 'integer', 'locationName' => 'readyCheckInitialDelaySeconds', ],
+                'readyCheckTimeoutSeconds' => [ 'type' => 'integer', 'locationName' => 'readyCheckTimeoutSeconds', ],
+                'readyCheckCommand' => [ 'type' => 'string', 'locationName' => 'readyCheckCommand', ],
+                'readyCheckPath' => [ 'type' => 'string', 'locationName' => 'readyCheckPath', ],
+                'readyCheckPort' => [ 'type' => 'integer', 'locationName' => 'readyCheckPort', ],
+                'readyCheckScheme' => [ 'type' => 'string', 'locationName' => 'readyCheckScheme', ],
+                'terminationGraceSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGraceSeconds', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+            ],
+        ],
+        'UpdateBaseInfoResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateBaseInfoResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateGroupEnvironmentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'UpdateConfigFileResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateConfigFileResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ContainerAntiAffinityResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ContainerAntiAffinityResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ContainerAntiAffinityRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'open' => [ 'type' => 'boolean', 'locationName' => 'open', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+            ],
+        ],
+        'DescribeGroupConfigFilesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeGroupConfigFilesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeGroupConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeGroupConfigResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteAppGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
+            ],
+        ],
+        'DescribeGroupConfigFilesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigInfo', ], ],
+                'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'CreateAppGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
+                'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+                'appKey' => [ 'type' => 'string', 'locationName' => 'appKey', ],
+                'groupKey' => [ 'type' => 'string', 'locationName' => 'groupKey', ],
+                'groupName' => [ 'type' => 'string', 'locationName' => 'groupName', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'stateful' => [ 'type' => 'boolean', 'locationName' => 'stateful', ],
+                'clusterId' => [ 'type' => 'long', 'locationName' => 'clusterId', ],
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
+                'imagePullPolicy' => [ 'type' => 'string', 'locationName' => 'imagePullPolicy', ],
+                'deployStrategy' => [ 'type' => 'string', 'locationName' => 'deployStrategy', ],
+                'healthCheck' => [ 'type' => 'string', 'locationName' => 'healthCheck', ],
+                'readyCheck' => [ 'type' => 'string', 'locationName' => 'readyCheck', ],
+                'lifecycle' => [ 'type' => 'string', 'locationName' => 'lifecycle', ],
+                'podCount' => [ 'type' => 'integer', 'locationName' => 'podCount', ],
+                'cpu' => [ 'type' => 'string', 'locationName' => 'cpu', ],
+                'requestCpu' => [ 'type' => 'string', 'locationName' => 'requestCpu', ],
+                'disk' => [ 'type' => 'string', 'locationName' => 'disk', ],
+                'gpu' => [ 'type' => 'string', 'locationName' => 'gpu', ],
+                'startCmd' => [ 'type' => 'string', 'locationName' => 'startCmd', ],
+                'memory' => [ 'type' => 'string', 'locationName' => 'memory', ],
+                'requestMemory' => [ 'type' => 'string', 'locationName' => 'requestMemory', ],
+                'tenant' => [ 'type' => 'string', 'locationName' => 'tenant', ],
+                'configChange' => [ 'type' => 'boolean', 'locationName' => 'configChange', ],
+                'opconfigChange' => [ 'type' => 'boolean', 'locationName' => 'opconfigChange', ],
+                'terminationGraceSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGraceSeconds', ],
+                'ports' => [ 'type' => 'string', 'locationName' => 'ports', ],
+                'hpaEnabled' => [ 'type' => 'boolean', 'locationName' => 'hpaEnabled', ],
+                'createTime' => [ 'type' => 'integer', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'integer', 'locationName' => 'updateTime', ],
+                'createdBy' => [ 'type' => 'string', 'locationName' => 'createdBy', ],
+                'updatedBy' => [ 'type' => 'string', 'locationName' => 'updatedBy', ],
+                'tenantId' => [ 'type' => 'string', 'locationName' => 'tenantId', ],
+                'deployStrategyStruct' =>  [ 'shape' => 'DeployStrategyStruct', ],
+                'healthCheckStruct' =>  [ 'shape' => 'HealthCheckStruct', ],
+                'readyCheckStruct' =>  [ 'shape' => 'ReadyCheckStruct', ],
+                'lifecycleStruct' =>  [ 'shape' => 'LifecycleStruct', ],
+                'failedConfigs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'warningMessage' => [ 'type' => 'string', 'locationName' => 'warningMessage', ],
+            ],
+        ],
+        'DescribeGroupEnvironmentsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'ConfigInfo', ], ],
+                'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
             ],
         ],
         'ContainerAntiAffinityResultShape' => [
@@ -1594,6 +2432,136 @@ return [
             'members' => [
                 'result' =>  [ 'shape' => 'DescribePodsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'UpdateSystemRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'systemName' => [ 'type' => 'string', 'locationName' => 'systemName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'systemId' => [ 'type' => 'string', 'locationName' => 'systemId', ],
+            ],
+        ],
+        'CreateSystemRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'systemKey' => [ 'type' => 'string', 'locationName' => 'systemKey', ],
+                'systemName' => [ 'type' => 'string', 'locationName' => 'systemName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'josAppKey' => [ 'type' => 'string', 'locationName' => 'josAppKey', ],
+            ],
+        ],
+        'DescribeSystemsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'WukongSystem', ], ],
+                'totalCount' => [ 'type' => 'long', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'CreateSystemResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'systemId' => [ 'type' => 'string', 'locationName' => 'systemId', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+            ],
+        ],
+        'DescribeJosAppsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'DescribeSystemResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'long', 'locationName' => 'id', ],
+                'systemId' => [ 'type' => 'string', 'locationName' => 'systemId', ],
+                'systemKey' => [ 'type' => 'string', 'locationName' => 'systemKey', ],
+                'systemName' => [ 'type' => 'string', 'locationName' => 'systemName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'josBizType' => [ 'type' => 'string', 'locationName' => 'josBizType', ],
+                'josAppName' => [ 'type' => 'string', 'locationName' => 'josAppName', ],
+                'josAppKey' => [ 'type' => 'string', 'locationName' => 'josAppKey', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'DeleteSystemResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteSystemResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateSystemResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateSystemResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSystemsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNum' => [ 'type' => 'integer', 'locationName' => 'pageNum', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+            ],
+        ],
+        'DescribeSystemsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSystemsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSystemRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'systemId' => [ 'type' => 'string', 'locationName' => 'systemId', ],
+            ],
+        ],
+        'DescribeSystemResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSystemResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteSystemResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'UpdateSystemResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'UpdateSystemResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'UpdateSystemResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteSystemRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'systemId' => [ 'type' => 'string', 'locationName' => 'systemId', ],
+            ],
+        ],
+        'DescribeJosAppsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeJosAppsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeJosAppsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'apps' => [ 'type' => 'list', 'member' => [ 'shape' => 'JosApp', ], ],
             ],
         ],
     ],
