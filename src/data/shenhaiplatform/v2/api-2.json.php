@@ -4052,6 +4052,24 @@ return [
             'input' => [ 'shape' => 'BindWorkspaceEngineRequestShape', ],
             'output' => [ 'shape' => 'BindWorkspaceEngineResponseShape', ],
         ],
+        'GetJmrConfigs' => [
+            'name' => 'GetJmrConfigs',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getJmrConfigs',
+            ],
+            'input' => [ 'shape' => 'GetJmrConfigsRequestShape', ],
+            'output' => [ 'shape' => 'GetJmrConfigsResponseShape', ],
+        ],
+        'GetRegionByEngineCode' => [
+            'name' => 'GetRegionByEngineCode',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v2/regions/{regionId}/apps/{appName}/getRegionByEngineCode',
+            ],
+            'input' => [ 'shape' => 'GetRegionByEngineCodeRequestShape', ],
+            'output' => [ 'shape' => 'GetRegionByEngineCodeResponseShape', ],
+        ],
         'WorkspaceCreate' => [
             'name' => 'WorkspaceCreate',
             'http' => [
@@ -11395,6 +11413,7 @@ return [
             'members' => [
                 'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
                 'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'contentEncoding' => [ 'type' => 'string', 'locationName' => 'contentEncoding', ],
             ],
         ],
         'UranusResultPageResultContentTaskListItemPublicRes' => [
@@ -11653,6 +11672,8 @@ return [
                 'paramName' => [ 'type' => 'string', 'locationName' => 'paramName', ],
                 'paramType' => [ 'type' => 'string', 'locationName' => 'paramType', ],
                 'paramValue' => [ 'type' => 'string', 'locationName' => 'paramValue', ],
+                'devValue' => [ 'type' => 'string', 'locationName' => 'devValue', ],
+                'prodValue' => [ 'type' => 'string', 'locationName' => 'prodValue', ],
                 'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
             ],
         ],
@@ -11699,6 +11720,14 @@ return [
                 'sourceId' => [ 'type' => 'string', 'locationName' => 'sourceId', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'orderId' => [ 'type' => 'string', 'locationName' => 'orderId', ],
+            ],
+        ],
+        'QueryJmrConfigReq' => [
+            'type' => 'structure',
+            'members' => [
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
+                'configType' => [ 'type' => 'string', 'locationName' => 'configType', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
             ],
         ],
         'SyncWsProductOrderReq' => [
@@ -11833,6 +11862,7 @@ return [
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
                 'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
             ],
         ],
         'CreateEngineReq' => [
@@ -11976,6 +12006,20 @@ return [
                 'createdDate' => [ 'type' => 'string', 'locationName' => 'createdDate', ],
             ],
         ],
+        'EngineJmrConfigResp' => [
+            'type' => 'structure',
+            'members' => [
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'configType' => [ 'type' => 'string', 'locationName' => 'configType', ],
+                'configTag' => [ 'type' => 'string', 'locationName' => 'configTag', ],
+                'configVersion' => [ 'type' => 'integer', 'locationName' => 'configVersion', ],
+                'properties' => [ 'type' => 'object', 'locationName' => 'properties', ],
+                'createdDate' => [ 'type' => 'string', 'locationName' => 'createdDate', ],
+                'modifiedDate' => [ 'type' => 'string', 'locationName' => 'modifiedDate', ],
+            ],
+        ],
         'WorkspaceListResp' => [
             'type' => 'structure',
             'members' => [
@@ -12030,6 +12074,8 @@ return [
                 'paramType' => [ 'type' => 'string', 'locationName' => 'paramType', ],
                 'paramTypeDesc' => [ 'type' => 'string', 'locationName' => 'paramTypeDesc', ],
                 'paramValue' => [ 'type' => 'string', 'locationName' => 'paramValue', ],
+                'devValue' => [ 'type' => 'string', 'locationName' => 'devValue', ],
+                'prodValue' => [ 'type' => 'string', 'locationName' => 'prodValue', ],
                 'owner' => [ 'type' => 'string', 'locationName' => 'owner', ],
                 'creator' => [ 'type' => 'string', 'locationName' => 'creator', ],
                 'modifier' => [ 'type' => 'string', 'locationName' => 'modifier', ],
@@ -22624,6 +22670,7 @@ return [
             'members' => [
                 'draftId' => [ 'type' => 'string', 'locationName' => 'draftId', ],
                 'content' => [ 'type' => 'string', 'locationName' => 'content', ],
+                'contentEncoding' => [ 'type' => 'string', 'locationName' => 'contentEncoding', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -23347,6 +23394,26 @@ return [
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
                 'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
+            ],
+        ],
+        'GetRegionByEngineCodeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetRegionByEngineCodeResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetRegionByEngineCodeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
+                'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
+                'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -23407,6 +23474,14 @@ return [
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
+        'GetJmrConfigsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'list', 'member' => [ 'shape' => 'EngineJmrConfigResp', ], ],
+            ],
+        ],
         'GetByProjectCodeResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -23421,11 +23496,29 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'GetRegionByEngineCodeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'result' => [ 'type' => 'string', 'locationName' => 'result', ],
+            ],
+        ],
         'GetInstancesResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'GetInstancesResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetJmrConfigsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
+                'configType' => [ 'type' => 'string', 'locationName' => 'configType', ],
+                'env' => [ 'type' => 'string', 'locationName' => 'env', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
         ],
         'UnbindInstanceResponseShape' => [
@@ -23442,6 +23535,7 @@ return [
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
                 'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -23483,6 +23577,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'GetJmrConfigsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'GetJmrConfigsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'EngineCreateResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -23497,6 +23598,7 @@ return [
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
                 'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -23539,11 +23641,11 @@ return [
         'GetInstancesRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
                 'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -23567,6 +23669,7 @@ return [
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
                 'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -23578,6 +23681,7 @@ return [
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
                 'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -23722,6 +23826,7 @@ return [
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
                 'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
@@ -24036,6 +24141,7 @@ return [
                 'workspaceCode' => [ 'type' => 'string', 'locationName' => 'workspaceCode', ],
                 'projectCode' => [ 'type' => 'string', 'locationName' => 'projectCode', ],
                 'resourceCode' => [ 'type' => 'string', 'locationName' => 'resourceCode', ],
+                'engineCode' => [ 'type' => 'string', 'locationName' => 'engineCode', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'appName' => [ 'type' => 'string', 'locationName' => 'appName', ],
             ],
