@@ -767,6 +767,15 @@ return [
             'input' => [ 'shape' => 'AdminDescribeInferenceCountRequestShape', ],
             'output' => [ 'shape' => 'AdminDescribeInferenceCountResponseShape', ],
         ],
+        'AdminDescribeDedicatedGateways' => [
+            'name' => 'AdminDescribeDedicatedGateways',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/infer-regions/{regionId}/api/{apiType}/dedicatedGateways',
+            ],
+            'input' => [ 'shape' => 'AdminDescribeDedicatedGatewaysRequestShape', ],
+            'output' => [ 'shape' => 'AdminDescribeDedicatedGatewaysResponseShape', ],
+        ],
         'DescribeNodes' => [
             'name' => 'DescribeNodes',
             'http' => [
@@ -1441,6 +1450,11 @@ return [
                 'nodeIp' => [ 'type' => 'string', 'locationName' => 'nodeIp', ],
                 'nodeName' => [ 'type' => 'string', 'locationName' => 'nodeName', ],
                 'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'taskIndex' => [ 'type' => 'integer', 'locationName' => 'taskIndex', ],
+                'exitCode' => [ 'type' => 'integer', 'locationName' => 'exitCode', ],
+                'terminationReason' => [ 'type' => 'string', 'locationName' => 'terminationReason', ],
+                'attemptNo' => [ 'type' => 'integer', 'locationName' => 'attemptNo', ],
+                'isCurrent' => [ 'type' => 'boolean', 'locationName' => 'isCurrent', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
@@ -1456,6 +1470,8 @@ return [
                 'datasetVersion' => [ 'type' => 'string', 'locationName' => 'datasetVersion', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
                 'readonly' => [ 'type' => 'boolean', 'locationName' => 'readonly', ],
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
             ],
         ],
         'StorageSpaceDetailForJob' => [
@@ -1467,6 +1483,7 @@ return [
                 'cfs' =>  [ 'shape' => 'CfsDetailForJob', ],
                 'jpfs' =>  [ 'shape' => 'JpfsDetailForJob', ],
                 'secure' =>  [ 'shape' => 'SecureDetailForJob', ],
+                'secureOss' =>  [ 'shape' => 'SecureOssDetailForJob', ],
             ],
         ],
         'OssDetailForJob' => [
@@ -1504,6 +1521,8 @@ return [
                 'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
                 'datasetVersion' => [ 'type' => 'string', 'locationName' => 'datasetVersion', ],
                 'readonly' => [ 'type' => 'boolean', 'locationName' => 'readonly', ],
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
                 'storage' =>  [ 'shape' => 'StorageSpaceParamForJob', ],
             ],
         ],
@@ -1532,6 +1551,7 @@ return [
                 'jobType' => [ 'type' => 'string', 'locationName' => 'jobType', ],
                 'command' => [ 'type' => 'string', 'locationName' => 'command', ],
                 'replica' => [ 'type' => 'integer', 'locationName' => 'replica', ],
+                'minAvailable' => [ 'type' => 'integer', 'locationName' => 'minAvailable', ],
                 'taskPriority' => [ 'type' => 'integer', 'locationName' => 'taskPriority', ],
                 'envs' => [ 'type' => 'list', 'member' => [ 'shape' => 'EnvParamForJob', ], ],
                 'resource' =>  [ 'shape' => 'ResourceParamForJob', ],
@@ -1649,6 +1669,8 @@ return [
                 'modelId' => [ 'type' => 'string', 'locationName' => 'modelId', ],
                 'modelVersion' => [ 'type' => 'string', 'locationName' => 'modelVersion', ],
                 'readonly' => [ 'type' => 'boolean', 'locationName' => 'readonly', ],
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
                 'storage' =>  [ 'shape' => 'StorageSpaceParamForJob', ],
             ],
         ],
@@ -1684,6 +1706,20 @@ return [
                 'cfs' =>  [ 'shape' => 'CfsParamForJob', ],
                 'jpfs' =>  [ 'shape' => 'JpfsParamForJob', ],
                 'secure' =>  [ 'shape' => 'SecureParamForJob', ],
+                'secureOss' =>  [ 'shape' => 'SecureOssParamForJob', ],
+            ],
+        ],
+        'BatchSummaryForJob' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'scheduling' => [ 'type' => 'integer', 'locationName' => 'scheduling', ],
+                'pending' => [ 'type' => 'integer', 'locationName' => 'pending', ],
+                'running' => [ 'type' => 'integer', 'locationName' => 'running', ],
+                'succeeded' => [ 'type' => 'integer', 'locationName' => 'succeeded', ],
+                'failed' => [ 'type' => 'integer', 'locationName' => 'failed', ],
+                'terminated' => [ 'type' => 'integer', 'locationName' => 'terminated', ],
+                'unknown' => [ 'type' => 'integer', 'locationName' => 'unknown', ],
             ],
         ],
         'CodeParam' => [
@@ -1785,6 +1821,15 @@ return [
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
             ],
         ],
+        'SecureOssParamForJob' => [
+            'type' => 'structure',
+            'members' => [
+                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
+                'sourcePath' => [ 'type' => 'string', 'locationName' => 'sourcePath', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+            ],
+        ],
         'ModelParamForJob' => [
             'type' => 'structure',
             'members' => [
@@ -1793,6 +1838,8 @@ return [
                 'modelVersion' => [ 'type' => 'string', 'locationName' => 'modelVersion', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
                 'readonly' => [ 'type' => 'boolean', 'locationName' => 'readonly', ],
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
             ],
         ],
         'HealthCheckPolicyParamForJob' => [
@@ -1988,6 +2035,8 @@ return [
                 'failureReason' => [ 'type' => 'string', 'locationName' => 'failureReason', ],
                 'restartCount' => [ 'type' => 'integer', 'locationName' => 'restartCount', ],
                 'jobType' => [ 'type' => 'string', 'locationName' => 'jobType', ],
+                'minAvailable' => [ 'type' => 'integer', 'locationName' => 'minAvailable', ],
+                'batchSummary' =>  [ 'shape' => 'BatchSummaryForJob', ],
                 'privileged' => [ 'type' => 'boolean', 'locationName' => 'privileged', ],
                 'secJob' => [ 'type' => 'boolean', 'locationName' => 'secJob', ],
                 'supportExportModel' => [ 'type' => 'boolean', 'locationName' => 'supportExportModel', ],
@@ -2029,6 +2078,15 @@ return [
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateUser' => [ 'type' => 'string', 'locationName' => 'updateUser', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+            ],
+        ],
+        'SecureOssDetailForJob' => [
+            'type' => 'structure',
+            'members' => [
+                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
+                'bucket' => [ 'type' => 'string', 'locationName' => 'bucket', ],
+                'sourcePath' => [ 'type' => 'string', 'locationName' => 'sourcePath', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
             ],
         ],
         'GpuInfo' => [
@@ -2628,6 +2686,107 @@ return [
                 'datasetName' => [ 'type' => 'string', 'locationName' => 'datasetName', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'estimatedSize' => [ 'type' => 'integer', 'locationName' => 'estimatedSize', ],
+            ],
+        ],
+        'TechDatasetVersionDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
+                'dssDatasetId' => [ 'type' => 'string', 'locationName' => 'dssDatasetId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'versionDesc' => [ 'type' => 'string', 'locationName' => 'versionDesc', ],
+                'storageDomain' => [ 'type' => 'string', 'locationName' => 'storageDomain', ],
+                'storageBucket' => [ 'type' => 'string', 'locationName' => 'storageBucket', ],
+                'storagePath' => [ 'type' => 'string', 'locationName' => 'storagePath', ],
+                'storageUri' => [ 'type' => 'string', 'locationName' => 'storageUri', ],
+            ],
+        ],
+        'PublicTechDatasetInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
+                'dssDatasetId' => [ 'type' => 'string', 'locationName' => 'dssDatasetId', ],
+                'datasetName' => [ 'type' => 'string', 'locationName' => 'datasetName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'datasetIntroduction' => [ 'type' => 'string', 'locationName' => 'datasetIntroduction', ],
+                'versionNum' => [ 'type' => 'long', 'locationName' => 'versionNum', ],
+                'labels' =>  [ 'shape' => 'PublicTechDatasetLabel', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+            ],
+        ],
+        'DssDatasetInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'isRelated' => [ 'type' => 'string', 'locationName' => 'isRelated', ],
+            ],
+        ],
+        'PublicTechDatasetLabel' => [
+            'type' => 'structure',
+            'members' => [
+                'scenario' => [ 'type' => 'string', 'locationName' => 'scenario', ],
+                'language' => [ 'type' => 'string', 'locationName' => 'language', ],
+                'keyword' => [ 'type' => 'string', 'locationName' => 'keyword', ],
+                'dataSize' => [ 'type' => 'string', 'locationName' => 'dataSize', ],
+                'license' => [ 'type' => 'string', 'locationName' => 'license', ],
+            ],
+        ],
+        'TechDatasetVersionInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
+                'dssDatasetId' => [ 'type' => 'string', 'locationName' => 'dssDatasetId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'versionDesc' => [ 'type' => 'string', 'locationName' => 'versionDesc', ],
+                'storageDomain' => [ 'type' => 'string', 'locationName' => 'storageDomain', ],
+                'storageBucket' => [ 'type' => 'string', 'locationName' => 'storageBucket', ],
+                'storagePath' => [ 'type' => 'string', 'locationName' => 'storagePath', ],
+                'storageUri' => [ 'type' => 'string', 'locationName' => 'storageUri', ],
+            ],
+        ],
+        'PublicTechDatasetVersionInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
+                'dssDatasetId' => [ 'type' => 'string', 'locationName' => 'dssDatasetId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'versionDesc' => [ 'type' => 'string', 'locationName' => 'versionDesc', ],
+                'storageDomain' => [ 'type' => 'string', 'locationName' => 'storageDomain', ],
+                'storageBucket' => [ 'type' => 'string', 'locationName' => 'storageBucket', ],
+                'storagePath' => [ 'type' => 'string', 'locationName' => 'storagePath', ],
+                'storageUri' => [ 'type' => 'string', 'locationName' => 'storageUri', ],
+            ],
+        ],
+        'PublicTechDatasetVersionDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
+                'dssDatasetId' => [ 'type' => 'string', 'locationName' => 'dssDatasetId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'versionDesc' => [ 'type' => 'string', 'locationName' => 'versionDesc', ],
+                'storageDomain' => [ 'type' => 'string', 'locationName' => 'storageDomain', ],
+                'storageBucket' => [ 'type' => 'string', 'locationName' => 'storageBucket', ],
+                'storagePath' => [ 'type' => 'string', 'locationName' => 'storagePath', ],
+                'storageUri' => [ 'type' => 'string', 'locationName' => 'storageUri', ],
+            ],
+        ],
+        'TechDatasetInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
+                'dssDatasetId' => [ 'type' => 'string', 'locationName' => 'dssDatasetId', ],
+                'datasetName' => [ 'type' => 'string', 'locationName' => 'datasetName', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'versionNum' => [ 'type' => 'long', 'locationName' => 'versionNum', ],
+                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
+                'createUserPin' => [ 'type' => 'string', 'locationName' => 'createUserPin', ],
+                'ownerUser' => [ 'type' => 'string', 'locationName' => 'ownerUser', ],
+                'ownerUserPin' => [ 'type' => 'string', 'locationName' => 'ownerUserPin', ],
+                'permission' => [ 'type' => 'string', 'locationName' => 'permission', ],
             ],
         ],
         'File' => [
@@ -3314,6 +3473,8 @@ return [
                 'datasetName' => [ 'type' => 'string', 'locationName' => 'datasetName', ],
                 'datasetVersion' => [ 'type' => 'string', 'locationName' => 'datasetVersion', ],
                 'datasetUrl' => [ 'type' => 'string', 'locationName' => 'datasetUrl', ],
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
                 'readonly' => [ 'type' => 'boolean', 'locationName' => 'readonly', ],
             ],
@@ -3332,6 +3493,8 @@ return [
                 'storageId' => [ 'type' => 'string', 'locationName' => 'storageId', ],
                 'storagePath' => [ 'type' => 'string', 'locationName' => 'storagePath', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
                 'readonly' => [ 'type' => 'boolean', 'locationName' => 'readonly', ],
             ],
         ],
@@ -3710,6 +3873,28 @@ return [
                 'vcudaCore' => [ 'type' => 'string', 'locationName' => 'vcudaCore', ],
             ],
         ],
+        'AdminDedicatedGatewayInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceId' => [ 'type' => 'string', 'locationName' => 'serviceId', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'replicas' => [ 'type' => 'integer', 'locationName' => 'replicas', ],
+                'cpu' => [ 'type' => 'integer', 'locationName' => 'cpu', ],
+                'memory' => [ 'type' => 'integer', 'locationName' => 'memory', ],
+                'enableLimit' => [ 'type' => 'boolean', 'locationName' => 'enableLimit', ],
+                'qps' => [ 'type' => 'integer', 'locationName' => 'qps', ],
+                'internal' => [ 'type' => 'boolean', 'locationName' => 'internal', ],
+                'readyReplicas' => [ 'type' => 'integer', 'locationName' => 'readyReplicas', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'nlb' =>  [ 'shape' => 'Nlb', ],
+                'subnet' =>  [ 'shape' => 'Subnet', ],
+                'vpc' =>  [ 'shape' => 'Vpc', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Az', ], ],
+                'elasticIp' =>  [ 'shape' => 'ElasticIp', ],
+                'queueId' => [ 'type' => 'string', 'locationName' => 'queueId', ],
+                'pods' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'ServiceInfo' => [
             'type' => 'structure',
             'members' => [
@@ -3835,6 +4020,7 @@ return [
                 'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
                 'routerPrefillPolicy' => [ 'type' => 'string', 'locationName' => 'routerPrefillPolicy', ],
                 'routerDecodePolicy' => [ 'type' => 'string', 'locationName' => 'routerDecodePolicy', ],
+                'kvTransferProtocol' => [ 'type' => 'string', 'locationName' => 'kvTransferProtocol', ],
             ],
         ],
         'RolloutInfo' => [
@@ -3887,6 +4073,13 @@ return [
                 'nodeLabels' => [ 'type' => 'list', 'member' => [ 'shape' => 'InferenceNodeLabels', ], ],
             ],
         ],
+        'Nlb' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
         'AdminInferenceInfo' => [
             'type' => 'structure',
             'members' => [
@@ -3930,12 +4123,26 @@ return [
                 'vpcName' => [ 'type' => 'string', 'locationName' => 'vpcName', ],
             ],
         ],
+        'Az' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
         'GracefulShutdown' => [
             'type' => 'structure',
             'members' => [
                 'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
                 'timeoutSeconds' => [ 'type' => 'long', 'locationName' => 'timeoutSeconds', ],
                 'preStopScript' => [ 'type' => 'string', 'locationName' => 'preStopScript', ],
+            ],
+        ],
+        'Subnet' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
         'InferenceSpec' => [
@@ -3959,6 +4166,17 @@ return [
                 'repoId' => [ 'type' => 'string', 'locationName' => 'repoId', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
                 'repoName' => [ 'type' => 'string', 'locationName' => 'repoName', ],
+            ],
+        ],
+        'ElasticIp' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'bindType' => [ 'type' => 'string', 'locationName' => 'bindType', ],
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
             ],
         ],
         'PodEvent' => [
@@ -3997,51 +4215,19 @@ return [
                 'customServices' => [ 'type' => 'list', 'member' => [ 'shape' => 'CustomService', ], ],
             ],
         ],
+        'Vpc' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
         'UpdateInfo' => [
             'type' => 'structure',
             'members' => [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'enableEngineMetrics' => [ 'type' => 'boolean', 'locationName' => 'enableEngineMetrics', ],
                 'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
-            ],
-        ],
-        'Nlb' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-            ],
-        ],
-        'Az' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-            ],
-        ],
-        'Subnet' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-            ],
-        ],
-        'ElasticIp' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
-                'bindType' => [ 'type' => 'string', 'locationName' => 'bindType', ],
-                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
-                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
-                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
-            ],
-        ],
-        'Vpc' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
         ],
         'InferenceDedicatedGatewaySpec' => [
@@ -5387,6 +5573,8 @@ return [
             'members' => [
                 'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
                 'capacity' => [ 'type' => 'integer', 'locationName' => 'capacity', ],
+                'diskCategory' => [ 'type' => 'string', 'locationName' => 'diskCategory', ],
+                'diskId' => [ 'type' => 'string', 'locationName' => 'diskId', ],
             ],
         ],
         'Quota' => [
@@ -5473,6 +5661,8 @@ return [
                 'cpuQuota' =>  [ 'shape' => 'CpuQuota', ],
                 'nodeLabels' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeLabel', ], ],
                 'deviceBrand' => [ 'type' => 'string', 'locationName' => 'deviceBrand', ],
+                'deviceModel' => [ 'type' => 'string', 'locationName' => 'deviceModel', ],
+                'driverVersion' => [ 'type' => 'string', 'locationName' => 'driverVersion', ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
                 'unhealthReasons' => [ 'type' => 'list', 'member' => [ 'shape' => 'UnHealthReason', ], ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
@@ -5552,6 +5742,11 @@ return [
             'members' => [
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'EmptyObj' => [
+            'type' => 'structure',
+            'members' => [
             ],
         ],
         'PageInfo' => [
@@ -5780,6 +5975,36 @@ return [
                 'successRate' => [ 'type' => 'double', 'locationName' => 'successRate', ],
             ],
         ],
+        'SourceStorage' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'rootPath' => [ 'type' => 'string', 'locationName' => 'rootPath', ],
+                'subPath' => [ 'type' => 'string', 'locationName' => 'subPath', ],
+                'securityType' => [ 'type' => 'string', 'locationName' => 'securityType', ],
+            ],
+        ],
+        'TargetStorage' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'rootPath' => [ 'type' => 'string', 'locationName' => 'rootPath', ],
+                'subPath' => [ 'type' => 'string', 'locationName' => 'subPath', ],
+                'securityType' => [ 'type' => 'string', 'locationName' => 'securityType', ],
+            ],
+        ],
+        'DataMigrationTask' => [
+            'type' => 'structure',
+            'members' => [
+                'dataMigrationId' => [ 'type' => 'string', 'locationName' => 'dataMigrationId', ],
+                'source' =>  [ 'shape' => 'SourceStorage', ],
+                'target' =>  [ 'shape' => 'TargetStorage', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
+            ],
+        ],
         'DatasetWarmCommercialDatasetInfo' => [
             'type' => 'structure',
             'members' => [
@@ -5809,7 +6034,9 @@ return [
                 'safeStorageId' => [ 'type' => 'string', 'locationName' => 'safeStorageId', ],
                 'safeStorageDisplayId' => [ 'type' => 'string', 'locationName' => 'safeStorageDisplayId', ],
                 'safeStorageName' => [ 'type' => 'string', 'locationName' => 'safeStorageName', ],
-                'jpfsFolderName' => [ 'type' => 'string', 'locationName' => 'jpfsFolderName', ],
+                'folderName' => [ 'type' => 'string', 'locationName' => 'folderName', ],
+                'taskType' => [ 'type' => 'string', 'locationName' => 'taskType', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
                 'estimatedSize' => [ 'type' => 'long', 'locationName' => 'estimatedSize', ],
                 'errorCode' => [ 'type' => 'string', 'locationName' => 'errorCode', ],
                 'errorMessage' => [ 'type' => 'string', 'locationName' => 'errorMessage', ],
@@ -6096,10 +6323,14 @@ return [
                 'fileSystemType' => [ 'type' => 'string', 'locationName' => 'fileSystemType', ],
                 'productType' => [ 'type' => 'string', 'locationName' => 'productType', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'edge' => [ 'type' => 'boolean', 'locationName' => 'edge', ],
                 'spec' =>  [ 'shape' => 'JpfsSpec', ],
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'billingInfo' =>  [ 'shape' => 'JpfsBillingInfo', ],
                 'chargeExpiredTime' => [ 'type' => 'string', 'locationName' => 'chargeExpiredTime', ],
+                'rdmaMountTargetId' => [ 'type' => 'string', 'locationName' => 'rdmaMountTargetId', ],
+                'tcpMountTargetId' => [ 'type' => 'string', 'locationName' => 'tcpMountTargetId', ],
+                'nfsMountTargetId' => [ 'type' => 'string', 'locationName' => 'nfsMountTargetId', ],
                 'buyId' => [ 'type' => 'string', 'locationName' => 'buyId', ],
                 'orderNumber' => [ 'type' => 'string', 'locationName' => 'orderNumber', ],
                 'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
@@ -6377,6 +6608,14 @@ return [
             'members' => [
                 'instanceTypes' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeSpecification', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'Soldout' => [
+            'type' => 'structure',
+            'members' => [
+                'azName' => [ 'type' => 'string', 'locationName' => 'azName', ],
+                'mediaType' => [ 'type' => 'string', 'locationName' => 'mediaType', ],
+                'isSoldOut' => [ 'type' => 'boolean', 'locationName' => 'isSoldOut', ],
             ],
         ],
         'NodeLoad' => [
@@ -6794,6 +7033,16 @@ return [
                 'idleNMemory' => [ 'type' => 'string', 'locationName' => 'idleNMemory', ],
             ],
         ],
+        'SafeBucket' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'zone' => [ 'type' => 'string', 'locationName' => 'zone', ],
+                'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
+                'capacity' => [ 'type' => 'long', 'locationName' => 'capacity', ],
+                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
+            ],
+        ],
         'SchedulePolicy' => [
             'type' => 'structure',
             'members' => [
@@ -6809,7 +7058,7 @@ return [
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'nodePoolId' => [ 'type' => 'string', 'locationName' => 'nodePoolId', ],
-                'nodePoolInfo' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'nodePoolInfo' =>  [ 'shape' => 'NodePoolInfo', ],
                 'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
                 'gpuQuotas' => [ 'type' => 'list', 'member' => [ 'shape' => 'GpuQuota', ], ],
                 'cpuQuota' =>  [ 'shape' => 'CpuQuota', ],
@@ -6826,6 +7075,16 @@ return [
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
+            ],
+        ],
+        'NodePoolInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'poolType' => [ 'type' => 'string', 'locationName' => 'poolType', ],
+                'vpcId' => [ 'type' => 'string', 'locationName' => 'vpcId', ],
+                'vpcName' => [ 'type' => 'string', 'locationName' => 'vpcName', ],
+                'topology' => [ 'type' => 'string', 'locationName' => 'topology', ],
             ],
         ],
         'QueueLoadBalancer' => [
@@ -7334,6 +7593,8 @@ return [
                 'modelUrl' => [ 'type' => 'string', 'locationName' => 'modelUrl', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
                 'readonly' => [ 'type' => 'boolean', 'locationName' => 'readonly', ],
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
             ],
         ],
         'InternetEgressInfo' => [
@@ -7354,6 +7615,8 @@ return [
                 'datasetUrl' => [ 'type' => 'string', 'locationName' => 'datasetUrl', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
                 'readonly' => [ 'type' => 'boolean', 'locationName' => 'readonly', ],
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
             ],
         ],
         'ImageTask' => [
@@ -7388,6 +7651,15 @@ return [
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
+        'TechDatasetSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'source' => [ 'type' => 'string', 'locationName' => 'source', ],
+                'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
+                'datasetVersion' => [ 'type' => 'string', 'locationName' => 'datasetVersion', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+            ],
+        ],
         'NbShutdownPolicy' => [
             'type' => 'structure',
             'members' => [
@@ -7407,6 +7679,8 @@ return [
                 'datasetUrl' => [ 'type' => 'string', 'locationName' => 'datasetUrl', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
                 'readonly' => [ 'type' => 'boolean', 'locationName' => 'readonly', ],
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
             ],
         ],
         'NotebookSpec' => [
@@ -7424,6 +7698,7 @@ return [
                 'workloadSpec' =>  [ 'shape' => 'WorkloadSpec', ],
                 'storages' => [ 'type' => 'list', 'member' => [ 'shape' => 'StorageSpec', ], ],
                 'datasets' => [ 'type' => 'list', 'member' => [ 'shape' => 'DatasetSpec', ], ],
+                'techDatasets' => [ 'type' => 'list', 'member' => [ 'shape' => 'TechDatasetSpec', ], ],
                 'models' => [ 'type' => 'list', 'member' => [ 'shape' => 'ModelSpec', ], ],
                 'permission' => [ 'type' => 'string', 'locationName' => 'permission', ],
                 'nodeAffinities' => [ 'type' => 'list', 'member' => [ 'shape' => 'NotebookNodeAffinity', ], ],
@@ -7554,6 +7829,8 @@ return [
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
                 'readonly' => [ 'type' => 'boolean', 'locationName' => 'readonly', ],
                 'storageSource' => [ 'type' => 'string', 'locationName' => 'storageSource', ],
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
             ],
         ],
         'NotebookDetail' => [
@@ -7590,6 +7867,7 @@ return [
                 'charge' =>  [ 'shape' => 'Charge', ],
                 'storages' => [ 'type' => 'list', 'member' => [ 'shape' => 'StorageSpec', ], ],
                 'datasets' => [ 'type' => 'list', 'member' => [ 'shape' => 'NbDatasetDetail', ], ],
+                'techDatasets' => [ 'type' => 'list', 'member' => [ 'shape' => 'NbTechDatasetDetail', ], ],
                 'models' => [ 'type' => 'list', 'member' => [ 'shape' => 'NbModelDetail', ], ],
                 'codes' => [ 'type' => 'list', 'member' => [ 'shape' => 'NbCodeConfigInfo', ], ],
                 'envs' => [ 'type' => 'list', 'member' => [ 'shape' => 'NotebookEnv', ], ],
@@ -7615,6 +7893,19 @@ return [
                 'modelId' => [ 'type' => 'string', 'locationName' => 'modelId', ],
                 'modelVersion' => [ 'type' => 'string', 'locationName' => 'modelVersion', ],
                 'modelUrl' => [ 'type' => 'string', 'locationName' => 'modelUrl', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+                'readonly' => [ 'type' => 'boolean', 'locationName' => 'readonly', ],
+                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
+                'host' => [ 'type' => 'string', 'locationName' => 'host', ],
+            ],
+        ],
+        'NbTechDatasetDetail' => [
+            'type' => 'structure',
+            'members' => [
+                'source' => [ 'type' => 'string', 'locationName' => 'source', ],
+                'storageName' => [ 'type' => 'string', 'locationName' => 'storageName', ],
+                'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
+                'datasetVersion' => [ 'type' => 'string', 'locationName' => 'datasetVersion', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
                 'readonly' => [ 'type' => 'boolean', 'locationName' => 'readonly', ],
             ],
@@ -7687,6 +7978,7 @@ return [
                 'workloadSpec' =>  [ 'shape' => 'WorkloadSpec', ],
                 'storages' => [ 'type' => 'list', 'member' => [ 'shape' => 'StorageSpec', ], ],
                 'datasets' => [ 'type' => 'list', 'member' => [ 'shape' => 'DatasetSpec', ], ],
+                'techDatasets' => [ 'type' => 'list', 'member' => [ 'shape' => 'TechDatasetSpec', ], ],
                 'models' => [ 'type' => 'list', 'member' => [ 'shape' => 'ModelSpec', ], ],
                 'codes' => [ 'type' => 'list', 'member' => [ 'shape' => 'NbCodeConfig', ], ],
                 'envs' => [ 'type' => 'list', 'member' => [ 'shape' => 'NotebookEnv', ], ],
@@ -7747,6 +8039,14 @@ return [
             'members' => [
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'UpdateUserAndAppSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'oldOwner' => [ 'type' => 'string', 'locationName' => 'oldOwner', ],
+                'newOwner' => [ 'type' => 'string', 'locationName' => 'newOwner', ],
             ],
         ],
         'ProductUpdateTag' => [
@@ -10348,6 +10648,23 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'AdminDescribeDedicatedGatewaysResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'dedicatedGateways' => [ 'type' => 'list', 'member' => [ 'shape' => 'AdminDedicatedGatewayInfo', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'AdminDescribeDedicatedGatewaysRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'apiType' => [ 'type' => 'string', 'locationName' => 'apiType', ],
+            ],
+        ],
         'AdminDescribeInferencesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -10393,6 +10710,13 @@ return [
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'apiType' => [ 'type' => 'string', 'locationName' => 'apiType', ],
+            ],
+        ],
+        'AdminDescribeDedicatedGatewaysResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'AdminDescribeDedicatedGatewaysResultShape', ],
             ],
         ],
         'NodePatchLabelsResult' => [
@@ -10533,6 +10857,13 @@ return [
             'members' => [
                 'azInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'JpfsHpcClusterAzInfoDetail', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'JpfsNetworkByNodePoolResult' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'subnetIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'DescribeNodesRequestShape' => [

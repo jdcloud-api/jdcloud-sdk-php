@@ -13,25 +13,29 @@ return [
         'namespace' => 'Vqd',
         'versions' => [ 'latest' => 'v1', ],
     ],
+    'dms' => [
+        'namespace' => 'Dms',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
     'smartdba' => [
         'namespace' => 'Smartdba',
         'versions' => [ 'latest' => 'v2', ],
     ],
-    'dms' => [
-        'namespace' => 'Dms',
+    'flowlog' => [
+        'namespace' => 'Flowlog',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'streamcomputer' => [
         'namespace' => 'Streamcomputer',
         'versions' => [ 'latest' => 'v1', ],
     ],
-    'flowlog' => [
-        'namespace' => 'Flowlog',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
     'ssl' => [
         'namespace' => 'Ssl',
         'versions' => [ 'latest' => 'v1', ],
+    ],
+    'domainservice' => [
+        'namespace' => 'Domainservice',
+        'versions' => [ 'latest' => 'v2', ],
     ],
     'oss' => [
         'namespace' => 'Oss',
@@ -40,10 +44,6 @@ return [
     'redis' => [
         'namespace' => 'Redis',
         'versions' => [ 'latest' => 'v1', ],
-    ],
-    'domainservice' => [
-        'namespace' => 'Domainservice',
-        'versions' => [ 'latest' => 'v2', ],
     ],
     'billing' => [
         'namespace' => 'Billing',
@@ -113,12 +113,12 @@ return [
         'namespace' => 'Sts',
         'versions' => [ 'latest' => 'v1', ],
     ],
-    'kafka' => [
-        'namespace' => 'Kafka',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
     'domain' => [
         'namespace' => 'Domain',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'kafka' => [
+        'namespace' => 'Kafka',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'nativecontainer' => [
@@ -189,12 +189,12 @@ return [
         'namespace' => 'Resourcetag',
         'versions' => [ 'latest' => 'v1', ],
     ],
-    'ias' => [
-        'namespace' => 'Ias',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
     'hpc' => [
         'namespace' => 'Hpc',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'ias' => [
+        'namespace' => 'Ias',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'jdfusion' => [
@@ -209,13 +209,13 @@ return [
         'namespace' => 'Rocketmq',
         'versions' => [ 'latest' => 'v1', ],
     ],
-    'renewal' => [
-        'namespace' => 'Renewal',
-        'versions' => [ 'latest' => 'v2', ],
-    ],
     'iotlink' => [
         'namespace' => 'Iotlink',
         'versions' => [ 'latest' => 'v1', ],
+    ],
+    'renewal' => [
+        'namespace' => 'Renewal',
+        'versions' => [ 'latest' => 'v2', ],
     ],
     'yunding' => [
         'namespace' => 'Yunding',
@@ -229,12 +229,12 @@ return [
         'namespace' => 'Cp',
         'versions' => [ 'latest' => 'v1', ],
     ],
-    'cr' => [
-        'namespace' => 'Cr',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
     'agentgrid' => [
         'namespace' => 'Agentgrid',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'cr' => [
+        'namespace' => 'Cr',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'pipeline' => [
@@ -265,12 +265,12 @@ return [
         'namespace' => 'Industrydata',
         'versions' => [ 'latest' => 'v1', ],
     ],
-    'jdw' => [
-        'namespace' => 'Jdw',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
     'asset' => [
         'namespace' => 'Asset',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'jdw' => [
+        'namespace' => 'Jdw',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'autotaskpolicy' => [
@@ -317,12 +317,12 @@ return [
         'namespace' => 'Compile',
         'versions' => [ 'latest' => 'v1', ],
     ],
-    'sop' => [
-        'namespace' => 'Sop',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
     'captcha' => [
         'namespace' => 'Captcha',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'sop' => [
+        'namespace' => 'Sop',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'function' => [
@@ -337,12 +337,12 @@ return [
         'namespace' => 'Rms',
         'versions' => [ 'latest' => 'v2', ],
     ],
-    'logs' => [
-        'namespace' => 'Logs',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
     'jdccs' => [
         'namespace' => 'Jdccs',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'logs' => [
+        'namespace' => 'Logs',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'iotedge' => [
@@ -389,12 +389,12 @@ return [
         'namespace' => 'Nc',
         'versions' => [ 'latest' => 'v1', ],
     ],
-    'ydsms' => [
-        'namespace' => 'Ydsms',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
     'clickhouse' => [
         'namespace' => 'Clickhouse',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'ydsms' => [
+        'namespace' => 'Ydsms',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'vm' => [
@@ -441,24 +441,24 @@ return [
         'namespace' => 'Zfs',
         'versions' => [ 'latest' => 'v1', ],
     ],
-    'vod' => [
-        'namespace' => 'Vod',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
     'jdaip' => [
         'namespace' => 'Jdaip',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'vod' => [
+        'namespace' => 'Vod',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'yundingdatapush' => [
         'namespace' => 'Yundingdatapush',
         'versions' => [ 'latest' => 'v1', ],
     ],
-    'ossopenapi' => [
-        'namespace' => 'Ossopenapi',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
     'bgw' => [
         'namespace' => 'Bgw',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'ossopenapi' => [
+        'namespace' => 'Ossopenapi',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'cloudsign' => [
@@ -481,12 +481,12 @@ return [
         'namespace' => 'Waf',
         'versions' => [ 'latest' => 'v1', ],
     ],
-    'live' => [
-        'namespace' => 'Live',
-        'versions' => [ 'latest' => 'v1', ],
-    ],
     'lavm' => [
         'namespace' => 'Lavm',
+        'versions' => [ 'latest' => 'v1', ],
+    ],
+    'live' => [
+        'namespace' => 'Live',
         'versions' => [ 'latest' => 'v1', ],
     ],
     'jdworkspace' => [

@@ -188,6 +188,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise adminDescribeInferencesAsync(array $args = [])
  * @method \Jdcloud\Result adminDescribeInferenceCount(array $args = [])
  * @method \GuzzleHttp\Promise\Promise adminDescribeInferenceCountAsync(array $args = [])
+ * @method \Jdcloud\Result adminDescribeDedicatedGateways(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise adminDescribeDedicatedGatewaysAsync(array $args = [])
  * @method \Jdcloud\Result describeNodes(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeNodesAsync(array $args = [])
  * @method \Jdcloud\Result describeNode(array $args = [])
