@@ -173,6 +173,15 @@ return [
             'input' => [ 'shape' => 'GetJobRestartHistoryRequestShape', ],
             'output' => [ 'shape' => 'GetJobRestartHistoryResponseShape', ],
         ],
+        'ChangePriority' => [
+            'name' => 'ChangePriority',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/train/{regionId}/workspaces/{workspaceId}/jobs/{jobId}:changePriority',
+            ],
+            'input' => [ 'shape' => 'ChangePriorityRequestShape', ],
+            'output' => [ 'shape' => 'ChangePriorityResponseShape', ],
+        ],
         'GetPodLogs' => [
             'name' => 'GetPodLogs',
             'http' => [
@@ -181,6 +190,15 @@ return [
             ],
             'input' => [ 'shape' => 'GetPodLogsRequestShape', ],
             'output' => [ 'shape' => 'GetPodLogsResponseShape', ],
+        ],
+        'GetPodLimitLogs' => [
+            'name' => 'GetPodLimitLogs',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/train/{regionId}/workspaces/{workspaceId}/jobs/{jobId}/pods/{podName}:limitLogs',
+            ],
+            'input' => [ 'shape' => 'GetPodLimitLogsRequestShape', ],
+            'output' => [ 'shape' => 'GetPodLimitLogsResponseShape', ],
         ],
         'DescribeInstances' => [
             'name' => 'DescribeInstances',
@@ -1037,6 +1055,15 @@ return [
             'input' => [ 'shape' => 'UpdateResourcePropertiesRequestShape', ],
             'output' => [ 'shape' => 'UpdateResourcePropertiesResponseShape', ],
         ],
+        'UpdateNotebookTaskPriority' => [
+            'name' => 'UpdateNotebookTaskPriority',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/nb-regions/{regionId}/workspace/{workspaceId}/notebook/{notebookId}:taskPriority',
+            ],
+            'input' => [ 'shape' => 'UpdateNotebookTaskPriorityRequestShape', ],
+            'output' => [ 'shape' => 'UpdateNotebookTaskPriorityResponseShape', ],
+        ],
         'GetNotebookEvents' => [
             'name' => 'GetNotebookEvents',
             'http' => [
@@ -1099,6 +1126,15 @@ return [
             ],
             'input' => [ 'shape' => 'DeleteNotebookLogCollectConfigRequestShape', ],
             'output' => [ 'shape' => 'DeleteNotebookLogCollectConfigResponseShape', ],
+        ],
+        'GetNotebookSshPublicKeys' => [
+            'name' => 'GetNotebookSshPublicKeys',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/nb-regions/{regionId}/workspace/{workspaceId}/notebook/{notebookId}/sshpublickeys',
+            ],
+            'input' => [ 'shape' => 'GetNotebookSshPublicKeysRequestShape', ],
+            'output' => [ 'shape' => 'GetNotebookSshPublicKeysResponseShape', ],
         ],
         'AdminDescribeNotebooks' => [
             'name' => 'AdminDescribeNotebooks',
@@ -4091,6 +4127,7 @@ return [
                 'state' => [ 'type' => 'string', 'locationName' => 'state', ],
                 'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
                 'createUserPin' => [ 'type' => 'string', 'locationName' => 'createUserPin', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
                 'workspaceName' => [ 'type' => 'string', 'locationName' => 'workspaceName', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserTag', ], ],
@@ -5657,6 +5694,7 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
                 'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
+                'expireTime' => [ 'type' => 'string', 'locationName' => 'expireTime', ],
                 'gpuQuota' =>  [ 'shape' => 'GpuQuota', ],
                 'cpuQuota' =>  [ 'shape' => 'CpuQuota', ],
                 'nodeLabels' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeLabel', ], ],
@@ -7904,6 +7942,7 @@ return [
             'members' => [
                 'source' => [ 'type' => 'string', 'locationName' => 'source', ],
                 'storageName' => [ 'type' => 'string', 'locationName' => 'storageName', ],
+                'storageType' => [ 'type' => 'string', 'locationName' => 'storageType', ],
                 'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
                 'datasetVersion' => [ 'type' => 'string', 'locationName' => 'datasetVersion', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
@@ -8954,6 +8993,13 @@ return [
                 'stateCount' => [ 'type' => 'list', 'member' => [ 'shape' => 'AdminJobStateCount', ], ],
             ],
         ],
+        'GetPodLimitLogsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'podName' => [ 'type' => 'string', 'locationName' => 'podName', ],
+                'data' => [ 'type' => 'string', 'locationName' => 'data', ],
+            ],
+        ],
         'DownloadProfilingTaskRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -8977,6 +9023,12 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'DescribeInstancesResultShape', ],
+            ],
+        ],
+        'ChangePriorityResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeModelExportsResultShape' => [
@@ -9041,6 +9093,16 @@ return [
         'DeleteJobResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'GetPodLimitLogsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'tailLines' => [ 'type' => 'integer', 'locationName' => 'tailLines', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
+                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
+                'podName' => [ 'type' => 'string', 'locationName' => 'podName', ],
             ],
         ],
         'DescribeJobsRequestShape' => [
@@ -9212,6 +9274,11 @@ return [
             'members' => [
             ],
         ],
+        'ChangePriorityResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DescribeJobResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -9239,6 +9306,13 @@ return [
                 'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
                 'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
                 'instanceName' => [ 'type' => 'string', 'locationName' => 'instanceName', ],
+            ],
+        ],
+        'GetPodLimitLogsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetPodLimitLogsResultShape', ],
             ],
         ],
         'TransferProfilingTaskToOssResultShape' => [
@@ -9420,6 +9494,15 @@ return [
         'GetPodLogsResponseShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ChangePriorityRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'schedulePriority' =>  [ 'shape' => 'SchedulePriority', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
+                'jobId' => [ 'type' => 'string', 'locationName' => 'jobId', ],
             ],
         ],
         'CreateModelExportResponseShape' => [
@@ -10832,6 +10915,12 @@ return [
                 'returnUrl' => [ 'type' => 'string', 'locationName' => 'returnUrl', ],
             ],
         ],
+        'RenewalTempOrderRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+            ],
+        ],
         'JpfsFileSystemTypesResult' => [
             'type' => 'structure',
             'members' => [
@@ -10850,6 +10939,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'azMappingVos' => [ 'type' => 'list', 'member' => [ 'shape' => 'JpfsAzMapping', ], ],
+            ],
+        ],
+        'RenewalTempOrderResult' => [
+            'type' => 'structure',
+            'members' => [
+                'stringResult' => [ 'type' => 'string', 'locationName' => 'stringResult', ],
             ],
         ],
         'JpfsHpcClustersDetailResult' => [
@@ -11493,6 +11588,13 @@ return [
                 'versionResult' =>  [ 'shape' => 'PublicModelVersionInfo', ],
             ],
         ],
+        'GetNotebookSshPublicKeysResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'result' =>  [ 'shape' => 'GetNotebookSshPublicKeysResultShape', ],
+            ],
+        ],
         'DescribeNotebookResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -11517,6 +11619,12 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'GetNotebookSshPublicKeysResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'publicKeys' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'StopNotebookResponseShape' => [
@@ -11544,6 +11652,15 @@ return [
         'StopNotebookRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
+                'notebookId' => [ 'type' => 'string', 'locationName' => 'notebookId', ],
+            ],
+        ],
+        'UpdateNotebookTaskPriorityRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskPriority' => [ 'type' => 'integer', 'locationName' => 'taskPriority', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
                 'notebookId' => [ 'type' => 'string', 'locationName' => 'notebookId', ],
@@ -11596,6 +11713,12 @@ return [
         'CreateNotebookLogCollectConfigResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'UpdateNotebookTaskPriorityResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeNotebooksResultShape' => [
@@ -11695,6 +11818,11 @@ return [
             'members' => [
             ],
         ],
+        'UpdateNotebookTaskPriorityResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'CreateNotebookResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -11752,6 +11880,14 @@ return [
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
                 'result' =>  [ 'shape' => 'DescribeNotebooksResultShape', ],
+            ],
+        ],
+        'GetNotebookSshPublicKeysRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'workspaceId' => [ 'type' => 'string', 'locationName' => 'workspaceId', ],
+                'notebookId' => [ 'type' => 'string', 'locationName' => 'notebookId', ],
             ],
         ],
         'StartNotebookResultShape' => [
