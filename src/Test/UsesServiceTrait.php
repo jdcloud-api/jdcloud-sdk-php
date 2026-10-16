@@ -16,7 +16,7 @@ trait UsesServiceTrait
     private $_mock_handler;
 
     /**
-     * Creates an instance of the Jdcloud SDK for a test
+     * Creates an instance of the Jdcloud SDK for a test1
      *
      * @param array $args
      *
