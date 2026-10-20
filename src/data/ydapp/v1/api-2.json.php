@@ -524,6 +524,24 @@ return [
             'input' => [ 'shape' => 'ContainerAntiAffinityRequestShape', ],
             'output' => [ 'shape' => 'ContainerAntiAffinityResponseShape', ],
         ],
+        'SearchLogs' => [
+            'name' => 'SearchLogs',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/search',
+            ],
+            'input' => [ 'shape' => 'SearchLogsRequestShape', ],
+            'output' => [ 'shape' => 'SearchLogsResponseShape', ],
+        ],
+        'Analysis' => [
+            'name' => 'Analysis',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/logsets/{logsetUID}/logtopics/{logtopicUID}/analysis',
+            ],
+            'input' => [ 'shape' => 'AnalysisRequestShape', ],
+            'output' => [ 'shape' => 'AnalysisResponseShape', ],
+        ],
         'DescribePods' => [
             'name' => 'DescribePods',
             'http' => [
@@ -1108,6 +1126,36 @@ return [
                 'registryName' => [ 'type' => 'string', 'locationName' => 'registryName', ],
                 'repositoryName' => [ 'type' => 'string', 'locationName' => 'repositoryName', ],
                 'totalPullTimes' => [ 'type' => 'integer', 'locationName' => 'totalPullTimes', ],
+            ],
+        ],
+        'AnalysisMetaData' => [
+            'type' => 'structure',
+            'members' => [
+                'agg' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'group' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'time' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'LogFilter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'SearchFields' => [
+            'type' => 'structure',
+            'members' => [
+                'contentFields' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'tagFields' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFields', ], ],
+            ],
+        ],
+        'TagFields' => [
+            'type' => 'structure',
+            'members' => [
+                'tagk' => [ 'type' => 'string', 'locationName' => 'tagk', ],
+                'tagv' => [ 'type' => 'object', 'locationName' => 'tagv', ],
             ],
         ],
         'PackageSbomReportSpec' => [
@@ -2900,6 +2948,76 @@ return [
                 'terminationGraceSeconds' => [ 'type' => 'integer', 'locationName' => 'terminationGraceSeconds', ],
                 'appId' => [ 'type' => 'string', 'locationName' => 'appId', ],
                 'groupId' => [ 'type' => 'string', 'locationName' => 'groupId', ],
+            ],
+        ],
+        'AnalysisLogRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'expr' => [ 'type' => 'string', 'locationName' => 'expr', ],
+                'startTime' => [ 'type' => 'long', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'long', 'locationName' => 'endTime', ],
+                'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
+                'debug' => [ 'type' => 'string', 'locationName' => 'debug', ],
+            ],
+        ],
+        'SearchLogsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'expr' => [ 'type' => 'string', 'locationName' => 'expr', ],
+                'caseSensitive' => [ 'type' => 'boolean', 'locationName' => 'caseSensitive', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'string', 'locationName' => 'endTime', ],
+                'pageNumber' => [ 'type' => 'long', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'long', 'locationName' => 'pageSize', ],
+                'sort' => [ 'type' => 'string', 'locationName' => 'sort', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'LogFilter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
+            ],
+        ],
+        'SearchLogsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'long', 'locationName' => 'total', ],
+                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'object', ], ],
+                'searchFields' =>  [ 'shape' => 'SearchFields', ],
+            ],
+        ],
+        'AnalysisResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'type' => 'array', ], ],
+                'fields' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'metadata' =>  [ 'shape' => 'AnalysisMetaData', ],
+            ],
+        ],
+        'AnalysisResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'AnalysisResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SearchLogsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SearchLogsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AnalysisRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'expr' => [ 'type' => 'string', 'locationName' => 'expr', ],
+                'startTime' => [ 'type' => 'long', 'locationName' => 'startTime', ],
+                'endTime' => [ 'type' => 'long', 'locationName' => 'endTime', ],
+                'timeInterval' => [ 'type' => 'string', 'locationName' => 'timeInterval', ],
+                'debug' => [ 'type' => 'string', 'locationName' => 'debug', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'logsetUID' => [ 'type' => 'string', 'locationName' => 'logsetUID', ],
+                'logtopicUID' => [ 'type' => 'string', 'locationName' => 'logtopicUID', ],
             ],
         ],
         'RebuildRequestShape' => [
