@@ -134,6 +134,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise detachSubUserPolicyAsync(array $args = [])
  * @method \Jdcloud\Result attachSubUserPolicy(array $args = [])
  * @method \GuzzleHttp\Promise\Promise attachSubUserPolicyAsync(array $args = [])
+ * @method \Jdcloud\Result modifySubUserPassword(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise modifySubUserPasswordAsync(array $args = [])
  * @method \Jdcloud\Result createSubUserInner(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createSubUserInnerAsync(array $args = [])
  * @method \Jdcloud\Result queryDeletedSubUsers(array $args = [])
