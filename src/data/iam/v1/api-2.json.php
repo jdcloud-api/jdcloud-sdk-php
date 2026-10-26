@@ -524,6 +524,15 @@ return [
             'input' => [ 'shape' => 'AttachSubUserPolicyRequestShape', ],
             'output' => [ 'shape' => 'AttachSubUserPolicyResponseShape', ],
         ],
+        'ModifySubUserPassword' => [
+            'name' => 'ModifySubUserPassword',
+            'http' => [
+                'method' => 'PUT',
+                'requestUri' => '/v1/subUser:modifySubUserPassword',
+            ],
+            'input' => [ 'shape' => 'ModifySubUserPasswordRequestShape', ],
+            'output' => [ 'shape' => 'ModifySubUserPasswordResponseShape', ],
+        ],
         'CreateSubUserInner' => [
             'name' => 'CreateSubUserInner',
             'http' => [
@@ -662,35 +671,6 @@ return [
                 'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
             ],
         ],
-        'ApiInfoShowRule' => [
-            'type' => 'structure',
-            'members' => [
-                'showCreateByPolicy' => [ 'type' => 'boolean', 'locationName' => 'showCreateByPolicy', ],
-                'showCreateByTag' => [ 'type' => 'boolean', 'locationName' => 'showCreateByTag', ],
-                'showCreateByBusiness' => [ 'type' => 'boolean', 'locationName' => 'showCreateByBusiness', ],
-            ],
-        ],
-        'ApiInfoVo' => [
-            'type' => 'structure',
-            'members' => [
-                'serviceNameCN' => [ 'type' => 'string', 'locationName' => 'serviceNameCN', ],
-                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
-                'serviceOldCode' => [ 'type' => 'string', 'locationName' => 'serviceOldCode', ],
-                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
-                'subResourceType' => [ 'type' => 'string', 'locationName' => 'subResourceType', ],
-                'actionName' => [ 'type' => 'string', 'locationName' => 'actionName', ],
-                'actionDescription' => [ 'type' => 'string', 'locationName' => 'actionDescription', ],
-                'actionType' => [ 'type' => 'string', 'locationName' => 'actionType', ],
-                'method' => [ 'type' => 'string', 'locationName' => 'method', ],
-                'region' => [ 'type' => 'integer', 'locationName' => 'region', ],
-                'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
-                'accessLevel' => [ 'type' => 'integer', 'locationName' => 'accessLevel', ],
-                'showRule' => [ 'type' => 'list', 'member' => [ 'shape' => 'ApiInfoShowRule', ], ],
-                'supply' => [ 'type' => 'integer', 'locationName' => 'supply', ],
-                'ignoreDeny' => [ 'type' => 'integer', 'locationName' => 'ignoreDeny', ],
-                'tagResourceLevel' => [ 'type' => 'integer', 'locationName' => 'tagResourceLevel', ],
-            ],
-        ],
         'AddCondition' => [
             'type' => 'structure',
             'members' => [
@@ -727,6 +707,35 @@ return [
                 'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
                 'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
                 'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+            ],
+        ],
+        'ApiInfoShowRule' => [
+            'type' => 'structure',
+            'members' => [
+                'showCreateByPolicy' => [ 'type' => 'boolean', 'locationName' => 'showCreateByPolicy', ],
+                'showCreateByTag' => [ 'type' => 'boolean', 'locationName' => 'showCreateByTag', ],
+                'showCreateByBusiness' => [ 'type' => 'boolean', 'locationName' => 'showCreateByBusiness', ],
+            ],
+        ],
+        'ApiInfoVo' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceNameCN' => [ 'type' => 'string', 'locationName' => 'serviceNameCN', ],
+                'serviceName' => [ 'type' => 'string', 'locationName' => 'serviceName', ],
+                'serviceOldCode' => [ 'type' => 'string', 'locationName' => 'serviceOldCode', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'subResourceType' => [ 'type' => 'string', 'locationName' => 'subResourceType', ],
+                'actionName' => [ 'type' => 'string', 'locationName' => 'actionName', ],
+                'actionDescription' => [ 'type' => 'string', 'locationName' => 'actionDescription', ],
+                'actionType' => [ 'type' => 'string', 'locationName' => 'actionType', ],
+                'method' => [ 'type' => 'string', 'locationName' => 'method', ],
+                'region' => [ 'type' => 'integer', 'locationName' => 'region', ],
+                'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
+                'accessLevel' => [ 'type' => 'integer', 'locationName' => 'accessLevel', ],
+                'showRule' => [ 'type' => 'list', 'member' => [ 'shape' => 'ApiInfoShowRule', ], ],
+                'supply' => [ 'type' => 'integer', 'locationName' => 'supply', ],
+                'ignoreDeny' => [ 'type' => 'integer', 'locationName' => 'ignoreDeny', ],
+                'tagResourceLevel' => [ 'type' => 'integer', 'locationName' => 'tagResourceLevel', ],
             ],
         ],
         'AttachSystemAccessKeyPolicy' => [
@@ -1406,6 +1415,14 @@ return [
                 'operationProtectionMode' => [ 'type' => 'string', 'locationName' => 'operationProtectionMode', ],
             ],
         ],
+        'ModifySubUserPassword' => [
+            'type' => 'structure',
+            'members' => [
+                'subUserName' => [ 'type' => 'string', 'locationName' => 'subUserName', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'passwordResetRequired' => [ 'type' => 'boolean', 'locationName' => 'passwordResetRequired', ],
+            ],
+        ],
         'OpenApiVo' => [
             'type' => 'structure',
             'members' => [
@@ -1575,15 +1592,6 @@ return [
                 'isDefaultEdition' => [ 'type' => 'boolean', 'locationName' => 'isDefaultEdition', ],
                 'edition' => [ 'type' => 'string', 'locationName' => 'edition', ],
                 'policyDocument' => [ 'type' => 'string', 'locationName' => 'policyDocument', ],
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-            ],
-        ],
-        'PolicyEditionDetail' => [
-            'type' => 'structure',
-            'members' => [
-                'document' => [ 'type' => 'string', 'locationName' => 'document', ],
-                'isDefaultEdition' => [ 'type' => 'boolean', 'locationName' => 'isDefaultEdition', ],
-                'edition' => [ 'type' => 'integer', 'locationName' => 'edition', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
@@ -1822,6 +1830,23 @@ return [
                 'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
             ],
         ],
+        'SubUserAkIpPolicy' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
+                'subUserPin' => [ 'type' => 'string', 'locationName' => 'subUserPin', ],
+                'subUserName' => [ 'type' => 'string', 'locationName' => 'subUserName', ],
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'ip' => [ 'type' => 'string', 'locationName' => 'ip', ],
+                'policyStatus' => [ 'type' => 'integer', 'locationName' => 'policyStatus', ],
+                'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateUser' => [ 'type' => 'string', 'locationName' => 'updateUser', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'deleted' => [ 'type' => 'integer', 'locationName' => 'deleted', ],
+            ],
+        ],
         'SubUserAuditRecord' => [
             'type' => 'structure',
             'members' => [
@@ -1919,6 +1944,7 @@ return [
                 'statusCode' => [ 'type' => 'string', 'locationName' => 'statusCode', ],
                 'deleteFlag' => [ 'type' => 'string', 'locationName' => 'deleteFlag', ],
                 'trustRelationship' => [ 'type' => 'string', 'locationName' => 'trustRelationship', ],
+                'isSuperAK' => [ 'type' => 'boolean', 'locationName' => 'isSuperAK', ],
             ],
         ],
         'TPaasUser' => [
@@ -2287,6 +2313,7 @@ return [
         'GetSubUserAccessKeysRequestShape' => [
             'type' => 'structure',
             'members' => [
+                'account' => [ 'type' => 'string', 'locationName' => 'account', ],
                 'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
             ],
         ],
@@ -3226,6 +3253,12 @@ return [
                 'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
             ],
         ],
+        'ModifySubUserPasswordResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'isSuccess' => [ 'type' => 'boolean', 'locationName' => 'isSuccess', ],
+            ],
+        ],
         'CreateSubUserResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -3264,6 +3297,14 @@ return [
         'AttachSubUserPolicyResultShape' => [
             'type' => 'structure',
             'members' => [
+            ],
+        ],
+        'ModifySubUserPasswordRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'subUserName' => [ 'type' => 'string', 'locationName' => 'subUserName', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'passwordResetRequired' => [ 'type' => 'boolean', 'locationName' => 'passwordResetRequired', ],
             ],
         ],
         'CreateSubUserInnerResponseShape' => [
@@ -3366,6 +3407,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'subUser' => [ 'type' => 'string', 'locationName' => 'subUser', ],
+            ],
+        ],
+        'ModifySubUserPasswordResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'ModifySubUserPasswordResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+                'success' => [ 'type' => 'boolean', 'locationName' => 'success', ],
             ],
         ],
         'DeleteSubUserRequestShape' => [
