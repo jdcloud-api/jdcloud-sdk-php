@@ -227,6 +227,24 @@ return [
             'input' => [ 'shape' => 'GetRuntimeSessionsRequestShape', ],
             'output' => [ 'shape' => 'GetRuntimeSessionsResponseShape', ],
         ],
+        'DescribeRuntimeSessionsByVersion' => [
+            'name' => 'DescribeRuntimeSessionsByVersion',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/runtimes/{runtimeId}/versions/{version}/sessions',
+            ],
+            'input' => [ 'shape' => 'DescribeRuntimeSessionsByVersionRequestShape', ],
+            'output' => [ 'shape' => 'DescribeRuntimeSessionsByVersionResponseShape', ],
+        ],
+        'DeleteRuntimeSession' => [
+            'name' => 'DeleteRuntimeSession',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/runtimes/{runtimeId}/versions/{version}/sessions/{sessionId}:delete',
+            ],
+            'input' => [ 'shape' => 'DeleteRuntimeSessionRequestShape', ],
+            'output' => [ 'shape' => 'DeleteRuntimeSessionResponseShape', ],
+        ],
         'DeleteRuntimeVersion' => [
             'name' => 'DeleteRuntimeVersion',
             'http' => [
@@ -314,6 +332,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
+                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'args' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
             ],
         ],
         'ArtifactConfiguration' => [
@@ -332,6 +353,9 @@ return [
             'type' => 'structure',
             'members' => [
                 'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
+                'command' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'args' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
             ],
         ],
         'AuthorizerConfiguration' => [
@@ -347,6 +371,7 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'sessionId' => [ 'type' => 'string', 'locationName' => 'sessionId', ],
                 'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'persistent' => [ 'type' => 'boolean', 'locationName' => 'persistent', ],
                 'maxLifeTime' => [ 'type' => 'integer', 'locationName' => 'maxLifeTime', ],
                 'cdpEndpoint' => [ 'type' => 'string', 'locationName' => 'cdpEndpoint', ],
                 'vncEndpoint' => [ 'type' => 'string', 'locationName' => 'vncEndpoint', ],
@@ -354,6 +379,36 @@ return [
                 'failureReason' => [ 'type' => 'string', 'locationName' => 'failureReason', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'expireTime' => [ 'type' => 'string', 'locationName' => 'expireTime', ],
+            ],
+        ],
+        'ResourceSpecificationView' => [
+            'type' => 'structure',
+            'members' => [
+                'cpu' => [ 'type' => 'float', 'locationName' => 'cpu', ],
+                'memory' => [ 'type' => 'float', 'locationName' => 'memory', ],
+            ],
+        ],
+        'ResourceView' => [
+            'type' => 'structure',
+            'members' => [
+                'specification' =>  [ 'shape' => 'ResourceSpecificationView', ],
+            ],
+        ],
+        'LogConfigurationView' => [
+            'type' => 'structure',
+            'members' => [
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'logsetId' => [ 'type' => 'string', 'locationName' => 'logsetId', ],
+                'logtopicId' => [ 'type' => 'string', 'locationName' => 'logtopicId', ],
+                'collectStandardOutput' => [ 'type' => 'boolean', 'locationName' => 'collectStandardOutput', ],
+                'customFilePaths' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'Tag' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'BrowserTool' => [
@@ -365,6 +420,10 @@ return [
                 'apiKey' => [ 'type' => 'string', 'locationName' => 'apiKey', ],
                 'state' => [ 'type' => 'string', 'locationName' => 'state', ],
                 'network' => [ 'type' => 'string', 'locationName' => 'network', ],
+                'resource' =>  [ 'shape' => 'ResourceView', ],
+                'logConfigurationView' =>  [ 'shape' => 'LogConfigurationView', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
@@ -389,8 +448,7 @@ return [
         'CfsAccessPointConfiguration' => [
             'type' => 'structure',
             'members' => [
-                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
-                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'fileSystemId' => [ 'type' => 'string', 'locationName' => 'fileSystemId', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
                 'readOnly' => [ 'type' => 'boolean', 'locationName' => 'readOnly', ],
             ],
@@ -398,8 +456,7 @@ return [
         'CfsAccessPointView' => [
             'type' => 'structure',
             'members' => [
-                'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
-                'path' => [ 'type' => 'string', 'locationName' => 'path', ],
+                'fileSystemId' => [ 'type' => 'string', 'locationName' => 'fileSystemId', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
                 'readOnly' => [ 'type' => 'boolean', 'locationName' => 'readOnly', ],
             ],
@@ -462,6 +519,7 @@ return [
                 'sessionId' => [ 'type' => 'string', 'locationName' => 'sessionId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'persistent' => [ 'type' => 'boolean', 'locationName' => 'persistent', ],
                 'maxLifeTime' => [ 'type' => 'integer', 'locationName' => 'maxLifeTime', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
@@ -476,21 +534,11 @@ return [
                 'failureReason' => [ 'type' => 'string', 'locationName' => 'failureReason', ],
                 'state' => [ 'type' => 'string', 'locationName' => 'state', ],
                 'network' => [ 'type' => 'string', 'locationName' => 'network', ],
+                'resource' =>  [ 'shape' => 'ResourceView', ],
+                'logConfigurationView' =>  [ 'shape' => 'LogConfigurationView', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-            ],
-        ],
-        'NetworkConfiguration' => [
-            'type' => 'structure',
-            'members' => [
-                'enablePublicNetwork' => [ 'type' => 'boolean', 'locationName' => 'enablePublicNetwork', ],
-                'enableSandbox' => [ 'type' => 'boolean', 'locationName' => 'enableSandbox', ],
-            ],
-        ],
-        'NetworkView' => [
-            'type' => 'structure',
-            'members' => [
-                'enablePublicNetwork' => [ 'type' => 'boolean', 'locationName' => 'enablePublicNetwork', ],
-                'enableSandbox' => [ 'type' => 'boolean', 'locationName' => 'enableSandbox', ],
             ],
         ],
         'CodeView' => [
@@ -523,22 +571,23 @@ return [
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
-        'OssAccessPointConfiguration' => [
-            'type' => 'structure',
-            'members' => [
-                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
-                'bucketPath' => [ 'type' => 'string', 'locationName' => 'bucketPath', ],
-                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
-            ],
-        ],
-        'FilesystemConfiguration' => [
+        'FileSystemConfiguration' => [
             'type' => 'structure',
             'members' => [
                 'ossAccessPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'OssAccessPointConfiguration', ], ],
                 'cfsAccessPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'CfsAccessPointConfiguration', ], ],
             ],
         ],
-        'FilesystemView' => [
+        'OssAccessPointConfiguration' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'bucketPath' => [ 'type' => 'string', 'locationName' => 'bucketPath', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+                'readOnly' => [ 'type' => 'boolean', 'locationName' => 'readOnly', ],
+            ],
+        ],
+        'FileSystemView' => [
             'type' => 'structure',
             'members' => [
                 'ossAccessPoints' => [ 'type' => 'list', 'member' => [ 'shape' => 'OssAccessPointView', ], ],
@@ -551,6 +600,7 @@ return [
                 'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
                 'bucketPath' => [ 'type' => 'string', 'locationName' => 'bucketPath', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+                'readOnly' => [ 'type' => 'boolean', 'locationName' => 'readOnly', ],
             ],
         ],
         'Filter' => [
@@ -559,6 +609,13 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'ImageVolume' => [
+            'type' => 'structure',
+            'members' => [
+                'imageUri' => [ 'type' => 'string', 'locationName' => 'imageUri', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
             ],
         ],
         'InputContentBlock' => [
@@ -578,13 +635,52 @@ return [
         'LifecycleConfiguration' => [
             'type' => 'structure',
             'members' => [
+                'persistent' => [ 'type' => 'boolean', 'locationName' => 'persistent', ],
                 'maxLifeTime' => [ 'type' => 'integer', 'locationName' => 'maxLifeTime', ],
             ],
         ],
         'LifecycleView' => [
             'type' => 'structure',
             'members' => [
+                'persistent' => [ 'type' => 'boolean', 'locationName' => 'persistent', ],
                 'maxLifeTime' => [ 'type' => 'integer', 'locationName' => 'maxLifeTime', ],
+            ],
+        ],
+        'LogConfiguration' => [
+            'type' => 'structure',
+            'members' => [
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'logsetId' => [ 'type' => 'string', 'locationName' => 'logsetId', ],
+                'logtopicId' => [ 'type' => 'string', 'locationName' => 'logtopicId', ],
+                'collectStandardOutput' => [ 'type' => 'boolean', 'locationName' => 'collectStandardOutput', ],
+                'customFilePaths' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'NetworkConfiguration' => [
+            'type' => 'structure',
+            'members' => [
+                'enablePublicNetwork' => [ 'type' => 'boolean', 'locationName' => 'enablePublicNetwork', ],
+                'enableSandbox' => [ 'type' => 'boolean', 'locationName' => 'enableSandbox', ],
+            ],
+        ],
+        'NetworkView' => [
+            'type' => 'structure',
+            'members' => [
+                'enablePublicNetwork' => [ 'type' => 'boolean', 'locationName' => 'enablePublicNetwork', ],
+                'enableSandbox' => [ 'type' => 'boolean', 'locationName' => 'enableSandbox', ],
+            ],
+        ],
+        'ResourceConfiguration' => [
+            'type' => 'structure',
+            'members' => [
+                'specification' =>  [ 'shape' => 'ResourceSpecification', ],
+            ],
+        ],
+        'ResourceSpecification' => [
+            'type' => 'structure',
+            'members' => [
+                'cpu' => [ 'type' => 'float', 'locationName' => 'cpu', ],
+                'memory' => [ 'type' => 'float', 'locationName' => 'memory', ],
             ],
         ],
         'RuntimeEndpointInfo' => [
@@ -593,6 +689,13 @@ return [
                 'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
                 'publicEndpoint' => [ 'type' => 'string', 'locationName' => 'publicEndpoint', ],
                 'internalEndpoint' => [ 'type' => 'string', 'locationName' => 'internalEndpoint', ],
+            ],
+        ],
+        'RuntimeSessionView' => [
+            'type' => 'structure',
+            'members' => [
+                'sessionId' => [ 'type' => 'string', 'locationName' => 'sessionId', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
         'RuntimeVersionView' => [
@@ -605,10 +708,13 @@ return [
                 'versionDescription' => [ 'type' => 'string', 'locationName' => 'versionDescription', ],
                 'warmSession' => [ 'type' => 'integer', 'locationName' => 'warmSession', ],
                 'maxSession' => [ 'type' => 'integer', 'locationName' => 'maxSession', ],
+                'resource' =>  [ 'shape' => 'ResourceView', ],
                 'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
                 'lifecycle' =>  [ 'shape' => 'LifecycleView', ],
+                'logConfigurationView' =>  [ 'shape' => 'LogConfigurationView', ],
                 'envs' => [ 'type' => 'list', 'member' => [ 'shape' => 'Env', ], ],
-                'fileSystem' =>  [ 'shape' => 'FilesystemView', ],
+                'fileSystem' =>  [ 'shape' => 'FileSystemView', ],
+                'imageVolumes' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageVolume', ], ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
             ],
         ],
@@ -624,15 +730,10 @@ return [
                 'versionView' =>  [ 'shape' => 'RuntimeVersionView', ],
                 'apiKey' => [ 'type' => 'string', 'locationName' => 'apiKey', ],
                 'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-            ],
-        ],
-        'Tag' => [
-            'type' => 'structure',
-            'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
         'TagFilter' => [
@@ -748,6 +849,8 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -790,9 +893,13 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'resourceConfiguration' =>  [ 'shape' => 'ResourceConfiguration', ],
+                'logConfiguration' =>  [ 'shape' => 'LogConfiguration', ],
                 'authenticationType' => [ 'type' => 'string', 'locationName' => 'authenticationType', ],
                 'networkConfiguration' => [ 'type' => 'string', 'locationName' => 'networkConfiguration', ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -813,6 +920,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'persistent' => [ 'type' => 'boolean', 'locationName' => 'persistent', ],
                 'maxLifeTime' => [ 'type' => 'integer', 'locationName' => 'maxLifeTime', ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -989,6 +1097,11 @@ return [
             'members' => [
             ],
         ],
+        'DeleteRuntimeSessionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'GetRuntimeSessionsResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1003,13 +1116,18 @@ return [
                 'artifactConfiguration' =>  [ 'shape' => 'ArtifactConfiguration', ],
                 'warmSession' => [ 'type' => 'integer', 'locationName' => 'warmSession', ],
                 'maxSession' => [ 'type' => 'integer', 'locationName' => 'maxSession', ],
+                'resourceConfiguration' =>  [ 'shape' => 'ResourceConfiguration', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'authorizerConfiguration' =>  [ 'shape' => 'AuthorizerConfiguration', ],
                 'lifecycleConfiguration' =>  [ 'shape' => 'LifecycleConfiguration', ],
+                'logConfiguration' =>  [ 'shape' => 'LogConfiguration', ],
                 'networkConfiguration' =>  [ 'shape' => 'NetworkConfiguration', ],
                 'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
                 'envs' => [ 'type' => 'list', 'member' => [ 'shape' => 'EnvConfiguration', ], ],
-                'filesystemConfiguration' =>  [ 'shape' => 'FilesystemConfiguration', ],
+                'fileSystemConfiguration' =>  [ 'shape' => 'FileSystemConfiguration', ],
+                'imageVolumes' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageVolume', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -1029,6 +1147,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeRuntimeSessionsByVersionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeRuntimeSessionsByVersionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'UpdateRuntimeAttributesResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1045,7 +1170,18 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DeleteRuntimeSessionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'sessionId' => [ 'type' => 'string', 'locationName' => 'sessionId', ],
             ],
         ],
         'DescribeRuntimeResultShape' => [
@@ -1084,11 +1220,13 @@ return [
                 'networkConfiguration' =>  [ 'shape' => 'NetworkConfiguration', ],
                 'warmSession' => [ 'type' => 'integer', 'locationName' => 'warmSession', ],
                 'maxSession' => [ 'type' => 'integer', 'locationName' => 'maxSession', ],
+                'resourceConfiguration' =>  [ 'shape' => 'ResourceConfiguration', ],
                 'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
                 'envs' => [ 'type' => 'list', 'member' => [ 'shape' => 'EnvConfiguration', ], ],
-                'filesystemConfiguration' =>  [ 'shape' => 'FilesystemConfiguration', ],
-                'protocol' => [ 'type' => 'string', 'locationName' => 'protocol', ],
+                'fileSystemConfiguration' =>  [ 'shape' => 'FileSystemConfiguration', ],
+                'imageVolumes' => [ 'type' => 'list', 'member' => [ 'shape' => 'ImageVolume', ], ],
                 'lifecycleConfiguration' =>  [ 'shape' => 'LifecycleConfiguration', ],
+                'logConfiguration' =>  [ 'shape' => 'LogConfiguration', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
             ],
@@ -1119,6 +1257,16 @@ return [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeRuntimeSessionsByVersionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
             ],
         ],
         'DescribeRuntimeRequestShape' => [
@@ -1165,6 +1313,17 @@ return [
                 'runtimes' => [ 'type' => 'list', 'member' => [ 'shape' => 'RuntimeView', ], ],
             ],
         ],
+        'DescribeRuntimeSessionsByVersionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'sessionInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'RuntimeSessionView', ], ],
+            ],
+        ],
         'DeleteRuntimeResponseShape' => [
             'type' => 'structure',
             'members' => [
@@ -1193,6 +1352,13 @@ return [
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'runtimeId' => [ 'type' => 'string', 'locationName' => 'runtimeId', ],
+            ],
+        ],
+        'DeleteRuntimeSessionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DeleteRuntimeSessionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DeleteRuntimeVersionRequestShape' => [
@@ -1244,9 +1410,14 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+                'resourceConfiguration' =>  [ 'shape' => 'ResourceConfiguration', ],
+                'logConfiguration' =>  [ 'shape' => 'LogConfiguration', ],
                 'authenticationType' => [ 'type' => 'string', 'locationName' => 'authenticationType', ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
                 'networkConfiguration' => [ 'type' => 'string', 'locationName' => 'networkConfiguration', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
@@ -1267,6 +1438,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'persistent' => [ 'type' => 'boolean', 'locationName' => 'persistent', ],
                 'maxLifeTime' => [ 'type' => 'integer', 'locationName' => 'maxLifeTime', ],
                 'clientToken' => [ 'type' => 'string', 'locationName' => 'clientToken', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
@@ -1304,6 +1476,8 @@ return [
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
