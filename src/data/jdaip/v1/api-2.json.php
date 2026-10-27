@@ -857,6 +857,24 @@ return [
             'input' => [ 'shape' => 'DescribeNodePoolRequestShape', ],
             'output' => [ 'shape' => 'DescribeNodePoolResponseShape', ],
         ],
+        'DescribeSafeBuckets' => [
+            'name' => 'DescribeSafeBuckets',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/oss:describeSafeBuckets',
+            ],
+            'input' => [ 'shape' => 'DescribeSafeBucketsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSafeBucketsResponseShape', ],
+        ],
+        'DescribeSafeBucket' => [
+            'name' => 'DescribeSafeBucket',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/oss/{bucketName}:describeSafeBucket',
+            ],
+            'input' => [ 'shape' => 'DescribeSafeBucketRequestShape', ],
+            'output' => [ 'shape' => 'DescribeSafeBucketResponseShape', ],
+        ],
         'DescribeQueues' => [
             'name' => 'DescribeQueues',
             'http' => [
@@ -1614,6 +1632,7 @@ return [
             'members' => [
                 'datasetVisibility' => [ 'type' => 'string', 'locationName' => 'datasetVisibility', ],
                 'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
+                'datasetName' => [ 'type' => 'string', 'locationName' => 'datasetName', ],
                 'datasetVersion' => [ 'type' => 'string', 'locationName' => 'datasetVersion', ],
                 'readonly' => [ 'type' => 'boolean', 'locationName' => 'readonly', ],
                 'mountTargetId' => [ 'type' => 'string', 'locationName' => 'mountTargetId', ],
@@ -2092,6 +2111,7 @@ return [
             'members' => [
                 'datasetVisibility' => [ 'type' => 'string', 'locationName' => 'datasetVisibility', ],
                 'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
+                'datasetName' => [ 'type' => 'string', 'locationName' => 'datasetName', ],
                 'datasetVersion' => [ 'type' => 'string', 'locationName' => 'datasetVersion', ],
                 'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
                 'storage' =>  [ 'shape' => 'StorageSpaceParamForJob', ],
@@ -2810,6 +2830,7 @@ return [
             'members' => [
                 'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
                 'dssDatasetId' => [ 'type' => 'string', 'locationName' => 'dssDatasetId', ],
+                'datasetName' => [ 'type' => 'string', 'locationName' => 'datasetName', ],
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
                 'versionDesc' => [ 'type' => 'string', 'locationName' => 'versionDesc', ],
                 'storageDomain' => [ 'type' => 'string', 'locationName' => 'storageDomain', ],
@@ -2855,6 +2876,7 @@ return [
             'members' => [
                 'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
                 'dssDatasetId' => [ 'type' => 'string', 'locationName' => 'dssDatasetId', ],
+                'datasetName' => [ 'type' => 'string', 'locationName' => 'datasetName', ],
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
                 'versionDesc' => [ 'type' => 'string', 'locationName' => 'versionDesc', ],
                 'storageDomain' => [ 'type' => 'string', 'locationName' => 'storageDomain', ],
@@ -2868,6 +2890,7 @@ return [
             'members' => [
                 'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
                 'dssDatasetId' => [ 'type' => 'string', 'locationName' => 'dssDatasetId', ],
+                'datasetName' => [ 'type' => 'string', 'locationName' => 'datasetName', ],
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
                 'versionDesc' => [ 'type' => 'string', 'locationName' => 'versionDesc', ],
                 'storageDomain' => [ 'type' => 'string', 'locationName' => 'storageDomain', ],
@@ -2881,6 +2904,7 @@ return [
             'members' => [
                 'datasetId' => [ 'type' => 'string', 'locationName' => 'datasetId', ],
                 'dssDatasetId' => [ 'type' => 'string', 'locationName' => 'dssDatasetId', ],
+                'datasetName' => [ 'type' => 'string', 'locationName' => 'datasetName', ],
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
                 'versionDesc' => [ 'type' => 'string', 'locationName' => 'versionDesc', ],
                 'storageDomain' => [ 'type' => 'string', 'locationName' => 'storageDomain', ],
@@ -3841,20 +3865,6 @@ return [
                 'permission' => [ 'type' => 'string', 'locationName' => 'permission', ],
             ],
         ],
-        'RoleDeployScale' => [
-            'type' => 'structure',
-            'members' => [
-                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
-                'replica' => [ 'type' => 'integer', 'locationName' => 'replica', ],
-            ],
-        ],
-        'InferenceLocalStorage' => [
-            'type' => 'structure',
-            'members' => [
-                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
-                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
-            ],
-        ],
         'Service' => [
             'type' => 'structure',
             'members' => [
@@ -3917,47 +3927,6 @@ return [
                 'trafficPercent' => [ 'type' => 'integer', 'locationName' => 'trafficPercent', ],
             ],
         ],
-        'HealthCheck' => [
-            'type' => 'structure',
-            'members' => [
-                'probeType' => [ 'type' => 'string', 'locationName' => 'probeType', ],
-                'probeMethod' => [ 'type' => 'string', 'locationName' => 'probeMethod', ],
-                'probeUrl' => [ 'type' => 'string', 'locationName' => 'probeUrl', ],
-                'probePort' => [ 'type' => 'integer', 'locationName' => 'probePort', ],
-                'command' => [ 'type' => 'string', 'locationName' => 'command', ],
-                'initialDelay' => [ 'type' => 'integer', 'locationName' => 'initialDelay', ],
-                'period' => [ 'type' => 'integer', 'locationName' => 'period', ],
-                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
-                'successThreshold' => [ 'type' => 'integer', 'locationName' => 'successThreshold', ],
-                'failureThreshold' => [ 'type' => 'integer', 'locationName' => 'failureThreshold', ],
-            ],
-        ],
-        'RoleGateway' => [
-            'type' => 'structure',
-            'members' => [
-                'vpcProto' => [ 'type' => 'string', 'locationName' => 'vpcProto', ],
-                'protoLevel' => [ 'type' => 'integer', 'locationName' => 'protoLevel', ],
-                'vpcAccess' => [ 'type' => 'boolean', 'locationName' => 'vpcAccess', ],
-                'albId' => [ 'type' => 'string', 'locationName' => 'albId', ],
-                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
-                'listenPort' => [ 'type' => 'integer', 'locationName' => 'listenPort', ],
-                'vpcAddress' => [ 'type' => 'string', 'locationName' => 'vpcAddress', ],
-                'smartRouter' => [ 'type' => 'boolean', 'locationName' => 'smartRouter', ],
-                'gatewayType' => [ 'type' => 'string', 'locationName' => 'gatewayType', ],
-                'sessionPersistentHeader' => [ 'type' => 'string', 'locationName' => 'sessionPersistentHeader', ],
-                'sessionPersistentEnabled' => [ 'type' => 'boolean', 'locationName' => 'sessionPersistentEnabled', ],
-            ],
-        ],
-        'Event' => [
-            'type' => 'structure',
-            'members' => [
-                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
-                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
-                'eventId' => [ 'type' => 'string', 'locationName' => 'eventId', ],
-                'inferenceId' => [ 'type' => 'string', 'locationName' => 'inferenceId', ],
-                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
-            ],
-        ],
         'Model' => [
             'type' => 'structure',
             'members' => [
@@ -4012,6 +3981,181 @@ return [
                 'elasticIp' =>  [ 'shape' => 'ElasticIp', ],
                 'queueId' => [ 'type' => 'string', 'locationName' => 'queueId', ],
                 'pods' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'CustomService' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'address' => [ 'type' => 'string', 'locationName' => 'address', ],
+            ],
+        ],
+        'UserTag' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'RoleDeploy' => [
+            'type' => 'structure',
+            'members' => [
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+                'replica' => [ 'type' => 'integer', 'locationName' => 'replica', ],
+                'podsState' =>  [ 'shape' => 'PodsState', ],
+                'resource' =>  [ 'shape' => 'Resource', ],
+                'deployType' => [ 'type' => 'string', 'locationName' => 'deployType', ],
+                'distributedNodeCount' => [ 'type' => 'integer', 'locationName' => 'distributedNodeCount', ],
+                'affinity' =>  [ 'shape' => 'InferenceAffinity', ],
+                'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
+                'registryUser' => [ 'type' => 'string', 'locationName' => 'registryUser', ],
+                'registryPass' => [ 'type' => 'string', 'locationName' => 'registryPass', ],
+                'healthChecks' => [ 'type' => 'list', 'member' => [ 'shape' => 'HealthCheck', ], ],
+                'imageName' => [ 'type' => 'string', 'locationName' => 'imageName', ],
+                'imageSource' => [ 'type' => 'string', 'locationName' => 'imageSource', ],
+                'command' => [ 'type' => 'string', 'locationName' => 'command', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'env' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'inferEngine' => [ 'type' => 'string', 'locationName' => 'inferEngine', ],
+                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
+                'routerPrefillPolicy' => [ 'type' => 'string', 'locationName' => 'routerPrefillPolicy', ],
+                'routerDecodePolicy' => [ 'type' => 'string', 'locationName' => 'routerDecodePolicy', ],
+                'kvTransferProtocol' => [ 'type' => 'string', 'locationName' => 'kvTransferProtocol', ],
+            ],
+        ],
+        'ServiceVersionResource' => [
+            'type' => 'structure',
+            'members' => [
+                'logicalQueue' => [ 'type' => 'string', 'locationName' => 'logicalQueue', ],
+                'queueId' => [ 'type' => 'string', 'locationName' => 'queueId', ],
+                'cpu' => [ 'type' => 'integer', 'locationName' => 'cpu', ],
+                'memory' => [ 'type' => 'integer', 'locationName' => 'memory', ],
+                'rdma' => [ 'type' => 'integer', 'locationName' => 'rdma', ],
+                'deviceModel' => [ 'type' => 'string', 'locationName' => 'deviceModel', ],
+                'deviceMemory' => [ 'type' => 'integer', 'locationName' => 'deviceMemory', ],
+                'vcudaCore' => [ 'type' => 'string', 'locationName' => 'vcudaCore', ],
+                'vcudaRatio' => [ 'type' => 'string', 'locationName' => 'vcudaRatio', ],
+            ],
+        ],
+        'Nlb' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'ScaleInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'replicas' => [ 'type' => 'integer', 'locationName' => 'replicas', ],
+                'roleSet' =>  [ 'shape' => 'RoleSetScale', ],
+            ],
+        ],
+        'ServiceVersion' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'serviceId' => [ 'type' => 'string', 'locationName' => 'serviceId', ],
+                'permission' => [ 'type' => 'string', 'locationName' => 'permission', ],
+                'deployType' => [ 'type' => 'string', 'locationName' => 'deployType', ],
+                'ownerUser' => [ 'type' => 'string', 'locationName' => 'ownerUser', ],
+                'ownerUserPin' => [ 'type' => 'string', 'locationName' => 'ownerUserPin', ],
+                'version' => [ 'type' => 'integer', 'locationName' => 'version', ],
+                'inferenceId' => [ 'type' => 'string', 'locationName' => 'inferenceId', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'taskPriority' => [ 'type' => 'integer', 'locationName' => 'taskPriority', ],
+                'runningPods' => [ 'type' => 'integer', 'locationName' => 'runningPods', ],
+                'totalPods' => [ 'type' => 'integer', 'locationName' => 'totalPods', ],
+                'failedPods' => [ 'type' => 'integer', 'locationName' => 'failedPods', ],
+                'replicas' => [ 'type' => 'integer', 'locationName' => 'replicas', ],
+                'trafficPercent' => [ 'type' => 'integer', 'locationName' => 'trafficPercent', ],
+                'resource' =>  [ 'shape' => 'ServiceVersionResource', ],
+                'roleSet' =>  [ 'shape' => 'RoleSet', ],
+                'createUser' => [ 'type' => 'string', 'locationName' => 'createUser', ],
+                'createUserPin' => [ 'type' => 'string', 'locationName' => 'createUserPin', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserTag', ], ],
+                'resourceGroupInfo' =>  [ 'shape' => 'ResourceGroupInfo', ],
+            ],
+        ],
+        'Code' => [
+            'type' => 'structure',
+            'members' => [
+                'repoId' => [ 'type' => 'string', 'locationName' => 'repoId', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+                'repoName' => [ 'type' => 'string', 'locationName' => 'repoName', ],
+            ],
+        ],
+        'Vpc' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+            ],
+        ],
+        'UpdateInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'enableEngineMetrics' => [ 'type' => 'boolean', 'locationName' => 'enableEngineMetrics', ],
+                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
+            ],
+        ],
+        'RoleDeployScale' => [
+            'type' => 'structure',
+            'members' => [
+                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
+                'replica' => [ 'type' => 'integer', 'locationName' => 'replica', ],
+            ],
+        ],
+        'InferenceLocalStorage' => [
+            'type' => 'structure',
+            'members' => [
+                'size' => [ 'type' => 'integer', 'locationName' => 'size', ],
+                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
+            ],
+        ],
+        'HealthCheck' => [
+            'type' => 'structure',
+            'members' => [
+                'probeType' => [ 'type' => 'string', 'locationName' => 'probeType', ],
+                'probeMethod' => [ 'type' => 'string', 'locationName' => 'probeMethod', ],
+                'probeUrl' => [ 'type' => 'string', 'locationName' => 'probeUrl', ],
+                'probePort' => [ 'type' => 'integer', 'locationName' => 'probePort', ],
+                'command' => [ 'type' => 'string', 'locationName' => 'command', ],
+                'initialDelay' => [ 'type' => 'integer', 'locationName' => 'initialDelay', ],
+                'period' => [ 'type' => 'integer', 'locationName' => 'period', ],
+                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
+                'successThreshold' => [ 'type' => 'integer', 'locationName' => 'successThreshold', ],
+                'failureThreshold' => [ 'type' => 'integer', 'locationName' => 'failureThreshold', ],
+            ],
+        ],
+        'RoleGateway' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcProto' => [ 'type' => 'string', 'locationName' => 'vpcProto', ],
+                'protoLevel' => [ 'type' => 'integer', 'locationName' => 'protoLevel', ],
+                'vpcAccess' => [ 'type' => 'boolean', 'locationName' => 'vpcAccess', ],
+                'albId' => [ 'type' => 'string', 'locationName' => 'albId', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'listenPort' => [ 'type' => 'integer', 'locationName' => 'listenPort', ],
+                'vpcAddress' => [ 'type' => 'string', 'locationName' => 'vpcAddress', ],
+                'smartRouter' => [ 'type' => 'boolean', 'locationName' => 'smartRouter', ],
+                'gatewayType' => [ 'type' => 'string', 'locationName' => 'gatewayType', ],
+                'sessionPersistentHeader' => [ 'type' => 'string', 'locationName' => 'sessionPersistentHeader', ],
+                'sessionPersistentEnabled' => [ 'type' => 'boolean', 'locationName' => 'sessionPersistentEnabled', ],
+            ],
+        ],
+        'Event' => [
+            'type' => 'structure',
+            'members' => [
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'detail' => [ 'type' => 'string', 'locationName' => 'detail', ],
+                'eventId' => [ 'type' => 'string', 'locationName' => 'eventId', ],
+                'inferenceId' => [ 'type' => 'string', 'locationName' => 'inferenceId', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
             ],
         ],
         'ServiceInfo' => [
@@ -4078,21 +4222,6 @@ return [
                 'protoLevel' => [ 'type' => 'integer', 'locationName' => 'protoLevel', ],
             ],
         ],
-        'CustomService' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
-                'address' => [ 'type' => 'string', 'locationName' => 'address', ],
-            ],
-        ],
-        'UserTag' => [
-            'type' => 'structure',
-            'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
-            ],
-        ],
         'Inference' => [
             'type' => 'structure',
             'members' => [
@@ -4114,32 +4243,6 @@ return [
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'value' => [ 'type' => 'integer', 'locationName' => 'value', ],
-            ],
-        ],
-        'RoleDeploy' => [
-            'type' => 'structure',
-            'members' => [
-                'roleName' => [ 'type' => 'string', 'locationName' => 'roleName', ],
-                'replica' => [ 'type' => 'integer', 'locationName' => 'replica', ],
-                'podsState' =>  [ 'shape' => 'PodsState', ],
-                'resource' =>  [ 'shape' => 'Resource', ],
-                'deployType' => [ 'type' => 'string', 'locationName' => 'deployType', ],
-                'distributedNodeCount' => [ 'type' => 'integer', 'locationName' => 'distributedNodeCount', ],
-                'affinity' =>  [ 'shape' => 'InferenceAffinity', ],
-                'imageUrl' => [ 'type' => 'string', 'locationName' => 'imageUrl', ],
-                'registryUser' => [ 'type' => 'string', 'locationName' => 'registryUser', ],
-                'registryPass' => [ 'type' => 'string', 'locationName' => 'registryPass', ],
-                'healthChecks' => [ 'type' => 'list', 'member' => [ 'shape' => 'HealthCheck', ], ],
-                'imageName' => [ 'type' => 'string', 'locationName' => 'imageName', ],
-                'imageSource' => [ 'type' => 'string', 'locationName' => 'imageSource', ],
-                'command' => [ 'type' => 'string', 'locationName' => 'command', ],
-                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
-                'env' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'inferEngine' => [ 'type' => 'string', 'locationName' => 'inferEngine', ],
-                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
-                'routerPrefillPolicy' => [ 'type' => 'string', 'locationName' => 'routerPrefillPolicy', ],
-                'routerDecodePolicy' => [ 'type' => 'string', 'locationName' => 'routerDecodePolicy', ],
-                'kvTransferProtocol' => [ 'type' => 'string', 'locationName' => 'kvTransferProtocol', ],
             ],
         ],
         'RolloutInfo' => [
@@ -4192,13 +4295,6 @@ return [
                 'nodeLabels' => [ 'type' => 'list', 'member' => [ 'shape' => 'InferenceNodeLabels', ], ],
             ],
         ],
-        'Nlb' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-            ],
-        ],
         'AdminInferenceInfo' => [
             'type' => 'structure',
             'members' => [
@@ -4223,13 +4319,6 @@ return [
             'members' => [
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-            ],
-        ],
-        'ScaleInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'replicas' => [ 'type' => 'integer', 'locationName' => 'replicas', ],
-                'roleSet' =>  [ 'shape' => 'RoleSetScale', ],
             ],
         ],
         'Metadata' => [
@@ -4281,14 +4370,6 @@ return [
                 'roleSet' =>  [ 'shape' => 'RoleSet', ],
             ],
         ],
-        'Code' => [
-            'type' => 'structure',
-            'members' => [
-                'repoId' => [ 'type' => 'string', 'locationName' => 'repoId', ],
-                'mountPath' => [ 'type' => 'string', 'locationName' => 'mountPath', ],
-                'repoName' => [ 'type' => 'string', 'locationName' => 'repoName', ],
-            ],
-        ],
         'ElasticIp' => [
             'type' => 'structure',
             'members' => [
@@ -4336,21 +4417,6 @@ return [
                 'customServices' => [ 'type' => 'list', 'member' => [ 'shape' => 'CustomService', ], ],
             ],
         ],
-        'Vpc' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-            ],
-        ],
-        'UpdateInfo' => [
-            'type' => 'structure',
-            'members' => [
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'enableEngineMetrics' => [ 'type' => 'boolean', 'locationName' => 'enableEngineMetrics', ],
-                'timeout' => [ 'type' => 'integer', 'locationName' => 'timeout', ],
-            ],
-        ],
         'InferenceDedicatedGatewaySpec' => [
             'type' => 'structure',
             'members' => [
@@ -4366,6 +4432,13 @@ return [
                 'reclaimPolicy' => [ 'type' => 'string', 'locationName' => 'reclaimPolicy', ],
                 'enableLimit' => [ 'type' => 'boolean', 'locationName' => 'enableLimit', ],
                 'qps' => [ 'type' => 'integer', 'locationName' => 'qps', ],
+            ],
+        ],
+        'ScaleMetric' => [
+            'type' => 'structure',
+            'members' => [
+                'scaleUp' => [ 'type' => 'double', 'locationName' => 'scaleUp', ],
+                'scaleDown' => [ 'type' => 'double', 'locationName' => 'scaleDown', ],
             ],
         ],
         'CronScale' => [
@@ -4390,11 +4463,20 @@ return [
                 'maxReplicaCount' => [ 'type' => 'integer', 'locationName' => 'maxReplicaCount', ],
                 'scaleUpDelay' => [ 'type' => 'integer', 'locationName' => 'scaleUpDelay', ],
                 'scaleDownDelay' => [ 'type' => 'integer', 'locationName' => 'scaleDownDelay', ],
+                'mode' => [ 'type' => 'string', 'locationName' => 'mode', ],
+                'scaleUpOperator' => [ 'type' => 'string', 'locationName' => 'scaleUpOperator', ],
+                'scaleDownOperator' => [ 'type' => 'string', 'locationName' => 'scaleDownOperator', ],
+                'scaleUpFactor' => [ 'type' => 'integer', 'locationName' => 'scaleUpFactor', ],
+                'scaleDownFactor' => [ 'type' => 'integer', 'locationName' => 'scaleDownFactor', ],
+                'metrics' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'roles' => [ 'type' => 'object', 'locationName' => 'roles', ],
                 'cpuThreshold' => [ 'type' => 'integer', 'locationName' => 'cpuThreshold', ],
                 'gpuThreshold' => [ 'type' => 'integer', 'locationName' => 'gpuThreshold', ],
                 'memoryThreshold' => [ 'type' => 'integer', 'locationName' => 'memoryThreshold', ],
                 'waitingRequestCountThreshold' => [ 'type' => 'integer', 'locationName' => 'waitingRequestCountThreshold', ],
                 'timeToFirstTokenP99Threshold' => [ 'type' => 'integer', 'locationName' => 'timeToFirstTokenP99Threshold', ],
+                'tokenUsageThreshold' => [ 'type' => 'integer', 'locationName' => 'tokenUsageThreshold', ],
+                'decodeTransferQueueThreshold' => [ 'type' => 'integer', 'locationName' => 'decodeTransferQueueThreshold', ],
             ],
         ],
         'UpdateInferenceServiceSpec' => [
@@ -5664,6 +5746,7 @@ return [
         'NodePool' => [
             'type' => 'structure',
             'members' => [
+                'accessRelation' => [ 'type' => 'string', 'locationName' => 'accessRelation', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
@@ -5770,6 +5853,7 @@ return [
         'Node' => [
             'type' => 'structure',
             'members' => [
+                'accessRelation' => [ 'type' => 'string', 'locationName' => 'accessRelation', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'nodeType' => [ 'type' => 'string', 'locationName' => 'nodeType', ],
                 'chargeType' => [ 'type' => 'string', 'locationName' => 'chargeType', ],
@@ -5796,6 +5880,7 @@ return [
                 'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
                 'expireTime' => [ 'type' => 'string', 'locationName' => 'expireTime', ],
                 'releaseTime' => [ 'type' => 'string', 'locationName' => 'releaseTime', ],
+                'aeStatus' => [ 'type' => 'integer', 'locationName' => 'aeStatus', ],
                 'gpuQuota' =>  [ 'shape' => 'GpuQuota', ],
                 'cpuQuota' =>  [ 'shape' => 'CpuQuota', ],
                 'nodeLabels' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeLabel', ], ],
@@ -6310,6 +6395,7 @@ return [
         'ExternalNodePool' => [
             'type' => 'structure',
             'members' => [
+                'accessRelation' => [ 'type' => 'string', 'locationName' => 'accessRelation', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
@@ -6337,6 +6423,7 @@ return [
         'ExternalQueue' => [
             'type' => 'structure',
             'members' => [
+                'accessRelation' => [ 'type' => 'string', 'locationName' => 'accessRelation', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'nodePoolId' => [ 'type' => 'string', 'locationName' => 'nodePoolId', ],
@@ -6359,6 +6446,7 @@ return [
         'ExternalNode' => [
             'type' => 'structure',
             'members' => [
+                'accessRelation' => [ 'type' => 'string', 'locationName' => 'accessRelation', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'nodeType' => [ 'type' => 'string', 'locationName' => 'nodeType', ],
                 'chargeType' => [ 'type' => 'string', 'locationName' => 'chargeType', ],
@@ -6469,6 +6557,7 @@ return [
                 'billingInfo' =>  [ 'shape' => 'JpfsBillingInfo', ],
                 'chargeExpiredTime' => [ 'type' => 'string', 'locationName' => 'chargeExpiredTime', ],
                 'chargeReleaseTime' => [ 'type' => 'string', 'locationName' => 'chargeReleaseTime', ],
+                'aeStatus' => [ 'type' => 'integer', 'locationName' => 'aeStatus', ],
                 'rdmaMountTargetId' => [ 'type' => 'string', 'locationName' => 'rdmaMountTargetId', ],
                 'tcpMountTargetId' => [ 'type' => 'string', 'locationName' => 'tcpMountTargetId', ],
                 'nfsMountTargetId' => [ 'type' => 'string', 'locationName' => 'nfsMountTargetId', ],
@@ -7195,6 +7284,7 @@ return [
         'Queue' => [
             'type' => 'structure',
             'members' => [
+                'accessRelation' => [ 'type' => 'string', 'locationName' => 'accessRelation', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'nodePoolId' => [ 'type' => 'string', 'locationName' => 'nodePoolId', ],
@@ -7215,6 +7305,25 @@ return [
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'resourceGroupName' => [ 'type' => 'string', 'locationName' => 'resourceGroupName', ],
+            ],
+        ],
+        'QueueWithDeleted' => [
+            'type' => 'structure',
+            'members' => [
+                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'nodePoolId' => [ 'type' => 'string', 'locationName' => 'nodePoolId', ],
+                'nodePoolInfo' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
+                'gpuQuotas' => [ 'type' => 'list', 'member' => [ 'shape' => 'GpuQuota', ], ],
+                'cpuQuota' =>  [ 'shape' => 'CpuQuota', ],
+                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+                'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
+                'enable' => [ 'type' => 'boolean', 'locationName' => 'enable', ],
+                'priority' => [ 'type' => 'boolean', 'locationName' => 'priority', ],
+                'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
+                'deleteTime' => [ 'type' => 'long', 'locationName' => 'deleteTime', ],
+                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
             ],
         ],
         'NodePoolInfo' => [
@@ -7239,23 +7348,12 @@ return [
                 'loadBalancerElasticIpAddress' => [ 'type' => 'string', 'locationName' => 'loadBalancerElasticIpAddress', ],
             ],
         ],
-        'QueueWithDeleted' => [
+        'QueueAuthorization' => [
             'type' => 'structure',
             'members' => [
-                'id' => [ 'type' => 'string', 'locationName' => 'id', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'nodePoolId' => [ 'type' => 'string', 'locationName' => 'nodePoolId', ],
-                'nodePoolInfo' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
-                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
-                'gpuQuotas' => [ 'type' => 'list', 'member' => [ 'shape' => 'GpuQuota', ], ],
-                'cpuQuota' =>  [ 'shape' => 'CpuQuota', ],
-                'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
-                'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
-                'enable' => [ 'type' => 'boolean', 'locationName' => 'enable', ],
-                'priority' => [ 'type' => 'boolean', 'locationName' => 'priority', ],
-                'createTime' => [ 'type' => 'long', 'locationName' => 'createTime', ],
-                'deleteTime' => [ 'type' => 'long', 'locationName' => 'deleteTime', ],
-                'desc' => [ 'type' => 'string', 'locationName' => 'desc', ],
+                'granteeTenantPin' => [ 'type' => 'string', 'locationName' => 'granteeTenantPin', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'updatedTime' => [ 'type' => 'string', 'locationName' => 'updatedTime', ],
             ],
         ],
         'CalculateTaskResourcesResp' => [
@@ -11119,6 +11217,7 @@ return [
         'DescribeNodeResultShape' => [
             'type' => 'structure',
             'members' => [
+                'accessRelation' => [ 'type' => 'string', 'locationName' => 'accessRelation', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'nodeType' => [ 'type' => 'string', 'locationName' => 'nodeType', ],
                 'chargeType' => [ 'type' => 'string', 'locationName' => 'chargeType', ],
@@ -11154,6 +11253,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'nodePoolId' => [ 'type' => 'string', 'locationName' => 'nodePoolId', ],
+                'stopCharge' => [ 'type' => 'string', 'locationName' => 'stopCharge', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
             ],
@@ -11277,6 +11377,7 @@ return [
         'DescribeNodePoolResultShape' => [
             'type' => 'structure',
             'members' => [
+                'accessRelation' => [ 'type' => 'string', 'locationName' => 'accessRelation', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'bizType' => [ 'type' => 'string', 'locationName' => 'bizType', ],
@@ -11367,6 +11468,55 @@ return [
                 'code' => [ 'type' => 'integer', 'locationName' => 'code', ],
                 'msg' => [ 'type' => 'string', 'locationName' => 'msg', ],
                 'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'StatsDetail', ], ],
+            ],
+        ],
+        'DescribeSafeBucketsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSafeBucketsResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeSafeBucketsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSafeBucketRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+            ],
+        ],
+        'DescribeSafeBucketsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'page' => [ 'type' => 'integer', 'locationName' => 'page', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeSafeBucketResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeSafeBucketResultShape', ],
+                'error' =>  [ 'shape' => 'DescribeSafeBucketResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeSafeBucketsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'SafeBucket', ], ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+            ],
+        ],
+        'DescribeSafeBucketResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bucketName' => [ 'type' => 'string', 'locationName' => 'bucketName', ],
+                'zone' => [ 'type' => 'string', 'locationName' => 'zone', ],
+                'createdTime' => [ 'type' => 'long', 'locationName' => 'createdTime', ],
+                'capacity' => [ 'type' => 'long', 'locationName' => 'capacity', ],
+                'endpoint' => [ 'type' => 'string', 'locationName' => 'endpoint', ],
             ],
         ],
         'DescribeQueuesResponseShape' => [
@@ -11535,6 +11685,7 @@ return [
         'DescribeQueueResultShape' => [
             'type' => 'structure',
             'members' => [
+                'accessRelation' => [ 'type' => 'string', 'locationName' => 'accessRelation', ],
                 'id' => [ 'type' => 'string', 'locationName' => 'id', ],
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'nodePoolId' => [ 'type' => 'string', 'locationName' => 'nodePoolId', ],
@@ -11560,6 +11711,35 @@ return [
                 'result' =>  [ 'shape' => 'ModifyQueueEnableResultShape', ],
                 'error' =>  [ 'shape' => 'ModifyQueueEnableResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ListQueueAuthorizationResult' => [
+            'type' => 'structure',
+            'members' => [
+                'data' => [ 'type' => 'list', 'member' => [ 'shape' => 'QueueAuthorization', ], ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+            ],
+        ],
+        'RevokeQueueRequest' => [
+            'type' => 'structure',
+            'members' => [
+                'granteeTenantPins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'GrantQueueResult' => [
+            'type' => 'structure',
+            'members' => [
+                'queueId' => [ 'type' => 'string', 'locationName' => 'queueId', ],
+                'granteeTenantPins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'permission' => [ 'type' => 'string', 'locationName' => 'permission', ],
+            ],
+        ],
+        'RevokeQueueResult' => [
+            'type' => 'structure',
+            'members' => [
+                'queueId' => [ 'type' => 'string', 'locationName' => 'queueId', ],
+                'granteeTenantPins' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'revoked' => [ 'type' => 'boolean', 'locationName' => 'revoked', ],
             ],
         ],
         'CalculateTaskResourceRequest' => [
