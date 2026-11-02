@@ -121,6 +121,7 @@ return [
                 'maintenancePolicyType' => [ 'type' => 'string', 'locationName' => 'maintenancePolicyType', ],
                 'maintenancePolicyOperate' => [ 'type' => 'string', 'locationName' => 'maintenancePolicyOperate', ],
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'discardLocalDataDisk' => [ 'type' => 'boolean', 'locationName' => 'discardLocalDataDisk', ],
                 'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
                 'eventTime' => [ 'type' => 'string', 'locationName' => 'eventTime', ],
                 'deadlineTime' => [ 'type' => 'string', 'locationName' => 'deadlineTime', ],
@@ -133,6 +134,9 @@ return [
             'members' => [
                 'operateTime' => [ 'type' => 'string', 'locationName' => 'operateTime', ],
                 'maintenancePolicySnapshot' =>  [ 'shape' => 'MaintenancePolicy', ],
+                'faultDescription' => [ 'type' => 'string', 'locationName' => 'faultDescription', ],
+                'reproductionCommand' => [ 'type' => 'string', 'locationName' => 'reproductionCommand', ],
+                'commandOutput' => [ 'type' => 'string', 'locationName' => 'commandOutput', ],
             ],
         ],
         'MaintenancePolicy' => [
@@ -374,6 +378,9 @@ return [
             'members' => [
                 'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'reproductionCommand' => [ 'type' => 'string', 'locationName' => 'reproductionCommand', ],
+                'commandOutput' => [ 'type' => 'string', 'locationName' => 'commandOutput', ],
+                'discardLocalDataDisk' => [ 'type' => 'boolean', 'locationName' => 'discardLocalDataDisk', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
