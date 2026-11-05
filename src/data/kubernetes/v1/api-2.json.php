@@ -11,6 +11,15 @@ return [
 //        'serviceId' => 'kubernetes',
     ],
     'operations' => [
+        'DescribeMatchAzs' => [
+            'name' => 'DescribeMatchAzs',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/azs',
+            ],
+            'input' => [ 'shape' => 'DescribeMatchAzsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeMatchAzsResponseShape', ],
+        ],
         'DescribeClusters' => [
             'name' => 'DescribeClusters',
             'http' => [
@@ -55,6 +64,150 @@ return [
             ],
             'input' => [ 'shape' => 'DeleteClusterRequestShape', ],
             'output' => [ 'shape' => 'DeleteClusterResponseShape', ],
+        ],
+        'DescribeClusterCheck' => [
+            'name' => 'DescribeClusterCheck',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}:describeClusterCheck',
+            ],
+            'input' => [ 'shape' => 'DescribeClusterCheckRequestShape', ],
+            'output' => [ 'shape' => 'DescribeClusterCheckResponseShape', ],
+        ],
+        'DescribeClusterChecks' => [
+            'name' => 'DescribeClusterChecks',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}:describeClusterChecks',
+            ],
+            'input' => [ 'shape' => 'DescribeClusterChecksRequestShape', ],
+            'output' => [ 'shape' => 'DescribeClusterChecksResponseShape', ],
+        ],
+        'DescribeProxyKubeConfig' => [
+            'name' => 'DescribeProxyKubeConfig',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}/proxy-kubeconfig',
+            ],
+            'input' => [ 'shape' => 'DescribeProxyKubeConfigRequestShape', ],
+            'output' => [ 'shape' => 'DescribeProxyKubeConfigResponseShape', ],
+        ],
+        'DeleteNodeInstances2' => [
+            'name' => 'DeleteNodeInstances2',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}:deleteNodeInstances',
+            ],
+            'input' => [ 'shape' => 'DeleteNodeInstances2RequestShape', ],
+            'output' => [ 'shape' => 'DeleteNodeInstances2ResponseShape', ],
+        ],
+        'DescribeLatestOperations' => [
+            'name' => 'DescribeLatestOperations',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/operations:latest',
+            ],
+            'input' => [ 'shape' => 'DescribeLatestOperationsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLatestOperationsResponseShape', ],
+        ],
+        'DescribeOperations' => [
+            'name' => 'DescribeOperations',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/operations',
+            ],
+            'input' => [ 'shape' => 'DescribeOperationsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeOperationsResponseShape', ],
+        ],
+        'DescribeLatestOperation' => [
+            'name' => 'DescribeLatestOperation',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}/operations:latest',
+            ],
+            'input' => [ 'shape' => 'DescribeLatestOperationRequestShape', ],
+            'output' => [ 'shape' => 'DescribeLatestOperationResponseShape', ],
+        ],
+        'DescribeOperation' => [
+            'name' => 'DescribeOperation',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}/operations/{operationId}',
+            ],
+            'input' => [ 'shape' => 'DescribeOperationRequestShape', ],
+            'output' => [ 'shape' => 'DescribeOperationResponseShape', ],
+        ],
+        'DescribeOperationNodes' => [
+            'name' => 'DescribeOperationNodes',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}/operations/{operationId}/nodes',
+            ],
+            'input' => [ 'shape' => 'DescribeOperationNodesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeOperationNodesResponseShape', ],
+        ],
+        'DescribeClusterState' => [
+            'name' => 'DescribeClusterState',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}:state',
+            ],
+            'input' => [ 'shape' => 'DescribeClusterStateRequestShape', ],
+            'output' => [ 'shape' => 'DescribeClusterStateResponseShape', ],
+        ],
+        'CreateHpcNodeGroup' => [
+            'name' => 'CreateHpcNodeGroup',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/hpcNodeGroups',
+            ],
+            'input' => [ 'shape' => 'CreateHpcNodeGroupRequestShape', ],
+            'output' => [ 'shape' => 'CreateHpcNodeGroupResponseShape', ],
+        ],
+        'DeleteHpcNodeGroup' => [
+            'name' => 'DeleteHpcNodeGroup',
+            'http' => [
+                'method' => 'DELETE',
+                'requestUri' => '/v1/regions/{regionId}/hpcNodeGroups/{nodeGroupId}',
+            ],
+            'input' => [ 'shape' => 'DeleteHpcNodeGroupRequestShape', ],
+            'output' => [ 'shape' => 'DeleteHpcNodeGroupResponseShape', ],
+        ],
+        'SetHpcNodeGroupSize' => [
+            'name' => 'SetHpcNodeGroupSize',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/hpcNodeGroups/{nodeGroupId}:setHpcNodeGroupSize',
+            ],
+            'input' => [ 'shape' => 'SetHpcNodeGroupSizeRequestShape', ],
+            'output' => [ 'shape' => 'SetHpcNodeGroupSizeResponseShape', ],
+        ],
+        'ImportInstancesToHpcNodeGroup' => [
+            'name' => 'ImportInstancesToHpcNodeGroup',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/hpcNodeGroups/{nodeGroupId}:importInstancesToHpcNodeGroup',
+            ],
+            'input' => [ 'shape' => 'ImportInstancesToHpcNodeGroupRequestShape', ],
+            'output' => [ 'shape' => 'ImportInstancesToHpcNodeGroupResponseShape', ],
+        ],
+        'DescribeNodes' => [
+            'name' => 'DescribeNodes',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}/nodes',
+            ],
+            'input' => [ 'shape' => 'DescribeNodesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeNodesResponseShape', ],
+        ],
+        'ResetNode' => [
+            'name' => 'ResetNode',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}/nodes/{instanceId}:reset',
+            ],
+            'input' => [ 'shape' => 'ResetNodeRequestShape', ],
+            'output' => [ 'shape' => 'ResetNodeResponseShape', ],
         ],
         'DescribeNodeGroups' => [
             'name' => 'DescribeNodeGroups',
@@ -128,6 +281,24 @@ return [
             'input' => [ 'shape' => 'DeleteNodeInstancesRequestShape', ],
             'output' => [ 'shape' => 'DeleteNodeInstancesResponseShape', ],
         ],
+        'ModifyNodeGroupPassword' => [
+            'name' => 'ModifyNodeGroupPassword',
+            'http' => [
+                'method' => 'PATCH',
+                'requestUri' => '/v1/regions/{regionId}/nodeGroups/{nodeGroupId}:modifyNodeGroupPassword',
+            ],
+            'input' => [ 'shape' => 'ModifyNodeGroupPasswordRequestShape', ],
+            'output' => [ 'shape' => 'ModifyNodeGroupPasswordResponseShape', ],
+        ],
+        'ImportInstancesToNodeGroup' => [
+            'name' => 'ImportInstancesToNodeGroup',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/nodeGroups/{nodeGroupId}:importInstancesToNodeGroup',
+            ],
+            'input' => [ 'shape' => 'ImportInstancesToNodeGroupRequestShape', ],
+            'output' => [ 'shape' => 'ImportInstancesToNodeGroupResponseShape', ],
+        ],
         'DescribeQuotas' => [
             'name' => 'DescribeQuotas',
             'http' => [
@@ -145,6 +316,15 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeVersionsRequestShape', ],
             'output' => [ 'shape' => 'DescribeVersionsResponseShape', ],
+        ],
+        'DescribeInstanceTypeImages' => [
+            'name' => 'DescribeInstanceTypeImages',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/instance-type-images',
+            ],
+            'input' => [ 'shape' => 'DescribeInstanceTypeImagesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeInstanceTypeImagesResponseShape', ],
         ],
         'DescribeServerlessClusters' => [
             'name' => 'DescribeServerlessClusters',
@@ -251,6 +431,13 @@ return [
                 'parameters' => [ 'type' => 'list', 'member' => [ 'shape' => 'StringKeyValuePair', ], ],
             ],
         ],
+        'ApiServerWhiteList' => [
+            'type' => 'structure',
+            'members' => [
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'apiServerWhiteList' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'NodeElasticIpSpec' => [
             'type' => 'structure',
             'members' => [
@@ -296,11 +483,62 @@ return [
                 'minNode' => [ 'type' => 'integer', 'locationName' => 'minNode', ],
             ],
         ],
-        'LabelSpec' => [
+        'ChargeConfigSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
+                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
+                'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
+            ],
+        ],
+        'Summary' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'normalCount' => [ 'type' => 'integer', 'locationName' => 'normalCount', ],
+                'infoCount' => [ 'type' => 'integer', 'locationName' => 'infoCount', ],
+                'warningCount' => [ 'type' => 'integer', 'locationName' => 'warningCount', ],
+                'fatalCount' => [ 'type' => 'integer', 'locationName' => 'fatalCount', ],
+                'unknownCount' => [ 'type' => 'integer', 'locationName' => 'unknownCount', ],
+            ],
+        ],
+        'ExtensionSpec' => [
             'type' => 'structure',
             'members' => [
                 'key' => [ 'type' => 'string', 'locationName' => 'key', ],
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'Check' => [
+            'type' => 'structure',
+            'members' => [
+                'checkId' => [ 'type' => 'string', 'locationName' => 'checkId', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'finishTime' => [ 'type' => 'string', 'locationName' => 'finishTime', ],
+                'summary' =>  [ 'shape' => 'Summary', ],
+                'checkItemResults' => [ 'type' => 'list', 'member' => [ 'shape' => 'CheckItem', ], ],
+            ],
+        ],
+        'CheckItem' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'group' => [ 'type' => 'string', 'locationName' => 'group', ],
+                'category' => [ 'type' => 'string', 'locationName' => 'category', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'repairSuggestion' => [ 'type' => 'string', 'locationName' => 'repairSuggestion', ],
+                'resource' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'level' => [ 'type' => 'string', 'locationName' => 'level', ],
+                'extension' => [ 'type' => 'list', 'member' => [ 'shape' => 'ExtensionSpec', ], ],
+            ],
+        ],
+        'CheckConfigSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'upgradeVersion' => [ 'type' => 'string', 'locationName' => 'upgradeVersion', ],
             ],
         ],
         'MasterAuth' => [
@@ -326,6 +564,159 @@ return [
                 'nodeElasticIpSpec' =>  [ 'shape' => 'NodeElasticIpSpec', ],
             ],
         ],
+        'NodeGroup' => [
+            'type' => 'structure',
+            'members' => [
+                'diskInitialize' =>  [ 'shape' => 'DiskInitializeSpec', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'nodeConfig' =>  [ 'shape' => 'NodeConfig', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'upgradeVersion' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'nodeNetwork' =>  [ 'shape' => 'NodeNetwork', ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'expectCount' => [ 'type' => 'integer', 'locationName' => 'expectCount', ],
+                'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'instanceTemplateId' => [ 'type' => 'string', 'locationName' => 'instanceTemplateId', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'stateMessage' => [ 'type' => 'string', 'locationName' => 'stateMessage', ],
+                'progress' =>  [ 'shape' => 'NodeGroupProgress', ],
+                'caConfig' =>  [ 'shape' => 'CAConfig', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'nodeGroupType' => [ 'type' => 'string', 'locationName' => 'nodeGroupType', ],
+                'hpcClusterId' => [ 'type' => 'string', 'locationName' => 'hpcClusterId', ],
+            ],
+        ],
+        'UpgradePlan' => [
+            'type' => 'structure',
+            'members' => [
+                'mode' => [ 'type' => 'string', 'locationName' => 'mode', ],
+                'scope' => [ 'type' => 'string', 'locationName' => 'scope', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'masterExpectedVersion' => [ 'type' => 'string', 'locationName' => 'masterExpectedVersion', ],
+                'nodeExpectedVersion' => [ 'type' => 'string', 'locationName' => 'nodeExpectedVersion', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
+                'options' => [ 'type' => 'object', 'locationName' => 'options', ],
+            ],
+        ],
+        'ClusterNetworkSubnet' => [
+            'type' => 'structure',
+            'members' => [
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'subnetType' => [ 'type' => 'string', 'locationName' => 'subnetType', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+            ],
+        ],
+        'DiskInitializeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'layoutMode' => [ 'type' => 'string', 'locationName' => 'layoutMode', ],
+                'csiReservedCapGB' => [ 'type' => 'long', 'locationName' => 'csiReservedCapGB', ],
+                'diskPriority' => [ 'type' => 'string', 'locationName' => 'diskPriority', ],
+                'splitStrategy' => [ 'type' => 'string', 'locationName' => 'splitStrategy', ],
+                'containerWeight' => [ 'type' => 'integer', 'locationName' => 'containerWeight', ],
+                'containerCapGB' => [ 'type' => 'integer', 'locationName' => 'containerCapGB', ],
+                'rootfsQuotaGB' => [ 'type' => 'integer', 'locationName' => 'rootfsQuotaGB', ],
+            ],
+        ],
+        'NodeNetwork' => [
+            'type' => 'structure',
+            'members' => [
+                'nodeSubnetId' => [ 'type' => 'string', 'locationName' => 'nodeSubnetId', ],
+            ],
+        ],
+        'NodeGroupProgress' => [
+            'type' => 'structure',
+            'members' => [
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'updatedCount' => [ 'type' => 'integer', 'locationName' => 'updatedCount', ],
+            ],
+        ],
+        'NatGateway' => [
+            'type' => 'structure',
+            'members' => [
+                'natType' => [ 'type' => 'string', 'locationName' => 'natType', ],
+                'natId' => [ 'type' => 'string', 'locationName' => 'natId', ],
+            ],
+        ],
+        'TaintSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+                'effect' => [ 'type' => 'string', 'locationName' => 'effect', ],
+            ],
+        ],
+        'DataDiskSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
+                'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
+                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
+                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
+                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+                'autoFormat' => [ 'type' => 'boolean', 'locationName' => 'autoFormat', ],
+                'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
+                'mountPoint' => [ 'type' => 'string', 'locationName' => 'mountPoint', ],
+            ],
+        ],
+        'UserScriptSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'ClusterDnsZoneSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'zone' => [ 'type' => 'string', 'locationName' => 'zone', ],
+            ],
+        ],
+        'NodeConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+                'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'systemDiskCategory' => [ 'type' => 'string', 'locationName' => 'systemDiskCategory', ],
+                'systemDiskSize' => [ 'type' => 'integer', 'locationName' => 'systemDiskSize', ],
+                'systemDiskType' => [ 'type' => 'string', 'locationName' => 'systemDiskType', ],
+                'systemDiskIops' => [ 'type' => 'integer', 'locationName' => 'systemDiskIops', ],
+                'labels' => [ 'type' => 'list', 'member' => [ 'shape' => 'LabelSpec', ], ],
+                'taints' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaintSpec', ], ],
+                'updateExistNode' => [ 'type' => 'boolean', 'locationName' => 'updateExistNode', ],
+                'userScripts' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserScriptSpec', ], ],
+                'dataDiskSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataDiskSpec', ], ],
+                'systemDiskSpec' =>  [ 'shape' => 'DiskSpec', ],
+                'securityGroup' => [ 'type' => 'string', 'locationName' => 'securityGroup', ],
+                'chargeConfig' =>  [ 'shape' => 'ChargeConfigSpec', ],
+            ],
+        ],
+        'LabelSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
+        'ClusterDnsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'hosts' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'customizedZones' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterDnsServerSpec', ], ],
+            ],
+        ],
         'Cluster' => [
             'type' => 'structure',
             'members' => [
@@ -333,6 +724,7 @@ return [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'upgradeVersion' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'nodeGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeGroup', ], ],
                 'clusterCidr' => [ 'type' => 'string', 'locationName' => 'clusterCidr', ],
@@ -359,42 +751,12 @@ return [
                 'networkMode' => [ 'type' => 'string', 'locationName' => 'networkMode', ],
                 'clusterEnvironments' => [ 'type' => 'list', 'member' => [ 'shape' => 'StringKeyValuePair', ], ],
                 'isEdge' => [ 'type' => 'boolean', 'locationName' => 'isEdge', ],
-            ],
-        ],
-        'NodeGroup' => [
-            'type' => 'structure',
-            'members' => [
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'nodeConfig' =>  [ 'shape' => 'NodeConfig', ],
-                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
-                'nodeNetwork' =>  [ 'shape' => 'NodeNetwork', ],
-                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
-                'expectCount' => [ 'type' => 'integer', 'locationName' => 'expectCount', ],
-                'agId' => [ 'type' => 'string', 'locationName' => 'agId', ],
-                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'instanceTemplateId' => [ 'type' => 'string', 'locationName' => 'instanceTemplateId', ],
-                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'deleteProtected' => [ 'type' => 'boolean', 'locationName' => 'deleteProtected', ],
                 'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
-                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
-                'stateMessage' => [ 'type' => 'string', 'locationName' => 'stateMessage', ],
-                'progress' =>  [ 'shape' => 'NodeGroupProgress', ],
-                'caConfig' =>  [ 'shape' => 'CAConfig', ],
-                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
-            ],
-        ],
-        'UpgradePlan' => [
-            'type' => 'structure',
-            'members' => [
-                'mode' => [ 'type' => 'string', 'locationName' => 'mode', ],
-                'scope' => [ 'type' => 'string', 'locationName' => 'scope', ],
-                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
-                'masterExpectedVersion' => [ 'type' => 'string', 'locationName' => 'masterExpectedVersion', ],
-                'nodeExpectedVersion' => [ 'type' => 'string', 'locationName' => 'nodeExpectedVersion', ],
-                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
-                'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'isCreditNic' => [ 'type' => 'boolean', 'locationName' => 'isCreditNic', ],
+                'clusterDnsSpec' =>  [ 'shape' => 'ClusterDnsSpec', ],
+                'kubeApiserverDomains' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
         'Tag' => [
@@ -404,34 +766,20 @@ return [
                 'value' => [ 'type' => 'string', 'locationName' => 'value', ],
             ],
         ],
-        'ClusterNetworkSubnet' => [
+        'ClusterDnsServerSpec' => [
             'type' => 'structure',
             'members' => [
-                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
-                'subnetType' => [ 'type' => 'string', 'locationName' => 'subnetType', ],
-                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'port' => [ 'type' => 'integer', 'locationName' => 'port', ],
+                'zones' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterDnsZoneSpec', ], ],
+                'plugins' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterDnsPlugin', ], ],
             ],
         ],
-        'NodeNetwork' => [
+        'ClusterDnsPlugin' => [
             'type' => 'structure',
             'members' => [
-                'nodeSubnetId' => [ 'type' => 'string', 'locationName' => 'nodeSubnetId', ],
-            ],
-        ],
-        'NodeGroupProgress' => [
-            'type' => 'structure',
-            'members' => [
-                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
-                'action' => [ 'type' => 'string', 'locationName' => 'action', ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-                'updatedCount' => [ 'type' => 'integer', 'locationName' => 'updatedCount', ],
-            ],
-        ],
-        'NatGateway' => [
-            'type' => 'structure',
-            'members' => [
-                'natType' => [ 'type' => 'string', 'locationName' => 'natType', ],
-                'natId' => [ 'type' => 'string', 'locationName' => 'natId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'parameters' => [ 'type' => 'string', 'locationName' => 'parameters', ],
+                'configBlock' => [ 'type' => 'string', 'locationName' => 'configBlock', ],
             ],
         ],
         'MaintenanceWindow' => [
@@ -441,19 +789,6 @@ return [
                 'startDay' => [ 'type' => 'integer', 'locationName' => 'startDay', ],
                 'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
                 'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
-            ],
-        ],
-        'DataDiskSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
-                'diskSizeGB' => [ 'type' => 'integer', 'locationName' => 'diskSizeGB', ],
-                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
-                'snapshotId' => [ 'type' => 'string', 'locationName' => 'snapshotId', ],
-                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
-                'autoFormat' => [ 'type' => 'boolean', 'locationName' => 'autoFormat', ],
-                'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
-                'mountPoint' => [ 'type' => 'string', 'locationName' => 'mountPoint', ],
             ],
         ],
         'DiskSpec' => [
@@ -477,30 +812,42 @@ return [
                 'eniLen' => [ 'type' => 'integer', 'locationName' => 'eniLen', ],
                 'ipamPolicy' => [ 'type' => 'string', 'locationName' => 'ipamPolicy', ],
                 'runtimeError' => [ 'type' => 'string', 'locationName' => 'runtimeError', ],
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
             ],
         ],
-        'UserScriptSpec' => [
+        'ClusterAddonVersionInfo' => [
             'type' => 'structure',
             'members' => [
-                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
-                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'kubeVersion' => [ 'type' => 'string', 'locationName' => 'kubeVersion', ],
             ],
         ],
-        'NodeConfig' => [
+        'ClusterAddonRespStatus' => [
             'type' => 'structure',
             'members' => [
-                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
-                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
-                'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'systemDiskCategory' => [ 'type' => 'string', 'locationName' => 'systemDiskCategory', ],
-                'systemDiskSize' => [ 'type' => 'integer', 'locationName' => 'systemDiskSize', ],
-                'systemDiskType' => [ 'type' => 'string', 'locationName' => 'systemDiskType', ],
-                'systemDiskIops' => [ 'type' => 'integer', 'locationName' => 'systemDiskIops', ],
-                'labels' => [ 'type' => 'list', 'member' => [ 'shape' => 'LabelSpec', ], ],
-                'userScripts' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserScriptSpec', ], ],
-                'dataDiskSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataDiskSpec', ], ],
-                'systemDiskSpec' =>  [ 'shape' => 'DiskSpec', ],
-                'securityGroup' => [ 'type' => 'string', 'locationName' => 'securityGroup', ],
+                'phase' => [ 'type' => 'string', 'locationName' => 'phase', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'lastAddonVersion' => [ 'type' => 'string', 'locationName' => 'lastAddonVersion', ],
+            ],
+        ],
+        'ClusterAddonInfo' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'displayName' => [ 'type' => 'string', 'locationName' => 'displayName', ],
+                'catalog' => [ 'type' => 'string', 'locationName' => 'catalog', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'params' => [ 'type' => 'object', 'locationName' => 'params', ],
+                'status' =>  [ 'shape' => 'ClusterAddonRespStatus', ],
+            ],
+        ],
+        'ClusterAddonSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'params' => [ 'type' => 'object', 'locationName' => 'params', ],
             ],
         ],
         'ClusterNetworkSpec' => [
@@ -514,6 +861,14 @@ return [
                 'lbSubnetId' => [ 'type' => 'string', 'locationName' => 'lbSubnetId', ],
                 'nodeSubnetId' => [ 'type' => 'string', 'locationName' => 'nodeSubnetId', ],
                 'natGateway' =>  [ 'shape' => 'NatGatewaySpec', ],
+            ],
+        ],
+        'ClusterOperationMeta' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'operationId' => [ 'type' => 'string', 'locationName' => 'operationId', ],
             ],
         ],
         'ClusterPodSubnet' => [
@@ -531,6 +886,7 @@ return [
                 'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
                 'availableIpNum' => [ 'type' => 'integer', 'locationName' => 'availableIpNum', ],
                 'subnetName' => [ 'type' => 'string', 'locationName' => 'subnetName', ],
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
             ],
         ],
         'ClusterSubnet' => [
@@ -545,43 +901,20 @@ return [
                 'subnetName' => [ 'type' => 'string', 'locationName' => 'subnetName', ],
             ],
         ],
-        'NodeGroupSpec' => [
+        'LbConfig' => [
             'type' => 'structure',
             'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'nodeConfig' =>  [ 'shape' => 'NodeConfigSpec', ],
-                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'initialNodeCount' => [ 'type' => 'integer', 'locationName' => 'initialNodeCount', ],
-                'caConfig' =>  [ 'shape' => 'CAConfigSpec', ],
+                'lbType' => [ 'type' => 'string', 'locationName' => 'lbType', ],
+                'lbSubnetId' => [ 'type' => 'string', 'locationName' => 'lbSubnetId', ],
+                'elasticIpSpec' =>  [ 'shape' => 'LbElasticIpSpec', ],
             ],
         ],
-        'NodeConfigSpec' => [
+        'LbElasticIpSpec' => [
             'type' => 'structure',
             'members' => [
-                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
-                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
-                'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'systemDisk' =>  [ 'shape' => 'DiskSpec', ],
-                'labels' => [ 'type' => 'list', 'member' => [ 'shape' => 'LabelSpec', ], ],
-                'userScripts' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserScriptSpec', ], ],
-                'dataDiskSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataDiskSpec', ], ],
-                'securityGroup' => [ 'type' => 'string', 'locationName' => 'securityGroup', ],
-            ],
-        ],
-        'ClusterSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'basicAuth' => [ 'type' => 'boolean', 'locationName' => 'basicAuth', ],
-                'clientCertificate' => [ 'type' => 'boolean', 'locationName' => 'clientCertificate', ],
-                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
-                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'nodeGroup' =>  [ 'shape' => 'NodeGroupSpec', ],
-                'masterCIDR' => [ 'type' => 'string', 'locationName' => 'masterCIDR', ],
-                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
-                'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
+                'bandWidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandWidthMbps', ],
+                'provider' => [ 'type' => 'string', 'locationName' => 'provider', ],
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
             ],
         ],
         'CustomizedClusterNetworkSpec' => [
@@ -598,18 +931,8 @@ return [
                 'masterNatEnabled' => [ 'type' => 'boolean', 'locationName' => 'masterNatEnabled', ],
                 'natGateway' =>  [ 'shape' => 'NatGatewaySpec', ],
                 'nodeElasticIpSpec' =>  [ 'shape' => 'NodeElasticIpSpec', ],
-            ],
-        ],
-        'CustomizedNodeGroupSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'nodeConfig' =>  [ 'shape' => 'NodeConfigSpec', ],
-                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'initialNodeCount' => [ 'type' => 'integer', 'locationName' => 'initialNodeCount', ],
-                'autoRepair' => [ 'type' => 'boolean', 'locationName' => 'autoRepair', ],
-                'caConfig' =>  [ 'shape' => 'CAConfigSpec', ],
+                'lbConfig' =>  [ 'shape' => 'LbConfig', ],
+                'hpcNodeSubnetId' => [ 'type' => 'string', 'locationName' => 'hpcNodeSubnetId', ],
             ],
         ],
         'GpuInstaller' => [
@@ -622,6 +945,103 @@ return [
                 'driverVersion' => [ 'type' => 'string', 'locationName' => 'driverVersion', ],
                 'cudaVersion' => [ 'type' => 'string', 'locationName' => 'cudaVersion', ],
                 'status' => [ 'type' => 'integer', 'locationName' => 'status', ],
+            ],
+        ],
+        'HpcNodeConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'packageId' => [ 'type' => 'string', 'locationName' => 'packageId', ],
+                'labels' => [ 'type' => 'list', 'member' => [ 'shape' => 'LabelSpec', ], ],
+                'userScripts' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserScriptSpec', ], ],
+                'chargeConfig' =>  [ 'shape' => 'ChargeConfigSpec', ],
+            ],
+        ],
+        'HpcNodeConfigSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'labels' => [ 'type' => 'list', 'member' => [ 'shape' => 'LabelSpec', ], ],
+                'taints' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaintSpec', ], ],
+                'userScripts' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserScriptSpec', ], ],
+                'chargeConfig' =>  [ 'shape' => 'ChargeConfigSpec', ],
+                'customizedImageId' => [ 'type' => 'string', 'locationName' => 'customizedImageId', ],
+            ],
+        ],
+        'HpcNodeGroup' => [
+            'type' => 'structure',
+            'members' => [
+                'diskInitialize' =>  [ 'shape' => 'DiskInitializeSpec', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'nodeConfig' =>  [ 'shape' => 'HpcNodeConfig', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'nodeNetwork' =>  [ 'shape' => 'NodeNetwork', ],
+                'currentCount' => [ 'type' => 'integer', 'locationName' => 'currentCount', ],
+                'expectCount' => [ 'type' => 'integer', 'locationName' => 'expectCount', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'updateTime' => [ 'type' => 'string', 'locationName' => 'updateTime', ],
+                'stateMessage' => [ 'type' => 'string', 'locationName' => 'stateMessage', ],
+                'progress' =>  [ 'shape' => 'NodeGroupProgress', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'HpcNodeGroupSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'nodeConfig' =>  [ 'shape' => 'HpcNodeConfigSpec', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'initialNodeCount' => [ 'type' => 'integer', 'locationName' => 'initialNodeCount', ],
+                'secondaryIpMaskLen' => [ 'type' => 'integer', 'locationName' => 'secondaryIpMaskLen', ],
+                'diskInitialize' =>  [ 'shape' => 'DiskInitializeSpec', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'hpcClusterId' => [ 'type' => 'string', 'locationName' => 'hpcClusterId', ],
+            ],
+        ],
+        'HpcNodeOsVersion' => [
+            'type' => 'structure',
+            'members' => [
+                'packageId' => [ 'type' => 'string', 'locationName' => 'packageId', ],
+                'osVersion' => [ 'type' => 'string', 'locationName' => 'osVersion', ],
+            ],
+        ],
+        'InstanceSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'state' => [ 'type' => 'string', 'locationName' => 'state', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
+                'elasticIpAddress' => [ 'type' => 'string', 'locationName' => 'elasticIpAddress', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+            ],
+        ],
+        'InstanceTypeImage' => [
+            'type' => 'structure',
+            'members' => [
+                'serviceCode' => [ 'type' => 'string', 'locationName' => 'serviceCode', ],
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+                'imageName' => [ 'type' => 'string', 'locationName' => 'imageName', ],
+                'driverVersion' => [ 'type' => 'string', 'locationName' => 'driverVersion', ],
+                'cudaVersion' => [ 'type' => 'string', 'locationName' => 'cudaVersion', ],
+                'diskCategory' => [ 'type' => 'string', 'locationName' => 'diskCategory', ],
+                'architecture' => [ 'type' => 'string', 'locationName' => 'architecture', ],
+                'osType' => [ 'type' => 'string', 'locationName' => 'osType', ],
+                'platform' => [ 'type' => 'string', 'locationName' => 'platform', ],
+                'osVersion' => [ 'type' => 'string', 'locationName' => 'osVersion', ],
+                'kernelVersion' => [ 'type' => 'string', 'locationName' => 'kernelVersion', ],
+                'containerRuntime' => [ 'type' => 'string', 'locationName' => 'containerRuntime', ],
+                'systemDiskSizeGB' => [ 'type' => 'integer', 'locationName' => 'systemDiskSizeGB', ],
             ],
         ],
         'Label' => [
@@ -641,30 +1061,6 @@ return [
                 'duration' => [ 'type' => 'integer', 'locationName' => 'duration', ],
             ],
         ],
-        'NodeImage' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
-                'imageOs' => [ 'type' => 'string', 'locationName' => 'imageOs', ],
-                'mainVersion' => [ 'type' => 'string', 'locationName' => 'mainVersion', ],
-                'innerVersion' => [ 'type' => 'string', 'locationName' => 'innerVersion', ],
-                'visibility' => [ 'type' => 'integer', 'locationName' => 'visibility', ],
-            ],
-        ],
-        'MasterImage' => [
-            'type' => 'structure',
-            'members' => [
-                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
-                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
-                'mainVersion' => [ 'type' => 'string', 'locationName' => 'mainVersion', ],
-                'innerVersion' => [ 'type' => 'string', 'locationName' => 'innerVersion', ],
-                'isDefault' => [ 'type' => 'boolean', 'locationName' => 'isDefault', ],
-                'visibility' => [ 'type' => 'integer', 'locationName' => 'visibility', ],
-                'defaultNodeImageCode' => [ 'type' => 'string', 'locationName' => 'defaultNodeImageCode', ],
-                'nodeImages' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeImage', ], ],
-            ],
-        ],
         'MasterProgress' => [
             'type' => 'structure',
             'members' => [
@@ -680,7 +1076,71 @@ return [
                 'defaultNodeVersion' => [ 'type' => 'string', 'locationName' => 'defaultNodeVersion', ],
                 'versionStatus' => [ 'type' => 'string', 'locationName' => 'versionStatus', ],
                 'nodeOsTypes' => [ 'type' => 'string', 'locationName' => 'nodeOsTypes', ],
+                'hpcNodeOsVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'HpcNodeOsVersion', ], ],
                 'clusterAddons' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterAddon', ], ],
+            ],
+        ],
+        'NodeChargeConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
+                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
+                'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
+            ],
+        ],
+        'NodeCondition' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'lastTransitionTime' => [ 'type' => 'string', 'locationName' => 'lastTransitionTime', ],
+            ],
+        ],
+        'NodeConfigSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'passWordAuth' => [ 'type' => 'string', 'locationName' => 'passWordAuth', ],
+                'systemDisk' =>  [ 'shape' => 'DiskSpec', ],
+                'labels' => [ 'type' => 'list', 'member' => [ 'shape' => 'LabelSpec', ], ],
+                'taints' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaintSpec', ], ],
+                'userScripts' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserScriptSpec', ], ],
+                'customizedImageId' => [ 'type' => 'string', 'locationName' => 'customizedImageId', ],
+                'dataDiskSpec' => [ 'type' => 'list', 'member' => [ 'shape' => 'DataDiskSpec', ], ],
+                'securityGroup' => [ 'type' => 'string', 'locationName' => 'securityGroup', ],
+                'chargeConfig' =>  [ 'shape' => 'ChargeConfigSpec', ],
+            ],
+        ],
+        'NodeDiskSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
+                'diskSize' => [ 'type' => 'integer', 'locationName' => 'diskSize', ],
+                'diskCategory' => [ 'type' => 'string', 'locationName' => 'diskCategory', ],
+                'iops' => [ 'type' => 'integer', 'locationName' => 'iops', ],
+                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
+                'deviceName' => [ 'type' => 'string', 'locationName' => 'deviceName', ],
+            ],
+        ],
+        'NodeFilter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'NodeGroupDataDiskSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
+                'diskSize' => [ 'type' => 'integer', 'locationName' => 'diskSize', ],
+                'fsType' => [ 'type' => 'string', 'locationName' => 'fsType', ],
             ],
         ],
         'NodeGroupNetworkSpec' => [
@@ -689,11 +1149,46 @@ return [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
             ],
         ],
-        'ValidNodeConfig' => [
+        'NodeGroupSpec' => [
             'type' => 'structure',
             'members' => [
-                'nodeVersion' => [ 'type' => 'string', 'locationName' => 'nodeVersion', ],
-                'imageId' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'nodeConfig' =>  [ 'shape' => 'NodeConfigSpec', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'initialNodeCount' => [ 'type' => 'integer', 'locationName' => 'initialNodeCount', ],
+                'caConfig' =>  [ 'shape' => 'CAConfigSpec', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'diskInitialize' =>  [ 'shape' => 'DiskInitializeSpec', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'containerRuntime' => [ 'type' => 'string', 'locationName' => 'containerRuntime', ],
+            ],
+        ],
+        'NodeGroupSystemDiskSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'diskType' => [ 'type' => 'string', 'locationName' => 'diskType', ],
+            ],
+        ],
+        'NodeMeta' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'nodeConditions' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeCondition', ], ],
+                'privateIpAddress' => [ 'type' => 'string', 'locationName' => 'privateIpAddress', ],
+                'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
+                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'createTime' => [ 'type' => 'string', 'locationName' => 'createTime', ],
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+                'systemDisk' =>  [ 'shape' => 'NodeDiskSpec', ],
+                'dataDisk' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeDiskSpec', ], ],
+                'chargeConfig' =>  [ 'shape' => 'NodeChargeConfig', ],
+                'tags' => [ 'type' => 'map', 'key' => [ 'type' => 'string', ], 'value' => [ 'type' => 'string', ], ],
+                'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'securityGroup' => [ 'type' => 'string', 'locationName' => 'securityGroup', ],
             ],
         ],
         'NodeVersion' => [
@@ -702,6 +1197,147 @@ return [
                 'version' => [ 'type' => 'string', 'locationName' => 'version', ],
                 'imageOs' => [ 'type' => 'string', 'locationName' => 'imageOs', ],
                 'versionStatus' => [ 'type' => 'string', 'locationName' => 'versionStatus', ],
+            ],
+        ],
+        'OperationResource' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'resourceName' => [ 'type' => 'string', 'locationName' => 'resourceName', ],
+                'quantity' => [ 'type' => 'integer', 'locationName' => 'quantity', ],
+            ],
+        ],
+        'OperationMetric' => [
+            'type' => 'structure',
+            'members' => [
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+                'completed' => [ 'type' => 'integer', 'locationName' => 'completed', ],
+                'running' => [ 'type' => 'integer', 'locationName' => 'running', ],
+                'failed' => [ 'type' => 'integer', 'locationName' => 'failed', ],
+                'pending' => [ 'type' => 'integer', 'locationName' => 'pending', ],
+                'skipped' => [ 'type' => 'integer', 'locationName' => 'skipped', ],
+                'percent' => [ 'type' => 'integer', 'locationName' => 'percent', ],
+            ],
+        ],
+        'Operation' => [
+            'type' => 'structure',
+            'members' => [
+                'operationId' => [ 'type' => 'string', 'locationName' => 'operationId', ],
+                'operationType' => [ 'type' => 'string', 'locationName' => 'operationType', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'target' =>  [ 'shape' => 'OperationResource', ],
+                'progress' =>  [ 'shape' => 'OperationMetric', ],
+                'currentStageId' => [ 'type' => 'string', 'locationName' => 'currentStageId', ],
+                'startedTime' => [ 'type' => 'string', 'locationName' => 'startedTime', ],
+                'updatedTime' => [ 'type' => 'string', 'locationName' => 'updatedTime', ],
+                'finishedTime' => [ 'type' => 'string', 'locationName' => 'finishedTime', ],
+                'error' =>  [ 'shape' => 'OperationError', ],
+                'capabilities' =>  [ 'shape' => 'OperationCapabilities', ],
+            ],
+        ],
+        'OperationLatestSummary' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'operationId' => [ 'type' => 'string', 'locationName' => 'operationId', ],
+                'operationType' => [ 'type' => 'string', 'locationName' => 'operationType', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'progress' =>  [ 'shape' => 'OperationMetric', ],
+                'currentStageId' => [ 'type' => 'string', 'locationName' => 'currentStageId', ],
+                'error' =>  [ 'shape' => 'OperationError', ],
+                'errorCode' => [ 'type' => 'string', 'locationName' => 'errorCode', ],
+                'errorMessage' => [ 'type' => 'string', 'locationName' => 'errorMessage', ],
+            ],
+        ],
+        'OperationCapabilities' => [
+            'type' => 'structure',
+            'members' => [
+                'cancellable' => [ 'type' => 'boolean', 'locationName' => 'cancellable', ],
+                'retryable' => [ 'type' => 'boolean', 'locationName' => 'retryable', ],
+            ],
+        ],
+        'OperationStep' => [
+            'type' => 'structure',
+            'members' => [
+                'stepId' => [ 'type' => 'string', 'locationName' => 'stepId', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'progress' =>  [ 'shape' => 'OperationMetric', ],
+                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'OperationResource', ], ],
+                'error' =>  [ 'shape' => 'OperationError', ],
+            ],
+        ],
+        'OperationError' => [
+            'type' => 'structure',
+            'members' => [
+                'code' => [ 'type' => 'string', 'locationName' => 'code', ],
+                'message' => [ 'type' => 'string', 'locationName' => 'message', ],
+                'reason' => [ 'type' => 'string', 'locationName' => 'reason', ],
+                'suggestion' => [ 'type' => 'string', 'locationName' => 'suggestion', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ChildOperationSummary' => [
+            'type' => 'structure',
+            'members' => [
+                'operationId' => [ 'type' => 'string', 'locationName' => 'operationId', ],
+                'operationType' => [ 'type' => 'string', 'locationName' => 'operationType', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'target' =>  [ 'shape' => 'OperationResource', ],
+                'progress' =>  [ 'shape' => 'OperationMetric', ],
+            ],
+        ],
+        'OperationStage' => [
+            'type' => 'structure',
+            'members' => [
+                'stageId' => [ 'type' => 'string', 'locationName' => 'stageId', ],
+                'title' => [ 'type' => 'string', 'locationName' => 'title', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'progress' =>  [ 'shape' => 'OperationMetric', ],
+                'steps' => [ 'type' => 'list', 'member' => [ 'shape' => 'OperationStep', ], ],
+            ],
+        ],
+        'OperationDetailItem' => [
+            'type' => 'structure',
+            'members' => [
+                'operationId' => [ 'type' => 'string', 'locationName' => 'operationId', ],
+                'operation' =>  [ 'shape' => 'Operation', ],
+                'stages' => [ 'type' => 'list', 'member' => [ 'shape' => 'OperationStage', ], ],
+                'childOperations' => [ 'type' => 'list', 'member' => [ 'shape' => 'ChildOperationSummary', ], ],
+                'revision' => [ 'type' => 'string', 'locationName' => 'revision', ],
+                'nextPollIntervalSeconds' => [ 'type' => 'integer', 'locationName' => 'nextPollIntervalSeconds', ],
+                'errorCode' => [ 'type' => 'string', 'locationName' => 'errorCode', ],
+                'errorMessage' => [ 'type' => 'string', 'locationName' => 'errorMessage', ],
+            ],
+        ],
+        'OperationNode' => [
+            'type' => 'structure',
+            'members' => [
+                'nodeName' => [ 'type' => 'string', 'locationName' => 'nodeName', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'OperationResourceKey' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+                'operationType' => [ 'type' => 'string', 'locationName' => 'operationType', ],
+            ],
+        ],
+        'OperationSummary' => [
+            'type' => 'structure',
+            'members' => [
+                'operationId' => [ 'type' => 'string', 'locationName' => 'operationId', ],
+                'operationType' => [ 'type' => 'string', 'locationName' => 'operationType', ],
+                'operationStatus' => [ 'type' => 'string', 'locationName' => 'operationStatus', ],
+                'expectedAdd' => [ 'type' => 'integer', 'locationName' => 'expectedAdd', ],
+                'capturedCount' => [ 'type' => 'integer', 'locationName' => 'capturedCount', ],
+                'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'finishedAt' => [ 'type' => 'string', 'locationName' => 'finishedAt', ],
             ],
         ],
         'Param' => [
@@ -726,12 +1362,22 @@ return [
                 'used' => [ 'type' => 'integer', 'locationName' => 'used', ],
             ],
         ],
-        'ServerConfig' => [
+        'CidrConfig' => [
             'type' => 'structure',
             'members' => [
-                'validMasterVersions' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'defaultMasterVersion' => [ 'type' => 'string', 'locationName' => 'defaultMasterVersion', ],
-                'validNodeConfig' => [ 'type' => 'list', 'member' => [ 'shape' => 'ValidNodeConfig', ], ],
+                'cidr' => [ 'type' => 'string', 'locationName' => 'cidr', ],
+                'nodeCount' => [ 'type' => 'integer', 'locationName' => 'nodeCount', ],
+                'serviceCount' => [ 'type' => 'string', 'locationName' => 'serviceCount', ],
+                'serviceLbCount' => [ 'type' => 'string', 'locationName' => 'serviceLbCount', ],
+                'podCount' => [ 'type' => 'string', 'locationName' => 'podCount', ],
+            ],
+        ],
+        'RecommendNetConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'masterCidr' => [ 'type' => 'string', 'locationName' => 'masterCidr', ],
+                'maskTypes' => [ 'type' => 'list', 'member' => [ 'type' => 'integer', ], ],
+                'cidrConfigs' => [ 'type' => 'object', 'locationName' => 'cidrConfigs', ],
             ],
         ],
         'ServerlessClusterNetworkConfig' => [
@@ -806,30 +1452,73 @@ return [
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
-        'CreateClusterRequestShape' => [
+        'UpgradeConfigSpec' => [
             'type' => 'structure',
             'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
-                'isEdge' => [ 'type' => 'boolean', 'locationName' => 'isEdge', ],
+                'options' => [ 'type' => 'object', 'locationName' => 'options', ],
+            ],
+        ],
+        'UpgradeHistory' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+                'upgradeVersion' => [ 'type' => 'string', 'locationName' => 'upgradeVersion', ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+                'updatedCount' => [ 'type' => 'integer', 'locationName' => 'updatedCount', ],
+                'upgradeResult' => [ 'type' => 'string', 'locationName' => 'upgradeResult', ],
+                'startTime' => [ 'type' => 'string', 'locationName' => 'startTime', ],
+                'finishTime' => [ 'type' => 'string', 'locationName' => 'finishTime', ],
+            ],
+        ],
+        'DescribeMatchAzsResultShape' => [
+            'type' => 'structure',
+            'members' => [
                 'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'nodeGroup' =>  [ 'shape' => 'NodeGroupSpec', ],
-                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
-                'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
-                'addonsConfig' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddonConfigSpec', ], ],
-                'clusterNetworkType' => [ 'type' => 'string', 'locationName' => 'clusterNetworkType', ],
-                'autoClusterNetworkSpec' =>  [ 'shape' => 'AutoClusterNetworkSpec', ],
-                'customizedClusterNetworkSpec' =>  [ 'shape' => 'CustomizedClusterNetworkSpec', ],
-                'clusterEnvironments' => [ 'type' => 'list', 'member' => [ 'shape' => 'StringKeyValuePair', ], ],
+            ],
+        ],
+        'DescribeMatchAzsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeMatchAzsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeMatchAzsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
-        'DescribeClustersResponseShape' => [
+        'DescribeClusterStateResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'result' =>  [ 'shape' => 'DescribeClustersResultShape', ],
+                'result' =>  [ 'shape' => 'DescribeClusterStateResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeClusterChecksResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'checks' => [ 'type' => 'list', 'member' => [ 'shape' => 'Check', ], ],
+            ],
+        ],
+        'DescribeClusterCheckResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'check' =>  [ 'shape' => 'Check', ],
+            ],
+        ],
+        'DescribeClusterChecksRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'type' => [ 'type' => 'string', 'locationName' => 'type', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
         'CreateClusterResponseShape' => [
@@ -839,20 +1528,36 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeClustersResultShape' => [
+        'DescribeOperationNodesResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'clusters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Cluster', ], ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+                'result' =>  [ 'shape' => 'DescribeOperationNodesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeClustersRequestShape' => [
+        'DescribeClusterCheckResponseShape' => [
             'type' => 'structure',
             'members' => [
-                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
-                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
-                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'result' =>  [ 'shape' => 'DescribeClusterCheckResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteNodeInstances2RequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'realDeleteInstance' => [ 'type' => 'boolean', 'locationName' => 'realDeleteInstance', ],
+                'diskAutoDelete' => [ 'type' => 'boolean', 'locationName' => 'diskAutoDelete', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'DescribeClusterCheckRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'checkId' => [ 'type' => 'string', 'locationName' => 'checkId', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
         'DeleteClusterRequestShape' => [
@@ -863,31 +1568,83 @@ return [
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
+        'DescribeProxyKubeConfigRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'asGroup' => [ 'type' => 'string', 'locationName' => 'asGroup', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
         'DescribeClusterResultShape' => [
             'type' => 'structure',
             'members' => [
                 'cluster' =>  [ 'shape' => 'Cluster', ],
             ],
         ],
-        'DescribeClusterRequestShape' => [
+        'DescribeProxyKubeConfigResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'kubeconfigDetail' => [ 'type' => 'string', 'locationName' => 'kubeconfigDetail', ],
+            ],
+        ],
+        'DescribeProxyKubeConfigResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeProxyKubeConfigResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeOperationNodesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'operation' =>  [ 'shape' => 'OperationSummary', ],
+                'nodes' => [ 'type' => 'list', 'member' => [ 'shape' => 'OperationNode', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeLatestOperationsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLatestOperationsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeOperationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeOperationResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeOperationRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'operationId' => [ 'type' => 'string', 'locationName' => 'operationId', ],
             ],
         ],
-        'CreateClusterResultShape' => [
+        'DescribeOperationResultShape' => [
             'type' => 'structure',
             'members' => [
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'operation' =>  [ 'shape' => 'Operation', ],
+                'stages' => [ 'type' => 'list', 'member' => [ 'shape' => 'OperationStage', ], ],
+                'childOperations' => [ 'type' => 'list', 'member' => [ 'shape' => 'ChildOperationSummary', ], ],
+                'revision' => [ 'type' => 'string', 'locationName' => 'revision', ],
+                'nextPollIntervalSeconds' => [ 'type' => 'integer', 'locationName' => 'nextPollIntervalSeconds', ],
             ],
         ],
-        'Filter' => [
+        'DeleteNodeInstances2ResultShape' => [
             'type' => 'structure',
             'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
-                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeLatestOperationsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'resources' => [ 'type' => 'list', 'member' => [ 'shape' => 'OperationResourceKey', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DescribeClusterResponseShape' => [
@@ -897,11 +1654,19 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeOperationsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeOperationsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'ModifyClusterRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'deleteProtected' => [ 'type' => 'boolean', 'locationName' => 'deleteProtected', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
@@ -916,40 +1681,313 @@ return [
             'members' => [
             ],
         ],
-        'DeleteClusterResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
         'ModifyClusterResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'CreateNodeGroupResultShape' => [
+        'CreateClusterRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'version' => [ 'type' => 'string', 'locationName' => 'version', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'isEdge' => [ 'type' => 'boolean', 'locationName' => 'isEdge', ],
+                'deleteProtected' => [ 'type' => 'boolean', 'locationName' => 'deleteProtected', ],
+                'isCreditNic' => [ 'type' => 'boolean', 'locationName' => 'isCreditNic', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'nodeGroup' =>  [ 'shape' => 'NodeGroupSpec', ],
+                'hpcNodeGroup' =>  [ 'shape' => 'HpcNodeGroupSpec', ],
+                'accessKey' => [ 'type' => 'string', 'locationName' => 'accessKey', ],
+                'secretKey' => [ 'type' => 'string', 'locationName' => 'secretKey', ],
+                'addonsConfig' => [ 'type' => 'list', 'member' => [ 'shape' => 'AddonConfigSpec', ], ],
+                'clusterNetworkType' => [ 'type' => 'string', 'locationName' => 'clusterNetworkType', ],
+                'autoClusterNetworkSpec' =>  [ 'shape' => 'AutoClusterNetworkSpec', ],
+                'customizedClusterNetworkSpec' =>  [ 'shape' => 'CustomizedClusterNetworkSpec', ],
+                'clusterEnvironments' => [ 'type' => 'list', 'member' => [ 'shape' => 'StringKeyValuePair', ], ],
+                'clusterDnsSpec' =>  [ 'shape' => 'ClusterDnsSpec', ],
+                'kubeApiserverDomains' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeClustersResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeClustersResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeOperationNodesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'operationId' => [ 'type' => 'string', 'locationName' => 'operationId', ],
+            ],
+        ],
+        'DescribeClustersResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Cluster', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeOperationsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'operationIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeLatestOperationRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+                'operationType' => [ 'type' => 'string', 'locationName' => 'operationType', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
-        'DeleteNodeGroupResultShape' => [
+        'DescribeClusterStateResultShape' => [
             'type' => 'structure',
             'members' => [
+                'clusterState' => [ 'type' => 'string', 'locationName' => 'clusterState', ],
+                'stateMessage' => [ 'type' => 'string', 'locationName' => 'stateMessage', ],
             ],
         ],
-        'SetNodeGroupSizeResponseShape' => [
+        'DescribeClustersRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeClusterRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'DeleteNodeInstances2ResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeNodeGroupRequestShape' => [
+        'DescribeClusterChecksResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeClusterChecksResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'CreateClusterResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'operations' => [ 'type' => 'list', 'member' => [ 'shape' => 'ClusterOperationMeta', ], ],
+            ],
+        ],
+        'DescribeLatestOperationsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'OperationLatestSummary', ], ],
+                'nextPollIntervalSeconds' => [ 'type' => 'integer', 'locationName' => 'nextPollIntervalSeconds', ],
+            ],
+        ],
+        'Filter' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeLatestOperationResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'operationId' => [ 'type' => 'string', 'locationName' => 'operationId', ],
+                'operationType' => [ 'type' => 'string', 'locationName' => 'operationType', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'progress' =>  [ 'shape' => 'OperationMetric', ],
+                'currentStageId' => [ 'type' => 'string', 'locationName' => 'currentStageId', ],
+                'error' =>  [ 'shape' => 'OperationError', ],
+                'errorCode' => [ 'type' => 'string', 'locationName' => 'errorCode', ],
+                'errorMessage' => [ 'type' => 'string', 'locationName' => 'errorMessage', ],
+                'nextPollIntervalSeconds' => [ 'type' => 'integer', 'locationName' => 'nextPollIntervalSeconds', ],
+            ],
+        ],
+        'DescribeLatestOperationResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeLatestOperationResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeOperationsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'items' => [ 'type' => 'list', 'member' => [ 'shape' => 'OperationDetailItem', ], ],
+            ],
+        ],
+        'DeleteClusterResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeClusterStateRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'SetHpcNodeGroupSizeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'taskId' => [ 'type' => 'long', 'locationName' => 'taskId', ],
+                'operationId' => [ 'type' => 'string', 'locationName' => 'operationId', ],
+            ],
+        ],
+        'ImportInstancesToHpcNodeGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ImportInstancesToHpcNodeGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ImportInstancesToHpcNodeGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instances' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+            ],
+        ],
+        'CreateHpcNodeGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'nodeConfig' =>  [ 'shape' => 'HpcNodeConfigSpec', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'initialNodeCount' => [ 'type' => 'integer', 'locationName' => 'initialNodeCount', ],
+                'secondaryIpMaskLen' => [ 'type' => 'integer', 'locationName' => 'secondaryIpMaskLen', ],
+                'diskInitialize' =>  [ 'shape' => 'DiskInitializeSpec', ],
+                'hpcClusterId' => [ 'type' => 'string', 'locationName' => 'hpcClusterId', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateHpcNodeGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'CreateHpcNodeGroupResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'SetHpcNodeGroupSizeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SetHpcNodeGroupSizeResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DeleteHpcNodeGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+            ],
+        ],
+        'DeleteHpcNodeGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateHpcNodeGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+                'operationId' => [ 'type' => 'string', 'locationName' => 'operationId', ],
+            ],
+        ],
+        'SetHpcNodeGroupSizeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'expectCount' => [ 'type' => 'integer', 'locationName' => 'expectCount', ],
+                'secondaryIpMaskLen' => [ 'type' => 'integer', 'locationName' => 'secondaryIpMaskLen', ],
+                'diskInitialize' =>  [ 'shape' => 'DiskInitializeSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+            ],
+        ],
+        'DescribeNodesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'nodes' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeMeta', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeNodesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'orderBy' => [ 'type' => 'string', 'locationName' => 'orderBy', ],
+                'orderDirection' => [ 'type' => 'string', 'locationName' => 'orderDirection', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
+        'ResetNodeResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ResetNodeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'ResetNodeRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
+                'autoStop' => [ 'type' => 'boolean', 'locationName' => 'autoStop', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
+        'DescribeNodesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeNodesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'CreateNodeGroupResponseShape' => [
@@ -962,6 +2000,14 @@ return [
         'SetNodeGroupSizeResultShape' => [
             'type' => 'structure',
             'members' => [
+                'taskId' => [ 'type' => 'double', 'locationName' => 'taskId', ],
+                'operationId' => [ 'type' => 'string', 'locationName' => 'operationId', ],
+            ],
+        ],
+        'ImportInstancesToNodeGroupResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'DescribeNodeGroupResponseShape' => [
@@ -976,19 +2022,120 @@ return [
             'members' => [
             ],
         ],
+        'DescribeNodeGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'nodeGroup' =>  [ 'shape' => 'NodeGroup', ],
+            ],
+        ],
+        'ImportInstancesToNodeGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instances' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+            ],
+        ],
+        'SetNodeGroupCAResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeNodeGroupsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'nodeGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeGroup', ], ],
+                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'SetNodeGroupCARequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'caConfig' =>  [ 'shape' => 'CAConfigSpec', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+            ],
+        ],
+        'ImportInstancesToNodeGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetNodeGroupCAResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'ModifyNodeGroupPasswordResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'CreateNodeGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'nodeConfig' =>  [ 'shape' => 'NodeConfigSpec', ],
+                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'initialNodeCount' => [ 'type' => 'integer', 'locationName' => 'initialNodeCount', ],
+                'caConfig' =>  [ 'shape' => 'CAConfigSpec', ],
+                'nodeGroupNetwork' =>  [ 'shape' => 'NodeGroupNetworkSpec', ],
+                'diskInitialize' =>  [ 'shape' => 'DiskInitializeSpec', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'containerRuntime' => [ 'type' => 'string', 'locationName' => 'containerRuntime', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'CreateNodeGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+                'operationId' => [ 'type' => 'string', 'locationName' => 'operationId', ],
+            ],
+        ],
+        'DeleteNodeGroupResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
+        'SetNodeGroupSizeResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'SetNodeGroupSizeResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeNodeGroupRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
+            ],
+        ],
+        'ModifyNodeGroupPasswordResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'ModifyNodeGroupRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'labels' => [ 'type' => 'list', 'member' => [ 'shape' => 'LabelSpec', ], ],
+                'taints' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaintSpec', ], ],
+                'updateExistNode' => [ 'type' => 'boolean', 'locationName' => 'updateExistNode', ],
+                'diskInitialize' =>  [ 'shape' => 'DiskInitializeSpec', ],
+                'systemDisk' =>  [ 'shape' => 'NodeGroupSystemDiskSpec', ],
+                'dataDisks' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeGroupDataDiskSpec', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
-            ],
-        ],
-        'DescribeNodeGroupResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'nodeGroup' =>  [ 'shape' => 'NodeGroup', ],
             ],
         ],
         'DeleteNodeGroupRequestShape' => [
@@ -1007,35 +2154,24 @@ return [
             'type' => 'structure',
             'members' => [
                 'instanceIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'realDeleteInstance' => [ 'type' => 'boolean', 'locationName' => 'realDeleteInstance', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
-            ],
-        ],
-        'SetNodeGroupCAResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'SetNodeGroupSizeRequestShape' => [
             'type' => 'structure',
             'members' => [
                 'expectCount' => [ 'type' => 'integer', 'locationName' => 'expectCount', ],
+                'diskInitialize' =>  [ 'shape' => 'DiskInitializeSpec', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
             ],
         ],
-        'DescribeNodeGroupsResultShape' => [
+        'ModifyNodeGroupPasswordRequestShape' => [
             'type' => 'structure',
             'members' => [
-                'nodeGroups' => [ 'type' => 'list', 'member' => [ 'shape' => 'NodeGroup', ], ],
-                'totalCount' => [ 'type' => 'double', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'SetNodeGroupCARequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'caConfig' =>  [ 'shape' => 'CAConfigSpec', ],
+                'password' => [ 'type' => 'string', 'locationName' => 'password', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
             ],
@@ -1057,29 +2193,10 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'SetNodeGroupCAResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
         'DeleteNodeInstancesResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateNodeGroupRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'name' => [ 'type' => 'string', 'locationName' => 'name', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-                'nodeConfig' =>  [ 'shape' => 'NodeConfigSpec', ],
-                'azs' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'initialNodeCount' => [ 'type' => 'integer', 'locationName' => 'initialNodeCount', ],
-                'caConfig' =>  [ 'shape' => 'CAConfigSpec', ],
-                'nodeGroupNetwork' =>  [ 'shape' => 'NodeGroupNetworkSpec', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'ModifyNodeGroupResponseShape' => [
@@ -1115,10 +2232,32 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeInstanceTypeImagesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'kubernetesVersion' => [ 'type' => 'string', 'locationName' => 'kubernetesVersion', ],
+                'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
+                'includeDisabledImages' => [ 'type' => 'boolean', 'locationName' => 'includeDisabledImages', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeInstanceTypeImagesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeInstanceTypeImagesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
         'DescribeVersionsResultShape' => [
             'type' => 'structure',
             'members' => [
                 'masterVersions' => [ 'type' => 'list', 'member' => [ 'shape' => 'MasterVersion', ], ],
+            ],
+        ],
+        'DescribeInstanceTypeImagesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'images' => [ 'type' => 'list', 'member' => [ 'shape' => 'InstanceTypeImage', ], ],
             ],
         ],
         'DescribeVersionsRequestShape' => [
