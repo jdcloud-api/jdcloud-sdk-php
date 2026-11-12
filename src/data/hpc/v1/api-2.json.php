@@ -218,6 +218,15 @@ return [
             'input' => [ 'shape' => 'ExportInstancesDataRequestShape', ],
             'output' => [ 'shape' => 'ExportInstancesDataResponseShape', ],
         ],
+        'DescribeBillingInstances' => [
+            'name' => 'DescribeBillingInstances',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/describeBillingInstances',
+            ],
+            'input' => [ 'shape' => 'DescribeBillingInstancesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBillingInstancesResponseShape', ],
+        ],
         'DescribeKeypairs' => [
             'name' => 'DescribeKeypairs',
             'http' => [
@@ -298,33 +307,6 @@ return [
             ],
             'input' => [ 'shape' => 'DescribeCommunicationRangeRequestShape', ],
             'output' => [ 'shape' => 'DescribeCommunicationRangeResponseShape', ],
-        ],
-        'DeleteCluster' => [
-            'name' => 'DeleteCluster',
-            'http' => [
-                'method' => 'DELETE',
-                'requestUri' => '/v1/regions/{regionId}/operation:deleteCluster',
-            ],
-            'input' => [ 'shape' => 'DeleteClusterRequestShape', ],
-            'output' => [ 'shape' => 'DeleteClusterResponseShape', ],
-        ],
-        'ModifyCluster' => [
-            'name' => 'ModifyCluster',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/operation:modifyCluster',
-            ],
-            'input' => [ 'shape' => 'ModifyClusterRequestShape', ],
-            'output' => [ 'shape' => 'ModifyClusterResponseShape', ],
-        ],
-        'CreateCluster' => [
-            'name' => 'CreateCluster',
-            'http' => [
-                'method' => 'POST',
-                'requestUri' => '/v1/regions/{regionId}/operation:createCluster',
-            ],
-            'input' => [ 'shape' => 'CreateClusterRequestShape', ],
-            'output' => [ 'shape' => 'CreateClusterResponseShape', ],
         ],
         'DescribePackages' => [
             'name' => 'DescribePackages',
@@ -759,12 +741,9 @@ return [
                 'primaryNetworkInterface' =>  [ 'shape' => 'InstanceNetworkInterfaceAttachment', ],
                 'launchTime' => [ 'type' => 'string', 'locationName' => 'launchTime', ],
                 'charge' =>  [ 'shape' => 'ChargeSpec', ],
-                'platform' => [ 'type' => 'string', 'locationName' => 'platform', ],
                 'bootMode' => [ 'type' => 'string', 'locationName' => 'bootMode', ],
                 'architecture' => [ 'type' => 'string', 'locationName' => 'architecture', ],
                 'progress' => [ 'type' => 'integer', 'locationName' => 'progress', ],
-                'dedicatedZoneName' => [ 'type' => 'string', 'locationName' => 'dedicatedZoneName', ],
-                'dedicatedZoneId' => [ 'type' => 'string', 'locationName' => 'dedicatedZoneId', ],
                 'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
@@ -779,7 +758,6 @@ return [
             'type' => 'structure',
             'members' => [
                 'deviceIndex' => [ 'type' => 'integer', 'locationName' => 'deviceIndex', ],
-                'autoDelete' => [ 'type' => 'boolean', 'locationName' => 'autoDelete', ],
                 'networkInterface' =>  [ 'shape' => 'NetworkInterfaceSpec', ],
             ],
         ],
@@ -787,13 +765,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'subnetId' => [ 'type' => 'string', 'locationName' => 'subnetId', ],
-                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
-                'networkInterfaceName' => [ 'type' => 'string', 'locationName' => 'networkInterfaceName', ],
                 'primaryIpAddress' => [ 'type' => 'string', 'locationName' => 'primaryIpAddress', ],
-                'secondaryIpAddresses' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'secondaryIpCount' => [ 'type' => 'integer', 'locationName' => 'secondaryIpCount', ],
                 'secondaryIpMaskLen' => [ 'type' => 'integer', 'locationName' => 'secondaryIpMaskLen', ],
-                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
             ],
         ],
         'InstanceChargeSpec' => [
@@ -828,13 +801,11 @@ return [
                 'charge' =>  [ 'shape' => 'InstanceChargeSpec', ],
                 'userdata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Userdata', ], ],
                 'metadata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Metadata', ], ],
-                'installGpuDriver' => [ 'type' => 'boolean', 'locationName' => 'installGpuDriver', ],
                 'su' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'hpcClusterId' => [ 'type' => 'string', 'locationName' => 'hpcClusterId', ],
                 'hpcClusterName' => [ 'type' => 'string', 'locationName' => 'hpcClusterName', ],
                 'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
                 'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
-                'dedicatedZoneId' => [ 'type' => 'string', 'locationName' => 'dedicatedZoneId', ],
             ],
         ],
         'Metadata' => [
@@ -1268,6 +1239,13 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'DescribeBillingInstancesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'instances' => [ 'type' => 'list', 'member' => [ 'shape' => 'BillingInstance', ], ],
+                'total' => [ 'type' => 'integer', 'locationName' => 'total', ],
+            ],
+        ],
         'RecoverInstanceResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1325,6 +1303,15 @@ return [
                 'chargeDuration' =>  [ 'shape' => 'ChargeDuration', ],
             ],
         ],
+        'DescribeBillingInstancesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
+            ],
+        ],
         'CreateInstancesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1362,6 +1349,13 @@ return [
                 'columns' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'networkTopologyOrder' => [ 'type' => 'boolean', 'locationName' => 'networkTopologyOrder', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeBillingInstancesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBillingInstancesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
         'StopInstanceResultShape' => [
@@ -1475,7 +1469,7 @@ return [
                 'passwordAuth' => [ 'type' => 'string', 'locationName' => 'passwordAuth', ],
                 'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'packageId' => [ 'type' => 'string', 'locationName' => 'packageId', ],
-                'hostname' => [ 'type' => 'string', 'locationName' => 'hostname', ],
+                'hostName' => [ 'type' => 'string', 'locationName' => 'hostName', ],
                 'metadata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Metadata', ], ],
                 'userdata' => [ 'type' => 'list', 'member' => [ 'shape' => 'Userdata', ], ],
                 'clearDataDisks' => [ 'type' => 'boolean', 'locationName' => 'clearDataDisks', ],
@@ -1722,66 +1716,6 @@ return [
             'members' => [
                 'instances' => [ 'type' => 'list', 'member' => [ 'shape' => 'Instance', ], ],
                 'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-            ],
-        ],
-        'DeleteClusterRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'DeleteClusterResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateClusterResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'DeleteClusterResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'ModifyClusterResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'CreateClusterResponseShape' => [
-            'type' => 'structure',
-            'members' => [
-                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
-            ],
-        ],
-        'ModifyClusterResultShape' => [
-            'type' => 'structure',
-            'members' => [
-            ],
-        ],
-        'ModifyClusterRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'id' => [ 'type' => 'integer', 'locationName' => 'id', ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-                'podIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'suIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
-            ],
-        ],
-        'CreateClusterRequestShape' => [
-            'type' => 'structure',
-            'members' => [
-                'az' => [ 'type' => 'string', 'locationName' => 'az', ],
-                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
-                'podIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'suIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
-                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
             ],
         ],
         'DescribePackageResultShape' => [
