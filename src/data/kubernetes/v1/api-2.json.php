@@ -65,6 +65,15 @@ return [
             'input' => [ 'shape' => 'DeleteClusterRequestShape', ],
             'output' => [ 'shape' => 'DeleteClusterResponseShape', ],
         ],
+        'AddClusterNetworkDetail' => [
+            'name' => 'AddClusterNetworkDetail',
+            'http' => [
+                'method' => 'POST',
+                'requestUri' => '/v1/regions/{regionId}/clusters/{clusterId}:networks',
+            ],
+            'input' => [ 'shape' => 'AddClusterNetworkDetailRequestShape', ],
+            'output' => [ 'shape' => 'AddClusterNetworkDetailResponseShape', ],
+        ],
         'DescribeClusterCheck' => [
             'name' => 'DescribeClusterCheck',
             'http' => [
@@ -1720,6 +1729,17 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
+        'AddClusterNetworkDetailRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'resourceType' => [ 'type' => 'string', 'locationName' => 'resourceType', ],
+                'resourceId' => [ 'type' => 'string', 'locationName' => 'resourceId', ],
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'namespace' => [ 'type' => 'string', 'locationName' => 'namespace', ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
+            ],
+        ],
         'DescribeOperationNodesRequestShape' => [
             'type' => 'structure',
             'members' => [
@@ -1753,6 +1773,11 @@ return [
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
             ],
         ],
+        'AddClusterNetworkDetailResultShape' => [
+            'type' => 'structure',
+            'members' => [
+            ],
+        ],
         'DescribeClusterStateResultShape' => [
             'type' => 'structure',
             'members' => [
@@ -1778,6 +1803,12 @@ return [
             ],
         ],
         'DeleteNodeInstances2ResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'AddClusterNetworkDetailResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
