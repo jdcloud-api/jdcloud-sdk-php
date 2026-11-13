@@ -32,6 +32,8 @@ use Jdcloud\PresignUrlMiddleware;
  * @method \GuzzleHttp\Promise\Promise modifyClusterAsync(array $args = [])
  * @method \Jdcloud\Result deleteCluster(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteClusterAsync(array $args = [])
+ * @method \Jdcloud\Result addClusterNetworkDetail(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise addClusterNetworkDetailAsync(array $args = [])
  * @method \Jdcloud\Result describeClusterCheck(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeClusterCheckAsync(array $args = [])
  * @method \Jdcloud\Result describeClusterChecks(array $args = [])
