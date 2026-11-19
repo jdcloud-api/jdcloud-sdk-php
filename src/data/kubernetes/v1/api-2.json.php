@@ -476,6 +476,34 @@ return [
                 'nodeElasticIpSpec' =>  [ 'shape' => 'NodeElasticIpSpec', ],
             ],
         ],
+        'CAClusterConfig' => [
+            'type' => 'structure',
+            'members' => [
+                'scaleUpPolicy' => [ 'type' => 'object', 'locationName' => 'scaleUpPolicy', ],
+                'scaleDownPolicy' => [ 'type' => 'object', 'locationName' => 'scaleDownPolicy', ],
+            ],
+        ],
+        'CAClusterConfigSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'scaleUpPolicy' =>  [ 'shape' => 'ScaleUpPolicySpec', ],
+                'scaleDownPolicy' =>  [ 'shape' => 'ScaleDownPolicySpec', ],
+            ],
+        ],
+        'ScaleUpPolicySpec' => [
+            'type' => 'structure',
+            'members' => [
+                'scanIntervalSeconds' => [ 'type' => 'integer', 'locationName' => 'scanIntervalSeconds', ],
+            ],
+        ],
+        'ScaleDownPolicySpec' => [
+            'type' => 'structure',
+            'members' => [
+                'enabled' => [ 'type' => 'boolean', 'locationName' => 'enabled', ],
+                'utilizationThreshold' => [ 'type' => 'integer', 'locationName' => 'utilizationThreshold', ],
+                'unneededTimeMinutes' => [ 'type' => 'integer', 'locationName' => 'unneededTimeMinutes', ],
+            ],
+        ],
         'CAConfig' => [
             'type' => 'structure',
             'members' => [
@@ -766,6 +794,7 @@ return [
                 'isCreditNic' => [ 'type' => 'boolean', 'locationName' => 'isCreditNic', ],
                 'clusterDnsSpec' =>  [ 'shape' => 'ClusterDnsSpec', ],
                 'kubeApiserverDomains' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'caClusterConfig' =>  [ 'shape' => 'CAClusterConfig', ],
             ],
         ],
         'Tag' => [
@@ -971,6 +1000,7 @@ return [
             'members' => [
                 'instanceType' => [ 'type' => 'string', 'locationName' => 'instanceType', ],
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'labels' => [ 'type' => 'list', 'member' => [ 'shape' => 'LabelSpec', ], ],
                 'taints' => [ 'type' => 'list', 'member' => [ 'shape' => 'TaintSpec', ], ],
                 'userScripts' => [ 'type' => 'list', 'member' => [ 'shape' => 'UserScriptSpec', ], ],
@@ -1909,6 +1939,7 @@ return [
             'members' => [
                 'instances' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
             ],
@@ -2008,7 +2039,11 @@ return [
             'members' => [
                 'imageId' => [ 'type' => 'string', 'locationName' => 'imageId', ],
                 'autoStop' => [ 'type' => 'boolean', 'locationName' => 'autoStop', ],
+                'recover' => [ 'type' => 'boolean', 'locationName' => 'recover', ],
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'reproductionCommand' => [ 'type' => 'string', 'locationName' => 'reproductionCommand', ],
+                'commandOutput' => [ 'type' => 'string', 'locationName' => 'commandOutput', ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'clusterId' => [ 'type' => 'string', 'locationName' => 'clusterId', ],
                 'instanceId' => [ 'type' => 'string', 'locationName' => 'instanceId', ],
@@ -2064,6 +2099,7 @@ return [
             'members' => [
                 'instances' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'password' => [ 'type' => 'string', 'locationName' => 'password', ],
+                'keyNames' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
                 'nodeGroupId' => [ 'type' => 'string', 'locationName' => 'nodeGroupId', ],
             ],
