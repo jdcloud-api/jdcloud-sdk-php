@@ -11,6 +11,78 @@ return [
 //        'serviceId' => 'bgw',
     ],
     'operations' => [
+        'DescribeBgws' => [
+            'name' => 'DescribeBgws',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/bgws/',
+            ],
+            'input' => [ 'shape' => 'DescribeBgwsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBgwsResponseShape', ],
+        ],
+        'DescribeBgw' => [
+            'name' => 'DescribeBgw',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/bgws/{bgwId}',
+            ],
+            'input' => [ 'shape' => 'DescribeBgwRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBgwResponseShape', ],
+        ],
+        'DescribeBgwRoutes' => [
+            'name' => 'DescribeBgwRoutes',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/bgws/{bgwId}/bgwRoutes/',
+            ],
+            'input' => [ 'shape' => 'DescribeBgwRoutesRequestShape', ],
+            'output' => [ 'shape' => 'DescribeBgwRoutesResponseShape', ],
+        ],
+        'DescribeopJdBgwVifConfs' => [
+            'name' => 'DescribeopJdBgwVifConfs',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/opJdBgwVifConfs/',
+            ],
+            'input' => [ 'shape' => 'DescribeopJdBgwVifConfsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeopJdBgwVifConfsResponseShape', ],
+        ],
+        'DescribePrivateVirtualInterfaces' => [
+            'name' => 'DescribePrivateVirtualInterfaces',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/privateVifs/',
+            ],
+            'input' => [ 'shape' => 'DescribePrivateVirtualInterfacesRequestShape', ],
+            'output' => [ 'shape' => 'DescribePrivateVirtualInterfacesResponseShape', ],
+        ],
+        'DescribePrivateVirtualInterface' => [
+            'name' => 'DescribePrivateVirtualInterface',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/privateVifs/{privateVifId}',
+            ],
+            'input' => [ 'shape' => 'DescribePrivateVirtualInterfaceRequestShape', ],
+            'output' => [ 'shape' => 'DescribePrivateVirtualInterfaceResponseShape', ],
+        ],
+        'DescribeVpcAttachment' => [
+            'name' => 'DescribeVpcAttachment',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/vpcAttachments/{vpcAttachmentId}',
+            ],
+            'input' => [ 'shape' => 'DescribeVpcAttachmentRequestShape', ],
+            'output' => [ 'shape' => 'DescribeVpcAttachmentResponseShape', ],
+        ],
+        'DescribeVpcAttachments' => [
+            'name' => 'DescribeVpcAttachments',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/vpcAttachments',
+            ],
+            'input' => [ 'shape' => 'DescribeVpcAttachmentsRequestShape', ],
+            'output' => [ 'shape' => 'DescribeVpcAttachmentsResponseShape', ],
+        ],
         'ModifyAdminStatus' => [
             'name' => 'ModifyAdminStatus',
             'http' => [
@@ -29,13 +101,30 @@ return [
             'input' => [ 'shape' => 'DescribeConnectionsRequestShape', ],
             'output' => [ 'shape' => 'DescribeConnectionsResponseShape', ],
         ],
+        'DescribeConnection' => [
+            'name' => 'DescribeConnection',
+            'http' => [
+                'method' => 'GET',
+                'requestUri' => '/v1/regions/{regionId}/connections/{connectionId}',
+            ],
+            'input' => [ 'shape' => 'DescribeConnectionRequestShape', ],
+            'output' => [ 'shape' => 'DescribeConnectionResponseShape', ],
+        ],
     ],
     'shapes' => [
+        'AllocateJdBgwVifConfSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'jdBgwVifConfId' => [ 'type' => 'string', 'locationName' => 'jdBgwVifConfId', ],
+                'bgwVip' => [ 'type' => 'string', 'locationName' => 'bgwVip', ],
+            ],
+        ],
         'AuditConnectionSpec' => [
             'type' => 'structure',
             'members' => [
                 'result' => [ 'type' => 'string', 'locationName' => 'result', ],
                 'rejectedReason' => [ 'type' => 'string', 'locationName' => 'rejectedReason', ],
+                'jdConfItem' =>  [ 'shape' => 'AllocateJdBgwVifConfSpec', ],
             ],
         ],
         'AutoRenewSpec' => [
@@ -82,7 +171,6 @@ return [
                 'jdCloudAsn' => [ 'type' => 'integer', 'locationName' => 'jdCloudAsn', ],
                 'authKey' => [ 'type' => 'string', 'locationName' => 'authKey', ],
                 'privateVifId' => [ 'type' => 'string', 'locationName' => 'privateVifId', ],
-                'bgpPeerStatus' => [ 'type' => 'string', 'locationName' => 'bgpPeerStatus', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
             ],
         ],
@@ -104,6 +192,13 @@ return [
                 'authKey' => [ 'type' => 'string', 'locationName' => 'authKey', ],
             ],
         ],
+        'Tag' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'value' => [ 'type' => 'string', 'locationName' => 'value', ],
+            ],
+        ],
         'Bgw' => [
             'type' => 'structure',
             'members' => [
@@ -116,6 +211,8 @@ return [
                 'azType' => [ 'type' => 'string', 'locationName' => 'azType', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'BgwRoute' => [
@@ -147,6 +244,9 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'azType' => [ 'type' => 'string', 'locationName' => 'azType', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+                'resourceTag' => [ 'type' => 'string', 'locationName' => 'resourceTag', ],
             ],
         ],
         'ConfirmConnectionSpec' => [
@@ -156,6 +256,14 @@ return [
                 'chargeTimeSpan' => [ 'type' => 'integer', 'locationName' => 'chargeTimeSpan', ],
                 'autoPay' => [ 'type' => 'boolean', 'locationName' => 'autoPay', ],
                 'autoRenewSpec' =>  [ 'shape' => 'AutoRenewSpec', ],
+            ],
+        ],
+        'Monitor' => [
+            'type' => 'structure',
+            'members' => [
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+                'adminStatus' => [ 'type' => 'string', 'locationName' => 'adminStatus', ],
+                'samplingPeriod' => [ 'type' => 'integer', 'locationName' => 'samplingPeriod', ],
             ],
         ],
         'ConnectionLocation' => [
@@ -203,6 +311,9 @@ return [
                 'resourceIdInitial' => [ 'type' => 'string', 'locationName' => 'resourceIdInitial', ],
                 'resourceIdPTenancy' => [ 'type' => 'string', 'locationName' => 'resourceIdPTenancy', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
+                'monitor' =>  [ 'shape' => 'Monitor', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'Partner' => [
@@ -214,6 +325,7 @@ return [
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'phoneNumber' => [ 'type' => 'string', 'locationName' => 'phoneNumber', ],
                 'mailbox' => [ 'type' => 'string', 'locationName' => 'mailbox', ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
             ],
         ],
@@ -249,6 +361,8 @@ return [
                 'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
                 'autoPay' => [ 'type' => 'boolean', 'locationName' => 'autoPay', ],
                 'location' =>  [ 'shape' => 'LocationSpec', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'LocationSpec' => [
@@ -273,6 +387,8 @@ return [
                 'peerIps' => [ 'type' => 'list', 'member' => [ 'shape' => 'PeerIpsSpec', ], ],
                 'bgpSpec' =>  [ 'shape' => 'BgpSpec', ],
                 'healthCheck' =>  [ 'shape' => 'HealthCheckSpec', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'NqaSpec' => [
@@ -298,6 +414,51 @@ return [
                 'bfdInfo' =>  [ 'shape' => 'BfdSpec', ],
             ],
         ],
+        'CreateVpnTunnelsSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'vpnConnectionId' => [ 'type' => 'string', 'locationName' => 'vpnConnectionId', ],
+                'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
+                'vpnTunnelSpecs' => [ 'type' => 'list', 'member' => [ 'shape' => 'VpnTunnelBatchSpec', ], ],
+            ],
+        ],
+        'VpnTunnelBatchSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'vpnTunnelName' => [ 'type' => 'string', 'locationName' => 'vpnTunnelName', ],
+                'cloudPublicIp' => [ 'type' => 'string', 'locationName' => 'cloudPublicIp', ],
+                'customerIp' => [ 'type' => 'string', 'locationName' => 'customerIp', ],
+                'psk' => [ 'type' => 'string', 'locationName' => 'psk', ],
+                'tunnelIp' => [ 'type' => 'string', 'locationName' => 'tunnelIp', ],
+                'localTunnelIp' => [ 'type' => 'string', 'locationName' => 'localTunnelIp', ],
+                'ikeVersion' => [ 'type' => 'string', 'locationName' => 'ikeVersion', ],
+                'ikeMode' => [ 'type' => 'string', 'locationName' => 'ikeMode', ],
+                'ikeKeyExchange' => [ 'type' => 'string', 'locationName' => 'ikeKeyExchange', ],
+                'ikeCipher' => [ 'type' => 'string', 'locationName' => 'ikeCipher', ],
+                'ikeAuth' => [ 'type' => 'string', 'locationName' => 'ikeAuth', ],
+                'ikeDpdSec' => [ 'type' => 'integer', 'locationName' => 'ikeDpdSec', ],
+                'ikeSaLifeSec' => [ 'type' => 'integer', 'locationName' => 'ikeSaLifeSec', ],
+                'ipsecCipher' => [ 'type' => 'string', 'locationName' => 'ipsecCipher', ],
+                'ipsecAuth' => [ 'type' => 'string', 'locationName' => 'ipsecAuth', ],
+                'ipsecKeyExchange' => [ 'type' => 'string', 'locationName' => 'ipsecKeyExchange', ],
+                'ipsecSaLifeSec' => [ 'type' => 'integer', 'locationName' => 'ipsecSaLifeSec', ],
+                'ipsecSaLifepkt' => [ 'type' => 'long', 'locationName' => 'ipsecSaLifepkt', ],
+                'ipsecSaLifebyte' => [ 'type' => 'long', 'locationName' => 'ipsecSaLifebyte', ],
+                'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
+            ],
+        ],
+        'ChargeSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
+                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
+                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
+                'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
+                'autoChangeChargeMode' => [ 'type' => 'boolean', 'locationName' => 'autoChangeChargeMode', ],
+                'autoChangeChargeModeDate' => [ 'type' => 'string', 'locationName' => 'autoChangeChargeModeDate', ],
+                'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
+            ],
+        ],
         'CustomerGateway' => [
             'type' => 'structure',
             'members' => [
@@ -308,6 +469,8 @@ return [
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'updatedTime' => [ 'type' => 'string', 'locationName' => 'updatedTime', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'ModifyCustomerGatewaySpec' => [
@@ -325,6 +488,8 @@ return [
                 'customerIps' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'bgpAsn' => [ 'type' => 'integer', 'locationName' => 'bgpAsn', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'HealthCheck' => [
@@ -341,6 +506,55 @@ return [
                 'txInterval' => [ 'type' => 'integer', 'locationName' => 'txInterval', ],
                 'thresholdCount' => [ 'type' => 'integer', 'locationName' => 'thresholdCount', ],
                 'responseTimeout' => [ 'type' => 'integer', 'locationName' => 'responseTimeout', ],
+            ],
+        ],
+        'JdBgwVifConf' => [
+            'type' => 'structure',
+            'members' => [
+                'jdBgwVifConfId' => [ 'type' => 'string', 'locationName' => 'jdBgwVifConfId', ],
+                'partnerID' => [ 'type' => 'string', 'locationName' => 'partnerID', ],
+                'locationCode' => [ 'type' => 'string', 'locationName' => 'locationCode', ],
+                'interconnectID' => [ 'type' => 'string', 'locationName' => 'interconnectID', ],
+                'outerconnectID' => [ 'type' => 'string', 'locationName' => 'outerconnectID', ],
+                'stag' => [ 'type' => 'integer', 'locationName' => 'stag', ],
+                'ctag' => [ 'type' => 'integer', 'locationName' => 'ctag', ],
+                'bgpAsn' => [ 'type' => 'integer', 'locationName' => 'bgpAsn', ],
+                'customerRouterIP1' => [ 'type' => 'string', 'locationName' => 'customerRouterIP1', ],
+                'customerRouterIP2' => [ 'type' => 'string', 'locationName' => 'customerRouterIP2', ],
+                'dxRouterIP1' => [ 'type' => 'string', 'locationName' => 'dxRouterIP1', ],
+                'dxRouterIP2' => [ 'type' => 'string', 'locationName' => 'dxRouterIP2', ],
+                'environment' => [ 'type' => 'string', 'locationName' => 'environment', ],
+                'deviceInfo' => [ 'type' => 'string', 'locationName' => 'deviceInfo', ],
+                'connectionId' => [ 'type' => 'string', 'locationName' => 'connectionId', ],
+                'bgwVip' => [ 'type' => 'string', 'locationName' => 'bgwVip', ],
+                'vifId' => [ 'type' => 'string', 'locationName' => 'vifId', ],
+                'used' => [ 'type' => 'string', 'locationName' => 'used', ],
+                'pin' => [ 'type' => 'string', 'locationName' => 'pin', ],
+                'createdAt' => [ 'type' => 'string', 'locationName' => 'createdAt', ],
+                'updatedAt' => [ 'type' => 'string', 'locationName' => 'updatedAt', ],
+            ],
+        ],
+        'JdBgwVifConfBaseSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'jdBgwVifConfId' => [ 'type' => 'string', 'locationName' => 'jdBgwVifConfId', ],
+            ],
+        ],
+        'JdBgwVifConfSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'partnerID' => [ 'type' => 'string', 'locationName' => 'partnerID', ],
+                'interconnectID' => [ 'type' => 'string', 'locationName' => 'interconnectID', ],
+                'outerconnectID' => [ 'type' => 'string', 'locationName' => 'outerconnectID', ],
+                'stag' => [ 'type' => 'integer', 'locationName' => 'stag', ],
+                'ctag' => [ 'type' => 'integer', 'locationName' => 'ctag', ],
+                'bgpAsn' => [ 'type' => 'integer', 'locationName' => 'bgpAsn', ],
+                'customerRouterIP1' => [ 'type' => 'string', 'locationName' => 'customerRouterIP1', ],
+                'customerRouterIP2' => [ 'type' => 'string', 'locationName' => 'customerRouterIP2', ],
+                'dxRouterIP1' => [ 'type' => 'string', 'locationName' => 'dxRouterIP1', ],
+                'dxRouterIP2' => [ 'type' => 'string', 'locationName' => 'dxRouterIP2', ],
+                'environment' => [ 'type' => 'string', 'locationName' => 'environment', ],
+                'deviceInfo' => [ 'type' => 'string', 'locationName' => 'deviceInfo', ],
             ],
         ],
         'Location' => [
@@ -378,6 +592,32 @@ return [
             'members' => [
                 'connectionName' => [ 'type' => 'string', 'locationName' => 'connectionName', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'monitor' =>  [ 'shape' => 'MonitorSpec', ],
+            ],
+        ],
+        'MonitorSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'samplingPeriod' => [ 'type' => 'integer', 'locationName' => 'samplingPeriod', ],
+                'status' => [ 'type' => 'string', 'locationName' => 'status', ],
+            ],
+        ],
+        'ModifyJdBgwVifConfSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'jdBgwVifConfId' => [ 'type' => 'string', 'locationName' => 'jdBgwVifConfId', ],
+                'partnerID' => [ 'type' => 'string', 'locationName' => 'partnerID', ],
+                'interconnectID' => [ 'type' => 'string', 'locationName' => 'interconnectID', ],
+                'outerconnectID' => [ 'type' => 'string', 'locationName' => 'outerconnectID', ],
+                'stag' => [ 'type' => 'integer', 'locationName' => 'stag', ],
+                'ctag' => [ 'type' => 'integer', 'locationName' => 'ctag', ],
+                'bgpAsn' => [ 'type' => 'integer', 'locationName' => 'bgpAsn', ],
+                'customerRouterIP1' => [ 'type' => 'string', 'locationName' => 'customerRouterIP1', ],
+                'customerRouterIP2' => [ 'type' => 'string', 'locationName' => 'customerRouterIP2', ],
+                'dxRouterIP1' => [ 'type' => 'string', 'locationName' => 'dxRouterIP1', ],
+                'dxRouterIP2' => [ 'type' => 'string', 'locationName' => 'dxRouterIP2', ],
+                'environment' => [ 'type' => 'string', 'locationName' => 'environment', ],
+                'deviceInfo' => [ 'type' => 'string', 'locationName' => 'deviceInfo', ],
             ],
         ],
         'ModifyPartnerConnectionStatusSpec' => [
@@ -393,6 +633,7 @@ return [
                 'privateVifName' => [ 'type' => 'string', 'locationName' => 'privateVifName', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'healthCheck' =>  [ 'shape' => 'HealthCheckSpec', ],
+                'monitor' =>  [ 'shape' => 'MonitorSpec', ],
             ],
         ],
         'ModifyQuotaSpec' => [
@@ -418,6 +659,14 @@ return [
                 'subnetIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
             ],
         ],
+        'ModifyVpnTrafficSelectorSpec' => [
+            'type' => 'structure',
+            'members' => [
+                'localSubnet' => [ 'type' => 'string', 'locationName' => 'localSubnet', ],
+                'remoteSubnets' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+            ],
+        ],
         'OpConnection' => [
             'type' => 'structure',
             'members' => [
@@ -438,6 +687,8 @@ return [
                 'rejectedReason' => [ 'type' => 'string', 'locationName' => 'rejectedReason', ],
                 'connectionOwner' => [ 'type' => 'string', 'locationName' => 'connectionOwner', ],
                 'charge' =>  [ 'shape' => 'Charge', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'PeerIps' => [
@@ -451,7 +702,8 @@ return [
             'type' => 'structure',
             'members' => [
                 'peerId' => [ 'type' => 'string', 'locationName' => 'peerId', ],
-                'peerBgpStatus' => [ 'type' => 'string', 'locationName' => 'peerBgpStatus', ],
+                'bgpPeerState' => [ 'type' => 'string', 'locationName' => 'bgpPeerState', ],
+                'peerHealthState' => [ 'type' => 'string', 'locationName' => 'peerHealthState', ],
                 'peerIps' =>  [ 'shape' => 'PeerIps', ],
             ],
         ],
@@ -467,12 +719,16 @@ return [
                 'bgpPeers' => [ 'type' => 'list', 'member' => [ 'shape' => 'BgpPeer', ], ],
                 'vlan' => [ 'type' => 'integer', 'locationName' => 'vlan', ],
                 'privateVifStatus' => [ 'type' => 'string', 'locationName' => 'privateVifStatus', ],
+                'inActiveReason' => [ 'type' => 'string', 'locationName' => 'inActiveReason', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'enableBgp' => [ 'type' => 'boolean', 'locationName' => 'enableBgp', ],
                 'peers' => [ 'type' => 'list', 'member' => [ 'shape' => 'Peer', ], ],
                 'bgp' =>  [ 'shape' => 'Bgp', ],
                 'healthCheck' =>  [ 'shape' => 'HealthCheck', ],
+                'monitor' =>  [ 'shape' => 'Monitor', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'PropagateCidrInfo' => [
@@ -502,12 +758,14 @@ return [
             'type' => 'structure',
             'members' => [
                 'connectionIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'customerPin' => [ 'type' => 'string', 'locationName' => 'customerPin', ],
             ],
         ],
         'ReplenishPortOrderSpec' => [
             'type' => 'structure',
             'members' => [
                 'connectionIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'customerPin' => [ 'type' => 'string', 'locationName' => 'customerPin', ],
                 'autoPay' => [ 'type' => 'boolean', 'locationName' => 'autoPay', ],
             ],
         ],
@@ -526,6 +784,13 @@ return [
                 'remark' => [ 'type' => 'string', 'locationName' => 'remark', ],
             ],
         ],
+        'TagFilter' => [
+            'type' => 'structure',
+            'members' => [
+                'key' => [ 'type' => 'string', 'locationName' => 'key', ],
+                'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
         'VpcAttachment' => [
             'type' => 'structure',
             'members' => [
@@ -537,6 +802,8 @@ return [
                 'status' => [ 'type' => 'string', 'locationName' => 'status', ],
                 'propagateCidrInfos' => [ 'type' => 'list', 'member' => [ 'shape' => 'PropagateCidrInfo', ], ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'VpcAttachmentSpec' => [
@@ -547,6 +814,8 @@ return [
                 'propagateType' => [ 'type' => 'string', 'locationName' => 'propagateType', ],
                 'bgwId' => [ 'type' => 'string', 'locationName' => 'bgwId', ],
                 'subnetIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'VpnTrafficSelectorSpec' => [
@@ -555,6 +824,7 @@ return [
                 'localSubnet' => [ 'type' => 'string', 'locationName' => 'localSubnet', ],
                 'remoteSubnets' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
+                'policyType' => [ 'type' => 'string', 'locationName' => 'policyType', ],
             ],
         ],
         'VpnConnection' => [
@@ -576,6 +846,19 @@ return [
                 'trafficSelectors' => [ 'type' => 'list', 'member' => [ 'shape' => 'VpnTrafficSelectorSpec', ], ],
                 'azType' => [ 'type' => 'string', 'locationName' => 'azType', ],
                 'az' => [ 'type' => 'string', 'locationName' => 'az', ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
+            ],
+        ],
+        'VpnConnectionDiagnose' => [
+            'type' => 'structure',
+            'members' => [
+                'vpnConnectionId' => [ 'type' => 'string', 'locationName' => 'vpnConnectionId', ],
+                'vpnTunnelId' => [ 'type' => 'string', 'locationName' => 'vpnTunnelId', ],
+                'failedReasonCode' => [ 'type' => 'string', 'locationName' => 'failedReasonCode', ],
+                'failedTime' => [ 'type' => 'string', 'locationName' => 'failedTime', ],
+                'sourceLogs' => [ 'type' => 'string', 'locationName' => 'sourceLogs', ],
+                'failedPhase' => [ 'type' => 'integer', 'locationName' => 'failedPhase', ],
             ],
         ],
         'ModifyVpnConnectionSpec' => [
@@ -584,7 +867,7 @@ return [
                 'vpnConnectionName' => [ 'type' => 'string', 'locationName' => 'vpnConnectionName', ],
                 'description' => [ 'type' => 'string', 'locationName' => 'description', ],
                 'bgpEnabled' => [ 'type' => 'boolean', 'locationName' => 'bgpEnabled', ],
-                'trafficSelectors' => [ 'type' => 'list', 'member' => [ 'shape' => 'VpnTrafficSelectorSpec', ], ],
+                'trafficSelectors' => [ 'type' => 'list', 'member' => [ 'shape' => 'ModifyVpnTrafficSelectorSpec', ], ],
             ],
         ],
         'VpnConnectionSpec' => [
@@ -598,24 +881,15 @@ return [
                 'localAsn' => [ 'type' => 'integer', 'locationName' => 'localAsn', ],
                 'providers' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'chargeSpec' =>  [ 'shape' => 'ChargeSpec', ],
-            ],
-        ],
-        'ChargeSpec' => [
-            'type' => 'structure',
-            'members' => [
-                'chargeMode' => [ 'type' => 'string', 'locationName' => 'chargeMode', ],
-                'chargeUnit' => [ 'type' => 'string', 'locationName' => 'chargeUnit', ],
-                'chargeDuration' => [ 'type' => 'integer', 'locationName' => 'chargeDuration', ],
-                'autoRenew' => [ 'type' => 'boolean', 'locationName' => 'autoRenew', ],
-                'autoChangeChargeMode' => [ 'type' => 'boolean', 'locationName' => 'autoChangeChargeMode', ],
-                'autoChangeChargeModeDate' => [ 'type' => 'string', 'locationName' => 'autoChangeChargeModeDate', ],
-                'buyScenario' => [ 'type' => 'string', 'locationName' => 'buyScenario', ],
+                'userTags' => [ 'type' => 'list', 'member' => [ 'shape' => 'Tag', ], ],
+                'resourceGroupId' => [ 'type' => 'string', 'locationName' => 'resourceGroupId', ],
             ],
         ],
         'VpnTunnel' => [
             'type' => 'structure',
             'members' => [
                 'vpnTunnelId' => [ 'type' => 'string', 'locationName' => 'vpnTunnelId', ],
+                'vpnTunnelName' => [ 'type' => 'string', 'locationName' => 'vpnTunnelName', ],
                 'vpnConnectionId' => [ 'type' => 'string', 'locationName' => 'vpnConnectionId', ],
                 'cloudPublicIp' => [ 'type' => 'string', 'locationName' => 'cloudPublicIp', ],
                 'customerIp' => [ 'type' => 'string', 'locationName' => 'customerIp', ],
@@ -644,6 +918,7 @@ return [
                 'opStatus' => [ 'type' => 'string', 'locationName' => 'opStatus', ],
                 'createdTime' => [ 'type' => 'string', 'locationName' => 'createdTime', ],
                 'updatedTime' => [ 'type' => 'string', 'locationName' => 'updatedTime', ],
+                'charge' =>  [ 'shape' => 'Charge', ],
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
             ],
         ],
@@ -657,6 +932,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'psk' => [ 'type' => 'string', 'locationName' => 'psk', ],
+                'vpnTunnelName' => [ 'type' => 'string', 'locationName' => 'vpnTunnelName', ],
                 'tunnelIp' => [ 'type' => 'string', 'locationName' => 'tunnelIp', ],
                 'localTunnelIp' => [ 'type' => 'string', 'locationName' => 'localTunnelIp', ],
                 'ikeVersion' => [ 'type' => 'string', 'locationName' => 'ikeVersion', ],
@@ -679,6 +955,7 @@ return [
             'type' => 'structure',
             'members' => [
                 'vpnConnectionId' => [ 'type' => 'string', 'locationName' => 'vpnConnectionId', ],
+                'vpnTunnelName' => [ 'type' => 'string', 'locationName' => 'vpnTunnelName', ],
                 'cloudPublicIp' => [ 'type' => 'string', 'locationName' => 'cloudPublicIp', ],
                 'customerIp' => [ 'type' => 'string', 'locationName' => 'customerIp', ],
                 'psk' => [ 'type' => 'string', 'locationName' => 'psk', ],
@@ -701,12 +978,192 @@ return [
                 'bandwidthMbps' => [ 'type' => 'integer', 'locationName' => 'bandwidthMbps', ],
             ],
         ],
+        'DescribeBgwsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBgwsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeBgwRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bgwId' => [ 'type' => 'string', 'locationName' => 'bgwId', ],
+            ],
+        ],
+        'DescribeBgwResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bgw' =>  [ 'shape' => 'Bgw', ],
+            ],
+        ],
+        'DescribeBgwsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeBgwsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bgws' => [ 'type' => 'list', 'member' => [ 'shape' => 'Bgw', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
         'Filter' => [
             'type' => 'structure',
             'members' => [
                 'name' => [ 'type' => 'string', 'locationName' => 'name', ],
                 'operator' => [ 'type' => 'string', 'locationName' => 'operator', ],
                 'values' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+            ],
+        ],
+        'DescribeBgwResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBgwResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeBgwRoutesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'bgwId' => [ 'type' => 'string', 'locationName' => 'bgwId', ],
+            ],
+        ],
+        'DescribeBgwRoutesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeBgwRoutesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeBgwRoutesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'bgwRoutes' => [ 'type' => 'list', 'member' => [ 'shape' => 'BgwRoute', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeopJdBgwVifConfsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeopJdBgwVifConfsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeopJdBgwVifConfsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeopJdBgwVifConfsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'jdBgwVifConfs' => [ 'type' => 'list', 'member' => [ 'shape' => 'JdBgwVifConf', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribePrivateVirtualInterfaceResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'privateVif' =>  [ 'shape' => 'PrivateVif', ],
+            ],
+        ],
+        'DescribePrivateVirtualInterfaceRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'privateVifId' => [ 'type' => 'string', 'locationName' => 'privateVifId', ],
+            ],
+        ],
+        'DescribePrivateVirtualInterfacesResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribePrivateVirtualInterfacesResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribePrivateVirtualInterfaceResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribePrivateVirtualInterfaceResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribePrivateVirtualInterfacesRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribePrivateVirtualInterfacesResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'privateVifs' => [ 'type' => 'list', 'member' => [ 'shape' => 'PrivateVif', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
+            ],
+        ],
+        'DescribeVpcAttachmentsRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
+                'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
+                'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeVpcAttachmentResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeVpcAttachmentResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeVpcAttachmentRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'vpcAttachmentId' => [ 'type' => 'string', 'locationName' => 'vpcAttachmentId', ],
+            ],
+        ],
+        'DescribeVpcAttachmentsResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeVpcAttachmentsResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeVpcAttachmentResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcAttachment' =>  [ 'shape' => 'VpcAttachment', ],
+            ],
+        ],
+        'DescribeVpcAttachmentsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'vpcAttachments' => [ 'type' => 'list', 'member' => [ 'shape' => 'VpcAttachment', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
         'ModifyAdminStatusResultShape' => [
@@ -728,18 +1185,31 @@ return [
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
-        'DescribeConnectionsResultShape' => [
-            'type' => 'structure',
-            'members' => [
-                'connections' => [ 'type' => 'list', 'member' => [ 'shape' => 'Connection', ], ],
-                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
-            ],
-        ],
         'DescribeConnectionsResponseShape' => [
             'type' => 'structure',
             'members' => [
                 'result' =>  [ 'shape' => 'DescribeConnectionsResultShape', ],
                 'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
+            ],
+        ],
+        'DescribeConnectionRequestShape' => [
+            'type' => 'structure',
+            'members' => [
+                'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+                'connectionId' => [ 'type' => 'string', 'locationName' => 'connectionId', ],
+            ],
+        ],
+        'DescribeConnectionResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'connection' =>  [ 'shape' => 'Connection', ],
+            ],
+        ],
+        'DescribeConnectionsResultShape' => [
+            'type' => 'structure',
+            'members' => [
+                'connections' => [ 'type' => 'list', 'member' => [ 'shape' => 'Connection', ], ],
+                'totalCount' => [ 'type' => 'integer', 'locationName' => 'totalCount', ],
             ],
         ],
         'DescribeConnectionsRequestShape' => [
@@ -748,7 +1218,16 @@ return [
                 'pageNumber' => [ 'type' => 'integer', 'locationName' => 'pageNumber', ],
                 'pageSize' => [ 'type' => 'integer', 'locationName' => 'pageSize', ],
                 'filters' => [ 'type' => 'list', 'member' => [ 'shape' => 'Filter', ], ],
+                'tags' => [ 'type' => 'list', 'member' => [ 'shape' => 'TagFilter', ], ],
+                'resourceGroupIds' => [ 'type' => 'list', 'member' => [ 'type' => 'string', ], ],
                 'regionId' => [ 'type' => 'string', 'locationName' => 'regionId', ],
+            ],
+        ],
+        'DescribeConnectionResponseShape' => [
+            'type' => 'structure',
+            'members' => [
+                'result' =>  [ 'shape' => 'DescribeConnectionResultShape', ],
+                'requestId' => [ 'type' => 'string', 'locationName' => 'requestId', ],
             ],
         ],
     ],
