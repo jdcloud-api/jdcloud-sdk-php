@@ -20,10 +20,28 @@ use Jdcloud\PresignUrlMiddleware;
 /**
  * Client used to interact with bgw.
  *
+ * @method \Jdcloud\Result describeBgws(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeBgwsAsync(array $args = [])
+ * @method \Jdcloud\Result describeBgw(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeBgwAsync(array $args = [])
+ * @method \Jdcloud\Result describeBgwRoutes(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeBgwRoutesAsync(array $args = [])
+ * @method \Jdcloud\Result describeopJdBgwVifConfs(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeopJdBgwVifConfsAsync(array $args = [])
+ * @method \Jdcloud\Result describePrivateVirtualInterfaces(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describePrivateVirtualInterfacesAsync(array $args = [])
+ * @method \Jdcloud\Result describePrivateVirtualInterface(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describePrivateVirtualInterfaceAsync(array $args = [])
+ * @method \Jdcloud\Result describeVpcAttachment(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeVpcAttachmentAsync(array $args = [])
+ * @method \Jdcloud\Result describeVpcAttachments(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeVpcAttachmentsAsync(array $args = [])
  * @method \Jdcloud\Result modifyAdminStatus(array $args = [])
  * @method \GuzzleHttp\Promise\Promise modifyAdminStatusAsync(array $args = [])
  * @method \Jdcloud\Result describeConnections(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeConnectionsAsync(array $args = [])
+ * @method \Jdcloud\Result describeConnection(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeConnectionAsync(array $args = [])
  */
 class BgwClient extends JdCloudClient
 {
